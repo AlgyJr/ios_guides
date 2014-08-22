@@ -1,0 +1,1 @@
+This wiki is a concise set of guides to iOS development. It assumes existing programming experience.
