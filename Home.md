@@ -5,6 +5,7 @@ The goal of this site is to become a central resource for complete, up-to-date p
 ## Swift
 
 [[Basics|Swift Basics]]
+[[Intermediate Swift|Swift Intermediate]]
 
 ## Getting Started
 

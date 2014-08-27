@@ -16,3 +16,5 @@ The `xcuserdata` folder stores you local Xcode data, such as the breakpoints you
 As you change build configurations, you want those changes shared with your team. Click the Application icon dropdown, and choose *Manage Schemes*.
 
 In the new window, there is one scheme bundled with your app. Check the *Shared* box.
+
+You will now have an `ProjectName.xcodeproj/xcshareddata` folder in your app. Add this file to git.

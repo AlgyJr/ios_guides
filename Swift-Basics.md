@@ -1,8 +1,8 @@
 # Introduction
 
-This page a quick reference guide to Swift. Keep it bookmarked as you begin development, for a quick reminder of the rules and syntax.
+This page a quick reference guide the Swift Basics. Anything that can be built with Objective-C can be built with these core parts of the language. To write something more elegant, move on to [[Intermediate Swift|Swift Intermediate]]
 
-This guide trades nuance for brevity. For an in-depth look at the language, check out the official documentation:
+This guide trades nuance for brevity. Keep this page bookmarked for a quick reminder of the rules and syntax. For an in-depth look at the language, check out the official documentation:
 
 * [WWDC 2014: Introduction to Swift](https://developer.apple.com/videos/wwdc/2014/#402)
 * [iOS Developer Library: A Swift Tour](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.html)
@@ -22,7 +22,7 @@ let immutableNumber = 0
 immutableNumber = immutableNumber + 1 // Illegal
 ```
 
-How *let* affects different types:
+How `let` affects different types:
 
 * Dictionaries: You cannot change its keys or values
 * Arrays: You cannot change, add, or remove elements
@@ -42,6 +42,13 @@ You can omit the type if the compiler can infer it:
 
 ```
 let i = 0
+```
+
+You can use `typealias` to create complex types, similar to C's typedef.
+
+```
+typealias StatusCode = Int
+let okResponse: StatusCode = 200
 ```
 
 ## Primitives
@@ -84,7 +91,7 @@ let myFalseValue = false
 let myArray = ["Red", "Orange", "Yello"]
 ```
 
-Arrays may only contain one type, but it can be inferred. If you must be more explicit:
+Arrays may only contain one type, which can be inferred. If you must be more explicit:
 
 ```
 let myArray : [String] = ["Red", "Orange", "Yello"]
@@ -101,7 +108,7 @@ myEmptyArray.append("Red")
 ### Dictionaries
 
 ```
-let characterDictionary = ["Simba": "Matthew Broderick", "Mufasa": "James Earl Jones", "Scar": "Jeremy Irons"]
+let characterDictionary = ["Simba": "Matthew Broderick", "Mufasa": "James Earl Jones"]
 ```
 
 Similarly, for an empty dictionary:
@@ -115,14 +122,14 @@ Dictionary keys must be hashable. However, all of Swift's basic types are hashab
 
 ### Tuples
 
-Tuples are a lightweight way to pass around a set of data. They're like more powerful arrays.
+Tuples are a lightweight way to pass around a group of data. They're like more powerful arrays.
 
 ```
 let myColors = ("Green", "Blue", "Indigo", "Violet")
 println(myColors.2) // "Indigo"
 ```
 
-They can have named values:
+They can use named values:
 
 ```
 let myResponse: (code: Int, message: String) = (200, "OK")
@@ -138,6 +145,14 @@ Parenthesis are optional, but braces are mandatory
 ```
 if booleanValue {
   println("This was true")
+}
+```
+
+Only `Bool` values may be used. Unlike some languages, `0` and `1` are not equivalent to boolean values. You must be explicit in checking values.
+
+```
+if numberValue == 1 {
+  println("The value was 1.")
 }
 ```
 
@@ -157,6 +172,7 @@ switch someValue {
 ```
 
 ### Loops
+
 
 for/in with an array:
 
@@ -182,15 +198,34 @@ for index in 1...10 {
 }
 ```
 
-Notice the three periods, `...`. That will cover 1 up to 10, a *closed range.* To omit the last item (in this case1 up to 9), use `..<`, a *half range*.
+Notice the three periods, `...`. That will cover 1 to 10, a *closed range.* To omit the last value (in this case, 1 to 9), use `..<`, a *half range*.
 
-## Optionals and Nil
+There are also the traditional `for`, `while`, and `do/while` loops:
 
-nil is a big deal. If you message nil, you get a runtime error.
+```
+for var i = 0; i < 10; i++ {
+    
+}
 
-Nil is a special value. The only variable that can contain nil is an "optional." It may be nil or the type you specify. To access that underlying value, you unwrap the optional.
+var j = 0
+while j < 10 {
+    j++
+}
 
-Declare an optional using "?" by the type. Unwrap the underlying value with the "!" operator.
+var k = 0
+do {
+    k++
+} while k < 10
+
+```
+
+## Nil and Optionals
+
+`nil` represents the absence of a value. If you message `nil`, you get a runtime error, so it should be handled carefully.
+
+The only variable that can contain `nil` is an *optional.* It may be nil or the type you specify. To access the underlying value, you unwrap it.
+
+Declare an optional using `?` by the type. Unwrap the underlying value with the `!` operator.
 
 ```
 let optionalValue : Int? = 1
@@ -199,11 +234,14 @@ if optionalValue != nil {
 }
 ```
 
-Nil is not a boolean value. You must check `optionalValue != nil`. However, there's shorthand:
+`nil` is not a boolean. You must check `optionalValue != nil`. However, there's shorthand:
 
 ```
+let optionalValue: Int? = 1
 if let intValue = optionalValue {
-  println("Int value: \(intValue)")
+  println("The int was \(intValue)")
+} else {
+  println("The int was not there.")
 }
 ```
 
@@ -217,7 +255,24 @@ if object != nil && object!.childObject != nil {
 object?.childObject?.method()
 ```
 
+Often, when your optional is nil, you want to use another value. For brevity, you can use *nil coalescing* via the `??` operator. The following two lines are equivalent:
+
+```
+a != nil ? a! : b
+a ?? b
+```
+
 ## Functions
+
+```
+func functionName(){
+    println(“Hello World”)
+}
+
+functionName() // "Hello World"
+```
+
+With parameters:
 
 ```
 func functionName(variableName: String){
@@ -227,7 +282,18 @@ func functionName(variableName: String){
 functionName("Ben") // "Hello Ben"
 ```
 
-Default Values:
+With return values:
+
+```
+func greetingGenerator(name: String) -> String {
+  return "Hello \(name)"
+}
+
+let greeting = buildGreeting()
+println(greeting) // "Hello World"
+```
+
+With default Values:
 
 ```
 func functionName(name: String = "Somebody"){
@@ -236,28 +302,16 @@ func functionName(name: String = "Somebody"){
 functionName() // "Hello Somebody"
 ```
 
-Return values:
-
-```
-func greetingGenerator(name: String = "World") -> String {
-  return "Hello \(name)"
-}
-
-let greeting = buildGreeting()
-println(greeting) // "Hello World"
-```
-
 For clarity, use keyword parameters:
 
 ```
 func performGreeting(greeting:String, withName name: String){
     println("\(greeting) \(name).")
 }
-
 performGreeting("Hello", withName:"Ben")
 ```
 
-To use the variable name as the:
+To use the same keyword name as the variable name:
 
 ```
 func performGreeting(greeting:String, #name: String){
@@ -281,7 +335,7 @@ greetingClosure("Hello", "Ben")
 
 ```
 
-Just like Ruby, if the last argument is a closure, it doesn't require parenthesis. It's a trailing closure.
+If the last argument is a closure, it doesn't require parenthesis, much like Ruby. These are *trailing closures.*
 
 ```
 repeat(2) {
@@ -318,12 +372,12 @@ class Dog: Animal {
 }
 ```
 
-If you override a method, you must use `override`
+You must use `override` to override a method.
 
 ```
 class Animal {
   func happiness() -> String {
-    return ""
+    return "This animal does not get happy."
   }
 }
 class Dog: Animal {
@@ -332,6 +386,8 @@ class Dog: Animal {
   }
 }
 ```
+
+To call the super method, use `super.nameOfMethod()`
 
 ### Properties
 
@@ -356,7 +412,7 @@ myDog.cute = true
 myDog.bark()       // "Woof"
 ```
 
-If it's just a getter
+For computed setters and getters:
 
 ```
 class Dog: Animal {
@@ -375,32 +431,6 @@ var myDog = Dog()
 myDog.cute = true
 myDog.adorable    // true
 ```
-
-Property Observers
-
-```
-class Dog: Animal {
-  var cute = true
-  var grownUp:Bool = false {
-    willSet {
-      println("Puppy is growing up")
-    }
-    didSet(oldValueForGrownUp) {
-      if (grownUp){
-        cute = false
-      } else {
-        cute = true
-      }
-    }
-  }
-}
-var myDog = Dog()
-myDog.cute            // True
-myDog.grownUp = true
-myDog.cute            // False
-```
-
-If the new values aren't specific in the method name, `newValue` and `oldValue` are special keywords
 
 ### Initializers and Deinitializers
 
@@ -438,58 +468,43 @@ class Dog: Animal {
 
 ## Structs
 
-They're like C structs, but much more powerful. They have:
-
-* Methods and computed properties
-* Initializers
-* They can adhere to protocols
-
-They are not classes:
-
-* No subclassing
-* Classes are passed by reference. Structs are passed by value.
-* They have an initializer, but not an deinitializer.
+Swift structs are like C structs, but much more powerful, resembling classes. These advanced features are covered in [[Intermediate Swift|Swift Intermediate]].
 
 ```
-struct Rect {
-  var origin: Point
-  var size: Size
-  var area: Double {
-     return size.width * size.height
-  }
-}
-```
-
-To obey rules around var vs let, make sure mutating properties use the `mutating` keyword
-
-```
-struct Point {
-  var x: Double
-  var y: Double
-  mutating func moveToTheRight(dx: double){
-    x += dx
-  }
+struct User {
+    var name: String
+    var occupation: String
 }
 ```
 
 By default, structs come with a member initializer.
 
 ```
-let myPoint = Point(x: 20.0, y:20.0)
+let ben = User(name: "Ben Sandofsky", occupation:"Engineer")
 ```
+
+Unlike a class, when a struct is declared with `let`, all of its properties are immutable.
+
+As with Objective-C, structs are passed by value, classes are passed by reference.
 
 ## Enum
 
+Like structs, Enums are more powerful than their C equivalents. See [[Intermediate Swift|Swift Intermediate]].
+
 ```
-enum Planet: Int {
-  case Mercury = 1, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune
+enum Color: Int {
+  case Red = 1, Orange, Yellow, Green, Blue, Indigo, Violet
 }
-let earthValue = Planet.Earth
-println("Earth raw value: \(earthValue.toRaw()).")
-
+let orangeValue = Color.Orange
 ```
 
-They can be other values
+To access the underlying value, use `toRaw()`:
+
+```
+println("Orange raw value: \(orangeValue.toRaw()).")
+```
+
+Enums may use other underlying values:
 
 ```
 enum ControlCharacters: Character {
@@ -499,111 +514,29 @@ enum ControlCharacters: Character {
 }
 ```
 
-They can have no raw value
+They can have no raw value:
 
 ```
-enum CompassPoint {
-  case North, South, East, West
+enum Season {
+  case Spring, Summer, Fall, Winter
 }
 ```
 
-Their value can be inferred based on the type of enum
-
-```
-var directionToHead CompassPoint.West
-direction = .East
-```
-
-From UIKit:
+If the enum type can be inferred, you can omit it.
 
 ```
 let label = UILabel
 label.textAlignment = .Right
 ```
 
-They can also have associated values:
-
-```
-enum TrainStatus {
-  case OnTime
-  case Delayed(Int)
-}
-
-let status = TrainStatus.Delayed(5)
-```
-
-They may contain methods, including initializers
-
-```
-enum TrainStatus {
-  case OnTime, Delayed(Int)
-  init() {
-    self = OnTime
-  }
-  var description : String {
-    switch self {
-      case OnTime:
-        return "On Time."
-      case Delayed(let minutes):
-        return "Delayed by \(minutes) minutes."
-    }
-  }
-}
-```
-
-### Nesting
-
-You can nest an enum to tie it to the class.
-
-```
-class Train {
-  enum Status {
-    // Same as before
-  }
-  var status = Status()
-}
-```
-
-Notice that `Train` is removed, since the class provides a namespace. It's just `Status`.
-
 ## Extensions
 
 You may extend classes, structs, and enums, without touching the original source code. It is similar to a category in Objective-C, or monkey patching in Ruby.
 
 ```
-extension Size {
-  mutating func increaseByFactor(factor: Int) {
-    width *= factor
-    height *= factor
-  }
+extension String {
+    func tweetable() -> Bool {
+        return countElements(self) <= 140
+    }
 }
 ```
-
-Even primitives work:
-
-```
-extension Int {
-   func repetitions(task: () -> ()) {
-      for i in 0..self {
-        task()
-      }
-   }
-}
-```
-
-## Generics
-
-An advanced feature. One way of generalizing a method is by accepting the “Any” type, but that loses type information. Generics allow you to retain type safety while generalizing a method.
-
-```
-struct Stack<T> {
-  var elements = [T]()
-  mutating func push(element: T){
-    elements.append(element)
-  }
-  mutating func pop() -> T {
-    return elements.removeLast()
-  }
-}
-```
-
