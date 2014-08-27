@@ -1,8 +1,8 @@
 # Introduction
 
-This page a quick reference guide the Swift Basics. Anything that can be built with Objective-C can be built with these core parts of the language. To write something more elegant, move on to [[Intermediate Swift|Swift Intermediate]]
+This is quick guide to Swift Basics. Anything that can be built with Objective-C can be built with these core parts of the language. More elegant features are covered in [[Intermediate Swift|Swift Intermediate]]
 
-This guide trades nuance for brevity. Keep this page bookmarked for a quick reminder of the rules and syntax. For an in-depth look at the language, check out the official documentation:
+Use this guide as a quick reference to basic syntax and rules. For an in-depth look at the language, check out the official documentation:
 
 * [WWDC 2014: Introduction to Swift](https://developer.apple.com/videos/wwdc/2014/#402)
 * [iOS Developer Library: A Swift Tour](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.html)
@@ -12,7 +12,7 @@ This guide trades nuance for brevity. Keep this page bookmarked for a quick remi
 
 ### let and var
 
-`let` declares a constant. `var` declares a variable, which is mutable. Use `let` wherever possible. It's safer and it allows compiler optimizations.
+`let` declares a constant. `var` declares a variable, which is mutable. Use `let` wherever possible. It's safer and allows compiler optimization.
 
 ```
 var mutableNumber = 0
@@ -21,14 +21,6 @@ mutableNumber = mutableNumber + 1 // Allowed
 let immutableNumber = 0
 immutableNumber = immutableNumber + 1 // Illegal
 ```
-
-How `let` affects different types:
-
-* Dictionaries: You cannot change its keys or values
-* Arrays: You cannot change, add, or remove elements
-* Strings: Totally immutable
-* Structs: All properties are immutable
-* Objects: Properties *are mutable*, unless declared with `let`
 
 ### Type
 
@@ -221,9 +213,9 @@ do {
 
 ## Nil and Optionals
 
-`nil` represents the absence of a value. If you message `nil`, you get a runtime error, so it should be handled carefully.
+`nil` represents the absence of a value. It should be handled carefully; if you call a method on `nil`, you get a runtime error.
 
-The only variable that can contain `nil` is an *optional.* It may be nil or the type you specify. To access the underlying value, you unwrap it.
+The only variable that can contain `nil` is an *optional.* It may be nil or the type you specify. To access the underlying value, unwrap it.
 
 Declare an optional using `?` by the type. Unwrap the underlying value with the `!` operator.
 
@@ -243,23 +235,6 @@ if let intValue = optionalValue {
 } else {
   println("The int was not there.")
 }
-```
-
-If you have a chain of properties, rather than unwrap each individually, you can use the "?" operator. For instance:
-
-```
-if object != nil && object!.childObject != nil {
-  object!.childObject!.method()
-}
-// Equivalent
-object?.childObject?.method()
-```
-
-Often, when your optional is nil, you want to use another value. For brevity, you can use *nil coalescing* via the `??` operator. The following two lines are equivalent:
-
-```
-a != nil ? a! : b
-a ?? b
 ```
 
 ## Functions
@@ -402,7 +377,6 @@ class Dog: Animal {
         } else {
             return "Growl"
         }
-
     }
 }
 
@@ -432,6 +406,8 @@ myDog.cute = true
 myDog.adorable    // true
 ```
 
+If instance is declared with `let`, the varriable is immutable, but the object's properties are still mutable.
+
 ### Initializers and Deinitializers
 
 The initializer must make sure every stored property has a value before any methods are called, including `super.init()`
@@ -454,7 +430,7 @@ class Dog: Animal {
 }
 ```
 
-However, by overriding the initializer, you lose the default assignment behavior for all properties.
+By overriding `init()`, you lose the default assignment behavior for all properties.
 
 To perform cleanup code before an object is destroyed:
 
@@ -483,13 +459,13 @@ By default, structs come with a member initializer.
 let ben = User(name: "Ben Sandofsky", occupation:"Engineer")
 ```
 
-Unlike a class, when a struct is declared with `let`, all of its properties are immutable.
-
 As with Objective-C, structs are passed by value, classes are passed by reference.
+
+Unlike a class, when a struct is declared with `let`, all of its properties are immutable.
 
 ## Enum
 
-Like structs, Enums are more powerful than their C equivalents. See [[Intermediate Swift|Swift Intermediate]].
+Like structs, Swift enums are more powerful than their C equivalents. See [[Intermediate Swift|Swift Intermediate]].
 
 ```
 enum Color: Int {
