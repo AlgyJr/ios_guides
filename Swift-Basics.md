@@ -425,6 +425,22 @@ myDog.cute = true // Valid
 myDog = Dog()     // Invalid
 ```
 
+### Protocols
+
+```
+protocol Domesticated {
+    var name: String? { get set }
+    func respondToName() -> ()
+}
+
+class Dog: Animal, Domesticated {
+    var name: String?
+    func respondToName() {
+        println("Wag tail")
+    }
+}
+```
+
 ### Initializers and Deinitializers
 
 The initializer must make sure every stored property has a value before any methods are called, including `super.init()`
