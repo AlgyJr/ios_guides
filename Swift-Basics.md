@@ -30,13 +30,13 @@ let i: Int = 0
 
 Read left-to-right, “the variable i is an Int.”
 
-You can omit the type if the compiler can infer it:
+You can omit type if the compiler can infer it:
 
 ```
 let i = 0
 ```
 
-You can use `typealias` to create complex types, similar to C's typedef.
+Use `typealias` to create complex types, similar to C's `typedef`.
 
 ```
 typealias StatusCode = Int
@@ -48,27 +48,18 @@ let okResponse: StatusCode = 200
 ### Strings
 
 ```
-let string = "Hello World"
-```
-
-String interpolation:
-
-```
-let namedString = "Hello \(name)"
+let name = "Ben"
+let interpolatedString = "Hello \(name)"    // "Hello Ben"
+let concatenatedString = "Hello" + " world" // "Hello world"
 ```
 
 ### Numbers
 
 ```
-let myNumber = 21
+let myNumber = 21                     // Results in an Int
+let myFloat: Float = 21               // Results in a Float
+let floatConversion = Float(myNumber) // Converts to a Float
 ```
-
-*myNumber* is of type `Int`. If you'd prefer a float:
-
-```
-let myNumber: Float = 21
-```
-
 
 ### Bool
 
@@ -77,23 +68,24 @@ let myTrueValue = true
 let myFalseValue = false
 ```
 
+Only booleans are true and false. False is *not* equivalent to `0`, an empty string, or `nil`.
+
 ### Arrays
 
 ```
-let myArray = ["Red", "Orange", "Yello"]
+let myArray = ["Red", "Orange", "Yellow"]
 ```
 
 Arrays may only contain one type, which can be inferred. If you must be more explicit:
 
 ```
-let myArray : [String] = ["Red", "Orange", "Yello"]
+let myArray : [String] = ["Red", "Orange", "Yellow"]
 ```
     
 To initialize an empty array:
 
 ```
 var myEmptyArray = [String]()
-
 myEmptyArray.append("Red")
 ```
 
@@ -130,7 +122,7 @@ println(myTuple.message)
 
 ## Control Flow
 
-### If Statements
+### If
 
 Parenthesis are optional, but braces are mandatory
 
@@ -140,7 +132,7 @@ if booleanValue {
 }
 ```
 
-Only `Bool` values may be used. Unlike some languages, `0` and `1` are not equivalent to boolean values. You must be explicit in checking values.
+Only `Bool` values may be used for the condition, and `0` and `1` are not equivalent to booleans. You must be explicit in checking values.
 
 ```
 if numberValue == 1 {
@@ -213,11 +205,9 @@ do {
 
 ## Nil and Optionals
 
-`nil` represents the absence of a value. It should be handled carefully; if you call a method on `nil`, you get a runtime error.
+`nil` represents the absence of a value. *optionals* are a special type that may contain `nil`, or some value. To access that underlying value, you *unwrap* the optional.
 
-The only variable that can contain `nil` is an *optional.* It may be nil or the type you specify. To access the underlying value, unwrap it.
-
-Declare an optional using `?` by the type. Unwrap the underlying value with the `!` operator.
+Declare an optional with `?`. Unwrap it with `!`.
 
 ```
 let optionalValue : Int? = 1
@@ -310,20 +300,13 @@ greetingClosure("Hello", "Ben")
 
 ```
 
-If the last argument is a closure, it doesn't require parenthesis, much like Ruby. These are *trailing closures.*
-
-```
-repeat(2) {
-  println("Hello!")
-}
-```
-
 ## Classes
 
 ```
 class Animal {
 
 }
+var myAnimal = Animal()
 ```
 
 ### Subclassing
@@ -332,8 +315,6 @@ class Animal {
 class Dog: Animal {
     
 }
-
-var myDog = Dog()
 
 ```
 
@@ -345,6 +326,9 @@ class Dog: Animal {
     return "Woof"
   }
 }
+
+let myDog = Dog()
+myDog.bark()
 ```
 
 You must use `override` to override a method.
@@ -355,6 +339,7 @@ class Animal {
     return "This animal does not get happy."
   }
 }
+
 class Dog: Animal {
   override func happiness() -> String {
     return "Wag tail"
@@ -386,7 +371,33 @@ myDog.cute = true
 myDog.bark()       // "Woof"
 ```
 
-For computed setters and getters:
+To add behavior normally contained in a getter or setter, use property observers:
+
+```
+class Dog: Animal {
+  var cute = true
+  var grownUp:Bool = false {
+    willSet {
+      println("Puppy is growing up")
+    }
+    didSet(oldValueForGrownUp) {
+      if (grownUp){
+        cute = false
+      } else {
+        cute = true
+      }
+    }
+  }
+}
+var myDog = Dog()
+myDog.cute            // True
+myDog.grownUp = true
+myDog.cute            // False
+```
+
+`newValue` and `oldValue` are variables available within property observers.
+
+For properties without ivars, use computed getters and setters.
 
 ```
 class Dog: Animal {
@@ -406,7 +417,13 @@ myDog.cute = true
 myDog.adorable    // true
 ```
 
-If instance is declared with `let`, the varriable is immutable, but the object's properties are still mutable.
+If instance is declared with `let`, the variable is immutable, but the object's properties are still mutable.
+
+```
+let myDog = Dog()
+myDog.cute = true // Valid
+myDog = Dog()     // Invalid
+```
 
 ### Initializers and Deinitializers
 
