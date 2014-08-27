@@ -5,3 +5,7 @@ The goal of this site is to become a central resource for complete, up-to-date p
 ## Swift
 
 [[Basics|Swift Basics]]
+
+## Getting Started
+
+[[Setting Up a New Project in Xcode|New Project]]
