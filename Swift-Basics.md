@@ -28,7 +28,7 @@ immutableNumber = immutableNumber + 1 // Illegal
 let i: Int = 0
 ```
 
-Read left-to-right, “the variable i is an Int.”
+Read left-to-right, “The constant i is an Int.”
 
 You can omit type if the compiler can infer it:
 
@@ -102,7 +102,7 @@ var characterDictionary: [String:String] = Dictionary<String, String>()
 characterDictionary["Simba"] = "Matthew Broderick"
 ```
 
-Dictionary keys must be hashable. However, all of Swift's basic types are hashable.
+Dictionary keys must be hashable. However, all of Swift's basic types (`String`, `Int`, `Bool`, etc) are hashable.
 
 ### Tuples
 
@@ -417,7 +417,7 @@ myDog.cute = true
 myDog.adorable    // true
 ```
 
-If instance is declared with `let`, the variable is immutable, but the object's properties are still mutable.
+If the instance is declared with `let`, the object's properties are still mutable. The constant just can't point to another object.
 
 ```
 let myDog = Dog()
