@@ -202,7 +202,7 @@ struct Person {
 
 ## Enums
 
-Enums may also have methods.
+Enums may also have methods and conform to protocols.
 
 ```
 enum HomeworkState {
