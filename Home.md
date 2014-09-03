@@ -9,4 +9,5 @@ The goal of this site is to become a central resource for complete, up-to-date p
 
 ## Getting Started
 
+[[Setting Up Your Environment|Setup|]]
 [[Setting Up a New Project in Xcode|New Project]]
