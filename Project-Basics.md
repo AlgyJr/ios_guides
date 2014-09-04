@@ -4,11 +4,11 @@ This page covers the basics of working with an Xcode project. By the end of it, 
 
 ## File Types
 
-### Source -- .swift
+### Source: .swift
 
 Each swift file ends in `.swift`. Objective-C uses two files: `.h` for headers, and `.m` for the corresponding implementation.
 
-### Images -- .xcassets
+### Images: .xcassets
 
 Say you have a home button in your app that is 44x44 pixels. On a retina display, you would want one at twice the resolution. If you want to take advantage of the larger iPad screen, you would want one at yet another set of dimensions. In total there are four image assets-- iPhone, iPhone Retina, iPad, and iPad Retina.
 
@@ -16,11 +16,11 @@ This can be daunting to track in code, so instead, it's managed by an **Asset Ca
 
 The asset catalogue is the `Images.xcassets` folder. If you this folder in Xcode, it will bring up the *Asset Catalogue Editor* for managing assets.
 
-### UI  Design -- .storyboard, .xib
+### UI  Design: .storyboard, .xib
 
 You can lay out your views with a drag and drop GUI, To save time and reduce boilerplate code. These designs are saved to a `.storyboard` or `.xib` file, which is loaded at runtime. The distinction between these file types is covered in a [[later guide||Storyboards]].
 
-### Property Lists -- .plist
+### Property Lists: .plist
 
 [plist](http://en.wikipedia.org/wiki/Property_list) is a human-readable format that predates JSON, going all the way back to [NeXTSTEP](http://en.wikipedia.org/wiki/NeXTSTEP). It is the preferred file format of Apple.
 
@@ -45,11 +45,15 @@ This determines the UI displayed on launch. If you would rather set up your UI p
 ## Organization
 
 The location of files in the project does not have to correlate with their location on disk. However, it's a good idea to keep things at least rudimentarily organized. It will depend on your team's conventions, but one layout might be:
- 
-> ProjectName.xcodeproj
-> src/
-> resources/
-> config/
+
+`
+ProjectName.xcodeproj
+src/
+resources/
+config/
+`
+
+If you move a file on disk, the filename will turn red within in the [Navigation Panel](https://developer.apple.com/library/mac/recipes/xcode_help-general/AbouttheNavigatorArea/AbouttheNavigatorArea.html), because Xcode has lost track of it. You'll need to relink the file. Click the filename, and within the [Utility  Panel](https://developer.apple.com/library/mac/recipes/xcode_help-general/AbouttheUtilityArea/AbouttheUtilityArea.html), click the "Location" button, and navigate to the file's new location on disk.
 
 ## Targets
 
@@ -59,5 +63,6 @@ For instance, in shipping apps, it's common to see two app targets: the app you 
 
 # Further Reading
 
-* [iOS App Programming Guide](https://developer.apple.com/library/iOs/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Introduction/Introduction.html)
-* [Xcode Overview](https://developer.apple.com/library/iOs/documentation/ToolsLanguages/Conceptual/Xcode_Overview/About_Xcode/about.html)
+* [Xcode Basics](https://developer.apple.com/library/mac/recipes/xcode_help-general/_index.html) -- A quick overview of the Xcode UI
+* [Xcode Overview](https://developer.apple.com/library/iOs/documentation/ToolsLanguages/Conceptual/Xcode_Overview/About_Xcode/about.html) -- An in-depth look into Xcode
+* [iOS App Programming Guide](https://developer.apple.com/library/iOs/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Introduction/Introduction.html) -- An in-depth walkthrough of all of iOS fundamentals
