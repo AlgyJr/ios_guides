@@ -8,6 +8,24 @@ Ever been **frustrated finding information on outdated one-off blog posts and tu
 
 Read about our [mission to change the way engineers learn new technologies](https://github.com/thecodepath/android_guides/wiki/The-CodePath-Goal) and we would love for you to [get involved](https://github.com/thecodepath/android_guides/wiki/The-CodePath-Goal#how-do-i-help)! In addition, we are a fledgling startup so if you like this guide and what we are trying to do, please consider following us on twitter [@thecodepath](https://twitter.com/thecodepath) or [tipping via gittip](https://www.gittip.com/nesquena/)!
 
+
+## Writers
+
+Feel free to add your name to the list if you've made a contribution.
+
+### Editors
+
+* [Ben Sandofsky](https://sandofsky.com)
+
+### Contributors
+
+* [Trevor Elkins](https://github.com/trevor-e)
+* [Roger Hu](https://github.com/rogerhu)
+* [Adrian Romero](https://github.com/romeroadrian)
+* [Ben Sandofsky](https://sandofsky.com)
+* [Chunyan Song](https://github.com/chunyan)
+* [Michele Titolo](http://michele.io)
+
 ## Getting Started
 
 * [[Setting Up Your Environment|Setup|]]
@@ -22,3 +40,15 @@ Read about our [mission to change the way engineers learn new technologies](http
 
 ## User Interface
 * [[Interface Builder|Interface Builder]]
+
+# Great External Resources
+
+- [Apple official guides](https://developer.apple.com/library/ios/navigation/#section=Resource%20Types&topic=Guides). These high level guides are a fantastic resource. Some good ones to read initially are:
+  - [Programming with Objective-C](https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.htm)
+  - [iOS App Programming Guide](https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Introduction/Introduction.html)
+  - [View Programming Guide](https://developer.apple.com/library/ios/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/Introduction/Introduction.html)
+- Blogs
+  - [NSHipster](http://nshipster.com/). NSHipster is a journal of the overlooked bits in Objective-C and Cocoa. Updated weekly.
+  - [NSScreencast](http://nsscreencast.com/). Shows how to implement interesting things in iOS via screencasts.
+  - [objc.io](http://www.objc.io/). A periodical about best practices and advanced techniques in Objective-C.
+  - [Mike Ash's blog](https://www.mikeash.com/pyblog/). There is nothing this guy doesn't know.
