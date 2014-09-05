@@ -46,12 +46,12 @@ This determines the UI displayed on launch. If you would rather set up your UI p
 
 The location of files in the project does not have to correlate with their location on disk. However, it's a good idea to keep things at least rudimentarily organized. It will depend on your team's conventions, but one layout might be:
 
-`
+```
 ProjectName.xcodeproj
 src/
 resources/
 config/
-`
+```
 
 If you move a file on disk, the filename will turn red within in the [Navigation Panel](https://developer.apple.com/library/mac/recipes/xcode_help-general/AbouttheNavigatorArea/AbouttheNavigatorArea.html), because Xcode has lost track of it. You'll need to relink the file. Click the filename, and within the [Utility  Panel](https://developer.apple.com/library/mac/recipes/xcode_help-general/AbouttheUtilityArea/AbouttheUtilityArea.html), click the "Location" button, and navigate to the file's new location on disk.
 
