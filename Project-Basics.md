@@ -40,7 +40,7 @@ This is the entry point for critical events in the life of your app. For instanc
 
 ### Main.storyboard
 
-This determines the UI displayed on launch. If you would rather set up your UI programmatically, for reasons covered the [[Storyboard Guide|Storyboards]] you can configure it in your `Info.plist`, and write the setup code in `AppDelegate.swift`.
+This determines the UI displayed on launch. If you would rather set up your UI programmatically, for reasons covered the [[Interface Builder|Interface Builder]] you can configure it in your `Info.plist`, and write the setup code in `AppDelegate.swift`.
 
 ## Organization
 
