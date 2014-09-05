@@ -2,7 +2,7 @@
 
 ## Overview
 
-Interface Builder (IB) is a WYSIWYG editor for building user interfaces. You add GUI components-- such as button, labels, and images-- through a drag-and-drop interface. You then "wire" these controls to your view controller's source code. For instance, you can drag a button into your UI, and control-drag it into your source code, to trigger a `didTapButton` method. You load these files at runtime to restore the designs you created.
+Interface Builder (IB) is a WYSIWYG editor for building user interfaces. You add GUI components-- such as button, labels, and images-- through a drag-and-drop interface. You then "wire" these controls to your view controller's source code. The editor creates a file you can load at runtime to recreate the GUI you've designed.
 
 IB is immensely useful when working with [[autolayout|Autolayout]]. It can immediately validate layouts, and warn you if a view has ambiguous constraints. This avoids some trial-and-error when working programatically.
 
@@ -13,17 +13,17 @@ IB can create two types of files: `.xib` and `.storyboard`.
 Xibs store sets of views and objects. To load the content of a xib:
 
 ```
-let toolbarViews = UINib(nibName: "Toolbars", bundle: nil).instantiateWithOwner(self, options:nil)
-let myFirstView = toolbarViews[0] as UIView
+let cameraControlViews = UINib(nibName: "CameraControls", bundle: nil).instantiateWithOwner(self, options:nil)
+let myFirstView = cameraControlViews[0] as UIView
 ```
 
 "nib" is not a typo. IB files used to end in `.nib`.
 
 ### Storyboard
 
-*Storyboards* are a newer platform than xibs. Storyboards focus on entire screens and user flows. With some heavy lifting, you may be able to do the same thing with a `xib,` but since storyboards understanding how view controllers and navigation fit together, they have even more time-saving features.
+*Storyboards* are a newer technology than xibs. Storyboards focus on entire screens and user flows. You may be able to do similar things with a `xib` (with some heavy lifting), but since storyboards understanding how view controllers and navigation fit together, they have more features.
 
-For instance, creating a settings screen programmatically results in a lot of boilerplate. You write a long `switch` statement to track each row in your list, and coordinate with a cell dequeuing method when it's about to appear on screen. Storyboards have a "Static Cells" feature, cuts all this work down to minutes.
+For instance, creating a settings screen programmatically results in a lot of boilerplate. You write a long `switch` statement to track each row in your list, and coordinate with cell dequeuing to show the right row. Storyboards have a "Static Cells" feature, cutting this work down to minutes.
 
 To load the view controller in your storyboard:
 
@@ -65,7 +65,11 @@ More: [Creating an Action Connection](https://developer.apple.com/library/ios/re
 
 ### File's Owner
 
-xibs contain a placeholder object called the *File's Owner.* When your xib is loaded, it will be filled with the owner you specified in `instantiateWithOwner`. This is usually the object you are connecting outlets and actions to.
+xibs contain a placeholder object called the *File's Owner.* When your xib is loaded, it will be filled with the owner you specified in `instantiateWithOwner`. This object is the "hook" for connecting objects in the xib to the rest of your application.
+
+### awakeFromNib
+
+If you need to perform additional setup after your view is loaded from a file, don't do it in your initializer; there is no guarantee all views in your file have been instanced, yet. Instead, implement the `awakeFromNib` on the File's Owner.
 
 ### Scenes and Segues
 
