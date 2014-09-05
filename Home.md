@@ -14,4 +14,4 @@ The goal of this site is to become a central resource for complete, up-to-date p
 * [[Xcode Project Basics|Project Basics]]
 
 ## UI
-* [[Storyboards and Interface Builder|Storyboards]]
+* [[Interface Builder|Interface Builder]]
