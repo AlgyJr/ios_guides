@@ -9,22 +9,7 @@ Ever been **frustrated finding information on outdated one-off blog posts and tu
 Read about our [mission to change the way engineers learn new technologies](https://github.com/thecodepath/android_guides/wiki/The-CodePath-Goal) and we would love for you to [get involved](https://github.com/thecodepath/android_guides/wiki/The-CodePath-Goal#how-do-i-help)! In addition, we are a fledgling startup so if you like this guide and what we are trying to do, please consider following us on twitter [@thecodepath](https://twitter.com/thecodepath) or [tipping via gittip](https://www.gittip.com/nesquena/)!
 
 
-## Writers
-
-Feel free to add your name to the list if you've made a contribution.
-
-### Editors
-
-* [Ben Sandofsky](https://sandofsky.com)
-
-### Contributors
-
-* [Trevor Elkins](https://github.com/trevor-e)
-* [Roger Hu](https://github.com/rogerhu)
-* [Adrian Romero](https://github.com/romeroadrian)
-* [Ben Sandofsky](https://sandofsky.com)
-* [Chunyan Song](https://github.com/chunyan)
-* [Michele Titolo](http://michele.io)
+# The Guides
 
 ## Getting Started
 
@@ -52,3 +37,22 @@ Feel free to add your name to the list if you've made a contribution.
   - [NSScreencast](http://nsscreencast.com/). Shows how to implement interesting things in iOS via screencasts.
   - [objc.io](http://www.objc.io/). A periodical about best practices and advanced techniques in Objective-C.
   - [Mike Ash's blog](https://www.mikeash.com/pyblog/). There is nothing this guy doesn't know.
+  
+  
+## Credits
+
+Add your name to the list if you've made a contribution.
+
+### Editors
+
+* [Ben Sandofsky](https://sandofsky.com)
+
+### Contributors
+
+* [Trevor Elkins](https://github.com/trevor-e)
+* [Roger Hu](https://github.com/rogerhu)
+* [Adrian Romero](https://github.com/romeroadrian)
+* [Ben Sandofsky](https://sandofsky.com)
+* [Chunyan Song](https://github.com/chunyan)
+* [Michele Titolo](http://michele.io)
+
