@@ -13,5 +13,9 @@ The goal of this site is to become a central resource for complete, up-to-date p
 * [[Starting a New Project|New Project]]
 * [[Xcode Project Basics|Project Basics]]
 
+## Fundamentals
+
+* [[App Architecture|Architecture]]
+
 ## UI
 * [[Interface Builder|Interface Builder]]
