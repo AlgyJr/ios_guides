@@ -12,12 +12,12 @@ Read about our [mission to change the way engineers learn new technologies](http
 
 * [[Setting Up Your Environment|Setup|]]
 * [[Starting a New Project|New Project]]
-* [[Xcode Project Basics|Project Basics]]
 
 ## Fundaments
 
-* [[Basics|Swift Basics]]
-* [[Intermediate|Swift Intermediate]]
+* [[Basic Swift|Swift Basics]]
+* [[Intermediate Swift|Swift Intermediate]]
+* [[Xcode Project Basics|Project Basics]]
 * [[App Architecture|Architecture]]
 
 ## User Interface
