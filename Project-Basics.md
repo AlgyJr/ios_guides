@@ -38,6 +38,8 @@ Your project file contains all the details of your project, such as the source f
 
 This is the entry point for critical events in the life of your app. For instance, fill in `application(application, didFinishLaunchingWithOptions:options)` with any code you want run after your application finishes launching.
 
+For more, read about [[App Architecture|Architecture]]
+
 ### Main.storyboard
 
 This determines the UI displayed on launch. If you would rather set up your UI programmatically, for reasons covered the [[Interface Builder|Interface Builder]] you can configure it in your `Info.plist`, and write the setup code in `AppDelegate.swift`.
