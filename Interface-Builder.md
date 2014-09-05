@@ -49,6 +49,8 @@ While the "IB" in `IBOutlet` stands for Interface Builder, you will it in Storyb
 
 Read more: [Creating an Outlet Connection](https://developer.apple.com/library/ios/recipes/xcode_help-interface_builder/articles-connections_bindings/CreatingOutlet.html)
 
+<img src="http://i.imgur.com/MKFzvh8.gif" width="678" height="340" />
+
 ### Actions
 
 You can mark methods in your code as *actions*. You can then wire controls in your xib/storyboard to trigger them.

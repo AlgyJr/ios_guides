@@ -16,6 +16,8 @@ This can be daunting to track in code, so instead, it's managed by an **Asset Ca
 
 The asset catalogue is the `Images.xcassets` folder. If you this folder in Xcode, it will bring up the *Asset Catalogue Editor* for managing assets.
 
+<img src="http://i.imgur.com/gPEbazB.gif" />
+
 ### UI  Design: .storyboard, .xib
 
 You can lay out your views with a drag and drop GUI, To save time and reduce boilerplate code. These designs are saved to a `.storyboard` or `.xib` file, which is loaded at runtime. The distinction between these file types is covered in a [[later guide||Storyboards]].
