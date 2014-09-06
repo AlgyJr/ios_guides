@@ -49,7 +49,7 @@ While the "IB" in `IBOutlet` stands for Interface Builder, you will it in Storyb
 
 Read more: [Creating an Outlet Connection](https://developer.apple.com/library/ios/recipes/xcode_help-interface_builder/articles-connections_bindings/CreatingOutlet.html)
 
-<img src="http://i.imgur.com/MKFzvh8.gif" width="678" height="340" />
+<img src="https://i.imgur.com/MKFzvh8.gif" width="678" height="340" />
 
 ### Actions
 

@@ -16,7 +16,7 @@ This can be daunting to track in code, so instead, it's managed by an **Asset Ca
 
 The asset catalogue is the `Images.xcassets` folder. If you this folder in Xcode, it will bring up the *Asset Catalogue Editor* for managing assets.
 
-<img src="http://i.imgur.com/gPEbazB.gif" />
+<img src="https://i.imgur.com/gPEbazB.gif" />
 
 ### UI  Design: .storyboard, .xib
 
