@@ -1,5 +1,3 @@
-# Interface Builder
-
 ## Overview
 
 Interface Builder (IB) is a WYSIWYG editor for building user interfaces. You add GUI components-- such as button, labels, and images-- through a drag-and-drop interface. You then "wire" these controls to your view controller's source code. The editor creates a file you can load at runtime to recreate the GUI you've designed.
@@ -47,9 +45,9 @@ The property is marked as an implicitly unwrapped optional because the value may
 
 While the "IB" in `IBOutlet` stands for Interface Builder, you will it in Storyboards, since it serves the same purpose.
 
-Read more: [Creating an Outlet Connection](https://developer.apple.com/library/ios/recipes/xcode_help-interface_builder/articles-connections_bindings/CreatingOutlet.html)
-
 <img src="https://i.imgur.com/MKFzvh8.gif" width="678" height="340" />
+
+Read more: [Creating an Outlet Connection](https://developer.apple.com/library/ios/recipes/xcode_help-interface_builder/articles-connections_bindings/CreatingOutlet.html)
 
 ### Actions
 
