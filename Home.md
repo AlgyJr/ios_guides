@@ -16,7 +16,7 @@ Read about our [mission to change the way engineers learn new technologies](http
 * [[Setting Up Your Environment|Setup|]]
 * [[Starting a New Project|New Project]]
 
-## Fundaments
+## Fundamentals
 
 * [[Basic Swift|Swift Basics]]
 * [[Intermediate Swift|Swift Intermediate]]
