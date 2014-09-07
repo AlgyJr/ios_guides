@@ -4,9 +4,9 @@ Table Views are one of the most common root views on iOS. They are used for disp
 
 * A mail app's inbox view
 * A settings screen
-* A list of albums with covers
+* A list of movies with their poster images
 
-Table View are highly performant, and can display thousands of rows (*cells*) of data without a problem. They also have common behavior baked in, such as and "editing mode", and the ability to animate the addition or removal of rows.
+Table View can be highly performant, displaying thousands of rows (*cells*) of data. They also have common behavior baked in, such as and "editing mode", and the ability to animate the addition or removal of rows.
 
 This guide will cover the fundamentals of using a tableviews.
 
@@ -60,10 +60,11 @@ func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndex
   let movie = movieArray[indexPath.row]
   let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "")
   cell.textLabel.text = movie.title as NSString
+  return cell
 }
 ```
 
-## Cell Reuse
+### Cell Reuse
 
 As cells get more complex in design, they can be more expensive to create on the fly. This can cause jerky "pops" when a new cell appears. You should probably reuse cells.
 
@@ -86,5 +87,67 @@ func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndex
   let movie = movieArray[indexPath.row]
   let cell = tableView.dequeueReusableCellWithIdentifier("com.codepath.moviesapp.movieCell") as UITableViewCell
   cell.textLabel.text = movie.title as NSString
+  return cell
+}
+```
+
+## Variable Height Cells
+
+There are three ways to work with dynamic height, and each have tradeoffs around performance or complexity.
+
+### Explicit Height
+
+You can provide a method that will be called once for each cell when your tableview first loads. In this method, you return the height.
+
+Say we want the row height to match the size of our movie poster's thumbnail image.
+
+```
+func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+  let movie = movieArray[indexPath.row]
+  return movie.moviePosterImage.thumbnailSize.height
+}
+```
+
+### Using Estimated Height
+
+If you have 1,000 rows, first time you load the tableview, `tableView(heightForRowAtIndexPath:)` will be called 1,000 times. It must be performant or the UI will hang on load.
+
+If there's no way to make it fast, you can provide an *estimated height*. This value will be used to calculate the full table view height. `tableView(heightForRowAtIndexPath:)` is only called with the first time the cell scrolls on screen.
+
+If your estimated view height is around 100:
+
+```
+movieTableView.estimatedRowHeight = 100
+```
+
+### Using Autolayout
+
+It can be more productive, and less error prone, to use [[Autolayout|Autolayout]]. Just setup your cells with constraints, and then set:
+
+```
+movieTableView.rowHeight = UITableViewAutomaticDimension
+```
+
+## Responding to Cell Taps
+
+You probably want to respond in some way when a user taps on a cell, like pushing into a detailed view. To do this, you implement a `UITableViewDelegate` method, `tableView(didSelectRowAtIndexPath:)`
+
+First, update the class definitions:
+
+```
+class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
+```
+
+Update your `viewDidLoad()` to assign the delegate:
+
+```
+moviesTableView.delegate = self
+```
+
+Then implement the delegate method:
+
+```
+func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+  // Perform your action
 }
 ```
