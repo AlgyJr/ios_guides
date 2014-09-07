@@ -47,7 +47,7 @@ Unlike a webpage, if your view is too large to fit on screen, it won't automatic
 
 ### UITableview
 
-Table views display long lists of items. It one of the most common root views on iOS.
+Table views display long lists of items. It one of the most common root views on iOS. These are covered in greater detail in [[Table View Basics|Tableview Basics]].
 
 * [UIKit Catalog: Table Views](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/UIKitUICatalog/UITableView.html)
 * [Table View Programming Guide](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/TableView_iPhone/AboutTableViewsiPhone/AboutTableViewsiPhone.html)
