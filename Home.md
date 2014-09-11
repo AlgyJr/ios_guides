@@ -28,6 +28,10 @@ Read about our [mission to change the way engineers learn new technologies](http
 * [[Common Views|Common Views]]
 * [[Table View Basics|Tableview Basics]]
 
+# Troubleshooting
+
+* [[Fixing Xcode|Fixing Xcode]] - If Xcode acts strange, use these steps to reset it
+
 # Great External Resources
 
 - [Apple official guides](https://developer.apple.com/library/ios/navigation/#section=Resource%20Types&topic=Guides). The high level guides are a fantastic resource when starting out:
