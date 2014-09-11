@@ -1,6 +1,6 @@
 ## Overview
 
-Sometimes Xcode can get in an odd . This guide is a set of tips to try to reset things.
+Sometimes Xcode can get in an odd state. This guide is a progression of steps to reset things. After each step, test to see the problem is resolved.
 
 ### Clean the Build
 
