@@ -6,6 +6,10 @@ Sometimes Xcode can get in an odd state. This guide is a progression of steps to
 
 If the issue is building, the first step is to clean the build, which will force a clean build from scratch. Choose *Product*, and *Clean*.
 
+### Reset the Simulator
+
+Launch the iOS Simulator. From the *iOS Simulator* menu, choose *Reset Content and Settings...*, and click *Reset* to confirm.
+
 ### Delete Derived Data
 
 Choose *Window* -> *Organizer*. Select the *Projects* tab. Select your project on the left. Next to the *Derived Data* line, there click the *Delete* button.
