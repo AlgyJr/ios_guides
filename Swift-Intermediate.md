@@ -96,6 +96,12 @@ a ?? b
 
 ## Classes
 
+### Designated Initializers
+
+Normally, you put initialization code in your `init()` override. However, some classes have *designated initializers*, which are the official way to instance a class. For instance, on UIView, you should override `init(frame:)` to perform your initialization.
+
+Classes can have multiple designated initializers. For instance, `init(coder:)` is a designated initializer used when an object is unarchived.
+
 ### Convenience Initializers
 
 Designated initializers are allowed to call "up", to a super initializer. Convenience initializers are only allowed to call "across" their class, to a designated initializer.
@@ -111,6 +117,24 @@ class Dog: Animal {
   }
 }
 ```
+
+### Initializer Inheritance
+
+Swift tries to only inherit initializers when it's safe to do so, which can be confusing. For instance, you' commonly override UIViewcontroller's designated initializer to perform setup logic. If you just added this code, you would get a compilation error:
+
+```
+override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    self.edgesForExtendedLayout = UIRectEdge.None
+}
+```
+
+This is because by overriding this initializer, you have lost the method `init(coder:)`, which is the other designated initializer, and used when the view controller is loaded from a [[Storyboard|Interface Builder]].
+
+The rules of initializer inheritance are:
+
+1. If you don't add a designated initializer, you inherit all superclass designated initializers.
+2. If you do add a designated initializer, you must provide all designated initializers to inherit the convenience initializers.
 
 ### Lazy Properties
 
