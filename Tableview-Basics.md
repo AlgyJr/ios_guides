@@ -120,9 +120,11 @@ If your estimated view height is around 100:
 movieTableView.estimatedRowHeight = 100
 ```
 
-### Using Autolayout
+This is not without its drawbacks. There are [reports of bugs](http://blog.jaredsinclair.com/post/81410534498/cell-height-caching-dilemmas-in-unread) as of iOS 7.
 
-It can be more productive, and less error prone, to use [[Autolayout|Autolayout]]. Just setup your cells with constraints, and then set:
+### Using Auto Layout
+
+It can be more productive, and less error prone, to use [[Auto Layout|Auto Layout]]. Just setup your cells with constraints, and then set:
 
 ```
 movieTableView.rowHeight = UITableViewAutomaticDimension

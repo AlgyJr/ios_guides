@@ -2,7 +2,7 @@
 
 Interface Builder (IB) is a WYSIWYG editor for building user interfaces. You add GUI components-- such as button, labels, and images-- through a drag-and-drop interface. You then "wire" these controls to your view controller's source code. The editor creates a file you can load at runtime to recreate the GUI you've designed.
 
-IB is immensely useful when working with [[autolayout|Autolayout]]. It can immediately validate layouts, and warn you if a view has ambiguous constraints. This avoids some trial-and-error when working programatically.
+IB is immensely useful when working with [[Auto Layout|Auto Layout]]. It can immediately validate layouts, and warn you if a view has ambiguous constraints. This avoids some trial-and-error when working programatically.
 
 IB can create two types of files: `.xib` and `.storyboard`.
 
