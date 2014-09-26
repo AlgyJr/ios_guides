@@ -254,7 +254,7 @@ func greetingGenerator(name: String) -> String {
   return "Hello \(name)"
 }
 
-let greeting = buildGreeting()
+let greeting = greetingGenerator("World")
 println(greeting) // "Hello World"
 ```
 
