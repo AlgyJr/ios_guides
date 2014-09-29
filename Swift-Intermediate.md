@@ -83,7 +83,7 @@ if j != nil {
 }
 ```
 
-This is more dangerous that explicit unwrapping, but useful when dealing with values that will only briefly be `nil`.
+This is more dangerous than explicit unwrapping, but useful when dealing with values that will only briefly be `nil`.
 
 ### Nil Coalescing
 
