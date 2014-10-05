@@ -36,4 +36,7 @@ var chatImageView = UIImageView(image: chat)
 
 ### App Icon and Launch Image
 
+Beginning in iOS 8, launch images can now created by storyboards. For more information, see [Replacing Launch Images with Storyboards](http://oleb.net/blog/2014/08/replacing-launch-images-with-storyboards/).
+
 To set the app icon and the launch image, simply select "App Icon" or "Launch Image" in the asset catalog and drag a .png file into the appropriate bucket. The App Icon expects various sizes for production, although you can use just one during development. Similarly, in production, the Launch Image expects 3.5" and 4" images, but you can use just one during development.
+
