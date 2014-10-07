@@ -8,7 +8,7 @@ As in the screenshot above, click Images.xcassets in the project navigator to br
 
 ### Step 2: Add Image Set
 
-To add an image to the project, create a new image set. Drag the png asset (jpeg won't work) to the 1X or 2X slot. In a production app, you should include both the standard (1X) as well as retina (2X) asset. During development, you can add only one asset and XCode will automatically create the other one, although it may look blurry.
+To add an image to the project, create a new image set. Drag the png asset (jpeg won't work) from the Finder to the 1X or 2X slot. In a production app, you should include both the standard (1X) as well as retina (2X) asset. During development, you can add only one asset and XCode will automatically create the other one, although it may look blurry.
 
 ### Step 3: Using the image set
 
