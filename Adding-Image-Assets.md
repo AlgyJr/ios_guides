@@ -40,6 +40,6 @@ To set the app icon, simply select "App Icon" in the asset catalog and drag a .p
 
 For the launch image, you will need to configure the Launch Image Target, change the Launch Image Source to create a new asset catalog, drag the images to the catalog, and delete the entry defined in Launch Screen file.  
 
-<img src="http://imgur.com/XuegY84">
+<img src="http://imgur.com/XuegY84.gif">
 
 Note that in XCode 6, storyboard files are used instead of launch images defined by the Launch Screen file.  If this file is left blank, then the Launch Image source gets used to render.
