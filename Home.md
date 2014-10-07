@@ -28,6 +28,7 @@ Read about our [mission to change the way engineers learn new technologies](http
 * [[Common Views|Common Views]]
 * [[Table View Basics|Tableview Basics]]
 * [[Auto Layout|Auto Layout]]
+* [[Animation|Animation]]
 
 # Troubleshooting
 
