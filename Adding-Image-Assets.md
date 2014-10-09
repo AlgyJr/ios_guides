@@ -8,7 +8,7 @@ As in the screenshot above, click Images.xcassets in the project navigator to br
 
 ### Step 2: Add Image Set
 
-To add an image to the project, create a new image set. Drag the png asset (jpeg won't work) to the 1X or 2X slot. In a production app, you should include both the standard (1X) as well as retina (2X) asset. During development, you can add only one asset and XCode will automatically create the other one, although it may look blurry.
+To add an image to the project, create a new image set. Drag the png asset (jpeg won't work) from the Finder to the 1X or 2X slot. In a production app, you should include both the standard (1X) as well as retina (2X) asset. During development, you can add only one asset and XCode will automatically create the other one, although it may look blurry.
 
 ### Step 3: Using the image set
 
@@ -36,7 +36,10 @@ var chatImageView = UIImageView(image: chat)
 
 ### App Icon and Launch Image
 
-Beginning in iOS 8, launch images can now created by storyboards. For more information, see [Replacing Launch Images with Storyboards](http://oleb.net/blog/2014/08/replacing-launch-images-with-storyboards/).
+To set the app icon, simply select "App Icon" in the asset catalog and drag a .png file into the appropriate bucket. The App Icon expects various sizes for production, although you can use just one during development. Similarly, in production, the Launch Image expects 3.5" and 4" images, but you can use just one during development.
 
-To set the app icon and the launch image, simply select "App Icon" or "Launch Image" in the asset catalog and drag a .png file into the appropriate bucket. The App Icon expects various sizes for production, although you can use just one during development. Similarly, in production, the Launch Image expects 3.5" and 4" images, but you can use just one during development.
+For the launch image, you will need to configure the Launch Image Target, change the Launch Image Source to create a new asset catalog, drag the images to the catalog, and delete the entry defined in Launch Screen file.  
 
+<img src="http://imgur.com/XuegY84.gif">
+
+Note that in XCode 6, storyboard files are used instead of launch images defined by the Launch Screen file.  If this file is left blank, then the Launch Image source gets used to render.
