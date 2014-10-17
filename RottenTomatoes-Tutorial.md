@@ -102,7 +102,11 @@ IOS has 4 standard cell types with fixed positions of an image, and two labels. 
   * The compiler does not know that these IBOutlet properties refer to the UIImageView and UILabels in the custom cell until we connect them doing the following: 
     * In IB, select the cell
     * Click on the Connector Inspector
-    * In the Outlets section, you will see the names of the posterView, movieTItleLabel and synopsisLabel IBOUtlets we declared in the MovieCell.h file. The appear hear, because we set the class of this cell to be equal to the MovieCell class we created. Next to the names of these IBOutlets you will see empty circles. Click on them, one by one and drag your mouse to the corresponding UI control in the custom cell to make the connection. The Outlets section will now show that the UI controls are now connected to the IBOutlets.
+    * In the Outlets section, you will see the names of the posterView, movieTItleLabel and synopsisLabel IBOUtlets we declared in the MovieCell.h file. The appear hear, because we set the class of this cell to be equal to the MovieCell class we created. Next to the names of these IBOutlets you will see empty circles. Click on them, one by one and drag your mouse to the corresponding UI control in the custom cell to make the connection. The Outlets section will now show that the UI controls are now connected to the IBOutlets. You should now see something like this in the Connector Inspector:
+<br/>
+<a href="http://imgur.com/WWyIIwr"><img src="http://i.imgur.com/WWyIIwr.png" title="source: imgur.com" /></a>
+<br/>
+
 
 
 
