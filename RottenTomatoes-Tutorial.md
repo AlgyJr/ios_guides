@@ -41,23 +41,23 @@ The following is high level steps to follow to build the app. We will detail wha
 Cocoapods is a tool to install libraries into our Xcode project. We will use this tool to add the AFNetworking library as part of our Xcode project. If you have not yet installed Cocoapods follow these steps. For detail information on how to install Cocoapods go to http://cocoapods.org/.
 *Install Cocoapods
   * Run these gem commands to install Cocoapods: 
-`gem install cocoapods --user-install`
-  * To check where cocoapods was installed do:
-`gem which cocoapods`
+    *`gem install cocoapods --user-install`
+  * To check where Cocoapods was installed do:
+    *`gem which cocoapods`
 * Cocoapods is a ruby based tool, so you need to have Ruby working. If you encounter Ruby errors and want to re-install ruby, here is a step-by-step article on how to do that using homebrew: [re-installing Ruby ](https://www.computersnyou.com/2673/install-ruby-rails-macos-x-mavericks-10-9-mysql-step-step/)
 
 * Create the Xcode project:
-  *Create an Xcode project using the SingleView template, call it RottenTomatoes 
-  *Close the project
+  * Create an Xcode project using the SingleView template, call it RottenTomatoes 
+  * Close the project
 
 
-*Create a Podfile to specify platform and library to install:
-  *Cocopods reads commands from a file called Podfile that specify a target platform and what libraries to install in the Xcode project. We will create this file next.
-  *In a terminal, cd down to your Xcode project directory, the one containing the file *.xcodeproj
-  *Inside this directory, create blank Podfile by running: `touch Podfile`. This command will create the Podfile file. 
-  *Open the Podfile file with an editor and enter the following lines. The first line specifies the target OS platform and the second line says to install the latest AFNetworking library
-    *platform :ios, '7.0'
-    *pod 'AFNetworking'
-  *Install the library in your Xcode project by running: `pod install`. This command tells Cocoapods to execute the commands inside the Podfile. After running this command, you will see a new file, *.xcworkspace inside your project directory
+* Create a Podfile to specify platform and library to install:
+  * Cocopods reads commands from a file called Podfile that specify a target platform and what libraries to install in the Xcode project. We will create this file next.
+  * In a terminal, cd down to your Xcode project directory, the one containing the file *.xcodeproj
+  * Inside this directory, create blank Podfile by running: `touch Podfile`. This command will create the Podfile file. 
+  * Open the Podfile file with an editor and enter the following lines. The first line specifies the target OS platform and the second line says to install the latest AFNetworking library
+    * platform :ios, '7.0'
+    * pod 'AFNetworking'
+  * Install the AFNetworking library in your Xcode project by running: `pod install`. This command tells Cocoapods to execute the commands inside the Podfile. After running this command, you will see a new file, *.xcworkspace inside your project directory
   * Open your project using *xcworkspace. From now on, instead of using the *.xcodeproj file to open your project you have to use the *.xcworkspace file. The reason is that *.xcworkspace has the meta information about the new "pod" libraries (AFNetworking in this case) that should be included in the compilation of the project.  
 
