@@ -122,11 +122,29 @@ We need to retrieve the information about the movies from the RottenTomatoes to 
 <br/> 
 `id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];`		
 `self.movies = object[@"movies"];`
+`[self.tableView reloadData];`
 `}];`
 <br/>
-*If you open a browser and navigate to [http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=ws32mxpd653h5c8zqfvksxw9"](http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=ws32mxpd653h5c8zqfvksxw9") , which is the endpoint to retrieve data on movies "in theaters", you will get the response in the browser. It will look like this (you need to first install Chrome JSONView extension to be able to see the nice colored format) 
+*  The `self.movies = object[@"movies"];` line stores the "movies" value, which is an array,  from the JSON output into our "movies" NSArray. Each element of the JSON array corresponds to data about each movie.
+*  The `[self.tableView reloadData];`line, makes sure that the tableView of the MovieTableViewController is reloaded with data. The tableView is a property of the MovieTableViewController and represent the actual table. When the "reloadData" method is called on the tableView, three basic TableViewController methods are automatically called to load data into the table. We will talk about these methods, called "data source" methods shortly.
 
-<a href="http://imgur.com/yqEt8B9"><img src="http://i.imgur.com/yqEt8B9.png" title="source: imgur.com" /></a>
+####JSON SIDE NOTE
+*If you open a browser and navigate to [http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=ws32mxpd653h5c8zqfvksxw9"](http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=ws32mxpd653h5c8zqfvksxw9") , which is the endpoint to retrieve data about movies "in theaters", you will get the response in the browser. It will look like this (you need to first install Chrome JSONView extension to be able to see the nice colored format) 
+
+<br/>
+<a href="http://imgur.com/qK7HvJo"><img src="http://i.imgur.com/qK7HvJo.png" title="source: imgur.com" /></a>
+<br/>
+* In JSON:
+  * Data is in name/value pairs
+  * Data is separated by commas
+  * Curly braces hold objects
+  * Square brackets hold arrays
+Thus looking at the output we can see that 
+* There are 143 movies  
+* The "movies" element is an array of objects, where each object key/value pairs of data for a movie. Thus an object in JSON is the same as an NSDictionary.  
+* For each movie object we will be extracting the "title", "synopsis", "ratings" and "abridged_cast" information. Notice, that "ratings" and "abridge_cast" values are themselves objects (NSDictionaries if you will) and so will require a second level of parsing.
+*Before leaving the viewDidLoad, add the following line at the end 
+
 
 
 
