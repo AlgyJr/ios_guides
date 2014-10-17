@@ -17,12 +17,21 @@ Below are screenshots:
 ### Add AIFNetworking library 
 1. Create an Xcode Project with SingleView application template
 2. Create and run a Podfile to add the  AIFNetworking library
+
 ### Movies Screen
-3. Add a TableViewController to list movies
+3. Add a TableViewController to display list of movies
 4. Create custom cell 
 5. Use RottenTomatoes API to request movies data
 6. Parse data and use it to display title, synopsis and image in cell
+
 ### Movie Detail Screen 
+7. Add a ViewController to display details of selected movie
+
+### Transition from Movies to Movie Detail screen
+8.  Add Segue method to transition 
+9.  Create a Movie class to store information to pass to Movie Detail ViewController
+10. Display passed movie data in Movie detail view
+
 
 
 
