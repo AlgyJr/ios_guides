@@ -51,13 +51,15 @@ Cocoapods is a tool to install libraries into our Xcode project. We will use thi
   * Close the project
 
 
-* Create a Podfile to specify platform and library to install:
+* Create a Podfile and install AFNetworking library:
   * Cocopods reads commands from a file called Podfile that specify a target platform and what libraries to install in the Xcode project. We will create this file next.
   * In a terminal, cd down to your Xcode project directory, the one containing the file *.xcodeproj
   * Inside this directory, create blank Podfile by running: `touch Podfile`. This command will create the Podfile file. 
   * Open the Podfile file with an editor and enter the following lines. The first line specifies the target OS platform and the second line says to install the latest AFNetworking library
     * platform :ios, '7.0'
     * pod 'AFNetworking'
-  * Install the AFNetworking library in your Xcode project by running: `pod install`. This command tells Cocoapods to execute the commands inside the Podfile. After running this command, you will see a new file, *.xcworkspace inside your project directory
+  * Install the AFNetworking library in your Xcode project by running: 
+    * `pod install`. This command tells Cocoapods to execute the commands inside the Podfile. 
+    * After running this command, you will see a new file, *.xcworkspace inside your project directory
   * Open your project using *xcworkspace. From now on, instead of using the *.xcodeproj file to open your project you have to use the *.xcworkspace file. The reason is that *.xcworkspace has the meta information about the new "pod" libraries (AFNetworking in this case) that should be included in the compilation of the project.  
 
