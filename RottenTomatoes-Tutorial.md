@@ -47,9 +47,9 @@ The following is high level steps to follow to build the app. We will detail wha
 Cocoapods is a tool to install libraries into our Xcode project. We will use this tool to add the AFNetworking library as part of our Xcode project. If you have not yet installed Cocoapods follow these steps. For detail information on how to install Cocoapods go to http://cocoapods.org/.
 *Install Cocoapods
   * Run these gem commands to install Cocoapods: 
-    *`gem install cocoapods --user-install`
+    * `gem install cocoapods --user-install`
   * To check where Cocoapods was installed do:
-    *`gem which cocoapods`
+    * `gem which cocoapods`
 * Cocoapods is a ruby based tool, so you need to have Ruby working. If you encounter Ruby errors and want to re-install ruby, here is a step-by-step article on how to do that using homebrew: [re-installing Ruby ](https://www.computersnyou.com/2673/install-ruby-rails-macos-x-mavericks-10-9-mysql-step-step/)
 
 * Create a Podfile and install AFNetworking library:
@@ -62,4 +62,12 @@ Cocoapods is a tool to install libraries into our Xcode project. We will use thi
   * Install the AFNetworking library in your Xcode project by running: 
     * `pod install`. This command tells Cocoapods to execute the commands inside the Podfile. 
     * After running this command, you will see a new file, *.xcworkspace inside your project directory
-  * Open your project using *xcworkspace. From now on, instead of using the *.xcodeproj file to open your project you have to use the *.xcworkspace file. The reason is that *.xcworkspace has the meta information about the new "pod" libraries (AFNetworking in this case) that should be included in the compilation of the project.  
+  * Open your project using *xcworkspace. From now on, instead of using the *.xcodeproj file to open your project you have to use the *.xcworkspace file. The reason is that *.xcworkspace has the meta information about the new "pod" libraries (AFNetworking in this case) that should be included in the compilation of the project. 
+
+### Movies Screen
+####3.Add a TableViewController to display list of movies
+* Open your *.xcworkspace project 
+* The Storyboard (canvas) in Interface Builder (IB) will show by default a ViewController. We are going to replace this with a TableViewController, so delete it.
+* If the IB library is not open do press control-ALT-command-3 to open it. From the library, drag a TableViewController component into the Storyboard
+*  Select the TableViewController, click on the Attributes Inspector and check "Is Initial View Controller"
+*  Run the app and check that you see a table 
