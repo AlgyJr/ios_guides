@@ -18,7 +18,7 @@ Below are screenshots:
 The following is high level steps to follow to build the app. We will detail what goes in each step in the next section
 ### Add AIFNetworking library 
 1. Create an Xcode Project with SingleView application template
-2. Create and run a Podfile to add the  AIFNetworking library
+2. Create a Podfile and install AFNetworking library
 
 ### Movies Screen
 3. Add a TableViewController to display list of movies
@@ -38,11 +38,12 @@ The following is high level steps to follow to build the app. We will detail wha
 ## Steps in detail
 
 ### Add AFNetworking library
-#### 1.Create an Xcode Project with SingleView application template
+####1.Create an Xcode Project with SingleView application template
 * Create the Xcode project:
   * Create an Xcode project using the SingleView template, call it RottenTomatoes 
   * Close the project
-#### 2. Create and run a Podfile to add the AIFNetworking library
+
+####2.Create Podfile and run it to add the AFNetworking library
 Cocoapods is a tool to install libraries into our Xcode project. We will use this tool to add the AFNetworking library as part of our Xcode project. If you have not yet installed Cocoapods follow these steps. For detail information on how to install Cocoapods go to http://cocoapods.org/.
 *Install Cocoapods
   * Run these gem commands to install Cocoapods: 
