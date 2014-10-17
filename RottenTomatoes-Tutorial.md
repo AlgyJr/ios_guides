@@ -90,3 +90,9 @@ IOS has 4 standard cell types with fixed positions of an image, and two labels. 
 <a href="http://imgur.com/ICM83lz"><img src="http://i.imgur.com/ICM83lz.png" title="source: imgur.com" /></a>
 <br/>
 
+* Now in order to access the UIImage and UILabels from source code (because we need to load the custom cells with content we will retrieve from RottenTomatoes site) , we need to back this Custom cell with an Objective-C Class: 
+    *Create a Movie class with NO XIB (since we already created this in the TableView prototype cell area) by creating a Cocoa Touch Class with Class name MovieCell and Sub-class equal to UITableViewCell.
+
+
+
+ 
