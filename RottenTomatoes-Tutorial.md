@@ -144,6 +144,8 @@ Thus looking at the output we can see that
 * The "movies" element is an array of objects, where each object key/value pairs of data for a movie. Thus an object in JSON is the same as an NSDictionary.  
 * For each movie object we will be extracting the "title", "synopsis", "ratings" and "abridged_cast" information. Notice, that "ratings" and "abridge_cast" values are themselves objects (NSDictionaries if you will) and so will require a second level of parsing.
 *Before leaving the viewDidLoad, add the following line at the end 
+
+
 ####Data Source Methods for UITableViewControllers Side Note
 * Whenever the tableView of a TableViewController instance is sent a message to load itself with data, three main methods, called Data Source methods are triggered. These methods are 
   * numberOfSectionsInTableView - returns the number of sections to display in tableview
