@@ -113,7 +113,9 @@ IOS has 4 standard cell types with fixed positions of an image, and two labels. 
 We need to retrieve the information about the movies from the RottenTomatoes to load the the MoviesTableView tableView with the cell contents before it is displayed.  
 * Declare an NSArray called "movies" in the @interface of MoviewTableViewController. We will use this array to store the JSON data we will get from the RottenTomatoes server.
 * In viewDidLoad method of the MoviesTableViewController add the following code to request from RottenTomatoes server the data about the movies currently being played at the theaters.  
-`NSString *url = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=ws32mxpd653h5c8zqfvksxw9";
+
+
+`NSString *url = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=ws32mxpd653h5c8zqfvksxw9";`
  
 `NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];`
 `[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]` `completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {`
