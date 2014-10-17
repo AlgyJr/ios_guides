@@ -109,6 +109,9 @@ IOS has 4 standard cell types with fixed positions of an image, and two labels. 
 <a href="http://imgur.com/WWyIIwr"><img src="http://i.imgur.com/WWyIIwr.png" title="source: imgur.com" /></a>
 <br/>
 
+####6.Use RottenTomatoes API to request movies data
+
+
 
 
 
