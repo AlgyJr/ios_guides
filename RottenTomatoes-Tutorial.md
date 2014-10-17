@@ -38,6 +38,11 @@ The following is high level steps to follow to build the app. We will detail wha
 ## Steps in detail
 
 ### Add AFNetworking library
+#### 1.Create an Xcode Project with SingleView application template
+* Create the Xcode project:
+  * Create an Xcode project using the SingleView template, call it RottenTomatoes 
+  * Close the project
+#### 2. Create and run a Podfile to add the AIFNetworking library
 Cocoapods is a tool to install libraries into our Xcode project. We will use this tool to add the AFNetworking library as part of our Xcode project. If you have not yet installed Cocoapods follow these steps. For detail information on how to install Cocoapods go to http://cocoapods.org/.
 *Install Cocoapods
   * Run these gem commands to install Cocoapods: 
@@ -45,11 +50,6 @@ Cocoapods is a tool to install libraries into our Xcode project. We will use thi
   * To check where Cocoapods was installed do:
     *`gem which cocoapods`
 * Cocoapods is a ruby based tool, so you need to have Ruby working. If you encounter Ruby errors and want to re-install ruby, here is a step-by-step article on how to do that using homebrew: [re-installing Ruby ](https://www.computersnyou.com/2673/install-ruby-rails-macos-x-mavericks-10-9-mysql-step-step/)
-
-* Create the Xcode project:
-  * Create an Xcode project using the SingleView template, call it RottenTomatoes 
-  * Close the project
-
 
 * Create a Podfile and install AFNetworking library:
   * Cocopods reads commands from a file called Podfile that specify a target platform and what libraries to install in the Xcode project. We will create this file next.
@@ -62,4 +62,3 @@ Cocoapods is a tool to install libraries into our Xcode project. We will use thi
     * `pod install`. This command tells Cocoapods to execute the commands inside the Podfile. 
     * After running this command, you will see a new file, *.xcworkspace inside your project directory
   * Open your project using *xcworkspace. From now on, instead of using the *.xcodeproj file to open your project you have to use the *.xcworkspace file. The reason is that *.xcworkspace has the meta information about the new "pod" libraries (AFNetworking in this case) that should be included in the compilation of the project.  
-
