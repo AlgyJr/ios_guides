@@ -72,7 +72,9 @@ Cocoapods is a tool to install libraries into our Xcode project. We will use thi
 *  Select the TableViewController, click on the Attributes Inspector and check "Is Initial View Controller"
 *  Run the app and check that you see an empty table
 * Create a TableViewController class to back the TableViewcontroller we just added with code. Call the Class "MoviesTableViewController", and as subClass select UITableViewController
-* Bind the new class to the TableViewController: In IB, select the TableViewController and set is class to "MoviewTableViewController" in the Identity Inspector
+* Bind the new class to the TableViewController: In IB, select the TableViewController and set is class to "MoviesTableViewController" in the Identity Inspector
 *  Add a UINavigationController to the Storyboard to enable transitions between screens and make the TableViewController the root controller:
   * Select TableViewController in IB
   * In the Xcode Menu Bar select this path:   Editor->Embed IN->Navigation Controller. This will place a Navigation Controller in IB, make the TableViewController the root view of the Navigation stack and add a Navigation Bar at the top end of the TableViewController
+  * Select the Navigation Item in the Outline View (the hierarchical view of nested objects in the dock), and in the Attributes inspector enter "Movies" in the Title box. This sets the title of the Movies viewcontroller, which will be displayed in the Navigation Bar.
+####4.Create Custom Cell
