@@ -111,8 +111,8 @@ IOS has 4 standard cell types with fixed positions of an image, and two labels. 
 
 ####6.Use RottenTomatoes API to request movies data
 We need to retrieve the information about the movies from the RottenTomatoes to load the the MoviesTableView tableView with the cell contents before it is displayed.  
-* Declare an NSArray called "movies" in the @interface of MoviewTableViewController. We will use this array to store the JSON data we will get from the RottenTomatoes server.
-* In the viewDidLoad method of the MoviesTableViewController add the following code (cut and paste from <script src="https://gist.github.com/mmesarina/a7fe2c1fd77de9f42567.js"></script> (to get data on current movies being played at theaters from the RottenTomatoes server:  
+* Declare an NSArray called "movies" in the @interface of MoviesTableViewController. We will use this array to store the JSON data we will get from the RottenTomatoes server.
+* In the viewDidLoad method of the MoviesTableViewController add the following code ([cut and paste from here](https://gist.github.com/mmesarina/a7fe2c1fd77de9f42567)) to get data on current movies being played at theaters from the RottenTomatoes server:  
 
 `NSString *url = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=ws32mxpd653h5c8zqfvksxw9";` 
 <br/>	
@@ -123,6 +123,12 @@ We need to retrieve the information about the movies from the RottenTomatoes to 
 `id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];`		
 `self.movies = object[@"movies"];`
 `}];`
+<br/>
+*If you open a browser and navigate to [http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=ws32mxpd653h5c8zqfvksxw9"](http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=ws32mxpd653h5c8zqfvksxw9") , which is the endpoint to retrieve data on movies "in theaters", you will get the response in the browser. It will look like this (you need to first install Chrome JSONView extension to be able to see the nice colored format) 
+
+<a href="http://imgur.com/yqEt8B9"><img src="http://i.imgur.com/yqEt8B9.png" title="source: imgur.com" /></a>
+
+
 
 
 
