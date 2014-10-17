@@ -85,4 +85,7 @@ IOS has 4 standard cell types with fixed positions of an image, and two labels. 
 * In addition, in the Attributes Inspector with the Cell selected, set the Identifier box to "MyMovieCell". We will use this identifier later inside our code to dynamically request for IOS to create our custom cell and return a pointer to, so that we can load it with the movie content we want to display.
 * From the IB library, drag a UIImageView and two UILabel controls inside the Cell. Place the UIImageView one the left side, one label to the right of the image. Your NavigationController and MoviesTableViewController should look something like this:
 
+<br/>
 <a href="http://imgur.com/ICM83lz"><img src="http://i.imgur.com/ICM83lz.png" title="source: imgur.com" /></a>
+<br/>
+
