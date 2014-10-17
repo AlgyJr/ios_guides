@@ -30,7 +30,7 @@ Below are screenshots:
 ### Transition from Movies to Movie Detail screen
 8.  Add Segue method to transition 
 9.  Create a Movie class to store information to pass to Movie Detail ViewController
-10. Display passed movie data in Movie detail view
+10. Display passed movie data in Movie Detail screen
 
 
 
