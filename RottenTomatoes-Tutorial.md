@@ -23,16 +23,17 @@ The following is high level steps to follow to build the app. We will detail wha
 ### Movies Screen
 3. Add a TableViewController to display list of movies
 4. Create custom cell 
-5. Use RottenTomatoes API to request movies data
-6. Parse data and use it to display title, synopsis and image in cell
+5. Bind custom cell to source code via a UITableViewCell class 
+6. Use RottenTomatoes API to request movies data
+7. Parse data and use it to display title, synopsis and image in cell
 
 ### Movie Detail Screen 
-7. Add a ViewController to display details of selected movie
+8. Add a ViewController to display details of selected movie
 
 ### Transition from Movies to Movie Detail screen
-8.  Add Segue method to transition 
-9.  Create a Movie class to store information to pass to Movie Detail ViewController
-10. Display passed movie data in Movie Detail screen
+9.  Add Segue method to transition 
+10.  Create a Movie class to store information to pass to Movie Detail ViewController
+11. Display passed movie data in Movie Detail screen
 
 
 ## Steps in detail
@@ -90,6 +91,7 @@ IOS has 4 standard cell types with fixed positions of an image, and two labels. 
 <a href="http://imgur.com/ICM83lz"><img src="http://i.imgur.com/ICM83lz.png" title="source: imgur.com" /></a>
 <br/>
 
+####5.Bind custom cell to source code via a UITableViewCell class
 * Now in order to access the UIImage and UILabels from source code (because we need to load the custom cells with content we will retrieve from RottenTomatoes site) , we need to bind this Custom cell with an Objective-C Class:
   * Create a new Class with NO XIB (since we already created this in the TableView prototype cell area) to associate with our custom cell later. Create Cocoa Touch Class with Class name MovieCell and Sub-class equal to UITableViewCell.
   * Now bind our new MovieCell class with the custom Cell in IB by selecting Identity Inspector and setting the Class box to "MovieCell" 
