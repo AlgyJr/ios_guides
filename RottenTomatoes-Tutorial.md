@@ -13,6 +13,16 @@ Below are screenshots:
 <br/>
 <a href="http://imgur.com/2gkxCHk"><img src="http://i.imgur.com/2gkxCHk.png" title="source: imgur.com" /></a>
 <br/>
+## Steps to build app
+### Add AIFNetworking library 
+1. Create an Xcode Project with SingleView application template
+2. Create and run a Podfile to add the  AIFNetworking library
+### Movies Screen
+3. Add a TableViewController to list movies
+4. Create custom cell 
+5. Use RottenTomatoes API to request movies data
+6. Parse data and use it to display title, synopsis and image in cell
+### Movie Detail Screen 
 
 
 
