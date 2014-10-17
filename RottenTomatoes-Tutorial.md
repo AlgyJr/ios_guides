@@ -83,7 +83,8 @@ IOS has 4 standard cell types with fixed positions of an image, and two labels. 
 * In IB, select the Table View, select Attribute Inspector and make sure that the Content box is set to "Dynamic Prototypes" as opposed to "Static Cells". This tells Xcode that the apps is not using a fixed number of cells (static) but rather that cells will be dynamically created with the the pattern of the custom cell we are about to create.
 * In IB, select the Cell ( it is easier to select the Cell in the Outline View to the left of the canvas), select Attribute inspect and set the "Style" box to "Custom". This tells Xcode that we are creating a custom cell, as opposed to one of the 4 standard ones.
 * In addition, in the Attributes Inspector with the Cell selected, set the Identifier box to "MyMovieCell". We will use this identifier later inside our code to dynamically request for IOS to create our custom cell and return a pointer to, so that we can load it with the movie content we want to display.
-* From the IB library, drag a UIImageView and two UILabel controls inside the Cell. Place the UIImageView one the left side, one label to the right of the image. Your NavigationController and MoviesTableViewController should look something like this:
+* From the IB library, drag a UIImageView and two UILabel controls inside the Cell. Place the UIImageView one the left side, one UILabel to the right of the image to be used for the movie title, and one UILabel below to be used for the movie synopsis.
+* Make the UILabel used for synopsis at least 6 lines in width by selecting it, going to the Attributes Inspector and setting the Lines box to 6. Also set the Font to a small type size like 12.0. Your canvas with the NavigationController and MoviesTableViewController should look something like this:
 
 <br/>
 <a href="http://imgur.com/ICM83lz"><img src="http://i.imgur.com/ICM83lz.png" title="source: imgur.com" /></a>
