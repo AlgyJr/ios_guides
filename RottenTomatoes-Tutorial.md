@@ -7,6 +7,3 @@ Below are screenshots:
 **Movies screen**
 <a href="http://imgur.com/4Hw8FCA"><img src="http://i.imgur.com/4Hw8FCA.png" title="source: imgur.com" /></a>
 
-**Movie Details screen**
-<a href="http://imgur.com/2gkxCHk"><img src="http://i.imgur.com/2gkxCHk.png" title="source: imgur.com" /></a>
-
