@@ -93,7 +93,7 @@ IOS has 4 standard cell types with fixed positions of an image, and two labels. 
 
 ####5.Bind custom cell to source code via a UITableViewCell class
 * Now in order to access the UIImage and UILabels from source code (because we need to load the custom cells with content we will retrieve from RottenTomatoes site) , we need to bind this Custom cell with an Objective-C Class:
-  * Create a new Class with NO XIB (since we already created this in the TableView prototype cell area) to associate with our custom cell later. Create Cocoa Touch Class with Class name MovieCell and Sub-class equal to UITableViewCell.
+  * Create a  new Cocoa Touch Class with Class name MovieCell and Sub-class equal to UITableViewCell with NO XIB (since we already created this in the TableView prototype cell area) to associate with our custom cell later. 
   * Now bind our new MovieCell class with the custom Cell in IB by selecting Identity Inspector and setting the Class box to "MovieCell" 
   * In the MovieCell.h file, add the following property declarations for the UIImageView, and the two labels in the custom cell. These property declarations automatically create accessor methods that we can later use to write or read from these UI controls. 
 
