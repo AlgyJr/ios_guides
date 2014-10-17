@@ -144,6 +144,14 @@ Thus looking at the output we can see that
 * The "movies" element is an array of objects, where each object key/value pairs of data for a movie. Thus an object in JSON is the same as an NSDictionary.  
 * For each movie object we will be extracting the "title", "synopsis", "ratings" and "abridged_cast" information. Notice, that "ratings" and "abridge_cast" values are themselves objects (NSDictionaries if you will) and so will require a second level of parsing.
 *Before leaving the viewDidLoad, add the following line at the end 
+####Data Source Methods for UITableViewControllers Side Note
+* Whenever the tableView of a TableViewController instance is sent a message to load itself with data, three main methods, called Data Source methods are triggered. These methods are 
+  * numberOfSectionsInTableView - returns the number of sections to display in tableview
+  * numberOfRowsInSection - returns the number of rows for a section to display in tableview
+  * cellForRowAtIndexPath - returns the cell to display in a particular section and row of the tableview
+
+* These data source methods can be delegated to a different object other than the UITableViewController, but almost always the default choice is to make the UITableViewController the delegate, meaning, the UITableViewController implements them. When using Storyboard like we did, things are hardwired to make the UITableViewController the delegate. There is no need to manually specify that the UITableViewController is the Data Source delegate ( no need to add <UITableViewDelegate,UITableViewDataSource> to *.h, and no need to set the tableview.delegate)
+
 
 
 
