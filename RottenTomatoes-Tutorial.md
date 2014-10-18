@@ -183,6 +183,16 @@ The three data source methods mentioned above are automatically added as boiler 
 * Create a new ViewController class to bind to the MovieDetailController, with class name "MovieDetailController" and sub-class type "ViewController"
 * Bind the new class to the MovieDetailController in IB: 
    * select the MovieDetailController, select the Identity Inspector and set the class box to "MovieDetailController"
+* Create IBOutlets for the controls in the MovieDetailController.h like so:
+  * `@property (weak, nonatomic) IBOutlet UILabel *movieTitle;`
+  * `@property (weak, nonatomic) IBOutlet UILabel *synopsis;`
+  * `@property (weak, nonatomic) IBOutlet UILabel *cast;`
+  * `@property (weak, nonatomic) IBOutlet UILabel *rating;`
+* Connect the IBOutlets we just created with the corresponding controls in the MovieDetailController:
+  * In IB, select the MovieDetailController
+  * Select the Connections Inspector
+  * In the Outlets sections you will see the IBOutlet names. With the mouse click on the empty circles next to the names and drag to the appropriate control 
+
 
 
 
