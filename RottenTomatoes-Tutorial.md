@@ -180,6 +180,9 @@ The three data source methods mentioned above are automatically added as boiler 
     * CTRL-DRAG mouse from the cell to the MovieDetailController
     * As you released the mouse a sub-menu appears, select the "show" entry. This will make a "Segue" appear in the Storyboard connecting the MoviewTableViewController to the MovieDetailController.
     * Select the Segue, go to Attributes Inspector and set the Identifier box to "showDetailView"
+* Create a new ViewController class to bind to the MovieDetailController, with class name "MovieDetailController" and sub-class type "ViewController"
+* Bind the new class to the MovieDetailController in IB: 
+   * select the MovieDetailController, select the Identity Inspector and set the class box to "MovieDetailController"
 
 
 
