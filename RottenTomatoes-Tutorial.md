@@ -195,9 +195,10 @@ The three data source methods mentioned above are automatically added as boiler 
   * In the Outlets sections you will see the IBOutlet names. With the mouse click on the empty circles next to the names and drag to the appropriate control 
 
 ### Transition from Movies to Movie Detail screen
-####1.Add Segue method to transition
+
 When the user clicks on a cell in the MoviesTableViewController, the "prepareForSegue:sender" method is called automatically. This method is called to help transition to the a next screen. Within this method one can pass data to the viewController about to be displayed, by storing data in that viewController's properties. The "sender" parameter of this method carries information about the Segue connector that is associated with the current transition. There could be multiple Segues in a design, thus by using the Segue identifier we can identify which Segue is being used. 
 <br/> <br/>We will create a new class called "Movie" to store the information about the selected movie that we want to pass to the MovieDetailViewController. To pass this information to the MovieDetailViewController, we need to create a property of this type in its interface and set it in the "prepareForSegue:sender" (in MovieTableViewController) before the "prepareForSegue:sender" method returns. 
+#### 1.Create a Movie class to store information to pass to Movie Detail ViewController
 * Create a new "Movie" class of type NSObject
 * In Movie.h, declare properties to store information about a movie:
   * `@property (nonatomic, strong) NSString *title;`
@@ -209,8 +210,9 @@ When the user clicks on a cell in the MoviesTableViewController, the "prepareFor
 * Inside the "initWithDictionary:dictionary" method extract the title, synopsis, cast, ratings, and imageURL from the dictionary and store their values in the appropriate Movie instance properties. Here is an example of what this method would do in source code (or cut and paste from [initWithDictionary](https://gist.github.com/mmesarina/e3e2260aee4cf3a66806)):
 <br/>
 <a href="http://imgur.com/kNyNvYt"><img src="http://i.imgur.com/kNyNvYt.jpg" title="source: imgur.com" /></a>
-<br>
-####2.Add Segue method to transition
+<br/>
+
+#### 2.Add Segue method to transition
 * In MoviesDetalViewController.h include the Movie.h file and declare a property called "MovieDetail" of type Movie. We will pass the selected movie's info to this property before the transition to displaying the Movie Detail view occurs
 * In MoviesTableViewController, add the "prepareForSegue:sender" method
 * Inside "prepareForSegue:sender"
@@ -223,7 +225,8 @@ When the user clicks on a cell in the MoviesTableViewController, the "prepareFor
 * Initialize the "movieDetail" property of the "movieDetailController" instance with the selected movie's data:
   * `Movie *movieDetail = [[Movie alloc] initWithDictionary:self.movies[indexPath.row]];`
   * `movieDetailController.movieDetail = movieDetail;`
-####3.Display passed movie data in Movie Detail screen
+### 3.Display passed movie data in Movie Detail screen
+
 * Include the “UIImageView+AIFNetworking.h”
 * Declare and define an intermediate method "reload", which will load contents into the IBOutlets of the MovieDetailView controller
 * In ViewDidLoad, call method “reload” 
