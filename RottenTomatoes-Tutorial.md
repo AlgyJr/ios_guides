@@ -159,7 +159,7 @@ The three data source methods mentioned above are automatically added as boiler 
 * Also include the MovieCell.h to be able to load our customCell IBOutlets with content 
 * For `numberOfSectionsInTableView` method return 1
 * For `numberOfRowsInSection` return `self.movies.count`, which returns the number of movie objects stored in our self.movies array
-* For `cellForRowAtIndexPath` method do
+* For `cellForRowAtIndexPath` method do the following (or cut and paste from here)
   * Request the tableView to provide a pointer to a new MovieCell instance using the `dequeueReusableCellWithIdentifier` method and the cell identifier @"MyMovieCell" 
   * Retrieve the data that corresponds to the current movie by indexing the "movies" array using the indexpath parameter and storing it in a NSDictionary variable
   * Retrieve the movie's title from the NSDictionary by reading the value with key 'title' and storing it in the cell's title label IBOutlet;
