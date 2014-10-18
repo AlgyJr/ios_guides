@@ -210,6 +210,25 @@ When the user clicks on a cell in the MoviesTableViewController, the "prepareFor
 <br/>
 <a href="http://imgur.com/kNyNvYt"><img src="http://i.imgur.com/kNyNvYt.jpg" title="source: imgur.com" /></a>
 <br>
+####Add Segue method to transition
+* In MoviesDetalViewController.h include the Movie.h file and declare a property called "MovieDetail" of type Movie. We will pass the selected movie's info to this property before the transition to displaying the Movie Detail view occurs
+* In MoviesTableViewController, add the "prepareForSegue:sender" method
+* Inside "prepareForSegue:sender"
+  * Add if condition to check if "sender" identifier is equal to "showDetailView" identifier we had set for the Segue in IB
+  * Inside if statement
+    * Create an instance of the MovieDetailViewController with 
+      * `MovieDetailViewController *movieDetailController = segue.destinationViewController;`
+    * Obtain the indexPath for the cell that was selected, we will use it to index the "movies" array to retrieve the data for a specific movie
+      * `NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];`
+* Initialize the "movieDetail" property of the "movieDetailController" instance with the selected movie's data:
+  * `Movie *movieDetail = [[Movie alloc] initWithDictionary:self.movies[indexPath.row]];`
+  * `movieDetailController.movieDetail = movieDetail;`
+
+
+		
+
+
+
 
 
 
