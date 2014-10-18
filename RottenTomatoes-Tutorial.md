@@ -193,6 +193,9 @@ The three data source methods mentioned above are automatically added as boiler 
   * Select the Connections Inspector
   * In the Outlets sections you will see the IBOutlet names. With the mouse click on the empty circles next to the names and drag to the appropriate control 
 
+### Transition from Movies to Movie Detail screen
+####1.Add Segue method to transition
+
 
 
 
