@@ -154,6 +154,11 @@ Thus looking at the output we can see that
 
 * These data source methods can be delegated to a different object other than the UITableViewController, but almost always the default choice is to make the UITableViewController the delegate, meaning, the UITableViewController implements them. When using Storyboard like we did, things are hardwired to make the UITableViewController the delegate. There is no need to manually specify that the UITableViewController is the Data Source delegate ( no need to add <UITableViewDelegate,UITableViewDataSource> to *.h, and no need to set the tableview.delegate)
 ####7.Parse data and use it to display title, synopsis and image in cell
+The three data source methods mentioned above are automatically added as boiler plate code when a UITableViewController class instance is created, thus they are already inside the MoviesTableViewController.m file.
+* For `numberOfSectionsInTableView` method return 1
+* For `numberOfRowsInSection` return `self.movies.count`, which returns the number of movie objects stored in our self.movies array
+* For `cellForRowAtIndexPath` method do
+
 
 
 
