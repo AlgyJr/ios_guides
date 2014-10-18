@@ -206,7 +206,7 @@ When the user clicks on a cell in the MoviesTableViewController, the "prepareFor
   * `@property (nonatomic, strong) NSString *ratings;`
   * `@property (nonatomic, strong) NSString *imageURL;`
 * Declare and define a custom initialization method, "initWithDictionary:dictionary", which expects to be passed a single movie's information as key/value pairs (basically the JSON object corresponding to a single movie)
-* Inside the "initWithDictionary:dictionary" method extract the title, synopsis, cast, ratings, and imageURL from the dictionary and store their values in the appropriate Movie instance properties. Here is an example of what this method would do in source code:
+* Inside the "initWithDictionary:dictionary" method extract the title, synopsis, cast, ratings, and imageURL from the dictionary and store their values in the appropriate Movie instance properties. Here is an example of what this method would do in source code (or cut and paste from [initWithDictionary](https://gist.github.com/mmesarina/e3e2260aee4cf3a66806)):
 <br/>
 <a href="http://imgur.com/kNyNvYt"><img src="http://i.imgur.com/kNyNvYt.jpg" title="source: imgur.com" /></a>
 <br>
