@@ -225,7 +225,9 @@ When the user clicks on a cell in the MoviesTableViewController, the "prepareFor
 * Initialize the "movieDetail" property of the "movieDetailController" instance with the selected movie's data:
   * `Movie *movieDetail = [[Movie alloc] initWithDictionary:self.movies[indexPath.row]];`
   * `movieDetailController.movieDetail = movieDetail;`
-### 3.Display passed movie data in Movie Detail screen
+
+#### 3.Display passed movie data in Movie Detail screen
+
 
 * Include the “UIImageView+AIFNetworking.h”
 * Declare and define an intermediate method "reload", which will load contents into the IBOutlets of the MovieDetailView controller
