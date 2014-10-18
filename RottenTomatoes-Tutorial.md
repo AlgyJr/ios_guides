@@ -21,19 +21,19 @@ The following is high level steps to follow to build the app. We will detail wha
 2. Create a Podfile and install AFNetworking library
 
 ### Movies Screen
-3. Add a TableViewController to display list of movies
-4. Create custom cell 
-5. Bind custom cell to source code via a UITableViewCell class 
-6. Use RottenTomatoes API to request movies data
-7. Parse data and use it to display title, synopsis and image in cell
+1. Add a TableViewController to display list of movies
+2. Create custom cell 
+3. Bind custom cell to source code via a UITableViewCell class 
+4. Use RottenTomatoes API to request movies data
+5. Parse data and use it to display title, synopsis and image in cell
 
 ### Movie Detail Screen 
-8. Add a ViewController to display details of selected movie
+1. Add a ViewController to display details of selected movie
 
 ### Transition from Movies to Movie Detail screen
-9.  Add Segue method to transition 
-10.  Create a Movie class to store information to pass to Movie Detail ViewController
-11. Display passed movie data in Movie Detail screen
+1.  Add Segue method to transition 
+2.  Create a Movie class to store information to pass to Movie Detail ViewController
+3. Display passed movie data in Movie Detail screen
 
 
 ## Steps in detail
@@ -66,7 +66,7 @@ Cocoapods is a tool to install libraries into our Xcode project. We will use thi
   * Open your project using *xcworkspace. From now on, instead of using the *.xcodeproj file to open your project you have to use the *.xcworkspace file. The reason is that *.xcworkspace has the meta information about the new "pod" libraries (AFNetworking in this case) that should be included in the compilation of the project. 
 
 ### Movies Screen
-####3.Add a TableViewController to display list of movies
+####1.Add a TableViewController to display list of movies
 * Open your *.xcworkspace project 
 * The Storyboard (canvas) in Interface Builder (IB) will show by default a ViewController. We are going to replace this with a TableViewController, so delete it.
 * If the IB library is not open do press control-ALT-command-3 to open it. From the library, drag a TableViewController component into the Storyboard
@@ -79,7 +79,7 @@ Cocoapods is a tool to install libraries into our Xcode project. We will use thi
   * In the Xcode Menu Bar select this path:   Editor->Embed IN->Navigation Controller. This will place a Navigation Controller in IB, make the TableViewController the root view of the Navigation stack and add a Navigation Bar at the top end of the TableViewController
   * Select the Navigation Item in the Outline View (the hierarchical view of nested objects in the dock), and in the Attributes inspector enter "Movies" in the Title box. This sets the title of the Movies viewcontroller, which will be displayed in the Navigation Bar.
 
-####4.Create Custom Cell
+####2.Create Custom Cell
 IOS has 4 standard cell types with fixed positions of an image, and two labels. In most cases, this doesn't suffice, so it is recommended to always create your own custom cell, which will show how to do next.
 * In IB, select the Table View, select Attribute Inspector and make sure that the Content box is set to "Dynamic Prototypes" as opposed to "Static Cells". This tells Xcode that the apps is not using a fixed number of cells (static) but rather that cells will be dynamically created with the the pattern of the custom cell we are about to create.
 * In IB, select the Cell ( it is easier to select the Cell in the Outline View to the left of the canvas), select Attribute inspect and set the "Style" box to "Custom". This tells Xcode that we are creating a custom cell, as opposed to one of the 4 standard ones.
@@ -91,7 +91,7 @@ IOS has 4 standard cell types with fixed positions of an image, and two labels. 
 <a href="http://imgur.com/ICM83lz"><img src="http://i.imgur.com/ICM83lz.png" title="source: imgur.com" /></a>
 <br/>
 
-####5.Bind custom cell to source code via a UITableViewCell class
+####3.Bind custom cell to source code via a UITableViewCell class
 * Now in order to access the UIImage and UILabels from source code (because we need to load the custom cells with content we will retrieve from RottenTomatoes site) , we need to bind this Custom cell with an Objective-C Class:
   * Create a  new Cocoa Touch Class with Class name MovieCell and Sub-class equal to UITableViewCell with NO XIB (since we already created this in the TableView prototype cell area) to associate with our custom cell later. 
   * Now bind our new MovieCell class with the custom Cell in IB by selecting Identity Inspector and setting the Class box to "MovieCell" 
@@ -109,7 +109,7 @@ IOS has 4 standard cell types with fixed positions of an image, and two labels. 
 <a href="http://imgur.com/WWyIIwr"><img src="http://i.imgur.com/WWyIIwr.png" title="source: imgur.com" /></a>
 <br/>
 
-####6.Use RottenTomatoes API to request movies data
+####4.Use RottenTomatoes API to request movies data
 We need to retrieve the information about the movies from the RottenTomatoes to load the the MoviesTableView tableView with the cell contents before it is displayed.  
 * Declare an NSArray called "movies" in the @interface of MoviesTableViewController. We will use this array to store the JSON data we will get from the RottenTomatoes server.
 * In the viewDidLoad method of the MoviesTableViewController add the following code ([cut and paste from here](https://gist.github.com/mmesarina/a7fe2c1fd77de9f42567)) to get data on current movies being played at theaters from the RottenTomatoes server:  
@@ -153,7 +153,7 @@ Thus looking at the output we can see that
   * cellForRowAtIndexPath - returns the cell to display in a particular section and row of the tableview
 
 * These data source methods can be delegated to a different object other than the UITableViewController, but almost always the default choice is to make the UITableViewController the delegate, meaning, the UITableViewController implements them. When using Storyboard like we did, things are hardwired to make the UITableViewController the delegate. There is no need to manually specify that the UITableViewController is the Data Source delegate ( no need to add <UITableViewDelegate,UITableViewDataSource> to *.h, and no need to set the tableview.delegate)
-####7.Parse data and use it to display title, synopsis and image in cell
+####5.Parse data and use it to display title, synopsis and image in cell
 The three data source methods mentioned above are automatically added as boiler plate code when a UITableViewController class instance is created, thus they are already inside the MoviesTableViewController.m file.
 * First include the UIImageView+AFNetworking.h that was installed with cocoapods
 * Also include the MovieCell.h to be able to load our customCell IBOutlets with content 
