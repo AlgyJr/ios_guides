@@ -170,6 +170,19 @@ The three data source methods mentioned above are automatically added as boiler 
   * Use the following AFNetworking method to load the "detailed" image into the cell's UIImageView IBOutlet as follows: 
     * `[cell.posterView setImageWithURL:[NSURL URLWithString:posterUrlString]];`
   * Return the custom cell 
+  
+### Movie Detail Screen
+####1.Add a ViewController to display details of selected movie
+* In Interface Builder do the following:
+  * Drag and drop a ViewController to the Storyboard and call it MovieDetailController
+  * Populate the ViewController with an UIImageView control for the movie image, and UILabels for Title, Synopsis,  Cast and Rating
+  * Create a transition with a Segue from the cell in the MoviesTableViewController to the MovieDetailController:
+    * CTRL-DRAG mouse from the cell to the MovieDetailController
+    * As you released the mouse a sub-menu appears, select the "show" entry. This will make a "Segue" appear in the Storyboard connecting the MoviewTableViewController to the MovieDetailController.
+    * Select the Segue, go to Attributes Inspector and set the Identifier box to "showDetailView"
+
+
+
 
 
 
