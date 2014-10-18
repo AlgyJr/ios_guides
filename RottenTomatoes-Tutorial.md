@@ -155,9 +155,20 @@ Thus looking at the output we can see that
 * These data source methods can be delegated to a different object other than the UITableViewController, but almost always the default choice is to make the UITableViewController the delegate, meaning, the UITableViewController implements them. When using Storyboard like we did, things are hardwired to make the UITableViewController the delegate. There is no need to manually specify that the UITableViewController is the Data Source delegate ( no need to add <UITableViewDelegate,UITableViewDataSource> to *.h, and no need to set the tableview.delegate)
 ####7.Parse data and use it to display title, synopsis and image in cell
 The three data source methods mentioned above are automatically added as boiler plate code when a UITableViewController class instance is created, thus they are already inside the MoviesTableViewController.m file.
+* First include the UIImageView+AFNetworking.h that was installed with cocoapods
+* Also include the MovieCell.h to be able to load our customCell IBOutlets with content 
 * For `numberOfSectionsInTableView` method return 1
 * For `numberOfRowsInSection` return `self.movies.count`, which returns the number of movie objects stored in our self.movies array
 * For `cellForRowAtIndexPath` method do
+  * Request the tableView to provide a pointer to a new MovieCell instance using the `dequeueReusableCellWithIdentifier` method and the cell identifier @"MyMovieCell" 
+  * Retrieve the data that corresponds to the current movie by indexing the "movies" array using the indexpath parameter and storing it in a NSDictionary variable
+  * Retrieve the movie's title from the NSDictionary by reading the value with key 'title' and storing it in the cell's title label IBOutlet;
+  * Retrieve the movie's synopsis from the NSDictionary by reading the value with the key 'synopsis`and storing in the cell's synopsis label IBOutlet;
+  * Retrieve the "posters" value from the NSDictionary by reading the value with the key 'posters' and storing it in another NSDictionary for further drill down. 
+  * From the posters NSDictionary retrieve the value with the key "detailed" and store it in a temporary NSString variable. This string represents the URL of the "detailed" image for the movie poster
+  * Use the following AFNetworking method to load the "detailed" image into the cell's UIImageView IBOutlet as follows: 
+    * `[cell.posterView setImageWithURL:[NSURL URLWithString:posterUrlString]];`
+  * Return the custom cell 
 
 
 
