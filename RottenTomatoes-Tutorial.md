@@ -123,6 +123,7 @@ We need to retrieve the information about the movies from the RottenTomatoes to 
 `id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];`		
 `self.movies = object[@"movies"];`
 `[self.tableView reloadData];`
+
 `}];`
 <br/>
 *  The `self.movies = object[@"movies"]` line stores the "movies" value, which is an array,  from the JSON output into our "movies" NSArray. Each element of the JSON array corresponds to data about each movie.
@@ -143,7 +144,7 @@ Thus looking at the output we can see that
 * There are 143 movies  
 * The "movies" element is an array of objects, where each object key/value pairs of data for a movie. Thus an object in JSON is the same as an NSDictionary.  
 * For each movie object we will be extracting the "title", "synopsis", "ratings" and "abridged_cast" information. Notice, that "ratings" and "abridge_cast" values are themselves objects (NSDictionaries if you will) and so will require a second level of parsing.
-*Before leaving the viewDidLoad, add the following line at the end 
+
 
 
 ####Data Source Methods for UITableViewControllers Side Note
