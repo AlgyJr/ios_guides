@@ -97,9 +97,9 @@ IOS has 4 standard cell types with fixed positions of an image, and two labels. 
   * Now bind our new MovieCell class with the custom Cell in IB by selecting Identity Inspector and setting the Class box to "MovieCell" 
   * In the MovieCell.h file, add the following property declarations for the UIImageView, and the two labels in the custom cell. These property declarations automatically create accessor methods that we can later use to write or read from these UI controls. 
 
-`@property (nonatomic, weak) IBOutlet UIImageView *posterView;`
-`@property (nonatomic, weak) IBOutlet UILabel *movieTitleLabel;`
-`@property (nonatomic, weak) IBOutlet UILabel *synopsisLabel;`
+* `@property (nonatomic, weak) IBOutlet UIImageView *posterView;`
+* `@property (nonatomic, weak) IBOutlet UILabel *movieTitleLabel;`
+* `@property (nonatomic, weak) IBOutlet UILabel *synopsisLabel;`
 
   * The compiler does not know that these IBOutlet properties refer to the UIImageView and UILabels in the custom cell until we connect them doing the following: 
     * In IB, select the cell
