@@ -31,8 +31,8 @@ The following is high level steps to follow to build the app. We will detail wha
 1. Add a ViewController to display details of selected movie
 
 ### Transition from Movies to Movie Detail screen
-1.  Add Segue method to transition 
-2.  Create a Movie class to store information to pass to Movie Detail ViewController
+1. Create a Movie class to store information to pass to Movie Detail ViewController
+2. Add Segue method to transition 
 3. Display passed movie data in Movie Detail screen
 
 
@@ -210,7 +210,7 @@ When the user clicks on a cell in the MoviesTableViewController, the "prepareFor
 <br/>
 <a href="http://imgur.com/kNyNvYt"><img src="http://i.imgur.com/kNyNvYt.jpg" title="source: imgur.com" /></a>
 <br>
-####Add Segue method to transition
+####2.Add Segue method to transition
 * In MoviesDetalViewController.h include the Movie.h file and declare a property called "MovieDetail" of type Movie. We will pass the selected movie's info to this property before the transition to displaying the Movie Detail view occurs
 * In MoviesTableViewController, add the "prepareForSegue:sender" method
 * Inside "prepareForSegue:sender"
@@ -223,6 +223,7 @@ When the user clicks on a cell in the MoviesTableViewController, the "prepareFor
 * Initialize the "movieDetail" property of the "movieDetailController" instance with the selected movie's data:
   * `Movie *movieDetail = [[Movie alloc] initWithDictionary:self.movies[indexPath.row]];`
   * `movieDetailController.movieDetail = movieDetail;`
+####3.Display passed movie data in Movie Detail screen
 
 
 		
