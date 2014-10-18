@@ -195,6 +195,9 @@ The three data source methods mentioned above are automatically added as boiler 
 
 ### Transition from Movies to Movie Detail screen
 ####1.Add Segue method to transition
+<p/> When the user clicks on a cell in the MoviesTableViewController, the "prepareForSegue:sender" method is called automatically. This method is called to help transition to the a next screen. Within this method one can pass data to the viewController about to be displayed, by storing data in that viewController's properties. The "sender" parameter of this method carries information about the Segue connector that is associated with the current transition. There could be multiple Segues in a design, thus by using the Segue identifier we can identify which Segue is being used. 
+<p/> We will create a new class called "Movie" to store the information about the selected movie that we want to pass to the MovieDetailViewController. To pass this information to the MovieDetailViewController, we need to create a property of this type in its interface and set it in the "prepareForSegue:sender" (in MovieTableViewController) before the "prepareForSegue:sender" method returns. 
+
 
 
 
