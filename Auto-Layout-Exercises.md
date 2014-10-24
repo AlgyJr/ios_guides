@@ -16,7 +16,7 @@ These are a few basic and more complicated Auto Layout exercises that demonstrat
 
 ### Exercise 2 - Yelp
 
-![Yelp Before|250](http://i.imgur.com/BD38xL6.jpg)&nbsp;&nbsp;![Yelp After|250](http://i.imgur.com/Jp3DP4T.jpg)
+![Yelp Before|200](http://i.imgur.com/BD38xL6.jpg)&nbsp;&nbsp;![Yelp After|200](http://i.imgur.com/Jp3DP4T.jpg)
 
 1. [Download the starter project](https://www.dropbox.com/s/iqlj4wtt9o23brs/Yelp%20-%20Incomplete.zip?dl=0) which should look like the image on the left in the simulator.
 2. Add the appropriate Auto Layout constraints in the custom cell. Here are some hints:
