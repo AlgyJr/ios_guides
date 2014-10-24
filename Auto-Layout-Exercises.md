@@ -2,17 +2,15 @@ These are a few basic and more complicated Auto Layout exercises that demonstrat
 
 ### Exercise 1 - Basic Auto Layout
 
-- Open ...
-- In Interface Builder
-   - Configure the view to stretch in width
-   - Center
-   - Pin to right
-   - Pin to Bottom
-- In code
-   - Configure the view to stretch in width
-   - Center
-   - Pin to right
-   - Pin to Bottom
+![Basic|200](http://i.imgur.com/rTmdGd4.jpg)&nbsp;&nbsp;![Basic|200](http://i.imgur.com/puyV4F2.jpg)
+
+- [Download the starter project](https://www.dropbox.com/s/b3d93tqpokuxg7s/BasicAutoLayout%20-%20Incomplete.zip?dl=0).
+- FirstViewController is created using Interface Builder. Add Auto Layout constraints so that the following conditions are met when switching between an iPhone simulator and an iPad simulator:
+   - The gray view has fixed left and right margins (i.e., grows in width), but has a fixed height.
+   - The blue view is pinned below the gray view and to the right side of the superview. It has a fixed height and width.
+   - The label is pinned to the left side of the superview and the left side of the blue view.
+   - The red view is pinned to the bottom of the superview and is horizontally centered.
+- SecondViewController is created using programmatic view code. Add the same constraints as above using the visual formatting language.
 
 ### Exercise 2 - Yelp
 
