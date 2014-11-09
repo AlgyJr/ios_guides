@@ -63,7 +63,7 @@ If you move a file on disk, the filename will turn red within in the [Navigation
 
 A basic project just produces an app, so the default project Xcode generates for you will be fine. An advanced project may produce other targets, such as static libraries, system extensions, alternative apps, test suites, and more.
 
-For instance, in shipping apps, it's common to see two app targets: the app you will ship to the App Store, and an internal version of the app for testing.  When you click the "Run" button in the [toolbar](https://developer.apple.com/library/mac/recipes/xcode_help-general/AbouttheWorkspaceWindowToolbar/AbouttheWorkspaceWindowToolbar.html), you want to launch the appropriate build. You can toggle this with the "Scheme Drop Down" to the right of the Run button.
+For example, your shipping apps will commonly have two app targets:  the app you will ship to the App Store, and an internal version of the app for testing.  When you click the "Run" button in the [toolbar](https://developer.apple.com/library/mac/recipes/xcode_help-general/AbouttheWorkspaceWindowToolbar/AbouttheWorkspaceWindowToolbar.html), you want to launch the appropriate build. You can toggle this with the "Scheme Drop Down" to the right of the Run button.
 
 # Further Reading
 
