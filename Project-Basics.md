@@ -44,7 +44,7 @@ For more, read about [[App Architecture|Architecture]]
 
 ### Main.storyboard
 
-This determines the UI displayed on launch. If you would rather set up your UI programmatically, for reasons covered the [[Interface Builder|Interface Builder]] you can configure it in your `Info.plist`, and write the setup code in `AppDelegate.swift`.
+This determines the UI displayed on launch. If you would rather set up your UI programmatically, for reasons covered in the [[Interface Builder|Interface Builder]] guide, you can configure it in your `Info.plist`, and write the setup code in `AppDelegate.swift`.
 
 ## Organization
 
