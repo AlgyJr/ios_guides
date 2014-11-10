@@ -64,7 +64,7 @@ Adding constraints one-by-one is extremely verbose, so the framework supports a 
 |-[findButton]-[findNextButton]-[findField(>=20)]-|
 ```
 
-This specifies a a "find" button, a "find next" button, and a text field that must be greater than or equal to 20.
+This specifies a "find" button, a "find next" button, and a text field that must be greater than or equal to 20.
 
 To create these constraints, call `NSLayoutConstraint`'s `constraintsWithVisualFormat` method. It takes a string, and a dictionary that specifies the views those variables map to, e.g. "findButton" mapping to the UIButton instance.
 
