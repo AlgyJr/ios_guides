@@ -68,8 +68,8 @@ Cocoapods is a tool to install libraries into our Xcode project. We will use thi
 ### Movies Screen
 ####1.Add a TableViewController to display list of movies
 * Open your *.xcworkspace project 
-* The Storyboard (canvas) in Interface Builder (IB) will show by default a ViewController. We are going to replace this with a TableViewController, so delete it.
-* If the IB library is not open do press control-ALT-command-3 to open it. From the library, drag a TableViewController component into the Storyboard
+* The Storyboard (canvas) in Interface Builder (IB) will show a ViewController by default . We are going to replace this with a TableViewController, so delete it.
+* If the IB library is not open press control-ALT-command-3 to open it. From the library, drag a TableViewController component into the Storyboard
 *  Select the TableViewController, click on the Attributes Inspector and check "Is Initial View Controller"
 *  Run the app and check that you see an empty table
 * Create a TableViewController class to back the TableViewcontroller we just added with code. Call the Class "MoviesTableViewController", and as subClass select UITableViewController
@@ -82,10 +82,10 @@ Cocoapods is a tool to install libraries into our Xcode project. We will use thi
 ####2.Create Custom Cell
 IOS has 4 standard cell types with fixed positions of an image, and two labels. In most cases, this doesn't suffice, so it is recommended to always create your own custom cell, which will show how to do next.
 * In IB, select the Table View, select Attribute Inspector and make sure that the Content box is set to "Dynamic Prototypes" as opposed to "Static Cells". This tells Xcode that the apps is not using a fixed number of cells (static) but rather that cells will be dynamically created with the the pattern of the custom cell we are about to create.
-* In IB, select the Cell ( it is easier to select the Cell in the Outline View to the left of the canvas), select Attribute inspect and set the "Style" box to "Custom". This tells Xcode that we are creating a custom cell, as opposed to one of the 4 standard ones.
-* In addition, in the Attributes Inspector with the Cell selected, set the Identifier box to "MyMovieCell". We will use this identifier later inside our code to dynamically request for IOS to create our custom cell and return a pointer to, so that we can load it with the movie content we want to display.
-* From the IB library, drag a UIImageView and two UILabel controls inside the Cell. Place the UIImageView one the left side, one UILabel to the right of the image to be used for the movie title, and one UILabel below to be used for the movie synopsis.
-* Make the UILabel used for synopsis at least 6 lines in width by selecting it, going to the Attributes Inspector and setting the Lines box to 6. Also set the Font to a small type size like 12.0. Your canvas with the NavigationController and MoviesTableViewController should look something like this:
+* In IB, select the Cell ( it is easier to select the Cell in the Outline View to the left of the canvas), select theAttribute Inspector and set the "Style" box to "Custom". This tells Xcode that we are creating a custom cell, as opposed to one of the 4 standard ones.
+* In addition, in the Attributes Inspector with the Cell selected, set the Identifier box to "MyMovieCell". We will use this identifier later inside our code to dynamically request IOS to create our custom cell and return a pointer to, so that we can load it with the movie content we want to display.
+* From the IB library, drag a UIImageView and two UILabel controls inside the Cell. Place the UIImageView on the left hand side, one UILabel to the right side of the image to be used for the movie title, and one UILabel below to be used for the movie synopsis.
+* Make the synopsis  UILabel  at least 6 lines wide by selecting it, going to the Attributes Inspector and setting the Lines box to 6. Also set the Font to a small type size like 12.0. Your canvas with the NavigationController and MoviesTableViewController should look something like this:
 
 <br/>
 <a href="http://imgur.com/ICM83lz"><img src="http://i.imgur.com/ICM83lz.png" title="source: imgur.com" /></a>
