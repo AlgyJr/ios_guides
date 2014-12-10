@@ -230,7 +230,7 @@ When the user clicks on a cell in the MoviesTableViewController, the "prepareFor
 #### 3.Display passed movie data in Movie Detail screen
 
 
-* Include the “UIImageView+AIFNetworking.h”
+* Include the “UIImageView+AFNetworking.h”
 * Declare and define an intermediate method "reload", which will load contents into the IBOutlets of the MovieDetailView controller
 * In ViewDidLoad, call method “reload” 
 * In "reload" method set the IBOutlet properties of the MovieDetailViewController with the corresponding data passed in the "movieDetail" property. The code would look something like this: 
