@@ -16,7 +16,7 @@ Below are screenshots:
 
 ## Steps to build app
 The following is high level steps to follow to build the app. We will detail what goes in each step in the next section
-### Add AIFNetworking library 
+### Add AFNetworking library 
 1. Create an Xcode Project with SingleView application template
 2. Create a Podfile and install AFNetworking library
 
