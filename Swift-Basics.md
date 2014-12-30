@@ -219,9 +219,9 @@ if optionalValue != nil {
 `nil` is not a boolean. You must check `optionalValue != nil`. However, there's shorthand:
 
 ```
-let optionalValue: Int? = 1
-if let intValue = optionalValue {
-  println("The int was \(intValue)")
+var optionalValue: Int? = 1
+if let optionalValue = optionalValue {
+  println("The int was \(optionalValue)")
 } else {
   println("The int was not there.")
 }
