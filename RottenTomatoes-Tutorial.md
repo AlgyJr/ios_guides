@@ -189,6 +189,7 @@ The three data source methods mentioned above are automatically added as boiler 
   * `@property (weak, nonatomic) IBOutlet UILabel *synopsis;`
   * `@property (weak, nonatomic) IBOutlet UILabel *cast;`
   * `@property (weak, nonatomic) IBOutlet UILabel *rating;`
+  * `@property (weak, nonatomic) IBOutlet UIImageView *posterView;`
 * Connect the IBOutlets we just created with the corresponding controls in the MovieDetailController:
   * In IB, select the MovieDetailController
   * Select the Connections Inspector
