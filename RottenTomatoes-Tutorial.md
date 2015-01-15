@@ -131,7 +131,7 @@ We need to retrieve the information about the movies from the RottenTomatoes to 
 *  The `[self.tableView reloadData]`line, makes sure that the tableView of the MovieTableViewController is reloaded with the new data we just got. The tableView is a property of the MovieTableViewController and represent the actual table. When the "reloadData" method is called on the tableView, three basic TableViewController methods are automatically called to load data into the table. We will talk about these methods, called "data source" methods shortly.
 
 ####JSON SIDE NOTE
-*If you open a browser and navigate to [http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=ws32mxpd653h5c8zqfvksxw9](http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=ws32mxpd653h5c8zqfvksxw9") , which is the endpoint to retrieve data about movies "in theaters", you will get the response in the browser. It will look like this (you need to first install Chrome JSONView extension to be able to see the nice colored format) 
+*If you open a browser and navigate to [http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=ws32mxpd653h5c8zqfvksxw9](http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=ws32mxpd653h5c8zqfvksxw9) , which is the endpoint to retrieve data about movies "in theaters", you will get the response in the browser. It will look like this (you need to first install Chrome JSONView extension to be able to see the nice colored format) 
 
 <br/>
 <a href="http://imgur.com/qK7HvJo"><img src="http://i.imgur.com/qK7HvJo.png" title="source: imgur.com" /></a>
