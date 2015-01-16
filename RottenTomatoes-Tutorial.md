@@ -114,7 +114,7 @@ We need to retrieve the information about the movies from the RottenTomatoes to 
 * Declare an NSArray called "movies" in the @interface of MoviesTableViewController. We will use this array to store the JSON data we will get from the RottenTomatoes server.
 * In the viewDidLoad method of the MoviesTableViewController add the following code ([cut and paste from here](https://gist.github.com/mmesarina/a7fe2c1fd77de9f42567)) to get data on current movies being played at theaters from the RottenTomatoes server:  
 
-`NSString *url = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=ws32mxpd653h5c8zqfvksxw9";` 
+`NSString *url = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=ws32mxpd653h5c8zqfvksxw9&limit=20&country=us";` 
 <br/>	
 `NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];`
 <br/>
@@ -131,7 +131,7 @@ We need to retrieve the information about the movies from the RottenTomatoes to 
 *  The `[self.tableView reloadData]`line, makes sure that the tableView of the MovieTableViewController is reloaded with the new data we just got. The tableView is a property of the MovieTableViewController and represent the actual table. When the "reloadData" method is called on the tableView, three basic TableViewController methods are automatically called to load data into the table. We will talk about these methods, called "data source" methods shortly.
 
 ####JSON SIDE NOTE
-*If you open a browser and navigate to [http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=ws32mxpd653h5c8zqfvksxw9](http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=ws32mxpd653h5c8zqfvksxw9) , which is the endpoint to retrieve data about movies "in theaters", you will get the response in the browser. It will look like this (you need to first install Chrome JSONView extension to be able to see the nice colored format) 
+*If you open a browser and navigate to [http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=ws32mxpd653h5c8zqfvksxw9&limit=20&country=us](http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=ws32mxpd653h5c8zqfvksxw9&limit=20&country=us) , which is the endpoint to retrieve data about movies "in theaters", you will get the response in the browser. It will look like this (you need to first install Chrome JSONView extension to be able to see the nice colored format) 
 
 <br/>
 <a href="http://imgur.com/qK7HvJo"><img src="http://i.imgur.com/qK7HvJo.png" title="source: imgur.com" /></a>
