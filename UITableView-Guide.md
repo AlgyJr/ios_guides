@@ -69,6 +69,11 @@ the above code:
 <!--- TODO: Link to documentation showing how to connect to IBOutlets -->
 <!--- TODO: attach screenshot here -->
 
+__Notice that we set `self.myFirstTableView.dataSource = self`__ in the
+`viewDidLoad` method.  A common error that will result in a blank table or
+misbeavhing is to forget the `dataSource` or `delegate` property on your
+`UITableView`.
+
 In this case, since the only view managed by our `ViewController` is the table, we
 also have our `ViewController` implement `UITableViewDataSource` so that all the
 code for this screen is in one place.  This is a fairly common pattern when
