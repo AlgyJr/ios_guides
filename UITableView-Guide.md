@@ -1,8 +1,5 @@
 In depth guide for using UITableView
 
-* auto-gen TOC:
-{:toc}
-
 ## Overview
 
 [`UITableViews`][uitableview] are one of the most commonly used views in iOS
@@ -254,7 +251,7 @@ any other view.
 
 ![Creating a Prototype Cell](http://i.imgur.com/nMFup96.gif)
 
-Once you are satisfied with the design of your cell, you must create custom
+Once you are satisfied with the design of your cell, you must create a custom
 class and associate it with your UI template.  Select `File -> New -> File... ->
 iOS -> Source -> Cocoa Touch Class`.  Create your class as a subclass of
 `UITableViewCell`.  You must now associate your class with your prototype cell.
@@ -264,7 +261,7 @@ the name of the class you just created.
 
 <a href="http://imgur.com/2r9tOJo"><img src="http://i.imgur.com/2r9tOJo.png" title="Setting Custom Class"/></a>
 
-You will now be able to select your custom cell class in the assistant editor
+You will now be able to select your custom cell class in the Assistant Editor
 (tuxedo mode) and connect IBOutlets from your prototype cell into your class as
 you would with any other view.  Note that you must select the "content
 view" of your prototype cell in order for the your custom cell class to
