@@ -1,3 +1,20 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Overview](#overview)
+- [Your first `UITableView`](#your-first-uitableview)
+- [Reusing `UITableViewCells`](#reusing-uitableviewcells)
+    - [Notes about the cell reuse pattern:](#notes-about-the-cell-reuse-pattern)
+- [Custom cells](#custom-cells)
+  - [Using prototype cells](#using-prototype-cells)
+  - [Creating a separate NIB for your cell](#creating-a-separate-nib-for-your-cell)
+  - [Laying out your cell programmatically](#laying-out-your-cell-programmatically)
+- [Variable height cells](#variable-height-cells)
+- [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 In depth guide for using UITableView
 
 ## Overview
