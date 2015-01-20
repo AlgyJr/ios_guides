@@ -2,38 +2,48 @@ In depth guide for using UITableView
 
 ## Overview
 
-[`UITableViews`](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html)
-are one of the most commonly used views in iOS programming.  They are
-used for displaying grouped lists of cells.  Here are some examples of
-`UITableViews`:
+[`UITableViews`][uitableview] are one of the most commonly used views in iOS
+programming.  They are used for displaying grouped lists of cells.  Here are
+some examples of `UITableViews`:
 
 <!--- TODO: Add some sample images of UITableViews -->
 
 `UITableViews` can be highly performant, displaying thousands of rows (*cells*) of
-data. They also have common behavior baked in, such as scrolling, "editing mode", and
+data. They also have common behavior built-in such as scrolling, "editing mode", and
 the ability to animate the addition or removal of rows.
 
 This guide will cover the fundamentals of using a tableviews.
 
+[uitableview]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html
+
 ## Your first `UITableView`
 
-As with other views in the Cocoa Touch framework, in order to use a `UITableView`
-you provide it with [delegates](http://en.wikipedia.org/wiki/Delegation_pattern)
-that are able to answer questions about what to show in the table and how the
-application should respond to certain user interactions with the table.
+As with other views in the Cocoa Touch framework, in order to use a
+`UITableView` you provide it with [delegates][delegatepattern] that are able to answer questions
+about what to show in the table and how the application should respond to
+certain user interactions with the table.
 
 The `UITableView` has two delegates that you must provide by setting the
 corresponding properties on your `UITableView` object.
 
-1. The [`dataSource`](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instp/UITableView/dataSource) property must be set to an object that implements the [`UITableViewDataSource`](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewDataSource_Protocol/index.html) protocol.  This object is responsible for the content of the table including providing the actual [`UITableViewCells`](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/) that will be shown.
+1. The [`dataSource`][datasource] property must be set to an object that
+implements the [`UITableViewDataSource`][uitableviewdatasource] protocol.
+This object is responsible for the content of the table including providing the
+actual [`UITableViewCells`][uitableviewcell] that will be shown.
 
-2. The [`delegate`](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instp/UITableView/delegate)
-property must be set to an object that implements the
-[`UITableViewDelegate`](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewDelegate_Protocol/index.html)
-protocol.  This object controls the basic visual appearance of and user
-interactions with the table.  It is not technically mandatory for you provide
-your own `delegate`, but in practice you will almost always want to do something
-that requires implementing your own `UITableViewDelegate`.
+2. The [`delegate`][delegate] property must be set to an object that implements
+the [`UITableViewDelegate`][uitableviewdelegate] protocol.  This object
+controls the basic visual appearance of and user interactions with the table.
+It is not technically mandatory for you provide your own `delegate`, but in
+practice you will almost always want to do something that requires implementing
+your own `UITableViewDelegate`.
+
+[delegatepattern]: http://en.wikipedia.org/wiki/Delegation_pattern
+[datasource]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instp/UITableView/dataSource
+[uitableviewdatasource]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewDataSource_Protocol/index.html
+[uitableviewcell]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/
+[delegate]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instp/UITableView/delegate
+[uitableviewdelegate]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewDelegate_Protocol/index.html
 
 The following is the most basic way to set up a UITableView.
 
@@ -75,7 +85,7 @@ the above code:
 
 __Notice that we set `self.myFirstTableView.dataSource = self`__ in the
 `viewDidLoad` method.  A common error that will result in a blank or misbehaving
-table or is to forget the `dataSource` or `delegate` property on your
+table or is forgetting to set the `dataSource` or `delegate` property on your
 `UITableView`.
 
 In this case, since the only view managed by our `ViewController` is the table, we
@@ -92,32 +102,32 @@ is responsible for telling the `UITableView` how many rows are in each section
 of the table.  Since we only have one section, we simply return the length of
 our `data` array which corresponds to the number of total cells we want.  To
 create tables with multiple sections we would implement the
-[`numberOfSections`](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instm/UITableView/numberOfSections)
-method and possibly return different values in our
-[`numberOfRowsInSection`](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instm/UITableView/numberOfRowsInSection:)
-method depending the `section` that was passed in.
+[`numberOfSections`][numberofsections] method and possibly return different
+values in our [`numberOfRowsInSection`][numberofrowsinsection] method depending
+the `section` that was passed in.
 
-2. `func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath:
-   NSIndexPath) -> UITableViewCell` is responsible for returning a preconfigured
-cell that will be used to render the row in the table specified by the
-`indexPath`.   The `indexPath` is an
-[`NSIndexPath`](https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSIndexPath_Class/index.html)
-of length 2.  It contains two integers: `indexPath.indexAtPosition(0)` is the
-section number, and `indexPath.indexAtPosition(1)` is the row number in the
-given section.
+2. `func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell`
+is responsible for returning a preconfigured cell that will be used to render
+the row in the table specified by the `indexPath`.   The `indexPath` is an
+[`NSIndexPath`][nsindexpath] of length 2.  It contains two integers:
+`indexPath.indexAtPosition(0)` is the section number, and
+`indexPath.indexAtPosition(1)` is the row number in the given section.
+
+[numberofsections]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instm/UITableView/numberOfSections
+[numberofrowsinsection]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instm/UITableView/numberOfRowsInSection:
+[nsindexpath]: https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSIndexPath_Class/index.html
 
 ## Reusing `UITableViewCells`
 
-The [`cellForRowAtIndexPath`](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewDataSource_Protocol/index.html#//apple_ref/occ/intfm/UITableViewDataSource/tableView:cellForRowAtIndexPath:)
-method has to return an instance of `UITableViewCell` that is configured with
-the data for the row specified by the indexPath.  In the above code we created a
-new instance of the Cocoa Touch-provided `UITableViewCell` class for each call
-to `cellForRowAtIndexPath`.  Since our table had only a few simple cells you
-might not have noticed any appreciable performance drop.  However, in practice,
-you will almost __never create a new cell object for each row__ due to
-performance costs and memory implications.  This becomes especially important
-once you start creating more complex cells or have tables with large numbers of
-rows.
+The [`cellForRowAtIndexPath`][cellforrowatindexpath] method has to return an
+instance of `UITableViewCell` that is configured with the data for the row
+specified by the indexPath.  In the above code we created a new instance of the
+Cocoa Touch-provided `UITableViewCell` class for each call to
+`cellForRowAtIndexPath`.  Since our table had only a few simple cells you might
+not have noticed any appreciable performance drop.  However, in practice, you
+will almost __never create a new cell object for each row__ due to performance
+costs and memory implications.  This becomes especially important once you start
+creating more complex cells or have tables with large numbers of rows.
 
 In order to avoid the expensive costs of creating a new cell object for each
 row, we can adopt a strategy of *cell reuse*.  Notice that the table can only
@@ -131,6 +141,8 @@ To implement such a strategy from scratch we would need to know which rows are
 currently being displayed and to be able to respond if the set of visible rows
 is changed.  Luckily `UITableView` has built-in methods that make cell reuse
 quite simple to implement.  We can modify our code example above to read
+
+[cellforrowatindexpath]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewDataSource_Protocol/index.html#//apple_ref/occ/intfm/UITableViewDataSource/tableView:cellForRowAtIndexPath:
 
 ```swift
 import UIKit
@@ -164,15 +176,19 @@ class ViewController: UIViewController, UITableViewDataSource {
 }
 ```
 
-In `viewDidLoad` we call our `UITableView`'s [`registerClass:forCellReuseIdentifier:`](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instm/UITableView/registerClass:forCellReuseIdentifier:)
-to associate the built-in class `UITableViewCell` with the constant string
-identifier `kCellIdentifier`.  Notice that we do not explicitly create an
-instance here.  The `UITableView` will handle the creation of all cell objects
-for us.
+In `viewDidLoad` we call our `UITableView`'s
+[`registerClass:forCellReuseIdentifier:`][registerclass] to associate the
+built-in class `UITableViewCell` with the constant string identifier
+`kCellIdentifier`.  Notice that we do not explicitly create an instance here.
+The `UITableView` will handle the creation of all cell objects for us.
 
-In `cellForRowAtIndexPath`, we call [`dequeueReusableCellWithIdentifier:forIndexPath:`](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instm/UITableView/dequeueReusableCellWithIdentifier:forIndexPath:)
-to obtain a pre-created instance of `UITableViewCell` and then we proceed to
-populate this cell with the data for the given row before returning it.
+In `cellForRowAtIndexPath`, we call
+[`dequeueReusableCellWithIdentifier:forIndexPath:`][dequeuecell] to obtain a
+pre-created instance of `UITableViewCell` and then we proceed to populate this
+cell with the data for the given row before returning it.
+
+[registerclass]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instm/UITableView/registerClass:forCellReuseIdentifier:
+[dequeuecell]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instm/UITableView/dequeueReusableCellWithIdentifier:forIndexPath:
 
 #### Notes about the cell reuse pattern:
 
@@ -196,9 +212,10 @@ previously set when configuring it with the data of another row.  Be sure
 reconfigure *all* properties to match the data of the current row!
 
 
+[cellstyle]: http://stackoverflow.com/questions/13174972/setting-style-of-uitableviewcell-when-using-ios-6-uitableview-dequeuereusablecel
 ## Custom Cells
+
 How to make custom cells
 
 ## References
-[cellstyle]: http://stackoverflow.com/questions/13174972/setting-style-of-uitableviewcell-when-using-ios-6-uitableview-dequeuereusablecel
 
