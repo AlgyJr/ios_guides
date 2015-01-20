@@ -85,7 +85,7 @@ the above code:
 
 __Notice that we set `self.myFirstTableView.dataSource = self`__ in the
 `viewDidLoad` method.  A common error that will result in a blank or misbehaving
-table or is forgetting to set the `dataSource` or `delegate` property on your
+table is forgetting to set the `dataSource` or `delegate` property on your
 `UITableView`.
 
 In this case, since the only view managed by our `ViewController` is the table, we
@@ -121,8 +121,8 @@ the row in the table specified by the `indexPath`.   The `indexPath` is an
 
 The [`cellForRowAtIndexPath`][cellforrowatindexpath] method has to return an
 instance of `UITableViewCell` that is configured with the data for the row
-specified by the indexPath.  In the above code we created a new instance of the
-Cocoa Touch-provided `UITableViewCell` class for each call to
+specified by the `indexPath`.  In the above code we created a new instance of
+the Cocoa Touch-provided `UITableViewCell` class for each call to
 `cellForRowAtIndexPath`.  Since our table had only a few simple cells you might
 not have noticed any appreciable performance drop.  However, in practice, you
 will almost __never create a new cell object for each row__ due to performance
@@ -193,17 +193,17 @@ cell with the data for the given row before returning it.
 #### Notes about the cell reuse pattern:
 
 * When we explicitly instantiated each cell object in `cellForRowAtIndexPath` we
-  were able to specify the cell `style: .Default'`.  When we called
+  were able to specify the cell `style: .Default`.  When we called
 `dequeueReusableCellWithIdentifier` there was no place to specify the style.
 [In practice][cellstyle], you will want to create your own subclass of
-`UITableViewCell` and add initialization common to all cells for the class in
+`UITableViewCell` and add initialization common to all cells in the class in
 the initializer.
 
 * Any customization of the cell on a per row basis should be done in
 `cellForRowAtIndexPath`.  When designing a custom cell class be sure to allow
 access to the properties you need to change on a per row basis.  In this case
 the built-in `UITableViewCell` gives us access to its `textLabel` so that we
-are able to set a different text for each row.
+are able to set different text for each row.
 
 * There are no guarantees on the state of the cell that is returned by
 `dequeueReusableCellWithIdentifier`.  *The cell will not necessarily be in the
