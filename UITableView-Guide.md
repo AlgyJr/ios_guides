@@ -16,7 +16,7 @@ some examples of `UITableViews`:
 data. They also have common behavior built-in such as scrolling, "editing mode", and
 the ability to animate the addition or removal of rows.
 
-This guide will cover the fundamentals of using a tableviews.
+This guide will cover the fundamentals of using tableviews.
 
 [uitableview]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html
 
@@ -252,7 +252,7 @@ cell you simply drag a `Table View Cell` from the Object Library onto your table
 view.  You can now layout and add objects your prototype cell as you would with
 any other view.
 
-<!--- TODO: insert image of dragging prototype cell to table here -->
+![Creating a Prototype Cell](http://i.imgur.com/nMFup96.gif)
 
 Once you are satisfied with the design of your cell, you must create custom
 class and associate it with your UI template.  Select `File -> New -> File... ->
@@ -262,13 +262,15 @@ In the storyboard editor, select your prototype cell and then select the
 Identity Inspector.  Set the `Custom Class` property of the prototype cell to
 the name of the class you just created.
 
-<!--- TODO: insert image of setting custom class here here -->
+<a href="http://imgur.com/2r9tOJo"><img src="http://i.imgur.com/2r9tOJo.png" title="Setting Custom Class"/></a>
 
 You will now be able to select your custom cell class in the assistant editor
 (tuxedo mode) and connect IBOutlets from your prototype cell into your class as
-you would with any other view.
+you would with any other view.  Note that you must select the "content
+view" of your prototype cell in order for the your custom cell class to
+show up under the Assistant Editor's automatic matching.
 
-<!--- TODO: insert image of picking assistant editor here -->
+<a href="http://imgur.com/Tkofhwo"><img src="http://i.imgur.com/Tkofhwo.gif" title="source: imgur.com" /></a>
 
 One you are satisfied with the design of your cell and the corresponding code in
 your custom class, you must register your cell for reuse by providing it with a
@@ -279,14 +281,55 @@ can use to avoid name collisions&mdash;for example with cells you import from
 external librarys&mdash;is to prefix your identifier with your organization
 identifier (e.g. `com.codepath.mycellidenfier`).
 
-<!--- TODO: insert image of setting cell reuse idenfier here -->
+<a href="http://imgur.com/nZdbnm5"><img src="http://i.imgur.com/nZdbnm5.png" title="source: imgur.com" /></a>
 
 You can now use this identifier when calling `dequeueReusableCellWithIdentifier`
 in your implementation of `cellForRowAtIndexPath`.  Notice that the compiler
 cannot infer the type of your custom cell class from the reuse identifier and
 you must explicitly cast the resulting object to the correct class.
 
-<!--- TODO insert sample code here -->
+```swift
+import UIKit
+
+class DemoPrototypeCell: UITableViewCell {
+    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var stateLabel: UILabel!
+}
+```
+
+```swift
+import UIKit
+
+class ViewController: UIViewController, UITableViewDataSource {
+    @IBOutlet weak var myFirstTableView: UITableView!
+
+    let data = ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX",
+        "Philadelphia, PA", "Phoenix, AZ", "San Diego, CA", "San Antonio, TX",
+        "Dallas, TX", "Detroit, MI", "San Jose, CA", "Indianapolis, IN",
+        "Jacksonville, FL", "San Francisco, CA", "Columbus, OH", "Austin, TX",
+        "Memphis, TN", "Baltimore, MD", "Charlotte, ND", "Fort Worth, TX"]
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        myFirstTableView.dataSource = self
+    }
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = myFirstTableView.dequeueReusableCellWithIdentifier("com.codepath.DemoPrototypeCell", forIndexPath: indexPath) as DemoPrototypeCell
+        let cityState = data[indexPath.indexAtPosition(1)].componentsSeparatedByString(", ")
+        cell.cityLabel.text = cityState.first
+        cell.stateLabel.text = cityState.last
+        return cell
+    }
+
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count
+    }
+}
+```
+Putting everything together we get a table that looks like this:
+
+![Table With Custom Cells](http://i.imgur.com/B2pYrj4l.png)
 
 ### Creating a separate NIB for your cell
 
