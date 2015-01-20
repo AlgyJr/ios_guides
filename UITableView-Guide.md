@@ -1,5 +1,8 @@
 In depth guide for using UITableView
 
+* auto-gen TOC:
+{:toc}
+
 ## Overview
 
 [`UITableViews`][uitableview] are one of the most commonly used views in iOS
