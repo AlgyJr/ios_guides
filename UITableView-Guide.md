@@ -9,7 +9,7 @@ In depth guide for using UITableView
 programming.  They are used for displaying grouped lists of cells.  Here are
 some examples of `UITableViews`:
 
-![Contacts App](http://i.imgur.com/r7kRtLM.png)
+![Contacts App](http://i.imgur.com/r7kRtLMl.png)
 <!--- TODO: Add some sample images of UITableViews -->
 
 `UITableViews` can be highly performant, displaying thousands of rows (*cells*) of
@@ -85,7 +85,7 @@ Provided that the `@IBOutlet` `myFirstTableView` has been connected to a
 the above code:
 
 <!--- TODO: Link to documentation showing how to connect to IBOutlets -->
-<!--- TODO: attach screenshot here -->
+![Cities Table](http://i.imgur.com/ZOakSLDl.png)
 
 __Notice that we set `self.myFirstTableView.dataSource = self`__ in the
 `viewDidLoad` method.  A common error that will result in a blank or misbehaving
