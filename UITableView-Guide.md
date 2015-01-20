@@ -9,6 +9,7 @@ In depth guide for using UITableView
 programming.  They are used for displaying grouped lists of cells.  Here are
 some examples of `UITableViews`:
 
+![Contacts App](http://i.imgur.com/r7kRtLM.png)
 <!--- TODO: Add some sample images of UITableViews -->
 
 `UITableViews` can be highly performant, displaying thousands of rows (*cells*) of
@@ -194,13 +195,17 @@ cell with the data for the given row before returning it.
 [dequeuecell]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instm/UITableView/dequeueReusableCellWithIdentifier:forIndexPath:
 
 #### Notes about the cell reuse pattern:
+* Be sure to provide a unique reuse identifier for each type of cell that you
+  in your application so that you don't end up accidentally getting an instance
+of the wrong type of cell.
 
 * When we explicitly instantiated each cell object in `cellForRowAtIndexPath` we
   were able to specify the cell `style: .Default`.  When we called
 `dequeueReusableCellWithIdentifier` there was no place to specify the style.
-[In practice][cellstyle], you will want to create your own subclass of
-`UITableViewCell` and add initialization common to all cells in the class in
-the initializer.
+When using `dequeueReusableCellWithIdentifier` you have no over the
+initilization of your cell.  [In practice][cellstyle], you will want to create
+your own subclass of `UITableViewCell` and add initialization common to all
+cells in the class in the initializer.
 
 * Any customization of the cell on a per row basis should be done in
 `cellForRowAtIndexPath`.  When designing a custom cell class be sure to allow
@@ -216,9 +221,81 @@ reconfigure *all* properties to match the data of the current row!
 
 
 [cellstyle]: http://stackoverflow.com/questions/13174972/setting-style-of-uitableviewcell-when-using-ios-6-uitableview-dequeuereusablecel
-## Custom Cells
 
-How to make custom cells
+## Custom cells
+
+You will rarely ever use the built-in standard `UITableViewCell` class.  In most
+cases you will want to create your own types of cells that have components and
+layout matching your needs.  As with any other view in Cocoa Touch, there are
+three ways you can design your custom cell type: using the storyboard via
+prototype cells, creating a NIB via interface builder, or programmatically
+laying out your cell.
+
+All three methods can be broken down into the following steps:
+
+1.  Design your cell's layout and populating it with UI elements that
+    configured.  This creates a template that can then be configured later on a
+per row basis with different data.
+2.  Create a class for type cell and associate it with the user interface for
+    the cell.  This includes binding properties in your class to UI elements.
+You will also need to expose properties that allow the user of the cell class to
+update the appearance of the cell based on a given row's data.
+3.  Register your cell type and give it a *reuse identifier*.
+4.  Dequeue a cell instance using the reuse identifier and configure it to match
+    a row's data.
+
+
+### Using prototype cells
+To use prototype cells you must be in the storyboard editor and have already
+placed a table view in your view controller.  In order to create a prototype
+cell you simply drag a `Table View Cell` from the Object Library onto your table
+view.  You can now layout and add objects your prototype cell as you would with
+any other view.
+
+<!--- TODO: insert image of dragging prototype cell to table here -->
+
+Once you are satisfied with the design of your cell, you must create custom
+class and associate it with your UI template.  Select `File -> New -> File... ->
+iOS -> Source -> Cocoa Touch Class`.  Create your class as a subclass of
+`UITableViewCell`.  You must now associate your class with your prototype cell.
+In the storyboard editor, select your prototype cell and then select the
+Identity Inspector.  Set the `Custom Class` property of the prototype cell to
+the name of the class you just created.
+
+<!--- TODO: insert image of setting custom class here here -->
+
+You will now be able to select your custom cell class in the assistant editor
+(tuxedo mode) and connect IBOutlets from your prototype cell into your class as
+you would with any other view.
+
+<!--- TODO: insert image of picking assistant editor here -->
+
+One you are satisfied with the design of your cell and the corresponding code in
+your custom class, you must register your cell for reuse by providing it with a
+reuse identifier.  In the storyboard editor, select your prototype cell and then
+select the Attributes Inspector.  Set the Identifier field (Reuse Identifier) to
+a unique string that can be used to identify this type of cell.  One method you
+can use to avoid name collisions&mdash;for example with cells you import from
+external librarys&mdash;is to prefix your identifier with your organization
+identifier (e.g. `com.codepath.mycellidenfier`).
+
+<!--- TODO: insert image of setting cell reuse idenfier here -->
+
+You can now use this identifier when calling `dequeueReusableCellWithIdentifier`
+in your implementation of `cellForRowAtIndexPath`.  Notice that the compiler
+cannot infer the type of your custom cell class from the reuse identifier and
+you must explicitly cast the resulting object to the correct class.
+
+<!--- TODO insert sample code here -->
+
+### Creating a separate NIB for your cell
+
+
+### Laying out your cell programmatically
+
+## Variable height cells
+
+
 
 ## References
 
