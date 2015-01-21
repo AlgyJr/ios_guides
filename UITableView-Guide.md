@@ -376,6 +376,7 @@ Cocoa Touch Class`.  You should then create you class as a subclass of
 will create a `.xib` and `.swift` file and automatically set the `Custom
 Class` property of your table view cell to be the class you just
 created.
+
 <!--- TODO: picture of also create XIB file -->
 
 You can now open the `.xib` file in Interface Builder, edit your view
@@ -431,8 +432,83 @@ identifier.
 
 ### Laying out your cell programmatically
 
+Finally, you may work with projects that do not use Interface Builder at
+all.  In this case, you must lay out your custom cell programatically.
+Create a custom cell class that subclasses `UITableViewCell`, but be
+sure *not* to tick the `Also create XIB file` checkbox.
+
+In order to be able register your custom cell for reuse you must
+implement the [`init(style:reuseIdentifier:)`][initwithstyle] method
+since this is the one that will be called by the `UITableView` when
+instantiating cells.  As with any other `UIView`, you can also take
+advantage of other entry points in the view's lifecycle (e.g.
+[`drawRect:`][drawrect]) when programming your custom cell.
+
+Once you are ready to use the cell, you must then register your custom
+cell *class* for reuse in your view controller similarly to how we
+registered the NIB for reuse above:
 
 
+```swift
+import UIKit
+
+class DemoProgrammaticTableViewCell: UITableViewCell {
+    let cityLabel = UILabel(), stateLabel = UILabel()
+
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        initViews()
+
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        initViews()
+    }
+
+    func initViews() {
+        let (stateRect, cityRect) = frame.rectByInsetting(dx: 10, dy: 10).rectsByDividing(40, fromEdge:.MaxXEdge)
+        cityLabel.frame = cityRect
+        stateLabel.frame = stateRect
+        addSubview(cityLabel)
+        addSubview(stateLabel)
+    }
+}
+```
+```swift
+import UIKit
+
+class ViewController: UIViewController, UITableViewDataSource {
+    @IBOutlet weak var myFirstTableView: UITableView!
+
+    let data = ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX",
+        "Philadelphia, PA", "Phoenix, AZ", "San Diego, CA", "San Antonio, TX",
+        "Dallas, TX", "Detroit, MI", "San Jose, CA", "Indianapolis, IN",
+        "Jacksonville, FL", "San Francisco, CA", "Columbus, OH", "Austin, TX",
+        "Memphis, TN", "Baltimore, MD", "Charlotte, ND", "Fort Worth, TX"]
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        myFirstTableView.dataSource = self
+        myFirstTableView.registerClass(DemoProgrammaticTableViewCell.self, forCellReuseIdentifier: "com.codepath.DemoProgrammaticCell")
+    }
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = myFirstTableView.dequeueReusableCellWithIdentifier("com.codepath.DemoProgrammaticCell", forIndexPath: indexPath) as DemoProgrammaticTableViewCell
+        let cityState = data[indexPath.indexAtPosition(1)].componentsSeparatedByString(", ")
+        cell.cityLabel.text = cityState.first
+        cell.stateLabel.text = cityState.last
+        return cell
+    }
+
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count
+    }
+}
+```
+
+[initwithstyle]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/#//apple_ref/occ/instm/UITableViewCell/initWithStyle:reuseIdentifier:
+[drawrect]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/index.html#//apple_ref/occ/instm/UIView/drawRect:
 
 ## Variable height cells
 
