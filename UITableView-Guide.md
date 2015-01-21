@@ -208,7 +208,7 @@ cell with the data for the given row before returning it.
 [registerclass]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instm/UITableView/registerClass:forCellReuseIdentifier:
 [dequeuecell]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instm/UITableView/dequeueReusableCellWithIdentifier:forIndexPath:
 
-#### Notes about the cell reuse pattern:
+#### Notes about the cell reuse pattern
 * Be sure to provide a unique reuse identifier for each type of cell that you
   in your application so that you don't end up accidentally getting an instance
 of the wrong type of cell.
@@ -241,9 +241,9 @@ reconfigure *all* properties to match the data of the current row!
 You will rarely ever use the built-in standard `UITableViewCell` class.  In most
 cases you will want to create your own types of cells that have components and
 layout matching your needs.  As with any other view in Cocoa Touch, there are
-three ways you can design your custom cell type: using the storyboard via
-prototype cells, creating a NIB via interface builder, or programmatically
-laying out your cell.
+three ways you can design your custom cell type: within a storyboard
+itself via prototype cells, creating a separate NIB via Interface
+Builder, or programmatically laying out your cell.
 
 All three methods can be broken down into the following steps:
 
@@ -260,6 +260,7 @@ update the appearance of the cell based on a given row's data.
 
 
 ### Using prototype cells
+<!-- TODO: what about interface builder nib for view controller? -->
 To use prototype cells you must be in the storyboard editor and have already
 placed a table view in your view controller.  In order to create a prototype
 cell you simply drag a `Table View Cell` from the Object Library onto your table
@@ -345,10 +346,93 @@ Putting everything together we get a table that looks like this:
 
 ![Table With Custom Cells](http://i.imgur.com/B2pYrj4l.png)
 
-### Creating a separate NIB for your cell
+### Creating a separate [NIB][nib] for your cell
+<!--- TODO: may want to define what a nib is somewhere -->
+<!--- TODO: write note about difference between XIB and NIB files -->
 
+There may be times when you do not want to use prototype cells, but
+still want to use Interface Builder to lay out the design of your custom
+cell.  For example, you may be working on a project without storyboards
+or you may want to isolate your custom cell's complexity from the rest
+of your storyboard.  In these cases you will create a separate Interface
+Builder file (NIB) to contain your custom cell's UI template.
+
+The procedure in for working with a separate NIB is almost the same as
+working with prototype cells.  You still design your cell in Interface
+Builder and associate it with a custom cell class that inherits from
+`UITableViewCell`.  The only difference is that you must now explicitly
+load your NIB and register it for reuse.
+
+You can create your NIB as you would any other view by going to `File ->
+New -> File... -> iOS -> User Interface -> View` and then later create a
+separate class and associate your Interface Builder view with your class
+by setting the `Custom Class` property as you did with the prototype
+cell.
+
+However, *most of the time you will want to create your NIB and custom
+class at once* by selecting `File -> New -> File... -> iOS -> Source ->
+Cocoa Touch Class`.  You should then create you class as a subclass of
+`UITableViewCell` and tick the box marked `Also create XIB file`.  This
+will create a `.xib` and `.swift` file and automatically set the `Custom
+Class` property of your table view cell to be the class you just
+created.
+<!--- TODO: picture of also create XIB file -->
+
+You can now open the `.xib` file in Interface Builder, edit your view
+and connect IBOutlets to your custom class using the Assistant Editor
+(tuxedo) as you would any other view.
+
+You do not need to set the reuse identifier attribute in Interface
+Builder as we did for our prototype cell.  This is because once you are
+ready to use your new cell you must explicitly load the NIB and register
+it for reuse in your view controller:
+
+```swift
+import UIKit
+
+class ViewController: UIViewController, UITableViewDataSource {
+    @IBOutlet weak var myFirstTableView: UITableView!
+
+    let data = ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX",
+        "Philadelphia, PA", "Phoenix, AZ", "San Diego, CA", "San Antonio, TX",
+        "Dallas, TX", "Detroit, MI", "San Jose, CA", "Indianapolis, IN",
+        "Jacksonville, FL", "San Francisco, CA", "Columbus, OH", "Austin, TX",
+        "Memphis, TN", "Baltimore, MD", "Charlotte, ND", "Fort Worth, TX"]
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        myFirstTableView.dataSource = self
+        let cellNib = UINib(nibName: "DemoNibTableViewCell", bundle: NSBundle.mainBundle())
+        myFirstTableView.registerNib(cellNib, forCellReuseIdentifier: "com.codepath.DemoNibTableViewCell")
+    }
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = myFirstTableView.dequeueReusableCellWithIdentifier("com.codepath.DemoNibTableViewCell", forIndexPath: indexPath) as DemoNibTableViewCell
+        let cityState = data[indexPath.indexAtPosition(1)].componentsSeparatedByString(", ")
+        cell.cityLabel.text = cityState.first
+        cell.stateLabel.text = cityState.last
+        return cell
+    }
+
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count
+    }
+}
+```
+
+By default your NIB will be in the main resource bundle, although you
+may change this in larger projects by editing your build steps.  The
+code in `viewDidLoad` loads your nib by creating an instance of
+[UINib][uinib] and registers it for reuse with the provided reuse
+identifier.
+
+[nib]: https://developer.apple.com/library/mac/documentation/General/Conceptual/DevPedia-CocoaCore/NibFile.html
+[uinib]: https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UINib_Ref/index.html
 
 ### Laying out your cell programmatically
+
+
+
 
 ## Variable height cells
 
