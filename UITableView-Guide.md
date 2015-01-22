@@ -5,12 +5,17 @@
 - [Overview](#overview)
 - [Your first `UITableView`](#your-first-uitableview)
 - [Reusing `UITableViewCells`](#reusing-uitableviewcells)
-    - [Notes about the cell reuse pattern:](#notes-about-the-cell-reuse-pattern)
+    - [Notes about the cell reuse pattern](#notes-about-the-cell-reuse-pattern)
 - [Custom cells](#custom-cells)
   - [Using prototype cells](#using-prototype-cells)
-  - [Creating a separate NIB for your cell](#creating-a-separate-nib-for-your-cell)
+  - [Creating a separate [NIB][nib] for your cell](#creating-a-separate-nibnib-for-your-cell)
   - [Laying out your cell programmatically](#laying-out-your-cell-programmatically)
-- [Variable height cells](#variable-height-cells)
+- [Setting the height of rows in a table](#setting-the-height-of-rows-in-a-table)
+  - [Fixed row height](#fixed-row-height)
+  - [Variable row height](#variable-row-height)
+    - [Setting the estimated row height](#setting-the-estimated-row-height)
+    - [Automatically resizing rows (iOS 8+)](#automatically-resizing-rows-ios-8)
+    - [Manually computing row heights](#manually-computing-row-heights)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -369,8 +374,8 @@ separate class and associate your Interface Builder view with your class
 by setting the `Custom Class` property as you did with the prototype
 cell.
 
-However, *most of the time you will want to create your NIB and custom
-class at once* by selecting `File -> New -> File... -> iOS -> Source ->
+However, _most of the time you will want to create your NIB and custom
+class at once_ by selecting `File -> New -> File... -> iOS -> Source ->
 Cocoa Touch Class`.  You should then create you class as a subclass of
 `UITableViewCell` and tick the box marked `Also create XIB file`.  This
 will create a `.xib` and `.swift` file and automatically set the `Custom
@@ -435,7 +440,7 @@ identifier.
 Finally, you may work with projects that do not use Interface Builder at
 all.  In this case, you must lay out your custom cell programatically.
 Create a custom cell class that subclasses `UITableViewCell`, but be
-sure *not* to tick the `Also create XIB file` checkbox.
+sure _not_ to tick the `Also create XIB file` checkbox.
 
 In order to be able register your custom cell for reuse you must
 implement the [`init(style:reuseIdentifier:)`][initwithstyle] method
@@ -445,7 +450,7 @@ advantage of other entry points in the view's lifecycle (e.g.
 [`drawRect:`][drawrect]) when programming your custom cell.
 
 Once you are ready to use the cell, you must then register your custom
-cell *class* for reuse in your view controller similarly to how we
+cell _class_ for reuse in your view controller similarly to how we
 registered the NIB for reuse above:
 
 
@@ -510,9 +515,184 @@ class ViewController: UIViewController, UITableViewDataSource {
 [initwithstyle]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/#//apple_ref/occ/instm/UITableViewCell/initWithStyle:reuseIdentifier:
 [drawrect]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/index.html#//apple_ref/occ/instm/UIView/drawRect:
 
-## Variable height cells
+## Setting the height of rows in a table
+
+Depending on design you may want the height of rows in your table to be
+fixed across all cells or to vary depending on the content of the cells.
+There are a few pitfalls to aware of when manipulating the height of
+rows in a table.
+
+One of the implementation strategies that keeps `UITableViews`
+performant is avoiding instatiating and laying out cells that are not
+currently on the screen.  However, in order to do compute geometries
+(e.g. how long the scrollbar segment is and how quickly it scrolls down
+your screen), iOS does need to have at least an estimate of the total
+size of your table.  Thus one of the goals when specifying the height of
+your rows is to defer if possible performing the layout and
+configuration logic for each cell until it needs to appear on the
+screen.
 
 
+### Fixed row height
+If you want all the cells in your table to the same height you should
+set the [`rowHeight`][rowheight] property on your `UITableView`.  You
+should _not_ implement the [`heightForRowAtIndexPath:`][heightforrow]
+method in your `UITableViewDelegate`.
+
+```swift
+class ViewController: UIViewController, UITableViewDataSource {
+    @IBOutlet weak var tableView: UITableView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.dataSource = self
+        tableView.rowHeight = 100
+    }
+
+    ...
+}
+
+```
+
+[rowheight]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instp/UITableView/rowHeight
+[heightforrow]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewDelegate_Protocol/index.html#//apple_ref/occ/intfm/UITableViewDelegate/tableView:heightForRowAtIndexPath:
+
+### Variable row height
+There are two ways to have different row heights on a per cell basis.
+If project is targeted only for iOS 8 and above, you can simply have
+Auto Layout adjust your row heights as necessary.  In other cases you
+will need to manually compute the height each row in your
+`UITableViewDelegate`.
+
+#### Setting the estimated row height
+One way to help iOS defer computing the height of each row until the
+user scrolls the table is to set the
+[`estimatedRowHeight`][estimatedrowheight] property on your
+`UITableView` to the height you expect a typical cell to have.  This is
+especially useful if you have a large number of rows and are relying on
+Auto Layout to resolve your row heights or if computing the height of
+each row is a non-trivial operation.
+
+```swift
+class ViewController: UIViewController, UITableViewDataSource {
+    @IBOutlet weak var tableView: UITableView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.dataSource = self
+        tableView.estimatedRowHeight = 100
+    }
+
+    ...
+}
+
+```
+
+If your estimate is wildly incorrect or if you have extremely variable
+row heights, you may find that the behavior and sizing of the scroll bar
+to be less than satisfactory.  In this case you may want to implement
+the
+[`estimatedHeightForRowAtIndexPath:`][estimatedrowheightforindexpath]
+method in your `UITableViewDelegate`.  This is rare in practice and is
+only useful if you have a way of estimating the individual row heights
+that is significantly faster than computing the exact height.
+
+[estimatedrowheight]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instp/UITableView/estimatedRowHeight
+[estimatedrowheightforindexpath]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewDelegate_Protocol/index.html#//apple_ref/occ/intfm/UITableViewDelegate/tableView:estimatedHeightForRowAtIndexPath:
+
+#### Automatically resizing rows (iOS 8+)
+If you are targeting exclusively iOS 8 and above you can take advantage
+of a new feature that has Auto Layout compute the height of rows for
+you.  You should add Auto Layout constraints to your cell's content view
+so that the total height of the content view is driven by the _intrinsic
+content size_ of your variable height elements (e.g. labels).  You
+simply need then to set your `UITableView`'s `rowHeight` property to the
+value `UITableViewAutomaticDimension` and provide an estimated row
+height.
+
+```swift
+import UIKit
+
+class ViewController: UIViewController, UITableViewDataSource {
+    @IBOutlet weak var tableView: UITableView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.dataSource = self
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    ...
+}
+```
+
+#### Manually computing row heights
+
+In other situations you will need to manually compute the height of each
+row in your table and provide it to `UITableView` by implementing the
+[`heightForRowAtIndexPath:`][heightforrow] method in your
+`UITableViewDelegate`.
+
+If you are using Auto Layout, you may wish to still have Auto Layout
+figure out the row height for you.  One way you accomplish this is to
+instatiate a reference cell that is not in your view hierarchy and use
+it to compute the height of each row after configuring it with the data
+for the row.  You can call [`layoutSubviews`][layoutsubviews] and
+[`systemLayoutSizeFittingSize`][systemlayoutsize] to obtain the size
+height that would be produced by Auto Layout.  A more detailed
+discussion of this technique can be found
+[here][stackoverflowcellheight].
+
+```swift
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var tableView: UITableView!
+
+    var referenceCell: DemoNibTableViewCell!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.estimatedRowHeight = 50
+
+        let cellNib = UINib(nibName: "DemoNibTableViewCell", bundle: NSBundle.mainBundle())
+        tableView.registerNib(cellNib, forCellReuseIdentifier: "com.codepath.DemoNibTableViewCell")
+
+        referenceCell = cellNib.instantiateWithOwner(nil, options: nil).first as DemoNibTableViewCell
+        referenceCell.frame = tableView.frame // makes reference cell have the same width as the table
+    }
+
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let cityState = data[indexPath.row].componentsSeparatedByString(", ")
+        referenceCell.cityLabel.text = cityState.first
+        referenceCell.stateLabel.text = cityState.last
+        referenceCell.layoutSubviews()
+        return referenceCell.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height
+    }
+
+    ...
+}
+```
+
+[layoutsubviews]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/#//apple_ref/occ/instm/UIView/layoutSubviews
+[systemlayoutsize]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/#//apple_ref/occ/instm/UIView/systemLayoutSizeFittingSize:
+[stackoverflowcellheight]: http://stackoverflow.com/a/18746930
+
+In some cases, the height of your cell may be entirely dominated by one
+or more elements so that you are able to figure out the row height by
+simply doing some arithmetic and without actually needing to layout the
+subviews.  For example if the height of you row is determined by an
+image thumbnail with some padding around it, you can simply return the
+value of the size of the image added to the appropriate padding.  In
+many cases, the height of your row will be determined by the height of
+the text in one or more labels.  In these cases, you can compute the the
+space a piece of text will occupy without actually rendering it by
+calling `NSString`'s [`boundingRectWithSize`][boundingrectwithsize]
+method.  A discussion of how to do this in Swift can be found
+[here][boundingrectwithsizeswift]
+
+[boundingrectwithsize]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/NSString_UIKit_Additions/index.html#//apple_ref/occ/instm/NSString/boundingRectWithSize:options:attributes:context:
+[boundingrectwithsizeswift]: http://www.iosmike.com/2014/08/dynamically-resizing-labels-in-swift.html
 
 ## References
 
