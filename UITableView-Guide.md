@@ -8,7 +8,7 @@
     - [Notes about the cell reuse pattern](#notes-about-the-cell-reuse-pattern)
 - [Custom cells](#custom-cells)
   - [Using prototype cells](#using-prototype-cells)
-  - [Creating a separate [NIB][nib] for your cell](#creating-a-separate-nibnib-for-your-cell)
+  - [Creating a separate NIB for your cell](#creating-a-separate-nib-for-your-cell)
   - [Laying out your cell programmatically](#laying-out-your-cell-programmatically)
 - [Setting the height of rows in a table](#setting-the-height-of-rows-in-a-table)
   - [Fixed row height](#fixed-row-height)
