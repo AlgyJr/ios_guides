@@ -1,12 +1,15 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Overview](#overview)
 - [Your first `UITableView`](#your-first-uitableview)
+  - [`UITableView` vs `UITableViewController`](#uitableview-vs-uitableviewcontroller)
+  - [The `dataSource` and `delegate` properties](#the-datasource-and-delegate-properties)
 - [Reusing `UITableViewCells`](#reusing-uitableviewcells)
     - [Notes about the cell reuse pattern](#notes-about-the-cell-reuse-pattern)
 - [Custom cells](#custom-cells)
+  - [Built-in cell styles](#built-in-cell-styles)
+  - [Creating customized cells](#creating-customized-cells)
   - [Using prototype cells](#using-prototype-cells)
   - [Creating a separate NIB for your cell](#creating-a-separate-nib-for-your-cell)
   - [Laying out your cell programmatically](#laying-out-your-cell-programmatically)
@@ -16,35 +19,82 @@
     - [Setting the estimated row height](#setting-the-estimated-row-height)
     - [Automatically resizing rows (iOS 8+)](#automatically-resizing-rows-ios-8)
     - [Manually computing row heights](#manually-computing-row-heights)
+- [Cell Accessory Views](#cell-accessory-views)
+  - [Built in acessory views](#built-in-acessory-views)
+  - [Custom accessory views](#custom-accessory-views)
+- [Working with sections](#working-with-sections)
+  - [Section header views](#section-header-views)
+  - [Plain vs Grouped style](#plain-vs-grouped-style)
+- [Handling row selection](#handling-row-selection)
+  - [Handling cell selection at the table level](#handling-cell-selection-at-the-table-level)
+  - [Responding to the selection event at the cell level](#responding-to-the-selection-event-at-the-cell-level)
+
+__NOT IMPLEMENTED__:
+- [Handling updates to your data](#handling-updates-to-your-data)
+  - [Animating changes](#animating-changes)
+- [Propagating events from within a custom cell](#propagating-events-from-within-a-custom-cell)
+- [Common behaviors](#common-behaviors)
+  - [Pull to refresh](#pull-to-refresh)
+  - [Infinite scrolling](#infinite-scrolling)
+- [Editing mode](#editing-mode)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-In depth guide for using UITableView
-
 ## Overview
 
-[`UITableViews`][uitableview] are one of the most commonly used views in iOS
-programming.  They are used for displaying grouped lists of cells.  Here are
-some examples of `UITableViews`:
+[`UITableViews`][uitableview] are one of the most commonly used views in
+iOS programming.  They are used to display grouped lists of *cells*.
+Here are some examples of `UITableViews`:
 
-![Contacts App](http://i.imgur.com/r7kRtLMl.png)
-<!--- TODO: Add some sample images of UITableViews -->
+<a href="http://imgur.com/sI6L9Bx"><img src="http://i.imgur.com/sI6L9Bx.jpg" title="Table Views" /></a>
 
-`UITableViews` can be highly performant, displaying thousands of rows (*cells*) of
-data. They also have common behavior built-in such as scrolling, "editing mode", and
-the ability to animate the addition or removal of rows.
+`UITableViews` can be highly performant, displaying thousands of rows of
+data. They also have built-in facilities for handling common behavior
+such as scrolling, selecting rows, editing the table's contents, and
+animating the addition or removal of rows.
 
-This guide will cover the fundamentals of using tableviews.
+This guide covers typical use cases and common issues that arise when
+using `UITableViews`.  All our examples are provided in Swift, but they
+should be easy to adapt for an Objective-C project.  A more
+comprehensive guide by Apple (writen for Objective-C) can found
+[here][tableviewprogrammingguide].
 
+[tableviewprogrammingguide]: https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/TableView_iPhone/AboutTableViewsiPhone/AboutTableViewsiPhone.html#//apple_ref/doc/uid/TP40007451-CH1-SW1
 [uitableview]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html
 
 ## Your first `UITableView`
+In order to use a `UITableView` you must first add one to your view
+controller's root view.  When working with storyboards, this can be done
+in Interface Builder simply by dragging a `UITableView` from the Object
+Library onto your view controller and then creating an `@IBOutlet` so
+that you have a reference to your `UITableView` in your view
+controller's code.
 
-As with other views in the Cocoa Touch framework, in order to use a
-`UITableView` you provide it with [delegates][delegatepattern] that are able to answer questions
-about what to show in the table and how the application should respond to
-certain user interactions with the table.
+<a href="http://imgur.com/DSHZu9r"><img src="http://i.imgur.com/DSHZu9r.gif" title="Adding A Table View" /></a>
+
+Of course, you can also programmatically instantiate a `UITableView` and
+add it as subview to your view controller's root view.  The remainder of
+this guide assumes that you are able to properly instantiate and obtain
+a reference to a `UITableView`.
+
+### `UITableView` vs `UITableViewController`
+You'll notice that in the Object Library there are two objects: `Table
+View` and `Table View Controller`.  You'll almost always want to use
+`Table View` object.  A `Table View Controller` or
+`UITableViewController` is a built-in view controller class that has its
+root view set to be a `UITableView`.  This class does a small amount of
+work for you (e.g.  it already implements the `UITableViewDataSource`
+and `UITableViewDelegate` protocols), but the requirement that your view
+controller's root view be a `UITableView` ends up being too inflexible
+if you need to layout other views in the same screen.
+
+### The `dataSource` and `delegate` properties
+
+As with other views in the UIKit framework, in order to use a
+`UITableView` you provide it with [delegates][delegatepattern] that are
+able to answer questions about what to show in the table and how the
+application should respond to user interactions with the table.
 
 The `UITableView` has two delegates that you must provide by setting the
 corresponding properties on your `UITableView` object.
@@ -74,7 +124,7 @@ The following is the most basic way to set up a UITableView.
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource {
-    @IBOutlet weak var myFirstTableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
 
     let data = ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX",
         "Philadelphia, PA", "Phoenix, AZ", "San Diego, CA", "San Antonio, TX",
@@ -84,12 +134,12 @@ class ViewController: UIViewController, UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        myFirstTableView.dataSource = self
+        tableView.dataSource = self
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
-        cell.textLabel?.text = data[indexPath.indexAtPosition(1)]
+        cell.textLabel?.text = data[indexPath.row]
         return cell
     }
 
@@ -99,22 +149,23 @@ class ViewController: UIViewController, UITableViewDataSource {
 }
 ```
 
-Provided that the `@IBOutlet` `myFirstTableView` has been connected to a
+Provided that the `@IBOutlet` `tableView` has been connected to a
 `UITableView` in your storyboard, you will see something like this when running
 the above code:
 
-<!--- TODO: Link to documentation showing how to connect to IBOutlets -->
 ![Cities Table](http://i.imgur.com/ZOakSLDl.png)
 
-__Notice that we set `self.myFirstTableView.dataSource = self`__ in the
+__Notice that we set `self.tableView.dataSource = self`__ in the
 `viewDidLoad` method.  A common error that will result in a blank or misbehaving
 table is forgetting to set the `dataSource` or `delegate` property on your
-`UITableView`.
+`UITableView`.  __If something is not behaving the way you expect with
+your `UITableView`, the first thing to check is that you have set your
+dataSource and delegate properly__.
 
 In this case, since the only view managed by our `ViewController` is the table, we
 also have our `ViewController` implement `UITableViewDataSource` so that all the
 code for this screen is in one place.  This is a fairly common pattern when
-using Cocoa Touch delegates, but you may want to create a separate class to
+using UIKit delegates, but you may want to create a separate class to
 implement `UITableViewDataSource` or `UITableViewDelegate` in more complex
 situations.
 
@@ -125,32 +176,34 @@ is responsible for telling the `UITableView` how many rows are in each section
 of the table.  Since we only have one section, we simply return the length of
 our `data` array which corresponds to the number of total cells we want.  To
 create tables with multiple sections we would implement the
-[`numberOfSections`][numberofsections] method and possibly return different
+[`numberOfSectionsInTableView`][numberofsections] method and possibly return different
 values in our [`numberOfRowsInSection`][numberofrowsinsection] method depending
 the `section` that was passed in.
 
-2. `func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell`
-is responsible for returning a preconfigured cell that will be used to render
-the row in the table specified by the `indexPath`.   The `indexPath` is an
-[`NSIndexPath`][nsindexpath] of length 2.  It contains two integers:
-`indexPath.indexAtPosition(0)` is the section number, and
-`indexPath.indexAtPosition(1)` is the row number in the given section.
+2. `func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell` is responsible for
+returning a preconfigured cell that will be used to render the row in
+the table specified by the `indexPath`.   The [`indexPath`][nsindexpath]
+identifies a specific row in a specific section of the table the via the
+`indexPath.section` and `indexPath.row`.  Since we are only working with
+one section, we can ignore `section` for now.
 
-[numberofsections]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instm/UITableView/numberOfSections
-[numberofrowsinsection]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instm/UITableView/numberOfRowsInSection:
+[numberofsections]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewDataSource_Protocol/index.html#//apple_ref/occ/intfm/UITableViewDataSource/numberOfSectionsInTableView:
+[numberofrowsinsection]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewDataSource_Protocol/index.html#//apple_ref/occ/intfm/UITableViewDataSource/tableView:numberOfRowsInSection:
 [nsindexpath]: https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSIndexPath_Class/index.html
 
 ## Reusing `UITableViewCells`
 
-The [`cellForRowAtIndexPath`][cellforrowatindexpath] method has to return an
-instance of `UITableViewCell` that is configured with the data for the row
-specified by the `indexPath`.  In the above code we created a new instance of
-the Cocoa Touch-provided `UITableViewCell` class for each call to
-`cellForRowAtIndexPath`.  Since our table had only a few simple cells you might
-not have noticed any appreciable performance drop.  However, in practice, you
-will almost __never create a new cell object for each row__ due to performance
-costs and memory implications.  This becomes especially important once you start
-creating more complex cells or have tables with large numbers of rows.
+An implementation of the
+[`cellForRowAtIndexPath`][cellforrowatindexpath] method must return an
+instance of [`UITableViewCell`][uitableviewcell] that is configured with
+the data for the row specified by the `indexPath`.  In the above code we
+created a new instance of the UIKit-provided `UITableViewCell`
+class for each call to `cellForRowAtIndexPath`.  Since our table had
+only a few simple cells you might not have noticed any appreciable
+performance drop.  However, in practice, you will almost __never create
+a new cell object for each row__ due to performance costs and memory
+implications.  This becomes especially important once you start creating
+more complex cells or have tables with large numbers of rows.
 
 In order to avoid the expensive costs of creating a new cell object for each
 row, we can adopt a strategy of *cell reuse*.  Notice that the table can only
@@ -171,9 +224,9 @@ quite simple to implement.  We can modify our code example above to read
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource {
-    @IBOutlet weak var myFirstTableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
 
-    let kCellIdentifier = "com.codepath.MyFirstTableViewCell"
+    let CellIdentifier = "com.codepath.MyFirstTableViewCell"
 
     let data = ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX",
         "Philadelphia, PA", "Phoenix, AZ", "San Diego, CA", "San Antonio, TX",
@@ -183,13 +236,13 @@ class ViewController: UIViewController, UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        myFirstTableView.dataSource = self
-        myFirstTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: kCellIdentifier)
+        tableView.dataSource = self
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: CellIdentifier)
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier, forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel?.text = data[indexPath.indexAtPosition(1)]
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        cell.textLabel?.text = data[indexPath.row]
         return cell
     }
 
@@ -202,7 +255,7 @@ class ViewController: UIViewController, UITableViewDataSource {
 In `viewDidLoad` we call our `UITableView`'s
 [`registerClass:forCellReuseIdentifier:`][registerclass] to associate the
 built-in class `UITableViewCell` with the constant string identifier
-`kCellIdentifier`.  Notice that we do not explicitly create an instance here.
+`CellIdentifier`.  Notice that we do not explicitly create an instance here.
 The `UITableView` will handle the creation of all cell objects for us.
 
 In `cellForRowAtIndexPath`, we call
@@ -214,65 +267,93 @@ cell with the data for the given row before returning it.
 [dequeuecell]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instm/UITableView/dequeueReusableCellWithIdentifier:forIndexPath:
 
 #### Notes about the cell reuse pattern
-* Be sure to provide a unique reuse identifier for each type of cell that you
-  in your application so that you don't end up accidentally getting an instance
-of the wrong type of cell.
+* Be sure to provide a unique reuse identifier for each type of cell
+  that you in your table so that you don't end up accidentally getting
+an instance of the wrong type of cell.  Also be sure to register
+a cell identifer with the `UITableView` before attempting to dequeue
+a cell using that identifier.  Attempting to call
+`dequeueReusableCellWithIdentifier` with an unregistered identifier will
+cause your app to crash.
 
 * When we explicitly instantiated each cell object in `cellForRowAtIndexPath` we
   were able to specify the cell `style: .Default`.  When we called
 `dequeueReusableCellWithIdentifier` there was no place to specify the style.
-When using `dequeueReusableCellWithIdentifier` you have no over the
+When using `dequeueReusableCellWithIdentifier` you have no control over the
 initilization of your cell.  [In practice][cellstyle], you will want to create
 your own subclass of `UITableViewCell` and add initialization common to all
 cells in the class in the initializer.
 
-* Any customization of the cell on a per row basis should be done in
-`cellForRowAtIndexPath`.  When designing a custom cell class be sure to allow
-access to the properties you need to change on a per row basis.  In this case
-the built-in `UITableViewCell` gives us access to its `textLabel` so that we
-are able to set different text for each row.
+* Any configuration of the cell on a per row basis should be done in
+  `cellForRowAtIndexPath`.  When designing a custom cell class be sure
+to expose a way to configure properties you need to change on a per row
+basis.  In this case the built-in `UITableViewCell` gives us access to
+its `textLabel` so that we are able to set different text for each row.
+With more complex cells however, you may want to provide convenience
+methods that wrap the configuration logic within the custom cell class.
 
 * There are no guarantees on the state of the cell that is returned by
-`dequeueReusableCellWithIdentifier`.  *The cell will not necessarily be in the
-newly initialized state.*  In general, it will have properties that were
-previously set when configuring it with the data of another row.  Be sure
-reconfigure *all* properties to match the data of the current row!
+  `dequeueReusableCellWithIdentifier`.  __The cell will not necessarily
+be in the newly initialized state.__  In general, it will have
+properties that were previously set when configuring it with the data of
+another row.  Be sure reconfigure __all__ properties to match the data of
+the current row!
 
 
 [cellstyle]: http://stackoverflow.com/questions/13174972/setting-style-of-uitableviewcell-when-using-ios-6-uitableview-dequeuereusablecel
 
 ## Custom cells
 
-You will rarely ever use the built-in standard `UITableViewCell` class.  In most
-cases you will want to create your own types of cells that have components and
-layout matching your needs.  As with any other view in Cocoa Touch, there are
-three ways you can design your custom cell type: within a storyboard
-itself via prototype cells, creating a separate NIB via Interface
-Builder, or programmatically laying out your cell.
+### Built-in cell styles
+UIKit provides a number of [cell styles][defaultcellstyles] that can be
+used with the built-in `UITableViewCell` class.  Depending on the cell
+style you specify when initializing the `UITableViewCell` you can use
+the properties `textLabel`, `detailTextLabel`, and `imageView` to
+configure the contents of your cell.  In practice, you'll almost never
+use any of the built in cell styles except maybe the default one that
+contains a single `textLabel`.  However, you should be aware of these
+properties when subclassing `UITableViewCell` and avoid using these
+names for properties that refer to subviews in your own custom cell
+classes.  Doing so may lead to strange bugs when manipulating the sizes
+of a elements in a cell.
+
+[defaultcellstyles]: https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/TableView_iPhone/TableViewStyles/TableViewCharacteristics.html#//apple_ref/doc/uid/TP40007451-CH3-SW14
+
+### Creating customized cells
+
+You will rarely ever use the built-in standard `UITableViewCell` class.
+In almost all cases you will want to create your own types of cells that
+have components and layout matching your needs.  As with any other view
+in UIKit, there are three ways you can design your custom cell type:
+within a storyboard itself via prototype cells, creating a separate NIB
+via Interface Builder, or programmatically laying out your cell.
 
 All three methods can be broken down into the following steps:
 
-1.  Design your cell's layout and populating it with UI elements that
-    configured.  This creates a template that can then be configured later on a
+1.  Design your cell's layout and populate it with UI elements that
+    configurable.  This creates a template that can then be configured later on a
 per row basis with different data.
-2.  Create a class for type cell and associate it with the user interface for
-    the cell.  This includes binding properties in your class to UI elements.
-You will also need to expose properties that allow the user of the cell class to
-update the appearance of the cell based on a given row's data.
+2.  Create a subclass of `UITableViewCell` and associate it with the
+    user interface for the cell.  This includes binding properties in
+your class to UI elements.  You will also need to expose a way for users
+of the cell class to configure the appearance of the cell based on a
+given row's data.
 3.  Register your cell type and give it a *reuse identifier*.
 4.  Dequeue a cell instance using the reuse identifier and configure it to match
     a row's data.
 
+We'll continue our previous example by creating a custom cell that has
+two separate labels with different font sizes for the city name and
+state initials.
 
 ### Using prototype cells
 <!-- TODO: what about interface builder nib for view controller? -->
-To use prototype cells you must be in the storyboard editor and have already
+To use prototype cells you must be in the Interface Builder and have already
 placed a table view in your view controller.  In order to create a prototype
 cell you simply drag a `Table View Cell` from the Object Library onto your table
 view.  You can now layout and add objects your prototype cell as you would with
 any other view.
 
-![Creating a Prototype Cell](http://i.imgur.com/nMFup96.gif)
+<a href="http://imgur.com/nMFup96"><img src="http://i.imgur.com/nMFup96.gif" title="Creating a Prototype Cell" /></a>
 
 Once you are satisfied with the design of your cell, you must create a custom
 class and associate it with your UI template.  Select `File -> New -> File... ->
@@ -290,18 +371,15 @@ you would with any other view.  Note that you must select the "content
 view" of your prototype cell in order for the your custom cell class to
 show up under the Assistant Editor's automatic matching.
 
-<a href="http://imgur.com/Tkofhwo"><img src="http://i.imgur.com/Tkofhwo.gif" title="source: imgur.com" /></a>
+<a href="http://imgur.com/Tkofhwo"><img src="http://i.imgur.com/Tkofhwo.gif" title="Connecting Outlets in a Prototype Cell" /></a>
 
 One you are satisfied with the design of your cell and the corresponding code in
 your custom class, you must register your cell for reuse by providing it with a
 reuse identifier.  In the storyboard editor, select your prototype cell and then
 select the Attributes Inspector.  Set the Identifier field (Reuse Identifier) to
-a unique string that can be used to identify this type of cell.  One method you
-can use to avoid name collisions&mdash;for example with cells you import from
-external librarys&mdash;is to prefix your identifier with your organization
-identifier (e.g. `com.codepath.mycellidenfier`).
+a unique string that can be used to identify this type of cell.
 
-<a href="http://imgur.com/nZdbnm5"><img src="http://i.imgur.com/nZdbnm5.png" title="source: imgur.com" /></a>
+<a href="http://imgur.com/nZdbnm5"><img src="http://i.imgur.com/nZdbnm5.png" title="Setting the Reuse Identifier" /></a>
 
 You can now use this identifier when calling `dequeueReusableCellWithIdentifier`
 in your implementation of `cellForRowAtIndexPath`.  Notice that the compiler
@@ -321,7 +399,7 @@ class DemoPrototypeCell: UITableViewCell {
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource {
-    @IBOutlet weak var myFirstTableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
 
     let data = ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX",
         "Philadelphia, PA", "Phoenix, AZ", "San Diego, CA", "San Antonio, TX",
@@ -331,12 +409,12 @@ class ViewController: UIViewController, UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        myFirstTableView.dataSource = self
+        tableView.dataSource = self
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = myFirstTableView.dequeueReusableCellWithIdentifier("com.codepath.DemoPrototypeCell", forIndexPath: indexPath) as DemoPrototypeCell
-        let cityState = data[indexPath.indexAtPosition(1)].componentsSeparatedByString(", ")
+        let cell = tableView.dequeueReusableCellWithIdentifier("com.codepath.DemoPrototypeCell", forIndexPath: indexPath) as DemoPrototypeCell
+        let cityState = data[indexPath.row].componentsSeparatedByString(", ")
         cell.cityLabel.text = cityState.first
         cell.stateLabel.text = cityState.last
         return cell
@@ -352,8 +430,6 @@ Putting everything together we get a table that looks like this:
 ![Table With Custom Cells](http://i.imgur.com/B2pYrj4l.png)
 
 ### Creating a separate [NIB][nib] for your cell
-<!--- TODO: may want to define what a nib is somewhere -->
-<!--- TODO: write note about difference between XIB and NIB files -->
 
 There may be times when you do not want to use prototype cells, but
 still want to use Interface Builder to lay out the design of your custom
@@ -361,6 +437,13 @@ cell.  For example, you may be working on a project without storyboards
 or you may want to isolate your custom cell's complexity from the rest
 of your storyboard.  In these cases you will create a separate Interface
 Builder file (NIB) to contain your custom cell's UI template.
+
+_NB: Technically NIB and XIB are different formats that both store
+descriptions of UI templates created with Interface Builder.   The NIB
+format is largely deprecated except in the names of classes and methods
+in UIKit.  Most files you create with Interface Builder will have the
+`.xib` extension.  We'll use the two names interchangeably throughout
+this guide._
 
 The procedure in for working with a separate NIB is almost the same as
 working with prototype cells.  You still design your cell in Interface
@@ -374,15 +457,15 @@ separate class and associate your Interface Builder view with your class
 by setting the `Custom Class` property as you did with the prototype
 cell.
 
-However, _most of the time you will want to create your NIB and custom
-class at once_ by selecting `File -> New -> File... -> iOS -> Source ->
-Cocoa Touch Class`.  You should then create you class as a subclass of
+However, __most of the time you will want to create your NIB and custom
+class at once__ by selecting `File -> New -> File... -> iOS -> Source ->
+Cocoa Touch Class`.  You should then create your class as a subclass of
 `UITableViewCell` and tick the box marked `Also create XIB file`.  This
-will create a `.xib` and `.swift` file and automatically set the `Custom
+will create a `.xib` and `.swift` file and automatically sets the `Custom
 Class` property of your table view cell to be the class you just
 created.
 
-<!--- TODO: picture of also create XIB file -->
+<a href="http://imgur.com/YAUlmoD"><img src="http://i.imgur.com/YAUlmoD.png" title="source: imgur.com" /></a>
 
 You can now open the `.xib` file in Interface Builder, edit your view
 and connect IBOutlets to your custom class using the Assistant Editor
@@ -397,7 +480,7 @@ it for reuse in your view controller:
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource {
-    @IBOutlet weak var myFirstTableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
 
     let data = ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX",
         "Philadelphia, PA", "Phoenix, AZ", "San Diego, CA", "San Antonio, TX",
@@ -407,14 +490,14 @@ class ViewController: UIViewController, UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        myFirstTableView.dataSource = self
+        tableView.dataSource = self
         let cellNib = UINib(nibName: "DemoNibTableViewCell", bundle: NSBundle.mainBundle())
-        myFirstTableView.registerNib(cellNib, forCellReuseIdentifier: "com.codepath.DemoNibTableViewCell")
+        tableView.registerNib(cellNib, forCellReuseIdentifier: "com.codepath.DemoNibTableViewCell")
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = myFirstTableView.dequeueReusableCellWithIdentifier("com.codepath.DemoNibTableViewCell", forIndexPath: indexPath) as DemoNibTableViewCell
-        let cityState = data[indexPath.indexAtPosition(1)].componentsSeparatedByString(", ")
+        let cell = tableView.dequeueReusableCellWithIdentifier("com.codepath.DemoNibTableViewCell", forIndexPath: indexPath) as DemoNibTableViewCell
+        let cityState = data[indexPath.row].componentsSeparatedByString(", ")
         cell.cityLabel.text = cityState.first
         cell.stateLabel.text = cityState.last
         return cell
@@ -428,7 +511,7 @@ class ViewController: UIViewController, UITableViewDataSource {
 
 By default your NIB will be in the main resource bundle, although you
 may change this in larger projects by editing your build steps.  The
-code in `viewDidLoad` loads your nib by creating an instance of
+code in `viewDidLoad` loads your NIB by creating an instance of
 [UINib][uinib] and registers it for reuse with the provided reuse
 identifier.
 
@@ -440,7 +523,7 @@ identifier.
 Finally, you may work with projects that do not use Interface Builder at
 all.  In this case, you must lay out your custom cell programatically.
 Create a custom cell class that subclasses `UITableViewCell`, but be
-sure _not_ to tick the `Also create XIB file` checkbox.
+sure __not__ to tick the `Also create XIB file` checkbox.
 
 In order to be able register your custom cell for reuse you must
 implement the [`init(style:reuseIdentifier:)`][initwithstyle] method
@@ -450,7 +533,7 @@ advantage of other entry points in the view's lifecycle (e.g.
 [`drawRect:`][drawrect]) when programming your custom cell.
 
 Once you are ready to use the cell, you must then register your custom
-cell _class_ for reuse in your view controller similarly to how we
+cell __class__ for reuse in your view controller similarly to how we
 registered the NIB for reuse above:
 
 
@@ -463,7 +546,6 @@ class DemoProgrammaticTableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         initViews()
-
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -484,7 +566,7 @@ class DemoProgrammaticTableViewCell: UITableViewCell {
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource {
-    @IBOutlet weak var myFirstTableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
 
     let data = ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX",
         "Philadelphia, PA", "Phoenix, AZ", "San Diego, CA", "San Antonio, TX",
@@ -494,13 +576,13 @@ class ViewController: UIViewController, UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        myFirstTableView.dataSource = self
-        myFirstTableView.registerClass(DemoProgrammaticTableViewCell.self, forCellReuseIdentifier: "com.codepath.DemoProgrammaticCell")
+        tableView.dataSource = self
+        tableView.registerClass(DemoProgrammaticTableViewCell.self, forCellReuseIdentifier: "com.codepath.DemoProgrammaticCell")
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = myFirstTableView.dequeueReusableCellWithIdentifier("com.codepath.DemoProgrammaticCell", forIndexPath: indexPath) as DemoProgrammaticTableViewCell
-        let cityState = data[indexPath.indexAtPosition(1)].componentsSeparatedByString(", ")
+        let cell = tableView.dequeueReusableCellWithIdentifier("com.codepath.DemoProgrammaticCell", forIndexPath: indexPath) as DemoProgrammaticTableViewCell
+        let cityState = data[indexPath.row].componentsSeparatedByString(", ")
         cell.cityLabel.text = cityState.first
         cell.stateLabel.text = cityState.last
         return cell
@@ -524,19 +606,18 @@ rows in a table.
 
 One of the implementation strategies that keeps `UITableViews`
 performant is avoiding instatiating and laying out cells that are not
-currently on the screen.  However, in order to do compute geometries
+currently on the screen.  However, in order to compute some geometries
 (e.g. how long the scrollbar segment is and how quickly it scrolls down
-your screen), iOS does need to have at least an estimate of the total
-size of your table.  Thus one of the goals when specifying the height of
-your rows is to defer if possible performing the layout and
-configuration logic for each cell until it needs to appear on the
-screen.
+your screen), iOS needs to have at least an estimate of the total size
+of your table.  Thus one of the goals when specifying the height of your
+rows is to defer if possible performing the layout and configuration
+logic for each cell until it needs to appear on the screen.
 
 
 ### Fixed row height
 If you want all the cells in your table to the same height you should
 set the [`rowHeight`][rowheight] property on your `UITableView`.  You
-should _not_ implement the [`heightForRowAtIndexPath:`][heightforrow]
+should __not__ implement the [`heightForRowAtIndexPath:`][heightforrow]
 method in your `UITableViewDelegate`.
 
 ```swift
@@ -561,7 +642,7 @@ class ViewController: UIViewController, UITableViewDataSource {
 There are two ways to have different row heights on a per cell basis.
 If project is targeted only for iOS 8 and above, you can simply have
 Auto Layout adjust your row heights as necessary.  In other cases you
-will need to manually compute the height each row in your
+will need to manually compute the height of each row in your
 `UITableViewDelegate`.
 
 #### Setting the estimated row height
@@ -589,7 +670,7 @@ class ViewController: UIViewController, UITableViewDataSource {
 ```
 
 If your estimate is wildly incorrect or if you have extremely variable
-row heights, you may find that the behavior and sizing of the scroll bar
+row heights, you may find the behavior and sizing of the scroll bar
 to be less than satisfactory.  In this case you may want to implement
 the
 [`estimatedHeightForRowAtIndexPath:`][estimatedrowheightforindexpath]
@@ -693,6 +774,370 @@ method.  A discussion of how to do this in Swift can be found
 
 [boundingrectwithsize]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/NSString_UIKit_Additions/index.html#//apple_ref/occ/instm/NSString/boundingRectWithSize:options:attributes:context:
 [boundingrectwithsizeswift]: http://www.iosmike.com/2014/08/dynamically-resizing-labels-in-swift.html
+
+## Cell Accessory Views
+
+`UITableViewCell` and every subclass of it you create comes built-in
+with an _accessory view_ that can be useful for displaying a status
+indicator or small control to the right of your cell's main _content
+view_.  If the accessory view is visible, the size content view will be
+shrunk to accommedate it.  If you plan on using accessory views, be sure
+the elements in your content view are configured to properly resize when
+the width available to them changes.
+
+You can use either the built-in accessory views via the
+[`accessoryType`][accessorytype] property or use any `UIView` by setting
+the [`accessoryView`][accessoryview] property.  You should __not__ set
+both properties.
+
+[accessorytype]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/index.html#//apple_ref/occ/instp/UITableViewCell/accessoryType
+[accessoryview]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/index.html#//apple_ref/occ/instp/UITableViewCell/accessoryView
+
+### Built in acessory views
+There are a few built-in accessory views that can be activated by
+setting the [`accessoryType`][accessorytype] property on your
+`UITableViewCell`.  By default this value is is `.None`.  Returning to
+our prototype cell example, you can see what each accessory type looks
+like below.
+
+
+```swift
+import UIKit
+
+class ViewController: UIViewController, UITableViewDataSource {
+    ...
+
+    let accessoryTypes: [UITableViewCellAccessoryType] = [.None, .DisclosureIndicator, .DetailDisclosureButton, .Checkmark, .DetailButton]
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("com.codepath.DemoPrototypeCell", forIndexPath: indexPath) as DemoPrototypeCell
+        let cityState = data[indexPath.row].componentsSeparatedByString(", ")
+        cell.cityLabel.text = cityState.first
+        cell.stateLabel.text = cityState.last
+        cell.accessoryType = accessoryTypes[indexPath.row % accessoryTypes.count]
+        return cell
+    }
+
+    ...
+}
+```
+
+<a href="http://imgur.com/6MDpnCK"><img src="http://i.imgur.com/6MDpnCKl.png" title="Accessory Types" /></a>
+
+If you use the `.DetailDisclosureButton` or `.DetailButton` accessory
+types you can handle the event of a tap on your button by implementing
+the [accessoryButtonTappedForRowWithIndexPath][accessorytapped] method
+in your `UITableViewDelegate`.
+
+
+[accessorytapped]: https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UITableViewDelegate_Protocol/index.html#//apple_ref/occ/intfm/UITableViewDelegate/tableView:accessoryButtonTappedForRowWithIndexPath:
+
+
+### Custom accessory views
+You can use any `UIView`&mdash;including custom ones&mdash;as an
+accessory view by setting the  [`accessoryView`][accessoryview] property on
+your `UITableViewCell`.  You should be aware of the same performance
+considerations regarding the creation of `UIViews` per row when using
+this feature.  Also note that if you want to handle any events from a
+custom accessory view, you will have to implement your own event
+handling logic (see how to propagate events below).  For more complex
+situations, you might opt to simply include this custom "accessory view"
+as part of your main content view.
+
+```swift
+class DemoPrototypeCell: UITableViewCell {
+
+    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var stateLabel: UILabel!
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        accessoryView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+    }
+}
+```
+```swift
+import UIKit
+
+class ViewController: UIViewController, UITableViewDataSource {
+    ...
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("com.codepath.DemoPrototypeCell", forIndexPath: indexPath) as DemoPrototypeCell
+        let cityState = data[indexPath.row].componentsSeparatedByString(", ")
+        cell.cityLabel.text = cityState.first
+        cell.stateLabel.text = cityState.last
+
+        let greyLevel = CGFloat(indexPath.row % 5) / 5.0
+        cell.accessoryView?.backgroundColor = UIColor(white: greyLevel, alpha: 1)
+
+        return cell
+    }
+    ...
+}
+```
+
+<a href="http://imgur.com/KGNgM9x"><img src="http://i.imgur.com/KGNgM9xl.png" title="Custom Accessory View" /></a>
+
+## Working with sections
+Rows in a `UITableView` can be grouped under section headers.  You can
+control how many sections are in the table and how many rows are
+in each section by implementing the
+[`numberOfSectionsInTableView`][numberofsections] and the
+[`numberOfRowsInSection`][numberofrowsinsection] methods respectively in
+our `UITableViewDataSource`.  You would then need your
+[`cellForRowAtIndexPath`][cellforrowatindexpath] implementation to
+support multiple sections and recturn the correct row under the correct
+section specified by the `indexPath`.
+
+### Section header views
+You can control the view displayed for a section header by implementing
+[`viewForHeaderInSection`][viewforheader] and returning a
+[`UITableViewHeaderFooterView`][headerfooterview] configured with data
+specific to the section.  Although, you might opt to implement the simpler
+[`titleForHeaderInSection:`][headertitle] if you are OK with the default
+styling.
+
+[headertitle]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewDataSource_Protocol/index.html#//apple_ref/occ/intfm/UITableViewDataSource/tableView:titleForHeaderInSection:
+[viewforheader]: https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UITableViewDelegate_Protocol/index.html#//apple_ref/occ/intfm/UITableViewDelegate/tableView:viewForHeaderInSection:
+[headerfooterview]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewHeaderFooterView_class/index.html
+
+Each of the concepts and methods we discussed for using
+`UITableViewCells` has an analogue for `UITableViewHeaderFooterViews`.
+
+* [`registerNib:forHeaderFooterViewReuseIdentifier:`][registerheadernib]
+  and
+[`registerClass:forHeaderFooterViewReuseIdentifier:`][registerheaderclass]
+can be used to register `UITableViewHeaderFooterViews` for reuse
+* [`dequeueReusableHeaderFooterViewWithIdentifier:`][dequeueheader] is
+  used to obtain a `UITableViewHeaderFooterView` instance from the
+reusable views pool
+* We can implement custom header views by creating a NIB and subclassing
+  `UITableViewHeaderFooterViews`.
+* We can customize the height of our header views by implementing [`heightForHeaderInSection:
+`][heightforheader]
+
+
+[dequeueheader]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instm/UITableView/dequeueReusableHeaderFooterViewWithIdentifier:
+[registerheadernib]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instm/UITableView/registerNib:forHeaderFooterViewReuseIdentifier:
+[registerheaderclass]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instm/UITableView/registerClass:forHeaderFooterViewReuseIdentifier:
+[heightforheader]: https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UITableViewDelegate_Protocol/index.html#//apple_ref/occ/intfm/UITableViewDelegate/tableView:heightForHeaderInSection:
+
+_NB: The above discussion regarding section headers applies equally
+to footers by replacing "header" with "footer" throughout._
+
+```swift
+import UIKit
+
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var tableView: UITableView!
+
+    let data = [("Arizona", ["Phoenix"]),
+        ("California", ["Los Angeles", "San Francisco", "San Jose", "San Diego"]),
+        ("Florida", ["Miami", "Jacksonville"]),
+        ("Illinois", ["Chicago"]),
+        ("New York", ["Buffalo", "New York"]),
+        ("Pennsylvania", ["Pittsburg", "Philadelphia"]),
+        ("Texas", ["Houston", "San Antonio", "Dallas", "Austin", "Fort Worth"])]
+
+    let CellIdentifier = "TableViewCell", HeaderViewIdentifier = "TableViewHeaderView"
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: CellIdentifier)
+        tableView.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: HeaderViewIdentifier)
+    }
+
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return data.count
+    }
+
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data[section].1.count
+    }
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        let citiesInSection = data[indexPath.section].1
+        cell.textLabel?.text = citiesInSection[indexPath.row]
+        return cell
+    }
+
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterViewWithIdentifier(HeaderViewIdentifier) as UITableViewHeaderFooterView
+        header.textLabel.text = data[section].0
+        return header
+    }
+
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+}
+```
+
+### Plain vs Grouped style
+The above code can produce two different behaviors depending on whether
+our `UITableView` is configured to have the `Plain` style or the
+`Grouped` style.  `Plain` is on the left and `Grouped` is on the right
+below.  Notice that the section header sticks at the top of the table
+while we are still scrolling within the section.
+
+<a href="http://imgur.com/8n5vKwU"><img src="http://i.imgur.com/8n5vKwU.gif" title="Plain Section style" /></a>
+<a href="http://imgur.com/vOwvqio"><img src="http://i.imgur.com/vOwvqio.gif" title="source: imgur.com" /></a>
+
+The table view section style can be changed in Interface Builder under
+the Attributes Inspector or can be set when the table view is
+[initialized][initwithstyle] if it is created programmatically.
+
+<a href="http://imgur.com/IZhr8uI"><img src="http://i.imgur.com/IZhr8uI.png" title="source: imgur.com" /></a>
+
+[initwithstyle]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instm/UITableView/initWithFrame:style:
+
+## Handling row selection
+`UITableView` and `UITableViewCell` have several built-in facilities for
+responding to a cell being selected a cell and changing a cell's visual
+appearance when it is selected.
+
+### Handling cell selection at the table level
+To respond to a cell being selected you can implement
+[`didSelectRowAtIndexPath:`][didselectrow] in your
+`UITableViewDelegate`.  Here is one way we can implement a simple
+checklist:
+
+[didselectrow]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewDelegate_Protocol/index.html#//apple_ref/occ/intfm/UITableViewDelegate/tableView:didSelectRowAtIndexPath:
+
+```swift
+import UIKit
+
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var tableView: UITableView!
+
+    let CellIdentifier = "TableCellView"
+
+    let data = ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX",
+        "Philadelphia, PA", "Phoenix, AZ", "San Diego, CA", "San Antonio, TX",
+        "Dallas, TX", "Detroit, MI", "San Jose, CA", "Indianapolis, IN",
+        "Jacksonville, FL", "San Francisco, CA", "Columbus, OH", "Austin, TX",
+        "Memphis, TN", "Baltimore, MD", "Charlotte, ND", "Fort Worth, TX"]
+
+    var checked: [Bool]!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        checked = [Bool](count: data.count, repeatedValue: false)
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: CellIdentifier)
+    }
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        checked[indexPath.row] = !checked[indexPath.row]
+        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+    }
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        cell.textLabel?.text = data[indexPath.row]
+        if checked[indexPath.row] {
+            cell.accessoryType = .Checkmark
+        } else {
+            cell.accessoryType = .None
+        }
+        return cell
+    }
+
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count
+    }
+}
+```
+
+Notice that we deselect the cell immediately after selection event.
+[Selection is not a good way to store or indicate
+state][selectionuiguidelines].  Also notice that we reload the row once
+we've modified our `checked` data model.  This necessary so that the
+table knows to reconfigure and rerender the corresponding cell to have a
+checkmark.  More info on [handling updates to your
+data](#handling-updates-to-your-data) can be found below.
+
+[selectionuiguidelines]: https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/TableView_iPhone/ManageSelections/ManageSelections.html#//apple_ref/doc/uid/TP40007451-CH9-SW10
+
+<a href="http://imgur.com/tqj32qw"><img src="http://i.imgur.com/tqj32qw.gif" title="source: imgur.com" /></a>
+
+### Responding to the selection event at the cell level
+There are several ways the `UITableViewCell` itself can respond to a
+selection event.  The most basic is setting the
+[`selectionStyle`][cellselectionstyle].  In particular, the value
+`.None` can be useful here&mdash;though you should set the flag
+[allowsSelection][allowsselection] on your `UITableView` if you wish to
+disable selection globally.
+
+You can have a cell change its background when selected by setting the
+[selectedBackgroundView][selectedbackgroundview] property.  You can also
+respond programmatically to the selection event by overriding the
+[`setSelected`][setSelected] method in your custom cell class.
+
+[setselected]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/#//apple_ref/occ/instm/UITableViewCell/setSelected:animated:
+
+```swift
+import UIKit
+
+class DemoProgrammaticTableViewCell: UITableViewCell {
+
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        initViews()
+
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        initViews()
+    }
+
+    func initViews() {
+        selectedBackgroundView=UIView(frame: frame)
+        selectedBackgroundView.backgroundColor = UIColor(red: 0.5, green: 0.7, blue: 0.9, alpha: 0.8)
+    }
+
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        let fontSize: CGFloat = selected ? 34.0 : 17.0
+        self.textLabel?.font = self.textLabel?.font.fontWithSize(fontSize)
+    }
+}
+```
+
+<a href="http://imgur.com/0RT2qmn"><img src="http://i.imgur.com/0RT2qmn.gif" title="source: imgur.com" /></a>
+
+[allowsselection]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instp/UITableView/allowsSelection
+[cellselectionstyle]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/#//apple_ref/occ/instp/UITableViewCell/selectionStyle
+[selectedbackgroundview]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/#//apple_ref/occ/instp/UITableViewCell/selectedBackgroundView
+
+## Handling updates to your data
+- reload data when table changes
+
+### Animating changes
+- reloadforsection
+- didinsert...
+
+## Propagating events from within a custom cell
+- selectors and example of using them
+- creating your own protocols and using the delegate pattern
+
+## Common behaviors
+### Pull to refresh
+- example of how to use UIRefreshControl
+
+### Infinite scrolling
+- example of loading cells as scroll
+
+## Editing mode
+
+[accessoryview]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/index.html#//apple_ref/occ/instm/UITableViewCell/accessoryView
 
 ## References
 
