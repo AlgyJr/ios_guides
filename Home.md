@@ -21,15 +21,36 @@ Read about our [mission to change the way engineers learn new technologies](http
 * [[Basic Swift|Swift Basics]]
 * [[Intermediate Swift|Swift Intermediate]]
 * [[Xcode Project Basics|Project Basics]]
-* [[App Architecture|Architecture]]
+* [[Managing Dependencies with CocoaPods|CocoaPods]]
+* [[Application Architecture and MVC in iOS|Application-Architecture]]
 
-## User Interface
-* [[Interface Builder|Interface Builder]]
+## Models and APIs
+* [[Network Programming Basics|Network-Programming]]
+
+## Working with View Controllers
+
+* [[Navigation Controller Guide|Navigation Controller]]
+* [[Tab Bar Controller Guide|Tab Bar Controller Guide]]
+* [[View Controller Transitions|View Controller Transitions]]
+
+## Views Programming and UIKit components
+
 * [[Common Views|Common Views]]
-* [[Table View Basics|Tableview Basics]]
+* [[Table View Guide|Table View Guide]]
+* [[Interface Builder|Interface Builder]]
 * [[Auto Layout|Auto Layout]]
 * [[Animation|Animation]]
-* [[View Controller Transitions|View Controller Transitions]]
+
+## Common Tasks
+
+The following tasks may be helpful in completing some of the homeworks
+
+* Showing a progress/loading HUD
+* Loading images asynchronously
+* Implementing pull-to-refresh in a table view
+
+## Other topics
+* [[Services and Frameworks|Services-Frameworks]]
 
 # Troubleshooting
 
@@ -45,8 +66,7 @@ Read about our [mission to change the way engineers learn new technologies](http
   - [objc.io](http://www.objc.io/). A periodical about best practices and advanced techniques.
   - [NSScreencast](http://nsscreencast.com/). Screencasts that implement things on iOS.
   - [Mike Ash's blog](https://www.mikeash.com/pyblog/). There is nothing this guy doesn't know.
-  
-  
+
 ## Credits
 
 Add your name to the list if you've made a contribution.

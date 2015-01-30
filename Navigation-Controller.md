@@ -1,3 +1,26 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Basic use of the navigation controller](#basic-use-of-the-navigation-controller)
+  - [Using navigation controllers in storyboards](#using-navigation-controllers-in-storyboards)
+    - [Adding the navigation controller and setting the root view controller](#adding-the-navigation-controller-and-setting-the-root-view-controller)
+    - [Pushing a view controller onto the navigation stack](#pushing-a-view-controller-onto-the-navigation-stack)
+    - [Configuring a view controller before it is pushed](#configuring-a-view-controller-before-it-is-pushed)
+    - [Unwind segues and passing information back up the hierarchy](#unwind-segues-and-passing-information-back-up-the-hierarchy)
+  - [Using navigation controllers without storyboards](#using-navigation-controllers-without-storyboards)
+    - [Adding the navigation controller and setting its root view controller](#adding-the-navigation-controller-and-setting-its-root-view-controller)
+    - [Initializing and pushing a view controller onto the stack](#initializing-and-pushing-a-view-controller-onto-the-stack)
+    - [Passing information back up the stack with a delegate](#passing-information-back-up-the-stack-with-a-delegate)
+- [Customizing the appearance of navigation bar](#customizing-the-appearance-of-navigation-bar)
+  - [Understanding navigation bars and navigation items](#understanding-navigation-bars-and-navigation-items)
+  - [Customization inside a storyboard](#customization-inside-a-storyboard)
+  - [Navigation bar colors, background image, and text atrributes](#navigation-bar-colors-background-image-and-text-atrributes)
+  - [Title text and view of a navigation item](#title-text-and-view-of-a-navigation-item)
+  - [Setting bar button items for a navigation item](#setting-bar-button-items-for-a-navigation-item)
+    - [The Back button](#the-back-button)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 In a typical iOS project you will create one view controller for each
 "screen" in your application.  This means you need a way to coordinate
 the interaction of these view controllers and the presentation of their

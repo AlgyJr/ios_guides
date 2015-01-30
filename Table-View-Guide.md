@@ -20,7 +20,7 @@
     - [Automatically resizing rows (iOS 8+)](#automatically-resizing-rows-ios-8)
     - [Manually computing row heights](#manually-computing-row-heights)
 - [Cell Accessory Views](#cell-accessory-views)
-  - [Built in acessory views](#built-in-acessory-views)
+  - [Built in accessory views](#built-in-accessory-views)
   - [Custom accessory views](#custom-accessory-views)
 - [Working with sections](#working-with-sections)
   - [Section header views](#section-header-views)
@@ -28,14 +28,14 @@
 - [Handling row selection](#handling-row-selection)
   - [Handling cell selection at the table level](#handling-cell-selection-at-the-table-level)
   - [Responding to the selection event at the cell level](#responding-to-the-selection-event-at-the-cell-level)
-
-__NOT IMPLEMENTED__:
+- [Example: load data from a REST API and display it in your table](#example-load-data-from-a-rest-api-and-display-it-in-your-table)
 - [Handling updates to your data](#handling-updates-to-your-data)
   - [Animating changes](#animating-changes)
+- [Implementing pull-to-refresh with `UIRefreshControl`](#implementing-pull-to-refresh-with-uirefreshcontrol)
+  - [With a `UITableViewController`](#with-a-uitableviewcontroller)
+  - [Without a `UITableViewController`](#without-a-uitableviewcontroller)
 - [Propagating events from within a custom cell](#propagating-events-from-within-a-custom-cell)
-- [Common behaviors](#common-behaviors)
-  - [Pull to refresh](#pull-to-refresh)
-  - [Infinite scrolling](#infinite-scrolling)
+- [Infinite scrolling](#infinite-scrolling)
 - [Editing mode](#editing-mode)
 - [References](#references)
 
@@ -429,14 +429,14 @@ Putting everything together we get a table that looks like this:
 
 ![Table With Custom Cells](http://i.imgur.com/B2pYrj4l.png)
 
-### Creating a separate [NIB][nib] for your cell
+### Creating a separate NIB for your cell
 
 There may be times when you do not want to use prototype cells, but
 still want to use Interface Builder to lay out the design of your custom
 cell.  For example, you may be working on a project without storyboards
 or you may want to isolate your custom cell's complexity from the rest
 of your storyboard.  In these cases you will create a separate Interface
-Builder file (NIB) to contain your custom cell's UI template.
+Builder file ([NIB][nib]) to contain your custom cell's UI template.
 
 _NB: Technically NIB and XIB are different formats that both store
 descriptions of UI templates created with Interface Builder.   The NIB
@@ -793,7 +793,7 @@ both properties.
 [accessorytype]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/index.html#//apple_ref/occ/instp/UITableViewCell/accessoryType
 [accessoryview]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/index.html#//apple_ref/occ/instp/UITableViewCell/accessoryView
 
-### Built in acessory views
+### Built in accessory views
 There are a few built-in accessory views that can be activated by
 setting the [`accessoryType`][accessorytype] property on your
 `UITableViewCell`.  By default this value is is `.None`.  Returning to
@@ -1117,27 +1117,267 @@ class DemoProgrammaticTableViewCell: UITableViewCell {
 [cellselectionstyle]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/#//apple_ref/occ/instp/UITableViewCell/selectionStyle
 [selectedbackgroundview]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/#//apple_ref/occ/instp/UITableViewCell/selectedBackgroundView
 
+## Example: load data from a REST API and display it in your table
+In order to discuss some topics relating to working with tables that
+load data from a network resource we present an example application that
+fetches the top stories from the New York Times' news feed and presents
+them to the user in a table view.
+
+Our setup is almost the same as in the custom [prototype
+cell](#using-prototype-cells) example above.  We've created a prototype
+cell and an associated custom class `StoryCell` that can display a
+single headline and possibly an associated image.  We've also added a
+model class `Story` that also handles our network request and response
+parsing logic.
+
+<!--- TODO: link to network guide here -->
+
+```swift
+import UIKit
+
+class ViewController: UIViewController, UITableViewDataSource {
+    @IBOutlet weak var tableView: UITableView!
+
+    var stories: [Story] = []
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.dataSource = self
+
+        Story.fetchStories({ (stories: [Story]) -> Void in
+            dispatch_async(dispatch_get_main_queue(), {
+                self.stories = stories
+                self.tableView.reloadData()
+            })
+        }, error: nil)
+    }
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("StoryCell") as StoryCell
+        cell.story = stories[indexPath.row]
+        return cell
+    }
+
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return stories.count
+    }
+}
+```
+
+```swift
+import UIKit
+
+class StoryCell: UITableViewCell {
+
+    @IBOutlet weak var thumbnailView: UIImageView!
+    @IBOutlet weak var headlineLabel: UILabel!
+
+    var story: Story? {
+        didSet {
+            headlineLabel?.text = story?.headline
+            headlineLabel?.sizeToFit()
+        }
+    }
+}
+```
+
+```swift
+import UIKit
+
+private let apiKey = "53eb9541b4374660d6f3c0001d6249ca:19:70900879"
+private let resourceUrl = NSURL(string: "http://api.nytimes.com/svc/topstories/v1/home.json?api-key=\(apiKey)")!
+
+class Story {
+    var headline: String?
+    var thumbnailUrl: String?
+
+    init(jsonResult: NSDictionary) {
+        if let title = jsonResult["title"] as? String {
+            headline = title
+        }
+
+        if let multimedia = jsonResult["multimedia"] as? NSArray {
+            // 4th element is will contain the image of the right size
+            if multimedia.count >= 4 {
+                if let mediaItem = multimedia[3] as? NSDictionary {
+                    if let type = mediaItem["type"] as? String {
+                        if type == "image" {
+                            if let url = mediaItem["url"] as? String{
+                                thumbnailUrl = url
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    class func fetchStories(successCallback: ([Story]) -> Void, error: ((NSError?) -> Void)?) {
+        NSURLSession.sharedSession().dataTaskWithURL(resourceUrl, completionHandler: {(data, response, requestError) -> Void in
+            if let requestError = requestError? {
+                error?(requestError)
+            } else {
+                if let data = data? {
+                    let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
+                    if let results = json["results"] as? NSArray {
+                        var stories: [Story] = []
+                        for result in results as [NSDictionary] {
+                            stories.append(Story(jsonResult: result))
+                        }
+                        successCallback(stories)
+                    }
+                } else {
+                    // unexepected error happened
+                    error?(nil)
+                }
+            }
+        }).resume()
+    }
+}
+```
+
+
+<!-- TODO add image of what nyt headline app looks like when running -->
+
+We extend this basic example in a few ways in some other guides.
+<!-- TODO link to afnetworking + image view for rest of example -->
+
 ## Handling updates to your data
 - reload data when table changes
 
 ### Animating changes
-- reloadforsection
-- didinsert...
+_to be completed..._
+
+## Implementing pull-to-refresh with `UIRefreshControl`
+UIKit provides a standard control [`UIRefreshControl`][uirefreshcontrol]
+to help you implement the "pull-to-refresh" behavior that is commonly
+found in many apps that display table views of data loaded from a
+remote resource.
+
+[uirefreshcontrol]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIRefreshControl_class/index.html
+
+<!-- TODO add image of what nyt headline app looks like with refresh
+control -->
+
+We'd like to use the `UIRefreshControl` in our [NY Times
+headlines](#example-load-data-from-a-rest-api-and-display-it-in-your-table)
+example above.  Unfortunately the Apple documentation states that
+
+>Because the refresh control is specifically designed for use in a table
+>view that's managed by a table view controller, using it in a different
+>context can result in undefined behavior.
+
+The `UIRefreshControl` is designed to work exclusively with and be
+attached to `UITableViewControllers`.  Unfortunately for us, we've
+designed our app to use a normal `UIViewController` that contains a
+separate `UITableView`.
+
+### With a `UITableViewController`
+One thing we could do is rewrite our app to use a
+`UITableViewController`.   Right now since this app is pretty small and
+our `ViewController` doesn't need to manage other views, this is pretty
+easy.  We probably normally would choose to swap in a
+`UITableViewController`, but we present what that looks like here for
+illustrative purposes
+
+```swift
+import UIKit
+
+class TableViewController: UITableViewController {
+    var stories: [Story] = []
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        fetchStories()
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: "fetchStories", forControlEvents: UIControlEvents.ValueChanged)
+    }
+
+    func fetchStories() {
+        Story.fetchStories({ (stories: [Story]) -> Void in
+            dispatch_async(dispatch_get_main_queue(), {
+                self.stories = stories
+                self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
+            })
+        }, error: nil)
+    }
+    ...
+}
+```
+
+Notice that we call `addTarget` on the `refreshControl` in order to have
+it our `fetchStories` method when the pull-to-refresh action is fired.
+This is an example of [target-action pattern][targetaction] (sometimes
+called target-selector) that is use throughout UIKit libraries.  This
+invocation basically means "call the method identified by `action` on
+the `target` object when the event is fired".
+
+_NB:  In Objective-C the `action` parameter has to a
+[`selector`][selector].  In Swift, strings are automatically converted
+to selectors when necessary._
+
+[targetaction]: https://developer.apple.com/library/ios/documentation/General/Conceptual/Devpedia-CocoaApp/TargetAction.html
+[selector]: https://developer.apple.com/library/mac/documentation/General/Conceptual/DevPedia-CocoaCore/Selector.html
+
+Also notice that we have to manually dismiss the `refreshControl` by
+calling `endRefreshing` once our network request returns.
+
+### Without a `UITableViewController`
+
+Though technically unsupported by Apple, there is at least one
+work-around that will alow us to use the `UIRefreshControl` without
+having a `UITableViewController` in our view controller hiearchy.
+
+We can adapt our above [NY Times
+headlines](#example-load-data-from-a-rest-api-and-display-it-in-your-table)
+example as follows:
+
+```swift
+import UIKit
+
+class ViewController: UIViewController, UITableViewDataSource {
+    @IBOutlet weak var tableView: UITableView!
+    var refreshControl: UIRefreshControl!
+    var stories: [Story] = []
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.dataSource = self
+
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "fetchStories", forControlEvents: UIControlEvents.ValueChanged)
+
+        let dummyTableVC = UITableViewController()
+        dummyTableVC.tableView = tableView
+        dummyTableVC.refreshControl = refreshControl
+
+        fetchStories()
+    }
+
+    func fetchStories() {
+        Story.fetchStories({ (stories: [Story]) -> Void in
+            dispatch_async(dispatch_get_main_queue(), {
+                self.stories = stories
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+            })
+        }, error: nil)
+    }
+    ...
+}
+```
+
+This hack requires us to instantiate a dummy table view controller, set
+its tableview to point to ours, and finally attach the refresh control
+to this dummy table view controller.
 
 ## Propagating events from within a custom cell
-- selectors and example of using them
-- creating your own protocols and using the delegate pattern
+_to be completed..._
 
-## Common behaviors
-### Pull to refresh
-- example of how to use UIRefreshControl
-
-### Infinite scrolling
-- example of loading cells as scroll
+## Infinite scrolling
+_to be completed..._
 
 ## Editing mode
-
-[accessoryview]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/index.html#//apple_ref/occ/instm/UITableViewCell/accessoryView
-
-## References
+_to be completed..._
 
