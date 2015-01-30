@@ -42,4 +42,4 @@ For the launch image, you will need to configure the Launch Image Target, change
 
 <img src="http://imgur.com/XuegY84.gif">
 
-Note that in XCode 6, storyboard files are used instead of launch images defined by the Launch Screen file.  If this file is left blank, then the Launch Image source gets used to render.  You must also delete the LaunchScreen.xib file from the project for the launch images to be used, which the GIF above doesn't show.
+Note that in XCode 6, storyboard files are used instead of launch images defined by the Launch Screen file.  If this file is left blank, then the Launch Image source gets used to render.  You must also delete the `LaunchScreen.xib` file from the project for the launch images to be used, which the GIF above doesn't show.
