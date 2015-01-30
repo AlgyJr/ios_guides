@@ -45,9 +45,9 @@ Read about our [mission to change the way engineers learn new technologies](http
 
 The following tasks may be helpful in completing some of the homeworks
 
-* Showing a progress/loading HUD
-* Loading images asynchronously
-* Implementing pull-to-refresh in a table view
+* [Showing a progress/loading HUD](CocoaPods#example-using-cocoapods-to-integrate-a-progress-hud-library)
+* [Loading images asynchronously](Network-Programming#example-loading-images-asynchronously-using-uiimageviewafnetworking)
+* [Implementing pull-to-refresh in a table view](Table-View-Guide#implementing-pull-to-refresh-with-uirefreshcontrol)
 
 ## Other topics
 * [[Services and Frameworks|Services-Frameworks]]

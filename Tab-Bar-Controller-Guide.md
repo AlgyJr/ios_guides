@@ -14,7 +14,7 @@
 
 ## Overview
 
-<!-- TODO insert example gif here -->
+<a href="http://imgur.com/WhoidE5"><img src="http://i.imgur.com/WhoidE5.gif" title="source: imgur.com" /></a>
 
 Tab bar controllers are implemented by the
 [UITabBarController][uitabbarcontroller] class.  They allow a user of to
@@ -56,7 +56,7 @@ controllers.  We also set the the the tab bar controller to be our
 application's root view controller selecting it and by ticking the `Is
 Initial View Controller` checkbox.
 
-<!--- TODO add image of setting initial view controller -->
+<a href="http://imgur.com/WgiEuBZ"><img src="http://i.imgur.com/WgiEuBZ.png" title="source: imgur.com" /></a>
 
 ### Adding tabs to the tab bar controller
 We can add more tabs by dragging a new view controller frm
@@ -68,7 +68,7 @@ also automatically adds a tab bar item to our new view controller which
 will alow us to configure the appearance of the button that represents
 this view controller in the tab bar.
 
-<!--- TODO: Insert example of this action here -->
+<a href="http://imgur.com/OOMB573"><img src="http://i.imgur.com/OOMB573.gif" title="source: imgur.com" /></a>
 
 In our case we only needed two view controllers total, but we removed
 and readded one above to illustrate the technique.
@@ -84,7 +84,7 @@ display the elapsed time and add two buttons for "start" and
 "stop/reset".  We add `@IBOutlets` for our two labels and add
 `@IBActions` to respond to each button being tapped.
 
-<!-- TODO add image with custom class set-->
+<a href="http://imgur.com/Vc2uQK7"><img src="http://i.imgur.com/Vc2uQK7.png" title="source: imgur.com" /></a>
 
 Finally we can add the code to make our clock tick
 
@@ -171,8 +171,7 @@ class StopwatchViewController: UIViewController {
     }
 }
 ```
-
-<!-- TODO add image with custom class set-->
+<a href="http://imgur.com/j2tg3ul"><img src="http://i.imgur.com/j2tg3ul.gif" title="source: imgur.com" /></a>
 
 ## Programatically setting up a tab bar controller
 _to be completed_

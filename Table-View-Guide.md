@@ -1128,9 +1128,8 @@ cell](#using-prototype-cells) example above.  We've created a prototype
 cell and an associated custom class `StoryCell` that can display a
 single headline and possibly an associated image.  We've also added a
 model class `Story` that also handles our network request and response
-parsing logic.
-
-<!--- TODO: link to network guide here -->
+parsing logic.  More on making network requests can be found in the
+[[basic network programming guide|Network Programming]].
 
 ```swift
 import UIKit
@@ -1235,15 +1234,17 @@ class Story {
     }
 }
 ```
+<a href="http://imgur.com/ljCaUch"><img src="http://i.imgur.com/ljCaUchl.png" title="source: imgur.com" /></a>
 
+We extend this basic example in a few ways in some of the other guides:
 
-<!-- TODO add image of what nyt headline app looks like when running -->
+* [Showing a progress/loading HUD](CocoaPods#example-using-cocoapods-to-integrate-a-progress-hud-library)
+* [Loading images asynchronously](Network-Programming#example-loading-images-asynchronously-using-uiimageviewafnetworking)
+* [Implementing pull-to-refresh in a table view](#implementing-pull-to-refresh-with-uirefreshcontrol)
 
-We extend this basic example in a few ways in some other guides.
-<!-- TODO link to afnetworking + image view for rest of example -->
 
 ## Handling updates to your data
-- reload data when table changes
+_to be completed..._
 
 ### Animating changes
 _to be completed..._
@@ -1256,8 +1257,7 @@ remote resource.
 
 [uirefreshcontrol]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIRefreshControl_class/index.html
 
-<!-- TODO add image of what nyt headline app looks like with refresh
-control -->
+<a href="http://imgur.com/nVf3hiL"><img src="http://i.imgur.com/nVf3hiL.gif" title="source: imgur.com" /></a>
 
 We'd like to use the `UIRefreshControl` in our [NY Times
 headlines](#example-load-data-from-a-rest-api-and-display-it-in-your-table)

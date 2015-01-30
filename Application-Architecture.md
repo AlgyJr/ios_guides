@@ -83,7 +83,7 @@ also select a view controller and set it to be the root view controller
 by using the `Is Initial View Controller` checkbox in the Attributes
 Inspector.
 
-<!--- TODO: image of arrow and checkbox for initial view controller -->
+<a href="http://imgur.com/winIGnh"><img src="http://i.imgur.com/winIGnhl.png" title="Setting Root View Controller" /></a>
 
 #### Programatically setting the root view controller
 In applications not using storyboards, you must programatically set the
@@ -122,8 +122,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ...
 }
 ```
-<!-- TODO: insert image here of above code-->
 
+<a href="http://imgur.com/fXE9BWw"><img src="http://i.imgur.com/fXE9BWwl.png" title="Setting Root View Controller Programatically" /></a>
 
 ### Other hooks in the application lifecycle
 The `UIApplicationDelegate` protocol provides many other hooks into the
@@ -176,8 +176,8 @@ The model layer is responsible for knowing how to perform [CRUD][crud]
 operations on models.  This can include having Swift (or Objective-C)
 bindings to right API endpoints and implementing logic to
 serialize/deserialize models from/into the different data formats.
-[Mantle][https://github.com/Mantle/Mantle] and
-[RestKit][https://github.com/RestKit/RestKit] are two popular libraries
+[Mantle](https://github.com/Mantle/Mantle) and
+[RestKit](https://github.com/RestKit/RestKit) are two popular libraries
 that help to define the model layer&mdash;especially the
 serialization/deserialization logic when working with REST APIs.
 
@@ -215,15 +215,13 @@ view's class.
 [storyboard]: https://developer.apple.com/library/ios/documentation/General/Conceptual/Devpedia-CocoaApp/Storyboard.html
 
 You'll find yourself working with two kinds of views: reusable
-components that are fairly generic (e.g. UITableViewController) and
-specific views that meant for presenting a specific model (e.g. a custom
-cell class in a UITableViewController).  In the former case you'll want
-to design a good interface so that you view can be reused in many
-situations.  In the later case, it is OK for your view to be tightly
-coupled to your model since its only purpose is to present a visual
-representation of the model.
-
-<!-- TODO add links here to table view guide -->
+components that are fairly generic (e.g. `UITableView`) and specific
+views that meant for presenting a specific model (e.g. a [custom cell
+class](Table-View-Guide#creating-customized-cells) in a `UITableView`).
+In the former case you'll want to design a good interface so that you
+view can be reused in many situations.  In the later case, it is OK for
+your view to be tightly coupled to your model since its only purpose is
+to present a visual representation of the model.
 
 A view may be responsible for managing the instantiation and layout of
 its subviews. However as you traverse up the [view
@@ -276,7 +274,7 @@ display the full email within an `EmailDetailsViewController`.
 
 There is a notion of [container view controllers][containervc] that
 manage the multiple view controllers and their interactions.  The most
-common built-in container view controller is the navigation controller.
+common built-in container view controller is the [[navigation controller|Navigation Controller]].
 
 <!-- TODO link to navigation controller guide -->
 

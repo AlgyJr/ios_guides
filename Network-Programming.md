@@ -49,7 +49,7 @@ of Apple's Foundation Framework.
 
 [nsurlsessionguide]: https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/URLLoadingSystem/Articles/UsingNSURLSession.html
 
-**[AFNetworking][afnetworking]:** is the most popular library for and is
+**[AFNetworking][afnetworking]** is the most popular library for and is
 the de facto gold standard for networking tasks in the iOS world.
 **Chances are you will want to use this library if accessing an API
 and making network requests is a key part of your application.**
@@ -63,7 +63,7 @@ and making network requests is a key part of your application.**
 
 [afnetworking]: https://github.com/AFNetworking/AFNetworking/
 
-**[AlamoFire][alamofire]:** is another networking library by the same
+**[AlamoFire][alamofire]** is another networking library by the same
 author as AFNetworking.  It is written in Swift.
 
 * Swift only
@@ -118,11 +118,10 @@ dispatch_async(dispatch_get_main_queue(), {
 ```
 
 ## Example: Making a GET and parsing a JSON response
-<!-- Add links to nyt example -->
 In order to provide you with the flavor of each of the major ways of
 making network requests we discussed above, we'll rework the network
-code of our NY Times Viewer application from the table view guide to
-use each method.
+code of our [NY Times Viewer example](Table-View-Guide#example-load-data-from-a-rest-api-and-display-it-in-your-table)
+from the table view guide to use each method.
 
 ### NSURLConnection
 Notice that we are forced to specify a operation queue on which the
@@ -256,16 +255,15 @@ class Story {
 ```
 
 ## Example: loading images asynchronously using UIImageView+AFNetworking
-<!--- TODO: links to table view guide NYT example here -->
+
 To demonstrate AFNetworking's integration with UIKit, we'll extend our
-NY Times Viewer example from the table view guide to display the
+[NY Times Viewer example](Table-View-Guide#example-load-data-from-a-rest-api-and-display-it-in-your-table)
+from the table view guide to display the
 thumbnail image associated with each headline.  We will use the
 UIImageView+AFNetworking extension (category in Objective-C) to
 asynchronously load the images.
 
-<!--- TODO links to cocoapods guide here -->
-
-We'll use CocoaPods to pull in AFNetworking.  Here's our `Podfile`
+We'll use [[CocoaPods|CocoaPods]] to pull in AFNetworking.  Here's our `Podfile`
 
 ```
 pod 'AFNetworking'
@@ -274,9 +272,8 @@ pod 'AFNetworking'
 After a `pod install` we can open up `NYTimesViewer.xcworkspace`.  Since
 we are working in Swift, we'll need to add an Objective-C bridging
 header.  More information on how to do this can be found in the
-CocoaPods guide.
+[CocoaPods guide](CocoaPods#bridging-from-objective-c).
 
-<!--- TODO links to cocoapods guide here -->
 
 ```
 #ifndef NYTimesViewer_BridgingHeader_h
@@ -315,7 +312,7 @@ class StoryCell: UITableViewCell {
 
 ```
 
-<!--- TODO: insert image of table with thumbnails here-->
+<a href="http://imgur.com/0sawEgV"><img src="http://i.imgur.com/0sawEgVl.png" title="source: imgur.com" /></a>
 
 ## Example: OAuth 1
 _To be completed..._
