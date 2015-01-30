@@ -66,8 +66,8 @@ The `UIApplicationDelegate` also provides a reference to the
 application's main [window][mainwindow] object.  Of particular
 importance is the ability to set the main window's _root view
 controller_.  This is the first view controller that will load and
-present its view to the user.  More on view controllers can be found
-below.
+present its view to the user.  More on root view controllers can be
+found below.
 
 [mainwindow]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIApplicationDelegate_Protocol/index.html#//apple_ref/occ/intfp/UIApplicationDelegate/window
 
@@ -206,10 +206,10 @@ designs.
 [viewcatalog]: https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/UIKitUICatalog/
 
 You can also create custom views by subclassing any `UIView` class.
-Custom views are generally composed of one or built-in views.  If this
-is the case, the layout for a custom view can be defined using Interface
-Builder in a [storyboard] or [nib], or done programatically in the
-view's class.
+Custom views are generally composed of one or more built-in views.  If
+this is the case, the layout for a custom view can be defined using
+Interface Builder in a [storyboard] or [nib], or done programatically in
+the view's class.
 
 [nib]: https://developer.apple.com/library/ios/documentation/General/Conceptual/DevPedia-CocoaCore/NibFile.html
 [storyboard]: https://developer.apple.com/library/ios/documentation/General/Conceptual/Devpedia-CocoaApp/Storyboard.html
@@ -218,7 +218,7 @@ You'll find yourself working with two kinds of views: reusable
 components that are fairly generic (e.g. `UITableView`) and specific
 views that meant for presenting a specific model (e.g. a [custom cell
 class](Table-View-Guide#creating-customized-cells) in a `UITableView`).
-In the former case you'll want to design a good interface so that you
+In the former case you'll want to design a good interface so that your
 view can be reused in many situations.  In the later case, it is OK for
 your view to be tightly coupled to your model since its only purpose is
 to present a visual representation of the model.
@@ -228,10 +228,10 @@ its subviews. However as you traverse up the [view
 hieararchy][viewhierarchy] ultimately you'll find some parent view that
 was instatiated by and inserted into the view hieararchy by a view
 controller.  View controllers are responsible for creating views and
-notifying views when they need refresh themselves with the latest data
-from the model.
+notifying views when they need to refresh themselves with the latest
+data from the model.
 
-[viewhiearchy]: https://developer.apple.com/library/ios/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/CreatingViews/CreatingViews.html#//apple_ref/doc/uid/TP40009503-CH5-SW47
+[viewhierarchy]: https://developer.apple.com/library/ios/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/CreatingViews/CreatingViews.html#//apple_ref/doc/uid/TP40009503-CH5-SW47
 
 Conversely, views are responsible for responding to user actions and
 propagating events to view controllers so that they can handle them
@@ -239,10 +239,10 @@ appropriately, for example by updating the model.
 
 Often views will translate a low level event into a semantic event.  For
 example a table cell view responsible for displaying a Tweet might
-translate low level the event button tap on the "star button" into the
-semantic event of "user favorited Tweet".  The view would then pass this
-high level message to the view controller who might then have the model
-layer make an API call to complete the "favoriting".
+translate the low level of the event button tap on the "star button"
+into the semantic event of "user favorited Tweet".  The view would then
+pass this high level message to the view controller who might then have
+the model layer make an API call to complete the "favoriting".
 
 The [delegate pattern] is useful for this kind of event propagation and
 is used widely throughout iOS frameworks.
