@@ -7,12 +7,12 @@
   - [Resize with parent view](#resize-with-parent-view)
   - [Center a view within a parent view](#center-a-view-within-a-parent-view)
 - [Working with constraints in Interface Builder](#working-with-constraints-in-interface-builder)
-  - [Specifying the second view the constraint should be relative to](#specifying-the-second-view-the-constraint-should-be-relative-to)
+  - [Specifying the second view to which a constraint should be relative](#specifying-the-second-view-to-which-a-constraint-should-be-relative)
   - [Editing constraints](#editing-constraints)
   - [Constraint Errors and Warnings](#constraint-errors-and-warnings)
     - [Misplaced Views](#misplaced-views)
-      - [update frames](#update-frames)
-      - [update constraints](#update-constraints)
+      - [Update frames](#update-frames)
+      - [Update constraints](#update-constraints)
     - [Conflicting Constraints](#conflicting-constraints)
     - [Missing Constraints](#missing-constraints)
 - [Dealing with flexible content size](#dealing-with-flexible-content-size)
@@ -92,7 +92,17 @@ determine its size (width and height) and location (the x and y
 coordinates of the top left corner of the view).__
 
 You can add constraints in Interface Builder by selecting one or more
-views and using the the Auto Layout controls (boxed in red below).
+views and using the the Auto Layout controls (boxed in red below).  The
+buttons are from left to right:
+
+1. Aligntool - specify how views should be aligned relative to each
+   other
+2. Pin tool - specify that a view should be a fixed distance from
+   another view
+3. Issues tool - quick fixes for [errors or warnings](#constraint-errors-and-warnings) that may come up as you
+add constraints.
+4. Resizing settings - changes the way Interface Builder updates
+   constraints when you resize views.  You probably won't use this.
 
 <a href="http://imgur.com/KZsEwNc"><img src="http://i.imgur.com/KZsEwNc.png" title="source: imgur.com" /></a>
 
@@ -148,32 +158,90 @@ had select "Update Frames" after setting our constraints.  More on this
 
 <a href="http://imgur.com/VfQLiGI"><img src="http://i.imgur.com/VfQLiGI.gif" title="source: imgur.com" /></a>
 
-
-
 ## Working with constraints in Interface Builder
+Here are a few common situations that will come up as you add and modify
+constraints in Interface Builder
 
-### Specifying the second view the constraint should be relative to
+### Specifying the second view to which a constraint should be relative
+The pin tool by default will try to create a constraint relative to the
+nearest neighbor.  You can change which view a constraint is relative to
+by clicking on the small arrow and selecting the right view in the drop
+down menu.
+
+<a href="http://imgur.com/CufGkhG"><img src="http://i.imgur.com/CufGkhG.png" title="source: imgur.com" /></a>
 
 ### Editing constraints
-- constraints are additive
+
+Note that constraints added using the align and pin buttons are
+additive.  They do not update existing constraints, but rather create
+entirely new ones.  For example, here we try to set a second height
+constraint which results in a case of [conflicting
+constraints](#conflicting-constraints).
+
+<a href="http://imgur.com/APMxBUm"><img src="http://i.imgur.com/APMxBUm.gif" title="source: imgur.com" /></a>
+
+You can edit an constraint by selecting the view associated with that
+constraint and using the Size inspector, or simply selecting the
+constraint directly in the Scene Outline.
+
+<a href="http://imgur.com/cOiWvcd"><img src="http://i.imgur.com/cOiWvcd.png" title="source: imgur.com" /></a>
+
+Here we update our red view to have a different height and different
+inset distance from it's parent view.
+
+<a href="http://imgur.com/bd0Uqmg"><img src="http://i.imgur.com/bd0Uqmg.gif" title="source: imgur.com" /></a>
 
 ### Constraint Errors and Warnings
 
-#### Misplaced Views
-##### update frames
-  - don't update frames when underconstrained
-  - fairly common
+The Auto Layout system will give an error if it us unable to determine
+the correct position and size of any of the views in your scene.  It
+will provide you with a warning there is issue that may result
+unexpected behavior&mdash;for example something that would result in
+your interface not looking like it appears in interface builder.
 
-##### update constraints
+#### Misplaced Views
+As you edit your constraints you'll run into situations where the
+position and/or size of your views as they appear in Interface Builder
+no longer match what would be the result of the constraints you've
+created.  In this case Auto Layout will will give you a "Misplaced
+Views" warning.
+
+##### Update frames
+One way to fix this warning is to update the views' sizes and locations
+in the Interface Builder to match the constraints.  You can do this by
+selecting "Update frames" from the issues button or in the Auto Layout
+error inspector.  You should use this option when you know that your
+constraints are correct, and the way the views are laid out on the
+canvas is wrong.  You should not select this option if you suspect one
+of the constraints is wrong.  In particular, do not select this option
+if Interface Builder tells you have "Missing Constraints" as this will
+result in confusing placement of your view off screen or having it be
+sized to zero.
+
+Here we edit the red view's constraints for height, but this is not
+properly updated on our canvas.  After selecting "Update Frames" the new
+height is properly reflected.
+
+<a href="http://imgur.com/U4mgd09"><img src="http://i.imgur.com/U4mgd09.gif" title="source: imgur.com" /></a>
+
+##### Update constraints
+Other times the
+
+Other times you'll be editing a view's location or size independently of
+manipulating constraints.
    - can change your constraints in unexpected ways
    - don't update constraints when overconstrained since this may end up
   creating duplicate constraints
 
+<a href="http://imgur.com/VCus7Pg"><img src="http://i.imgur.com/VCus7Pg.gif" title="source: imgur.com" /></a>
+
 #### Conflicting Constraints
-- overconstrained
+
+<a href="http://imgur.com/x2ZKSyE"><img src="http://i.imgur.com/x2ZKSyE.gif" title="source: imgur.com" /></a>
 
 #### Missing Constraints
-- underconstrained
+<a href="http://imgur.com/GjU98SU"><img src="http://i.imgur.com/GjU98SU.gif" title="source: imgur.com" /></a>
+
 - be careful when adding constraints as it may not add the one you want
 
 ## Dealing with flexible content size
