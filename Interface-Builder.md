@@ -106,5 +106,7 @@ If you rename an outlet in your source code, you must update your xib/storyboard
 
 ## References
 
+**These links no longer work.**
+
 * [Xcode Overview: Building a User Interface](https://developer.apple.com/library/ios/documentation/ToolsLanguages/Conceptual/Xcode_Overview/Edit_User_Interfaces/edit_user_interface.html)
 * [Inteface Builder Help: About Interface Builder](https://developer.apple.com/library/ios/recipes/xcode_help-interface_builder/AboutInterfaceBuilder/AboutInterfaceBuilder.html)
