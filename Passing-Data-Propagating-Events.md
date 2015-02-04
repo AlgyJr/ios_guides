@@ -38,7 +38,7 @@ working with view controllers and views, the following steps are typical
 
 1. A view controller `VC1` configures a view or another view controller
    `V2`.  This can be done by calling an initializer or by
-obtaining a reference to and setting properties on `VC2`.
+obtaining a reference to and setting properties on `V2`.
 2. The second view or view controller `V2` is loaded and shown on the
    screen.  Additionally `V2` may request more information from `VC1`
 while it's on the screen.
@@ -167,7 +167,7 @@ class ColorPickerViewController: UIViewController {
 ```
 
 For another example of working with segues see our
-[[Navigation-Controller|navigation controller guide]].
+[[navigation controller guide|Navigation Controller]].
 
 ## The delegate pattern in iOS
 Since segues are only available in storyboards, we'll need a different
@@ -536,7 +536,7 @@ subcribe/publish message queue via [notification
 centers][notificationcenters].  The basic usage is
 
 1. Define an identifer to name this particular type of notification
-2. Subscribe to a this kind of notification by adding an observer to a
+2. Subscribe to this kind of notification by adding an observer to a
    notification center for notifications with the given name.  You can
 instatiate new notification centers, but it is common to use
 `NSNotificationCenter.defaultCenter`.
