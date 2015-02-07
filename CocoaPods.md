@@ -14,7 +14,7 @@
 ## Overview
 CocoaPods is a dependency management system for iOS (and other
 Cocoa-based) projects.  It is very similar in function and usage to
-[nmp](https://www.npmjs.com/) for JavaScript and
+[npm](https://www.npmjs.com/) for JavaScript and
 [Bundler](http://bundler.io/) for Ruby.  CocoaPods can
 
 1. download specific versions of libraries automatically
