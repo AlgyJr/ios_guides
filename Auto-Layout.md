@@ -1,22 +1,3 @@
-
-- what is layout?
-- why autolayout?
-- specifies how to respond to change
-
-- examples of most common use cases
-
-
-- auto resizing mask / Springs and struts
-
-- Tip: If you want to remove all constraints and start over, choose Issues > Clear Constraints.
-
-- overconstrained
-- underconstrained
-
-
-
-
-
 ## Overview
 
 Traditional Cocoa layout is explicit. You set frame values, and how they should resize when the parent view resizes. If you needed something more complicated than simple "Springs and Struts," you would have to write the layout code yourself.

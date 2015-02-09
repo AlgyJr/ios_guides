@@ -34,16 +34,16 @@ This guide provides a quick overview and basic examples of the most
 common uses cases for using Auto Layout in Interface Builder.  A guide
 on some more advanced features of Auto Layout including how to work with
 Auto Layout programmatically can be found
-[here][advancedautolayoutguide].  Another good resource is Apple's
+[here](advancedautolayoutguide).  Another good resource is Apple's
 [official Auto Layout guide][appleautolayoutguide].
 
 <!--- TODO: insert link to advanced guide here -->
 
 ## What is Auto Layout and why use it?
 Until the introduction of iPad and iPhone 5, all screens in the iOS
-world had the same [point][pointsvspixels] dimensions of 320x480 height.
-At this point in time it was often possible to describe an app's layout
-by specifying the absolute position and size of views.
+world had the same [point][pointsvspixels] dimensions of 320x480 width x
+height.  At this point in time it was often possible to describe an
+app's layout by specifying the absolute position and size of views.
 
 These days, most applications will want their layout to be responsive to
 changes the screen size or the content they are displaying.  _Auto Layout_
@@ -214,9 +214,9 @@ error inspector.  You should use this option when you know that your
 constraints are correct, and the way the views are laid out on the
 canvas is wrong.  You should not select this option if you suspect one
 of the constraints is wrong.  In particular, do not select this option
-if Interface Builder tells you have "Missing Constraints" as this will
-result in confusing placement of your view off screen or having it be
-sized to zero.
+if Interface Builder says that you have "Missing Constraints" as this
+will result in confusing placement of your view off screen or having it
+be sized to zero.
 
 Here we edit the red view's constraints for height, but this is not
 properly updated on our canvas.  After selecting "Update Frames" the new
@@ -225,36 +225,156 @@ height is properly reflected.
 <a href="http://imgur.com/U4mgd09"><img src="http://i.imgur.com/U4mgd09.gif" title="source: imgur.com" /></a>
 
 ##### Update constraints
-Other times the
 
 Other times you'll be editing a view's location or size independently of
-manipulating constraints.
-   - can change your constraints in unexpected ways
-   - don't update constraints when overconstrained since this may end up
-  creating duplicate constraints
+manipulating constraints, and the view's location on the canvas is the
+location you want to keep.  You can update existing constraints to match
+the view's location on the canvas by selecting "Update Constraints" from
+the issues button or in the Auto Layout error inspector.
+
+After "updating constraints", you should check to see if the system
+modified your constraints in the a sensible way since sometimes
+constraints will be updated in a way you did not intend.  In particular,
+do not use this option if Interface Builder tells you that you have
+"Conflicting Constraints" since this will update all constraints to fit
+the location of the view on the canvas, and you will end up having
+duplicate or redundant constraints.
+
+Here we've decreased the width of the red view.  Selecting "Update
+Constraints" changes the horizontal space constraints between the red
+view and the parent view to match the new layout.
 
 <a href="http://imgur.com/VCus7Pg"><img src="http://i.imgur.com/VCus7Pg.gif" title="source: imgur.com" /></a>
 
 #### Conflicting Constraints
+If you create constraints such that Auto Layout cannot simultaneously
+satisfy all of your constraints (i.e. your system is overconstrained),
+then it will give you an error about "Conflicting Constraints".  You'll
+have to remove at least one constraint to resolve the issue.  Sometimes
+it's helpful to remove all constraints for a particular view and start
+over.  You can do this by selecting the view and choosing "Clear
+Constraints" from the issues button.
+
+Here our constraints on the red view to be centered along the y axis and
+to be a specific distance from the top of the parent view conflict with
+each other.  We resolve the issue by removing the vertical centering
+constraint and updating the frame of the view.
 
 <a href="http://imgur.com/x2ZKSyE"><img src="http://i.imgur.com/x2ZKSyE.gif" title="source: imgur.com" /></a>
 
 #### Missing Constraints
+If you do not provide enough information for Auto Layout to determine
+both the x-coordinate and y-coordinate of the top left corner of your
+view _and_ the width and height of your view, then it will give you an
+error about "Missing Constraints".  This can be resolved by adding an
+appropriate constraint.  Be careful when using the automatic issue
+resolver since this may not add the constraint you expected or it may
+add a relatively unintuitive constraint.
+
+Here when we remove the constraint specifying the distance the red view
+has to be away from the right side of the parent view, Auto Layout
+can no longer determine the width of the red view.  Note that when we
+use the automatic issue resolver it adds a width constraint instead of
+the horizontal space constraint we originally had.
+
 <a href="http://imgur.com/GjU98SU"><img src="http://i.imgur.com/GjU98SU.gif" title="source: imgur.com" /></a>
 
-- be careful when adding constraints as it may not add the one you want
-
 ## Dealing with flexible content size
+So far we have been only dealing with views whose content (and hence
+size) does not change during run time.  However, many views that we end
+up working with will have dynamic size depending on their content.  The
+most prominent examples are [`UILabels`][uilabel],
+[`UIButtons`][uibutton], and [`UIImageViews`][uiimageview].
+
+[uilabel]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UILabel_Class/
+[uibutton]: https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIButton_Class/index.html
+[uiimageview]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIImageView_Class/index.html
 
 ### Intrinsic content size of a view
+Views that can determine the size they that "should be" have what is
+known as an _[intrinsic content size][intrinsiccontentsize]_.  This size
+is the size the view has determined would be best to display its current
+content.  For example a `UILabel`'s intrinsic content size will change
+depending the text in the label, and a `UIImageView`'s intrinsic content
+size will depend on the image it has loaded.
+
+[intrinsiccontentsize]: https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/AutolayoutPG/ImplementingView/ImplementingView.html#//apple_ref/doc/uid/TP40010853-CH16-SW2
+
+When using Auto Layout, you do not necessary have to provide width and
+height constraints for views with an intrinsic content size since the
+system will take this into account when computing the final layout of
+the views.  To get a sense of how intrinsic content size works we can
+consider some examples.
 
 ### Two labels: one on top of another
+Here we add constraints for two labels that located vertically adjacent
+to each other.  We pin the first label to the top left corner, specify
+the vertical space between the labels, pin the second label to the left
+margin and also give both labels a width.  Notice that we did not have
+to specify the height for either label.
+
+<a href="http://imgur.com/hhHeK7d"><img src="http://i.imgur.com/hhHeK7d.gif" title="source: imgur.com" /></a>
+
+Now we make one the labels a multi-line label by setting it's "Lines"
+property to 0 in the attributes inspector&mdash;this means that the
+label can have an arbitray number of lines.  Once we add sufficiently
+long text and update frames, the first label changes its height to match
+the content and the second label gets automatically pushed lower down
+the canvas so that the vertical space between the two labels is
+maintained.  We had to update the frames manually here, but this would
+be done automatically for us at runtime when we change the content of
+the label.
+
+<a href="http://imgur.com/FAhPo6v"><img src="http://i.imgur.com/FAhPo6v.gif" title="source: imgur.com" /></a>
 
 ### Left aligned label next to right aligned label
-#### Compression resistance
+Consider another example where we have two single-line labels
+horizontally adjancent to each other.  We want to pin one label to the
+left margin and the other to the right margin&mdash;this is common for
+example in the design of many table view cells.
 
-### Left aligned multiline label next to right aligned label
+#### Inequality constraints
+We also want to specify that the labels should have a minimum amount of
+horizontal space between them so that they do not run into each other.
+We do not know the exact amount of horizontal space since the contents
+of the labels might change at run time.  One way to accomplish this is
+to define an _inequality constraint_ where we can specify that a certain
+constraint's value be greater than or less than a constant.
+
+<a href="http://imgur.com/by5X5AB"><img src="http://i.imgur.com/by5X5AB.gif" title="source: imgur.com" /></a>
+
+#### Compression resistance
+In this same example, what if the text in our labels becomes long enough
+so overlap is unavoidable?  As seen below, at least one of the labels
+will start to shrink and compress its content (in this case by using
+an ellipsis).
+
+How do we control this shrinking behavior?  Each view has a horizontal
+and vertical _content compression resistance priority_ that can be
+modified.  Higher compression resistance means the view is less likely
+to shrink its content.
+
+In this case we specify that the green label is the one whose content
+should be compressed if there is a conflict by lowering its compression
+resistance priority.
+
+<a href="http://imgur.com/PhgyniJ"><img src="http://i.imgur.com/PhgyniJ.gif" title="source: imgur.com" /></a>
+
 #### Content hugging
+Sometimes you'll want to views to be a fixed distance from each other
+and for one of the views to expand to fill the available
+space&emdash;this is common for example with buttons.  This can be
+accomplished by pinning the views to the surround views and adding a
+fixed constraint for the space between them.  You can specify which view
+should fill the available space by changing the _content hugging
+priority_ of a view.  A lower content hugging priority means the view is
+more likely to expand to match constraints, whereas a higher content
+hugging priority means a view wants to be as close to its intrinsic
+content size as possible.
+
+Here we specify that the red label should expand to fill the available
+space by lowering its content hugging priority.
+<a href="http://imgur.com/B6txKC3"><img src="http://i.imgur.com/B6txKC3.gif" title="source: imgur.com" /></a>
 
 ## Manipulating constraints programmatically
 ## VFL
@@ -268,4 +388,25 @@ manipulating constraints.
 - autolayout is per interface builder document:
 - http://stackoverflow.com/questions/9370072/xcode-4-3-not-presenting-autoresizing-panel-in-size-inspector
 - Tip: If you want to remove all constraints and start over, choose Issues > Clear Constraints.
+-->
+
+<!---
+- what is layout?
+- why autolayout?
+- specifies how to respond to change
+
+- examples of most common use cases
+
+
+- auto resizing mask / Springs and struts
+
+- Tip: If you want to remove all constraints and start over, choose Issues > Clear Constraints.
+
+- overconstrained
+- underconstrained
+
+
+
+
+
 -->
