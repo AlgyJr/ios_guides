@@ -1,7 +1,23 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+- [Overview](#overview)
+- [Working with UISearchBars directly](#working-with-uisearchbars-directly)
+  - [Example searching a table](#example-searching-a-table)
+  - [Example searching a collection view](#example-searching-a-collection-view)
+- [Using UISearchDisplayControllers](#using-uisearchdisplaycontrollers)
+  - [Example searching a table](#example-searching-a-table-1)
+  - [Example searching a collection view](#example-searching-a-collection-view-1)
+- [Using UISearchControllers (iOS 8+)](#using-uisearchcontrollers-ios-8)
+  - [Example searching a table](#example-searching-a-table-2)
+  - [Example searching a collection view](#example-searching-a-collection-view-2)
+- [Search Bar in Navigation View](#search-bar-in-navigation-view)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Overview
 Providing a way for users to search through a collection of items is a
 fairly common task in iOS projects.  A standard interface for
-implementing search behaviors is the [`UISearchBar`][searchbar].
+implementing search behaviors is the [search bar][searchbar].
 
 [searchbar]: https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/UIKitUICatalog/UISearchBar.html#//apple_ref/doc/uid/TP40012857-UISearchBar-SW1
 
@@ -13,7 +29,7 @@ you want to design and program your own search interface, however does
 not provide as many built-in features as the other methods.
 
 * **Using a [`UISearchDisplayController`][uisearchdisplaycontroller] to
-  help manage a search interface.**  The `UISearchDisplayController` a
+  help manage a search interface.**  The `UISearchDisplayController`
 allows you to present a standard search interface with built-in
 animations.  This method forces you to display search results in a table
 view.
@@ -38,9 +54,10 @@ behavior yourself.
 
 ## Working with UISearchBars directly
 At its core, a search bar is nothing more than a glorified text field
-packaged with a [scope]() control and some animations and a couple of
-buttons.  Each search bar has a delegate that gives you an opportunity
-to respond to user actions.  The most important delegate methods are:
+packaged with a [scope](#search-bar-scopes) control and some animations
+and a couple of buttons.  Each search bar has a delegate that gives you
+an opportunity to respond to user actions.  The most important delegate
+methods are:
 
 * [`textDidChange`][textdidchange] - most of the time you'll respond to
   this event by updating the displayed set of search results as the user
@@ -111,8 +128,8 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
 ```
 
 Here's what this looks like when running.  Notice that the search
-results are displayed in the same table, and there is presentation of a
-separate search interface.
+results are displayed in the same table, and there is no presentation of
+a separate search interface.
 
 <a href="http://imgur.com/xDqRQEJ"><img src="http://i.imgur.com/xDqRQEJ.gif" title="source: imgur.com" /></a>
 
@@ -122,7 +139,7 @@ Since the `UISearchBar` is quite simple, it can be combined with any
 abitrary view to build your own search interface.  Here's what it might
 look like paired with a collection view.
 
-<a href="http://imgur.com/PKY6m7O"><img src="http://i.imgur.com/PKY6m7Ol.gif" title="source: imgur.com" /></a>
+<a href="http://imgur.com/PKY6m7O"><img src="http://i.imgur.com/PKY6m7O.gif" title="source: imgur.com" /></a>
 
 The code for this is essentially the same as in the case with table views.
 
@@ -167,7 +184,7 @@ controller](https://developer.apple.com/library/prerelease/ios/documentation/UIK
 When creating a search display controller programatically, you'll have
 to set all the delegates manually.
 
-In either case (instatiation via Interface Builder or programatically),
+In either case (instantiation via Interface Builder or programatically),
 the containing view controller will have its
 [`searchDisplayController`](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIViewController_Class/index.html#//apple_ref/occ/instp/UIViewController/searchDisplayController)
 property set to newly created search display controller.
@@ -458,13 +475,13 @@ This can be configured programatically in your view controller's
         navigationItem.titleView = searchBar
 ```
 
-*Using a search display controller:*
+**Using a search display controller:**
 
 ```swift
         searchDisplayController?.displaysSearchBarInNavigationBar = true
 ```
 
-*Using a search controller:*
+**Using a search controller:**
 
 ```swift
         searchController.searchBar.sizeToFit()

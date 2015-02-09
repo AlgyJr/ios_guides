@@ -29,16 +29,19 @@ Read about our [mission to change the way engineers learn new technologies](http
 
 ## Working with View Controllers
 
+* [[Passing Data and Propagating Events|Passing Data Propagating Events]]
+* [[Handling Form Input in Tables|Form Input]]
+* [[Searching with Search Bars, Search Display Controllers, and Search Controllers|Search Bar Guide]]
 * [[Navigation Controller Guide|Navigation Controller]]
 * [[Tab Bar Controller Guide|Tab Bar Controller Guide]]
 * [[View Controller Transitions|View Controller Transitions]]
 
 ## Views Programming and UIKit components
 
+* [[Auto Layout Basics|Auto Layout Basics]]
 * [[Common Views|Common Views]]
 * [[Table View Guide|Table View Guide]]
 * [[Interface Builder|Interface Builder]]
-* [[Auto Layout|Auto Layout]]
 * [[Animation|Animation]]
 
 ## Common Tasks
