@@ -272,13 +272,10 @@ you clicked on an account, it would push in to an `InboxViewController`,
 which displays a list of emails. If you tapped an email, it would
 display the full email within an `EmailDetailsViewController`.
 
-There is a notion of [container view controllers][containervc] that
+There is a notion of [container view controllers](Container-View-Controllers#) that
 manage the multiple view controllers and their interactions.  The most
 common built-in container view controller is the [[navigation controller|Navigation Controller]].
 
-<!-- TODO link to navigation controller guide -->
-
-[containervc]: https://developer.apple.com/library/ios/featuredarticles/ViewControllerPGforiPhoneOS/CreatingCustomContainerViewControllers/CreatingCustomContainerViewControllers.html
 <!---
 ## Other
 ### Build settings
