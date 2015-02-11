@@ -34,11 +34,13 @@ Read about our [mission to change the way engineers learn new technologies](http
 * [[Searching with Search Bars, Search Display Controllers, and Search Controllers|Search Bar Guide]]
 * [[Navigation Controller Guide|Navigation Controller]]
 * [[Tab Bar Controller Guide|Tab Bar Controller Guide]]
+* [[Custom Container View Controllers|Container View Controllers]]
 * [[View Controller Transitions|View Controller Transitions]]
 
 ## Views Programming and UIKit components
 
 * [[Auto Layout Basics|Auto Layout Basics]]
+* [[Custom Views|Custom Views]]
 * [[Common Views|Common Views]]
 * [[Table View Guide|Table View Guide]]
 * [[Interface Builder|Interface Builder]]
