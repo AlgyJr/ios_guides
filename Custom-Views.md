@@ -13,7 +13,7 @@
 - [Using custom views defined in a nib](#using-custom-views-defined-in-a-nib)
   - [Loading programatically](#loading-programatically)
   - [Within a another nib or storyboard](#within-a-another-nib-or-storyboard)
-  - [Why you should't set top-level view's custom class](#why-you-shouldt-set-top-level-views-custom-class)
+  - [Why you shouldn't set top-level view's custom class](#why-you-shouldnt-set-top-level-views-custom-class)
 - [A note about view controllers](#a-note-about-view-controllers)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -435,7 +435,7 @@ When this nib/storyboard is loaded it will call `initWithCoder` which
 will load `CaptionableImageView.xib` and set up the internal view
 hierarchy and outlets for us.
 
-### Why you should't set top-level view's custom class
+### Why you shouldn't set top-level view's custom class
 
 Recall from [above](#how-views-are-defined-and-instantiated) that when
 `instantiateWithOwner` is called on a nib, any view in the nib will be
