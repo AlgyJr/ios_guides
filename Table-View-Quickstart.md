@@ -60,8 +60,8 @@ the table view in your view controller.
 
 ### Step 3: Add prototype cell to table view
 You'll need a way to describe the appearance of the cells in your table.
-One way design a reusable template for cells is to use _prototype
-cells_.  You can drag a `Table View Cell` from the Object Library into
+One way to design a reusable template for cells is to use _prototype
+cells_.  Drag a `Table View Cell` from the Object Library into
 your table view.  You can now design the layout of the prototype cell
 by adding more components from the Object Library.
 
@@ -192,14 +192,14 @@ in the table.
 #### Segue to another view controller
 A common behavior when a row is selected is to push a new view
 controller with details about that row.  You can do this in a storyboard
-by control dragging from the cell and selecting the appropriate segue
+by control-dragging from the cell and selecting the appropriate segue
 under the `Selection Segue` section.
 
 <a href="http://imgur.com/GrT010h"><img src="http://i.imgur.com/GrT010h.gif" title="source: imgur.com" /></a>
 
 #### Handling row selection programmatically
 
-You can also respond programmatically by implmenting the
+You can also respond programmatically by implementing the
 `UITableViewDelegate` method [`didSelectRowAtIndexPath:`][didselectrow].
 
 [didselectrow]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewDelegate_Protocol/index.html#//apple_ref/occ/intfm/UITableViewDelegate/tableView:didSelectRowAtIndexPath:

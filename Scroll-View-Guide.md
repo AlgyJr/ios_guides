@@ -19,10 +19,15 @@
 
 ## Overview
 Scroll views allow you to display content in an area on the screen that
-is smaller the size of the content.  They allow the user to pan (i.e.
-scroll) and/or zoom the content.  The `UITableView` and
-`UICollectionView` are a subclasses of `UIScrollView`, so many of the
+is smaller than the size of the content.  They allow the user to pan
+(scroll) and/or zoom the content.  The
+[`UITableView`][uitableview] and [`UICollectionView`][uicollectionview]
+are a subclasses of [`UIScrollView`][uiscrollview], so many of the
 points below will apply to them as well.
+
+[uitableview]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html
+[uicollectionview]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UICollectionView_class/index.html#//apple_ref/occ/cl/UICollectionView
+[uiscrollview]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollView_Class/index.html
 
 ## Basic Usage
 ### Step 1: Add scroll view to view hierarchy
@@ -55,12 +60,12 @@ class ViewController: UIViewController {
 
 
 ### Step 3. Add content subviews
-The scrollable content area of the scroll view is defined by its
-subviews.  The frame of each subview is relative to the top left of the
-content area.  A scroll view can contain more than one subview.  In this
-example we add a series differently colored subviews of the same width
-as the scroll view, offsetting the top of their frame so they do not
-overlap each other.
+What is shown in the scrollable content area of a scroll view is
+determined by its subviews.  The frame of each subview is relative to
+the top left of the content area.  A scroll view can contain more than
+one subview.  In this example we add a series differently-colored
+subviews.  Each subview has the same width as the scroll view, but we
+offset the top of their frames so they do not overlap each other.
 
 ```swift
 class ViewController: UIViewController {
@@ -258,13 +263,13 @@ neighbors.  The content size and size of subviews inside the scroll
 view are still set programatically as we have been doing throughout this
 guide.
 
-A second approach uses only auto layout constraints.  In particular,
+A second approach uses only Auto Layout constraints.  In particular,
 this means there must be a way for Auto Layout to specify the content
-size of a scroll view.  The constraints must be enough to determine
-three things:
+size of a scroll view.  Altogether, the constraints must be enough to
+determine three things:
 
 1.  The size of the scroll view.  You can use the pin and align tools to
-    create constraints to parent and sibling views.  Unlike other views
+    create constraints to parent and sibling views.  Unlike other views,
 you cannot rely on the size of child views of the scroll view here.
 2.  The content size of the scroll view.  This is specified by creating
     constraints between the scroll view's edges and the _subviews within_
@@ -275,9 +280,9 @@ scroll view.
 3.  Finally you must set constraints to determine the size of the actual
     subviews containing the scrollable content.
 **These constraints cannot depend on the edges of the scroll
-view**&mdash;since as we just saw, then they would be interpreted as
+view**&mdash;since as we just saw, they would then be interpreted as
 constraints on the content size.  It is typical here to set a fixed size
-for a single main scrollable subview and place other views inside this
+for a single main scrollable subview and to place other views inside this
 subview.
 
 A comprehensive discussion of this topic can be found [here](https://developer.apple.com/library/ios/technotes/tn2154/_index.html).

@@ -49,7 +49,7 @@ Segue`.  Your tab bar controller will update with a new tab.
 ### Step 3: Customize the bar item for each tab
 You can customize appearance and title of each button on the tab bar by
 selecting the tab bar item **inside the corresponding view controller**.
-In particular, you'll likely want to an image for each tab bar item.
+In particular, you'll likely want to add an image for each tab bar item.
 
 <a href="http://imgur.com/nZ2g4fp"><img src="http://i.imgur.com/nZ2g4fp.png" title="source: imgur.com" /></a>
 
@@ -57,7 +57,7 @@ In particular, you'll likely want to an image for each tab bar item.
 You'll need to create classes to contain the code for the view
 controllers corresponding to each tab.  Select `File -> New -> iOS ->
 Source -> Cocoa Touch Class` and create a new subclass of
-`UIViewController` for each kind tab you will have.
+`UIViewController` for each kind of tab you will have.
 
 ### Step 5: Set custom class for and finish design of tabs
 For each tab in your storyboard select the corresponding view controller
@@ -71,7 +71,7 @@ view controller class as you would with any other view controller.
 ### Step 1: Create tab bar controller and as initial view controller
 You can instantiate a tab bar controller programmatically and use it as
 you would any othe view controller.  If you need it to be your root view
-controller the best place to do this is in the app delegate.
+controller the best place to do this is in the [app delegate](Application-Architecture#programatically-setting-the-root-view-controller).
 
 ```swift
 @UIApplicationMain

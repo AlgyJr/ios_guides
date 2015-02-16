@@ -26,8 +26,8 @@ component.
 [viewcatalog]: https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/UIKitUICatalog/
 
 For example, in a news reading application we might want a standard
-component to display images with a caption with a consistent style on
-both the home page view controller as well the individual story view
+component to display images with a caption using a consistent style on
+both the home page view controller as well as the individual story view
 controller.  This quickstart gives a recipe for making a custom view in
 Interface Builder and using it in another part of your application.
 

@@ -25,26 +25,37 @@ Read about our [mission to change the way engineers learn new technologies](http
 * [[Application Architecture and MVC in iOS|Application-Architecture]]
 
 ## Models and APIs
+
 * [[Network Programming Basics|Network-Programming]]
 
 ## Working with View Controllers
 
 * [[Passing Data and Propagating Events|Passing Data Propagating Events]]
 * [[Handling Form Input in Tables|Form Input]]
-* [[Searching with Search Bars, Search Display Controllers, and Search Controllers|Search Bar Guide]]
-* [[Navigation Controller Guide|Navigation Controller]]
-* [[Tab Bar Controller Guide|Tab Bar Controller Guide]]
-* [[Custom Container View Controllers|Container View Controllers]]
+* Navigation Controllers
+  * [[Quick start|Navigation Controller Quickstart]]
+  * [[Guide|Navigation Controller]]
+* Tab Bar Controllers
+  * [[Quick start|Tab Bar Quickstart]]
+  * [[Guide|Tab Bar Controller Guide]]
+* Container View Controllers
+  * [[Quick start|Container View Controllers Quickstart]]
+  * [[Guide|Container View Controllers]]
+* [[Search Bar and Search Controllers|Search Bar Guide]]
 * [[View Controller Transitions|View Controller Transitions]]
 
-## Views Programming and UIKit components
-
+## View Programming and UIKit components
+* Table Views
+  * [[Quick start|Table View Quickstart]]
+  * [[Guide|Table View Guide]]
+* [[Scroll Views|Scroll View Guide]]
+* Custom Views
+  * [[Quick start|Custom Views Quickstart]]
+  * [[Guide|Custom Views]]
+* [[Other Common Views|Common Views]]
 * [[Auto Layout Basics|Auto Layout Basics]]
-* [[Custom Views|Custom Views]]
-* [[Common Views|Common Views]]
-* [[Table View Guide|Table View Guide]]
-* [[Interface Builder|Interface Builder]]
-* [[Animation|Animation]]
+* [[Interface Builder Basics|Interface Builder]]
+* [[Animation Basics|Animation]]
 
 ## Common Tasks
 
@@ -88,4 +99,3 @@ Add your name to the list if you've made a contribution.
 * [Ben Sandofsky](https://sandofsky.com)
 * [Chunyan Song](https://github.com/chunyan)
 * [Michele Titolo](http://michele.io)
-
