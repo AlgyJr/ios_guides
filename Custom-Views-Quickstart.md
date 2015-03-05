@@ -1,15 +1,16 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Overview](#overview)
 - [Creating a Custom View](#creating-a-custom-view)
   - [Step 1: Design custom view Interface Builder](#step-1-design-custom-view-interface-builder)
   - [Step 2: Create subclass of UIView](#step-2-create-subclass-of-uiview)
   - [Step 3: Set custom class in Interface Builder](#step-3-set-custom-class-in-interface-builder)
-  - [Step 3: Connect outlets](#step-3-connect-outlets)
-  - [Step 4: Create outlet for content view](#step-4-create-outlet-for-content-view)
-  - [Step 5: Add initilization code](#step-5-add-initilization-code)
-  - [Step 6: Add code that allows configuration of your custom view](#step-6-add-code-that-allows-configuration-of-your-custom-view)
+  - [Step 4: Connect outlets](#step-4-connect-outlets)
+  - [Step 5: Create outlet for content view](#step-5-create-outlet-for-content-view)
+  - [Step 6: Add initialization code](#step-6-add-initialization-code)
+  - [Step 7: Add code that allows configuration of your custom view](#step-7-add-code-that-allows-configuration-of-your-custom-view)
 - [Using a Custom View](#using-a-custom-view)
   - [Using a custom view in storyboards](#using-a-custom-view-in-storyboards)
   - [Using a custom view programatically](#using-a-custom-view-programatically)
