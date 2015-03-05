@@ -50,19 +50,19 @@ class you just created.
 
 <a href="http://imgur.com/HyiX5S7"><img src="http://i.imgur.com/HyiX5S7.png" title="source: imgur.com" /></a>
 
-### Step 3: Connect outlets
+### Step 4: Connect outlets
 Open the Assistant Editor and pick your custom class.  Create outlets
 for anything you'll need to manipulate or set programatically.
 
 <a href="http://imgur.com/tgBhRiF"><img src="http://i.imgur.com/tgBhRiF.gif" title="source: imgur.com" /></a>
 
-### Step 4: Create outlet for content view
+### Step 5: Create outlet for content view
 Create an outlet for the top-level view in your `.xib` and call it
 `contentView`.
 
 <a href="http://imgur.com/JsnxD5D"><img src="http://i.imgur.com/JsnxD5D.gif" title="source: imgur.com" /></a>
 
-### Step 5: Add initilization code
+### Step 6: Add initialization code
 In the custom view class, you'll need to override the `initWithCoder` and
 `initWithFrame` methods to load the `.xib` and add the content
 view to the view hierarchy.
@@ -93,7 +93,7 @@ class CaptionableImageView: UIView {
 }
 ```
 
-### Step 6: Add code that allows configuration of your custom view
+### Step 7: Add code that allows configuration of your custom view
 Finish adding the rest of the code for your custom class.  You'll want
 to give users of this class a simple way to configure the elements of
 the view without exposing them to uncessary details.  For example, in our
