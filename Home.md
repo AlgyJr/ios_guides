@@ -45,6 +45,7 @@ Read about our [mission to change the way engineers learn new technologies](http
 * [[View Controller Transitions|View Controller Transitions]]
 
 ## View Programming and UIKit components
+
 * Table Views
   * [[Quick start|Table View Quickstart]]
   * [[Guide|Table View Guide]]
@@ -56,6 +57,11 @@ Read about our [mission to change the way engineers learn new technologies](http
 * [[Auto Layout Basics|Auto Layout Basics]]
 * [[Interface Builder Basics|Interface Builder]]
 * [[Animation Basics|Animation]]
+
+## Device Frameworks
+
+* Camera and Camera Roll
+  * [[Quick start|Camera Quickstart]]
 
 ## Common Tasks
 
@@ -93,9 +99,5 @@ Add your name to the list if you've made a contribution.
 
 ### Contributors
 
-* [Trevor Elkins](https://github.com/trevor-e)
 * [Roger Hu](https://github.com/rogerhu)
-* [Adrian Romero](https://github.com/romeroadrian)
 * [Ben Sandofsky](https://sandofsky.com)
-* [Chunyan Song](https://github.com/chunyan)
-* [Michele Titolo](http://michele.io)
