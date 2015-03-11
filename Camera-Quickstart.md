@@ -14,7 +14,6 @@ vc.allowsEditing = true
 vc.sourceType = UIImagePickerControllerSourceType.Camera
 
 self.presentViewController(vc, animated: true, completion: nil)
-
 ```
 
 *Objective-C*
@@ -22,7 +21,7 @@ self.presentViewController(vc, animated: true, completion: nil)
 
 ```
 
-### Step 2: Implement the delegates
+### Step 2: Implement the delegate
 
 In the class interface, declare that it implements two protocols: `UIImagePickerControllerDelegate` and `UINavigationControllerDelegate`.
 
@@ -33,7 +32,6 @@ func imagePickerController(picker: UIImagePickerController,
     var originalImage = info[UIImagePickerControllerOriginalImage] as UIImage
     var editedImage = info[UIImagePickerControllerEditedImage] as UIImage
 }
-
 ```
 
 When the user finishes taking the picture, `UIImagePickerController` returns a dictionary that contains the image and some other meta data. The full set of keys are listed [here](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIImagePickerControllerDelegate_Protocol/index.html#//apple_ref/doc/constant_group/Editing_Information_Keys).
