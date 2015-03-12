@@ -136,8 +136,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationController = UINavigationController(rootViewController: pickColorVC)
 
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
+        if let window = window {
+          window.rootViewController = navigationController
+          window.makeKeyAndVisible()
+        }
         return true
     }
     ...
