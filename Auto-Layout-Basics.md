@@ -379,6 +379,32 @@ space by lowering its content hugging priority.
 ## Manipulating constraints programmatically
 ## VFL
 
+The Visual Format Language is a declarative language that is used to define Auto Layout constraints for views.
+
+To use VFL, ensure `translatesAutoresizingMaskIntoConstraints` is set to `false`.
+
+```Swift
+  func addConstraints() {
+    //Collect Views to apply VFL
+    let buttonsDictionary = ["button1": flagButton1,
+                         "button2": flagButton2,
+                         "button3": flagButton3]
+
+    //Metrics establish Fixed Constants
+    let metrics = ["topSpacing": 80, "bottomSpacing": 20, "buttonHeight": 20, "buttonSpacing": 20]
+
+    //Note that priorities can be set using @. 1000 for Required. < 100 for Optional. Example: @999
+
+    //Horizontal constraints
+    for buttonName in buttonsDictionary.keys {
+      view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[\(buttonName)]-|", options: .allZeros, metrics: nil, views: buttonsDictionary))
+    }
+
+    //Vertical constraints
+    view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-(==topSpacing)-[button1(>=buttonHeight@997)]-(==buttonSpacing@999)-[button2(==button1)]-(==buttonSpacing@999)-[button3(==button1)]-(>=bottomSpacing@998)-|", options: .allZeros, metrics: metrics, views: buttonsDictionary))
+  }
+```
+
 ### Understanding debug output
 
 ## Other topics
