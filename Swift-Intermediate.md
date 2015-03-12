@@ -203,6 +203,8 @@ Structs may have methods, computed properties, initializers, and they can adhere
 
 However, structs are not classes. There is no subclassing. They are passed by value, while classes are passed by reference. While they have an initializer, there is no deinitializer.
 
+Other than for the need for inheritance, if two object instances are **identical* AND *interchangeable*, use a struct, otherwise, go to with Class. 
+
 ```
 struct Rect {
   var origin: Point
