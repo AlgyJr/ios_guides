@@ -11,7 +11,7 @@ This guide is designed to be concise. For in-depth details, check out the offici
 
 `AnyObject` is an ambiguous type that can represent any object. An even more ambiguous type, `Any`, covers non-class objects such as Structs and Enums.
 
-```
+```Swift
 var myArray: [AnyObject] = Array()
 myArray.append(Dog()) // Legal
 myArray.append(Homework.InProgress)   // Illegal. An enum is not a class instance
@@ -21,7 +21,7 @@ While strong typing is preferred, sometimes it's unavoidable. For instance, a JS
 
 To check an object's type, use `is`
 
-```
+```Swift
 if userDictionary["bio"] is String {
     println("The bio is present")
 } else if userDictionary["bio"] is NSNull {
@@ -31,13 +31,13 @@ if userDictionary["bio"] is String {
 
 Use `as` to downcast:
 
-```
+```Swift
 let bio = userDictionary["bio"] as String
 ```
 
 It's safer to downcast with `as?`, which returns an optional, in case the downcast fails.
 
-```
+```Swift
 if let bio = userDictionary["bio"] as? String {
     println("Bio: \(bio)")
 } else {
@@ -53,7 +53,7 @@ To write functions that accept multiple types without losing type information, u
 
 If you have a chain of properties, rather than unwrap each individually, use the `?` operator.
 
-```
+```Swift
 var myValue: Int? = nil
 if object != nil && object!.childObject != nil {
   myValue = object!.childObject!.method()
@@ -69,7 +69,7 @@ If any part of the chain is `nil`, it stops evaluating and returns `nil`, ignori
 
 You can declare an optional that automatically unwraps itself, using the `!` postfix.
 
-```
+```Swift
 var i: Int? = 1
 if i != nil {
     i = i! + 1
@@ -89,7 +89,7 @@ This is more dangerous than explicit unwrapping, but useful when dealing with va
 
 A frequent pattern is, "If the optional is nil, use this other value." For brevity, use the `??` operator. The following two lines are equivalent:
 
-```
+```Swift
 a != nil ? a! : b
 a ?? b
 ```
@@ -106,7 +106,7 @@ Classes can have multiple designated initializers. For instance, `init(coder:)` 
 
 Designated initializers are allowed to call "up", to a super initializer. Convenience initializers are only allowed to call "across" their class, to a designated initializer.
 
-```
+```Swift
 class Dog: Animal {
   var name: String = ""
   convenience init(randomName: Bool){
@@ -122,7 +122,7 @@ class Dog: Animal {
 
 Swift tries to only inherit initializers when it's safe to do so, which can be confusing. For instance, you' commonly override UIViewcontroller's designated initializer to perform setup logic. If you just added this code, you would get a compilation error:
 
-```
+```Swift
 override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     self.edgesForExtendedLayout = UIRectEdge.None
@@ -140,7 +140,7 @@ The rules of initializer inheritance are:
 
 Lazy properties are instanced the first time they're used.
 
-```
+```Swift
 class MailAccount {
   lazy var inbox = LoadInboxFromDisk()
 }
@@ -150,7 +150,7 @@ class MailAccount {
 
 If an enum, class, or struct is only used within a certain context, such as one particular class, it can be convenient to nest their declaration to namespace it.
 
-```
+```Swift
 class Homework {
   var status: State = .InProgress
 
@@ -165,7 +165,7 @@ class Homework {
 
 ### Concise Closures
 
-```
+```Swift
 array.sort({(a: String, b: String) -> Bool in
   return a < b
 })
@@ -173,7 +173,7 @@ array.sort({(a: String, b: String) -> Bool in
 
 The types can be removed thanks to type inference:
 
-```
+```Swift
 array.sort({ a, b in
   return a < b
 })
@@ -181,19 +181,19 @@ array.sort({ a, b in
 
 This pattern is so common, one line closures have an implied `return` statement:
 
-```
+```Swift
 array.sort({ a, b in a < b })
 ```
 
 This can be edited further with implicit argument names:
 
-```
+```Swift
 array.sort({ $0 < $1 })
 ```
 
 Finally, If the last parameter to a method is a closure, it can be written outside the parenthesis, as a *trailing closure*.
 
-```
+```Swift
 array.sort { $0 < $1 }
 ```
 
@@ -205,7 +205,7 @@ However, structs are not classes. There is no subclassing. They are passed by va
 
 Other than for the need for inheritance, if two object instances are identical and interchangeable, use a struct, otherwise, use a Class. 
 
-```
+```Swift
 struct Rect {
   var origin: Point
   var size: Size
@@ -217,7 +217,7 @@ struct Rect {
 
 To obey the rules of `var` vs `let`, mutating methods must use the `mutating` keyword:
 
-```
+```Swift
 struct Person {
   var age: Int
   mutating func growOlder(){
@@ -230,7 +230,7 @@ struct Person {
 
 Enums may also have methods and conform to protocols.
 
-```
+```Swift
 enum HomeworkState {
   case InProgress
   case Submitted
@@ -255,7 +255,7 @@ println(state.description()) // "In Progress
 
 Enums can store associated values:
 
-```
+```Swift
 enum HomeworkState {
   case InProgress
   case Submitted
@@ -269,7 +269,7 @@ let homework = HomeworkState.Graded(100)
 
 Like classes, you can extend structs, enums, and even primitives like `Int`
 
-```
+```Swift
 extension Int {
     func even() -> Bool {
         return self % 2 == 0
@@ -282,7 +282,7 @@ extension Int {
 
 Pattern matching allows a concise way to filter values, and bind those values to constants.
 
-```
+```Swift
 switch statusCode {
   case 200...299:
     println("Success")
@@ -293,7 +293,7 @@ switch statusCode {
 
 They can also match on variations of tuples:
 
-```
+```Swift
 let point = (0, 10)
 
 switch point {
@@ -311,7 +311,7 @@ switch point {
 
 They can be applied to enum associated values:
 
-```
+```Swift
 switch homeworkStatus {
   case .InProgress:
     println("In progress")
@@ -332,7 +332,7 @@ switch homeworkStatus {
 
 It is possible to match on type using `is`, or match and bind using `as`.
 
-```
+```Swift
 func makeAnimalDoSomething(animal: Animal){
   switch animal {
     case let dog as Dog:
@@ -351,7 +351,7 @@ Like Objective-C, Swift uses reference counting for memory management, built on 
 
 As such, you must use *weak* references to avoid reference cycles.
 
-```
+```Swift
 class MailFolder {
   weak var sendingAccount: Account?
 }
@@ -359,7 +359,7 @@ class MailFolder {
 
 For references up the object graph, it can be more convenient to use `unowned` references, which act like weak implicitly unwrapped optionals. However, only use `unowned` references when you're sure the parent will exist for the lifetime of the child.
 
-```
+```Swift
 class Parent {
   var child: Child!
   init(){
