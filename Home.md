@@ -60,6 +60,8 @@ Read about our [mission to change the way engineers learn new technologies](http
 
 ## Device Frameworks
 
+* Location
+  * [[Quick start|Location Quickstart]]
 * Camera and Camera Roll
   * [[Quick start|Camera Quickstart]]
 
