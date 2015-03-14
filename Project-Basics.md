@@ -1,6 +1,6 @@
 ## Overview
 
-This page covers the basics of working with an Xcode project. By the end of it, you should what every file in your project does, and the core files found in every app.
+This page covers the basics of working with an Xcode project. By the end of it, you should know what every file in your project does, and the core files found in every app.
 
 ## File Types
 
