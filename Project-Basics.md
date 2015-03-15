@@ -14,7 +14,7 @@ Say you have a home button in your app that is 44x44 pixels. On a retina display
 
 This can be daunting to track in code, so instead, it's managed by an **Asset Catalogue.** You add one image, "Home", which would contain four assets. At runtime, you would just ask for the "Home" image, and iOS will supply the appropriate asset for the current device.
 
-The asset catalogue is the `Images.xcassets` folder. If you this folder in Xcode, it will bring up the *Asset Catalogue Editor* for managing assets.
+The asset catalogue is the `Images.xcassets` folder. If you select this folder in Xcode, it will bring up the *Asset Catalogue Editor* for managing assets.
 
 <img src="https://i.imgur.com/gPEbazB.gif" />
 
