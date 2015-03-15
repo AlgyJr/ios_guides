@@ -143,7 +143,7 @@ following `Podfile` in the root directory of the project
 pod 'MBProgressHUD'
 ```
 
-This tells CocoaPods that we to download and integrate the latest
+This tells CocoaPods that we want to download and integrate the latest
 version of [MBProgressHUD](https://github.com/jdg/MBProgressHUD) into
 our project.  Notice that since we did not specify a target platform,
 CocoaPods will infer this from what was already defined in our project.
