@@ -250,9 +250,9 @@ functionName("Ben") // "Hello Ben"
 With return values:
 
 ```Swift
-func greetingGenerator(name: String) -> String {
-  return "Hello \(name)"
-}
+`func greetingGenerator(name: String) -> String {`
+  `return "Hello \(name)"`
+`}`
 
 let greeting = greetingGenerator("World")
 println(greeting) // "Hello World"
