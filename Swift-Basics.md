@@ -227,6 +227,13 @@ if let optionalValue = optionalValue {
 }
 ```
 
+And a shorthand to the shorthand called a `Nil Coalescing Operator`:
+
+```Swift
+var optionalValue: String?
+var stringValue = optionalValue ?? ""
+```
+
 ## Functions
 
 ```Swift
