@@ -9,4 +9,4 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 ## Getting Started
 
 * [[Setting Up Your Environment|Setup|]]
-* [[Starting a New Project|New Project]]
+* [[Starting a New Project|New Project (designers)]]
