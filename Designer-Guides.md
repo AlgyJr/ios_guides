@@ -15,6 +15,7 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Using Modal Transitions]]
 * [[Using Navigation Controllers]]
 * [[Using Tab Bar Controllers]]
+* [[Configure a Button]]
 * [[Handling Button Events]]
 
 ## Common Views and Controllers
