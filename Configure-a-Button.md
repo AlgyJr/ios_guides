@@ -28,3 +28,5 @@ Ctrl-drag from the button to the Swift file. Select Action (not Outlet) and this
 ![Assistant|700](http://i.imgur.com/0deF0SS.gif)
 
 ### Step 8: Disable a button
+Go to the Attributes inspector page on the Utilities Panel. Make sure the button is selected. Scroll down to find the enabled checkbox. Uncheck it. The button will be disabled.
+![Button Disabled|700](http://i.imgur.com/cvL07jj.gif)
