@@ -1,5 +1,7 @@
+### Step 1: Find button in the Object Library
+In the bottom of the far right Utilities Panel, show the Object Library. Then, in the search bar type in 'button' to filter the results. Click and drag the Button icon onto your view in the storyboard.
 
-### Step 1: Add a button to your view
+### Step Add a button to your view
 ### Step 2: In Interface Builder, toggle states to configure image/title/background image.
 ### Step 3: Configure title/image insets
 ### Step 4: Register for the button action
