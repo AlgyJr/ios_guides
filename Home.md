@@ -1,6 +1,6 @@
 # CodePath iOS Guides
 
-Welcome to the open-source [CodePath](http://thecodepath.com) iOS Cliffnotes! Our goal is to become the **central crowdsourced resource** for complete and up-to-date iOS content and tutorials.
+Welcome to the open-source [CodePath](http://thecodepath.com) iOS Cliffnotes! Our goal is to become the **central crowdsourced resource** for complete and up-to-date iOS content and tutorials. **If you are a designer learning iOS** you may want to start at our [[CodePath iOS Guides for Designers|Designer Guides|]].
 
 ## Motivation
 
