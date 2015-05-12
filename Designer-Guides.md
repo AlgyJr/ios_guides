@@ -13,3 +13,12 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 
 ## To Organize 
 * [[Adding and Removing Child View Controllers]]
+* [[Adding Views to the Window]]
+* [[Animating View Properties]]
+* [[Calling a Method After Delay]]
+* [[Creating a Free Form View Controller]]
+* [[Creating Custom View Controllers]]
+* [[Creating View Controllers from Storyboard]]
+* [[Custom View Controller Transitions]]
+* [[Handling Button Events]]
+* [[Programmatically Creating Views]]
