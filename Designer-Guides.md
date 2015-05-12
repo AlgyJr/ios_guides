@@ -28,10 +28,10 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Using UITableView]]
 
 ## Animating and Responding to User Input
-* [[Adding and Removing Child View Controllers]]
 * [[Adding Views to the Window]]
-* [[Animating View Properties]]
 * [[Programmatically Creating Views]]
+* [[Adding and Removing Child View Controllers]]
+* [[Animating View Properties]]
 * [[Creating a Free Form View Controller]]
 * [[Creating Custom View Controllers]]
 * [[Creating View Controllers from Storyboard]]
