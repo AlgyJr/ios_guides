@@ -10,3 +10,6 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 
 * [[Setting Up Your Environment|Setup|]]
 * [[Starting a New Project|New Project (designers)]]
+
+## To Organize 
+* [[Adding and Removing Child View Controllers]]
