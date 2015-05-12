@@ -28,7 +28,7 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Using Navigation Controllers]]
 * [[Using NSUserDefaults]]
 * [[Using Perspective Transforms]]
-* [[Using UITabBarController]]
+* [[Using Tab Bar Controllers]]
 * [[Using Timers]]
 * [[Using UIActionSheet]]
 * [[Using UIAlertView]]
