@@ -11,6 +11,11 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Setting Up Your Environment|Setup|]]
 * [[Starting a New Project|New Project (designers)]]
 
+## Creating View Controllers
+* [[Creating Custom View Controllers]]
+* [[Creating a Free Form View Controller]]
+* [[Creating View Controllers from Storyboard]]
+
 ## Navigation and Scrolling
 * [[Using Modal Transitions]]
 * [[Using Navigation Controllers]]
@@ -32,9 +37,6 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Programmatically Creating Views]]
 * [[Adding and Removing Child View Controllers]]
 * [[Animating View Properties]]
-* [[Creating a Free Form View Controller]]
-* [[Creating Custom View Controllers]]
-* [[Creating View Controllers from Storyboard]]
 * [[Custom View Controller Transitions]]
 * [[Using Perspective Transforms]]
 * [[Using View Transforms]]
@@ -45,4 +47,3 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Calling a Method After Delay]]
 * [[Using NSUserDefaults]]
 * [[Using Timers]]
-
