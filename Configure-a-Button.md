@@ -2,11 +2,18 @@
 In the bottom of the far right Utilities Panel, show the Object Library. Then, in the search bar type in 'button' to filter the results. Click and drag the Button icon onto your view in the storyboard.
 ![Add Button|700](http://i.imgur.com/TtyGj0S.gif)
 
-### Step 2: In Interface Builder, toggle states to configure image/title/background image
+### Step 2: In Interface Builder, configure image/title/background image
 Select the Attributes Inspector in the far right Utilities Panel. Make sure that the button is selected on the storyboard. In the input labeled Title, you can change the title text. In the Background combo box, you can select an image that will show up behind the button text. Finally, in the Image combo box you can select an Image that appears inline with the text.
-![Change Button States|700](http://i.imgur.com/1Q2KgJV.gif)
+![Change Button Properties|700](http://i.imgur.com/1Q2KgJV.gif)
 
-### Step 3: Configure title/image insets
-### Step 4: Register for the button action
-### Step 5: Toggle the selected state on click
-### Step 6: Disable a button
+### Step 3: Configure various button states
+In the Utilities Panel, you can change the state of the button that you are configuring the properties of. For example, you could set the image for the Default state. Then select the Selected state in the State Config drop down and set the image for that state to be different. Thus, when the button is selected it will show a different image.
+![Change Button States|700](http://i.imgur.com/mFcyb1W.gif)
+
+### Step 4: Configure title/image insets
+You can control the amount the title or image edges are inset within the button. In the Utilities Panel on the far right, scroll down to the adjacent Edge, Inset labels. Select either title or image in the edge drop down. Then you can control the left, right, top, and bottom inset amounts of the corresponding title or image edges.
+![Button Insets|700](http://i.imgur.com/72kMTmW.gif)
+
+### Step 5: Register for the button action
+### Step 6: Toggle the selected state on click
+### Step 7: Disable a button
