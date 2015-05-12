@@ -11,31 +11,38 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Setting Up Your Environment|Setup|]]
 * [[Starting a New Project|New Project (designers)]]
 
-## To Organize 
+## Navigation and Scrolling
+* [[Using Modal Transitions]]
+* [[Using Navigation Controllers]]
+* [[Using Tab Bar Controllers]]
+* [[Handling Button Events]]
+
+## Common Views and Controllers
+* [[Using UIScrollView]]
+* [[Using UIImageView]]
+* [[Using UIAlertView]]
+* [[Using UIActionSheet]]
+* [[Using UIKitDynamics]]
+* [[Using UIPageControl]]
+* [[Using UIRefreshControl]]
+* [[Using UITableView]]
+
+## Animating and Responding to User Input
 * [[Adding and Removing Child View Controllers]]
 * [[Adding Views to the Window]]
 * [[Animating View Properties]]
-* [[Calling a Method After Delay]]
+* [[Programmatically Creating Views]]
 * [[Creating a Free Form View Controller]]
 * [[Creating Custom View Controllers]]
 * [[Creating View Controllers from Storyboard]]
 * [[Custom View Controller Transitions]]
-* [[Handling Button Events]]
-* [[Programmatically Creating Views]]
+* [[Using Perspective Transforms]]
+* [[Using View Transforms]]
 * [[Registering for Keyboard Events]]
 * [[Using Gesture Recognizers]]
-* [[Using Modal Transitions]]
-* [[Using Navigation Controllers]]
+
+## Helpful System Utilities
+* [[Calling a Method After Delay]]
 * [[Using NSUserDefaults]]
-* [[Using Perspective Transforms]]
-* [[Using Tab Bar Controllers]]
 * [[Using Timers]]
-* [[Using UIActionSheet]]
-* [[Using UIAlertView]]
-* [[Using UIImageView]]
-* [[Using UIKitDynamics]]
-* [[Using UIPageControl]]
-* [[Using UIRefreshControl]]
-* [[Using UIScrollView]]
-* [[Using UITableView]]
-* [[Using View Transforms]]
+
