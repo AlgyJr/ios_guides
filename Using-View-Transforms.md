@@ -28,7 +28,7 @@ view.transform = CGAffineTransformMakeTranslation(50, 50)
 
 ```
 
-### Combining Tranforms
+### Combining Transforms
 
 In the examples above, we were applying a single transform to a view. Sometimes, you want to be able to apply multiple transforms simultaneously. Each of the transform methods above has another method that will take an existing transform and additively apply a new transform.
 
@@ -39,3 +39,11 @@ view.transform = CGAffineTransformMakeScale(2, 2)
 view.transform = CGAffineTransformRotate(view.transform, CGFloat(45 * M_PI / 180))
 
 ```
+
+### Clearing Transforms with Identity
+An easy way to remove any transforms applied is to simply set the transform to the Identity or no transform state.
+For example,
+```
+view.transform = CGAffineTransformIdentity
+```
+will remove any previous transformations and the view will appear as it had before.
