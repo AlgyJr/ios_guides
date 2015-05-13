@@ -31,6 +31,7 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Using UIPageControl]]
 * [[Using UIRefreshControl]]
 * [[Using UITableView]]
+* [[Using UIActivityIndicatorView]]
 
 ## Animating and Responding to User Input
 * [[Adding Views to the Window]]
