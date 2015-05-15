@@ -1,3 +1,5 @@
+
+## Basic Use Case
 ![Keyboard GIF | 250](http://i.imgur.com/bQsqmhT.gif)
 
 Often, you will have to rearrange views when the keyboard is shown or hidden to ensure that the appropriate views and controls are visible while the user is typing. You can register for the begin/end editing events for UITextFields, which works well for a single UITextField. However, when you have many UITextFields, it can get complicated because when one UITextField is ending editing, another might be beginning editing, so it can be hard to tell if the keyboard is actually going away.
@@ -38,3 +40,5 @@ NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHi
 You'll want a variety of properties from the keyboard. You'll want the size, but it's also useful to have the animation properties such as duration and curve so that you can match the animation of the keyboard.
 
 See this [gist](https://gist.github.com/timothy1ee/bce97b123cfd90b83971) for a code snippet.
+
+## Moving text fields with keyboard appearance/disappearance
