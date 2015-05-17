@@ -1381,3 +1381,30 @@ _to be completed..._
 ## Editing mode
 _to be completed..._
 
+## Common Questions
+
+### How do you remove the separator inset?
+
+First, set the separator inset to zero on the tableview.
+
+```
+class MyTableViewController: UITableViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tableView.separatorInset = UIEdgeInsetsZero
+    }
+}
+```
+
+Then, in your cell, disable the margins, and the margins it may inherent from parent views.
+
+```
+class MyTableViewCell: UITableViewCell
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.layoutMargins = UIEdgeInsetsZero
+        self.preservesSuperviewLayoutMargins = false
+    }
+}
+```
+
