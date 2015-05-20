@@ -72,7 +72,7 @@ self.username.frame.origin = CGPoint(x: self.username.frame.origin.x, y: self.in
 
 ### Step 6: Move UITextField back when keyboard is hidden
 
-![Show Keyboard Offset | 250](http://i.imgur.com/Bjiect2.gif)
+![Hide Keyboard Offset | 250](http://i.imgur.com/Ag9mO7D.gif)
 
 Now we will simply animate the UITextField back to its original y position when the keyboard is hidden. This will occur within the ```keyboardWillHide``` method. First, copy the ```keyboardWillShow``` method and rename it to ```keyboardWillHide```.  Next, change the line within the animation block to
 ```
