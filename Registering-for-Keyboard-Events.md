@@ -41,4 +41,8 @@ You'll want a variety of properties from the keyboard. You'll want the size, but
 
 See this [gist](https://gist.github.com/timothy1ee/bce97b123cfd90b83971) for a code snippet.
 
-## Moving text fields with keyboard appearance/disappearance
+### Step 4: Add a UITextField to the view
+
+![Add UITextField | 250](http://i.imgur.com/HL1Ekq3.gif)
+
+Place a UITextField within the view using Interface Builder. Then, use the Assistant Editor button to reveal the associated ViewController code. Ctrl+click on the text field and drag the blue line to the ViewController in order to create either an Outlet or Action Handler for the text field. We will select Outlet and name the outlet according to the purpose of the UITextField.
