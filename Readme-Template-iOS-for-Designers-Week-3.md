@@ -1,6 +1,6 @@
-## Carousel
+## Mailbox
 
-The purpose of this homework is to leverage views, view properties, and events to create a high fidelity prototype that is difficult to distinguish from a production app. We're going to use the techniques from this week to implement the Carousel app from the signed out state to the basic signed in state.
+The purpose of this homework is to leverage animations and gestures to implement more sophisticated interactions. We're going to use the techniques from this week to implement the Mailbox interactions.
 
 Time spent: `<Number of hours spent>`
 
@@ -8,14 +8,19 @@ Time spent: `<Number of hours spent>`
 
 #### Required
 
-- [ ] Static photo tiles on the initial screen.
-- [ ] Sign In.
-  - [ ] Tapping on email/password reveals the keyboard and shifts the scrollview and Sign In button up.
-  - [ ] User sees an error alert when no email is present or no password is present.
-  - [ ] User sees a loading screen upon tapping the Sign In button.
-  - [ ] ```alertView.dismissWithClickedButtonIndex(0, animated: true)``` dismisses the loading screen with no buttons.
-  - [ ] User sees an error alert when entering the wrong email/password combination.
-  - [ ] User is taken to the tutorial screens upon entering the correct email/password combination.
+- [ ] On dragging the message left:
+  - [ ] Initially, the revealed background color should be gray.
+  - [ ] As the reschedule icon is revealed, it should start semi-transparent and become fully opaque. If released at this point, the message should return to its initial position.
+  - [ ] After 60 pts, the later icon should start moving with the translation and the background should change to yellow.
+    - [ ] Upon release, the message should continue to reveal the yellow background. When the animation it complete, it should show the reschedule options.
+  - [ ] After 260 pts, the icon should change to the list icon and the background color should change to brown.
+    - [ ] Upon release, the message should continue to reveal the brown background. When the animation it complete, it should show the list options.
+
+- [ ] User can tap to dismissing the reschedule or list options. After the reschedule or list options are dismissed, you should see the message finish the hide animation.
+- [ ] On dragging the message right:
+  - [ ] Initially, the revealed background color should be gray.
+
+
 - [ ] Tutorial Screens.
   - [ ] User can page between the screens.
 - [ ] Image Timeline.
@@ -54,7 +59,7 @@ Time spent: `<Number of hours spent>`
 
 ### Walkthrough
 
-![Video Walkthrough](http://i.imgur.com/TBJkE46.gif)
+![Video Walkthrough](http://i.imgur.com/LQwqd7z.gif)
 
 Credits
 ---------
