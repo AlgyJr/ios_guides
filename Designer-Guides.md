@@ -22,20 +22,19 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Using Tab Bar Controllers]]
 * [[Configure a Button]]
 
-## Common Views and Controllers
+## Views
 * [[Using UIScrollView]]
 * [[Using UIImageView]]
 * [[Using UIAlertView]]
 * [[Using UIActionSheet]]
-* [[Using UIKitDynamics]]
 * [[Using UIPageControl]]
 * [[Using UIRefreshControl]]
 * [[Using UITableView]]
 * [[Using UIActivityIndicatorView]]
-
-## Animating and Responding to User Input
 * [[Adding Views to the Window]]
 * [[Programmatically Creating Views]]
+
+## Animating and Responding to User Input
 * [[Adding and Removing Child View Controllers]]
 * [[Animating View Properties]]
 * [[Custom View Controller Transitions]]
@@ -45,6 +44,7 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Using Gesture Recognizers]]
 
 ## Helpful System Utilities
+* [[Using UIKitDynamics]]
 * [[Calling a Method After Delay]]
 * [[Using NSUserDefaults]]
 * [[Using Timers]]
