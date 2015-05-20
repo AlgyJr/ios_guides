@@ -8,8 +8,9 @@ Time spent: `<Number of hours spent>`
 
 #### Required
 
-- [ ] User can view a list of movies. Poster images load asynchronously.
-- [ ] User can view movie details by tapping on a cell.
+- [ ] User can tap through the 3 welcome screens.
+- [ ] User can follow the create user flow.
+  - [ ] On the create user form, the user can tap the back button to go to the page where they can sign in or create an account.
 - [ ] User sees loading state while waiting for the API.
 - [ ] User sees error message when there is a network error: http://cl.ly/image/1l1L3M460c3C
 - [ ] User can pull to refresh the movie list.
