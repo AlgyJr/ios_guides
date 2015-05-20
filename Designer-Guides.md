@@ -15,6 +15,7 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Creating Custom View Controllers]]
 * [[Creating a Free Form View Controller]]
 * [[Creating View Controllers from Storyboard]]
+* [[Adding and Removing Child View Controllers]]
 
 ## Navigation and Scrolling
 * [[Using Modal Transitions]]
@@ -35,7 +36,6 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Programmatically Creating Views]]
 
 ## Animating and Responding to User Input
-* [[Adding and Removing Child View Controllers]]
 * [[Animating View Properties]]
 * [[Custom View Controller Transitions]]
 * [[Using Perspective Transforms]]
