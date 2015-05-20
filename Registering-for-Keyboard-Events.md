@@ -70,6 +70,8 @@ initialY = username.frame.origin.y
 self.username.frame.origin = CGPoint(x: self.username.frame.origin.x, y: self.initialY + self.offset)
 ```
 
+Note: If your keyboard does not show when you click within the text field. Make sure that you have the external keyboard simulation disabled. Go to menu Hardware | Keyboard and make sure "Connect Hardware Keyboard" is unchecked.
+
 ### Step 6: Move UITextField back when keyboard is hidden
 
 ![Hide Keyboard Offset | 250](http://i.imgur.com/Ag9mO7D.gif)
