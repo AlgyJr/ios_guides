@@ -11,25 +11,23 @@ Time spent: `<Number of hours spent>`
 - [ ] User can tap through the 3 welcome screens.
 - [ ] User can follow the create user flow.
   - [ ] On the create user form, the user can tap the back button to go to the page where they can sign in or create an account.
-- [ ] User sees loading state while waiting for the API.
-- [ ] User sees error message when there is a network error: http://cl.ly/image/1l1L3M460c3C
-- [ ] User can pull to refresh the movie list.
+  - [ ] Before creating the account, user can choose to read the terms of service.
+  - [ ] After creating the account, user can view the placeholders for Files, Photos, and Favorites as well as the Settings screen.
+  - [ ] User can log out from the Settings screen.
+- [ ] User can follow the sign in flow.
+  - [ ] User can tap the area for "Having trouble signing in?".
+  - [ ] User can log out from the Settings screen.
 
 #### Optional
 
-- [ ] Add a tab bar for Box Office and DVD.
-- [ ] Implement segmented control to switch between list view and grid view.
-- [ ] Add a search bar.
-- [ ] All images fade in.
-- [ ] For the large poster, load the low-res image first, switch to high-res when complete.
-- [ ] Customize the highlight and selection effect of the cell.
-- [ ] Customize the navigation bar.
+- [ ] Add a detail view for one of the files and implement favoriting the file.
+- [ ] Add UITextFields for the forms so you can actually type in them and handle dismissing the keyboard.
+- [ ] You should be able to swipe through the welcome screens instead of just tapping them.
 
 ### Walkthrough
 
-![Video Walkthrough](http://i.imgur.com/9d4fXIm.gif)
+![Video Walkthrough](http://i.imgur.com/XjfAxNT.gif)
 
 Credits
 ---------
-* [Rotten Tomatoes API](http://developer.rottentomatoes.com/docs/read/JSON)
-* [AFNetworking](https://github.com/AFNetworking/AFNetworking)
+* Any libraries or borrowed content.
