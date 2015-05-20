@@ -1,1 +1,0 @@
-Readme Template iOS for Designers Week 5
