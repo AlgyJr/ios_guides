@@ -53,4 +53,28 @@ Place a UITextField within the view using Interface Builder. Then, use the Assis
 
 Let's use the animation block we created in step 3, within the ```keyboardWillShow``` hook, to animate the text field moving some fixed distance away from the keyboard as the keyboard is shown. Using the animation block will help us match the animation transition between the text field and the keyboard. For simplicity, we will simply move the text field a constant distance towards the top of the screen.
 
-First, create variables for the initial y position of the text field as well as the constant amount we will offset the text field in the y direction. Next, within the ```viewDidLoad``` method record the initial y position of the text field. Finally, within the animation block from Step 3, update the y position of the text field to the shown position.
+First, create variables for the initial y position of the text field as well as the constant amount we will offset the text field in the y direction.
+
+```
+var initialY: CGFloat!
+let offset: CGFloat = -50
+```
+
+Next, within the ```viewDidLoad``` method record the initial y position of the text field.
+```
+initialY = username.frame.origin.y
+```
+
+ Finally, within the animation block from Step 3, update the y position of the text field to the shown position.
+```
+self.username.frame.origin = CGPoint(x: self.username.frame.origin.x, y: self.initialY + self.offset)
+```
+
+### Step 6: Move UITextField back when keyboard is hidden
+
+![Show Keyboard Offset | 250](http://i.imgur.com/Bjiect2.gif)
+
+Now we will simply animate the UITextField back to its original y position when the keyboard is hidden. This will occur within the ```keyboardWillHide``` method. First, copy the ```keyboardWillShow``` method and rename it to ```keyboardWillHide```.  Next, change the line within the animation block to
+```
+self.username.frame.origin = CGPoint(x: self.username.frame.origin.x, y: self.initialY) 
+```
