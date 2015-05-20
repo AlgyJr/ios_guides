@@ -46,3 +46,11 @@ See this [gist](https://gist.github.com/timothy1ee/bce97b123cfd90b83971) for a c
 ![Add UITextField | 250](http://i.imgur.com/HL1Ekq3.gif)
 
 Place a UITextField within the view using Interface Builder. Then, use the Assistant Editor button to reveal the associated ViewController code. Ctrl+click on the text field and drag the blue line to the ViewController in order to create either an Outlet or Action Handler for the text field. We will select Outlet and name the outlet according to the purpose of the UITextField.
+
+### Step 5: Offset the UITextField when the keyboard is shown
+
+![Show Keyboard Offset | 250](http://i.imgur.com/Bjiect2.gif)
+
+Let's use the animation block we created in step 3, within the ```keyboardWillShow``` hook, to animate the text field moving some fixed distance away from the keyboard as the keyboard is shown. Using the animation block will help us match the animation transition between the text field and the keyboard. For simplicity, we will simply move the text field a constant distance towards the top of the screen.
+
+First, create variables for the initial y position of the text field as well as the constant amount we will offset the text field in the y direction. Next, within the ```viewDidLoad``` method record the initial y position of the text field. Finally, within the animation block from Step 3, update the y position of the text field to the shown position.
