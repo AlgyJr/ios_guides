@@ -30,6 +30,11 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Using View Transforms]]
 * [[Using Perspective Transforms]]
 
+## Responding to User Input
+* [[Configure a Button]]
+* [[Using Gesture Recognizers]]
+* [[Registering for Keyboard Events]]
+
 ## Common UIViews
 * [[Using UIScrollView]]
 * [[Using UIImageView]]
@@ -39,11 +44,6 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Using UIRefreshControl]]
 * [[Using UITableView]]
 * [[Using UIActivityIndicatorView]]
-
-## Responding to User Input
-* [[Configure a Button]]
-* [[Registering for Keyboard Events]]
-* [[Using Gesture Recognizers]]
 
 ## Helpful System Utilities
 * [[Using UIKitDynamics]]
