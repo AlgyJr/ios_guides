@@ -21,5 +21,10 @@ You cannot submit your App for testing without at least one icon image for your 
 You can use a site like [Makeappicon](http://makeappicon.com/) to construct images of all the useful dimensions for you.
 
 ### Step 4: Archive and Submit
+We need to archive the app, validate it, and then submit it so that a build of it will show up in iTunesConnect. First, switch the build target to iOS Device. Then, select the Product | Archive menu option, which will bring up the Archive Organizer. Click on the "Validate..." button, which will start a process that may run for up to 15 minutes. (Sometimes this hangs for some reason so if it runs longer than 15 minutes you may want to cancel it and run again). If you did not have any validation errors you will now be able to submit your App to iTunesConnect. Click on the "Submit..." button and wait again. (If you had any errors in Validation you will not be able to submit and must fix those and then perform Validation again)
 
-![Archive and Submit|700](http://i.imgur.com/hjSnWAS.gif)
+![Archive and Submit|700](http://i.imgur.com/LAce2LX.gif)
+
+### Step 4: Invite Beta Testers
+
+![Invite Beta Testers|700](http://i.imgur.com/LAce2LX.gif)
