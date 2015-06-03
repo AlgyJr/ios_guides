@@ -6,6 +6,9 @@ Open [iTunesConnect](https://itunesconnect.apple.com) and log in with your Apple
 
 ![Create an App in iTunes Connect|700](http://i.imgur.com/95JJRJU.gif)
 
-Note that the SKU simply needs to be a number that is greater than 1 digit and is not used by another App. Also,  your Bundle ID + Bundle Suffix must be unique and match the bundle ID in XCode and your version number must also match the one in XCode. You can check the bundle ID and version of your App as shown here.
+Note that the SKU simply needs to be a number that is greater than 1 digit and is not used by another App.
 
-![Check bundle ID and version|700](http://i.imgur.com/95JJRJU.gif)
+### Step 2: Find your Bundle ID and Version number
+Also,  your Bundle ID + Bundle Suffix must be unique and match the bundle ID in XCode and your version number must also match the one in XCode. You can check the bundle ID and version of your App by clicking on your project in the far left Project Navigator window as shown here:
+
+![Check bundle ID and version|700](http://i.imgur.com/bTMLewo.gif)
