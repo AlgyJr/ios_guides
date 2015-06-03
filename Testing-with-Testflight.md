@@ -12,3 +12,14 @@ Note that the SKU simply needs to be a number that is greater than 1 digit and i
 Also,  your Bundle ID + Bundle Suffix must be unique and match the bundle ID in XCode and your version number must also match the one in XCode. You can check the bundle ID and version of your App by clicking on your project in the far left Project Navigator window as shown here:
 
 ![Check bundle ID and version|700](http://i.imgur.com/bTMLewo.gif)
+
+### Step 3: Set an Icon
+You cannot submit your App for testing without at least one icon image for your App. Add an icon for the default as shown here:
+
+![Add Icon|700](http://i.imgur.com/nJkyncD.gif)
+
+You can use a site like [Makeappicon](http://makeappicon.com/) to construct images of all the useful dimensions for you.
+
+### Step 4: Archive and Submit
+
+![Archive and Submit|700](http://i.imgur.com/hjSnWAS.gif)
