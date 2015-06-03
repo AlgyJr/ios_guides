@@ -1,1 +1,1 @@
-![Create Segue|700](http://i.imgur.com/HjGJq93.gif)
+![Create an App in iTunes Connect|700](http://i.imgur.com/95JJRJU.gif)
