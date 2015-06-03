@@ -41,3 +41,7 @@ Go to the MyApps section of [iTunesConnect](https://itunesconnect.apple.com) and
 
 Go back to the Builds section of Prerelease and flip the TestFlight Beta Testing switch on. If you go back to the Internal Testers section you will notice that the users you selected for testing have now been invited.
 ![Turn Testing On|700](http://i.imgur.com/pNs3JOG.gif)
+
+### Step 8: Users Accept Invitation
+
+The users will get an email and can use the link in the email to automatically be taken to the App Store to get TestFlight or if they already have TestFlight it will open up TestFlight and allow them to install the new App for testing. Note that the users need to open the email in the native iOS email client, opening up in GMail or other apps won't allow the user to download your App to test.
