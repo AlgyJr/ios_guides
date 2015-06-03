@@ -25,15 +25,19 @@ We need to archive the app, validate it, and then submit it so that a build of i
 
 ![Archive and Submit|700](http://i.imgur.com/LAce2LX.gif)
 
-### Step 5: Add Internal Testers
+### Step 5: Add User Roles
+
+If you need to add new users to your project go to the Users and Roles section of [iTunesConnect](https://itunesconnect.apple.com). And follow the wizard. Note that the email needs to be the user's AppleID.
+
+![Users and Roles|700](http://i.imgur.com/37E2TfW.gif)
+
+### Step 6: Add Internal Testers
 
 Go to the MyApps section of [iTunesConnect](https://itunesconnect.apple.com) and select your App. Then, go to the prerelease subsection of your App. And check any users that you would like to test your App. Then click the Save button when you are done.
 ![Add Internal Testers|700](http://i.imgur.com/KJ0Vsa6.gif)
 
-### Step 6: Add User Roles
 
-If you need to add new users to your project go to the Users and Roles section of [iTunesConnect](https://itunesconnect.apple.com). 
+### Step 7: Turn Testing On
 
-### Step 6: Add Internal Testers
-
+Go back to the Builds section of Prerelease and flip the TestFlight Beta Testing switch on. If you go back to the Internal Testers section you will notice that the users you selected for testing have now been invited.
 ![Turn Testing On|700](http://i.imgur.com/pNs3JOG.gif)
