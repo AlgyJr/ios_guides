@@ -8,7 +8,7 @@ This page covers the basics of adding Apple's iOS frameworks to your project. By
 
 ### In Brief
 
-!(http://i.imgur.com/goEWO6l.gif)[Adding Framework gif]
+![Adding Framework gif](http://i.imgur.com/goEWO6l.gif)
 
 Click on your project, select your app target, press general, then add the framework you need. For example, MapKit.framework
 
@@ -24,7 +24,7 @@ Note: If you forget to link a library, your app will often compile correctly, bu
 
 ### import
 
-At the top of every swift file you need to access the framework's methods and classes, you'll need to `import` the framework. For example to allow access to MKMapView, `import MapKit`.
+At the top of every swift file you need to access the framework's methods and classes, you'll need to `import` the framework. For example to allow access to MKMapView in your MapViewController, `import MapKit`.
 
 ```Swift
 import UIKit
