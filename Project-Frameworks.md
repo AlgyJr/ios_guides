@@ -35,6 +35,8 @@ class MapViewController: UIViewController{
     …
 ```
 
+Now you can use Apple's frameworks!
+
 # Further Reading
 
 * [[Project Basics]]
