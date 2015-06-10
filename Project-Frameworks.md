@@ -2,7 +2,7 @@
 
 A framework is bundle of code letting you add functionality to your app. Apple's frameworks let you add features like maps and the user's location. Other developers' frameworks like Parse let you easily syncronize data to the cloud. 
 
-This page covers the basics of adding Apple's iOS frameworks to your project. By the end of it you will understand how expose frameworks' methods and classes in you project. 
+This page covers the basics of adding Apple's iOS frameworks to your project. By the end of it you will understand how use frameworks' methods and classes in your project. 
 
 ## Adding Frameworks to Project
 
