@@ -4,21 +4,18 @@ A framework is bundle of code letting you add functionality to your app. Apple's
 
 This page covers the basics of adding Apple's iOS frameworks to your project. By the end of it you will understand how use frameworks' methods and classes in your project. 
 
-## Adding Frameworks to Project
+### Popular Apple frameworks 
 
-### In Brief
+* MapKit.framework - add maps to your app
+* CoreLocation.framework - get the user's location 
+* AddressBookUI.framework - used to fetch a user's contacts
+* MessageUI.framework - native SMS and emails UI inside your app
+
+## Adding Frameworks to Project
 
 ![Adding Framework gif](http://i.imgur.com/goEWO6l.gif)
 
 Click on your project, select your app target, press general, then add the framework you need. For example, MapKit.framework
-
-### In Depth
-
-Click on your project, select your app target, press Build Phases. Here are the steps the compilier takes to build your app. 
-
-In "Link Binary With Libraries," pressing the plus button allows you to add a framework. 
-
-Note: If you forget to link a library, your app will often compile correctly, but crash at runtime. 
 
 ## Using a linked Framework
 
@@ -29,6 +26,9 @@ In every swift file you need to access the framework's methods and classes, you'
 ```Swift
 import UIKit
 import MapKit
+import CoreLocation
+import AddressBookUI
+import MessageUI
 
 class MapViewController: UIViewController{
     var mapView: MKMapView!
