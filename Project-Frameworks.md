@@ -8,8 +8,8 @@ This page covers the basics of adding Apple's iOS frameworks to your project. By
 
 * MapKit.framework - add maps to your app
 * CoreLocation.framework - get the user's location 
-* AddressBookUI.framework - used to fetch a user's contacts
-* MessageUI.framework - native SMS and emails UI inside your app
+* AddressBookUI.framework - let user choose from their contacts
+* MessageUI.framework - let user send native SMS or emails from inside your app
 
 ## Adding Frameworks to Project
 
