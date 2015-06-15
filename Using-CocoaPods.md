@@ -1,7 +1,7 @@
 ## Overview
-CocoaPods packages 3rd-party frameworks and functionalities into "Pods." Cocoapods will automagicically download Pods and integrate them into your project. 
+This guide covers the basics of installing and adding CocoaPods to your project. By the end of it you will be able to add the most popular Pods to your project. 
 
-This page covers the basics of installing and adding CocoaPods to your project. By the end of it you will be able to add the most popular Pods to your project. 
+In this guide we're going to add the AFNetworking Pod to give UIImageView the power to load web images, and we'll also add the MBProgressHUD Pod so we can create a nice loading screen. 
 
 ### Popular CocoaPods
 
@@ -25,9 +25,6 @@ pod setup                      # updates the "Pods" CocoaPods knows about
 
 
 ## Adding Cocoapods to your project
-We're going to add the AFNetworking Pod to give UIImageView a web-image-loading superpower! 
-We'll also add the MBProgressHUD Pod so we can create a nice loading screen. 
-
 ### Step 1 - Set your Terminal's directory 
 A Terminal window is just like a Finder window on your Mac. It's only ever associated with one folder at a time. That folder is known as the "Present Working Directory." 
 
