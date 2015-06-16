@@ -1,30 +1,21 @@
 ## Overview
-This guide covers the basics of installing and adding CocoaPods to your project. By the end of it you will be able to add the most popular Pods to your project. 
 
-In this guide we're going to add the AFNetworking Pod to give UIImageView the power to load web images, and we'll also add the MBProgressHUD Pod so we can create a nice loading screen. 
-
-### Popular CocoaPods
-
-* `pod 'AFNetworking', '~> 2.0'` 
-    - Gives UIImageView the super-power of loading web images (see example below)
-    - Infamous for making network requests easy
-* `pod 'MBProgressHUD', '~> 0.5'` - Displays a popup loading hud (see example below)
+This guide covers the basics of installing and adding CocoaPods to your project. By the end of it you will be able to add the most popular Pods to your project.
 
 ## Setup  
-### Terminal
-Terminal is how you'll install and setup CocoaPods. You can open Terminal in the Applications/Utilities folder. 
 
-### Install Cocoapods
-You can install CocoaPods simply by typing the following 3 commands in your Terminal. *To the right of # is a comment for your viewing pleasure only.* 
+### Install CocoaPods
+
+You can install CocoaPods simply by typing the following 3 commands in your Terminal.
 
 ```
-gem update --system            # Updates RubyGems to latest version, may require your password
-sudo gem install cocoapods     # installs CocoaPods, requires your password
-pod setup                      # updates the "Pods" CocoaPods knows about
+gem update --system
+sudo gem install cocoapods
+pod setup
 ```
-
 
 ## Adding Cocoapods to your project
+
 ### Step 1 - Set your Terminal's directory 
 A Terminal window is just like a Finder window on your Mac. It's only ever associated with one folder at a time. That folder is known as the "Present Working Directory." 
 
@@ -77,7 +68,6 @@ pod 'AFNetworking', '~> 2.0'
 pod 'MBProgressHUD', '~> 0.5'
 ```
 
-
 * Next have CocoaPods download and integrate by typing the folowing into terminal, then the return key. 
 
 ```
@@ -87,7 +77,7 @@ pod install
 [Watch the add Pods and install gif here](http://i.imgur.com/3nKJkHB.gif)
 
 ### Step 4 - Open your new Workspace
-After completing succesfully, CocoaPods will also generate a new Workspace file for you. Your `.xcworkspace` file works just like your current `.xcproject` file, except it brings-in your CocoaPods as well. 
+After completing successfully, CocoaPods will also generate a new Workspace file for you. Your `.xcworkspace` file works just like your current `.xcproject` file, except it brings-in your CocoaPods as well. 
 
 * Close your `.xcproject` file
 * Open your new `.xcworkspace` file
