@@ -27,10 +27,10 @@ Be sure you `import MapKit` into whatever view controllers will need to use maps
 ![MapKit View's configuration options](http://i.imgur.com/MjOMcsu.png)
 
 Here are the configuration options for `MKMapView` in the "DJ tab" (shown above):
-+ Type – Choose from Satellite vs Standard vs Hybrid Map types
-+ Allows – Disable Zooming, Rotating, and Scrolling to prevent the Map from moving, while still allowing interaction with any pins present
-+ Shows, Buildings and Annotations – toggle to let Apple's default points of interest show when available 
-+ Shows, User Location – Show's user their location, when they're on Map. **Using this first requires the user's permission for their location, by getting it through the `CoreLocation.framework`**
+1. Type – Choose from Satellite vs Standard vs Hybrid Map types
+2. Allows – Disable Zooming, Rotating, and Scrolling to prevent the Map from moving, while still allowing interaction with any pins present
+3. Shows, Buildings and Annotations – toggle to let Apple's default points of interest show when available 
+4. Shows, User Location – Show's user their location, when they're on Map. **Using this first requires the user's permission for their location, by getting it through the `CoreLocation.framework`**
 
 * *99.8% of the time* after creating adding a Map View in interface builder, you'll want to create an outlet for it in your view controller. 
 
