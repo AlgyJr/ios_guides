@@ -1,12 +1,16 @@
 ## Overview
+This guide covers 1) setting-up CocoaPods, and 2) adding and installing Pods into your XCode project. By the end of it you'll be ready for guides on *actually using* the Pods you need. 
 
-This guide covers the basics of installing and adding CocoaPods to your project. By the end of it you will be able to add the most popular Pods to your project.
+### Necessary knowledge
 
-## Setup  
+* Basic level in XCode
+* Novice level in Terminal 
+
+## One-time Setup  
 
 ### Install CocoaPods
 
-You can install CocoaPods simply by typing the following 3 commands in your Terminal.
+* Install CocoaPods by typing the following commands into Terminal
 
 ```
 gem update --system
@@ -14,88 +18,70 @@ sudo gem install cocoapods
 pod setup
 ```
 
+* Just close your Terminal window and re-open it to complete setup!
+
+**Note: If your Terminal gets stuck on `pod setup`, see FAQ**
+
 ## Adding Cocoapods to your project
 
 ### Step 1 - Set your Terminal's directory 
-A Terminal window is just like a Finder window on your Mac. It's only ever associated with one folder at a time. That folder is known as the "Present Working Directory." 
 
-To setup CocoaPods, you need set your Terminal's Present Working Directory to the folder containing your XCode Project.
+First you need set your Terminal's Present Working Directory to the folder containing your XCode Project.
 
-* Open Terminal
-* Type the characters `cd ` that's `cd` and a *(Space)*
-* Use Finder to locate the folder that contains your `.xcodeproject` file
-* Drag that folder to your open terminal, which should now look like `cd /Path/To/Your/Folder`, then hit your return key
-* Ensure that terminal is set to the folder you expect.
-    - To see what folder your terminal is currently set to type `pwd` into the Terminal.
-    - *Double check that you haven't `cd`'d any folder contained inside your project folder, or your `.xcodeproject` file*
+* Type the characters "`cd`" + *space*
+* Drag the folder containing your `.xcodeproject` file to your terminal, then hit your return key
 
-[Watch the cd gif here](http://i.imgur.com/SJ6tkPv.gif)
+![Watch the cd gif here](http://i.imgur.com/SJ6tkPv.gif)
 
 ### Step 2 - Add your Podfile 
-CocoaPods uses a text file named `Podfile` to define your project's dependencies. To add your Podfile:
+
+CocoaPods uses a text file named `Podfile` to define your project's Pods. To add your Podfile:
 
 * Type `pod init` into your terminal 
 * Type `open -a XCode Podfile` and edit your `Podfile` in XCode
- 
-Your `Podfile` will probably look like this:
-```
-# Uncomment this line to define a global platform for your project
-# platform :ios, '6.0'
 
-target 'mySpecialProject' do
-
-end
-
-target 'mySpecialProjectTests' do
-
-end
-```
-
-[Watch the add your Podfile gif here](http://i.imgur.com/Tlx88ZN.gif)
+![Watch the add your Podfile gif here](http://i.imgur.com/Tlx88ZN.gif)
 
 ### Step 3 - Add your Pods and install
-* Start by cleaning up your `Podfile` to make it look like this:
-```
-platform :ios, '8.0'
+
+* First, you can delete everything in this file
+* Add a row for each Pod you're installing, then save
 
 ```
-
-* Add rows for each Pod you're installing, then save:
-```
-platform :ios, '8.0'
-
+pod 'MBProgressHUD'
 pod 'AFNetworking', '~> 2.0'
-pod 'MBProgressHUD', '~> 0.5'
 ```
 
-* Next have CocoaPods download and integrate by typing the folowing into terminal, then the return key. 
+**Note: Your Pods will be different.** These are two examples.
+
+* Next have CocoaPods install typing the folowing into terminal
 
 ```
 pod install
 ```
 
-[Watch the add Pods and install gif here](http://i.imgur.com/3nKJkHB.gif)
+**Note: If `pod install` is taking more than 60 seconds, see FAQ**
 
-### Step 4 - Open your new Workspace
-After completing successfully, CocoaPods will also generate a new Workspace file for you. Your `.xcworkspace` file works just like your current `.xcproject` file, except it brings-in your CocoaPods as well. 
+![Watch the add Pods and install gif here](http://i.imgur.com/3nKJkHB.gif)
+
+### Step 4 - Open your new Workspace file
+
+After your first `pod install`, CocoaPods will create a new `.xcworkspace` file for you, which includes has your CocoaPods as well. **Only use your `.xcworkspace` from now on.**
 
 * Close your `.xcproject` file
-* Open your new `.xcworkspace` file
-    - You can find your new `.xcworkspace` file in your project folder, or 
-    - Open it from the terminal with `open MySpecialProject.xcworkspace`
-    - **Important**: From now on you should only open your `.xcworkspace` and **not** your `.xcodeproj`
-* Ensure your project runs, making sure the iOS simulator you want is selected.
+* Open your new `.xcworkspace` file, which you can find in your project's folder
 
-Note: If you later need to change your `Podfile` to bring-in new Pods, simply run `pod install` again and reopen `MySpecialProject.xcworkspace` to load the new dependencies.
+If you later need to change your `Podfile` to bring-in new Pods, simply run `pod install` again.
 
 ### Step 5 - Bridging from Objective-C
-All the libaries at the top of this page are written in Objective-C. If you want to use these libraries in your Swift project, you'll have to add a *Bridging-Header* for the Pods you want to use in your Swift project.
 
-This can be done automatically by adding any Objective-C file, then using the Bridging-Header XCode automatically creates for us. 
+As of 2015 most popular CocoaPods are still written in Objective-C. To use these Pods in your Swift project, your project will need a *Bridging-Header*.
+
+Create one automatically by adding any Objective-C file to your project.
 
 * Go to `File -> New -> File ... -> iOS -> Source -> Objective-C File` and add a file with any name and any settings.
-* XCode will *Would you like to configure an Objective-C bridging header?* The correct answer to this question is Yes. 
-* Of the new files added, one of them will be called `MySpecialProject-Bridging-Header.h`, click on it to edit: 
+* When asked *Would you like to configure an Objective-C bridging header?*, answer *Yes*. 
+* Edit the new file called `MySpecialProject-Bridging-Header.h`: 
 
 ```objective-c 
 //
@@ -106,55 +92,49 @@ This can be done automatically by adding any Objective-C file, then using the Br
 #import <MBProgressHUD/MBProgressHUD.h>
 ```
 
-**Congratulations, you've installed your Pods!**
+**Note: Your Pods will be different.** These are two examples.
 
-Note: You can delete the other files created in this step, but keep `MySpecialProject-Bridging-Header.h`
+You can trash the other file created in this step, but keep `MySpecialProject-Bridging-Header.h`
 
-[Watch the bridging gif here](http://i.imgur.com/gqPbeo5.gif)
+![Watch the bridging gif here](http://i.imgur.com/gqPbeo5.gif)
 
-### Step 6 - Use your Cocoapods! 
-This is the part where you benefit from your work. Finally we update our view controller's logic to use these Pods. 
+### Step 6 - Done! Use your CocoaPods! 
 
-1. We'll display the progress HUD while our network request is pending and dismiss the HUD once we receive a response.
-2. We'll use AFNetworking's superpower for UIImageViews to load our Movie's thubmnail image.
+**We're done!** Now you can use your Pods– just follow the Pod maker's tutorials.
+
+For example, now you can use your Pod in a ViewController. 
 
 ```swift
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource {
-    @IBOutlet weak var headerImageView : UIImageView!
-    @IBOutlet weak var tableView: UITableView!
-
-    var movie : Movie!
-    var showtimes: [Showtime] = []
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.dataSource = self
-        fetchShowtimes()
-
-        headerImageView.setImageWithURL(NSURL(string: movie.photoUrl))
-    }
-
-    func fetchStories() {
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        movie.fetchShowtimes({ (showtimes: [Showtime]) -> Void in
-            dispatch_async(dispatch_get_main_queue(), {
-                self.showtimes = showtimes
-                self.tableView.reloadData()
-                MBProgressHUD.hideHUDForView(self.view, animated: true)
-            })
-        }, error: nil)
-    }
-
+class ViewController: UIViewController {
+    var progressHUD : MBProgressHUD!
     ...
 }
 ```
 
-## FAQ: How do I know what to type in the Bridging Header or in the Podfile?
-Answer: The Pod's developers will usually tell you what to write. 
+**Note: Your Pods will be different.** This is one example.
 
- That said, it's our attempt with this document to give you a cheat sheet for the most important Pods. [Tweet us](twitter.com/codepath) if there's an important one not listed.
+## FAQ
+
+### My terminal froze during `pod setup` or `pod install`! What do I do?
+
+If you experience absurdly long/ several minute waiting on `pod setup`, or `pod install`, you may try the following:
+
+* Close your Terminal window, and open a new one
+* Type the following commands
+ 
+```
+pod repo remove master
+pod setup
+```
+
+* Now you can go back to step one and try again!
+
+### How do I know what to type in the Bridging Header or in the Podfile?
+
+Answer: The Pod's developers will usually tell you what to write on their website.  
 
 ## Further Reading
+
 * See Codepath's in-depth on [[CocoaPods]], which includes links to major CocoaPods directories. 
