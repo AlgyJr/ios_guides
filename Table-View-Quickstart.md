@@ -107,7 +107,7 @@ and `UITableViewDelegate` protocols.  In your view controller's
 properties to your view controller.
 
 ```swift
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
@@ -134,7 +134,7 @@ table view and passing it the identifier that was set in [Step
 ```swift
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
 
     let data = ["New York, NY", ...,  "Fort Worth, TX"]
@@ -172,7 +172,7 @@ have variable row heights see our more in depth [table view
 guide](Table-View-Guide#setting-the-height-of-rows-in-a-table).
 
 ```swift
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
