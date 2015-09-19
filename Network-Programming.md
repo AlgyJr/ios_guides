@@ -221,7 +221,7 @@ the JSON result ourselves since AFNetworking does this automatically
 based on the content type.  Finally note that we were able to supply our
 GET parameters as a Swift dictionary.  This is not particularly useful
 here, but becomes very nice to have if there is a large number of
-paramters.
+parameters.
 
 ```swift
 private let params = ["api-key": "53eb9541b4374660d6f3c0001d6249ca:19:70900879"]
