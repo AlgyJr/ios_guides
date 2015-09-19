@@ -173,7 +173,7 @@ pretty similar to our `NSURLConnection` code.  Notice that there are no
 guarantees on which thread the completion handler will run.  The caller of
 our `fetchStories` method passes in a `successCallback`, but we also
 make no guarantees on which thread the callback will run and leave it up
-to the caller to ensure anything they do in the callback will be run on
+to the caller to ensure anything done in the callback will be run on
 the correct thread.
 
 
