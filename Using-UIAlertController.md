@@ -1,5 +1,3 @@
-# UIAlertController
-
 You can choose whether to display as an alert or action sheet style. 
 
 ## Using Alert style
