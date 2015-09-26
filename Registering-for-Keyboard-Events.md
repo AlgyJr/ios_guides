@@ -28,13 +28,14 @@ You can put the methods above anywhere in the view controller file.
 ### Step 2: Register for the keyboard events
 
 In the init or viewDidLoad methods, register for keyboard events and tie them to the methods you defined in Step 1.  
-Note: You must place a colon in selector names for functions with a parameter, i.e ``"keyboardWillShow:"``
 
 ```
 NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
 NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
 
 ```
+
+Note: You must place a colon in selector names for functions with a parameter, i.e ``"keyboardWillShow:"``
 
 ### Step 3: Getting the keyboard properties
 
