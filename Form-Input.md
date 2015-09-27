@@ -274,7 +274,7 @@ state.
 We write logic to convert a `Preferences` object into our `prefValues`.
 This allow us to update the `prefValues` to store the state of table as
 we are editing without modifying the original `Preferences` object that
-is passed in.  Likewise we have a procedure obtain a new `Preferences`
+is passed in.  Likewise we have a procedure to obtain a new `Preferences`
 object from the `prefValues`.  This allows the rest of the application
 to obtain an updated `Preferences` once the user hits "Save".
 
