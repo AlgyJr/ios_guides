@@ -30,7 +30,7 @@ view uses [reusable cells](Table-View-Guide#reusing-uitableviewcells), a
 cell containing a form input may be removed from memory as soon as it
 disappears from the screen when the user scrolls the table.  This means
 that you cannot necessarily rely on the state of the form itself to
-store information the user has input.  We'll cover how overcome this and
+store information the user has input.  We'll cover how to overcome this and
 other problems below.
 
 Here is a typical example of form inputs in a table view:
