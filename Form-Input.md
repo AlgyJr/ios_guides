@@ -268,7 +268,7 @@ code for our `Preferences` model has not changed from above at all.
 The bulk of our changes are in `PreferencesViewController`.  We need to
 maintain the temporary state of our table as we are editing our
 preferences outside of the cells themselves.  We introduce two
-properties `tableStructure` and `prefValues` too keep track of this
+properties `tableStructure` and `prefValues` to keep track of this
 state.
 
 We write logic to convert a `Preferences` object into our `prefValues`.
