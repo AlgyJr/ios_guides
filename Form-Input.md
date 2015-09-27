@@ -55,7 +55,7 @@ Controller` into the scene from the Object Library and set `Content` to
 <a href="http://imgur.com/dtxyIoX"><img src="http://i.imgur.com/dtxyIoX.png" title="source: imgur.com" /></a>
 
 You can now control the number of sections in your table and the the
-number of cells by selecting the either "Table View" or "Section" in the
+number of cells by selecting either the "Table View" or "Section" in the
 Outline view and using the Attributes Inspector.  Using Interface
 Builder you can now design each individual cell as it would appear in
 your app.  You can also connect the controls in your cells to
