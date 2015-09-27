@@ -954,19 +954,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data[section].1.count
+        return data[section][1].count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath) as UITableViewCell
-        let citiesInSection = data[indexPath.section].1
+        let citiesInSection = data[indexPath.section][1]
         cell.textLabel?.text = citiesInSection[indexPath.row]
         return cell
     }
 
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterViewWithIdentifier(HeaderViewIdentifier) as UITableViewHeaderFooterView
-        header.textLabel.text = data[section].0
+        header.textLabel.text = data[section][0]
         return header
     }
 
