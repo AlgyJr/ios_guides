@@ -34,6 +34,7 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Configure a Button]]
 * [[Using Gesture Recognizers]]
 * [[Registering for Keyboard Events]]
+* [[Registering for text field events]]
 
 ## Common UIViews
 * [[Using UIScrollView]]
