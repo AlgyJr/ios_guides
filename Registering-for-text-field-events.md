@@ -1,5 +1,5 @@
 ## Basic Use Case
-![textField Facebook GIF|250](http://i.imgur.com/HnN3gMR.gif) ![textField Tip Calc GIF|250](http://i.imgur.com/QWdgBRT.gif)
+![textField Facebook GIF|200](http://i.imgur.com/HnN3gMR.gif) ![textField Tip Calc GIF|200](http://i.imgur.com/QWdgBRT.gif)
 
 Often, you will want to change or update elements in your app as the user types into a textField. Setting button states as well as updating other labels are common use cases for registering textField events.
 
