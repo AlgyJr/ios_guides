@@ -34,12 +34,14 @@ var chat = UIImage(named: "Chat")
 var chatImageView = UIImageView(image: chat)
 ```
 
-### App Icon and Launch Image
+### App Icon
 
 To set the app icon, simply select "App Icon" in the asset catalog and drag a .png file into the appropriate bucket. The App Icon expects various sizes for production, although you can use just one during development. Similarly, in production, the Launch Image expects 3.5" and 4" images, but you can use just one during development.
 
-For the launch image, you will need to configure the Launch Image Target, change the Launch Image Source to create a new asset catalog, drag the images to the catalog, and delete the entry defined in Launch Screen file.  
+### Launch Screen
+For the launch image, you will need to configure the **LaunchScreen.storyboard** file as you would any other ViewController.
+- Add your Launch Screen Asset to the **Assets.xcassets** folder.
+- Click on the **LaunchScreen.storyboard** file and disable auto-layout and size classes.
+- Drag the Launch Screen image from the media library (Bottom right in utilities pane), on to the LaunchScreen ViewController. 
 
-<img src="http://imgur.com/XuegY84.gif">
-
-Note that in XCode 6, storyboard files are used instead of launch images defined by the Launch Screen file.  If this file is left blank, then the Launch Image source gets used to render.  You must also delete the `LaunchScreen.xib` file from the project for the launch images to be used, which the GIF above doesn't show.
+![Add assets, icon, and Launch](http://i.imgur.com/9dyZBfN.gif)
