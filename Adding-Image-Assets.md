@@ -1,10 +1,10 @@
-Asset Catalogs are a new feature in XCode 5, and it makes asset management easy. To add assets to a project, follow the steps below.
+Asset Catalogs makes asset management easy. To add assets to a project, follow the steps below.
 
-<img src="http://i.imgur.com/gPEbazB.gif" />
+![adding image assets](http://i.imgur.com/N46BHYj.gif)
 
 ### Step 1: Select the asset catalog
 
-As in the screenshot above, click Images.xcassets in the project navigator to bring up the Asset Catalog for the project.
+As in the screenshot above, click Assets.xcassets in the project navigator to bring up the Asset Catalog for the project.
 
 ### Step 2: Add Image Set
 
@@ -37,6 +37,8 @@ var chatImageView = UIImageView(image: chat)
 ### App Icon
 
 To set the app icon, simply select "App Icon" in the asset catalog and drag a .png file into the appropriate bucket. The App Icon expects various sizes for production, although you can use just one during development. Similarly, in production, the Launch Image expects 3.5" and 4" images, but you can use just one during development.
+
+![App icon gif](http://i.imgur.com/v3KlhOZ.gif)
 
 ### Launch Screen
 For the launch image, you will need to configure the **LaunchScreen.storyboard** file as you would any other ViewController.
