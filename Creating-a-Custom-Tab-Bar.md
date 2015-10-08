@@ -102,7 +102,7 @@ You might be wondering why we don't just call ``selectedIndex``, ``selectedTag``
 
 So as you can see, it is no coincidence that we set our first button **tag** value to be ``0``, and then stored it at ``index 0`` in our ``buttons array``; just as we did for the corresponding index locations of the ViewControllers stored in our ``viewControllers`` array.  
 
-### Step 7: Remove the Previous ViewController and Set Button States.
+### Step 7: Remove the Previous ViewController and Set Button State.
 
 - Within your ``didPressTab`` method, use your ``previousIndex`` value to access your previous button and set it to the non-selected state.
 
@@ -124,7 +124,7 @@ previousVC.view.removeFromSuperview()
 previousVC.removeFromParentViewController()
 ```
 
-### Step 8: 
+### Step 8: Add the New ViewController and Set Button State.
 
 - Within your ``didPressTab`` method, access your current selected button and set it to the selected state.
 
