@@ -12,6 +12,8 @@ Read about our [mission to change the way engineers learn new technologies](http
 
 ## Getting Started
 
+**Totally new to iOS?** Start here.
+
 * [[Setting Up Your Environment|Setup|]]
 * [[Starting a New Project|New Project]]
 
@@ -23,10 +25,13 @@ Read about our [mission to change the way engineers learn new technologies](http
 * [[Managing Dependencies with CocoaPods|CocoaPods]]
 * [[Application Architecture and MVC in iOS|Application-Architecture]]
 
-## Models and APIs
+## Networking and Models
+
+Diving into the networking and model layers for data-driven apps:
 
 * [[Network Programming Basics|Network-Programming]]
 * [[App Transport Security|App-Transport-Security]]
+* [[Showing a progress HUD|Showing-a-progress-HUD]] (with Long-Running Tasks)
 
 ## Working with View Controllers
 
@@ -69,18 +74,17 @@ Read about our [mission to change the way engineers learn new technologies](http
 
 The following tasks may be helpful in completing some of the homeworks
 
-* [[Showing a progress/loading HUD|CocoaPods#example-using-cocoapods-to-integrate-a-progress-hud-library]]
 * [[Loading images asynchronously|Network-Programming#example-loading-images-asynchronously-using-uiimageviewafnetworking]]
 * [[Implementing pull-to-refresh in a table view|Table-View-Guide#implementing-pull-to-refresh-with-uirefreshcontrol]]
 
 ## Other topics
 * [[Services and Frameworks|Services-Frameworks]]
 
-# Troubleshooting
+## Troubleshooting
 
 * [[Fixing Xcode|Fixing Xcode]] - If Xcode acts strange, use these steps to reset it
 
-# Great External Resources
+## Great External Resources
 
 - [Apple official guides](https://developer.apple.com/library/ios/navigation/#section=Resource%20Types&topic=Guides). The high level guides are a fantastic resource when starting out:
   - [iOS App Programming Guide](https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Introduction/Introduction.html)
