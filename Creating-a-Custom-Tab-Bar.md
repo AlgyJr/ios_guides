@@ -63,10 +63,17 @@ let storyboard = UIStoryboard(name: "Main", bundle: nil)
 homeViewController = storyboard.instantiateViewControllerWithIdentifier("HomeViewController")
 ```
 
-### Step 5 Create a Shared Action for the Buttons.
+### Step 5: Create a Shared Action for the Buttons.
+
 Since we will be keeping track of which button was tapped, all the buttons can share the same action method.
 
 - ``ctrl + drag`` from your first button to the TabBarViewController to create an action.
    - Name it something like ``didPressTab``.
    - Change the **Type** from **AnyObject** to **UIButton** (that way we can access special properties only buttons have)
    - ``ctrl + drag`` from every other button to the same ``didPressTab`` so they are all sharing.
+
+### Step 6: Code the ``didPressTab`` method.
+
+When a new tab button is tapped, the goal of this method is to get rid of the ViewController contents that was previously being displayed in the tabBarViewController, and replace it with the new ViewController content that corresponds to the new tab button that was pushed. In order o do this, we need to know two things: the **previous** Button and ViewController that were selected and the **current** Button and ViewController that are now selected.   
+  
+The ``selectedIndex`` will store the **tag** value of whatever button is selected. We set the initial value of ``selectedIndex`` to **0**, or button 1. When we tap a different button, until we assign ``selectedIndex`` the **tag** value of the **new** button that was pushed, it actually represents the **tag** value of the previous button. So we can
