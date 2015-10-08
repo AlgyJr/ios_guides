@@ -7,7 +7,9 @@ Sometimes the standard iOS tab bar just doesn't have the look or functionality y
 - Add UIView to serve as the *bar* part of the Tab Bar.
 - Add UIButtons for each tab. 
    - Configure their default and selected images.
-   - Set the **tag** value of each button starting with **0** for the first button, **1** for the second and so on.
+   - Set the **tag** value of each button starting with **0** for the first button, **1** for the second and so on.  
+
+![set button tag](http://i.imgur.com/Ncd69el.gif)
 - Add a UIView that fills the screen above the tabBar. This will serve as our content view.
 - Add UIViewControllers that correspond to each tab. (5 tabs = 5 ViewControllers)
 - Give each UIViewController a unique Storyboard ID.
@@ -21,7 +23,9 @@ Sometimes the standard iOS tab bar just doesn't have the look or functionality y
 Creating an array of buttons will help us easily keep track of what button is getting pushed based on the **tag** or **index** of the button.
 - Create an IBOutlet array named, ``buttons`` to hold your tab bar buttons.
    - ``@IBOutlet var buttons: [UIButton]!``
-   - ``ctrl + drag`` outlets from all your buttons to the array.
+   - ``ctrl + drag`` outlets from all your buttons to the array.  
+
+![create outlet button array gif](http://i.imgur.com/75MCSIv.gif)
 
 ### Step 3: Create Your Instance Variables (global variables)
 
@@ -163,7 +167,6 @@ didPressTab(buttons[selectedIndex])
 ``` 
 
 ### Step 10: Run Your App!!!
-
 
 
 
