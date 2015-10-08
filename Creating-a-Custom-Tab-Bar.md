@@ -110,7 +110,7 @@ So as you can see, it is no coincidence that we set our first button **tag** val
 buttons[previousIndex].selected = false
 ```
 
-- Use the ``previousIndex`` to access the previous ViewController.
+- Use the ``previousIndex`` to access the previous ViewController from the ``viewControllers`` array.
 
 ```Swift
 let previousVC = viewControllers[previousIndex]
@@ -132,7 +132,7 @@ previousVC.removeFromParentViewController()
 sender.selected = true
 ```
 
-- Use the ``selectedIndex`` to access the previous ViewController.
+- Use the ``selectedIndex`` to access the current ViewController from the ``viewControllers`` array.
 
 ```Swift
 let vc = viewControllers[selectedIndex]
@@ -151,7 +151,7 @@ vc.view.frame = contentView.bounds
 contentView.addSubview(vc.view)
 ```
 
-- Call the ``viewDidAppear`` method of the ViewController you are adding.
+- Call the ``viewDidAppear`` method of the ViewController you are adding using ``didMoveParentViewController(self)``.
 
 ```Swift
 vc.didMoveToParentViewController(self)
@@ -170,4 +170,3 @@ didPressTab(buttons[selectedIndex])
 
 ### Step 10: Run Your App!!!  
 ![finished example sim gif](http://i.imgur.com/643Ei0D.gif)
-
