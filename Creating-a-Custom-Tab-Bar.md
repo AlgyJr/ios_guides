@@ -74,7 +74,9 @@ Since we will be keeping track of which button was tapped, all the buttons can s
 - ``ctrl + drag`` from your first button to the TabBarViewController to create an action.
    - Name it something like ``didPressTab``.
    - Change the **Type** from **AnyObject** to **UIButton** (that way we can access special properties only buttons have)
-   - ``ctrl + drag`` from every other button to the same ``didPressTab`` so they are all sharing.
+   - ``ctrl + drag`` from every other button to the same ``didPressTab`` so they are all sharing.  
+
+![creating shared action gif](http://i.imgur.com/nwJkxAq.gif)
 
 ### Step 6: Get Access to the Previous and Current Tab Button.
 
@@ -167,6 +169,5 @@ didPressTab(buttons[selectedIndex])
 ``` 
 
 ### Step 10: Run Your App!!!
-
 
 
