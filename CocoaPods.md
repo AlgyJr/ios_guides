@@ -35,6 +35,7 @@ You can find available Pods using the search box on the [official CocoaPods site
 
       end
       ```
+   - Refer to the [podfile documentation](https://guides.cocoapods.org/using/the-podfile.html) to see versioning options and more complex use cases.
 3. Download and integrate the dependencies into your project:
    - From a terminal, run `pod install`
 4. Open the Xcode workspace:
