@@ -38,7 +38,7 @@ var animatedImage: UIImage!
 
 ### Step 4: Assign Values to Your Variables
 It is good practice to define your class variables with an object type, and then assign them values within the ``viewDidLoad`` method.  
-- Link the actual image files in your assets to your image variables. ``myImage = UIImage(named: "image file name"``
+- Link the actual image files in your assets to your image variables. ``myImage = UIImage(named: "image file name)"``
 
 ```Swift
 loading_1 = UIImage(named: "loading-1")
