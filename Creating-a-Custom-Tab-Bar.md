@@ -168,6 +168,5 @@ buttons[selectedIndex].selected = true
 didPressTab(buttons[selectedIndex])
 ``` 
 
-### Step 10: Run Your App!!!
-
+### Step 10: Run Your App!!! ![finished example sim gif](http://i.imgur.com/643Ei0D.gif)
 
