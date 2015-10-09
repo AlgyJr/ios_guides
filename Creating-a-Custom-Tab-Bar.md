@@ -66,8 +66,12 @@ let storyboard = UIStoryboard(name: "Main", bundle: nil)
 ```Swift
 homeViewController = storyboard.instantiateViewControllerWithIdentifier("HomeViewController")
 ```
+### Step 5: Add each ViewController to your viewControllers array
 
-### Step 5: Create a Shared Action for the Buttons.
+```Swift
+viewControllers = [homeViewController, searchViewController, accountViewController, trendingViewController]
+```
+### Step 6: Create a Shared Action for the Buttons.
 
 Since we will be keeping track of which button was tapped, all the buttons can share the same action method.
 
@@ -78,7 +82,7 @@ Since we will be keeping track of which button was tapped, all the buttons can s
 
 ![creating shared action gif](http://i.imgur.com/nwJkxAq.gif)
 
-### Step 6: Get Access to the Previous and Current Tab Button.
+### Step 7: Get Access to the Previous and Current Tab Button.
 
 When a new tab button is tapped, the goal of this method is to get rid of the ViewController contents that was previously being displayed in the tabBarViewController, and replace it with the new ViewController content that corresponds to the new tab button that was pushed. In order o do this, we need to know two things: the **previous** Button and ViewController that were selected and the **current** Button and ViewController that are now selected.   
   
@@ -102,7 +106,7 @@ You might be wondering why we don't just call ``selectedIndex``, ``selectedTag``
 
 So as you can see, it is no coincidence that we set our first button **tag** value to be ``0``, and then stored it at ``index 0`` in our ``buttons array``; just as we did for the corresponding index locations of the ViewControllers stored in our ``viewControllers`` array.  
 
-### Step 7: Remove the Previous ViewController and Set Button State.
+### Step 8: Remove the Previous ViewController and Set Button State.
 
 - Within your ``didPressTab`` method, use your ``previousIndex`` value to access your previous button and set it to the non-selected state.
 
@@ -124,7 +128,7 @@ previousVC.view.removeFromSuperview()
 previousVC.removeFromParentViewController()
 ```
 
-### Step 8: Add the New ViewController and Set Button State.
+### Step 9: Add the New ViewController and Set Button State.
 
 - Within your ``didPressTab`` method, access your current selected button and set it to the selected state.
 
@@ -157,7 +161,7 @@ contentView.addSubview(vc.view)
 vc.didMoveToParentViewController(self)
 ```
 
-### Step 9: Set the Initial Tab when the App Starts.
+### Step 10: Set the Initial Tab when the App Starts.
 
 We will probably want to set a default tab to be initiated when we start our app for the first time. You can specify what tab you want to start with by setting the initial value of, ``selectedIndex``. Since we set the initial value of ``selectedIndex`` to ``0``, our app will load with the **1st** tab initiated.
 
@@ -168,5 +172,5 @@ buttons[selectedIndex].selected = true
 didPressTab(buttons[selectedIndex])
 ``` 
 
-### Step 10: Run Your App!!!  
+### Step 11: Run Your App!!!  
 ![finished example sim gif](http://i.imgur.com/643Ei0D.gif)
