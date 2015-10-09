@@ -14,19 +14,15 @@ In the Utilities Panel, you can change the state of the button that you are conf
 You can control the amount the title or image edges are inset within the button. In the Utilities Panel on the far right, scroll down to the adjacent Edge, Inset labels. Select either title or image in the edge drop down. Then you can control the left, right, top, and bottom inset amounts of the corresponding title or image edges.
 ![Button Insets|700](http://i.imgur.com/72kMTmW.gif)
 
-### Step 5: Register for the button action
+### Step 5: Call a function when the button is tapped
 To run code on button events like touch down or touch up, switch to assistant mode to show the button side by side with the Swift view controller. Ctrl-drag from the button to the Swift file and create an action with the event that you want. You can create multiple actions for different events.
 
-![Assistant|700](http://i.imgur.com/cR2DNvT.gif)
-
-### Step 6: Create the Action
-Ctrl-drag from the button to the Swift file. Select Action (not Outlet) and select the event, which is usually Touch Up Inside.
 ![Assistant|700](http://i.imgur.com/L2bdou3.gif)
 
-### Step 7: Toggle the selected state in the Action
+### Step 6: Toggle the selected state in the Action
 Ctrl-drag from the button to the Swift file. Select Action (not Outlet) and this time change the Type from AnyObject to UIButton. Select the event, which is usually Touch Up Inside. Now the action function in your Swift file will show sender as type UIButton. This means that you can change properties on the button that was tapped. Now set ```sender.selected = true```.
 ![Assistant|700](http://i.imgur.com/0deF0SS.gif)
 
-### Step 8: Disable a button
+### Step 7: Disable a button
 Go to the Attributes inspector page on the Utilities Panel. Make sure the button is selected. Scroll down to find the enabled checkbox. Uncheck it. The button will be disabled.
 ![Button Disabled|700](http://i.imgur.com/cvL07jj.gif)
