@@ -25,8 +25,8 @@ You can find available Pods using the search box on the [official CocoaPods site
       ```ruby
       # Podfile
 
-      # This tells CocoaPods we want to target iOS versions 7.0 and above.
-      platform :ios, '7.0'
+      # This tells CocoaPods we want to target iOS versions 8.0 and above.
+      platform :ios, '8.0'
       
       target 'MyApp' do
 
