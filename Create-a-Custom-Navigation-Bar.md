@@ -33,4 +33,5 @@ navigationController!.popViewControllerAnimated(true)
 ```
 
 ### Step 5: Run your app!  
+![Nav Bar Sim example](http://i.imgur.com/XQ7duiZ.gif)  
 
