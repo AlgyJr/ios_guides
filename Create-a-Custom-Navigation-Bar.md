@@ -15,5 +15,5 @@ Often times, we want to create our own Navigation Bars in order to get the right
 
 In order to hook up your button to some code, you will need a ViewController file. New projects come with one already created, but is is good practice to create a new custom ViewController file and name it something relevant to the function of the ViewController it will be associated with in the Storyboard.
 - Create a new ViewController file. 
-![Create a new ViewController file](Create a new ViewController file)
+![Create a new ViewController file](http://i.imgur.com/LBAIYZT.png)
 - *ctrl + drag* from the button
