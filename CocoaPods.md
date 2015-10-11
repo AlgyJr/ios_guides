@@ -52,7 +52,7 @@ use_frameworks!    # Instruct CocoaPods to use dynamic frameworks instead of sta
 ...
 ```
 
-### Consuming Libraries written in Swift
+### Consuming Swift Libraries
 With the `use_frameworks!` directive, you can now consume Swift libraries using CocoaPods! After you've added `use_frameworks!` to your `Podfile`, you can directly import Swift libraries from your Swift code using the framework name (i.e. `import AFNetworking`).
 
 ### Consuming Objective-C Libraries from Swift
