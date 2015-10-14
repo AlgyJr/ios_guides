@@ -1,5 +1,5 @@
 Often times, we want to create our own Navigation Bars in order to get the right look for our app.  
-![Nav Bar Sim example](http://i.imgur.com/XQ7duiZ.gif)
+![Nav Bar Sim example](http://i.imgur.com/GlK7TXy.gif)
 
 ### Step 1: Add and Setup NavigationController [Using Navigation Controllers](http://guides.codepath.com/ios/Using-Navigation-Controllers)
 
