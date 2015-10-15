@@ -6,8 +6,7 @@ This is a quickstart guide for using the taking a photo or picking an image from
 
 ### Step 1: Instantiate a UIImagePickerController
 
-*Swift*
-```
+```swift
 var vc = UIImagePickerController()
 vc.delegate = self
 vc.allowsEditing = true
@@ -20,8 +19,7 @@ self.presentViewController(vc, animated: true, completion: nil)
 
 In the class interface, declare that it implements two protocols: `UIImagePickerControllerDelegate` and `UINavigationControllerDelegate`.
 
-*Swift*
-```
+```swift
 func imagePickerController(picker: UIImagePickerController,
     didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
     var originalImage = info[UIImagePickerControllerOriginalImage] as UIImage
@@ -35,8 +33,7 @@ When the user finishes taking the picture, `UIImagePickerController` returns a d
 
 ### Step 1: Instantiate a UIImagePickerController
 
-*Swift*
-```
+```swift
 var vc = UIImagePickerController()
 vc.delegate = self
 vc.allowsEditing = true
