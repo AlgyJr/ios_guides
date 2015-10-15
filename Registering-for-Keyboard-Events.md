@@ -37,19 +37,13 @@ NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHi
 
 Note: You must place a colon in selector names for functions with a parameter, i.e ``"keyboardWillShow:"``
 
-### Step 3: Getting the keyboard properties
-
-You'll want a variety of properties from the keyboard. You'll want the size, but it's also useful to have the animation properties such as duration and curve so that you can match the animation of the keyboard.
-
-See this [gist](https://gist.github.com/timothy1ee/bce97b123cfd90b83971) for a code snippet.
-
-### Step 4: Add a UITextField to the view
+### Step 3: Add a UITextField to the view
 
 ![Add UITextField | 250](http://i.imgur.com/HL1Ekq3.gif)
 
 Place a UITextField within the view using Interface Builder. Then, use the Assistant Editor button to reveal the associated ViewController code. Ctrl+click on the text field and drag the blue line to the ViewController in order to create either an Outlet or Action Handler for the text field. We will select Outlet and name the outlet according to the purpose of the UITextField.
 
-### Step 5: Offset the UITextField when the keyboard is shown
+### Step 4: Offset the UITextField when the keyboard is shown
 
 ![Show Keyboard Offset | 250](http://i.imgur.com/Bjiect2.gif)
 
@@ -74,7 +68,7 @@ self.username.frame.origin = CGPoint(x: self.username.frame.origin.x, y: self.in
 
 Note: If your keyboard does not show when you click within the text field. Make sure that you have the external keyboard simulation disabled. Go to menu Hardware | Keyboard and make sure "Connect Hardware Keyboard" is unchecked.
 
-### Step 6: Move UITextField back when keyboard is hidden
+### Step 5: Move UITextField back when keyboard is hidden
 
 ![Hide Keyboard Offset | 250](http://i.imgur.com/Ag9mO7D.gif)
 
@@ -85,6 +79,6 @@ self.username.frame.origin = CGPoint(x: self.username.frame.origin.x, y: self.in
 
 If you run the simulator now, you notice that when you click on the text field it will animate up as it should, but when you click away you cannot hide the keyboard. So we need to have the keyboard hide event triggered. A common way to do this is to tap away from the text field trigger a keyboard hide. So we find the UITapGesture recognizer in the Object Library at the lower right and drag and drop it within the background view. Next, we Ctrl+click and drag from the Tap Gesture Recognizer to the View Controller shown in the assistant editor. We will select the Action option and name the handler ```onTap```. Within the ```onTap``` method we simply have the line
 ```
-username.endEditing(true)
+view.endEditing(true)
 ```
 which will trigger the ```keyboardWillHide``` method on our view controller.
