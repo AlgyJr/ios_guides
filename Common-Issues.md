@@ -50,3 +50,8 @@ There are two main categories of errors, Compiler Errors and Run-Time Errors.
 - **Solution** Click on View Controller that contains the Scroll View, navigate to the Attributes Inspector (DJ Slider) inside the Utilities Pane. **Uncheck, "Adjust Scroll View Insets"**.  
 
 ![Adjust Scroll View Insets gif](http://i.imgur.com/lQH6X5r.gif)
+
+#### 2. Image Views don't respond to your gestures.
+- **Solution** Click on the Image View where the Gesture Recognizer has been adde and navigate to the Attributes Inspector (DJ Slider) inside the Utilities Pane. **Check, "User Interaction Enabled"**.  
+
+![User Interaction Enabled](http://i.imgur.com/GciPd8b.gif)
