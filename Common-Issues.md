@@ -20,11 +20,16 @@ There are two main categories of errors, Compiler Errors and Run-Time Errors.
 
 ### Common Run-Time Issues
 
-- **Error: unexpectedly found nil while unwrapping an Optional value:**
-- **Solve:** This basically means that sometime while your app was running, it was looking for something and instead got nothing, **nil**.
+- **Error: unexpectedly found nil while unwrapping an Optional value**
+- **Translation:** This basically means that sometime while your app was running, it was looking for something and instead got nothing, **nil**.
+- **Common Cause** An outlet was created but got disconnected.
    - **Step 1:** We find our first clue is in the console. It tells us that something has no (nil) value. s
    - **Step 2:** We check the Variables Window next. When we expand the **self** heading, we see that, **pigImageView** = (UIImageView!) nil, "nil" being the keyword. This means ``pigImageView`` has no value, and Xcode is telling us that it should.
    - **Step 3:** We go to the swift file where that variable is declared. We notice that the little circle to the left where we make connections is empty. AH HA! Our code was trying to do something with the pigImageView, but it was not connected to the actual imageView in the Storyboard.
    - **Solution:** Reconnect by dragging from the empty circle to our pig imageView in Storyboard.  
 
 ![found nil gif](http://i.imgur.com/Z8oTiXy.gif)
+
+- **Error: this class is not key value coding-compliant for the key...**
+- **Translation:** Basically, there is a connection somewhere behind the scene that is looking for a specific **outlet** but is not finding it.
+- **Common Cause:** The name of an outlet was changed or deleted but the connection is still there.
