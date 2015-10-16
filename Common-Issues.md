@@ -12,7 +12,9 @@ There are two main categories of errors, Compiler Errors and Run-Time Errors.
 
 - **Run-Time Errors**
    - **Symptoms:** Your app builds fine, but at a certain point it "crashes".
-   - **Diagnose:** The first place to look is in the Debug area pane at the bottom of Xcode. The **Console**, (bottom right window), will likely have a long list of confusing "computer talk", fortunately, the useful information is found in the first paragraph all the way at the top, so get scrolling! The other place to look is in the **Variables View** to the left of the console.
+   - **Diagnose:** 
+      - 1: The first place to look is in the Debug area pane at the bottom of Xcode. The **Console**, (bottom right window), will likely have a long list of confusing "computer talk", fortunately, the useful information is found in the first paragraph all the way at the top, so get scrolling! 
+      - 2: The second place to look is in the **Variables View** to the left of the console.
 
 ![Run-Time Error gif](http://i.imgur.com/nciIGwV.gif) 
 
