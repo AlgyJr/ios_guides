@@ -55,3 +55,14 @@ There are two main categories of errors, Compiler Errors and Run-Time Errors.
 - **Solution** Click on the Image View where the Gesture Recognizer has been adde and navigate to the Attributes Inspector (DJ Slider) inside the Utilities Pane. **Check, "User Interaction Enabled"**.  
 
 ![User Interaction Enabled](http://i.imgur.com/GciPd8b.gif)
+
+## Common Compiler Errors
+
+#### 1. Use of unresolved identifier...
+- **Translation** There is a word that Xcode does not recognize entered as a variable or constant.
+- **Common Causes** 
+   - 1. You forgot to define the variable first using **var** or as a constant using **let**.
+   - 2. You did not define the variable or constant up top as a "global" variable and are trying to reference the variable in different places throughout your Swift file.
+   - 3. You misspelled the variable or constant.  
+
+![unresolved identifier gif](http://i.imgur.com/LtK2MgR.gif)
