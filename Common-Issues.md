@@ -43,3 +43,10 @@ There are two main categories of errors, Compiler Errors and Run-Time Errors.
    - **Solution:** Delete the bad connection by clicking the little "x" between the connections. The bad connection should have an "!" on the right side instead of a little circle.
 
 ![key value coding gif](http://i.imgur.com/aLwKVKa.gif)
+
+## Other Weird Run-Time Behaviors
+
+#### 1. Scroll View has weird gap.
+- **Solution** Click on View Controller that contains the Scroll View, navigate to the Attributes Inspector (DJ Slider) inside the Utilities Pane. **Uncheck, "Adjust Scroll View Insets"**.  
+
+![Adjust Scroll View Insets gif](http://i.imgur.com/lQH6X5r.gif)
