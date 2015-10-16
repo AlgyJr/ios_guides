@@ -20,7 +20,7 @@ There are two main categories of errors, Compiler Errors and Run-Time Errors.
 
 ## Common Run-Time Crashes
 
-#### Error: unexpectedly found nil while unwrapping an Optional value
+#### 1. Error: unexpectedly found nil while unwrapping an Optional value
 - **Translation:** This basically means that sometime while your app was running, it was looking for something and instead got nothing, **nil**.
 - **Common Cause** An outlet was created but got disconnected.
    - **Step 1:** We find our first clue is in the console. It tells us that something has no (nil) value. s
@@ -30,6 +30,6 @@ There are two main categories of errors, Compiler Errors and Run-Time Errors.
 
 ![found nil gif](http://i.imgur.com/Z8oTiXy.gif)
 
-#### Error: this class is not key value coding-compliant for the key...
+#### 2. Error: this class is not key value coding-compliant for the key...
 - **Translation:** Basically, there is a connection somewhere behind the scene that is looking for a specific **outlet** but is not finding it.
 - **Common Cause:** The name of an outlet was changed or deleted but the connection is still there.
