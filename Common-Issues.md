@@ -40,6 +40,6 @@ There are two main categories of errors, Compiler Errors and Run-Time Errors.
       - The Key **Value Coding-compliant** tells you there is a **connections issue**.
       - the name after **for the key** is what you will be looking for when you investigate connections.
    - **Step 2:** Select the offending ViewController by clicking on the *yellow dot*. Open the **Utilities** pane and select the **Connections Inspector**.
-   - **Step 3:** Delete the bad connection by clicking the little "x" between the connections. The bad connection should have an "!" on the right side instead of a little circle.
+   - **Solution:** Delete the bad connection by clicking the little "x" between the connections. The bad connection should have an "!" on the right side instead of a little circle.
 
 ![key value coding gif](http://i.imgur.com/aLwKVKa.gif)
