@@ -52,6 +52,7 @@ There are two main categories of errors, Compiler Errors and Run-Time Errors.
 - **Solution:** Click on the offending ViewController's yellow dot in Storyboard. Navigate to the Identity Inspector in the Utilities Pane. In the "Custom Class" section, click in the **Module** field. Press Enter, the Module field should change to "Current (Your App Name)" in a light grey text. Run your app.  
 
 ![Unknown Class](http://i.imgur.com/in2kY8A.gif)
+
 ## Unintended Run-Time Behaviors
 
 #### 1. Scroll View has weird gap.
@@ -66,8 +67,9 @@ There are two main categories of errors, Compiler Errors and Run-Time Errors.
 
 #### 3. App stops due to accidental breakpoint.  
 Breakpoints are an essential debugging tool, however it's easy to accidentally set a breakpoint and cause what appears to be a crash at run-time.  
--**Solution:** Navigate to the "gutter" of the ViewController file that has the accidental break point (Far left side of the file). *Right Click* or *ctrl + click* on the blue breakpoint tag and select, "Delete Breakpoint" from the dropdown menu. 
+-**Solution:** Navigate to the "gutter" of the ViewController file that has the accidental break point (Far left side of the file). *Right Click* or *ctrl + click* on the blue breakpoint tag and select, "Delete Breakpoint" from the dropdown menu.  
 
+![Accidental breakpoint gif](http://i.imgur.com/IhcZluj.gif)
 
 ## Common Compiler Errors
 
