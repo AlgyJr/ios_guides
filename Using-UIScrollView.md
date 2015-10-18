@@ -58,22 +58,22 @@ class MyViewController: UIViewController, UIScrollViewDelegate {
 If you Command-click on the UIScrolLViewDelegate, it will pull up the list of events for the UIScrollView. Choose the event that you want, and add the function to your view controller file. Be sure to remove the text `optional` and also delete the underscore symbol.
 
 ```
-func scrollViewDidScroll(scrollView: UIScrollView!) {
-	// This method is called as the user scrolls
-}
-
-func scrollViewWillBeginDragging(scrollView: UIScrollView!) {
-
-}
-
-func scrollViewDidEndDragging(scrollView: UIScrollView!,
-                        willDecelerate decelerate: Bool) {
-    // This method is called right as the user lifts their finger
-}
-
-func scrollViewDidEndDecelerating(scrollView: UIScrollView!) {
-	// This method is called when the scrollview finally stops scrolling.
-}
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        // This method is called as the user scrolls
+    }
+    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        
+    }
+    
+    func scrollViewDidEndDragging(scrollView: UIScrollView,
+        willDecelerate decelerate: Bool) {
+            // This method is called right as the user lifts their finger
+    }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        // This method is called when the scrollview finally stops scrolling.
+    }
 
 ```
 
