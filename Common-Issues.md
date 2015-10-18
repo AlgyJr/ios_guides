@@ -27,7 +27,7 @@ There are two main categories of errors, Compiler Errors and Run-Time Errors.
    - **Step 1:** We find our first clue is in the console. It tells us that something has no (nil) value. s
    - **Step 2:** We check the Variables Window next. When we expand the **self** heading, we see that, **pigImageView** = (UIImageView!) nil, "nil" being the keyword. This means ``pigImageView`` has no value, and Xcode is telling us that it should.
    - **Step 3:** We go to the swift file where that variable is declared. We notice that the little circle to the left where we make connections is empty. AH HA! Our code was trying to do something with the pigImageView, but it was not connected to the actual imageView in the Storyboard.
-   - **Solution:** Reconnect by dragging from the empty circle to our pig imageView in Storyboard.  
+- **Solution:** Reconnect by dragging from the empty circle to our pig imageView in Storyboard.  
 
 ![found nil gif](http://i.imgur.com/Z8oTiXy.gif)
 
@@ -40,10 +40,18 @@ There are two main categories of errors, Compiler Errors and Run-Time Errors.
       - The Key **Value Coding-compliant** tells you there is a **connections issue**.
       - the name after **for the key** is what you will be looking for when you investigate connections.
    - **Step 2:** Select the offending ViewController by clicking on the *yellow dot*. Open the **Utilities** pane and select the **Connections Inspector**.
-   - **Solution:** Delete the bad connection by clicking the little "x" between the connections. The bad connection should have an "!" on the right side instead of a little circle.
+- **Solution:** Delete the bad connection by clicking the little "x" between the connections. The bad connection should have an "!" on the right side instead of a little circle.
 
 ![key value coding gif](http://i.imgur.com/aLwKVKa.gif)
 
+#### 3. Error: Unknown class (Some ViewController) in Interface Builder File.
+- **Translation** A custom ViewController Swift file you made is not configured right.
+- **Common Cause** You assigned your ViewController to a Custom Class (In Utilities -> Identity Inspector) before actually creating the Custom Swift ViewController File.
+- **Diagnose:**
+   - **Step 1:** Check the console to see which ViewController file is having the issue.
+- **Solution:** Click on the offending ViewController's yellow dot in Storyboard. Navigate to the Identity Inspector in the Utilities Pane. In the "Custom Class" section, click in the **Module** field. Press Enter, the Module field should change to "Current (Your App Name)" in a light grey text. Run your app.  
+
+![Unknown Class](http://i.imgur.com/in2kY8A.gif)
 ## Other Weird Run-Time Behaviors
 
 #### 1. Scroll View has weird gap.
