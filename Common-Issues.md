@@ -52,17 +52,22 @@ There are two main categories of errors, Compiler Errors and Run-Time Errors.
 - **Solution:** Click on the offending ViewController's yellow dot in Storyboard. Navigate to the Identity Inspector in the Utilities Pane. In the "Custom Class" section, click in the **Module** field. Press Enter, the Module field should change to "Current (Your App Name)" in a light grey text. Run your app.  
 
 ![Unknown Class](http://i.imgur.com/in2kY8A.gif)
-## Other Weird Run-Time Behaviors
+## Unintended Run-Time Behaviors
 
 #### 1. Scroll View has weird gap.
-- **Solution** Click on View Controller that contains the Scroll View, navigate to the Attributes Inspector (DJ Slider) inside the Utilities Pane. **Uncheck, "Adjust Scroll View Insets"**.  
+- **Solution:** Click on View Controller that contains the Scroll View, navigate to the Attributes Inspector (DJ Slider) inside the Utilities Pane. **Uncheck, "Adjust Scroll View Insets"**.  
 
 ![Adjust Scroll View Insets gif](http://i.imgur.com/lQH6X5r.gif)
 
 #### 2. Image Views don't respond to your gestures.
-- **Solution** Click on the Image View where the Gesture Recognizer has been adde and navigate to the Attributes Inspector (DJ Slider) inside the Utilities Pane. **Check, "User Interaction Enabled"**.  
+- **Solution:** Click on the Image View where the Gesture Recognizer has been adde and navigate to the Attributes Inspector (DJ Slider) inside the Utilities Pane. **Check, "User Interaction Enabled"**.  
 
-![User Interaction Enabled](http://i.imgur.com/GciPd8b.gif)
+![User Interaction Enabled](http://i.imgur.com/GciPd8b.gif)  
+
+#### 3. App stops due to accidental breakpoint.  
+Breakpoints are an essential debugging tool, however it's easy to accidentally set a breakpoint and cause what appears to be a crash at run-time.  
+-**Solution:** Navigate to the "gutter" of the ViewController file that has the accidental break point (Far left side of the file). *Right Click* or *ctrl + click* on the blue breakpoint tag and select, "Delete Breakpoint" from the dropdown menu. 
+
 
 ## Common Compiler Errors
 
