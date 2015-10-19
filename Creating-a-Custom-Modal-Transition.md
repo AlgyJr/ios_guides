@@ -25,13 +25,12 @@ var fadeTransition: FadeTransition!
 The ``prepareForSegue`` method runs any code that we want right before the segue happens. It's kind of like the ``viewWillAppear`` of the segue world.
 
 - Remove the comment ``/* */`` to activate the ``prepareForSegue`` method and add the following code within the ``prepareForSegue`` method.
-- Within the ``prepareForSegue`` method...
-   - Access the ViewController that you will be transitioning too, a.k.a, the **destinationViewController**.
+- Access the ViewController that you will be transitioning too, a.k.a, the **destinationViewController**.
 
 ```Swift
 var destinationViewController = segue.destinationViewController
 ```
-   - Create a new instance of your **fadeTransition**.
+- Create a new instance of your **fadeTransition**.
 
 ```Swift
 fadeTransition = FadeTransition()
