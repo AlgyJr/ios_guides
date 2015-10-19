@@ -46,3 +46,14 @@ fadeTransition = FadeTransition()
 ```Swift
 destinationViewController.transitioningDelegate = fadeTransition
 ```
+
+### Step 5: Adjust the duration  
+
+The FadeTransition has a duration parameter you can change to get shorter or longer transitions. The duration parameter uses seconds.
+
+- Adjust the transition duration.
+
+```Swift
+fadeTransition.duration = 1.0
+``` 
+
