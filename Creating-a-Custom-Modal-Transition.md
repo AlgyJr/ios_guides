@@ -30,8 +30,18 @@ The ``prepareForSegue`` method runs any code that we want right before the segue
 ```Swift
 var destinationViewController = segue.destinationViewController
 ```
+- Set the modal presentation style of your destinationViewController to be custom.
+
+```Swift
+destinationViewController.modalPresentationStyle = UIModalPresentationStyle.Custom
+``` 
 - Create a new instance of your **fadeTransition**.
 
 ```Swift
 fadeTransition = FadeTransition()
 ``` 
+- Tell the destinationViewController's  **transitioning delegate** to look in fadeTransition for transition instructions.
+
+```Swift
+destinationViewController.transitioningDelegate = fadeTransition
+```
