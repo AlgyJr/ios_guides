@@ -1,18 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-- [Overview of popular network programming methods](#overview-of-popular-network-programming-methods)
-- [A note about threading and network requests](#a-note-about-threading-and-network-requests)
-- [Example: Making a GET and parsing a JSON response](#example-making-a-get-and-parsing-a-json-response)
-  - [NSURLConnection](#nsurlconnection)
-  - [NSURLSession](#nsurlsession)
-  - [AFNetworking](#afnetworking)
-- [Example: loading images asynchronously using UIImageView+AFNetworking](#example-loading-images-asynchronously-using-uiimageviewafnetworking)
-- [Example: OAuth 1](#example-oauth-1)
-- [Example: OAuth 2](#example-oauth-2)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 Many iOS application are clients of a REST API.  This guide gives an
 overview of common ways to accomplish tasks associated with making
 *HTTP* requests and handling responses.  Low level socket programming,
