@@ -22,3 +22,6 @@ var fadeTransition: FadeTransition!
 
 ### Step 4: Setup the prepareForSegue Method.  
 
+The ``prepareForSegue`` method runs any code that we want right before the segue happens. It's kind of like the ``viewWillAppear`` of the segue world.
+
+- Remove the 
