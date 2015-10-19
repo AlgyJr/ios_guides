@@ -26,4 +26,4 @@ Do not learn iOS Development on an IDE other than Xcode. Xcode is the only IDE A
 
 ## Enroll in the iOS Developer Program
 
-While you can start development with a free developer account, you are limited to running apps in the iOS Simulator. You must [enroll](https://developer.apple.com/programs/start/standard/) as an "iOS Developer Program" to run your app on a physical device, and eventually release in the app store. It costs $99 a year.
+This [program](https://developer.apple.com/programs/start/standard) costs $99 a year and is only required if you want to distribute your apps in the App Store and have access to beta iOS releases.
