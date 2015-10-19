@@ -25,6 +25,7 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Custom View Controller Transitions]]
 * [[Creating a Custom Tab Bar]]
 * [[Creating a Custom Navigation Bar]]
+* [[Creating a Custom Modal Transition]]
 
 ## Views
 * [[Adding Views to the Window]]
