@@ -33,7 +33,7 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Animating View Properties]]
 * [[Using View Transforms]]
 * [[Using Perspective Transforms]]
-* [[Animating A Sequence of Images]]
+* [[Animating a Sequence of Images]]
 
 ## Responding to User Input
 * [[Configure a Button]]
