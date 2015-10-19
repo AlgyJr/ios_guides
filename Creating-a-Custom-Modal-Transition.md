@@ -8,5 +8,7 @@ Xcode allows us to choose from 3 different modal transitions, Cover Vertical, Fl
 
 ![add transition files to project](http://i.imgur.com/vWq788n.gif)  
 
-### Step 2: Create a Modal Segue.
+### Step 2: Create a Modal Segue.  
+
+[[Create the Segue|Using Modal Transitions#create-the-segue]]
 
