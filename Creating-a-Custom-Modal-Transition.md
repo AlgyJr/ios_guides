@@ -10,7 +10,7 @@ Xcode allows us to choose from 3 different modal transitions, Cover Vertical, Fl
 
 ### Step 2: Create a Modal Segue.  
 
-[[Create the Segue|Using Modal Transitions#heading-Step-1:-Create-The-Segue]]
+[[Create the Segue|Using-Modal-Transitions#step-1-create-the-segue]]
 
 ### Step 3: Define the Transition Variable.  
 
