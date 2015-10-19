@@ -104,11 +104,9 @@ dispatch_async(dispatch_get_main_queue(), {
 
 ## Example: Making a GET and parsing a JSON response
 In order to provide you with the flavor of each of the major ways of
-making network requests we discussed above, we'll rework the network
-code of our [NY Times Viewer example](Table-View-Guide#example-load-data-from-a-rest-api-and-display-it-in-your-table)
-from the table view guide to use each method.
+making network requests we discussed above, we'll go through an example of each one.
 
-### NSURLConnection
+### NSURLConnection (deprecated in iOS 9)
 Notice that we are forced to specify a operation queue on which the
 completion handler will run.
 
@@ -142,7 +140,7 @@ class Story {
                         successCallback(stories)
                     }
                 } else {
-                    // unexepected error happened
+                    // unexpected error happened
                     error?(nil)
                 }
             }
@@ -152,52 +150,75 @@ class Story {
 ```
 
 ### NSURLSession
-Since we don't need to authenticate or download something while our app
-is in the background, the `NSURLSession` code for this simple request is
-pretty similar to our `NSURLConnection` code.  Notice that there are no
-guarantees on which thread the completion handler will run.  The caller of
-our `fetchStories` method passes in a `successCallback`, but we also
-make no guarantees on which thread the callback will run and leave it up
-to the caller to ensure anything done in the callback will be run on
-the correct thread.
+[NSURLSession](https://developer.apple.com/library/ios/documentation/Foundation/Reference/NSURLSession_class) is now the preferred built-in method of performing network requests on iOS.
 
+#### Swift
 
 ```swift
-private let apiKey = "53eb9541b4374660d6f3c0001d6249ca:19:70900879"
-private let resourceUrl = NSURL(string: "http://api.nytimes.com/svc/topstories/v1/home.json?api-key=\(apiKey)")!
+class Post {
 
-class Story {
-    var headline: String?
-    var thumbnailUrl: String?
+    // ... 
 
-    init(jsonResult: NSDictionary) {
-      ...
-    }
-
-    class func fetchStories(successCallback: ([Story]) -> Void, error: ((NSError?) -> Void)?) {
-        NSURLSession.sharedSession().dataTaskWithURL(resourceUrl, completionHandler: {(data, response, requestError) -> Void in
-            if let requestError = requestError? {
-                error?(requestError)
-            } else {
-                if let data = data? {
-                    let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
-                    if let results = json["results"] as? NSArray {
-                        var stories: [Story] = []
-                        for result in results as [NSDictionary] {
-                            stories.append(Story(jsonResult: result))
-                        }
-                        successCallback(stories)
-                    }
+    class func fetchPosts(successCallback: (NSDictionary) -> Void, errorCallback: ((NSError?) -> Void)?) {
+        let clientId = "Put_Your_Client_Id_Here"
+        let url = NSURL(string:"https://api.instagram.com/v1/media/popular?client_id=\(clientId)")
+        let request = NSURLRequest(URL: url!)
+        let session = NSURLSession(
+            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+            delegate:nil,
+            delegateQueue:NSOperationQueue.mainQueue()
+        )
+        
+        let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
+            completionHandler: { (dataOrNil, responseOrNil, errorOrNil) in
+                if let requestError = errorOrNil {
+                    errorCallback?(requestError)
                 } else {
-                    // unexepected error happened
-                    error?(nil)
+                    if let data = dataOrNil {
+                        if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
+                            data, options:[]) as? NSDictionary {
+                                NSLog("response: \(responseDictionary)")
+                                successCallback(responseDictionary)
+                        }
+                    }
                 }
-            }
-        }).resume()
+        });
+        task.resume()
     }
 }
 ```
 
+#### Objective-C
+```objective-c
+NSString *clientId = @"Put_Your_Client_Id_Here";
+NSString *urlString =
+[@"https://api.instagram.com/v1/media/popular?client_id=" stringByAppendingString:clientId];
+
+NSURL *url = [NSURL URLWithString:urlString];
+NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+
+NSURLSession *session =
+[NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
+                              delegate:nil
+                         delegateQueue:[NSOperationQueue mainQueue]];
+
+NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+                                        completionHandler:^(NSData * _Nullable data,
+                                                            NSURLResponse * _Nullable response,
+                                                            NSError * _Nullable error) {
+                                            if (!error) {
+                                                NSError *jsonError = nil;
+                                                NSDictionary *responseDictionary =
+                                                [NSJSONSerialization JSONObjectWithData:data
+                                                                                options:kNilOptions
+                                                                                  error:&jsonError];
+                                                NSLog(@"Response: %@", responseDictionary);
+                                            } else {
+                                                NSLog(@"An error occurred: %@", error.description);
+                                            }
+                                        }];
+[task resume];
+```
 ### AFNetworking
 This code starts to look a little cleaner with AFNetworking.
 AFNetworking does some error handling for us and gives us a way to
