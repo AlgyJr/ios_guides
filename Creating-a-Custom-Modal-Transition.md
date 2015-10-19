@@ -31,5 +31,8 @@ The ``prepareForSegue`` method runs any code that we want right before the segue
 ```Swift
 var destinationViewController = segue.destinationViewController
 ```
+   - Create a new instance of your **fadeTransition**.
 
-   - 
+```Swift
+fadeTransition = FadeTransition()
+``` 
