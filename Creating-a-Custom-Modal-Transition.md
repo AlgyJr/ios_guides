@@ -49,7 +49,7 @@ destinationViewController.transitioningDelegate = fadeTransition
 
 ### Step 5: Adjust the duration  
 
-The FadeTransition has a duration parameter you can change to get shorter or longer transitions. The duration parameter uses seconds.
+The FadeTransition has a duration parameter you can change to get shorter or longer transitions. You should experiment with different durations until you get the effect you want. The duration parameter uses seconds.
 
 - Adjust the transition duration.
 
@@ -57,3 +57,4 @@ The FadeTransition has a duration parameter you can change to get shorter or lon
 fadeTransition.duration = 1.0
 ``` 
 
+### Step 6: Run Your App!
