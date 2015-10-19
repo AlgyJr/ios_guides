@@ -74,10 +74,19 @@ Breakpoints are an essential debugging tool, however it's easy to accidentally s
 ## Common Compiler Errors
 
 #### 1. Use of unresolved identifier...
-- **Translation** There is a word that Xcode does not recognize entered as a variable or constant.
-- **Common Causes** 
+- **Translation:** There is a word that Xcode does not recognize entered as a variable or constant.
+- **Common Causes:** 
    - 1. You forgot to define the variable first using **var** or as a constant using **let**.
    - 2. You did not define the variable or constant up top as a "global" variable and are trying to reference the variable in different places throughout your Swift file.
-   - 3. You misspelled the variable or constant.  
+   - 3. You misspelled the variable or constant. 
+- **Solution:** Define your variable or constant using ``var`` or ``let`` respectively. If you define your variable up top above the ``viewDidLoad`` method, you can access that variable anywhere in your Swift file. If you define your variable within a method, you will only be able to access it within that method.
 
-![unresolved identifier gif](http://i.imgur.com/LtK2MgR.gif)
+![unresolved identifier gif](http://i.imgur.com/LtK2MgR.gif)  
+
+## Xcode Editor issues  
+
+#### 1. The Swift file in the Assistant Editor does not match the selected View Controller.  
+
+-**Solution** Change from **Manual** to **Automatic** in the Assistant Editor.  
+
+![Manual to Automatic gif](http://i.imgur.com/UpEtGcg.gif)
