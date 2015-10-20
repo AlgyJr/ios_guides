@@ -26,11 +26,10 @@ UIView.animateWithDuration(0.4, animations: {
 
 ![Animation Options gif](http://i.imgur.com/KJ8QWAv.gif)
 
-You can add Animation Options to further customize your animation. To add multiple Animation Options, surround your Animation Options with `[ ]`, like `[UIViewAnimationOptions.Autoreverse, UIViewAnimationOptions.Repeat]`
+You can add Animation Options to further customize your animation. To add multiple Animation Options, surround your Animation Options with `[ ]`, like `[UIViewAnimationOptions.Autoreverse, UIViewAnimationOptions.Repeat]`.
 
 ```Swift
-UIView.animateWithDuration(0.8, delay: 0.0,
-   
+UIView.animateWithDuration(0.8, delay: 0.0,  
    // Autoreverse runs the animation backwards and Repeat cycles the animation indefinitely. 
    options: [UIViewAnimationOptions.Autoreverse,
       UIViewAnimationOptions.Repeat], animations: { () -> Void in
