@@ -30,6 +30,8 @@ You can add Animation Options to further customize your animation. To add multip
 
 ```Swift
 UIView.animateWithDuration(0.8, delay: 0.0,
+   
+   // Autoreverse runs the animation backwards and Repeat cycles the animation indefinitely. 
    options: [UIViewAnimationOptions.Autoreverse,
       UIViewAnimationOptions.Repeat], animations: { () -> Void in
    self.bubbleImageView.transform = CGAffineTransformMakeTranslation(0, 10)
