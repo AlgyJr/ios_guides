@@ -21,3 +21,15 @@ UIView.animateWithDuration(0.4, animations: {
 })
         
 ```
+
+### Animation Options:
+
+![Animation Options gif](http://i.imgur.com/KJ8QWAv.gif)
+
+You can add Animation Options to further customize your animation. To add multiple Animation Options, surround your Animation Options with `[ ]`, like `[UIViewAnimationOptions.Autoreverse, UIViewAnimationOptions.Repeat]`
+
+```Swift
+UIView.animateWithDuration(0.8, delay: 0.0, options: [UIViewAnimationOptions.Autoreverse, UIViewAnimationOptions.Repeat], animations: { () -> Void in
+   self.bubbleImageView.transform = CGAffineTransformMakeTranslation(0, 10)
+   }, completion: nil)
+```
