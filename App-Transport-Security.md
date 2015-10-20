@@ -17,10 +17,9 @@ You can poke holes in ATS by adding a `NSAppTransportSecurity` dictionary to Inf
 		* api.rottentomatoes.com
 			* `NSExceptionAllowsInsecureHTTPLoads`: YES
 
-You may also use `NSAllowsArbitraryLoads` to completely disable ATS in your app.
+You may also use `NSAllowsArbitraryLoads` to completely disable ATS in your app:
 
-* `NSAppTransportSecurity`
-	* `NSAllowsArbitraryLoads`: YES
+![Imgur](http://i.imgur.com/Tmy1wYL.png)
 
 **This is strongly discouraged.** Only use this during development.
 
