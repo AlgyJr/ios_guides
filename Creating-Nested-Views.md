@@ -14,6 +14,7 @@ It is often convenient to hold views within other views. When a (child) view is 
   
 ![Nest views Document Outline](http://i.imgur.com/KYwswIt.gif)  
   
-- You can change which views are in front or back (View Hierarchy) by adjusting there order in the Document Outline.  
+- You can change which views are in front or back (View Hierarchy) by adjusting there order in the Document Outline.
+- Views below other views in the Document Outline appear in front.    
   
-![Change view hierarchy in Document Outline]() 
+![Change view hierarchy in Document Outline](http://i.imgur.com/EMz8KjY.gif) 
