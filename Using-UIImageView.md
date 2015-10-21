@@ -12,3 +12,9 @@ Once you've added the UIImageView, it's often easier to type in the desired posi
 Assuming that you already added the image asset to the project, open the UIImageView properties pane and select the image asset. Configure the mode with the resizing or cropping behavior.
 
 ![Configure UIImageView|700](http://i.imgur.com/GrS8WjX.gif)
+
+### Adding ImageView with Image from Media Library
+
+Locate the Image Asset you want in the Media Library and drag it into a ViewController on the Storyboard.  
+  
+![Adding ImageView from Media Library](http://i.imgur.com/nJWwJA6.gif)
