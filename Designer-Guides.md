@@ -29,6 +29,7 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 
 ## Views
 * [[Adding Views to the Window]]
+* [[Creating Nested Views]]
 * [[Programmatically Creating Views]]
 * [[Animating View Properties]]
 * [[Using View Transforms]]
