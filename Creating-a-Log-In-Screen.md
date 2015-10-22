@@ -1,6 +1,7 @@
 UITextFields are views which a user can type into. Anytime you need to enter a username, password, or type a text message, you will utilize a UITextField. There are many properties you can set to customize the look and feel of your TextField. You can also check what a user has typed into the TextField and have your app respond accordingly.
 
-## Use Case 1: Log In Screen
+## Use Case 1: Log In Screen  
+![Logging In Demo gif](http://i.imgur.com/F9HuvZk.gif)
 
 ### Step 1: Add Elements to Storyboard
 
