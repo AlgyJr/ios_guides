@@ -1,22 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-- [Overview](#overview)
-- [Basic Usage](#basic-usage)
-  - [Step 1: Add scroll view to view hierarchy](#step-1-add-scroll-view-to-view-hierarchy)
-  - [Step 2: Set content size](#step-2-set-content-size)
-  - [Step 3. Add content subviews](#step-3-add-content-subviews)
-- [Scrolling programatically](#scrolling-programatically)
-  - [Set content offset](#set-content-offset)
-  - [Scrolling to a a subview](#scrolling-to-a-a-subview)
-- [Using paging mode](#using-paging-mode)
-  - [Enabling paging](#enabling-paging)
-  - [Adding a page control](#adding-a-page-control)
-- [Pinch to zoom](#pinch-to-zoom)
-- [Using scroll views with auto layout](#using-scroll-views-with-auto-layout)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 ## Overview
 Scroll views allow you to display content in an area on the screen that
 is smaller than the size of the content.  They allow the user to pan
