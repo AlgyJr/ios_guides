@@ -45,6 +45,7 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 ## Common UIViews
 * [[Using UIScrollView]]
 * [[Using UIImageView]]
+* [[Using UITextFiled]]
 * [[Using UIAlertView]]
 * [[Using UIActionSheet]]
 * [[Using UIPageControl]]
