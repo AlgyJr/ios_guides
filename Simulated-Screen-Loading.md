@@ -10,9 +10,9 @@ Unlike the `viewDidLoad` method, the `viewWillAppear` and `viewDidAppear` are ca
 
 ## Use Case 1: Simulate Screen Loading 
 
-### Step 1: Add Common Swift File
+### Step 1: Add Delay Method
 
-We have created a delay method fro you to use, download this [Common.swift](https://www.dropbox.com/s/mzfmjlvv863x95e/Common.swift?dl=0) file and add it to your project. 
+We have created a delay method for you to use, download this [Common.swift](https://www.dropbox.com/s/mzfmjlvv863x95e/Common.swift?dl=0) file and add it to your project. 
 
 Alternatively, you can copy and paste the delay function directly in your Swift ViewController file [Add the Delay Method](https://github.com/codepath/ios_guides/wiki/Calling-a-Method-After-Delay#step-1-add-the-delay-method)
  
