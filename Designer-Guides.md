@@ -41,11 +41,11 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Using Gesture Recognizers]]
 * [[Registering for Keyboard Events]]
 * [[Registering for Text Field Events]]
+* [[Creating a Log In Screen]]
 
 ## Common UIViews
 * [[Using UIScrollView]]
 * [[Using UIImageView]]
-* [[Using UITextField]]
 * [[Using UIAlertView]]
 * [[Using UIActionSheet]]
 * [[Using UIPageControl]]
