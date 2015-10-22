@@ -15,3 +15,10 @@ It's super easy to take any ViewController you already have setup and incorporat
 
 - In the case that you have a ScrollView with an "Feed" ImageView, nest the Activity Indicator inside the ScrollView alongside the "Feed" ImageView. [UIActivityIndicatorView](https://github.com/codepath/ios_guides/wiki/Using-UIActivityIndicatorView), [Nest the Child View](https://github.com/codepath/ios_guides/wiki/Creating-Nested-Views#step-2-nest-the-child-views)  
 ![Activity Doc Outline](http://i.imgur.com/TVB7y4G.png) 
+
+- Make sure you select, **Hides When Stopped** in The Activity Indicator Attributes Inspector.  
+![Hides When Stopped](http://i.imgur.com/ib87r65.png)  
+
+### Step 2: Setup viewWillAppear
+
+- Just before the ViewController "appears", hide the "Feed" ImageView, and start animating the Activity Indicator
