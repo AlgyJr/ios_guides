@@ -1,4 +1,6 @@
-When creating mocks using Xcode, we can add an extra degree of fidelity by simulating a loading event when we transition to a new screen.
+When creating mocks using Xcode, we can add an extra degree of fidelity by simulating a loading event when we transition to a new screen.  
+  
+![Simulated Screen Loading](http://i.imgur.com/MtP8jkd.gif)
 
 ### viewWillAppear and viewDidAppear methods
 
@@ -57,3 +59,5 @@ override func viewDidAppear(animated: Bool) {
 ```
 
 **NOTE** the variables within the delay closure require, `self.`, but don't worry, if you forget Xcode will let you know and offer to fix the issue :)  
+
+###Step 5: Run Your App!
