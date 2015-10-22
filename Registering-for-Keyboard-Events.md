@@ -87,4 +87,7 @@ If you run the simulator now, you notice that when you click on the text field i
 ```
 view.endEditing(true)
 ```
-This will trigger the ```keyboardWillHide``` method on our view controller.
+This will trigger the ```keyboardWillHide``` method on our view controller.  
+  
+![Add tap to hide keyboard gif](http://i.imgur.com/P3JrdNq.gif)  
+![kb hide show gif|180](http://i.imgur.com/pyaO52E.gif)
