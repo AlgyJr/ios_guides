@@ -32,7 +32,7 @@ There are many properties you can set to customize your text field. We will want
 - Change the style to white. 
 - Select, "Hides When Stopped". [Set Default Properties](https://github.com/codepath/ios_guides/wiki/Using-UIActivityIndicatorView#step-2-set-default-properties)
 
-### Step 3: Create Outlets for Elements
+### Step 5: Create Outlets for Elements
 
 In order to communicate with your Text Fields, Button and Activity Indicator in your Swift ViewController file, you will need to create outlets.
 
@@ -47,13 +47,13 @@ In order to communicate with your Text Fields, Button and Activity Indicator in 
 
 ![Create Outlet for each element](http://i.imgur.com/uPNEzla.gif)
 
-### Step 5: Create an Action for the Log In Button
+### Step 6: Create an Action for the Log In Button
 
 When the user taps the "Log In" Button, we will want to check what they typed in to the text fields and then respond accordingly by calling a function.
 
 - Create an Action from your "Log In" button to your Swift ViewController file. Name your action, **didPressLogin** [Create an Action to Call a Function](https://github.com/codepath/ios_guides/wiki/Configure-a-Button#step-5-call-a-function-when-the-button-is-tapped)
 
-### Step 5: Use Conditional Statement to Check TextField Contents
+### Step 7: Use Conditional Statement to Check TextField Contents
 
 Within our `didPressLogin` method, we want to check to see what was entered into the `emailField` and `passwordField`. If the contents of both fields match the email and password we are looking for, we will run some code. If either of the fields do not match, we will run some other code
 
@@ -73,7 +73,7 @@ if emailField == "Text we are looking for" && passwordField == "Other text we ar
 ```
    - NOTE: `&&` is used to when `this` **and** `that` have to be **true** to meet the condition.
 
-### Step 6: Do Stuff Within the Method and Conditional Statement
+### Step 8: Do Stuff Within the Method and Conditional Statement
 Now, let's look at some common things you might want to do in the case that the email and password match or else do NOT match.
 
 - If you have a UIActivityIndicatorView setup and Images for your button states, set these immediately when the button is pressed, i.e. before the conditional statement. **NOTE:** In order to set the button's state or control an activity indicator, you will need to create outlets for each one.
