@@ -2,11 +2,15 @@ UITextFields are views which a user can type into. Anytime you need to enter a u
 
 ## Use Case 1: Log In Screen
 
-### Step 1: Add a Text Field in Storyboard
+### Step 1: Add Elements to Storyboard
 
-- Drag and drop a UITextField from the Object Library onto your ViewController in Storyboard.  
-  
-![Add UITextField gif](http://i.imgur.com/VJwVsWu.gif)  
+- Add TextFields 
+   - Email/Username TextField
+   - Password TextField
+- Add the "Log In" Button [Add a Button from Object Library](https://github.com/codepath/ios_guides/wiki/Configure-a-Button#step-1-add-button-from-object-library)
+- Add the UIActivityView. [Add an Activity Indicator](https://github.com/codepath/ios_guides/wiki/Using-UIActivityIndicatorView#step-1-add-activity-indicator-to-storyboard)
+ 
+![Add Elements to Storyboard gif](http://i.imgur.com/muYoQQ8.gif)  
 
 ### Step 2: Configure Text Field Properties
 
@@ -18,19 +22,30 @@ There are many properties you can set to customize your text field. We will want
   
 ![Set TextField Properties](http://i.imgur.com/iOIvlMG.gif)  
 
-### Step 3: Create Outlets for Text Fields
+### Step 3: Configure Button Properties
 
-In order to communicate with your text fields in your code, you will need to create outlets.
+- Delete the button text and set the image for each button state. [Configure Various Button States](https://github.com/codepath/ios_guides/wiki/Configure-a-Button#step-3-configure-various-button-states)
 
-- Create an outlet from each TextField to your Swift ViewController file by ctrl + dragging from the TextField in Storyboard to your Swift ViewController file.
+
+### Step 4: Configure Activity Indicator Properties
+
+- Change the style to white. 
+- Select, "Hides When Stopped". [Set Default Properties](https://github.com/codepath/ios_guides/wiki/Using-UIActivityIndicatorView#step-2-set-default-properties)
+
+### Step 3: Create Outlets for Elements
+
+In order to communicate with your Text Fields, Button and Activity Indicator in your Swift ViewController file, you will need to create outlets.
+
+- Create an outlet from each Element in Storyboard to your Swift ViewController file by ctrl + dragging from the TextField in Storyboard to your Swift ViewController file.
    - NOTE: All outlets are created near the top of the Swift ViewController file just above the `viewDidLoad` method and right below the `class ViewController: UIViewController {`.  
-  
-![Create Outlet from TextField](http://i.imgur.com/Ly4lsSY.gif)
+ 
+- Name your outlets something like...
+   - `emailField`
+   - `passwordField`
+   - `loginButton`
+   - `loginIndicator`
 
-
-### Step 4: Add a Button for Logging In
-
-- Add a Button for Logging In [Add a Button from Object Library](https://github.com/codepath/ios_guides/wiki/Configure-a-Button#step-1-add-button-from-object-library)
+![Create Outlet for each element](http://i.imgur.com/uPNEzla.gif)
 
 ### Step 5: Create an Action for the Log In Button
 
@@ -101,4 +116,3 @@ Example `didPressLogin` method might look like this...
     }
 ```
    
-
