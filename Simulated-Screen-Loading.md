@@ -33,8 +33,7 @@ Just before the ViewController "appears", hide the "Feed" ImageView, and start a
 // Right before the ViewController "appears"...
 override func viewWillAppear(animated: Bool) {
    // hide feed view initially
-   feedImageView.hidden = true
-        
+   feedImageView.hidden = true       
    // turn on the activity indicator
    loadingIndicator.startAnimating()
     }
@@ -49,8 +48,10 @@ When the ViewController finally does "appear", delay for 2 seconds before stoppi
 override func viewDidAppear(animated: Bool) {
    // Delay for 2 seconds before...    
    delay(2) { () -> () in
-      self.loadingIndicator.stopAnimating()
-      self.feedImageView.hidden = false
+   // hide feed view initially
+   self.feedImageView.hidden = false   
+   // turn on the activity indicator
+   self.loadingIndicator.stopAnimating()     
    }
 }
 ```
