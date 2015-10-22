@@ -10,7 +10,13 @@ Unlike the `viewDidLoad` method, the `viewWillAppear` and `viewDidAppear` are ca
 
 ## Use Case 1: Simulate Screen Loading 
 
-### Step 1: Add/Configure Activity Indicator
+### Step 1: Add Common Swift File
+
+We have created a delay method fro you to use, download this [Common.swift](https://www.dropbox.com/s/mzfmjlvv863x95e/Common.swift?dl=0) file and add it to your project. 
+
+Alternatively, you can copy and paste the delay function directly in your Swift ViewController file [Add the Delay Method](https://github.com/codepath/ios_guides/wiki/Calling-a-Method-After-Delay#step-1-add-the-delay-method)
+ 
+### Step 2: Add/Configure Activity Indicator
 It's super easy to take any ViewController you already have setup and incorporate simulated loading.
 
 - In the case that you have a ScrollView with an "Feed" ImageView, nest the Activity Indicator inside the ScrollView alongside the "Feed" ImageView. [UIActivityIndicatorView](https://github.com/codepath/ios_guides/wiki/Using-UIActivityIndicatorView), [Nest the Child View](https://github.com/codepath/ios_guides/wiki/Creating-Nested-Views#step-2-nest-the-child-views)  
@@ -19,6 +25,34 @@ It's super easy to take any ViewController you already have setup and incorporat
 - Make sure you select, **Hides When Stopped** in The Activity Indicator Attributes Inspector.  
 ![Hides When Stopped](http://i.imgur.com/ib87r65.png)  
 
-### Step 2: Setup viewWillAppear
+### Step 3: Setup viewWillAppear
 
-- Just before the ViewController "appears", hide the "Feed" ImageView, and start animating the Activity Indicator
+Just before the ViewController "appears", hide the "Feed" ImageView, and start animating the Activity Indicator.
+
+```swift
+// Right before the ViewController "appears"...
+override func viewWillAppear(animated: Bool) {
+   // hide feed view initially
+   feedImageView.hidden = true
+        
+   // turn on the activity indicator
+   loadingIndicator.startAnimating()
+    }
+```
+
+### Step 4: Setup viewDidAppear
+
+When the ViewController finally does "appear", delay for 2 seconds before stopping the Activity Indicator animation and showing the "Feed" ImageView.
+
+```swift
+// The moment the ViewController "appears"...
+override func viewDidAppear(animated: Bool) {
+   // Delay for 2 seconds before...    
+   delay(2) { () -> () in
+      self.loadingIndicator.stopAnimating()
+      self.feedImageView.hidden = false
+   }
+}
+```
+
+**NOTE** the variables within the delay closure require, `self.`, but don't worry, if you forget Xcode will let you know and offer to fix the issue :)  
