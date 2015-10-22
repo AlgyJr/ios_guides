@@ -10,7 +10,7 @@ Many UIView properties can be animated, including:
 
 In order to animate one or more views, simply create an animation block. The animation block will animate from the current value to the value that's set within the block. You can call multiple views within the block.
 
-```Swift
+```swift
 // Optionally initialize the property to a desired starting value
 self.firstView.alpha = 0
 self.secondView.alpha = 1
@@ -28,7 +28,7 @@ UIView.animateWithDuration(0.4, animations: {
 
 You can add Animation Options to further customize your animation. To add multiple Animation Options, surround your Animation Options with `[ ]`, like `[UIViewAnimationOptions.Autoreverse, UIViewAnimationOptions.Repeat]`.
 
-```Swift
+```swift
 UIView.animateWithDuration(0.8, delay: 0.0,  
    // Autoreverse runs the animation backwards and Repeat cycles the animation indefinitely. 
    options: [UIViewAnimationOptions.Autoreverse,
