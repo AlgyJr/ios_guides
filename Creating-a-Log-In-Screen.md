@@ -82,8 +82,8 @@ Now, let's look at some common things you might want to do in the case that the 
    - `loginButton.selected = true`
 - Within the conditional statement, if the Email and Password have been entered correctly, you can tell your UIActivityIndicatorView to stop animating `loginIndicator.stopAnimating()` and take the user to the next screen using `performSegueWithIdentifier("yourSegue", sender: nil)` 
    - **NOTE:** You will need to create a modal Segue and give it an ID. [Create the Segue](https://github.com/codepath/ios_guides/wiki/Using-Modal-Transitions#step-1-create-the-segue), [Triggering the Transition Manually](https://github.com/codepath/ios_guides/wiki/Using-Modal-Transitions#triggering-the-transition-manually)
-   - NOTE: You will need to put the above code within a delay method to give the UIActivityIndicatorView time to animate. Add this [Common.swift](https://www.dropbox.com/s/mzfmjlvv863x95e/Common.swift?dl=0) file to your project. [Use the Delay Method](https://github.com/codepath/ios_guides/wiki/Calling-a-Method-After-Delay#step-2-use-the-delay-method) 
-- Within the conditional statement, if the Email or Password are incorrect, stop the UIActivityIndicatorView from animating, `loginIndicator.stopAnimating()` and create/show an alert telling the user that "email or password is incorrect". [Using UIAlertController](https://guides.codepath.com/ios/Using-UIAlertController)  
+- Within the conditional statement, if the Email or Password are incorrect, stop the UIActivityIndicatorView from animating, `loginIndicator.stopAnimating()` and create/show an alert telling the user that "email or password is incorrect". [Using UIAlertController](https://guides.codepath.com/ios/Using-UIAlertController)
+- You will need to put the above code within a delay method to give the UIActivityIndicatorView time to animate. Add this [Common.swift](https://www.dropbox.com/s/mzfmjlvv863x95e/Common.swift?dl=0) file to your project. [Use the Delay Method](https://github.com/codepath/ios_guides/wiki/Calling-a-Method-After-Delay#step-2-use-the-delay-method)   
 
 Example `didPressLogin` method might look like this...
 
@@ -95,8 +95,8 @@ Example `didPressLogin` method might look like this...
         loginButton.selected = true
         // If both the email and password fields match what we are looking for...
         if emailField == "Text we are looking for" && passwordField == "Other text we are looking for" {
-            // Delay for 1 second.
-            delay(1, closure: { () -> () in
+            // Delay for 2 second.
+            delay(2, closure: { () -> () in
                 // Stop animating the activity indicator.
                 self.loginIndicator.stopAnimating()
                 // Set the button state back to default, "Not Selected".
@@ -106,8 +106,8 @@ Example `didPressLogin` method might look like this...
             })
         // Otherwise, email or password are incorrect so...
         } else {
-            // Delay for 1 second
-            delay(1, closure: { () -> () in
+            // Delay for 2 second
+            delay(2, closure: { () -> () in
                 // Stop animating the activity indicator.
                 self.loginIndicator.stopAnimating()
                 // Set the button state back to default, "Not Selected".
