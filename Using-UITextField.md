@@ -62,7 +62,7 @@ Within our `didPressLogin` method, we want to check to see what was entered into
    - NOTE: `==` is used when comparing values to be equivalent. 
 - Since we want **both** TextFields to match we can say, within our `didPressLogin` method...
 
-```Swift
+```swift
 @IBAction func didPressLogin(sender: AnyObject) {
         
 if emailField == "Text we are looking for" && passwordField == "Other text we are looking for" {
@@ -76,16 +76,17 @@ if emailField == "Text we are looking for" && passwordField == "Other text we ar
 ### Step 8: Do Stuff Within the Method and Conditional Statement
 Now, let's look at some common things you might want to do in the case that the email and password match or else do NOT match.
 
-- If you have a UIActivityIndicatorView setup and Images for your button states, set these immediately when the button is pressed, i.e. before the conditional statement. **NOTE:** In order to set the button's state or control an activity indicator, you will need to create outlets for each one.
+- Start animating the Activity Indicator and set the button state immediately when the button is pressed, i.e. before the conditional statement. 
    - `loginIndicator.stopAnimating()`
    - `loginButton.selected = true`
-- Within the conditional statement, if the Email and Password have been entered correctly, you can tell your UIActivityIndicatorView to stop animating `loginIndicator.stopAnimating()` and take the user to the next screen using `performSegueWithIdentifier("yourSegue", sender: nil)` (You will need to create a modal Segue) [Create the Segue](https://github.com/codepath/ios_guides/wiki/Using-Modal-Transitions#step-1-create-the-segue)
+- Within the conditional statement, if the Email and Password have been entered correctly, you can tell your UIActivityIndicatorView to stop animating `loginIndicator.stopAnimating()` and take the user to the next screen using `performSegueWithIdentifier("yourSegue", sender: nil)` 
+   - **NOTE:** You will need to create a modal Segue and give it an ID. [Create the Segue](https://github.com/codepath/ios_guides/wiki/Using-Modal-Transitions#step-1-create-the-segue), [Triggering the Transition Manually](https://github.com/codepath/ios_guides/wiki/Using-Modal-Transitions#triggering-the-transition-manually)
    - NOTE: You will need to put the above code within a delay method to give the UIActivityIndicatorView time to animate. Add this [Common.swift](https://www.dropbox.com/s/mzfmjlvv863x95e/Common.swift?dl=0) file to your project. [Use the Delay Method](https://github.com/codepath/ios_guides/wiki/Calling-a-Method-After-Delay#step-2-use-the-delay-method) 
 - Within the conditional statement, if the Email or Password are incorrect, stop the UIActivityIndicatorView from animating, `loginIndicator.stopAnimating()` and create/show an alert telling the user that "email or password is incorrect". [Using UIAlertController](https://guides.codepath.com/ios/Using-UIAlertController)  
 
 Example `didPressLogin` method might look like this...
 
-```Swift
+```swift
 @IBAction func didPressLogin(sender: AnyObject) {
         // Start animating the activity indicator
         loginIndicator.startAnimating()
