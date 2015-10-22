@@ -57,6 +57,7 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Calling a Method After Delay]]
 * [[Using NSUserDefaults]]
 * [[Using Timers]]
+* [[Color Matching]]
 
 ## App Submission and Testing
 * [[Testing with Testflight]]
