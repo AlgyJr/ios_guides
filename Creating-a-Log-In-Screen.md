@@ -30,7 +30,8 @@ There are many properties you can set to customize your text field. We will want
 ### Step 4: Configure Activity Indicator Properties
 
 - Change the style to white. 
-- Select, "Hides When Stopped". [Set Default Properties](https://github.com/codepath/ios_guides/wiki/Using-UIActivityIndicatorView#step-2-set-default-properties)
+- Select, "Hides When Stopped". [Set Default Properties](https://github.com/codepath/ios_guides/wiki/Using-UIActivityIndicatorView#step-2-set-default-properties)  
+![Activity Indicator Style](http://i.imgur.com/ib87r65.png)
 
 ### Step 5: Create Outlets for Elements
 
