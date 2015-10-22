@@ -77,6 +77,8 @@ Now we will simply animate the UITextField back to its original y position when 
 self.username.frame.origin = CGPoint(x: self.username.frame.origin.x, y: self.initialY) 
 ```
 
+### Step 6: Hide the Keyboard When Tapping Outside the TextField
+
 If you run the simulator now, you notice that when you click on the text field it will animate up as it should, but when you click away you cannot hide the keyboard. So we need to have the keyboard hide event triggered. A common way to do this is to tap away from the text field trigger a keyboard hide. So we find the UITapGesture recognizer in the Object Library at the lower right and drag and drop it within the background view. Next, we Ctrl+click and drag from the Tap Gesture Recognizer to the View Controller shown in the assistant editor. We will select the Action option and name the handler ```onTap```. Within the ```onTap``` method we simply have the line
 ```
 view.endEditing(true)
