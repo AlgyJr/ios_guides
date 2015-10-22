@@ -9,7 +9,7 @@ You may have noticed that The native color picker in Xcode seems a little off so
 
 ### Step 3: Configure Xcode Color
 - Choose "Other" from the dropdown color menu.  
-![Color Drop Down|100](http://i.imgur.com/rQGc2ST.png)
+![Color Drop Down](http://i.imgur.com/4SMR3nA.png)
 - Select the RGB Sliders tab.
 - Click the little gear and select, **Generic RGB** from the dropdown menu.  
 ![Color Config menu|400](http://i.imgur.com/D8gvxVc.png) 
