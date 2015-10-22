@@ -36,4 +36,69 @@ In order to communicate with your text fields in your code, you will need to cre
 
 When the user taps the "Log In" Button, we will want to check what they typed in to the text fields and then respond accordingly by calling a function.
 
-- Create an Action from your "Log In" button to your Swift ViewController file. [Create an Action to Call a Function](https://github.com/codepath/ios_guides/wiki/Configure-a-Button#step-5-call-a-function-when-the-button-is-tapped)
+- Create an Action from your "Log In" button to your Swift ViewController file. Name your action, **didPressLogin** [Create an Action to Call a Function](https://github.com/codepath/ios_guides/wiki/Configure-a-Button#step-5-call-a-function-when-the-button-is-tapped)
+
+### Step 5: Use Conditional Statement to Check TextField Contents
+
+Within our `didPressLogin` method, we want to check to see what was entered into the `emailField` and `passwordField`. If the contents of both fields match the email and password we are looking for, we will run some code. If either of the fields do not match, we will run some other code
+
+- We can access the text property of a TextField using `textField.text`
+- To check if the contents of just the email TextField matches what we are looking for, we can create a conditional if statement,  `if emailField.text == "Text we are looking for" {  }`.
+   - NOTE: `==` is used when comparing values to be equivalent. 
+- Since we want **both** TextFields to match we can say, within our `didPressLogin` method...
+
+```Swift
+@IBAction func didPressLogin(sender: AnyObject) {
+        
+if emailField == "Text we are looking for" && passwordField == "Other text we are looking for" {
+   // Code that runs if both email and password match the text we are looking for in each case       
+} else {
+   // Code that runs if either the email or password do NOT match the text we are looking for in each case        
+}
+```
+   - NOTE: `&&` is used to when `this` **and** `that` have to be **true** to meet the condition.
+
+### Step 6: Do Stuff Within the Method and Conditional Statement
+Now, let's look at some common things you might want to do in the case that the email and password match or else do NOT match.
+
+- If you have a UIActivityIndicatorView setup and Images for your button states, set these immediately when the button is pressed, i.e. before the conditional statement. **NOTE:** In order to set the button's state, you will need to create an outlet for the button
+   - `loginIndicator.stopAnimating()`
+   - `loginButton.selected = true`
+- Within the conditional statement, if the Email and Password have been entered correctly, you can tell your UIActivityIndicatorView to stop animating `loginIndicator.stopAnimating()` and take the user to the next screen using `performSegueWithIdentifier("yourSegue", sender: nil)` (You will need to create a modal Segue) [Create the Segue](https://github.com/codepath/ios_guides/wiki/Using-Modal-Transitions#step-1-create-the-segue)
+   - NOTE: You will need to put the above code within a delay method to give the UIActivityIndicatorView time to animate. Add this [Common.swift](https://www.dropbox.com/s/mzfmjlvv863x95e/Common.swift?dl=0) file to your project. [Use the Delay Method](https://github.com/codepath/ios_guides/wiki/Calling-a-Method-After-Delay#step-2-use-the-delay-method) 
+- Within the conditional statement, if the Email or Password are incorrect, stop the UIActivityIndicatorView from animating, `loginIndicator.stopAnimating()` and create/show an alert telling the user that "email or password is incorrect". [Using UIAlertController](https://guides.codepath.com/ios/Using-UIAlertController)  
+
+Example `didPressLogin` method might look like this...
+
+```Swift
+@IBAction func didPressLogin(sender: AnyObject) {
+        // Start animating the activity indicator
+        loginIndicator.startAnimating()
+        // Set the Button state to "Selected"
+        loginButton.selected = true
+        // If both the email and password fields match what we are looking for...
+        if emailField == "Text we are looking for" && passwordField == "Other text we are looking for" {
+            // Delay for 1 second.
+            delay(1, closure: { () -> () in
+                // Stop animating the activity indicator.
+                self.loginIndicator.stopAnimating()
+                // Set the button state back to default, "Not Selected".
+                self.loginButton.selected = false
+                // perform the Segue to the next screen.
+                self.performSegueWithIdentifier("yourSegue", sender: nil)
+            })
+        // Otherwise, email or password are incorrect so...
+        } else {
+            // Delay for 1 second
+            delay(1, closure: { () -> () in
+                // Stop animating the activity indicator.
+                self.loginIndicator.stopAnimating()
+                // Set the button state back to default, "Not Selected".
+                self.loginButton.selected = false
+                // Create and Show UIAlertController...see guide
+            })
+        }
+    }
+```
+   
+
