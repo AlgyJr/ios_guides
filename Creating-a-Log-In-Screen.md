@@ -113,7 +113,7 @@ Example `didPressLogin` method might look like this...
                 self.loginIndicator.stopAnimating()
                 // Set the button state back to default, "Not Selected".
                 self.loginButton.selected = false
-                // Create and Show UIAlertController...see guide
+                // Create and Show UIAlertController...see guide, Using UIAlertController
             })
         }
     }
