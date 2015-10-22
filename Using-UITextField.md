@@ -61,7 +61,7 @@ if emailField == "Text we are looking for" && passwordField == "Other text we ar
 ### Step 6: Do Stuff Within the Method and Conditional Statement
 Now, let's look at some common things you might want to do in the case that the email and password match or else do NOT match.
 
-- If you have a UIActivityIndicatorView setup and Images for your button states, set these immediately when the button is pressed, i.e. before the conditional statement. **NOTE:** In order to set the button's state, you will need to create an outlet for the button
+- If you have a UIActivityIndicatorView setup and Images for your button states, set these immediately when the button is pressed, i.e. before the conditional statement. **NOTE:** In order to set the button's state or control an activity indicator, you will need to create outlets for each one.
    - `loginIndicator.stopAnimating()`
    - `loginButton.selected = true`
 - Within the conditional statement, if the Email and Password have been entered correctly, you can tell your UIActivityIndicatorView to stop animating `loginIndicator.stopAnimating()` and take the user to the next screen using `performSegueWithIdentifier("yourSegue", sender: nil)` (You will need to create a modal Segue) [Create the Segue](https://github.com/codepath/ios_guides/wiki/Using-Modal-Transitions#step-1-create-the-segue)
