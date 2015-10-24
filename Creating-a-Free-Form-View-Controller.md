@@ -1,5 +1,7 @@
 Sometimes, it's convenient to have a long or wide view controller in Storyboard when you're designing long or wide views. If that's the case, configure the view controller to be freeform.
-
+  
+![free form](http://i.imgur.com/YmkE1Gh.png) 
+  
 ### Step 1: Set the view controller to be freeform
 
 In the Storyboard, make sure the view controller is selected, then click the Ruler icon, select freeform, and choose your dimensions.
