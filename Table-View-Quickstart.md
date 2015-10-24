@@ -1,25 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-- [Overview](#overview)
-- [Table view setup](#table-view-setup)
-  - [Step 1: Determine what data you need to display in the table](#step-1-determine-what-data-you-need-to-display-in-the-table)
-  - [Step 2: Add table view to view controller](#step-2-add-table-view-to-view-controller)
-  - [Step 3: Add prototype cell to table view](#step-3-add-prototype-cell-to-table-view)
-  - [Step 4: Create custom class for prototype cell](#step-4-create-custom-class-for-prototype-cell)
-  - [Step 5: Add code that allows configuration of your prototype cell](#step-5-add-code-that-allows-configuration-of-your-prototype-cell)
-  - [Step 6: Set prototype cell's reuse identifier](#step-6-set-prototype-cells-reuse-identifier)
-  - [Step 7: Set the table view's data source and delegate](#step-7-set-the-table-views-data-source-and-delegate)
-  - [Step 8: Implement data source methods](#step-8-implement-data-source-methods)
-- [Table view usage](#table-view-usage)
-  - [Automatically resize row heights](#automatically-resize-row-heights)
-  - [Respond to row selection](#respond-to-row-selection)
-    - [Segue to another view controller](#segue-to-another-view-controller)
-    - [Handling row selection programmatically](#handling-row-selection-programmatically)
-- [Further reading](#further-reading)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 ## Overview
 [Table views][uitableview] are used to display grouped lists of
 *cells*.  Here are some example of table views:
