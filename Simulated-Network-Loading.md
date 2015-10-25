@@ -34,8 +34,8 @@ Just before the ViewController "appears", hide the "Feed" ImageView, and start a
 ```swift
 // Right before the ViewController "appears"...
 override func viewWillAppear(animated: Bool) {
-   // hide feed view initially
-   feedImageView.hidden = true       
+   // hide feed ImageView
+   feedImageView.hidden = true    
    // turn on the activity indicator
    loadingIndicator.startAnimating()
 }
