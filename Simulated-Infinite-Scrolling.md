@@ -1,12 +1,12 @@
 
 
 ```swift
-// The scrollView has come to a complete stop, do the following...
+// The scrollView has come to a complete stop, so do the following...
     func scrollViewDidEndDecelerating(feedScrollView: UIScrollView) {
 
         print("You reached the bottom")
         // If the scrollView offset + the scrollview height is greater than or equal to the height of the scrollView content, 
-        // we have reached the bottom, so...
+        // We have reached the bottom, so...
         if feedScrollView.contentOffset.y + feedScrollView.frame.size.height >= feedScrollView.contentSize.height {
             // Delay for 1 second then...
             delay(1, closure: { () -> () in
@@ -14,11 +14,11 @@
                 let newFrame = self.feedImageView.frame
                 // Create new ImageView with newFrame
                 let newImageView = UIImageView(frame: newFrame)
-                // create new image, same as feed Image
+                // Create new image, same as feed Image
                 let newImage = UIImage(named: "home_feed")
                 // Set new ImageView image to newImage
                 newImageView.image = newImage
-                // position the new imageView below the previous image view
+                // Position the new imageView below the previous image view
                 newImageView.frame.origin.y = self.feedImageView.frame.origin.y + self.numberOfImageViews * self.feedImageView.frame.size.height
                 // Add imageView to scrollView
                 feedScrollView.addSubview(newImageView)
