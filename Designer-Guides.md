@@ -36,6 +36,7 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Using Perspective Transforms]]
 * [[Animating a Sequence of Images]]
 * [[Simulated Network Loading]]
+* [[Simulated Infinite Scrolling]]
 
 ## Responding to User Input
 * [[Configure a Button]]
