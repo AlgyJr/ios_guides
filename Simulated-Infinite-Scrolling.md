@@ -2,9 +2,7 @@
 
 ```swift
 // The scrollView has come to a complete stop, so do the following...
-    func scrollViewDidEndDecelerating(feedScrollView: UIScrollView) {
-
-        
+    func scrollViewDidEndDecelerating(feedScrollView: UIScrollView) {       
         // If the scrollView offset + the scrollview height is greater than or equal to the height of the scrollView content, 
         // We have reached the bottom, so...
         if feedScrollView.contentOffset.y + feedScrollView.frame.size.height >= feedScrollView.contentSize.height {
