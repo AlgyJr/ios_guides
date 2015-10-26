@@ -4,10 +4,11 @@
 // The scrollView has come to a complete stop, so do the following...
     func scrollViewDidEndDecelerating(feedScrollView: UIScrollView) {
 
-        print("You reached the bottom")
+        
         // If the scrollView offset + the scrollview height is greater than or equal to the height of the scrollView content, 
         // We have reached the bottom, so...
         if feedScrollView.contentOffset.y + feedScrollView.frame.size.height >= feedScrollView.contentSize.height {
+            print("You reached the bottom")
             // Delay for 1 second then...
             delay(1, closure: { () -> () in
                 // Create frame for new imageView, same as feed ImageView
