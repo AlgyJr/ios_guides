@@ -5,11 +5,13 @@ In this guide, we will simulate an **Infinite Scrolling** experience. Simulated 
 
 ### Step 2: Add and Configure UIActivityIndicatorView
 The Activity Indicator will be positioned behind the ScrollView near the bottom of the screen. It will only be revealed when the ScrollView scrolls all the way to the bottom, given ScrollView content insets that we will set later.
-- **Add a UIActivityIndicatorView** just **above** the ScrollView in the **Document Outline**, this will position the Activity Indicator **behind** the **ScrollView**. The ActivityIndicator should **NOT** be inside the scrollView, rather it should be a child of the ViewController's main **view**.
+- **Add a UIActivityIndicatorView** just **above** the ScrollView in the **Document Outline**, this will position the Activity Indicator **behind** the **ScrollView**. The ActivityIndicator should **NOT** be inside the scrollView, rather it should be a child of the ViewController's main **view**.  
+
+![Add Activity Indicator](http://i.imgur.com/RgvknJF.gif)
 
 ![Doc Outline Activity Indicator|200](http://i.imgur.com/wNpCVNd.png)
 
-- In the **Attributes Inspector* of the **Activity Indicator**, *Set the Behavior** to **Animating** 
+- In the **Attributes Inspector** of the **Activity Indicator**, **Set the Behavior** to **Animating**. 
 
 ![Activity Indicator Animating](http://i.imgur.com/WPVwgK9.png)
 
