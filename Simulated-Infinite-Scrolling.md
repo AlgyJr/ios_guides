@@ -3,17 +3,22 @@ In this guide, we will simulate an **Infinite Scrolling** experience. Simulated 
 - [Using UIActivityIndicator View](https://guides.codepath.com/ios/Using-UIActivityIndicatorView)
 - [Programmatically Creating Views](https://guides.codepath.com/ios/Programmatically-Creating-Views)
 
-
-### Step 1: Configure ViewController
-When working with a ScrollView with a long ImageView as content, it is helpful to **set the ViewController to freeform** in order to layout other view elements in Storyboard.
-- [Set the ViewController to be freeform](Creating-a-Free-Form-View-Controller#step-1-set-the-view-controller-to-be-freeform)
-
 ### Step 2: Add and Configure UIActivityIndicatorView
-- **Add a UIActivityIndicatorView** just **Below** the ScrollView in the **Document Outline**. The ActivityIndicator should **NOT** be inside the scrollView, rather it should be a child of the ViewController's main **view**.
-- **Position the Activity Indicator** near the bottom of the ViewController. This can be tricky, because if you drag the Activity Indicator down, Xcode will put it inside the ScrollView, which we don't want. Use a combination of setting the **Y value** in the **Size Inspector**
-- Make sure the **Activity Indicator** is positioned **behind** the **scrollView**. In the **Document Outline** the **Activity Indicator** will be **above** the **ScrollView**.  
+The Activity Indicator will be positioned behind the ScrollView near the bottom of the screen. It will only be revealed when the ScrollView scrolls all the way to the bottom, given ScrollView content insets that we will set later.
+- **Add a UIActivityIndicatorView** just **above** the ScrollView in the **Document Outline**, this will position the Activity Indicator **behind** the **ScrollView**. The ActivityIndicator should **NOT** be inside the scrollView, rather it should be a child of the ViewController's main **view**.
 
 ![Doc Outline Activity Indicator|200](http://i.imgur.com/wNpCVNd.png)
+
+- In the **Attributes Inspector* of the **Activity Indicator**, *Set the Behavior** to **Animating** 
+
+![Activity Indicator Animating](http://i.imgur.com/WPVwgK9.png)
+
+### Step 3: Position the UIActivityIndicatorView
+It is possible to get the Activity Indicator positioned near the bottom of the ViewController in Storyboard, however it can be tricky because dragging the Activity Indicator down will most likely embed it into the ScrollView, which we don't want.
+
+- Create an outlet
+- Set the Activity Indicator position in viewDidLoad
+
 
 ### Step 3: Register for Scroll Events 
 We will need to interface with our ScrollView more programmatically in order to get **contentOffset** data as well as call a special ScrollView method when our ScrollView has come to a stop. To get his information from our ScrollView, we will first need to [register for Scroll Events](https://guides.codepath.com/ios/Using-UIScrollView#registering-for-scroll-events).
