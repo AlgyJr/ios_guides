@@ -12,7 +12,7 @@ When working with a ScrollView with a long ImageView as content, it is helpful t
 - **Add a UIActivityIndicatorView** just above the very bottom of your ViewController. The ActivityIndicator should **NOT** be inside the scrollView, rather it should be a child of the ViewController's main **view**.
 - Make sure the **Activity Indicator** is positioned **behind** the **scrollView**. In the **Document Outline** the **Activity Indicator** will be **above** the **ScrollView**.  
 
-![Doc Outline Activity Indicator|350](http://i.imgur.com/wNpCVNd.png)
+![Doc Outline Activity Indicator|200](http://i.imgur.com/wNpCVNd.png)
 
 ### Step 3: Register for Scroll Events 
 We will need to interface with our ScrollView more programmatically in order to get **contentOffset** data as well as call a special ScrollView method when our ScrollView has come to a stop. To get his information from our ScrollView, we will first need to [register for Scroll Events](https://guides.codepath.com/ios/Using-UIScrollView#registering-for-scroll-events).
