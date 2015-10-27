@@ -9,7 +9,8 @@ When working with a ScrollView with a long ImageView as content, it is helpful t
 - [Set the ViewController to be freeform](Creating-a-Free-Form-View-Controller#step-1-set-the-view-controller-to-be-freeform)
 
 ### Step 2: Add and Configure UIActivityIndicatorView
-- **Add a UIActivityIndicatorView** just above the very bottom of your ViewController. The ActivityIndicator should **NOT** be inside the scrollView, rather it should be a child of the ViewController's main **view**.
+- **Add a UIActivityIndicatorView** just **Below** the ScrollView in the **Document Outline**. The ActivityIndicator should **NOT** be inside the scrollView, rather it should be a child of the ViewController's main **view**.
+- **Position the Activity Indicator** near the bottom of the ViewController. This can be tricky, because if you drag the Activity Indicator down, Xcode will put it inside the ScrollView, which we don't want. Use a combination of setting the **Y value** in the **Size Inspector**
 - Make sure the **Activity Indicator** is positioned **behind** the **scrollView**. In the **Document Outline** the **Activity Indicator** will be **above** the **ScrollView**.  
 
 ![Doc Outline Activity Indicator|200](http://i.imgur.com/wNpCVNd.png)
@@ -24,6 +25,7 @@ We will need to use the **contentOffset** of the ScrollView to help us tell if t
 ```swift
     // The scrollView has come to a complete stop, so do the following...
     func scrollViewDidEndDecelerating(feedScrollView: UIScrollView) {       
+        print("Scrolling Stopped")
         // If the scrollView offset + the scrollview height is greater than or equal to the height of the scrollView content, 
         // We have reached the bottom, so...
         if feedScrollView.contentOffset.y + feedScrollView.frame.size.height >= feedScrollView.contentSize.height {
