@@ -3,7 +3,7 @@ In this guide, we will simulate an **Infinite Scrolling** experience. Simulated 
 - [Using UIActivityIndicator View](https://guides.codepath.com/ios/Using-UIActivityIndicatorView)
 - [Programmatically Creating Views](https://guides.codepath.com/ios/Programmatically-Creating-Views)
 
-### Step 2: Add and Configure UIActivityIndicatorView
+### Step 1: Add and Configure UIActivityIndicatorView
 The Activity Indicator will be positioned behind the ScrollView near the bottom of the screen. It will only be revealed when the ScrollView scrolls all the way to the bottom, given ScrollView content insets that we will set later.
 - **Add a UIActivityIndicatorView** just **above** the ScrollView in the **Document Outline**, this will position the Activity Indicator **behind** the **ScrollView**. The ActivityIndicator should **NOT** be inside the scrollView, rather it should be a child of the ViewController's main **view**.  
 
@@ -15,12 +15,16 @@ The Activity Indicator will be positioned behind the ScrollView near the bottom 
 
 ![Activity Indicator Animating](http://i.imgur.com/WPVwgK9.png)
 
-### Step 3: Position the UIActivityIndicatorView
-It is possible to get the Activity Indicator positioned near the bottom of the ViewController in Storyboard, however it can be tricky because dragging the Activity Indicator down will most likely embed it into the ScrollView, which we don't want.
+### Step 2: Position the UIActivityIndicatorView
+It is possible to get the Activity Indicator positioned near the bottom of the ViewController in Storyboard, however it can be tricky because dragging the Activity Indicator down will most likely embed it into the ScrollView, which we don't want. Instead, we will set the Activity Indicator position programmatically within the `viewDidLoad` method. 
 
-- Create an outlet
-- Set the Activity Indicator position in viewDidLoad
+- Create an outlet for the Activity Indicator. We will name ours, `infiniteLoadingIndicator`.
+- Set the Activity Indicator position within the `viewDidLoad` method. In order to place it **65px** above the bottom of the main **view**, we can say...
 
+```swift
+   // Position the Activity Indicator 65px above the bottom of the screen
+   infiniteLoadingIndicator.center.y = view.frame.height - 65
+```
 
 ### Step 3: Register for Scroll Events 
 We will need to interface with our ScrollView more programmatically in order to get **contentOffset** data as well as call a special ScrollView method when our ScrollView has come to a stop. To get his information from our ScrollView, we will first need to [register for Scroll Events](https://guides.codepath.com/ios/Using-UIScrollView#registering-for-scroll-events).
