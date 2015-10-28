@@ -39,7 +39,7 @@ We will be creating a new ImageView each time we scroll to the bottom of our Scr
 ```
 
 ### Step 4: Create and Configure a Method for When Scrolling has Stopped.
-- We will employ a special ScrollView method, `scrollViewDidEndDecelerating` to tell us when the Scroll has come to a complete stop. You can put this method anywhere in the ViewController. 
+- We will employ a special ScrollView method, `scrollViewDidEndDecelerating` to tell us when the Scroll has come to a complete stop. You can put this method anywhere in the ViewController. [Implement the Desired Event](https://guides.codepath.com/ios/Using-UIScrollView#step-3-implement-the-desired-event) 
 
 - When the ScrollView stops, we need to check if the ScrollView has indeed reached the bottom. We will use a conditional statement and the **contentOffset** of the ScrollView to help us tell if the ScrollView has scrolled all the way to the bottom.   
 
