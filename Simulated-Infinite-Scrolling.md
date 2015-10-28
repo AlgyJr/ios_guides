@@ -18,8 +18,7 @@ The Activity Indicator will be positioned behind the ScrollView near the bottom 
 ![Activity Indicator Animating](http://i.imgur.com/WPVwgK9.png)
 
 ### Step 2: Position the UIActivityIndicatorView
-It is possible to get the Activity Indicator positioned near the bottom of the ViewController in Storyboard, however it can be tricky because dragging the Activity Indicator down will most likely embed it into the ScrollView, which we don't want. Instead, we will set the Activity Indicator position programmatically within the `viewDidLoad` method. 
-
+- [Add an Activity Indicator to Storyboard](https://guides.codepath.com/ios/Using-UIActivityIndicatorView#step-1-add-activity-indicator-to-storyboard) inside of the ScrollView.
 - **Create an outlet for the Activity Indicator**. We will name ours, `infiniteLoadingIndicator`.
 - **Set the Activity Indicator position** within the `viewDidLoad` method. In order to place it **65px** above the bottom of the main **view**, we can say, `infiniteLoadingIndicator.center.y = view.frame.height - 65`.
 - **Set the ScrollView Content Inset**. In order for the ScrollView to scroll up enough to reveal our Activity Indicator, we need to set the content Inset for the bottom. You can do this in the ScrollView's **Size Inspector**, but since we are already setting things up in `viewDidLoad`, we will set the Content Inset for the bottom **programmatically**.
