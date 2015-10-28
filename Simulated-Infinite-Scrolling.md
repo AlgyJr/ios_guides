@@ -12,7 +12,7 @@ We will put a UIActivityViewIndicator inside the UIScrollView, just below the fe
 - **Set Behavior** to **Animating**, in the Attributes Inspector for the Activity Indicator.
 - **Create an outlet for the Activity Indicator**. We will name ours, `infiniteLoadingIndicator`.
 - **Set the Activity Indicator position** within the `viewDidLoad` method. We will place it 20px below the feed ImageView.
-- **Set the ScrollView Content Inset**. In order for the ScrollView to scroll up enough to reveal our Activity Indicator, we need to set the content Inset for the bottom. You can do this in the ScrollView's **Size Inspector**, but since we are already setting things up in `viewDidLoad`, we will set the Content Inset for the bottom **programmatically**.
+- **Set the ScrollView Content Inset**. In order for the ScrollView to scroll up enough to reveal our Activity Indicator, we need to set the content Inset for the bottom. You can do this in the ScrollView's **Size Inspector**, but since we are already setting things up in `viewDidLoad`, we will set the Content Inset there **programmatically**.
 
 ```swift
    // Position the Activity Indicator 20px below the bottom feed ImageView
