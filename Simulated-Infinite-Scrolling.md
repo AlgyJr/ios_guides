@@ -5,19 +5,7 @@ In this guide, we will simulate an **Infinite Scrolling** experience. Simulated 
   
 ![infinite scroll demo|220](http://i.imgur.com/Ue5ZaZe.gif)
   
-### Step 1: Add and Configure UIActivityIndicatorView
-The Activity Indicator will be positioned behind the ScrollView near the bottom of the screen. It will only be revealed when the ScrollView scrolls all the way to the bottom, given ScrollView content insets that we will set later.
-- **Add a UIActivityIndicatorView** just **above** the ScrollView in the **Document Outline**, this will position the Activity Indicator **behind** the **ScrollView**. The ActivityIndicator should **NOT** be inside the scrollView, rather it should be a child of the ViewController's main **view**.  
-
-![Add Activity Indicator](http://i.imgur.com/RgvknJF.gif)
-
-![Doc Outline Activity Indicator|200](http://i.imgur.com/wNpCVNd.png)
-
-- In the **Attributes Inspector** of the **Activity Indicator**, **Set the Behavior** to **Animating**. 
-
-![Activity Indicator Animating](http://i.imgur.com/WPVwgK9.png)
-
-### Step 2: Position the UIActivityIndicatorView
+### Step 1: Position the UIActivityIndicatorView
 We will put a UIActivityViewIndicator inside the UIScrollView, just below the feedImageView. It will always be animating and will only be revealed when we scroll to the very bottom. After a delay, a new ImageView will be added and the Activity Indicator will be moved down below the new ImageView.
 
 - [Add an Activity Indicator to Storyboard](https://guides.codepath.com/ios/Using-UIActivityIndicatorView#step-1-add-activity-indicator-to-storyboard) inside of the ScrollView.
@@ -34,12 +22,12 @@ We will put a UIActivityViewIndicator inside the UIScrollView, just below the fe
    feedScrollView.contentInset.bottom = 130
 ```
 
-### Step 3: Register for Scroll Events 
+### Step 2: Register for Scroll Events 
 We will need to interface with our ScrollView more programmatically in order to get **contentOffset** data as well as call a special ScrollView method when our ScrollView has come to a stop. To get his information from our ScrollView, we will first need to [register for Scroll Events](https://guides.codepath.com/ios/Using-UIScrollView#registering-for-scroll-events).
 - [Set the ScrollView Delegate](https://guides.codepath.com/ios/Using-UIScrollView#step-1-set-the-scroll-view-delegate)
 - [Declare the UIScrollViewDelegate](https://guides.codepath.com/ios/Using-UIScrollView#step-2-declaring-the-uiscrollviewdelegate)
 
-### Step 4: Create a Variable to Keep Track Of ImageViews
+### Step 3: Create a Variable to Keep Track Of ImageViews
 We will be creating a new ImageView each time we scroll to the bottom of our ScrollView. In order to figure out where we should place the next ImageView as well as how much to adjust the contentSize of our ScrollView, we will need to keep track of how many ImageViews have been created. We will do this in a variable called, `numberOfImageViews`.
 
 - Create a "global" variable, (up where your outlets are), to keep track of how many ImageViews have been added. Give it an initial value of 1.
@@ -50,10 +38,10 @@ We will be creating a new ImageView each time we scroll to the bottom of our Scr
    var numberOfImageViews: CGFloat = 1
 ```
 
-### Step 5: Create and Configure a Method for When Scrolling has Stopped.
-- We will employ a special ScrollView method, `scrollViewDidEndDecelerating` to tell us when the Scroll has come to a complete stop. You can put this method anywhere in the ViewController.
+### Step 4: Create and Configure a Method for When Scrolling has Stopped.
+- We will employ a special ScrollView method, `scrollViewDidEndDecelerating` to tell us when the Scroll has come to a complete stop. You can put this method anywhere in the ViewController. 
 
-- When the ScrollView stops, we need to check if the ScrollView has indeed reached the bottom. We will use a conditional statement and the **contentOffset** of the ScrollView to help us tell if the ScrollView has scrolled all the way to the bottom. `if feedScrollView.contentOffset.y + feedScrollView.frame.size.height >= feedScrollView.contentSize.height { // ScrollView is at the bottom }`  
+- When the ScrollView stops, we need to check if the ScrollView has indeed reached the bottom. We will use a conditional statement and the **contentOffset** of the ScrollView to help us tell if the ScrollView has scrolled all the way to the bottom.   
 
 - We will add a [delay method](https://guides.codepath.com/ios/Calling-a-Method-After-Delay) to give the Activity Indicator a moment to animate before we add on the next ImageView to the ScrollView Content.
 
