@@ -18,14 +18,17 @@ The Activity Indicator will be positioned behind the ScrollView near the bottom 
 ![Activity Indicator Animating](http://i.imgur.com/WPVwgK9.png)
 
 ### Step 2: Position the UIActivityIndicatorView
+We will put a UIActivityViewIndicator inside the UIScrollView, just below the feedImageView. It will always be animating and will only be revealed when we scroll to the very bottom. After a delay, a new ImageView will be added and the Activity Indicator will be moved down below the new ImageView.
+
 - [Add an Activity Indicator to Storyboard](https://guides.codepath.com/ios/Using-UIActivityIndicatorView#step-1-add-activity-indicator-to-storyboard) inside of the ScrollView.
+- **Set Behavior** to **Animating**, in the Attributes Inspector for the Activity Indicator.
 - **Create an outlet for the Activity Indicator**. We will name ours, `infiniteLoadingIndicator`.
-- **Set the Activity Indicator position** within the `viewDidLoad` method. In order to place it **65px** above the bottom of the main **view**, we can say, `infiniteLoadingIndicator.center.y = view.frame.height - 65`.
+- **Set the Activity Indicator position** within the `viewDidLoad` method. We will place it 20px below the feed ImageView.
 - **Set the ScrollView Content Inset**. In order for the ScrollView to scroll up enough to reveal our Activity Indicator, we need to set the content Inset for the bottom. You can do this in the ScrollView's **Size Inspector**, but since we are already setting things up in `viewDidLoad`, we will set the Content Inset for the bottom **programmatically**.
 
 ```swift
-   // Position the Activity Indicator 65px above the bottom of the screen
-   infiniteLoadingIndicator.center.y = view.frame.height - 65
+   // Position the Activity Indicator 20px below the bottom feed ImageView
+   infiniteLoadingIndicator.center.y = feedImageView.image!.size.height + 20
 
    // Set the ScrollView bottom Content Inset to 130px
    feedScrollView.contentInset.bottom = 130
@@ -56,7 +59,9 @@ We will be creating a new ImageView each time we scroll to the bottom of our Scr
 
 - When the delay is finished, we will [programmatically create a new Image View](https://guides.codepath.com/ios/Programmatically-Creating-Views), put another copy of our Feed Image in it, and position it directly below the previous ImageView. We will reference the variable we created to keep track of how many ImageViews have been created and multiply it by the height of our ImageView to figure out how far down to place it each time.
 
-- Since new ImageViews are being added to our ScrollView, we will increase the **contentSize** of our ScrollView each time we add a new ImageView. Again, we will reference our `numberOfImageViews` variable, multiply it by the height of our new ImageView, and add that to the original contentSize.
+- Move the Activity Indicator down below the new ImageView that was created.
+
+- Since a new ImageViews have been added to our ScrollView, we need to increase the **contentSize** of our ScrollView to accommodate the new ImageView. Again, we will reference our `numberOfImageViews` variable, multiply it by the height of our new ImageView, and add that to the original contentSize.
 
 - Finally, we will increase the value of our `numberOfImageViews` variable by 1
 
@@ -82,6 +87,8 @@ We will be creating a new ImageView each time we scroll to the bottom of our Scr
                 newImageView.frame.origin.y = self.feedImageView.frame.origin.y + self.numberOfImageViews * self.feedImageView.frame.size.height
                 // Add imageView to scrollView
                 feedScrollView.addSubview(newImageView)
+                // Move Activity Indicator down below new ImageView
+                self.infiniteLoadingIndicator.center.y = self.feedImageView.image!.size.height + 20 + self.numberOfImageViews * newImageView.image!.size.height
                 // Increase the feedScrollView contentSize with each additional imageView added using
                 feedScrollView.contentSize = CGSize(width: self.feedImageView.frame.size.width,
                     height: self.feedImageView.frame.size.height + self.numberOfImageViews * newImageView.frame.size.height)
