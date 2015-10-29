@@ -6,7 +6,7 @@ In this guide, we will simulate an **Infinite Scrolling** experience. Simulated 
 ![infinite scroll demo|220](http://i.imgur.com/Ue5ZaZe.gif)
   
 ### Step 1: Position the UIActivityIndicatorView
-We will put a UIActivityViewIndicator inside the UIScrollView, right in the middle. We set it's initial position when the ViewController loads. It will always be animating and will only be revealed when we scroll to the very bottom. After a delay, a new ImageView will be added and the Activity Indicator will be moved down below the new ImageView.
+We will put a UIActivityViewIndicator inside the UIScrollView, directly in the middle. We set it's initial position when the ViewController loads. It will always be animating and will only be revealed when we scroll to the very bottom. After a delay, a new ImageView will be added and the Activity Indicator will be moved down below the new ImageView.
 
 - [Add an Activity Indicator to Storyboard](https://guides.codepath.com/ios/Using-UIActivityIndicatorView#step-1-add-activity-indicator-to-storyboard) inside of the ScrollView.
 - **Set Behavior** to **Animating**, in the Attributes Inspector for the Activity Indicator.
