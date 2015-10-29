@@ -1,35 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-- [What is Auto Layout and why use it?](#what-is-auto-layout-and-why-use-it)
-  - [Example of layout problem](#example-of-layout-problem)
-- [Basic constraints](#basic-constraints)
-  - [Pinning to one or more edges](#pinning-to-one-or-more-edges)
-  - [Resize with parent view](#resize-with-parent-view)
-  - [Center a view within a parent view](#center-a-view-within-a-parent-view)
-- [Working with constraints in Interface Builder](#working-with-constraints-in-interface-builder)
-  - [Specifying the second view to which a constraint should be relative](#specifying-the-second-view-to-which-a-constraint-should-be-relative)
-  - [Editing constraints](#editing-constraints)
-  - [Constraint Errors and Warnings](#constraint-errors-and-warnings)
-    - [Misplaced Views](#misplaced-views)
-      - [Update frames](#update-frames)
-      - [Update constraints](#update-constraints)
-    - [Conflicting Constraints](#conflicting-constraints)
-    - [Missing Constraints](#missing-constraints)
-- [Dealing with flexible content size](#dealing-with-flexible-content-size)
-  - [Intrinsic content size of a view](#intrinsic-content-size-of-a-view)
-  - [Two labels: one on top of another](#two-labels-one-on-top-of-another)
-  - [Left aligned label next to right aligned label](#left-aligned-label-next-to-right-aligned-label)
-    - [Compression resistance](#compression-resistance)
-  - [Left aligned multiline label next to right aligned label](#left-aligned-multiline-label-next-to-right-aligned-label)
-    - [Content hugging](#content-hugging)
-- [Manipulating constraints programmatically](#manipulating-constraints-programmatically)
-- [VFL](#vfl)
-  - [Understanding debug output](#understanding-debug-output)
-- [Other topics](#other-topics)
-  - [Springs and Struts and AutoResizing Mask](#springs-and-struts-and-autoresizing-mask)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 This guide provides a quick overview and basic examples of the most
 common uses cases for using Auto Layout in Interface Builder.  A guide
 on some more advanced features of Auto Layout including how to work with
