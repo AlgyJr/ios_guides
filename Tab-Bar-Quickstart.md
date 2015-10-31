@@ -1,22 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-- [Overview](#overview)
-- [Storyboard setup](#storyboard-setup)
-  - [Step 1: Add tab bar controller as initial view controller](#step-1-add-tab-bar-controller-as-initial-view-controller)
-  - [Step 2: Add a view controller for each tab](#step-2-add-a-view-controller-for-each-tab)
-  - [Step 3: Customize the bar item for each tab](#step-3-customize-the-bar-item-for-each-tab)
-  - [Step 4: Create view controller classes for tabs](#step-4-create-view-controller-classes-for-tabs)
-  - [Step 5: Set custom class for and finish design of tabs](#step-5-set-custom-class-for-and-finish-design-of-tabs)
-- [Programmatic setup](#programmatic-setup)
-  - [Step 1: Create tab bar controller and as initial view controller](#step-1-create-tab-bar-controller-and-as-initial-view-controller)
-  - [Step 2: Create a view controller for each tab](#step-2-create-a-view-controller-for-each-tab)
-  - [Step 3: Customize the bar item for each view controller](#step-3-customize-the-bar-item-for-each-view-controller)
-  - [Step 4: Place view controllers inside the tab bar controller](#step-4-place-view-controllers-inside-the-tab-bar-controller)
-- [Further reading](#further-reading)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 ## Overview
 <a href="http://imgur.com/WhoidE5"><img src="http://i.imgur.com/WhoidE5.gif" title="source: imgur.com" /></a>
 
