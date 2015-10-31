@@ -49,105 +49,47 @@ view controller class as you would with any other view controller.
 <a href="http://imgur.com/5YWL3Vw"><img src="http://i.imgur.com/5YWL3Vw.png" title="source: imgur.com" /></a>
 
 ## Programmatic setup
-### Step 1: Create tab bar controller and as initial view controller
+
 You can instantiate a tab bar controller programmatically and use it as
-you would any othe view controller.  If you need it to be your root view
-controller the best place to do this is in the [app delegate](Application-Architecture#programatically-setting-the-root-view-controller).
+you would any other view controller.  If you need it to be your root view
+controller the best place to do this is in the App Delegate. The example below creates a Tab Bar Controller with two simple View Controllers (each with a different background color).
 
 ```swift
+// AppDelegate.swift
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let tabBarController = UITabBarController()
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window?.rootViewController = tabBarController
-        window?.makeKeyAndVisible()
-
-        ...
-
-        return true
+    
+    func application(application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+            window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            
+            // Set up the first View Controller
+            let vc1 = UIViewController()
+            vc1.view.backgroundColor = UIColor.orangeColor()
+            vc1.tabBarItem.title = "Orange"
+            vc1.tabBarItem.image = UIImage(named: "heart")
+            
+            // Set up the second View Controller
+            let vc2 = UIViewController()
+            vc2.view.backgroundColor = UIColor.purpleColor()
+            vc2.tabBarItem.title = "Purple"
+            vc2.tabBarItem.image = UIImage(named: "star")
+            
+            // Set up the Tab Bar Controller to have two tabs
+            let tabBarController = UITabBarController()
+            tabBarController.viewControllers = [vc1, vc2]
+            
+            // Make the Tab Bar Controller the root view controller
+            window?.rootViewController = tabBarController
+            window?.makeKeyAndVisible()
+            
+            return true
     }
-    ...
-}
-```
-
-### Step 2: Create a view controller for each tab
-You initialize your other view controllers as you would normally.
-
-```swift
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var window: UIWindow?
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        ...
-        let vc1 = UIViewController()
-        let vc2 = UIViewController()
-        vc1.view.backgroundColor = UIColor.orangeColor()
-        vc2.view.backgroundColor = UIColor.purpleColor()
-        ...
-    }
-    ...
-}
-```
-
-### Step 3: Customize the bar item for each view controller
-You customise the appearance of the tab bar item for each tab by
-manipulating the `tabBarItem` property _on the corresponding view
-controller_.
-
-```swift
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var window: UIWindow?
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        ...
-        vc1.tabBarItem.title = "Orange"
-        vc1.tabBarItem.image = UIImage(named: "heart")
-        vc2.tabBarItem.title = "Purple"
-        vc2.tabBarItem.image = UIImage(named: "star")
-        ...
-    }
-    ...
-}
-```
-
-### Step 4: Place view controllers inside the tab bar controller
-Finally you can set your view controllers as tabs inside the tab bar
-controller.  Do this by setting the `viewControllers` array on the the
-tab bar controller.  Putting everything together we have
-
-```swift
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var window: UIWindow?
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-
-        let tabBarController = UITabBarController()
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window?.rootViewController = tabBarController
-        window?.makeKeyAndVisible()
-        let vc1 = UIViewController()
-        let vc2 = UIViewController()
-        vc1.view.backgroundColor = UIColor.orangeColor()
-        vc2.view.backgroundColor = UIColor.purpleColor()
-
-        vc1.tabBarItem.title = "Orange"
-        vc1.tabBarItem.image = UIImage(named: "heart")
-        vc2.tabBarItem.title = "Purple"
-        vc2.tabBarItem.image = UIImage(named: "star")
-
-        tabBarController.viewControllers = [vc1, vc2]
-
-        return true
-    }
-    ...
+    
+    // ...
 }
 ```
 
