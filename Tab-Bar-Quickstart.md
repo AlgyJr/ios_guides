@@ -93,6 +93,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
+```
+// AppDelegate.m
+
+// ...
+
+- (BOOL)application:(UIApplication *)application
+didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    // Set up the first View Controller
+    UIViewController *vc1 = [[UIViewController alloc] init];
+    vc1.view.backgroundColor = [UIColor orangeColor];
+    vc1.tabBarItem.title = @"Orange";
+    vc1.tabBarItem.image = [UIImage imageNamed:@"heart"];
+    
+    // Set up the second View Controller
+    UIViewController *vc2 = [[UIViewController alloc] init];
+    vc2.view.backgroundColor = [UIColor purpleColor];
+    vc2.tabBarItem.title = @"Purple";
+    vc2.tabBarItem.image = [UIImage imageNamed:@"star"];
+    
+    // Set up the Tab Bar Controller to have two tabs
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    [tabBarController setViewControllers:@[vc1, vc2]];
+    
+    // Make the Tab Bar Controller the root view controller
+    self.window.rootViewController = tabBarController;
+    [self.window makeKeyAndVisible];
+    
+    return YES;
+}
+
+// ...
+```
+
 <a href="http://imgur.com/GhzQOTw"><img src="http://i.imgur.com/GhzQOTw.gif" title="source: imgur.com" /></a>
 
 ## Further reading
