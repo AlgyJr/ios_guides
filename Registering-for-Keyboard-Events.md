@@ -33,13 +33,19 @@ NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHi
 
 Note: You must place a colon in selector names for functions with a parameter, i.e ``"keyboardWillShow:"``
 
-### Step 3: Add a UITextField to the view
+### Step 3: Add the Views You Want to Move When the Keyboard Appears.
 
-![Add UITextField | 250](http://i.imgur.com/HL1Ekq3.gif)
+In this use case, we want to move several views the same offset amount when the keyboard shows. For this reason, it is useful to add all the views you want to move into a **parent view**; this way you only have to move the parent view, and all the other views within will go along for the ride.
 
-Place a UITextField within the view using Interface Builder. Then, use the Assistant Editor button to reveal the associated ViewController code. Ctrl+click on the text field and drag the blue line to the ViewController in order to create either an Outlet or Action Handler for the text field. We will select Outlet and name the outlet according to the purpose of the UITextField.
+- [Add the Parent View](https://guides.codepath.com/ios/Creating-Nested-Views#step-1-add-the-parent-view)
+- [Add the Child Views](https://guides.codepath.com/ios/Creating-Nested-Views#step-2-nest-the-child-views) inside the parent view.
 
-### Step 4: Offset the UITextField when the keyboard is shown
+### Step 4: Create Outlets For the Views You Want to Move.
+
+- Create an outlet for the **fieldParentView**. Drag from fieldParentView in the Document Outline to your ViewContoller swift file.  
+![Create outlet for fieldParentView](http://i.imgur.com/maYqgkO.gif)
+
+### Step 5: Offset the UITextField when the keyboard is shown
 
 ![Show Keyboard Offset | 250](http://i.imgur.com/Bjiect2.gif)
 
@@ -64,7 +70,7 @@ username.frame.origin.y = initialY + offset
 
 Note: If your keyboard does not show when you click within the text field. Make sure that you have the external keyboard simulation disabled. Go to menu Hardware | Keyboard and make sure "Connect Hardware Keyboard" is unchecked.
 
-### Step 5: Move UITextField back when keyboard is hidden
+### Step 6: Move UITextField back when keyboard is hidden
 
 ![Hide Keyboard Offset | 250](http://i.imgur.com/Ag9mO7D.gif)
 
@@ -74,7 +80,7 @@ Now we will simply move the UITextField back to its original y position when the
 username.frame.origin.y = initialY 
 ```
 
-### Step 6: Hide the Keyboard When Tapping Outside the TextField
+### Step 7: Hide the Keyboard When Tapping Outside the TextField
 
 If you run the simulator now, you notice that when you click on the text field it will animate up as it should, but when you click away you cannot hide the keyboard. So we need to have the keyboard hide event triggered. A common way to do this is to tap away from the text field trigger a keyboard hide. 
 
