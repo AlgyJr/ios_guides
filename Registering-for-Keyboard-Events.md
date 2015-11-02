@@ -68,7 +68,7 @@ offset = -50
 
 ![Give Variables Values](http://i.imgur.com/3oWcRjI.gif)
 
-### 7: Offset the views When Keyboard is Shown.
+### Step 7: Offset the views When Keyboard is Shown.
 
 ![keyboardWillShow demo|150](http://i.imgur.com/MjPaRct.gif)
 
@@ -90,7 +90,7 @@ fieldParentView.frame.origin.y = initialY
 
 ### Step 7: Hide the Keyboard When Tapping Outside the TextField
 
-![kb hide show gif|180](http://i.imgur.com/pyaO52E.gif)  
+![kb hide show gif|150](http://i.imgur.com/pyaO52E.gif)  
 
 If you run the simulator now, you notice that when you click on the text field it will animate up as it should, but when you click away you cannot hide the keyboard. So we need to have the keyboard hide event triggered. A common way to do this is to tap away from the text field trigger a keyboard hide. 
 
