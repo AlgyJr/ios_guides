@@ -69,12 +69,13 @@ offset = -50
 ![Give Variables Values](http://i.imgur.com/3oWcRjI.gif)
 
 ### 7: Offset the views When Keyboard is Shown.
-![keyboardWillShow demo](http://i.imgur.com/MjPaRct.gif)
+
+![keyboardWillShow demo|250](http://i.imgur.com/MjPaRct.gif)
 
 Within the `keyboardWillShow` method, offset the y position of the fieldParentView using your `offset` value.
 
 ```swift
-username.frame.origin.y = initialY + offset
+fieldParentView.frame.origin.y = initialY + offset
 ```
 
 Note: If your keyboard does not show when you click within the text field. Make sure that you have the external keyboard simulation disabled. Go to menu Hardware | Keyboard and make sure "Connect Hardware Keyboard" is unchecked. You can also "toggle" the software keyboard using "cmd + k".
@@ -86,16 +87,18 @@ Note: If your keyboard does not show when you click within the text field. Make 
 Now we will simply move the UITextField back to its original y position when the keyboard is hidden. This will occur within the ```keyboardWillHide``` method.
 
 ```swift
-username.frame.origin.y = initialY 
+fieldParentView.frame.origin.y = initialY 
 ```
 
 ### Step 7: Hide the Keyboard When Tapping Outside the TextField
+
+![kb hide show gif|250](http://i.imgur.com/pyaO52E.gif)  
 
 If you run the simulator now, you notice that when you click on the text field it will animate up as it should, but when you click away you cannot hide the keyboard. So we need to have the keyboard hide event triggered. A common way to do this is to tap away from the text field trigger a keyboard hide. 
 
 - Drag and drop a UITapGesture recognizer from the Object Library to the background view. 
 - Ctrl+click and drag from the Tap Gesture Recognizer to the View Controller shown in the assistant editor. We will select the Action option and name the handler ```didTap```. 
-- Within the ```didTap``` method we simply have the line
+- Within the ```didTap``` method we simply have the line...
 
 ```swift
 view.endEditing(true)
@@ -103,4 +106,3 @@ view.endEditing(true)
 This will trigger the ```keyboardWillHide``` method on our view controller.  
   
 ![Add tap to hide keyboard gif](http://i.imgur.com/P3JrdNq.gif)  
-![kb hide show gif|180](http://i.imgur.com/pyaO52E.gif)
