@@ -2,9 +2,7 @@
 ## Basic Use Case
 ![Keyboard GIF | 250](http://i.imgur.com/bQsqmhT.gif)
 
-Often, you will have to rearrange views when the keyboard is shown or hidden to ensure that the appropriate views and controls are visible while the user is typing. You can register for the begin/end editing events for UITextFields, which works well for a single UITextField. However, when you have many UITextFields, it can get complicated because when one UITextField is ending editing, another might be beginning editing, so it can be hard to tell if the keyboard is actually going away.
-
-The easier way is to register for the keyboard events which are fired when the keyboard is shown or hidden. There is an additional benefit that the keyboard event returns the height of the keyboard which can vary greatly depending on orientation, device, language, and custom keyboards.
+Often, you will have to rearrange views when the keyboard is shown or hidden to ensure that the appropriate views and controls are visible while the user is typing. To achieve this, we will register for the keyboard events which are fired when the keyboard is shown or hidden.
 
 This mechanism is called NSNotifications. It is commonly used for system events like keyboard, device rotation, and coming back from or going into standby. For example, when coming back from standby, it's common to refresh the network data of the view controller.
 
