@@ -40,7 +40,7 @@ In this use case, we want to move several views the same offset amount when the 
 - [Add the Parent View](https://guides.codepath.com/ios/Creating-Nested-Views#step-1-add-the-parent-view)
 - [Add the Child Views](https://guides.codepath.com/ios/Creating-Nested-Views#step-2-nest-the-child-views) inside the parent view.
 
-### Step 4: Create Outlets For the Views You Want to Move.
+### Step 4: Create Outlets For the Views You Want to Offset.
 
 - Create an outlet for the **fieldParentView**. Drag from fieldParentView in the Document Outline to your ViewContoller swift file.  
 ![Create outlet for fieldParentView](http://i.imgur.com/maYqgkO.gif)
