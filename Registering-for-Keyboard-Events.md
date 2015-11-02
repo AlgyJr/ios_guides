@@ -82,8 +82,6 @@ Note: If your keyboard does not show when you click within the text field. Make 
 
 ### Step 6: Move View Back When Keyboard is Hidden
 
-![Hide Keyboard Offset | 250](http://i.imgur.com/Ag9mO7D.gif)
-
 Now we will simply move the UITextField back to its original y position when the keyboard is hidden. This will occur within the ```keyboardWillHide``` method.
 
 ```swift
