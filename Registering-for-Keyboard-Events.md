@@ -70,7 +70,7 @@ offset = -50
 
 ### 7: Offset the views When Keyboard is Shown.
 
-![keyboardWillShow demo|180](http://i.imgur.com/MjPaRct.gif)
+![keyboardWillShow demo|150](http://i.imgur.com/MjPaRct.gif)
 
 Within the `keyboardWillShow` method, offset the y position of the fieldParentView using your `offset` value.
 
