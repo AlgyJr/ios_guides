@@ -59,7 +59,7 @@ initialY = username.frame.origin.y
 Finally, within the `keyboardWillShow` method, update the y position of the text field to the, "keyboard shown" position.
 
 ```swift
-username.frame.origin.y = initialY + offset)
+username.frame.origin.y = initialY + offset
 ```
 
 Note: If your keyboard does not show when you click within the text field. Make sure that you have the external keyboard simulation disabled. Go to menu Hardware | Keyboard and make sure "Connect Hardware Keyboard" is unchecked.
