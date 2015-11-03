@@ -195,7 +195,7 @@ NSString *urlString =
 [@"https://api.instagram.com/v1/media/popular?client_id=" stringByAppendingString:clientId];
 
 NSURL *url = [NSURL URLWithString:urlString];
-NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+NSURLRequest *request = [NSURLRequest requestWithURL:url];
 
 NSURLSession *session =
 [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
