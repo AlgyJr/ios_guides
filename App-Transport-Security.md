@@ -21,6 +21,14 @@ You may also use `NSAllowsArbitraryLoads` to completely disable ATS in your app:
 
 ![Imgur](http://i.imgur.com/Tmy1wYL.png)
 
+Or in XML:
+```xml
+<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSAllowsArbitraryLoads</key><true/>
+</dict>
+```
+
 **This is strongly discouraged.** Only use this during development.
 
 ### Read More
