@@ -67,7 +67,7 @@ Within our `didPressLogin` method, we want to check to see what was entered into
 ```swift
 @IBAction func didPressLogin(sender: AnyObject) {
         
-if emailField == "Text we are looking for" && passwordField == "Other text we are looking for" {
+if emailField.text == "Text we are looking for" && passwordField.text == "Other text we are looking for" {
    // Code that runs if both email and password match the text we are looking for in each case       
 } else {
    // Code that runs if either the email or password do NOT match the text we are looking for in each case        
