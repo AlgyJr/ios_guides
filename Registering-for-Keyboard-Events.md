@@ -51,7 +51,7 @@ Near the top of the ViewController, where you create outlets, **define variables
 
 ```swift
 var initialY: CGFloat!
-let offset: CGFloat!
+var offset: CGFloat!
 ```  
 
 ![Define Variables](http://i.imgur.com/1kLmcGm.gif)
