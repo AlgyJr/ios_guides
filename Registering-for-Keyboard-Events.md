@@ -78,6 +78,13 @@ Within the `keyboardWillShow` method, offset the y position of the fieldParentVi
 fieldParentView.frame.origin.y = initialY + offset
 ```
 
+In this example, we are offsetting our views by an arbitrary amount. Sometimes you will want to offset your views based on the actual dimensions of the keyboard. In that case, you can get the frame of the keyboard, (a CGRect), like this...
+
+```swift
+let frame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+    // do stuff based on the keyboard frame
+```
+ 
 Note: If your keyboard does not show when you click within the text field. Make sure that you have the external keyboard simulation disabled. Go to menu Hardware | Keyboard and make sure "Connect Hardware Keyboard" is unchecked. You can also "toggle" the software keyboard using "cmd + k".
 
 ### Step 6: Move View Back When Keyboard is Hidden
