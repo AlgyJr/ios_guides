@@ -95,7 +95,7 @@ Example `didPressLogin` method might look like this...
         // Set the Button state to "Selected"
         loginButton.selected = true
         // If both the email and password fields match what we are looking for...
-        if emailField == "Text we are looking for" && passwordField == "Other text we are looking for" {
+        if emailField.text == "Text we are looking for" && passwordField.text == "Other text we are looking for" {
             // Delay for 2 second.
             delay(2, closure: { () -> () in
                 // Stop animating the activity indicator.
