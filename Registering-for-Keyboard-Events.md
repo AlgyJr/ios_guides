@@ -87,7 +87,7 @@ let frame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).
  
 Note: If your keyboard does not show when you click within the text field. Make sure that you have the external keyboard simulation disabled. Go to menu Hardware | Keyboard and make sure "Connect Hardware Keyboard" is unchecked. You can also "toggle" the software keyboard using "cmd + k".
 
-### Step 6: Move View Back When Keyboard is Hidden
+### Step 8: Move View Back When Keyboard is Hidden
 
 Now we will simply move the UITextField back to its original y position when the keyboard is hidden. This will occur within the ```keyboardWillHide``` method.
 
@@ -95,7 +95,7 @@ Now we will simply move the UITextField back to its original y position when the
 fieldParentView.frame.origin.y = initialY 
 ```
 
-### Step 7: Hide the Keyboard When Tapping Outside the TextField
+### Step 9: Hide the Keyboard When Tapping Outside the TextField
 
 ![kb hide show gif|150](http://i.imgur.com/pyaO52E.gif)  
 
