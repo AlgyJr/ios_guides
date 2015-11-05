@@ -13,7 +13,7 @@ You have now created an action that will call your method, "editingChanged", eac
 
 In this example, we will check to see if either the username field or password field is empty and set the button state accordingly.
 
-```Swift
+```swift
 // create a conditional statement: if the username OR password fields are empty than...
 if usernameField.text!.isEmpty || passwordField.text!.isEmpty {
   // set the button state to disabled
