@@ -14,7 +14,7 @@ Create an outlet for the WebView by ctrl + dragging from the WebView in the Stor
 
 ### Step 4: Create Constant for URL
 
-Above the `viewDidLoad` create a constant to hold your URL string. We will link to the DropBox mobile terms url.
+**Above** the `viewDidLoad` method, create a constant to hold your URL string. We will link to the DropBox mobile terms url.
 
 ```swift
 let url = "https://www.dropbox.com/terms?mobile=1"
