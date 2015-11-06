@@ -1,10 +1,10 @@
 Loading a URL into your app is as easy! Just add and configure a UIWebView.  
   
-![WebView Demo](http://i.imgur.com/v4PlBQX.gif)
+![WebView Demo|250](http://i.imgur.com/v4PlBQX.gif)
 
 ### Step 1: Add UIWebView to Storyboard
 
-Drag and drop a UIWebView from the Object Library to the main view of your ViewController.
+Drag and drop a UIWebView from the Object Library to the main view of your ViewController. Drag the edges of the view to adjust it's size. 
 
 ### Step 2: Create a custom ViewController file
 
