@@ -35,4 +35,11 @@ let request = NSURLRequest(URL: requestURL!)
 webView.loadRequest(request)
 ```
 
+### Step 6: Add Networking Permissions
+
+Add NSAppTransportSecurity to the info.plist
+Within NSAppTransportSecurity, add, NSAllowsArbitraryLoads. Set the boolean to YES  
+  
+![Add permissions to info.plist](http://i.imgur.com/tlu8W9e.png)
+
 
