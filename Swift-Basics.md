@@ -117,7 +117,7 @@ They can use named values:
 
 ```Swift
 let myResponse: (code: Int, message: String) = (200, "OK")
-println(myTuple.message)
+println(myResponse.message)
 ```
 
 ## Control Flow
