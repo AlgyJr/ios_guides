@@ -19,7 +19,7 @@ Alternatively, if you want to create the gesture programmatically, it is common 
 
 #### Example 1: Tap gesture recognizer
 
-```
+```swift
 override func viewDidLoad() {
    // The onCustomTap: method will be defined in Step 3 below.
    var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "onCustomTap:")
@@ -36,7 +36,7 @@ override func viewDidLoad() {
 
 #### Example 2: Pan gesture recognizer
 
-```
+```swift
 override func viewDidLoad() {
    // The onCustomPan: method will be defined in Step 3 below.
    var panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "onCustomPan:")
@@ -56,7 +56,7 @@ Gesture recognizers call the same selector as it transitions through various sta
 #### Example 1: Tap gesture recognizer
 
 
-```
+```swift
 func onCustomTap(tapGestureRecognizer: UITapGestureRecognizer) {
    var point = tapGestureRecognizer.locationInView(view)
 
@@ -67,7 +67,7 @@ func onCustomTap(tapGestureRecognizer: UITapGestureRecognizer) {
 
 #### Example 2: Pan gesture recognizer
 
-```
+```swift
 func onCustomPan(panGestureRecognizer: UIPanGestureRecognizer) {
    var point = panGestureRecognizer.locationInView(view)
    var velocity = panGestureRecognizer.velocityInView(view)
@@ -95,7 +95,7 @@ By default, it won't work if you add multiple gesture recognizers to the same vi
 
 For example, if you want to use a pinch and rotate gesture recognizer simultaneously, choose either the pinch or the rotate gesture recognizer (it doesn't matter which one). If you created the gesture recognizer in Interface Builder, create an IBOutlet for it by Ctrl-dragging from the nib.
 
-```
+```swift
 pinchGestureRecognizer.delegate = self;
 
 ```
@@ -104,7 +104,7 @@ pinchGestureRecognizer.delegate = self;
 
 Go to the header file of the view controller and add UIGestureRecognizerDelegate to the list of protocols, as shown below.
 
-```
+```swift
 class MainViewController : UIViewController, UIGestureRecognizerDelegate
 ...
 @end
@@ -113,7 +113,7 @@ class MainViewController : UIViewController, UIGestureRecognizerDelegate
 
 Copy the following UIGestureRecognizerDelegate method into the Swift file.
 
-```
+```swift
 func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool {
    return true
 }
