@@ -71,6 +71,7 @@ func onCustomTap(tapGestureRecognizer: UITapGestureRecognizer) {
 func onCustomPan(panGestureRecognizer: UIPanGestureRecognizer) {
    var point = panGestureRecognizer.locationInView(view)
    var velocity = panGestureRecognizer.velocityInView(view)
+   var translation = panGestureRecognizer.translationInView(view)
     
    if panGestureRecognizer.state == UIGestureRecognizerState.Began {
       println("Gesture began at: \(point)")
