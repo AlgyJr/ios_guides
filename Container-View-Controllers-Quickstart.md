@@ -1,17 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-- [Overview](#overview)
-- [Step 1: Create subclass of UIViewController](#step-1-create-subclass-of-uiviewcontroller)
-- [Step 2: Design container view controller in Interface Builder](#step-2-design-container-view-controller-in-interface-builder)
-- [Step 3: Add code to keep track of child view controllers](#step-3-add-code-to-keep-track-of-child-view-controllers)
-- [Step 4: Add logic to add and remove child views](#step-4-add-logic-to-add-and-remove-child-views)
-- [Step 5: Handle events](#step-5-handle-events)
-- [Step 6: Use custom container in your application](#step-6-use-custom-container-in-your-application)
-- [Further reading](#further-reading)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 ## Overview
 
 Traditionally in iOS apps a
