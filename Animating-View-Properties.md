@@ -27,7 +27,7 @@ UIView.animateWithDuration(0.4, animations: {
 
 ### Animation Options:
 
-![Animation Options gif](http://i.imgur.com/KJ8QWAv.gif)
+![Animation Options gif|250](http://i.imgur.com/KJ8QWAv.gif)
 
 You can add Animation Options to further customize your animation. To add multiple Animation Options, surround your Animation Options with `[ ]`, like `[UIViewAnimationOptions.Autoreverse, UIViewAnimationOptions.Repeat]`.
 
@@ -49,9 +49,9 @@ UIView.animateWithDuration(0.4, delay: 0.0,
    }, completion: nil)
 ```
 
-### Spring Animation
+### Spring Animation:
 
-![spring animation gif](http://i.imgur.com/kkG0GXf.gif) 
+![spring animation gif|250](http://i.imgur.com/kkG0GXf.gif) 
   
 Sometimes you want a little spring action to make your animations seem a little more alive and less stiff. This example applies a subtle spring animation to a slide out tray.
 
