@@ -5,6 +5,9 @@ Many UIView properties can be animated, including:
 - backgroundColor
 - alpha
 - transform
+   - rotation
+   - scale
+   - translation
 
 ### Step 1: Create an animation block
 
@@ -36,3 +39,27 @@ UIView.animateWithDuration(0.8, delay: 0.0,
    self.bubbleImageView.transform = CGAffineTransformMakeTranslation(0, 10)
    }, completion: nil)
 ```
+
+If you **DO NOT** want any animation options, you can plug in `[]` for the `options:` value.
+
+```swift
+UIView.animateWithDuration(0.4, delay: 0.0,   
+   options: [], animations: { () -> Void in
+   self.imageView.transform = CGAffineTransformMakeScale(1.5, 1.5)
+   }, completion: nil)
+```
+
+### Spring Animation
+
+![spring animation gif](http://i.imgur.com/kkG0GXf.gif) 
+  
+Sometimes you want a little spring action to make your animations seem a little more alive and less stiff. This example applies a subtle spring animation to a slide out tray.
+
+The `usingSpringWithDamping` parameter can be set with a value between 0 and 1. A setting closer to 1 decreases the amount of "springyness". A value of 0.4 to 0.5 seems to create a nice subtle springy effect, but you should experiment with different values to see what works for your particular situation.
+
+```swift
+UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options:[] , animations: { () -> Void in
+   self.trayView.center = self.trayDown
+   }, completion: { (Bool) -> Void in
+})
+``` 
