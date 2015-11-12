@@ -42,6 +42,7 @@ override func viewDidLoad() {
    var panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "onCustomPan:")
 
    // Attach it to a view of your choice. If it's a UIImageView, remember to enable user interaction
+   view.userInteractionEnabled = true
    view.addGestureRecognizer(panGestureRecognizer)
 }
 
