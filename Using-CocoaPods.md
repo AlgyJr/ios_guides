@@ -1,9 +1,9 @@
 ## Overview
-This guide covers 1) setting-up CocoaPods, and 2) adding and installing Pods into your XCode project. By the end of it you'll be ready for guides on *actually using* the Pods you need. 
+This guide covers 1) setting-up CocoaPods, and 2) adding and installing Pods into your Xcode project. By the end of it you'll be ready for guides on *actually using* the Pods you need. 
 
 ### Necessary knowledge
 
-* Basic level in XCode
+* Basic level in Xcode
 * Novice level in Terminal 
 
 ## One-time Setup  
@@ -38,23 +38,26 @@ First you need set your Terminal's Present Working Directory to the folder conta
 CocoaPods uses a text file named `Podfile` to define your project's Pods. To add your Podfile:
 
 * Type `pod init` into your terminal 
-* Type `open -a XCode Podfile` and edit your `Podfile` in XCode
+* Type `open -a Xcode Podfile` and edit your `Podfile` in Xcode
 
 ![Watch the add your Podfile gif here](http://i.imgur.com/Tlx88ZN.gif)
 
 ### Step 3 - Add your Pods and install
 
 * First, you can delete everything in this file
+* Add `use_frameworks!`
 * Add a row for each Pod you're installing, then save
 
 ```
+use_frameworks!
+
 pod 'MBProgressHUD'
 pod 'AFNetworking', '~> 2.0'
 ```
 
 **Note: Your Pods will be different.** These are two examples.
 
-* Next have CocoaPods install typing the folowing into terminal
+* Next have CocoaPods install typing the following into terminal
 
 ```
 pod install
@@ -73,30 +76,14 @@ After your first `pod install`, CocoaPods will create a new `.xcworkspace` file 
 
 If you later need to change your `Podfile` to bring-in new Pods, simply run `pod install` again.
 
-### Step 5 - Bridging from Objective-C
+### Step 5 - Importing your pod
 
-As of 2015 most popular CocoaPods are still written in Objective-C. To use these Pods in your Swift project, your project will need a *Bridging-Header*.
+In any Swift file where you want to use the library, you need to import it.
 
-Create one automatically by adding any Objective-C file to your project.
-
-* Go to `File -> New -> File ... -> iOS -> Source -> Objective-C File` and add a file with any name and any settings.
-* When asked *Would you like to configure an Objective-C bridging header?*, answer *Yes*. 
-* Edit the new file called `MySpecialProject-Bridging-Header.h`: 
-
-```objective-c 
-//
-//  Use this file to import your target's public headers that you would like to expose to Swift.
-//
-
-#import <AFNetworking/AFNetworking.h>
-#import <MBProgressHUD/MBProgressHUD.h>
+```swift
+import UIKit
+import MBProgressHUD
 ```
-
-**Note: Your Pods will be different.** These are two examples.
-
-You can trash the other file created in this step, but keep `MySpecialProject-Bridging-Header.h`
-
-![Watch the bridging gif here](http://i.imgur.com/gqPbeo5.gif)
 
 ### Step 6 - Done! Use your CocoaPods! 
 
@@ -105,8 +92,6 @@ You can trash the other file created in this step, but keep `MySpecialProject-Br
 For example, now you can use your Pod in a ViewController. 
 
 ```swift
-import UIKit
-
 class ViewController: UIViewController {
     var progressHUD : MBProgressHUD!
     ...
