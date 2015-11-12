@@ -85,6 +85,17 @@ func onCustomPan(panGestureRecognizer: UIPanGestureRecognizer) {
 
 ```
 
+#### Example 3: Pinch Gesture Recognizer
+```swift
+func didPinchNewFace(sender: UIPinchGestureRecognizer) {
+
+   // get the scale value from the pinch gesture recognizer
+   let scale = sender.scale
+        
+ 
+}
+```
+
 ## Other Gesture Recognizer Tasks
 
 Below are some common tasks that you might have with gesture recognizers.
