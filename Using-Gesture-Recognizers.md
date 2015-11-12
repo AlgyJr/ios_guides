@@ -116,10 +116,9 @@ class MainViewController : UIViewController, UIGestureRecognizerDelegate
 Copy the following UIGestureRecognizerDelegate method into the Swift file.
 
 ```swift
-func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool {
-   return true
+func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+return true
 }
-
 ```
 
 Now the pinch and scale gesture recognizers should work simultaneously.
