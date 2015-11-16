@@ -58,8 +58,8 @@ Gesture recognizers call the same selector as it transitions through various sta
 
 
 ```swift
-func onCustomTap(tapGestureRecognizer: UITapGestureRecognizer) {
-   var point = tapGestureRecognizer.locationInView(view)
+func onCustomTap(sender: UITapGestureRecognizer) {
+   var point = sender.locationInView(view)
 
    // User tapped at the point above. Do something with that if you want.
 }
@@ -69,16 +69,16 @@ func onCustomTap(tapGestureRecognizer: UITapGestureRecognizer) {
 #### Example 2: Pan gesture recognizer
 
 ```swift
-func onCustomPan(panGestureRecognizer: UIPanGestureRecognizer) {
-   var point = panGestureRecognizer.locationInView(view)
-   var velocity = panGestureRecognizer.velocityInView(view)
-   var translation = panGestureRecognizer.translationInView(view)
+func onCustomPan(sender: UIPanGestureRecognizer) {
+   var point = sender.locationInView(view)
+   var velocity = sender.velocityInView(view)
+   var translation = sender.translationInView(view)
     
-   if panGestureRecognizer.state == UIGestureRecognizerState.Began {
+   if sender.state == UIGestureRecognizerState.Began {
       println("Gesture began at: \(point)")
-   } else if panGestureRecognizer.state == UIGestureRecognizerState.Changed {
+   } else if sender.state == UIGestureRecognizerState.Changed {
       println("Gesture changed at: \(point)")
-   } else if panGestureRecognizer.state == UIGestureRecognizerState.Ended {
+   } else if sender.state == UIGestureRecognizerState.Ended {
       println("Gesture ended at: \(point)")
    }
 }
