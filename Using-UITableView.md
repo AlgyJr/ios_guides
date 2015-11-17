@@ -19,7 +19,7 @@ Control-drag from the view to the implementation file to create an outlet to the
 
 #### Step 3: Set the datasource and delegate
 
-Declare that the class implements the table view datasource and delegate protocols. Look for the class declaration at the top of your Swift file. Add `UITableViewDataSource` and `UITableViewDelegate` after `UIViewController`.
+Declare that the class implements the table view datasource and delegate protocols. Look for the class declaration at the top of your Swift file. Add `UITableViewDataSource` and `UITableViewDelegate` after `UIViewController`. Note that there will be an error that your class doesn't implement the required UITableViewDataSource functions. The error won't go away until you complete Step 4 below.
 
 ```
 class YourViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
