@@ -1,5 +1,19 @@
 Gesture recognizers are a powerful and easy to use tool for handling user gestures like tap or pinch and performing actions like triggering animations or view changes. This is a quick guide for the steps in setting up gesture recognizers.
 
+## Add and Configure a Gesture Recognizer in Storyboard
+
+### Step 1: Choose a Gesture Recognizer from Object Library
+![Choose a Gesture Recognizer from Object Library gif|200](http://i.imgur.com/evQqzAL.gif)
+
+### Step 2: Drag and Drop a Gesture Recognizer into your View
+![Drag and Drop a Gesture Recognizer into your View](http://i.imgur.com/Yv8WOcP.gif)
+
+### Step 3: Create an Action for your Gesture Recognizer
+Ctrl-drag from your Gesture Recognizer to the ViewController swift file to create an action. Be sure to change the type from **AnyObject** to the specific Gesture Recognizer you are using. i.e. UIPanGestureRecognizer, etc..  
+![Create an Action for your Gesture Recognizer](http://i.imgur.com/ddu28U5.gif)
+
+## Programmatically Add and Configure a Gesture Recognizer
+
 ### Step 1: Choose a gesture recognizer
 
 There are many builtin gesture recognizers in iOS, and you can also create your own. Choose one from the following list.
