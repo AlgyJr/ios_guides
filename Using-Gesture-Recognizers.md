@@ -153,3 +153,108 @@ return true
 ```
 
 Now the pinch and scale gesture recognizers should work simultaneously.
+
+
+## Use Case: Slide Out Tray
+![Slide Out Tray Example gif](http://i.imgur.com/P4v6iHa.gif)  
+
+Slide out trays, Hamburger menus, and any other view you want to move by sliding your finger can be configured using a UIPanGesture Recognizer.
+
+### Step 1: Add a UIView to Serve as Your Tray
+- You can [add a View in Storyboard](https://guides.codepath.com/ios/Creating-Nested-Views#step-1-add-the-parent-view) or [add a view programmatically](https://guides.codepath.com/ios/Programmatically-Creating-Views)
+- If you added a view in Storyboard, create an outlet for your view. We will name the outlet `trayView`.
+ 
+### Step 2: Add and Configure your Pan Gesture Recognizer.
+- Attach a UIPanGestureRecognizer to your Tray view and create an Action/Method. We will call our method, `didPanTray`. You can [add a Gesture Recognizer in Storyboard](https://guides.codepath.com/ios/Using-Gesture-Recognizers#add-and-configure-a-gesture-recognizer-in-storyboard) or [add a Gesture Recognizer programmatically](https://guides.codepath.com/ios/Using-Gesture-Recognizers#programmatically-add-and-configure-a-gesture-recognizer)
+
+### Step 3: Define a Variable to Hold the Initial Position of the View
+Define an **Instance Variable** that can be accessed throughout the View Controller. We define these variables at the top of the ViewController Swift file, right above the `viewDidLoad` method.
+
+```swift
+var initialTrayCenter: CGPoint!
+```
+
+### Step 4: Make the Tray Draggable
+![Make the Tray Draggable gif](http://i.imgur.com/sI6gV8c.gif)  
+
+The code to make the Tray draggable will go inside our `didPanTray` method.
+NOTE: If you created your Gesture Recognizer and added an Action in Storyboard, the method will be proceeded by `@IBAction`.
+
+```swift
+@IBAction func didPanTray(sender: UIPanGestureRecognizer) {
+    
+}
+``` 
+
+- Within the `didPanTray` method, we want to access the **translation** property of the UIPanGestureRecognizer and store it in a variable. This will tell us how far our finger has moved from the original "touch-down" point as we drag. We will also print the translation value to the console to get a feel for what it means. You should see that the translation is a **CGPoint** with values for the x and y components. 
+
+```swift
+var translation = sender.translationInView(view)
+print("translation \(translation)")
+```
+
+- Create a conditional statement to check for the current gesture state during the pan: .Began, .Changed or .Ended
+   - `.Began` is called once at the very beginning of each gesture recognition.
+   - `.Changed` is called continuously as the user is in the process of "gesturing".
+   - `.Ended` is called once at the end of the gesture.
+   - HINT: You will use this conditional statement to check gesture states SO often, that is extremely helpful to [create a Code Snippet]() for quick access in the future!  
+
+```
+if sender.state == UIGestureRecognizerState.Began {
+            
+} else if sender.state == UIGestureRecognizerState.Changed {
+            
+} else if sender.state == UIGestureRecognizerState.Ended {
+            
+}
+```
+
+- When the gesture begans (`.Began`), store the tray's center into the trayOriginalCenter variable: 
+```swift
+trayOriginalCenter = trayView.center
+```
+
+- As the user pans (`.Changed`), change the `trayView.center` by the translation. Note: we ignore the x translation because we only want the tray to move up and down: 
+```swift
+trayView.center = CGPoint(x: trayOriginalCenter.x, y: trayOriginalCenter.y + translation.y)
+```
+
+### 5: Animate Tray to Open or Closed Positions
+![Slide Out Tray Example gif](http://i.imgur.com/P4v6iHa.gif)  
+
+When a user stops panning the Tray, we want the tray to animate to an up or down position. We will infer that if the users last gesture movement was downward, they intend to close the tray to it's down position. Conversely, if they are NOT panning down, they must be panning up, and intend to open the tray to it's up position.  
+  
+We can tell which way a user is panning by looking at the gesture property, **velocity**. Like translation, velocity has a value for both x and y components. If the **y component** of the velocity is a **positive** value, the user is **panning down**. If the **y component** is **negative**, the user is **panning** up.
+
+Since we are focusing on the user's **last** gesture movement, we will check for the velocity in the `.Ended` condition of our gesture state conditional statement.
+
+- Get the velocity: `var velocity = sender.velocityInView(view)`. [Pan Gesture Recognizer](https://guides.codepath.com/ios/Using-Gesture-Recognizers#example-2-pan-gesture-recognizer-1)
+- Define Instance variables to store the tray's position when it's "up" and "down" as well as the offset amount that the tray will move down when it is in it's down position.
+     
+```swift
+var trayDownOffset: CGFloat!
+var trayUp: CGPoint!
+var trayDown: CGPoint!
+```
+     
+- Within the `viewDidLoad` method, assign values to the `trayDownOffset`, `trayUp` and `trayDown` variables . The `trayDownOffset` will dictate how much the tray moves down. 160 worked for my tray, but you will have to adjust this value to accommodate the specific size of your tray. 
+
+```swift
+trayDownOffset = 160
+trayUp = trayView.center
+trayDown = CGPoint(x: trayView.center.x ,y: trayView.center.y + trayDownOffset)
+```
+- Back in your `didPanTray` method, within the gesture state, `.Ended`, create a conditional statement to check the y component of the velocity. In the case that the tray is moving down, animate the tray position to the `trayDown` point, otherwise, animate it towards the `trayDown` point. [Animating View Properties](https://guides.codepath.com/ios/Animating-View-Properties)
+
+```swift
+if velocity.y > 0 {
+   UIView.animateWithDuration(0.3, animations: { () -> Void in
+   trayView.center = trayDown                 
+   })
+} else {
+   UIView.animateWithDuration(0.3, animations: { () -> Void in
+   trayView.center = trayUp                 
+   })
+}
+```  
+You can also try animating the ending tray motion with a bounce using the damping ratio and initial spring velocity. [Spring Animation](https://guides.codepath.com/ios/Animating-View-Properties#spring-animation)
