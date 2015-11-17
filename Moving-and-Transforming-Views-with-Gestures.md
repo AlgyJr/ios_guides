@@ -1,6 +1,8 @@
 Interactive Gestures can really bring your UI to life! In this guide we will explore some common use-cases for moving and transforming views based on gesture input.
 
 ## Use Case: Slide Out Tray
+![Slide Out Tray Example gif](http://i.imgur.com/P4v6iHa.gif)  
+
 Slide out trays, Hamburger menus, and any other view you want to move by sliding your finger can be configured using a UIPanGesture Recognizer.
 
 ### Step 1: Add a UIView to Serve as Your Tray
@@ -18,6 +20,8 @@ var initialTrayCenter: CGPoint!
 ```
 
 ### Step 4: Make the Tray Draggable
+![Make the Tray Draggable gif](http://i.imgur.com/sI6gV8c.gif)  
+
 The code to make the Tray draggable will go inside our `didPanTray` method.
 NOTE: If you created your Gesture Recognizer and added an Action in Storyboard, the method will be proceeded by `@IBAction`.
 
@@ -61,6 +65,8 @@ trayView.center = CGPoint(x: trayOriginalCenter.x, y: trayOriginalCenter.y + tra
 ```
 
 ### 5: Animate Tray to Open or Closed Positions
+![Slide Out Tray Example gif](http://i.imgur.com/P4v6iHa.gif)  
+
 When a user stops panning the Tray, we want the tray to animate to an up or down position. We will infer that if the users last gesture movement was downward, they intend to close the tray to it's down position. Conversely, if they are NOT panning down, they must be panning up, and intend to open the tray to it's up position.  
   
 We can tell which way a user is panning by looking at the gesture property, **velocity**. Like translation, velocity has a value for both x and y components. If the **y component** of the velocity is a **positive** value, the user is **panning down**. If the **y component** is **negative**, the user is **panning** up.
