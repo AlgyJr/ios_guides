@@ -2,14 +2,18 @@ Gesture recognizers are a powerful and easy to use tool for handling user gestur
 
 ## Add and Configure a Gesture Recognizer in Storyboard
 
-### Step 1: Choose a Gesture Recognizer from Object Library
+### Step 1: Choose a Gesture Recognizer
+Choose a Gesture Recognizer from the Object Library based on the functionality your app needs.  
 ![Choose a Gesture Recognizer from Object Library gif|200](http://i.imgur.com/evQqzAL.gif)
 
 ### Step 2: Drag and Drop a Gesture Recognizer into your View
+Drag a Gesture recognizer from the Object Library and drop it onto the View you want the Gesture to be attached to. You can see which view the Gesture Recognizer is attached to by ctrl + Clicking on the Gesture Recognizer in the Document Outline.
+
 ![Drag and Drop a Gesture Recognizer into your View](http://i.imgur.com/Yv8WOcP.gif)
 
 ### Step 3: Create an Action for your Gesture Recognizer
-Ctrl-drag from your Gesture Recognizer to the ViewController swift file to create an action. Be sure to change the type from **AnyObject** to the specific Gesture Recognizer you are using. i.e. UIPanGestureRecognizer, etc..  
+Ctrl-drag from your Gesture Recognizer to the ViewController swift file to create an action. It's often easier to drag from the Gesture Recognizer in the Document Outline. 
+- NOTE: Be sure to change the type from **AnyObject** to the specific Gesture Recognizer you are using. i.e. UIPanGestureRecognizer, etc..  
 ![Create an Action for your Gesture Recognizer](http://i.imgur.com/ddu28U5.gif)
 
 ## Programmatically Add and Configure a Gesture Recognizer
