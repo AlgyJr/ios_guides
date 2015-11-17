@@ -14,6 +14,7 @@ Drag a Gesture recognizer from the Object Library and drop it onto the View you 
 ### Step 3: Create an Action for your Gesture Recognizer
 Ctrl-drag from your Gesture Recognizer to the ViewController swift file to create an action. It's often easier to drag from the Gesture Recognizer in the Document Outline. 
 - NOTE: Be sure to change the type from **AnyObject** to the specific Gesture Recognizer you are using. i.e. UIPanGestureRecognizer, etc..  
+
 ![Create an Action for your Gesture Recognizer](http://i.imgur.com/ddu28U5.gif)
 
 ## Programmatically Add and Configure a Gesture Recognizer
