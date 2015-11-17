@@ -7,7 +7,8 @@ Choose a Gesture Recognizer from the Object Library based on the functionality y
 ![Choose a Gesture Recognizer from Object Library gif|200](http://i.imgur.com/evQqzAL.gif)
 
 ### Step 2: Drag and Drop a Gesture Recognizer into your View
-Drag a Gesture recognizer from the Object Library and drop it onto the View you want the Gesture to be attached to. You can see which view the Gesture Recognizer is attached to by ctrl + Clicking on the Gesture Recognizer in the Document Outline.
+Drag a Gesture recognizer from the Object Library and drop it onto the View you want the Gesture to be attached to. 
+- NOTE: You can see which view the Gesture Recognizer is attached to by ctrl + Clicking on the Gesture Recognizer in the Document Outline.
 
 ![Drag and Drop a Gesture Recognizer into your View](http://i.imgur.com/Yv8WOcP.gif)
 
