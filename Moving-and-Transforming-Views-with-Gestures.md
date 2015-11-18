@@ -117,21 +117,32 @@ This Use-Case will explore using multiple gesture recognizers simultaneously to 
 ### Step 3: Make the Image View Scalable 
 
 Within the `didPinch` method... 
-- Access the **scale** parameter of the Pinch Gesture Recognizer and store it in a variable.
-- Access the view that was pinched and store it in a variable.
+- Access the **scale** parameter of the Pinch Gesture Recognizer and store it in a constant.
+- Access the view that was pinched and store it in a constant.
    - `sender.view` returns a generic UIView so we need to specify that we are working with a UIImageView using `as! UIImageView`.
-- Store the current transform state of the imageView
+- Store the previous transform state of the imageView in a constant.
 - Modify the scale component of the imageView's transform property.
    - NOTE: We use `CGAffineTransformScale` instead of `CGAffineTransformMakeScale`. This is because `CGAffineTransformScale` allows us to add to the previous transform state as an argument, `previousTransfrom` whereas `CGAffineTransformMakeScale` will overwrite it completely. [Combining Transforms](https://guides.codepath.com/ios/Using-View-Transforms#combining-transforms)
 - Set the scale of the UIPinchGestureRecognizer back to 1.
-   - Resetting the scale is necessary because we are adding the scale to the `previousTransform` each time the method is called. If we didn't reset the scale, each time around the scale that was added to the `previousTransform` would be doubled and our Image View would scale out of control! But don't take my word for it, run the app without resetting the scale back to 1. 
+   - Resetting the scale is necessary because we are adding the scale to the `previousTransform` each time the method is called. If we didn't reset the scale, each time around the scale that was added to the `previousTransform` would be doubled and our Image View would scale out of control! But don't take my word for it, run the app without resetting the scale back to 1 and see what happens! 
 
 ```swift
 @IBAction func didPinch(sender: UIPinchGestureRecognizer) {
-var scale = sender.scale
-var imageView = sender.view as! UIImageView
+let scale = sender.scale
+let imageView = sender.view as! UIImageView
 let currentTransform = imageView.transform
 imageView.transform = CGAffineTransformScale(imageView.transform, scale, scale)
 sender.scale = 1
 }
 ```
+
+### Step 4: Make the Image View Rotatable 
+
+Within the `didRotate` method... 
+- Access the **rotation** parameter of the Rotation Gesture Recognizer and store it in a constant.
+- Access the view that was rotated and store it in a constant.
+   - `sender.view` returns a generic UIView so we need to specify that we are working with a UIImageView using `as! UIImageView`.
+- Store the current transform state of the imageView
+- Modify the rotation component of the imageView's transform property.
+   - NOTE: We use `CGAffineTransformRotate` instead of `CGAffineTransformMakeRotate` for the same reasons we chose our scale transform method. [Combining Transforms](https://guides.codepath.com/ios/Using-View-Transforms#combining-transforms)
+- Set the rotation of the UIRotationGestureRecognizer back to 0.
