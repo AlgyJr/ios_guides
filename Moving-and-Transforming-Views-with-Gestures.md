@@ -103,3 +103,35 @@ if velocity.y > 0 {
 }
 ```  
 You can also try animating the ending tray motion with a bounce using the damping ratio and initial spring velocity. [Spring Animation](https://guides.codepath.com/ios/Animating-View-Properties#spring-animation)
+
+## Use Case: Scaling and Rotating a View
+This Use-Case will explore using multiple gesture recognizers simultaneously to scale and rotate an ImageView.
+
+### Step 1: Add an ImageView
+- You can [add an ImageView from The Media Library](https://guides.codepath.com/ios/Creating-Nested-Views#step-1-add-the-parent-view) to the Storyboard or [add a view programmatically](https://guides.codepath.com/ios/Programmatically-Creating-Views)
+- Make sure that the Image View has **user interaction enabled**.
+
+### Step 2: Add and Configure the Gesture Recognizers
+- Attach a **UIPinchGestureRecognizer** and a **UIRotationGestureRecognizer** to your Image View and create an Action/Method for each one. We will call our methods, `didPinch` and `didRotate`. You can [add a Gesture Recognizer in Storyboard](https://guides.codepath.com/ios/Using-Gesture-Recognizers#add-and-configure-a-gesture-recognizer-in-storyboard) or [add a Gesture Recognizer programmatically](https://guides.codepath.com/ios/Using-Gesture-Recognizers#programmatically-add-and-configure-a-gesture-recognizer)
+
+### Step 3: Make the Image View Scalable 
+
+Within the `didPinch` method... 
+- Access the **scale** parameter of the Pinch Gesture Recognizer and store it in a variable.
+- Access the view that was pinched and store it in a variable.
+   - `sender.view` returns a generic UIView so we need to specify that we are working with a UIImageView using `as! UIImageView`.
+- Store the current transform state of the imageView
+- Modify the scale component of the imageView's transform property.
+   - NOTE: We use `CGAffineTransformScale` instead of `CGAffineTransformMakeScale`. This is because `CGAffineTransformScale` allows us to add to the previous transform state as an argument, `previousTransfrom` whereas `CGAffineTransformMakeScale` will overwrite it completely. [Combining Transforms](https://guides.codepath.com/ios/Using-View-Transforms#combining-transforms)
+- Set the scale of the UIPinchGestureRecognizer back to 1.
+   - Resetting the scale is necessary because we are adding the scale to the `previousTransform` each time the method is called. If we didn't reset the scale, each time around the scale that was added to the `previousTransform` would be doubled and our Image View would scale out of control! But don't take my word for it, run the app without resetting the scale back to 1. 
+
+```swift
+@IBAction func didPinch(sender: UIPinchGestureRecognizer) {
+var scale = sender.scale
+var imageView = sender.view as! UIImageView
+let currentTransform = imageView.transform
+imageView.transform = CGAffineTransformScale(imageView.transform, scale, scale)
+sender.scale = 1
+}
+```
