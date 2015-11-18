@@ -114,7 +114,11 @@ This Use-Case will explore using multiple gesture recognizers simultaneously to 
 ### Step 2: Add and Configure the Gesture Recognizers
 - Attach a **UIPinchGestureRecognizer** and a **UIRotationGestureRecognizer** to your Image View and create an Action/Method for each one. We will call our methods, `didPinch` and `didRotate`. You can [add a Gesture Recognizer in Storyboard](https://guides.codepath.com/ios/Using-Gesture-Recognizers#add-and-configure-a-gesture-recognizer-in-storyboard) or [add a Gesture Recognizer programmatically](https://guides.codepath.com/ios/Using-Gesture-Recognizers#programmatically-add-and-configure-a-gesture-recognizer)
 
-### Step 3: Make the Image View Scalable 
+### Step 3: Allow for Simultaneous Gesture Recognizers
+
+Since we will be using multiple gesture recognizers at the same time, we will need to configure our ViewController to support [Simultaneous Gesture Recognizers](https://guides.codepath.com/ios/Using-Gesture-Recognizers#using-simultaneous-gesture-recognizers)
+
+### Step 4: Make the Image View Scalable 
 
 Within the `didPinch` method... 
 - Access the **scale** parameter of the Pinch Gesture Recognizer and store it in a constant.
@@ -136,7 +140,7 @@ sender.scale = 1
 }
 ```
 
-### Step 4: Make the Image View Rotatable 
+### Step 5: Make the Image View Rotatable 
 
 Within the `didRotate` method... 
 - Access the **rotation** parameter of the Rotation Gesture Recognizer and store it in a constant.
