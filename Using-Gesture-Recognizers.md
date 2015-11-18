@@ -197,7 +197,7 @@ print("translation \(translation)")
    - `.Began` is called once at the very beginning of each gesture recognition.
    - `.Changed` is called continuously as the user is in the process of "gesturing".
    - `.Ended` is called once at the end of the gesture.
-   - HINT: You will use this conditional statement to check gesture states SO often, that is extremely helpful to [create a Code Snippet]() for quick access in the future!  
+   - HINT: You will use this conditional statement to check gesture states SO often, that is extremely helpful to [create a Code Snippet](https://guides.codepath.com/ios/Using-Custom-Code-Snippets) for quick access in the future!  
 
 ```
 if sender.state == UIGestureRecognizerState.Began {
