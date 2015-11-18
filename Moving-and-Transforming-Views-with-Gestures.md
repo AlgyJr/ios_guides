@@ -106,7 +106,9 @@ You can also try animating the ending tray motion with a bounce using the dampin
 
 ## Use Case: Scaling and Rotating a View
 
-This Use-Case will explore using multiple gesture recognizers simultaneously to scale and rotate an ImageView.
+This Use-Case will explore using multiple gesture recognizers simultaneously to scale and rotate an ImageView.  
+  
+![Make the Image View Rotatable|200](http://i.imgur.com/NH2U4m1.gif)
 
 ### Step 1: Add an ImageView
 
@@ -147,7 +149,7 @@ sender.scale = 1
 
 ### Step 5: Make the Image View Rotatable 
   
-![Make the Image View Rotatable|200](http://i.imgur.com/NH2U4m1.gif)
+
 
 Within the `didRotate` method... 
 - Access the **rotation** parameter of the Rotation Gesture Recognizer and store it in a constant.
