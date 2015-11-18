@@ -149,8 +149,6 @@ sender.scale = 1
 
 ### Step 5: Make the Image View Rotatable 
   
-
-
 Within the `didRotate` method... 
 - Access the **rotation** parameter of the Rotation Gesture Recognizer and store it in a constant.
 - Access the view that was rotated and store it in a constant.
@@ -158,4 +156,14 @@ Within the `didRotate` method...
 - Store the current transform state of the imageView
 - Modify the rotation component of the imageView's transform property.
    - NOTE: We use `CGAffineTransformRotate` instead of `CGAffineTransformMakeRotate` for the same reasons we chose our scale transform method. [Combining Transforms](https://guides.codepath.com/ios/Using-View-Transforms#combining-transforms)
-- Set the rotation of the UIRotationGestureRecognizer back to 0.
+- Set the rotation of the UIRotationGestureRecognizer back to 0.  
+  
+```swift    
+@IBAction func didRotate(sender: UIRotationGestureRecognizer) {
+   let rotation = sender.rotation
+   let imageView = sender.view as! UIImageView
+   let previousTransform = imageView.transform
+   imageView.transform = CGAffineTransformRotate(previousTransform, rotation)
+   sender.rotation = 0
+}
+```
