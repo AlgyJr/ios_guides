@@ -11,9 +11,9 @@ We will hold our image animation in a UIImageView. It will need to be the same s
 HINT: A simple way is to just drag the first image "frame" on to the Storyboard from the *Media Library* at the bottom of the *Utilities* pane and it will automatically create an ImageView the correct size of your image frame. 
 - If you created your ImageView in Storyboard, create an outlet to your ViewController code file by ``ctr + drag`` from the ImageView.
   
-### Step 3: Define Your Class Variables  
-Class Variables are defined below the ``class ViewController: UIViewController { `` and above the ``override func viewDidLoad() {``
-- Define class variables for your images.
+### Step 3: Define Your Instance Variables  
+Instance Variables are defined below the ``class ViewController: UIViewController { `` and above the ``override func viewDidLoad() {``
+- Define instance variables for your images.
 
 ```Swift
 var loading_1: UIImage!
