@@ -105,21 +105,26 @@ if velocity.y > 0 {
 You can also try animating the ending tray motion with a bounce using the damping ratio and initial spring velocity. [Spring Animation](https://guides.codepath.com/ios/Animating-View-Properties#spring-animation)
 
 ## Use Case: Scaling and Rotating a View
+
 This Use-Case will explore using multiple gesture recognizers simultaneously to scale and rotate an ImageView.
 
 ### Step 1: Add an ImageView
+
 - You can [add an ImageView from The Media Library](https://guides.codepath.com/ios/Creating-Nested-Views#step-1-add-the-parent-view) to the Storyboard or [add a view programmatically](https://guides.codepath.com/ios/Programmatically-Creating-Views)
 - Make sure that the Image View has **user interaction enabled**.
 
 ### Step 2: Add and Configure the Gesture Recognizers
+
 - Attach a **UIPinchGestureRecognizer** and a **UIRotationGestureRecognizer** to your Image View and create an Action/Method for each one. We will call our methods, `didPinch` and `didRotate`. You can [add a Gesture Recognizer in Storyboard](https://guides.codepath.com/ios/Using-Gesture-Recognizers#add-and-configure-a-gesture-recognizer-in-storyboard) or [add a Gesture Recognizer programmatically](https://guides.codepath.com/ios/Using-Gesture-Recognizers#programmatically-add-and-configure-a-gesture-recognizer)
 
 ### Step 3: Allow for Simultaneous Gesture Recognizers
 
-Since we will be using multiple gesture recognizers at the same time, we will need to configure our ViewController to support [Simultaneous Gesture Recognizers](https://guides.codepath.com/ios/Using-Gesture-Recognizers#using-simultaneous-gesture-recognizers)
+Since we will be using multiple gesture recognizers at the same time, we will need to configure our ViewController to support [Simultaneous Gesture Recognizers](https://guides.codepath.com/ios/Using-Gesture-Recognizers#using-simultaneous-gesture-recognizers).
 
 ### Step 4: Make the Image View Scalable 
 
+![Make the Image View Scalable gif|200](http://i.imgur.com/AkacSCN.gif)  
+  
 Within the `didPinch` method... 
 - Access the **scale** parameter of the Pinch Gesture Recognizer and store it in a constant.
 - Access the view that was pinched and store it in a constant.
