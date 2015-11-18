@@ -260,3 +260,68 @@ if velocity.y > 0 {
 }
 ```  
 You can also try animating the ending tray motion with a bounce using the damping ratio and initial spring velocity. [Spring Animation](https://guides.codepath.com/ios/Animating-View-Properties#spring-animation)
+
+## Use Case: Scaling and Rotating a View
+
+This Use-Case will explore using multiple gesture recognizers simultaneously to scale and rotate an ImageView.  
+  
+![Make the Image View Rotatable|200](http://i.imgur.com/NH2U4m1.gif)
+
+### Step 1: Add an ImageView
+
+- You can [add an ImageView from The Media Library](https://guides.codepath.com/ios/Creating-Nested-Views#step-1-add-the-parent-view) to the Storyboard or [add a view programmatically](https://guides.codepath.com/ios/Programmatically-Creating-Views)
+- Make sure that the Image View has **user interaction enabled**.
+
+### Step 2: Add and Configure the Gesture Recognizers
+
+- Attach a **UIPinchGestureRecognizer** and a **UIRotationGestureRecognizer** to your Image View and create an Action/Method for each one. We will call our methods, `didPinch` and `didRotate`. You can [add a Gesture Recognizer in Storyboard](https://guides.codepath.com/ios/Using-Gesture-Recognizers#add-and-configure-a-gesture-recognizer-in-storyboard) or [add a Gesture Recognizer programmatically](https://guides.codepath.com/ios/Using-Gesture-Recognizers#programmatically-add-and-configure-a-gesture-recognizer)
+
+### Step 3: Allow for Simultaneous Gesture Recognizers
+
+Since we will be using multiple gesture recognizers at the same time, we will need to configure our ViewController to support [Simultaneous Gesture Recognizers](https://guides.codepath.com/ios/Using-Gesture-Recognizers#using-simultaneous-gesture-recognizers).
+
+### Step 4: Make the Image View Scalable 
+
+![Make the Image View Scalable gif|200](http://i.imgur.com/AkacSCN.gif)  
+  
+Within the `didPinch` method... 
+- Access the **scale** parameter of the Pinch Gesture Recognizer and store it in a constant.
+- Access the view that was pinched and store it in a constant.
+   - `sender.view` returns a generic UIView so we need to specify that we are working with a UIImageView using `as! UIImageView`.
+- Store the previous transform state of the imageView in a constant.
+- Modify the scale component of the imageView's transform property.
+   - NOTE: We use `CGAffineTransformScale` instead of `CGAffineTransformMakeScale`. This is because `CGAffineTransformScale` allows us to add to the previous transform state as an argument, `previousTransfrom` whereas `CGAffineTransformMakeScale` will overwrite it completely. [Combining Transforms](https://guides.codepath.com/ios/Using-View-Transforms#combining-transforms)
+- Set the scale of the UIPinchGestureRecognizer back to 1.
+   - Resetting the scale is necessary because we are adding the scale to the `previousTransform` each time the method is called. If we didn't reset the scale, each time around the scale that was added to the `previousTransform` would be doubled and our Image View would scale out of control! But don't take my word for it, run the app without resetting the scale back to 1 and see what happens! 
+
+```swift
+@IBAction func didPinch(sender: UIPinchGestureRecognizer) {
+let scale = sender.scale
+let imageView = sender.view as! UIImageView
+let currentTransform = imageView.transform
+imageView.transform = CGAffineTransformScale(imageView.transform, scale, scale)
+sender.scale = 1
+}
+```
+
+### Step 5: Make the Image View Rotatable 
+  
+![Make the Image View Rotatable gif](http://i.imgur.com/aqzTp2A.gif)
+Within the `didRotate` method... 
+- Access the **rotation** parameter of the Rotation Gesture Recognizer and store it in a constant.
+- Access the view that was rotated and store it in a constant.
+   - `sender.view` returns a generic UIView so we need to specify that we are working with a UIImageView using `as! UIImageView`.
+- Store the current transform state of the imageView
+- Modify the rotation component of the imageView's transform property.
+   - NOTE: We use `CGAffineTransformRotate` instead of `CGAffineTransformMakeRotate` for the same reasons we chose our scale transform method. [Combining Transforms](https://guides.codepath.com/ios/Using-View-Transforms#combining-transforms)
+- Set the rotation of the UIRotationGestureRecognizer back to 0.  
+  
+```swift    
+@IBAction func didRotate(sender: UIRotationGestureRecognizer) {
+   let rotation = sender.rotation
+   let imageView = sender.view as! UIImageView
+   let previousTransform = imageView.transform
+   imageView.transform = CGAffineTransformRotate(previousTransform, rotation)
+   sender.rotation = 0
+}
+```
