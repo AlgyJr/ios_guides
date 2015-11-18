@@ -146,6 +146,8 @@ sender.scale = 1
 ```
 
 ### Step 5: Make the Image View Rotatable 
+  
+![Make the Image View Rotatable|200](http://i.imgur.com/NH2U4m1.gif)
 
 Within the `didRotate` method... 
 - Access the **rotation** parameter of the Rotation Gesture Recognizer and store it in a constant.
