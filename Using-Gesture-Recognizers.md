@@ -160,6 +160,8 @@ Now the pinch and scale gesture recognizers should work simultaneously.
 
 Slide out trays, Hamburger menus, and any other view you want to move by sliding your finger can be configured using a UIPanGesture Recognizer.
 
+The following steps describe the process of creating a **vertically** sliding Tray. If you would like to make a Hamburger style **horizontally** sliding View, use the same concepts described below, but use the x-components of the translation in place the y-components. If you want a view that can be panned in all directions, use both x and y-components of the translation.
+
 ### Step 1: Add a UIView to Serve as Your Tray
 - You can [add a View in Storyboard](https://guides.codepath.com/ios/Creating-Nested-Views#step-1-add-the-parent-view) or [add a view programmatically](https://guides.codepath.com/ios/Programmatically-Creating-Views)
 - If you added a view in Storyboard, create an outlet for your view. We will name the outlet `trayView`.
@@ -209,7 +211,7 @@ if sender.state == UIGestureRecognizerState.Began {
 }
 ```
 
-- When the gesture begans (`.Began`), store the tray's center into the trayOriginalCenter variable: 
+- When the gesture begins (`.Began`), store the tray's center into the trayOriginalCenter variable: 
 ```swift
 trayOriginalCenter = trayView.center
 ```
