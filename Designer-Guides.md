@@ -63,6 +63,7 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Using Timers]]
 * [[Color Matching]]
 * [[Using Custom Code Snippets]]
+* [[Internet Permissions]]
 
 ## App Submission and Testing
 * [[Testing with Testflight]]
