@@ -4,7 +4,7 @@ In the **info.plist** file, you can use `NSAllowsArbitraryLoads` to completely d
 ![Imgur](http://i.imgur.com/Tmy1wYL.png)
 
 ### Option 2:
-Right-Click info.plist and **Open As -> Source Code**. This will open the file in XML format.
+Right-Click **info.plist** and **Open As -> Source Code**. This will open the file in XML format.
 - Add the following to the bottom of the info.plist xml file.
 ```xml
 <key>NSAppTransportSecurity</key>
