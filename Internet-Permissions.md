@@ -7,12 +7,31 @@ In the **info.plist** file, you can use `NSAllowsArbitraryLoads` to completely d
 ### Step 1
 
 Right-Click **info.plist** and **Open As -> Source Code**. This will open the file in XML format.
+
 - Add the following to the bottom of the info.plist xml file.
+
 ```xml
 <key>NSAppTransportSecurity</key>
 <dict>
     <key>NSAllowsArbitraryLoads</key><true/>
 </dict>
+```
+
+Note where it is in the context of the rest of the xml file.
+
+```xml
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+        <string>UIInterfaceOrientationLandscapeLeft</string>
+        <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key><true/>
+    </dict>
+</dict>
+</plist>
 ```
 
 ### Read More
