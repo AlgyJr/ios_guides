@@ -1,15 +1,11 @@
-You can poke holes in ATS by adding a `NSAppTransportSecurity` dictionary to Info.plist. Add an `NSExceptionDomains` dictionary to whitelist specific domains. It may resemble:
-
-* `NSAppTransportSecurity`
-	* `NSExceptionDomains`
-		* api.rottentomatoes.com
-			* `NSExceptionAllowsInsecureHTTPLoads`: YES
-
-You may also use `NSAllowsArbitraryLoads` to completely disable ATS in your app:
+### Option 1:
+In the **info.plist** file, you can use `NSAllowsArbitraryLoads` to completely disable ATS in your app:
 
 ![Imgur](http://i.imgur.com/Tmy1wYL.png)
 
-Or in XML:
+### Option 2:
+Right-Click info.plist and **Open As -> Source Code**. This will open the file in XML format.
+- Add the following to the bottom of the info.plist xml file.
 ```xml
 <key>NSAppTransportSecurity</key>
 <dict>
