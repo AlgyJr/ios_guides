@@ -101,3 +101,33 @@ stillImageOutput?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
 
 ### Step 11: Attach the Output
 If the session is able to accept our output, then we will **attach the output to the session**.
+
+```swift
+if session!.canAddOutput(stillImageOutput) {
+   session!.addOutput(stillImageOutput)
+   ...
+   // Configure the Live Preview here... 
+}
+```
+
+### Step 12: Configure the Live Preview
+Now that the input and output are all hooked up with our session, we just need to get our Live Preview going so we can actually display what the camera sees on the screen in our UIView, `previewView`.
+- Create an **AVCaptureVideoPreviewLayer** and associate it with our session.
+- Configure the Layer to resize while maintaining it's original aspect.
+- Fix the orientation to portrait
+- Add the preview layer as a sublayer of our `previewView`
+- Finally, **start the session!**
+
+```swift
+videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
+videoPreviewLayer!.videoGravity = AVLayerVideoGravityResizeAspect
+videoPreviewLayer!.connection?.videoOrientation = AVCaptureVideoOrientation.Portrait
+previewView.layer.addSublayer(videoPreviewLayer!)
+session!.startRunning()
+```
+
+### Step 13: Run Your App ON A REAL DEVICE!!!
+NOTE: The simulator does NOT have a camera so you need to run your app on an **Actual Device** to see the magic!
+- At this point, you should see a live "video" stream of your phone camera's input within your `previewView`.
+
+### Step 14: Photo Capture...
