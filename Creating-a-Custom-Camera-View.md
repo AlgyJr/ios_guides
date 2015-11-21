@@ -1,4 +1,6 @@
-Accessing the built in Image Picker Controller is an easy and quick way to get image and video capture into your app. However, when you need style and functionality that goes beyond the stock Image Picker Controller you will need to create a Custom Camera View.
+Accessing the built in Image Picker Controller is an easy and quick way to get image and video capture into your app. However, when you need style and functionality that goes beyond the stock Image Picker Controller you will need to create a Custom Camera View.  
+  
+![Custom Camera View Demo](http://i.imgur.com/mib5sEw.webm)
 
 ### Step 1: Set Up Views In Storyboard 
 
