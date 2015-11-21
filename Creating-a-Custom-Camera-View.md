@@ -9,6 +9,15 @@ Add the following view elements to the ViewController in Storyboard:
 - **UIImageView** This will hold the captured still image after you take a picture.
 - **UIButton** This button will "take a picture".
 
+### Step 2: Create Outlets and Actions
+
+Create Outlets for the UIView and UIImageView. 
+- Name the UIView, `viewFinder`.
+- Name the UIImageView, `captureImageView`.
+
+Create an Action for the UIButton.
+- Name the method, `didTakePhoto`.
+
 
 
 
