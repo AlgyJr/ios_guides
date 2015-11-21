@@ -37,6 +37,7 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Animating a Sequence of Images]]
 * [[Simulated Network Loading]]
 * [[Simulated Infinite Scrolling]]
+* [[Creating a Custom Camera View]]
 
 ## Responding to User Input
 * [[Configure a Button]]
@@ -44,6 +45,7 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Registering for Keyboard Events]]
 * [[Registering for Text Field Events]]
 * [[Creating a Log In Screen]]
+
 
 ## Common UIViews
 * [[Using UIScrollView]]
