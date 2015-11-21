@@ -126,8 +126,19 @@ previewView.layer.addSublayer(videoPreviewLayer!)
 session!.startRunning()
 ```
 
-### Step 13: Run Your App ON A REAL DEVICE!!!
+### Step 13: Size the Preview Layer to fit the Preview View
+- Create a `viewDidAppear` method. just like with the `viewWillAppear` method, we will want to call the `super.` of the `viewDidAppear` method.
+- Within the `viewDidAppear` method, set the size and origin of the Preview Layer to fit inside the Preview View. We will do this using the **bounds** property.
+
+```swift
+override func viewDidAppear(animated: Bool) {
+   super.viewDidAppear(animated)
+   videoPreviewLayer!.frame = previewView.bounds
+}
+``` 
+
+### Step 14: Run Your App ON A REAL DEVICE!!!
 NOTE: The simulator does NOT have a camera so you need to run your app on an **Actual Device** to see the magic!
 - At this point, you should see a live "video" stream of your phone camera's input within your `previewView`.
 
-### Step 14: Photo Capture...
+### Step 15: Photo Capture...
