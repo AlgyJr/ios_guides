@@ -2,6 +2,7 @@ Accessing the built in [Image Picker Controller]() is a quick and easy way to ge
   
 ![Custom Camera View Demo](http://i.imgur.com/LkALEvS.gif)
 
+## Live Camera Preview
 ### Step 1: Set Up Views In Storyboard 
 
 ![Set Up Views In Storyboard gif|200](http://i.imgur.com/KhbVi00.png) ![Outline Document gif|60](http://i.imgur.com/6CSyrY7.png)  
@@ -141,4 +142,51 @@ override func viewDidAppear(animated: Bool) {
 NOTE: The simulator does NOT have a camera so you need to run your app on an **Actual Device** to see the magic!
 - At this point, you should see a live "video" stream of your phone camera's input within your `previewView`.
 
-### Step 15: Photo Capture...
+## Snap a Photo
+
+### Step 1: Get the Connection
+- Get the connection from the `stillImageOutput`.
+
+```swift
+if let videoConnection = stillImageOutput!.connectionWithMediaType(AVMediaTypeVideo) {
+...
+// Code for photo capture goes here...
+}
+```
+
+### Step 2: Capture the Photo
+- Call the `captureStillImageAsynchronouslyFromConnection` function on the `stillImageOutput`.
+- The `sampleBuffer` represents the data that is captured.
+
+```swift
+stillImageOutput?.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: { (sampleBuffer, error) -> Void in
+...
+// Process the image data (sampleBuffer) here to get an image file we can put in our captureImageView
+})
+```
+
+### Step 3: Process the Image Data
+- We will need to to take a few steps to process the image data found in `sampleBuffer` in order to end up with a **UIImage** that we can insert into our `captureImageView` and easily use elsewhere in our app.
+
+```swift
+if sampleBuffer != nil {
+   let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer)
+   let dataProvider = CGDataProviderCreateWithCFData(imageData)
+   let cgImageRef = CGImageCreateWithJPEGDataProvider(dataProvider, nil, true, CGColorRenderingIntent.RenderingIntentDefault)
+   let image = UIImage(CGImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.Right)
+...
+// Add the image to captureImageView here...
+}
+```
+
+### Step 4: Add the Image to the ImageView
+- Finally, add the image to `captureImageView`.
+
+```swift
+self.capturedImage.image = image
+```
+
+### Step 5: Run Your App ON A REAL DEVICE!!!
+NOTE: The simulator does NOT have a camera so you need to run your app on an **Actual Device** to see the magic!
+- At this point, you should see a live "video" stream of your phone camera's input within your `previewView` and the ability to "Snap" a photo and see the still image within your `captureImageView`.
+- NOTE: We are just adding the image to the `captureImageView` to illustrate the technique of capturing a still image. Once you have the still image you can do all kinds of cool things, like save it into your photo library, or upload it to Parse for use elsewhere in your app.
