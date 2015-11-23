@@ -54,6 +54,7 @@ The session will coordinate the input and output data from the devices camera.
 session = AVCaptureSession()
 session!.sessionPreset = AVCaptureSessionPresetPhoto
 ```
+- NOTE: If you plan to upload your photo to Parse, you will likely need to change your preset to `AVCaptureSessionPresetHigh` or `AVCaptureSessionPresetMedium` to keep the size under the 10mb Parse max.
 
 ### Step 7: Select Input Device
 In this example, we will be using the **rear camera**. The front camera and microphone are additional input devices at your disposal.
