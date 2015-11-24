@@ -12,6 +12,7 @@ The Terminal is much like the finder, but less pretty. There are just a few basi
 - `open [file]` Same as "double-clicking" a file or folder in finder.
    - `open .` Opens the current folder or file in finder or it's default application. 
 - `clear` When you need a fresh Terminal window  
+  
 **Hint** If you can't find the path to a file or folder through terminal, search for it using Finder, then drag the file or folder right into your terminal window! If you are trying to change to that directory, you will need to type `cd` before dragging in the folder.  
 
 ![Drag Folder into Terminal|400](http://i.imgur.com/5V7YtYJ.gif)
@@ -52,6 +53,6 @@ git commit -m "Here is my commit message"
 ### Linking to a Remote Repository
 There are many remote repository options. In this guide we will be using [GitHub](https://github.com/). You will need a GitHub account if you don't have one already.
 - Create a new Repository on GitHub  
-![Create a new Repository on GitHub gif|800](http://i.imgur.com/Wi34sX0.gif)  
+![Create a new Repository on GitHub gif|800](http://i.imgur.com/UmHxuhN.gif)  
   
 - 
