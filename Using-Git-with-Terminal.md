@@ -5,24 +5,25 @@ The Terminal is much like the finder, but less pretty. There are just a few basi
 - Open up terminal, cmd + space "terminal".
 - `pwd` Figure out which directory you are currently in by "Printing the Working Directory".
 - `ls` List the directories and files inside the current directory.
-   - `ls -a` include hidden files in the list of directories and files 
+   - `ls -a` include hidden files in the list of directories and files. This is helpful when trying to find hidden files like `.git` or `.gitignore` 
 - `cd [folder]` Go into the folder. e.g. `cd Desktop/Developer`
    - `cd` This by itself will navigate all the way out to your **Home Directory** 
    - `cd ..` Back out to the parent directory of the current directory.
 - `open [file]` Same as "double-clicking" a file or folder in finder.
    - `open .` Opens the current folder or file in finder or it's default application. 
+- `clear` When you need a fresh Terminal window
+**Hint** If you can't find the path to a file or folder through terminal, search for it using Finder, then drag the file or folder right into your terminal window! If you are trying to change to that directory, you will need to type `cd` before dragging in the folder.  
 
-Navigate to a folder (directory) or file. 
-   - Use `cd` anytime you want to change directories. ex: `cd `
+![Drag Folder into Terminal|400](http://i.imgur.com/5V7YtYJ.gif)
 
 ### Creating a Local Git Repository
 Local Git repositories are created and managed locally on your computer. 
 - Xcode will automatically create a local Git repository for your project if you select, "Create Git repository on... My Mac", when you first create your project. You should **Always** select this when creating a new Xcode project.  
   
-![Creating a Local Git Repository Xcode gif](http://i.imgur.com/aJhndKZ.png)  
+![Creating a Local Git Repository Xcode gif|700](http://i.imgur.com/aJhndKZ.png)  
 
 If you already have a project, where a Git repository was not created when you made the project, you can create a local Git repository using terminal. 
-
+- Navigate to the Xcode Project folder.
 ```swift
 
 ```
