@@ -24,17 +24,25 @@ Local Git repositories are created and managed locally on your computer.
 ![Creating a Local Git Repository Xcode gif|700](http://i.imgur.com/aJhndKZ.png)  
 
 If you already have a project, where a Git repository was not created when you made the project, you can create a local Git repository using terminal. 
-- Navigate to the Xcode Project folder in Terminal.
+- Navigate to yor Xcode Project folder in Terminal.
 
 ```
 git init
 ```
 
 ### Creating a .gitignore File
-When collaborating using Git, you will inevitably run into "merge conflicts". However, you will save yourself from a lot of extraneous conflicts by adding a `.gitignore` file with the proper content.- - -- Navigate to the Xcode Project folder in Terminal.
+When collaborating using Git, you will inevitably run into "merge conflicts". However, you will save yourself from a lot of extraneous conflicts by adding a `.gitignore` file with the proper content.
+- Navigate to your Xcode Project folder in Terminal.
+- Use `ls -a` to list all files including hidden files to check if a `.gitignore` has already been created.
+- If there is not an existing `.gitignore` file, create one.
+
+```
+touch .gitignore
+``` 
  
 ### Adding and Committing Changes
 Now that your local Git is all setup from the last step, you can update your local Git repository with any changes you make to your project.
+- Navigate to your Xcode Project folder in Terminal.
 - Stage all the changes you made.
 
 ```
