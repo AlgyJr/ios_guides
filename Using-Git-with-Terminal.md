@@ -11,7 +11,7 @@ The Terminal is much like the finder, but less pretty. There are just a few basi
    - `cd ..` Back out to the parent directory of the current directory.
 - `open [file]` Same as "double-clicking" a file or folder in finder.
    - `open .` Opens the current folder or file in finder or it's default application. 
-- `clear` When you need a fresh Terminal window
+- `clear` When you need a fresh Terminal window  
 **Hint** If you can't find the path to a file or folder through terminal, search for it using Finder, then drag the file or folder right into your terminal window! If you are trying to change to that directory, you will need to type `cd` before dragging in the folder.  
 
 ![Drag Folder into Terminal|400](http://i.imgur.com/5V7YtYJ.gif)
@@ -23,7 +23,31 @@ Local Git repositories are created and managed locally on your computer.
 ![Creating a Local Git Repository Xcode gif|700](http://i.imgur.com/aJhndKZ.png)  
 
 If you already have a project, where a Git repository was not created when you made the project, you can create a local Git repository using terminal. 
-- Navigate to the Xcode Project folder.
-```swift
+- Navigate to the Xcode Project folder in Terminal.
 
 ```
+git init
+```
+
+### Adding and Committing Changes
+Now that your local Git is all setup from the last step, you can update your local Git repository with any changes you make to your project.
+- Stage all the changes you made.
+
+```
+git add .
+``` 
+
+- Check to see what was added.
+
+```
+git status
+```
+
+- Apply the changes to your local Git repository with a message briefly outlining the changes you made.
+
+```
+git commit -m "Here is my commit message"
+```
+
+### Linking to a Remote Repository
+There are many remote repository options. In this guide we will be using [GitHub](https://github.com/).
