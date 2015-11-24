@@ -50,4 +50,8 @@ git commit -m "Here is my commit message"
 ```
 
 ### Linking to a Remote Repository
-There are many remote repository options. In this guide we will be using [GitHub](https://github.com/).
+There are many remote repository options. In this guide we will be using [GitHub](https://github.com/). You will need a GitHub account if you don't have one already.
+- Create a new Repository on GitHub  
+![Create a new Repository on GitHub gif|800](http://i.imgur.com/Wi34sX0.gif)  
+  
+- 
