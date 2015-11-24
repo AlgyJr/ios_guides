@@ -30,6 +30,9 @@ If you already have a project, where a Git repository was not created when you m
 git init
 ```
 
+### Creating a .gitignore File
+When collaborating using Git, you will inevitably run into "merge conflicts". However, you will save yourself from a lot of extraneous conflicts by adding a `.gitignore` file with the proper content.- - -- Navigate to the Xcode Project folder in Terminal.
+ 
 ### Adding and Committing Changes
 Now that your local Git is all setup from the last step, you can update your local Git repository with any changes you make to your project.
 - Stage all the changes you made.
