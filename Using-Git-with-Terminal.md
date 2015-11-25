@@ -72,8 +72,10 @@ git commit -m "Here is my commit message"
 There are many remote repository options. In this guide we will be using [GitHub](https://github.com/). You will need a GitHub account if you don't have one already.
 - Create a new Repository on GitHub  
 ![Create a new Repository on GitHub gif|800](http://i.imgur.com/UmHxuhN.gif)  
-  
-- Link to the remote repository  
+
+- Navigate to your Xcode Project folder in Terminal.  
+- Link to the remote repository by adding the following code in Terminal, provided from your GitHub repository.
+   - NOTE: Make sure you add YOUR GitHub remote address! 
   
 ![Link to the remote repository gif|800](http://i.imgur.com/48uur3D.gif)  
 
