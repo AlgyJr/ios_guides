@@ -66,6 +66,7 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Color Matching]]
 * [[Using Custom Code Snippets]]
 * [[Internet Permissions]]
+* [[Using Git with Terminal]]
 
 ## App Submission and Testing
 * [[Testing with Testflight]]
