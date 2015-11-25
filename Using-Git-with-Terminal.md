@@ -73,4 +73,11 @@ There are many remote repository options. In this guide we will be using [GitHub
 - Create a new Repository on GitHub  
 ![Create a new Repository on GitHub gif|800](http://i.imgur.com/UmHxuhN.gif)  
   
-- 
+- Link to the remote repository  
+  
+![Link to the remote repository gif|800](http://i.imgur.com/48uur3D.gif)  
+
+```
+git remote add origin https://github.com/yourUserName/yourRepoName.git
+git push -u origin master
+```
