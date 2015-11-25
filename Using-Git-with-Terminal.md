@@ -42,15 +42,11 @@ touch .gitignore
 
 ### Add Files and Directories to .gitignore
 - Navigate to your Xcode Project folder in Terminal.
-- Open your Xcode Project Folder in a new finder window, assuming you are currently in that folder you can use...
-
-```
-open .
-``` 
-- open your `.gitignore` file with Xcode. You can do this several ways; one way is to drag the `.gitignore` file onto the Xcode application in the dock. 
+- Open your `.gitignore` file using, `open .gitignore`  
 - Copy and paste the [latest and greatest list of files and folders you want to ignore](https://raw.githubusercontent.com/github/gitignore/master/Swift.gitignore) into the .gitignore file.
-   - NOTE: Be sure to "un-comment" the `#Pods/` by deleting the `#` so you have, `Pods/`
- 
+   - NOTE: Be sure to "un-comment" the `#Pods/` by deleting the `#` so you have, `Pods/`  
+!["un-comment" the #Pods/ gif|800](http://i.imgur.com/JtOsEw2.gif)  
+  
 ### Adding and Committing Changes
 Now that your local Git is all setup from the last step, you can update your local Git repository with any changes you make to your project.
 - Navigate to your Xcode Project folder in Terminal.
