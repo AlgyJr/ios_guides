@@ -123,6 +123,11 @@ Inevitably, there will come a time when you AND a collaborator will make changes
 
 - Choose one to keep and one to delete. Do your best to figure out what the differences are; in this example, we see that the initialViewController is set to a different ID in each, `"BYZ-38-t0r"` vs. `"NFr-Eg-PaI"`.  
   
-![]()
+![](http://i.imgur.com/ZDIbTtk.gif)  
+
+- Clean your Project, cmd + shift + K
+   - If your resolved conflict was in the Main.storyboard file, right + click on the storyboard file and choose **Open As -> Interface Builder - Storyboard**.
+
+- Finally, **push** your local changes to the remote repository.
 
   
