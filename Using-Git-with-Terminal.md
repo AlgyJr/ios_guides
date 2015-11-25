@@ -117,17 +117,18 @@ git clone https://yourRemoteRepositoryUrl
 Inevitably, there will come a time when you AND a collaborator will make changes to the same file and both try to **push** to the remote repository. This will result in a **Merge Conflict**.
 - In the instance of a Merge Conflict, you will probably get an error in the terminal when attempting to **push** your local changes.  
 
-![Merge Conflict error](http://i.imgur.com/MKlXmot.png)  
+![Merge Conflict error](http://i.imgur.com/yWEhJdu.png)  
   
-- As, the error message suggests in the "Hint", the next step is to perform a `git pull`. The pull will likely result in a message similar to the following...  
+- As, the error message suggests in the "Hint", the next step is to perform a `git pull`. The pull will likely result in a message similar to the following. 
+   - NOTE: The error message confirms we have a Merge Conflict in the Main.storyboard file and tells us that we need to fix the conflict and commit the changes.   
   
-![](http://i.imgur.com/ASA7nDE.png)
+![](http://i.imgur.com/pqoEIP3.png)
 
-- Use `git status` to find out the which file(s) are causing the conflict  
+- Use `git status` to confirm which file(s) are causing the conflict.  
   
-![](http://i.imgur.com/KtjHswK.png)  
+![](http://i.imgur.com/gFBaNZt.png)  
   
-- Use `open /file/` to open up the file in conflict; this will open up the file in Xcode. 
+- Use `open /yourfileHere/` to open up the file in conflict; this will open up the file in Xcode. 
    - NOTE: In this particular example, the conflict is in the Main.storyboard file. We are usually looking at the Interface Builder view of this file, so to reveal the underlying code, right-click on the `Main.storyboard` file and choose, **Open As -> Source Code**.  
   
 ![open conflict file|800](http://i.imgur.com/kVu9aIn.gif)  
