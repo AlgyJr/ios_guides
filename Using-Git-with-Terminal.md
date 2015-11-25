@@ -46,7 +46,23 @@ touch .gitignore
 - Copy and paste the [latest and greatest list of files and folders you want to ignore](https://raw.githubusercontent.com/github/gitignore/master/Swift.gitignore) into the .gitignore file.
    - NOTE: Be sure to "un-comment" the `#Pods/` by deleting the `#` so you have, `Pods/`  
 !["un-comment" the #Pods/ gif|800](http://i.imgur.com/JtOsEw2.gif)  
-  
+
+### Create and Configure .gitattributes File
+This file allows us to tell Git how we want certain files to be treated. We will add a file to the `.gitattributes` that tells Git to treat any file with `.pbxproj` as binary.
+- Navigate to your Xcode Project folder in Terminal.
+- Use `ls -a` to list all files including hidden files to check if a `.gitattributes` has already been created.
+- If there is not an existing `.gitattributes file, create one. 
+
+```
+touch .gitattributes
+```
+- Open your `.gitattributes` file, `open .gitattributes`
+- Add the following code to the `.gitattributes` file.
+
+```
+*.pbxproj binary merge=union
+```
+
 ### Adding and Committing Changes to Local Repository
 Now that your local Git is all setup from the last step, you can update your local Git repository with any changes you make to your project.
 - Navigate to your Xcode Project folder in Terminal.
