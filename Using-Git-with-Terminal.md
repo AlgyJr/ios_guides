@@ -36,6 +36,11 @@ git init
 ```
 
 ### Creating a .gitignore File
+  
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=wzI4IYhQsek
+" target="_blank"><img src="https://youtu.be/N6wQ28h-MmE/0.jpg" 
+alt="Loading" width="240" height="180" border="10" /></a>  
+   
 When collaborating using Git, you will inevitably run into "merge conflicts". However, you will save yourself from a lot of extraneous conflicts by adding a `.gitignore` file with the proper content.
 - Navigate to your Xcode Project folder in Terminal.
 - Use `ls -a` to list all files including hidden files to check if a `.gitignore` has already been created.
@@ -53,6 +58,11 @@ touch .gitignore
 !["un-comment" the #Pods/ gif|800](http://i.imgur.com/JtOsEw2.gif)  
 
 ### Create and Configure .gitattributes File
+  
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=wzI4IYhQsek
+" target="_blank"><img src="https://youtu.be/MNYxq3eoCN4/0.jpg" 
+alt="Loading" width="240" height="180" border="10" /></a>  
+  
 This file allows us to tell Git how we want certain files to be treated. We will add a file to the `.gitattributes` that tells Git to treat any file with `.pbxproj` as binary.
 - Navigate to your Xcode Project folder in Terminal.
 - Use `ls -a` to list all files including hidden files to check if a `.gitattributes` has already been created.
@@ -69,6 +79,11 @@ touch .gitattributes
 ```
 
 ### Adding and Committing Changes to Local Repository
+  
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=wzI4IYhQsek
+" target="_blank"><img src="https://youtu.be/G9l7YJ6K0zc/0.jpg" 
+alt="Loading" width="240" height="180" border="10" /></a>  
+  
 Now that your local Git is all setup from the last step, you can update your local Git repository with any changes you make to your project.
 - Navigate to your Xcode Project folder in Terminal.
 - Stage all the changes you made.
@@ -90,6 +105,11 @@ git commit -m "Here is my commit message"
 ```
 
 ### Linking to a Remote Repository
+  
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=wzI4IYhQsek
+" target="_blank"><img src="https://youtu.be/8JVmXZ_xreQ/0.jpg" 
+alt="Loading" width="240" height="180" border="10" /></a>  
+  
 There are many remote repository options. In this guide we will be using [GitHub](https://github.com/). You will need a GitHub account if you don't have one already.
 - Create a new Repository on GitHub  
 ![Create a new Repository on GitHub gif|800](http://i.imgur.com/UmHxuhN.gif)  
