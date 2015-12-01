@@ -19,10 +19,10 @@ The Terminal is much like the finder, but less pretty. There are just a few basi
 
 ### Creating a Local Git Repository
   
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=wzI4IYhQsek
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=Fxe8BW8QWa0
 " target="_blank"><img src="https://youtu.be/Fxe8BW8QWa0/0.jpg" 
 alt="Loading" width="240" height="180" border="10" /></a>  
-   
+ 
 Local Git repositories are created and managed locally on your computer. 
 - Xcode will automatically create a local Git repository for your project if you select, "Create Git repository on... My Mac", when you first create your project. You should **Always** select this when creating a new Xcode project.  
   
@@ -37,7 +37,7 @@ git init
 
 ### Creating a .gitignore File
   
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=wzI4IYhQsek
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=N6wQ28h-MmE
 " target="_blank"><img src="https://youtu.be/N6wQ28h-MmE/0.jpg" 
 alt="Loading" width="240" height="180" border="10" /></a>  
    
@@ -59,7 +59,7 @@ touch .gitignore
 
 ### Create and Configure .gitattributes File
   
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=wzI4IYhQsek
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=MNYxq3eoCN4
 " target="_blank"><img src="https://youtu.be/MNYxq3eoCN4/0.jpg" 
 alt="Loading" width="240" height="180" border="10" /></a>  
   
@@ -80,7 +80,7 @@ touch .gitattributes
 
 ### Adding and Committing Changes to Local Repository
   
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=wzI4IYhQsek
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=G9l7YJ6K0zc
 " target="_blank"><img src="https://youtu.be/G9l7YJ6K0zc/0.jpg" 
 alt="Loading" width="240" height="180" border="10" /></a>  
   
@@ -106,7 +106,7 @@ git commit -m "Here is my commit message"
 
 ### Linking to a Remote Repository
   
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=wzI4IYhQsek
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=8JVmXZ_xreQ
 " target="_blank"><img src="https://youtu.be/8JVmXZ_xreQ/0.jpg" 
 alt="Loading" width="240" height="180" border="10" /></a>  
   
