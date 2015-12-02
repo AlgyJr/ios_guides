@@ -20,7 +20,7 @@ The Terminal is much like the finder, but less pretty. There are just a few basi
 ### Creating a Local Git Repository
   
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=Fxe8BW8QWa0
-" target="_blank"><img src="https://youtu.be/Fxe8BW8QWa0/0.jpg" 
+" target="_blank"><img src="http://img.youtube.com/vi/Fxe8BW8QWa0/0.jpg" 
 alt="Loading" width="240" height="180" border="10" /></a>  
  
 Local Git repositories are created and managed locally on your computer. 
