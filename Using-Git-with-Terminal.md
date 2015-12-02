@@ -38,7 +38,7 @@ git init
 ### Creating a .gitignore File
   
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=N6wQ28h-MmE
-" target="_blank"><img src="https://youtu.be/N6wQ28h-MmE/0.jpg" 
+" target="_blank"><img src="http://img.youtube.com/vi/N6wQ28h-MmE/0.jpg" 
 alt="Loading" width="240" height="180" border="10" /></a>  
    
 When collaborating using Git, you will inevitably run into "merge conflicts". However, you will save yourself from a lot of extraneous conflicts by adding a `.gitignore` file with the proper content.
@@ -60,7 +60,7 @@ touch .gitignore
 ### Create and Configure .gitattributes File
   
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=MNYxq3eoCN4
-" target="_blank"><img src="https://youtu.be/MNYxq3eoCN4/0.jpg" 
+" target="_blank"><img src="http://img.youtube.com/vi/MNYxq3eoCN4/0.jpg" 
 alt="Loading" width="240" height="180" border="10" /></a>  
   
 This file allows us to tell Git how we want certain files to be treated. We will add a file to the `.gitattributes` that tells Git to treat any file with `.pbxproj` as binary.
@@ -81,7 +81,7 @@ touch .gitattributes
 ### Adding and Committing Changes to Local Repository
   
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=G9l7YJ6K0zc
-" target="_blank"><img src="https://youtu.be/G9l7YJ6K0zc/0.jpg" 
+" target="_blank"><img src="http://img.youtube.com/vi/G9l7YJ6K0zc/0.jpg" 
 alt="Loading" width="240" height="180" border="10" /></a>  
   
 Now that your local Git is all setup from the last step, you can update your local Git repository with any changes you make to your project.
@@ -107,7 +107,7 @@ git commit -m "Here is my commit message"
 ### Linking to a Remote Repository
   
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=8JVmXZ_xreQ
-" target="_blank"><img src="https://youtu.be/8JVmXZ_xreQ/0.jpg" 
+" target="_blank"><img src="http://img.youtube.com/vi/8JVmXZ_xreQ/0.jpg" 
 alt="Loading" width="240" height="180" border="10" /></a>  
   
 There are many remote repository options. In this guide we will be using [GitHub](https://github.com/). You will need a GitHub account if you don't have one already.
@@ -144,7 +144,7 @@ git pull
 ### Cloning a Remote Repository
   
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=2-nFvX6vEoI
-" target="_blank"><img src="https://youtu.be/2-nFvX6vEoI/0.jpg" 
+" target="_blank"><img src="http://img.youtube.com/vi/2-nFvX6vEoI/0.jpg" 
 alt="Loading" width="240" height="180" border="10" /></a>
   
 If you are collaborating on a project, or just want access to your project from a different computer, you will need to **clone** from the remote repository.
@@ -162,7 +162,7 @@ git clone https://yourRemoteRepositoryUrl
 ### Dealing With Merge Conflicts
   
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=lo8oLnY7H_4
-" target="_blank"><img src="https://youtu.be/lo8oLnY7H_4/0.jpg" 
+" target="_blank"><img src="http://img.youtube.com/vi/lo8oLnY7H_4/0.jpg" 
 alt="Loading" width="240" height="180" border="10" /></a> 
   
 Inevitably, there will come a time when you AND a collaborator will make changes to the same file and both try to **push** to the remote repository. This will result in a **Merge Conflict**.
