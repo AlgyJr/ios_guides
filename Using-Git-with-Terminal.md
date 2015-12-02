@@ -21,7 +21,7 @@ The Terminal is much like the finder, but less pretty. There are just a few basi
   
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=Fxe8BW8QWa0
 " target="_blank"><img src="http://img.youtube.com/vi/Fxe8BW8QWa0/0.jpg" 
-alt="Loading" width="300" height="169" border="10" /></a>  
+alt="Loading" width="240" height="180" border="1" /></a>  
  
 Local Git repositories are created and managed locally on your computer. 
 - Xcode will automatically create a local Git repository for your project if you select, "Create Git repository on... My Mac", when you first create your project. You should **Always** select this when creating a new Xcode project.  
