@@ -142,6 +142,12 @@ git pull
 ```
 
 ### Cloning a Remote Repository
+  
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=2-nFvX6vEoI
+" target="_blank"><img src="https://youtu.be/2-nFvX6vEoI/0.jpg" 
+alt="Loading" width="240" height="180" border="10" /></a>
+https://youtu.be/
+  
 If you are collaborating on a project, or just want access to your project from a different computer, you will need to **clone** from the remote repository.
 - Get the url of the remote repository. You can access this by going to the remote repository in GitHub and copying the clone link, bottom right.  
   
