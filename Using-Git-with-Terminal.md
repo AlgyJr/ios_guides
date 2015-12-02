@@ -155,6 +155,11 @@ git clone https://yourRemoteRepositoryUrl
 ```
 
 ### Dealing With Merge Conflicts
+  
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=lo8oLnY7H_4
+" target="_blank"><img src="https://youtu.be/lo8oLnY7H_4/0.jpg" 
+alt="Loading" width="240" height="180" border="10" /></a> 
+  
 Inevitably, there will come a time when you AND a collaborator will make changes to the same file and both try to **push** to the remote repository. This will result in a **Merge Conflict**.
 - In the instance of a Merge Conflict, you will probably get an error in the terminal when attempting to **push** your local changes.  
 
