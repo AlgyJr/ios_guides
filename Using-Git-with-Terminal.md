@@ -39,7 +39,7 @@ git init
   
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=N6wQ28h-MmE
 " target="_blank"><img src="http://img.youtube.com/vi/N6wQ28h-MmE/0.jpg" 
-alt="Loading" width="240" height="180" border="10" /></a>  
+alt="Loading" width="240" height="180" border="1" /></a>  
    
 When collaborating using Git, you will inevitably run into "merge conflicts". However, you will save yourself from a lot of extraneous conflicts by adding a `.gitignore` file with the proper content.
 - Navigate to your Xcode Project folder in Terminal.
