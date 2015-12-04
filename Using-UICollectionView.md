@@ -15,17 +15,18 @@ Create a view controller, and drag a UICollectionView into the view.
 
 <img src="http://i.imgur.com/VBgfYwW.gif" width="500" />
 
-#### Step 2: Create a collection view outlet
-
-Control-drag from the view to the implementation file to create an outlet to the UICollectionView. We will name our outlet `collectionView` for this example.
-
-#### Step 3: Configure Collection View settings
+#### Step 2: Configure Collection View settings
 In the **Utilities** Pane.
 - Set the Collection View Cell Size in the Size Inspector. I chose 120 x 120 to in order to fit 3 cells across an iPhone 6 screen.  
 ![Set cell size](http://i.imgur.com/DqsWoPu.png)
 - Choose the Scroll Direction of Collection View.  
 ![Choose Scroll Direction](http://i.imgur.com/Sldr8wr.gif)
-#### Step 3: Set the dataSource, delegate and flowLayout
+
+#### Step 3: Create a collection view outlet
+
+Control-drag from the view to the implementation file to create an outlet to the UICollectionView. We will name our outlet `collectionView` for this example.
+
+#### Step 4: Set the dataSource, delegate and flowLayout
 
 Declare that the class implements the table view dataSource, delegate, and flowLayout protocols. Look for the class declaration at the top of your Swift file. Add `UICollectionViewDataSource`, `UICollectionViewDelegate` and `UICollectionViewDelegateFlowLayout` after `UIViewController`. Note that there will be an error that your class doesn't implement the required UICollectionViewDataSource functions. The error won't go away until you complete Step 4 below.
 
@@ -35,7 +36,7 @@ class YourViewController: UIViewController, UICollectionViewDataSource, UICollec
 }
 ```
 
-In viewDidLoad, configure the datasource and delegate of the table view.
+In viewDidLoad, configure the datasource and delegate of the collection view.
 
 ```
 override func viewDidLoad() {
@@ -44,7 +45,6 @@ override func viewDidLoad() {
     collectionView.delegate = self
     collectionView.dataSource = self
 }
-
 ```
 
 #### Step 4: Implement the collection view methods
