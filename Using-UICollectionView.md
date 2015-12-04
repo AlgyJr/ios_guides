@@ -22,7 +22,7 @@ Control-drag from the view to the implementation file to create an outlet to the
 #### Step 3: Configure Collection View settings
 In the **Utilities** Pane.
 - Set the Collection View Cell Size in the Size Inspector.  
-![Set cell size](http://i.imgur.com/b3oGKIk.png)
+![Set cell size](http://i.imgur.com/DqsWoPu.png)
 - Choose the Scroll Direction of Collection View.  
 ![Choose Scroll Direction](http://i.imgur.com/Sldr8wr.gif)
 #### Step 3: Set the dataSource, delegate and flowLayout
