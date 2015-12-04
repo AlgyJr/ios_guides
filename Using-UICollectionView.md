@@ -13,7 +13,7 @@ Download the sample code [here]().
 
 Create a view controller, and drag a UICollectionView into the view.
 
-<img src="http://i.imgur.com/VBgfYwW.gif" width="600" />
+<img src="http://i.imgur.com/VBgfYwW.gif" width="500" />
 
 #### Step 2: Create a collection view outlet
 
