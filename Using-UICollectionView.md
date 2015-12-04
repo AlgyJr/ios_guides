@@ -13,7 +13,7 @@ Download the sample code [here]().
 
 Create a view controller, and drag a UICollectionView into the view.
 
-![Drag Collection View onto the View Controller|400](http://i.imgur.com/VBgfYwW.gif)
+![Drag Collection View onto the View Controller|200](http://i.imgur.com/VBgfYwW.gif)
 
 #### Step 2: Create a collection view outlet
 
