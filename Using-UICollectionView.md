@@ -13,7 +13,7 @@ Download the sample code [here]().
 
 Create a view controller, and drag a UICollectionView into the view.
 
-![Drag Collection View onto the View Controller]()
+![Drag Collection View onto the View Controller](http://i.imgur.com/VBgfYwW.gif)
 
 #### Step 2: Create a collection view outlet
 
@@ -21,7 +21,7 @@ Control-drag from the view to the implementation file to create an outlet to the
 
 #### Step 3: Configure Collection View settings
 In the **Utilities** Pane.
-- Set the Collection View Cell Size in the Size Inspector.  
+- Set the Collection View Cell Size in the Size Inspector. I chose 120 x 120 to in order to fit 3 cells across an iPhone 6 screen.  
 ![Set cell size](http://i.imgur.com/DqsWoPu.png)
 - Choose the Scroll Direction of Collection View.  
 ![Choose Scroll Direction](http://i.imgur.com/Sldr8wr.gif)
