@@ -47,7 +47,9 @@ override func viewDidLoad() {
 
 #### Step 5: Create the Custom Cell File
 
-- Create a new Swift file for the custom cell. It should be a subclass of UICollectionViewCell. 
+- Create a new Swift file for the custom cell. It should be a subclass of UICollectionViewCell.  
+  
+<img src="http://i.imgur.com/gP4bBm7.gif" width="500" />
 
 #### Step 6: Link the Custom Cell File to the Cell in Interface Builder
 
