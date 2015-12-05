@@ -54,6 +54,7 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Using UIPageControl]]
 * [[Using UIRefreshControl]]
 * [[Using UITableView]]
+* [[Using UICollectionView]]
 * [[Using UIActivityIndicatorView]]
 * [[Using UIWebView]]
 
