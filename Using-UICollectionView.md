@@ -54,7 +54,7 @@ override func viewDidLoad() {
 - In the Identity Inspector, set the Class to the Custom Cell file you made 
 - In the Attribute Inspector, set the Reuse Identifier. It's common to use the same name for this as you did for the Class.  
   
-<img src="http://i.imgur.com/CtQ93d9.gif" width="150" />
+<img src="http://i.imgur.com/CtQ93d9.gif" width="250" />
 
 #### Step 7: Create Outlets for Cell Views
 Create outlets to the custom cell class for any view you want to configure in code.
