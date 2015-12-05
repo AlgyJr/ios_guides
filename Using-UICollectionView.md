@@ -1,6 +1,6 @@
 Collection views share similarities with table views, however collection views have the power to do multi-column layouts and much more! Collection views are the center of many iOS applications and have many features to customize their appearance and behavior. The sections below cover basic as well as more custom collection views.
 
-![CollectionView Example]()
+<img src="http://i.imgur.com/9ZTVJFt.gif" width="200" />
 
 Download the sample code [here]().
 
