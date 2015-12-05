@@ -63,7 +63,7 @@ Create outlets to the custom cell class for any view you want to configure in co
   
 <img src="http://i.imgur.com/EnKIZPe.gif" width="500" />
 
-#### Step 8: Implement the Collection View Methods
+#### Step 8: Implement the Required Collection View Methods
 
 There are many collection view methods, but the only required methods are to set the number of items for the collection view and to return the cell for each item.
 
@@ -85,5 +85,25 @@ func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath ind
     cell.label.text = "item \(indexPath.item)"
 
     return cell
+}
+```
+
+If you run your App at this point, you will notice that there is a big gap between in the middle. We will fix this in the next step using FlowLayout methods.  
+  
+<img src="http://i.imgur.com/3gUrmEb.gif" width="200" />  
+  
+#### Step 9: Implement the Flow Layout Methods
+
+Adding the following Flow Layout methods allows you to adjust the space between the cells.
+
+```
+func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        
+    return 4
+}
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        
+    return 1
 }
 ```
