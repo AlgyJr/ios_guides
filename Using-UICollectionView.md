@@ -59,7 +59,9 @@ override func viewDidLoad() {
 <img src="http://i.imgur.com/CtQ93d9.gif" width="250" />
 
 #### Step 7: Create Outlets for Cell Views
-Create outlets to the custom cell class for any view you want to configure in code.
+Create outlets to the custom cell class for any view you want to configure in code.  
+  
+<img src="http://i.imgur.com/EnKIZPe.gif" width="350" />
 
 #### Step 8: Implement the Collection View Methods
 
