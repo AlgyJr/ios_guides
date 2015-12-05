@@ -20,9 +20,9 @@ In the **Utilities** Pane.
 - Choose the Scroll Direction of Collection View.  
 ![Choose Scroll Direction](http://i.imgur.com/Sldr8wr.gif)
 
-#### Step 3: Create a collection view outlet
+#### Step 3: Create a Collection View Outlet
 
-Control-drag from the view to the implementation file to create an outlet to the UICollectionView.
+Control-drag from the collection view to the View Controller file to create an outlet.
 
 #### Step 4: Set the dataSource, delegate and flowLayout
 
