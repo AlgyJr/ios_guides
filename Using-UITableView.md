@@ -97,7 +97,7 @@ The basic setup for this Use Case will include two UIViewControllers with a UINa
 
 #### Step 1: Create a ViewController with a TableView
 
-- [Create a basic Table View](https://guides.codepath.com/ios/Using-UITableView#basic-table-view)
+- [Create a basic Table View](https://guides.codepath.com/ios/Using-UITableView#basic-table-view) including the two required table view methods.
 - Add a UILabel inside your cell  
 <img src="http://i.imgur.com/weWzUm5.png" width="250"/>
 
@@ -112,4 +112,38 @@ In this Use Case, we will Embed in a **Navigation Controller** to our **TableVie
   
 <img src="http://i.imgur.com/ueHh4h7.png" width="250" /> <img src="http://i.imgur.com/1Xw7uRM.png" width="300" />  
   
-#### Step 4: Create the Detail View Controller  
+#### Step 4: Create the Detail View Controller
+- Add a new UIViewController to the Storyboard to serve as the **Detail ViewController**.  
+- Create a Custom Swift ViewController File called, **DetailViewController** and associate it with the Detail ViewController in Storyboard. [Create the Custom Swift View Controller](https://guides.codepath.com/ios/Creating-Custom-View-Controllers#step-2-create-the-swift-view-controller)  
+<img src="http://i.imgur.com/ySXR8th.png" width="250" />  
+  
+- Add a UILabel to the Detail ViewController.
+- Create an outlet from the Label in Storyboard to the **DetailViewController** File.  
+<img src="http://i.imgur.com/4ecNlf8.gif" width="500"/>  
+
+#### Step 5: Setup the Detail View Controller Outlets and Variables  
+In this demo, we will simply display the index value in the label of the DetailViewController to prove that we know which cell was tapped. In a real application, the index could be used to pull out corresponding data from arrays or dictionaries.
+
+- Create an **Instance Variable** to hold the **index data** that will be passed from the CustomTableViewController. 
+
+```swift
+var index: Int!
+```    
+
+- Set the text of the Label within the `viewDidLoad` method.
+
+```swift
+label.text = ("You tapped the cell at index \(index)")
+```
+
+#### Step 6: Create a Segue from the Cell to the Detail ViewController
+Since we have embedded in a navigation controller, we will want to create a **Push Segue** from the **Cell** in the CustomTableViewController to the **DetailViewController**  
+  
+- ctrl + drag from the **Cell** in the Document Outline to the **DetailViewController** and choose **Push** to create a Push Segue.  
+  
+<img src="http://i.imgur.com/RWaTyXT.gif" width="500"/>  
+  
+At this Point, taping a cell in the tableView should take you to the detail ViewController, however you will notice that the detail ViewController's label displays an index of **nil**. This is because we haven't passed any data to the DetailViewController yet. We will handle that in the next steps.  
+  
+<img src="http://i.imgur.com/q5bxlrb.gif" width="200"/>  
+ 
