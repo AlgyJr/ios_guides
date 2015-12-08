@@ -95,11 +95,21 @@ The basic setup for this Use Case will include two UIViewControllers with a UINa
 - The Second ViewController will contain a UILabel. We will refer to this ViewController as **DetailViewController**
 - We will Embed the **CustomTableViewController** in a **NavigationController** to enable push navigation between the CustomTableViewController and the DetailViewController. 
 
-#### Step 1: Set up a table view with Custom Cell
+#### Step 1: Create a ViewController with a TableView
 
-[Set up a table view with Custom Cell](https://guides.codepath.com/ios/Using-UITableView#table-view-with-custom-cells)  
+- [Create a basic Table View](https://guides.codepath.com/ios/Using-UITableView#basic-table-view)
+- Add a UILabel inside your cell  
+<img src="http://i.imgur.com/weWzUm5.png" width="250"
+
+#### Step 2: Create a Custom Cell
+
+- [Set up a table view with Custom Cell](https://guides.codepath.com/ios/Using-UITableView#table-view-with-custom-cells)
+- Create an outlet from the label in your prototype cell to your Custom Cell file.  
+<img src="http://i.imgur.com/DdPMHDZ.gif " width="350" 
   
-#### Embed in Navigation Controller
+#### Step 3: Embed in Navigation Controller
 In this Use Case, we will Embed in a **Navigation Controller** to our **TableViewViewController**.  
   
 <img src="http://i.imgur.com/ueHh4h7.png" width="250" /> <img src="http://i.imgur.com/1Xw7uRM.png" width="300" />  
+  
+#### Step 4: Create the Detail View Controller  
