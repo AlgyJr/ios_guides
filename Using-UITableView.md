@@ -68,7 +68,7 @@ In Storyboard, drag a UITableViewCell onto the table view. Create a new Swift fi
 
 ![Identity](http://i.imgur.com/TMmgLJh.png)
 
-Then, in the Attribute Inspector, set the Identifer of the custom cell.
+Then, in the Attribute Inspector, set the Identifier of the custom cell.
 
 ![Attribute](http://i.imgur.com/WTGsMc8.png)
 
@@ -86,3 +86,20 @@ func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexP
 }
 
 ```
+
+### Passing Data from Table View Cells
+When a user taps a cell in your table view, we will often want to navigate to another view controller that contains information related to the cell that was tapped. In order to do this,  we will need to figure out which cell was tapped, and then pass the relevant data from that cell to the next view controller.  
+  
+The basic setup for this Use Case will include two UIViewControllers with a UINavigationController. 
+- The first ViewController will contain a UITableView and a UITableViewCell with a UILabel inside it. We will refer to this ViewController as **CustomTableViewController**
+- The Second ViewController will contain a UILabel. We will refer to this ViewController as **DetailViewController**
+- We will Embed the **CustomTableViewController** in a **NavigationController** to enable push navigation between the CustomTableViewController and the DetailViewController. 
+
+#### Step 1: Set up a table view with Custom Cell
+
+[Set up a table view with Custom Cell](https://guides.codepath.com/ios/Using-UITableView#table-view-with-custom-cells)  
+  
+#### Embed in Navigation Controller
+In this Use Case, we will Embed in a **Navigation Controller** to our **TableViewViewController**.  
+  
+<img src="http://i.imgur.com/PU7q4Qjs.jpg" width="250" /> 
