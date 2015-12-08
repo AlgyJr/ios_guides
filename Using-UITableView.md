@@ -102,4 +102,4 @@ The basic setup for this Use Case will include two UIViewControllers with a UINa
 #### Embed in Navigation Controller
 In this Use Case, we will Embed in a **Navigation Controller** to our **TableViewViewController**.  
   
-<img src="http://i.imgur.com/ueHh4h7.png" width="250" /> 
+<img src="http://i.imgur.com/ueHh4h7.png" width="250" /> <img src="http://i.imgur.com/1Xw7uRM.png" width="300" />  
