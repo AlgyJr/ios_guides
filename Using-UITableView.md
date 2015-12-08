@@ -99,13 +99,13 @@ The basic setup for this Use Case will include two UIViewControllers with a UINa
 
 - [Create a basic Table View](https://guides.codepath.com/ios/Using-UITableView#basic-table-view)
 - Add a UILabel inside your cell  
-<img src="http://i.imgur.com/weWzUm5.png" width="250"
+<img src="http://i.imgur.com/weWzUm5.png" width="250"/>
 
 #### Step 2: Create a Custom Cell
 
 - [Set up a table view with Custom Cell](https://guides.codepath.com/ios/Using-UITableView#table-view-with-custom-cells)
 - Create an outlet from the label in your prototype cell to your Custom Cell file.  
-<img src="http://i.imgur.com/DdPMHDZ.gif " width="350" 
+<img src="http://i.imgur.com/DdPMHDZ.gif " width="350"/> 
   
 #### Step 3: Embed in Navigation Controller
 In this Use Case, we will Embed in a **Navigation Controller** to our **TableViewViewController**.  
