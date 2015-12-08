@@ -11,7 +11,7 @@ Download the sample code [here](https://github.com/codepath/ios_guides/tree/mast
 
 Create a view controller, and drag a UITableView into the view, as shown below.
 
-<img src="http://i.imgur.com/ueHh4h7.png" />
+<img src="http://i.imgur.com/uDwEPMA.gif" />
 
 #### Step 2: Create a table view outlet
 
