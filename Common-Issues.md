@@ -21,7 +21,7 @@ There are two main categories of errors, Compiler Errors and Run-Time Errors.
 ## Common Run-Time Crashes
 
 #### Gathering Information
-When your app crashes, it's often due to a initial single error. However, the initial error throws everything else after it off creating other errors. The result can look like a real mess and even point to "red herrings" that aren't directly involved, like the App delegate. To get to the root of our problem, we need to find the first error that caused our app crash.
+When your app crashes, it's often due to an initial error. However, the initial error throws everything else after it off creating other errors. The result can look like a real mess and even point to "red herrings" that aren't directly involved, like the App delegate. To get to the root of our problem, we need to find the first error that caused our app crash.
   
 The console will be our first source for error printouts. Scroll all the way to the top to see the initial error.  
   
