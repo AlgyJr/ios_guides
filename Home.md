@@ -55,6 +55,7 @@ Diving into the networking and model layers for data-driven apps:
 * Table Views
   * [[Quick start|Table View Quickstart]]
   * [[Guide|Table View Guide]]
+* [[Collection Views|Collection View Guide]]
 * [[Scroll Views|Scroll View Guide]]
 * Custom Views
   * [[Quick start|Custom Views Quickstart]]
