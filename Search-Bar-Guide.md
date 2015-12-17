@@ -1,19 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-- [Overview](#overview)
-- [Working with UISearchBars directly](#working-with-uisearchbars-directly)
-  - [Example searching a table](#example-searching-a-table)
-  - [Example searching a collection view](#example-searching-a-collection-view)
-- [Using UISearchDisplayControllers](#using-uisearchdisplaycontrollers)
-  - [Example searching a table](#example-searching-a-table-1)
-  - [Example searching a collection view](#example-searching-a-collection-view-1)
-- [Using UISearchControllers (iOS 8+)](#using-uisearchcontrollers-ios-8)
-  - [Example searching a table](#example-searching-a-table-2)
-  - [Example searching a collection view](#example-searching-a-collection-view-2)
-- [Search Bar in Navigation View](#search-bar-in-navigation-view)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 ## Overview
 Providing a way for users to search through a collection of items is a
 fairly common task in iOS projects.  A standard interface for
