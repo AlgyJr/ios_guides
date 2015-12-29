@@ -230,7 +230,7 @@ func sayHello(to person: String, and anotherPerson: String) -> String {
 }
 
 // Calls this function using the "external" parameter names
-let greeting: String = sayHello(to: "Bill", and: "Ted"))
+let greeting: String = sayHello(to: "Bill", and: "Ted")
 ```
 
 ## Control Flow
@@ -552,22 +552,24 @@ A lot of the time when working with REST API's (like Instagram, Twitter, etc), t
 Below is an example of JSON that simulates the type of JSON you might get back when using an endpoint that returns movies and their ratings:
   * An open curly brace ( { ) means that it is the start of a dictionary
   * An open bracket ( [ ) means that it is the start of an array
+
 ```json
 {
-	"status": "OK",
-	"movies": [
-	{
-		"title": "Whiplash",
-		"rating": 8.5
-	}, 
-	{
-		"title": "Feast",
-		"rating": 5.2
-	}, 
-	{
-		"title": "Kung Fury",
-		"rating": 7.1
-	}]
+    "status": "OK",
+    "movies": [
+        {
+            "title": "Whiplash",
+            "rating": 8.5
+        }, 
+        {
+            "title": "Feast",
+            "rating": 5.2
+        }, 
+        {
+            "title": "Kung Fury",
+            "rating": 7.1
+        }
+    ]
 }
 ```
 
