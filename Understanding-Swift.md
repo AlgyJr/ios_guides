@@ -1,16 +1,16 @@
 ## Overview
 
-This guide covers the main Swift concepts you'll need as you start building apps in Swift. It is meant to introduce each topic in a way that provides enough background to get you started and defers to the [iBook on Swift](https://itunes.apple.com/us/book/swift-programming-language/id881256329) for more in depth coverage.
+This guide covers the main Swift concepts you'll need as you start building apps. It is meant to introduce each topic in a way that provides enough background to get you started and defers to the [iBook on Swift](https://itunes.apple.com/us/book/swift-programming-language/id881256329) for more in depth coverage.
 
 ## Hello World
 
-It's common to start any tutorial for a new language with the "Hello World" example so we'll start out by showing how easy this is to do in Swift:
+It is common to start any tutorial for a new language with the **Hello World** example so we'll start out by showing how easy this is to do in Swift:
 
 ```swift
 print("Hello World!")      // Prints "Hello World!" to the output window in Xcode
 ```
 
-To make this a little more personal, let's look at one of the handy features of Swift (called "string interpolation") where we can insert values into strings using the `\(...)` syntax. Below, we've inserted `name` into the middle of our string:
+To make this a little more personal, let's look at one of the handy features of Swift (called **string interpolation**) where we can insert values into strings using the `\(...)` syntax. Below, we've inserted `name` into the middle of our string:
 
 ```swift
 let name: String = "Bob"
@@ -19,20 +19,20 @@ print("Hello \(name)!")     // Prints "Hello Bob!"
 
 ## When to use "let" vs "var"
 
-You'll notice in the example above we've used `let` to create the new value for the name "Bob". In Swift, you'll choose from the following two options when creating a new variable:
+You'll notice in the example above we've used `let` to create the new variable for the name "Bob". In Swift, you'll choose from the following 2 options when creating a new variable:
 
-* `let` => Use `let` when you are defining a constant (a value that will not change)
+* `let` => Use `let` when you are defining a **constant** (a value that will not change)
 
-   ```swift
-   let numberOfContinents: Int = 7   // Seven continents will not change so we've used "let"
-   ```
-* `var` => Use `var` when you are defining a varaible (a value that might change)
+    ```swift
+    let numberOfContinents: Int = 7   // Seven continents will not change so we've used "let"
+    ```
+* `var` => Use `var` when you are defining a **variable** (a value that might change)
 
-   ```swift
-   var continentsVisited: Int = 2   // Continents visited increases over time so we've used "var"
-   ```
+    ```swift
+    var continentsVisited: Int = 2   // Continents visited increases over time so we've used "var"
+    ```
 
-In general, it's considered a best practice to use constants ("let") whenever possible.
+In general, it is considered a best practice to use constants (`let`) whenever possible.
 
 ## Numbers
 
@@ -54,20 +54,20 @@ let billAmount: Double = 10.25
 
 ## Strings
 
-Strings represent a series of characaters:
+Strings represent a series of characters:
 
 ```swift
 let hello: String = "Hello"
 let world: String = "World"
 ```
 
-You can use "string interpolation" to construct new strings:
+You can use **string interpolation** to construct new strings:
 
 ```swift
 let helloWorld: String = "\(hello) \(world)"    // "Hello World"
 ```
 
-Or you can use the "+" operator to combine strings:
+Or you can use the `+` operator to combine strings:
 
 ```swift
 let helloWorld: String = hello + " " + world    // "Hello World"
@@ -122,7 +122,7 @@ var people: [String: Int] = [
                             ]
 ```
 
-Here, the "key" is the name of the person and the "value" is the person's age.
+Here, the **key** is the name of the person and the **value** is the person's age.
 
 Later on if we want to find out Bob's age, we can look it up by doing:
 
@@ -150,25 +150,25 @@ However, Swift is smart enough to infer the type for us in a lot of cases. The p
 let name = "Bob"   // Swift infers "name" is of type "String" since "Bob" is a String
 ```
 
-In cases where Swift can infer the type, it's not necessary to be explicit with the types for your constants and variables.
+In cases where Swift can infer the type, it's not necessary to be explicit with the types for your constants and variables. We just do it in this guide so that the examples are easier to follow.
 
 ## Any and AnyObject
 
-Swift has two special catch all types that come in handy when a more specific type cannot be determined.
+Swift has two special "catch all types" that come in handy when a more specific type cannot be determined.
 
-* `AnyObject` can represent an instance of any class type.
-* `Any` can represent an instance of any type at all.
+* `AnyObject` can represent an instance of **any class type**.
+* `Any` can represent an instance of **any type at all**.
 
 In general it's a best practice to be as specific with your types as possible and avoid the use of `AnyObject` and `Any`, but they become particularly helpful when interacting with Objective-C code that is less strict on typing.
 
 ## Optionals
 
-Optionals is a very important concept in Swift and is meant to improve the safety of Swift code. By simply placing a question mark ("?") after any type, it declares that variable to be an optional. An optional type allows that variable to exist in one of the following two states:
+Optionals is a very important concept in Swift and is meant to improve the safety of Swift code. By simply placing a question mark (?) after any type, it declares that variable to be optional. An optional type allows that variable to exist in one of the following two states:
 
-1. There is a value and it equals x
-2. There isn't a value at all
+1. There **is a value and it equals x**
+2. There **isn't a value at all**
 
-Let's look at an example to make this more clear. Consider the following 2 examples where we are trying to convert a String to an Int:
+Let's look at an example to make this more clear. Consider the following 2 examples where we are trying to convert a `String` to an `Int`:
 
 ```swift
 // Example 1 (Conversion succeeds)
@@ -180,9 +180,9 @@ let input: String = "123abc"
 let optionalConvertedInput: Int? = Int(input)  // optionalConvertedInput = nil
 ```
 
-Swift requires `optionalConvertedInput` to be of type `Int?` (or "optional Int") so that it is explicit that convertedInput *might* not contain a value. If we were to declare `convertedInput` as simply `Int`, we'd get a compile error.
+Swift requires `optionalConvertedInput` to be of type `Int?` (or "optional Int") so that it is explicit that convertedInput *might* not contain a value (in the case when the conversion fails). If we were to declare `convertedInput` as simply `Int`, we'd get a compile error.
 
-There's a handy syntax in Swift that you'll use quite often when working with optionals. If we wanted to use the value of `optionalConvertedInput` later on in our code, we'd first have to check to make sure it's not nil. We can do so using the following code:
+There's a handy syntax in Swift that you'll use quite often when working with optionals. If we wanted to use the value of `optionalConvertedInput` later on in our code, we'd have to first check to make sure it's not `nil`. We can do so using the following code:
 
 ```swift
 if let convertedInput = optionalConvertedInput {
@@ -220,7 +220,7 @@ func sayHello(personName: String) -> String {
 let greeting: String = sayHello("Bob")
 ```
 
-Things get a little more interesting when you start to have multiple parameters as Swift has the concept of "external" and "local" parameter names. An external parameter name is used to label arguments passed to a function call. A local parameter name is used in the implementation of the function.
+Things get a little more interesting when you start to have multiple parameters as Swift has the concept of **external** and **local** parameter names. An external parameter name is used to label arguments passed to a function call. A local parameter name is the name used in the implementation of the function.
 
 ```swift
 // "to" + "and" are the external parameter names
@@ -244,7 +244,7 @@ let temperatureInFahrenheit: Int = 90
 
 if temperatureInFahrenheit <= 32 {
     print("It's very cold. Consider wearing a scarf.")
-} else if temperatureInFahrenheit >= 86 {  // Results in this clause being executed
+} else if temperatureInFahrenheit >= 86 {
     print("It's really warm. Don't forget to wear sunscreen.")
 } else {
     print("It's not that cold. Wear a t-shirt.")
@@ -253,9 +253,9 @@ if temperatureInFahrenheit <= 32 {
 
 ### Loops
 
-The two most common types of loops you'll need in Swift are "for loops" and "for-in loops". 
+The two most common types of loops you'll need in Swift are **for loops** and **for-in loops**. 
 
-"For loops" work well when you want to do something until a particular condition is met (in the case below until `index >= 3`):
+**For loops** work well when you want to do something until a particular condition is met (in the case below until `index >= 3`):
 
 ```swift
 // Simple for loop that prints "Hello" 3 times
@@ -264,7 +264,7 @@ for var index = 0; index < 3; index++ {
 }
 ```
 
-"For-in loops" come in really handy when you want to do something to each item in a collection (such as an array):
+**For-in loops** come in really handy when you want to do something to each item in a collection (such as an array):
 
 ```swift
 let names = ["Anna", "Alex", "Brian", "Jack"]
@@ -312,18 +312,20 @@ class Person {
     // Computed Property - computes "fullName" from "firstName" and "lastName"
     var fullName: String {
     	get {
-    		return "\(firstName) \(lastName)"
+            return "\(firstName) \(lastName)"
     	}
     }
 
-    // Type Property - Single instance for all instances of the class, similar to a static property in Java
+    // Type Property - Single instance for all instances of the class,
+    // similar to a static property in Java
     static var numberOfPeople = 0   
     
     // *** Methods ***
     
     // Instance Method
     func greet() {
-    	// Notice the use of "self" - self refers to the current instance and is similar to "this" in Java
+    	// Notice the use of "self" - self refers to the current instance and 
+        // is similar to "this" in Java
     	print ("Hello \(self.firstName)")
     }
     
@@ -346,7 +348,8 @@ print("Bob's first name is: \(bob.firstName)")  // Prints "Bob's first name is: 
 print("Bob's full name is: \(bob.fullName)")    // Prints "Bob's full name is: Bob Smith"
 
 // Call type method
-Person.printNumberOfPeople()  // Prints "Number of people = 1" (since we've only created one Person)
+// Prints "Number of people = 1" (since we've only created one Person)
+Person.printNumberOfPeople()
 ```
 
 ## Protocols
@@ -399,7 +402,7 @@ Closures are self-contained blocks of code that can be passed around and used in
 
 Closures can capture and store references to any constants and variables from the context in which they are defined. This is known as "closing" over those constants and variables. Swift handles all of the memory management of capturing for you.
 
-Here’s an example of a function called makeIncrementer, which contains a nested function called incrementer. The nested incrementer() function captures two values, runningTotal and amount, from its surrounding context. After capturing these values, incrementer is returned by makeIncrementer as a closure that increments runningTotal by amount each time it is called.
+Here’s an example of a function called `makeIncrementer`, which contains a nested function called `incrementer`. The nested `incrementer()` function captures two values, `runningTotal` and `amount`, from its surrounding context. After capturing these values, `incrementer` is returned by `makeIncrementer` as a closure that increments `runningTotal` by amount each time it is called.
 
 ```swift
 func makeIncrementer(forIncrement amount: Int) -> () -> Int {
@@ -412,15 +415,15 @@ func makeIncrementer(forIncrement amount: Int) -> () -> Int {
 }
 ```
 
-The return type of makeIncrementer is () -> Int. This means that it returns a function, rather than a simple value. The function it returns has no parameters, and returns an Int value each time it is called.
+The return type of `makeIncrementer` is `() -> Int`. This means that it returns a function, rather than a simple value. The function it returns has no parameters, and returns an Int value each time it is called.
 
-The makeIncrementer(forIncrement:) function defines an integer variable called runningTotal, to store the current running total of the incrementer that will be returned. This variable is initialized with a value of 0.
+The `makeIncrementer(forIncrement:)` function defines an integer variable called `runningTotal`, to store the current running total of the incrementer that will be returned. This variable is initialized with a value of 0.
 
-The makeIncrementer(forIncrement:) function has a single Int parameter with an external name of forIncrement, and a local name of amount. The argument value passed to this parameter specifies how much runningTotal should be incremented by each time the returned incrementer function is called.
+The `makeIncrementer(forIncrement:)` function has a single Int parameter with an external name of `forIncrement`, and a local name of `amount`. The argument value passed to this parameter specifies how much `runningTotal` should be incremented by each time the returned `incrementer` function is called.
 
-makeIncrementer defines a nested function called incrementer, which performs the actual incrementing. This function simply adds amount to runningTotal, and returns the result.
+`makeIncrementer` defines a nested function called `incrementer`, which performs the actual incrementing. This function simply adds `amount` to `runningTotal`, and returns the result.
 
-When considered in isolation, the nested incrementer() function might seem unusual:
+When considered in isolation, the nested `incrementer()` function might seem unusual:
 
 ```swift
 func incrementer() -> Int {
@@ -429,9 +432,9 @@ func incrementer() -> Int {
 }
 ```
 
-The incrementer() function doesn’t have any parameters, and yet it refers to runningTotal and amount from within its function body. It does this by capturing a reference to runningTotal and amount from the surrounding function and using them within its own function body. Capturing by reference ensures that runningTotal and amount do not disappear when the call to makeIncrementer ends, and also ensures that runningTotal is available the next time the incrementer function is called.
+The `incrementer()` function doesn’t have any parameters, and yet it refers to `runningTotal` and `amount` from within its function body. It does this by capturing a reference to `runningTotal` and `amount` from the surrounding function and using them within its own function body. Capturing by reference ensures that `runningTotal` and `amount` do not disappear when the call to `makeIncrementer` ends, and also ensures that `runningTotal` is available the next time the `incrementer` function is called.
 
-Here’s an example of makeIncrementer in action:
+Here’s an example of `makeIncrementer` in action:
 
 ```swift
 // This example sets a constant called incrementByTen to refer to an incrementer function that
@@ -447,7 +450,7 @@ incrementByTen()  // returns a value of 30
 
 Type casting changes the type of a particular instance to another compatible type. There are 3 ways to accomplish this with Swift:
 
-1. Guaranteed conversion with `as` => This is the safest cast. It will never fail since the compiler can guarantee the cast will work. Use this when you are upcasting from a child class to its parent or doing something like `1 as Float`.
+1. **Guaranteed conversion** with `as` => This is the safest cast. It will never fail since the compiler can guarantee the cast will work. Use this when you are upcasting from a child class to its parent or doing something like `1 as Float`.
 
    ```swift
    // Guaranteed conversion as the compiler can verify this will succeed
@@ -457,9 +460,7 @@ Type casting changes the type of a particular instance to another compatible typ
    // UIView is a parent of UITableView
    let myView = myTableView as UIView
    ```
-
-2. Conditional conversion with `as?` => This is a cautious cast. If the cast fails, it will return nil. This is needed when downcasting from a parent type to a child type.
-
+2. **Conditional conversion** with `as?` => This is a cautious cast. If the cast fails, it will return `nil`. This is needed when downcasting from a parent type to a child type.
    ```swift
    // If myView is actually a tableView, the downcast will succeed, otherwise it will fail safely
    if let myTableView = myView as? UITableView {
@@ -469,7 +470,7 @@ Type casting changes the type of a particular instance to another compatible typ
    }
    ```
 
-3. Forced conversion with `as!` => This is a dangerous cast that you should try to avoid using. If the cast fails, this will crash your app. Use this cast carefully.
+3. **Forced conversion** with `as!` => This is a dangerous cast that you should avoid using. If the cast fails, this will crash your app. Use this cast carefully.
 
    ```swift
    // DANGEROUS: If myView is actually a tableView, the downcast will succeed
@@ -484,7 +485,8 @@ There are various places where you'll come across the need for using question ma
 When defining a type as **optional**:
 
 ```swift
-var optionalName: String? = "Hello"  // Designates that optionalName can either have a value or be nil
+// Designates that optionalName can either have a value or be nil
+var optionalName: String? = "Hello"
 ```
 
 When safely accessing methods or properties (called **optional chaining**):
@@ -492,14 +494,15 @@ When safely accessing methods or properties (called **optional chaining**):
 ```swift
 // When myInstance IS nil, x = nil
 // When myInstance is NOT nil, x = myInstance.count
-// If any part of the chain is nil, it stops evaluating and returns nil, ignoring everything to the right.
+// If any part of the chain is nil, it stops evaluating and returns
+// nil, ignoring everything to the right.
 let x = myInstance?.count
 ```
 
 When type casting (called **safe conditional conversion**):
 
 ```swift
-// If myView is actually a tableView, the downcast will succeed, otherwise it will fail safely
+// If myView is actually a tableView the downcast will succeed, otherwise it will fail safely
 if let myTableView = myView as? UITableView {
     print("The downcast succeeded!")
 } else {
@@ -514,7 +517,7 @@ let nickName: String? = nil  // nickName is an optional that might be nil
 let fullName: String = "Bob Smith"
 
 // prints the nickName if it is NOT nil, otherwise prints fullName
-let informalGreeting = "Hi \(nickName ?? fullName)”   // Prints "Hi Bob Smith"
+let informalGreeting = "Hi \(nickName ?? fullName)"   // Prints "Hi Bob Smith"
 ```
 
 ## Understanding the Exclamation Mark (!)
@@ -543,7 +546,7 @@ When type casting (called **forced conversion**):
 let myTableView = myView as! UITableView
 ```
 
-When defining variables that are initially `nil` but get set soon afterwards and guaranteed not to be nil after that (called **implicitly unwrapped optionals**):
+When defining variables that are initially `nil` but get set soon afterwards and are guaranteed not to be nil after that (called **implicitly unwrapped optionals**):
 
 ```swift
 let assumedString: String! = "An implicitly unwrapped optional string."
@@ -557,10 +560,11 @@ let implicitString: String = assumedString
 A lot of the time when working with REST API's (like Instagram, Twitter, etc), the data that comes back will be JSON. JSON is a human readable data format (very similar to XML).
 
 Below is an example of JSON that simulates the type of JSON you might get back when using an endpoint that returns movies and their ratings:
-  * An open curly brace ( { ) means that it is the start of a dictionary
-  * An open bracket ( [ ) means that it is the start of an array
+  * An open curly brace means the start of a dictionary
+  * An open bracket means the start of an array
 
 ```json
+// Sample JSON you might get back from a movie rating API:
 {
     "status": "OK",
     "movies": [
@@ -583,12 +587,13 @@ Below is an example of JSON that simulates the type of JSON you might get back w
 Below is an example of how'd you extract the movies and ratings out of that response:
 
 ```swift
-// data returned from the network response will typically be of type NSData (which is a buffer of bytes)
+// data returned from the network response will typically be of type
+// NSData (which is a buffer of bytes)
 let responseData: NSData = // ... some value retrieved from the network response ...
 
 // Wrap our code in a do catch as our code might throw an exception which we need to handle
 do {
-    // Start by converting the NSData to a dictionary - the dictionary for the entire response
+    // Start by converting the NSData to a dictionary - a dictionary for the entire response
     if let responseDictionary = try NSJSONSerialization.JSONObjectWithData(responseData,
         options:NSJSONReadingOptions(rawValue:0)) as? [String:AnyObject] {
 
@@ -618,7 +623,7 @@ Xcode includes a very useful tool for learning Swift called "Playgrounds". It's 
 
 Once inside of a playground, you can write Swift code and see it run immediately (without needing to build and run a project each time). This allows you to try out different syntax and test out your code before including it into your app.
 
-We highly recommend checking out Playgrounds.
+We highly recommend checking out Playgrounds while you are learning Swift.
 
 ## References
 * [WWDC 2014: Introduction to Swift](https://developer.apple.com/videos/wwdc/2014/#402)
