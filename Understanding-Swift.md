@@ -481,13 +481,13 @@ Type casting changes the type of a particular instance to another compatible typ
 
 There are various places where you'll come across the need for using question marks in your code. The following examples are meant to capture the major types of use cases for the question mark operator that can cause confusion when first learning Swift.
 
-When defining a type as optional:
+When defining a type as **optional**:
 
 ```swift
 var optionalName: String? = "Hello"  // Designates that optionalName can either have a value or be nil
 ```
 
-When safely accessing methods or properties (called optional chaining):
+When safely accessing methods or properties (called **optional chaining**):
 
 ```swift
 // When myInstance IS nil, x = nil
@@ -496,7 +496,7 @@ When safely accessing methods or properties (called optional chaining):
 let x = myInstance?.count
 ```
 
-When type casting (called safe conditional conversion):
+When type casting (called **safe conditional conversion**):
 
 ```swift
 // If myView is actually a tableView, the downcast will succeed, otherwise it will fail safely
@@ -507,7 +507,7 @@ if let myTableView = myView as? UITableView {
 }
 ```
 
-When using the nil coalescing operator (`??`) to provide a default value:
+When using the **nil coalescing operator** (`??`) to provide a default value:
 
 ```swift
 let nickName: String? = nil  // nickName is an optional that might be nil
@@ -521,7 +521,7 @@ let informalGreeting = "Hi \(nickName ?? fullName)”   // Prints "Hi Bob Smith"
 
 There are various places where you'll come across the need for using exclamation marks in your code. The following examples are meant to capture the major types of use cases for the exclamation mark operator that can cause confusion when first learning Swift.
 
-When getting the actual value out of an optional (called unwrapping an optional):
+When getting the actual value out of an optional (called **unwrapping an optional**):
 
 ```swift
 let possibleString: String? = "An optional string."
@@ -535,18 +535,21 @@ if let actualString = possibleString {
 }
 ```
 
-When type casting (called forced conversion):
+When type casting (called **forced conversion**):
 
 ```swift
-// DANGEROUS: If myView is actually a tableView, the downcast will succeed, otherwise it will crash the app
+// DANGEROUS: If myView is actually a tableView, the downcast will succeed
+// Otherwise it will crash the app
 let myTableView = myView as! UITableView
 ```
 
-When defining variables that are initially `nil` but get set soon afterwards and guaranteed not to be nil after that (called implicitly unwrapped optionals):
+When defining variables that are initially `nil` but get set soon afterwards and guaranteed not to be nil after that (called **implicitly unwrapped optionals**):
 
 ```swift
 let assumedString: String! = "An implicitly unwrapped optional string."
-let implicitString: String = assumedString // no need for an exclamation mark since assumedString is an implicitly unwrapped optional
+
+// no need for an exclamation mark since assumedString is an implicitly unwrapped optional
+let implicitString: String = assumedString
 ```
 
 ## Working with JSON
