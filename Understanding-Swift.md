@@ -201,7 +201,7 @@ Functions in Swift are very similar to other languages. The simplest function in
 ```swift
 // This prints "Hello!" to the output window
 func printHello() {
-	print("Hello!")
+    print("Hello!")
 }
 
 // Calls this function
@@ -213,7 +213,7 @@ We can extend this function to be a little more personable by taking in a name a
 ```swift
 // Takes in a "personName" parameter of type String and returns the greeting as a String
 func sayHello(personName: String) -> String {
-	return "Hello \(personName)!"
+    return "Hello \(personName)!"
 }
 
 // Calls this function
@@ -294,18 +294,18 @@ Below you can find a `Person` class that is meant to show an example of the type
 ```swift
 class Person {
 	
-	// Custom initializer - takes in firstName and lastName
-	init(firstName: String, lastName: String) {
-		self.firstName = firstName
-		self.lastName = lastName
+    // Custom initializer - takes in firstName and lastName
+    init(firstName: String, lastName: String) {
+        self.firstName = firstName
+        self.lastName = lastName
 
-		// Increment type property each time a new person is created
-		Person.numberOfPeople++
-	}
+        // Increment type property each time a new person is created
+        Person.numberOfPeople++
+    }
 	
-	// *** Properties ***
+    // *** Properties ***
 	
-	// Stored Property - Stored as part of the current instance of the class
+    // Stored Property - Stored as part of the current instance of the class
     var firstName: String
     var lastName: String
 
@@ -316,10 +316,10 @@ class Person {
     	}
     }
 
-	// Type Property - Single instance for all instances of the class, similar to a static property in Java
-	static var numberOfPeople = 0   
+    // Type Property - Single instance for all instances of the class, similar to a static property in Java
+    static var numberOfPeople = 0   
     
-	// *** Methods ***
+    // *** Methods ***
     
     // Instance Method
     func greet() {
@@ -332,6 +332,8 @@ class Person {
     	print("Number of people = \(Person.numberOfPeople)")
     }
 }
+
+// ... Using the Person Class ...
 
 // Create a new instance of the Person class
 let bob = Person(firstName: "Bob", lastName: "Smith")
@@ -355,8 +357,8 @@ Let's say we have the following protocol (`MyFriendlyGreeterProtocol`) that defi
 
 ```swift
 protocol MyFriendlyGreeterProtocol {
-	func sayHello()
-	func sayBye()
+    func sayHello()
+    func sayBye()
 }
 ```
 
@@ -364,28 +366,28 @@ Any classes that implement this protocol (you implement a protocol by adding its
 
 ```swift
 class MyEnglishPerson: MyFriendlyGreeterProtocol {
-	func sayHello() {
-		print("Hello!")
-	}
+    func sayHello() {
+        print("Hello!")
+    }
 
-	func sayBye() {
-		print("Bye!")
-	}
+    func sayBye() {
+        print("Bye!")
+    }
 	
-	// ... other methods for this class ...
+    // ... other methods for this class ...
 
 }
 
 class MySpanishPerson: MyFriendlyGreeterProtocol {
-	func sayHello() {
-		print("Hola!")
-	}
+    func sayHello() {
+        print("Hola!")
+    }
 
-	func sayBye() {
-		print("Adios!")
-	}
+    func sayBye() {
+        print("Adios!")
+    }
 	
-	// ... other methods for this class ...
+    // ... other methods for this class ...
 }
 ```
 
@@ -451,7 +453,8 @@ Type casting changes the type of a particular instance to another compatible typ
    // Guaranteed conversion as the compiler can verify this will succeed
    let myFloat = 1 as Float
 
-   // Guaranteed conversion as upcasting from a type to its parent type is safe (UIView is a parent of UITableView)
+   // Guaranteed conversion as upcasting from a type to its parent type is safe 
+   // UIView is a parent of UITableView
    let myView = myTableView as UIView
    ```
 
@@ -469,7 +472,8 @@ Type casting changes the type of a particular instance to another compatible typ
 3. Forced conversion with `as!` => This is a dangerous cast that you should try to avoid using. If the cast fails, this will crash your app. Use this cast carefully.
 
    ```swift
-   // DANGEROUS: If myView is actually a tableView, the downcast will succeed, otherwise it will crash the app
+   // DANGEROUS: If myView is actually a tableView, the downcast will succeed
+   // Otherwise it will crash the app
    let myTableView = myView as! UITableView
    ```
 
@@ -527,7 +531,7 @@ let forcedString: String = possibleString!
 
 // SAFE: Will only enter the if clause if possibleString is NOT nil
 if let actualString = possibleString {
-	// do something with actualString
+    // do something with actualString
 }
 ```
 
@@ -581,17 +585,17 @@ let responseData: NSData = // ... some value retrieved from the network response
 
 // Wrap our code in a do catch as our code might throw an exception which we need to handle
 do {
-	// Start by converting the NSData to a dictionary - the dictionary for the entire response
+    // Start by converting the NSData to a dictionary - the dictionary for the entire response
     if let responseDictionary = try NSJSONSerialization.JSONObjectWithData(responseData,
         options:NSJSONReadingOptions(rawValue:0)) as? [String:AnyObject] {
 
-			// Dip inside the response to find the "movies" key and get the array of movies
+            // Dip inside the response to find the "movies" key and get the array of movies
             if let movies = responseDictionary["movies"] as? [AnyObject] {
 
-				 // Get each movie dictionary from the array of movies
+                // Get each movie dictionary from the array of movies
                 for movie in movies {
                 
-                	 // Use the movie "title" key and "rating" key to get their values
+                    // Use the movie "title" key and "rating" key to get their values
                     if let title = movie["title"] as? String {
                         if let rating = movie["rating"] as? Double {
                             print("Title:\(title), rating:\(rating)")
