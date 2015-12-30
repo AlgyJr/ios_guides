@@ -20,14 +20,14 @@ There are two main categories of errors, Compiler Errors and Run-Time Errors.
 
 ## Common Run-Time Crashes
 
-#### Gathering Information
+### Gathering Information
 When your app crashes, it's often due to an initial error. However, the initial error throws everything else after it off creating other errors. The result can look like a real mess and even point to "red herrings" that aren't directly involved, like the App delegate. To get to the root of our problem, we need to find the first error that caused our app crash.
   
 The console will be our first source for error printouts. Scroll all the way to the top to see the initial error.  
   
 <img src="http://i.imgur.com/CDVPNbY.gif" width="800" /> 
    
-#### 1. Error: unexpectedly found nil while unwrapping an Optional value
+### 1. Error: unexpectedly found nil while unwrapping an Optional value
 - **Translation:** This basically means that sometime while your app was running, it was looking for something and instead got nothing, **nil**.
 - **Common Cause** An outlet was created but got disconnected.
 - **Diagnose:**   
@@ -38,7 +38,7 @@ The console will be our first source for error printouts. Scroll all the way to 
 
 ![found nil gif](http://i.imgur.com/Z8oTiXy.gif)
 
-#### 2. Error: this class is not key value coding-compliant for the key...
+### 2. Error: this class is not key value coding-compliant for the key...
 - **Translation:** Basically, there is a connection somewhere behind the scene that is looking for a specific **outlet** but is not finding it.
 - **Common Cause:** The name of an outlet was changed or deleted but the connection is still there.
 - **Diagnose:**
@@ -51,7 +51,7 @@ The console will be our first source for error printouts. Scroll all the way to 
 
 ![key value coding gif](http://i.imgur.com/aLwKVKa.gif)
 
-#### 3. Error: Unknown class (Some ViewController) in Interface Builder File.
+### 3. Error: Unknown class (Some ViewController) in Interface Builder File.
 - **Translation** A custom ViewController Swift file you made is not configured right.
 - **Common Cause** You assigned your ViewController to a Custom Class (In Utilities -> Identity Inspector) before actually creating the Custom Swift ViewController File.
 - **Diagnose:**
