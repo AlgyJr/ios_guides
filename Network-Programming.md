@@ -272,32 +272,15 @@ asynchronously load the images.
 We'll use [[CocoaPods|CocoaPods]] to pull in AFNetworking.  Here's our `Podfile`
 
 ```
+use_frameworks!
 pod 'AFNetworking'
 ```
 
-After a `pod install` we can open up `NYTimesViewer.xcworkspace`.  Since
-we are working in Swift, we'll need to add an Objective-C bridging
-header.  More information on how to do this can be found in the
-[CocoaPods guide](CocoaPods#bridging-from-objective-c).
+After a `pod install` we can open up `NYTimesViewer.xcworkspace`.
 
-
-```
-#ifndef NYTimesViewer_BridgingHeader_h
-#define NYTimesViewer_BridgingHeader_h
-
-#import <MBProgressHUD.h>
-#import <AFNetworking.h>
-#import <UIImageView+AFNetworking.h>
-
-#endif
-```
-
-Importing this extension (category) automatically ads extra
-functionality to `UIImageView`.  Lastly, we only need to change a few
-lines in our `StoryCell` code to load the remote images asynchronously.
-
-```
+```swift
 import UIKit
+import AFNetworking
 
 class StoryCell: UITableViewCell {
 
