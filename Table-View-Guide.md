@@ -1074,6 +1074,31 @@ class DemoProgrammaticTableViewCell: UITableViewCell {
 [cellselectionstyle]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/#//apple_ref/occ/instp/UITableViewCell/selectionStyle
 [selectedbackgroundview]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/#//apple_ref/occ/instp/UITableViewCell/selectedBackgroundView
 
+## Customizing the cell selection effect
+
+When a user taps on one of the cells in your tableView, there are a couple of events that fire:
+* **Highlighted** => This happens when the user first touches down on the cell (**touch down**).
+* **Selected** => This happens when the user releases his or her finger from the cell (**touch up**).
+
+In iOS, you can customize what happens for both of these events.
+
+To customize what happens for the **Selected** event, you can use one of the following options:
+
+1. Set the cell [selectionStyle](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/#//apple_ref/occ/instp/UITableViewCell/selectionStyle) property. This allows you to set the color to [gray or have no color at all](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/#//apple_ref/c/tdef/UITableViewCellSelectionStyle).
+
+    ```swift
+    // No color when the user selects cell
+    cell.selectionStyle = .None
+    ```
+2. Set a custom [selectedBackgroundView](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/#//apple_ref/occ/instp/UITableViewCell/selectedBackgroundView). This gives you full control to create a view and set it as the cell's `selectedBackgroundView`.
+
+    ```swift
+    // Use a red color when the user selects the cell
+    let backgroundView = UIView()
+    backgroundView.backgroundColor = UIColor.redColor()
+    cell.selectedBackgroundView = backgroundView
+    ```
+
 ## Example: load data from a REST API and display it in your table
 In order to discuss some topics relating to working with tables that
 load data from a network resource we present an example application that
@@ -1364,4 +1389,3 @@ class MyTableViewCell: UITableViewCell
     }
 }
 ```
-
