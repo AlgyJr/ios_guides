@@ -102,7 +102,7 @@ dispatch_async(dispatch_get_main_queue(), {
 })
 ```
 
-## Example: Making a GET and parsing a JSON response
+## Making a GET and parsing a JSON response
 In order to provide you with the flavor of each of the major ways of
 making network requests we discussed above, we'll go through an example of each one.
 
@@ -260,7 +260,7 @@ class Story {
 }
 ```
 
-## Example: loading images asynchronously using UIImageView+AFNetworking
+## Loading images asynchronously using UIImageView+AFNetworking
 
 To demonstrate AFNetworking's integration with UIKit, we'll extend our
 [NY Times Viewer example](Table-View-Guide#example-load-data-from-a-rest-api-and-display-it-in-your-table)
@@ -303,8 +303,68 @@ class StoryCell: UITableViewCell {
 
 <a href="http://imgur.com/0sawEgV"><img src="http://i.imgur.com/0sawEgVl.png" title="source: imgur.com" /></a>
 
-## Example: OAuth 1
-_To be completed..._
+## Loading a low resolution image followed by a higher resolution image
 
-## Example: OAuth 2
-_To be completed..._
+It's common practice when dealing with large images to first load a lower resolution image (can be pulled down from the network faster) and then load a higher resolution image afterwards. This provides for a much better user experience.
+
+This can be implemented using the AFNetworking category for UIImageView.
+
+First, we'll need to make sure we have `AFNetworking` in our `Podfile`:
+
+```
+# Podfile
+
+use_frameworks!
+pod 'AFNetworking'
+
+# ... any other dependencies ...
+```
+
+Then (once we've opened the workspace file), we can enable this functionality using the following code:
+
+```swift
+let smallImageUrl = "https://image.tmdb.org/t/p/w45/fYzpM9GmpBlIC893fNjoWCwE24H.jpg"
+let largeImageUrl = "https://image.tmdb.org/t/p/original/fYzpM9GmpBlIC893fNjoWCwE24H.jpg"
+
+let smallImageRequest = NSURLRequest(URL: NSURL(string: smallImageUrl)!)
+let largeImageRequest = NSURLRequest(URL: NSURL(string: largeImageUrl)!)
+
+self.myImageView.setImageWithURLRequest(
+    smallImageRequest,
+    placeholderImage: nil,
+    success: { (smallImageRequest, smallImageResponse, smallImage) -> Void in
+        
+        // smallImageResponse will be nil if the smallImage is already available
+        // might want to do something smarter in that case
+        self.myImageView.alpha = 0.0
+        self.myImageView.image = smallImage;
+
+        // Animate in the ImageView over 0.3 seconds
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
+
+            self.myImageView.alpha = 1.0
+
+            }, completion: { (sucess) -> Void in
+                
+                // The AFNetworking ImageView Category only allows one request to be sent at a time
+                // per ImageView. This code must be here in the completion block to allow the first 
+                // request to complete.
+                self.myImageView.setImageWithURLRequest(
+                    largeImageRequest,
+                    placeholderImage: smallImage,
+                    success: { (largeImageRequest, largeImageResponse, largeImage) -> Void in
+
+                        self.myImageView.image = largeImage;
+
+                    },
+                    failure: { (request, response, error) -> Void in
+                        // do something for the failure condition of the large image request
+                        // possibly setting the ImageView's image to a default image
+                })
+        })
+    },
+    failure: { (request, response, error) -> Void in
+        // do something for the failure condition
+        // possibly try to get the large image
+})
+```
