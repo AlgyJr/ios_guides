@@ -57,6 +57,7 @@ Diving into the networking and model layers for data-driven apps:
   * [[Guide|Table View Guide]]
 * [[Collection Views|Collection View Guide]]
 * [[Scroll Views|Scroll View Guide]]
+* [[Working with UIImageView]]
 * Custom Views
   * [[Quick start|Custom Views Quickstart]]
   * [[Guide|Custom Views]]
