@@ -1,13 +1,19 @@
-We've created an app from the [table view guide][1] and call a *REST API*. To give the user some indication of the app loading content we'd like to include a progress HUD while fetching the latest stories. We can use CocoaPods to install a package that provides us with a convenient way to show a loading indicator while our network request is pending and dismiss the indicator once we are fully loaded.
+### Overview
+
+In mobile apps, it's helpful to give the user an indication that content is being loaded while the app sends a network request to get new data. A common method is to use a **Progress HUD (Heads Up Display)** while fetching the data. We can use CocoaPods to install a library that provides us with a convenient way to show a loading indicator while our network request is pending.
+
+#### Sample Progress HUD:
+
+![Progress HUD][progress-HUD]
 
 ### Setting Up the Podfile
 
-Since this project previously did not use **[CocoaPods][2]**, use `pod init` to create a template **Podfile**. It should contain some lines at the top, lets uncomment them so they look like below:
+Since this project previously did not use **[CocoaPods](http://guides.codepath.com/ios/CocoaPods)**, use `pod init` to create a template **Podfile**. It should contain some lines at the top, lets uncomment them so they look like below:
 
     platform :ios, "8.0"
     use_frameworks!
 
-This tells CocoaPods that your project is targeting *iOS 8.0* and will be using *frameworks* instead of *static libraries* heading toward a more [complex][3] **Podfile** that works with *Swift*.
+This tells CocoaPods that your project is targeting *iOS 8.0* and will be using *frameworks* instead of *static libraries* heading toward a more [complex][1] **Podfile** that works with *Swift*.
 
 You could also include the line **below** to supress any warnings from *Pods* we install if you're getting a lot of noise from them:
 
@@ -31,7 +37,7 @@ Notice that since we did not specify a target platform, *CocoaPods* will infer t
 
     pod install && open *.xcworkspace
 
-**TIP:** the above is a shorthand to load up your new workspace in one line.
+**Tip:** the above is a shorthand to load up your new workspace in one line.
 
 ### Adding the Progress HUD
 
@@ -41,37 +47,34 @@ a response.
 
 ```swift
 import UIKit
+import MBProgressHUD
 
-class ViewController: UIViewController, UITableViewDataSource {
-    @IBOutlet weak var tableView: UITableView!
-    var stories: [Story] = []
+class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.dataSource = self
-        fetchStories()
-    }
+    // ...
 
-    func fetchStories() {
+    func loadDataFromNetwork() {
+
+        // Display HUD right before next request is made
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        Story.fetchStories({ (stories: [Story]) -> Void in
-            dispatch_async(dispatch_get_main_queue(), {
-                self.stories = stories
-                self.tableView.reloadData()
-                MBProgressHUD.hideHUDForView(self.view, animated: true)
-            })
-        }, error: nil)
+
+        // ...
+
+        let task : NSURLSessionDataTask = mySession.dataTaskWithRequest(request,
+            completionHandler: { (data, response, error) in
+            
+            // Hide HUD once network request comes back (must be done on main UI thread)
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
+            
+            // ...
+
+        });
+        task.resume()
     }
 }
 ```
 
-### Final Result
-
-![Progress HUD][progress-HUD]
-
-[1]: Table-View-Guide#example-load-data-from-a-rest-api-and-display-it-in-your-table
-[2]: https://github.com/codepath/ios_guides/wiki/CocoaPods
-[3]: https://guides.cocoapods.org/syntax/podfile.html
+[1]: https://guides.cocoapods.org/syntax/podfile.html
 
 [cocoapods]: https://cocoapods.org/
 
