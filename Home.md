@@ -73,13 +73,6 @@ Diving into the networking and model layers for data-driven apps:
 * Camera and Camera Roll
   * [[Quick start|Camera Quickstart]]
 
-## Common Tasks
-
-The following tasks may be helpful in completing some of the homeworks
-
-* [[Loading images asynchronously|Network-Programming#example-loading-images-asynchronously-using-uiimageviewafnetworking]]
-* [[Implementing pull-to-refresh in a table view|Table-View-Guide#implementing-pull-to-refresh-with-uirefreshcontrol]]
-
 ## Other topics
 * [[Services and Frameworks|Services-Frameworks]]
 
