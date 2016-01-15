@@ -8,7 +8,7 @@
 
 This guide is a quick intro to setting up and using a simple collection view with Interface Builder.
 
-## Collection view setup
+## Collection View Setup
 
 We'll be creating a grid of colors with labels showing their RGB values.
 
@@ -105,7 +105,7 @@ extension ViewController: UICollectionViewDataSource {
 
 Build and run the demo app. Your collection view should show 100 colored cells, each with a different hue and a label of its RGB value.
 
-## Configuring how the items in a `UICollectionView` are arranged (`UICollectionViewLayout`)
+## Configuring the Layout
 
 In the `UICollectionView` setup demo, we're left with gaps between each cell. In order to adjust that, we need to change the `UICollectionViewLayout`.
 
