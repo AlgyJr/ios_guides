@@ -65,6 +65,8 @@ class ViewController: UIViewController, UITableViewDataSource {
 }
 ```
 
+### Final Result
+
 ![Progress HUD][progress-HUD]
 
 [1]: Table-View-Guide#example-load-data-from-a-rest-api-and-display-it-in-your-table
