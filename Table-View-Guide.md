@@ -1328,9 +1328,8 @@ Apple documentation does specify that [`UIRefreshControl`][uirefreshcontrol] is 
 ## Propagating events from within a custom cell
 _to be completed..._
 
-##Adding Infinite Scroll Behavior to your List (UITableView)
+## Adding Infinite Scroll to your List
 
-###Overview
 As a user is going through the list, they will eventually reach the end. When they reach the end, the service may still have more data for them. In order to provide the user with a smooth experience, and avoid pagination, we implement infinite scrolling to a list view.
 
 Implementing infinite scroll behavior involves the following:
