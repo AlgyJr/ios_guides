@@ -1,6 +1,6 @@
 Any view controller may present another view controller with some animation, commonly sliding up from below or fading in. Of course, as in Inception, that view controller can present another view controller which can present another view controller and so on. However, the common use case is to present a single view controller that will be dismissed shortly, as depicted below.
 
-<img src="http://i.imgur.com/m0Mn9DU.gif" width="250" height="443" />&nbsp;&nbsp;<img src="http://i.imgur.com/4wESHoK.gif" width="250" height="443" />&nbsp;&nbsp;<img src="http://i.imgur.com/KpX7FcB.gif" width="250" height="443" />
+<img src="http://i.imgur.com/4wESHoK.gif" width="250" height="443" />&nbsp;&nbsp;<img src="http://i.imgur.com/KpX7FcB.gif" width="250" height="443" />
 
 This is a quick guide to presenting and dismissing view controllers in Storyboard.
 
