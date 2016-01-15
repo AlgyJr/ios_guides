@@ -1218,12 +1218,6 @@ class Story {
 ```
 <a href="http://imgur.com/ljCaUch"><img src="http://i.imgur.com/ljCaUchl.png" title="source: imgur.com" /></a>
 
-We extend this basic example in a few ways in some of the other guides:
-
-* [Showing a progress/loading HUD](CocoaPods#example-using-cocoapods-to-integrate-a-progress-hud-library)
-* [Loading images asynchronously](Network-Programming#example-loading-images-asynchronously-using-uiimageviewafnetworking)
-* [Adding a Pull-to-Refresh Control to your List (UITableView)](#adding-a-pull-to-refresh-control-to-your-list-uitableview)
-
 ## Handling updates to your data
 _to be completed..._
 
@@ -1232,7 +1226,6 @@ _to be completed..._
 
 ## Adding Pull-to-Refresh
 
-###Overview
 Pull-to-refresh is a ubiquitous method to update your list with the latest information. Apple provides developers with [`UIRefreshControl`][uirefreshcontrol], as a standard way to implement this behavior. As `UIRefreshControl` is for lists, it can be used with `UITableView`, `UICollectionView`, and `UIScrollView`.
 
 [uirefreshcontrol]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIRefreshControl_class/index.html
@@ -1253,12 +1246,11 @@ In order to implement a `UIRefreshControl`, we need an instance of `UIRefreshCon
 
 ```swift
 override func viewDidLoad() {
-	super.viewDidLoad()
+    super.viewDidLoad()
 	
-	// Initialize a UIRefreshControl
-	let refreshControl = UIRefreshControl()
+    // Initialize a UIRefreshControl
+    let refreshControl = UIRefreshControl()
 }
-
 ```
 
 ####Implement an action to update the list
@@ -1267,13 +1259,12 @@ We need to implement an action for handling our list. It's common to fire a netw
 ```swift
 func refreshControlAction(refreshControl: UIRefreshControlAction) {
 
-	/*
-		// Fetch latest data and in the callback:
-			// Update data source with latest data
-			// Call self.tableView.reloadData()
-			// Call refreshControl.endRefreshing()
-	*/
-	
+    // Make network request to fetch latest data
+
+    // Do the following when the network request comes back successfully:
+    // Update tableView data source
+    self.myTableView.reloadData()
+    refreshControl.endRefreshing()	
 }
 ```
 
@@ -1282,11 +1273,11 @@ With the action implemented, it now needs to be binded to the `UIRefreshControl`
 
 ```swift
 override func viewDidLoad() {
-	super.viewDidLoad()
+    super.viewDidLoad()
 	
-	// Initialize a UIRefreshControl
-	let refreshControl = UIRefreshControl()
-	refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
+    // Initialize a UIRefreshControl
+    let refreshControl = UIRefreshControl()
+    refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
 }
 ```
 
@@ -1295,12 +1286,12 @@ The `UIRefreshControl` now needs to be added to the list view.
 
 ```swift
 override func viewDidLoad() {
-	super.viewDidLoad()
+    super.viewDidLoad()
 	
-	// Initialize a UIRefreshControl
-	let refreshControl = UIRefreshControl()
-	refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
-	tableView.insertSubview(refreshControl, atIndex: 0)
+    // Initialize a UIRefreshControl
+    let refreshControl = UIRefreshControl()
+    refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
+    tableView.insertSubview(refreshControl, atIndex: 0)
 }
 ```
 
