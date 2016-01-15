@@ -14,7 +14,7 @@ Ctrl-drag from the button to the view controller that you want to present modall
 
 Click on the segue in the Storyboard and open the Properties view to choose the animation type or disable animation.
 
-The presentation style of a view controller governs its appearance onscreen. Full screen presentation style covers the entire screen. The PageSheet & FormSheet styles allow portions of the underlying view controller to show through.
+The presentation style of a view controller governs its appearance onscreen. Full screen presentation style covers the entire screen. The Page Sheet and Form Sheet styles allow portions of the underlying view controller to show through.
 
 The standard transition styles for presenting the view controller can be supplemented with custom transitions of your own.
 
