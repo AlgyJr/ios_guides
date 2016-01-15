@@ -1230,7 +1230,7 @@ _to be completed..._
 ### Animating changes
 _to be completed..._
 
-##Adding a Pull-to-Refresh Control to your List (UITableView)
+## Adding Pull-to-Refresh
 
 ###Overview
 Pull-to-refresh is a ubiquitous method to update your list with the latest information. Apple provides developers with [`UIRefreshControl`][uirefreshcontrol], as a standard way to implement this behavior. As `UIRefreshControl` is for lists, it can be used with `UITableView`, `UICollectionView`, and `UIScrollView`.
@@ -1328,7 +1328,7 @@ Apple documentation does specify that [`UIRefreshControl`][uirefreshcontrol] is 
 ## Propagating events from within a custom cell
 _to be completed..._
 
-## Adding Infinite Scroll to your List
+## Adding Infinite Scroll
 
 As a user is going through the list, they will eventually reach the end. When they reach the end, the service may still have more data for them. In order to provide the user with a smooth experience, and avoid pagination, we implement infinite scrolling to a list view.
 
