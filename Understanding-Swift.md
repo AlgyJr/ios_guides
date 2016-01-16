@@ -461,6 +461,7 @@ Type casting changes the type of a particular instance to another compatible typ
    let myView = myTableView as UIView
    ```
 2. **Conditional conversion** with `as?` => This is a cautious cast. If the cast fails, it will return `nil`. This is needed when downcasting from a parent type to a child type.
+
    ```swift
    // If myView is actually a tableView, the downcast will succeed, otherwise it will fail safely
    if let myTableView = myView as? UITableView {
@@ -469,7 +470,6 @@ Type casting changes the type of a particular instance to another compatible typ
        print("The downcast failed!")   	   
    }
    ```
-
 3. **Forced conversion** with `as!` => This is a dangerous cast that you should avoid using. If the cast fails, this will crash your app. Use this cast carefully.
 
    ```swift
