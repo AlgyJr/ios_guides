@@ -64,6 +64,11 @@ UITableView](Table-View-Guide#reusing-uitableviewcells).  You can add a
 your view controller in interface builder or by programmatically adding
 it.
 
+The delegate property of search bar must be set to an object that 
+implements UISearchBarDelegate. Typically you make your view controller
+implement UISearchBarDelegate and set `searchBar.delegate = self`
+in `viewDidLoad` method.
+
 <a href="http://imgur.com/TbVI3Yv"><img src="http://i.imgur.com/TbVI3Yv.gif" title="source: imgur.com" /></a>
 
 The code to implement the search behavior is as follows.  We maintain an
@@ -126,6 +131,34 @@ look like paired with a collection view.
 <a href="http://imgur.com/PKY6m7O"><img src="http://i.imgur.com/PKY6m7O.gif" title="source: imgur.com" /></a>
 
 The code for this is essentially the same as in the case with table views.
+
+### Cancelling out of Search and hiding keyboard
+
+Once user taps on search bar, the keyboard will appear, and you will notice
+that it won't go away when you tap on X.
+You can show Cancel button when user taps on search bar, and when user taps
+on Cancel, hide the keyboard.
+
+There is a nifty `searchBarTextDidBeginEditing` method for UISearchBarDelegate
+that gets called when user starts editing search text. You can show Cancel
+button in that method:
+```swift
+func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+}
+```
+
+When user taps on cancel button, delegate's `searchBarCancelButtonClicked`
+method gets called. At this point, you can hide the Cancel button,
+clear existing text in search bar and hide the keyboard like this:
+
+```swift
+func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+}
+```
 
 ## Using UISearchDisplayControllers
 _NB: The `UISearchDisplayController` is deprecated in iOS 8.0.  You may
