@@ -1,3 +1,5 @@
+<a href="http://imgur.com/8YFquIY"><img src="http://i.imgur.com/8YFquIY.gif" title="source: imgur.com" /></a>
+
 ## Overview
 Providing a way for users to search through a collection of items is a
 fairly common task in iOS projects.  A standard interface for
@@ -16,7 +18,7 @@ not provide as many built-in features as the other methods.
   help manage a search interface.**  The `UISearchDisplayController`
 allows you to present a standard search interface with built-in
 animations.  This method forces you to display search results in a table
-view.
+view. - **DEPRECATED**
 
 * **Using a [`UISearchController`][uisearchcontroller] to help manage a
   search interface.**  The `UISearchController`  is a newer controller
@@ -50,12 +52,9 @@ is typing out a query
 if the search operation is slow (e.g. requires making a slow API call)
 you'll want to wait until the user taps the search button before
 updating the search results.
-* [`selectedScopeButtonIndexDidChange`][scopechanged] - you'll want to
-  update the search results if the user changes search scopes
 
 [textdidchange]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UISearchBarDelegate_Protocol/index.html#//apple_ref/occ/intfm/UISearchBarDelegate/searchBar:textDidChange:
 [searchbuttonclicked]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UISearchBarDelegate_Protocol/index.html#//apple_ref/occ/intfm/UISearchBarDelegate/searchBarSearchButtonClicked:
-[scopechanged]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UISearchBarDelegate_Protocol/index.html#//apple_ref/occ/intfm/UISearchBarDelegate/searchBar:selectedScopeButtonIndexDidChange:
 
 ### Example searching a table
 We start out with a single view application with [a basic
@@ -160,188 +159,6 @@ func searchBarCancelButtonClicked(searchBar: UISearchBar) {
 }
 ```
 
-## Using UISearchDisplayControllers
-_NB: The `UISearchDisplayController` is deprecated in iOS 8.0.  You may
-wish to use the `UISearchController` instead if you are targetting
-exclusively iOS 8 and above._
-
-A `UISearchDisplayController` provides more built-in logic for
-presenting a search interface&mdash;this is a specific interface for
-searching that overlays on top of the current view controller when the
-user taps on the search bar.  As part of the search interface **a
-`UISearchDisplayController` will display the search results in its own
-table view**.  As a result there are four delegates that are involved
-when working with a UISearchDisplayController
-
-* the search display controller's
-  [`delegate`](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UISearchDisplayController_Class/#//apple_ref/occ/instp/UISearchDisplayController/delegate)
-which is can respond to the search interface being presented/dismissed
-and to changes in search text/scope
-* the [`searchResultsDataSource`](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UISearchDisplayController_Class/#//apple_ref/occ/instp/UISearchDisplayController/searchResultsDataSource) for the search results table view
-* the [`searchResultsDelegate`](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UISearchDisplayController_Class/#//apple_ref/occ/instp/UISearchDisplayController/searchResultsDelegate) for the search results table view
-* the associated search bar's delegate which will let you respond to
-  lower level events on the search bar itself
-
-### Example searching a table
-
-To use of a search display controller you can drag the `Search Bar and
-Search Display Controller` item from the Object Library into your view
-controller.  This will automatically set the `delegate`,
-`searchResultsDataSource`, and `searchResultsDelegate` to this view
-controller.  This is typical, but you may want to change these bindings
-depending on your use case.  Note that this also adds a `UISearchBar` to
-the interface and sets the search display controller's search bar outlet
-to it.
-
-<a href="http://imgur.com/Ud8Rvi1"><img src="http://i.imgur.com/Ud8Rvi1.gif" title="source: imgur.com" /></a>
-
-You can also instantiate a search display controller programatically by
-[specifying a search bar and containing view
-controller](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UISearchDisplayController_Class/#//apple_ref/occ/instm/UISearchDisplayController/initWithSearchBar:contentsController:).
-When creating a search display controller programatically, you'll have
-to set all the delegates manually.
-
-In either case (instantiation via Interface Builder or programatically),
-the containing view controller will have its
-[`searchDisplayController`](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIViewController_Class/index.html#//apple_ref/occ/instp/UIViewController/searchDisplayController)
-property set to newly created search display controller.
-
-Here's what the code to implement the search behavior might look like.
-In this case (and typically) we take advantage of the fact that our
-`ViewController` already implements `UITableViewDataSource` and thus the
-same methods can be used to return the appropriate rows in the search
-results.  Notice however that the search display controller's
-[`searchResultsTableView`](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UISearchDisplayController_Class/#//apple_ref/occ/instp/UISearchDisplayController/searchResultsTableView)
-and our main table view are two different tables.  We check which table
-is calling our `UITableViewDataSource` methods and return the
-appropriate data (either the base data set or the filtered search
-results).
-
-Finally we update our `filteredData` in the delegate method
-[`shouldReloadTableForSearchString`](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UISearchDisplayDelegate_Protocol/index.html#//apple_ref/occ/intfm/UISearchDisplayDelegate/searchDisplayController:shouldReloadTableForSearchString:)
-
-```swift
-class ViewController: UIViewController, UITableViewDataSource, UISearchDisplayDelegate {
-    @IBOutlet weak var mainTableView: UITableView!
-
-    let data = ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX",
-        "Philadelphia, PA", "Phoenix, AZ", "San Diego, CA", "San Antonio, TX",
-        "Dallas, TX", "Detroit, MI", "San Jose, CA", "Indianapolis, IN",
-        "Jacksonville, FL", "San Francisco, CA", "Columbus, OH", "Austin, TX",
-        "Memphis, TN", "Baltimore, MD", "Charlotte, ND", "Fort Worth, TX"]
-
-    var filteredData: [String]!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        mainTableView.dataSource = self
-        filteredData = data
-    }
-
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // we dequeue from the mainTableView since the one passed in might be the
-        // tableView for the searchDipslayController with which we never registered
-        // a reusable protoype cell
-        let cell = self.mainTableView.dequeueReusableCellWithIdentifier("TableCell") as UITableViewCell
-
-        if tableView == searchDisplayController?.searchResultsTableView {
-            //search results table
-            cell.textLabel?.text = filteredData[indexPath.row]
-        } else {
-            // main table
-            cell.textLabel?.text = data[indexPath.row]
-        }
-
-        return cell
-    }
-
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == searchDisplayController?.searchResultsTableView {
-            //search results table
-            return filteredData.count
-        }
-        // main table
-        return data.count
-    }
-
-    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String!) -> Bool {
-        filteredData = searchString.isEmpty ? data : data.filter({(dataString: String) -> Bool in
-            return dataString.rangeOfString(searchString, options: .CaseInsensitiveSearch) != nil
-        })
-        return true
-    }
-}
-```
-
-Here's what this looks like when running.  Notice that after tapping on
-the search bar, the search display controller does an animation to
-present the "search interface".  Also notice that the search display
-controller dims the current table view before presenting its own search
-results table.
-
-<a href="http://imgur.com/oL57lAj"><img src="http://i.imgur.com/oL57lAj.gif" title="source: imgur.com" /></a>
-
-### Example searching a collection view
-A key drawback of using the search display controller is that it forces
-your search results to be in table view.  For example, we cannot
-implement the inline search of a collection view as above without
-subclassing `UISearchDisplayController` and a lot of extra work.
-Instead here is what the default behavior looks like.
-
-<a href="http://imgur.com/oslCSN6"><img src="http://i.imgur.com/oslCSN6.gif" title="source: imgur.com" /></a>
-
-In the code for this our `ViewController` now has to manage both the
-contents of the collection view and the results table view.
-
-```swift
-class ViewController: UIViewController, UICollectionViewDataSource, UISearchBarDelegate {
-    @IBOutlet weak var collectionView: UICollectionView!
-
-    let data = ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX",
-        "Philadelphia, PA", "Phoenix, AZ", "San Diego, CA", "San Antonio, TX",
-        "Dallas, TX", "Detroit, MI", "San Jose, CA", "Indianapolis, IN",
-        "Jacksonville, FL", "San Francisco, CA", "Columbus, OH", "Austin, TX",
-        "Memphis, TN", "Baltimore, MD", "Charlotte, ND", "Fort Worth, TX"]
-
-    var filteredData: [String]!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        collectionView.dataSource = self
-        filteredData = data
-        searchDisplayController?.searchResultsTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "TableCell")
-    }
-
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
-    }
-
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TextCell", forIndexPath: indexPath) as TextCell
-        cell.textLabel.text = data[indexPath.row]
-        return cell
-    }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
-        let cell = tableView.dequeueReusableCellWithIdentifier("TableCell") as UITableViewCell
-        cell.textLabel?.text = filteredData[indexPath.row]
-        return cell
-    }
-
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredData.count
-    }
-
-    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String!) -> Bool {
-        filteredData = searchString.isEmpty ? data : data.filter({(dataString: String) -> Bool in
-            return dataString.rangeOfString(searchString, options: .CaseInsensitiveSearch) != nil
-        })
-        return true
-    }
-}
-
-```
-
 ## Using UISearchControllers (iOS 8+)
 A newer way to manage the presentation of a search interface (only
 available in iOS 8 and above) is via the `UISearchController`.  This
@@ -441,6 +258,9 @@ search display controller example, we are using the same table view to
 display the search results instead of overlaying of a separate table
 view.  However, unlike when working with just the search bar, we still
 have the built in animation when transitioning to the search interface.
+
+Also, you get the logic to show Cancel button and hide keyboard when
+user taps on cancel button for free when you use this.
 
 <a href="http://imgur.com/AgUYVoN"><img src="http://i.imgur.com/AgUYVoN.gif" title="source: imgur.com" /></a>
 
