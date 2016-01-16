@@ -452,31 +452,31 @@ Type casting changes the type of a particular instance to another compatible typ
 
 1. **Guaranteed conversion** with `as` => This is the safest cast. It will never fail since the compiler can guarantee the cast will work. Use this when you are upcasting from a child class to its parent or doing something like `1 as Float`.
 
-   ```swift
-   // Guaranteed conversion as the compiler can verify this will succeed
-   let myFloat = 1 as Float
+    ```swift
+    // Guaranteed conversion as the compiler can verify this will succeed
+    let myFloat = 1 as Float
 
-   // Guaranteed conversion as upcasting from a type to its parent type is safe 
-   // UIView is a parent of UITableView
-   let myView = myTableView as UIView
-   ```
+    // Guaranteed conversion as upcasting from a type to its parent type is safe 
+    // UIView is a parent of UITableView
+    let myView = myTableView as UIView
+    ```
 2. **Conditional conversion** with `as?` => This is a cautious cast. If the cast fails, it will return `nil`. This is needed when downcasting from a parent type to a child type.
 
-   ```swift
-   // If myView is actually a tableView, the downcast will succeed, otherwise it will fail safely
-   if let myTableView = myView as? UITableView {
-       print("The downcast succeeded!")
-   } else {
-       print("The downcast failed!")   	   
-   }
-   ```
+    ```swift
+    // If myView is actually a tableView, the downcast will succeed, otherwise it will fail safely
+    if let myTableView = myView as? UITableView {
+        print("The downcast succeeded!")
+    } else {
+        print("The downcast failed!")   	   
+    }
+    ```
 3. **Forced conversion** with `as!` => This is a dangerous cast that you should avoid using. If the cast fails, this will crash your app. Use this cast carefully.
 
-   ```swift
-   // DANGEROUS: If myView is actually a tableView, the downcast will succeed
-   // Otherwise it will crash the app
-   let myTableView = myView as! UITableView
-   ```
+    ```swift
+    // DANGEROUS: If myView is actually a tableView, the downcast will succeed
+    // Otherwise it will crash the app
+    let myTableView = myView as! UITableView
+    ```
 
 ## Understanding the Question Mark (?)
 
