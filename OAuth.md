@@ -8,13 +8,24 @@ In this guide we will try to build our own Twitter App. We will use OAuth to aut
 
 ### Register your app on Twitter's developer portal
 
-the first thing you need to do is create a new app on [twitter's developer portal](apps.twitter.com) and create a new app. 
+The first thing you need to do is logon to [twitter's developer portal](apps.twitter.com) and create a new app. The callback field is optional, but enter some value in there as the authentication will not work if it is left empty. We will change it programmatically later.
 
 <img src="https://i.imgur.com/iIL9d5W.png" alt="Twitter Oauth Demo" width="600" height="400" />
 
+Now check the permissions tab. The default permissions the Twitter gives are Read and Write, meaning you app can hit twitter's API's to send and recieve tweets. This is exactly what we are looking for our OAuth Twitter demo so leave this as is. 
 
+<img src="https://i.imgur.com/gW7320Q.png" alt="Twitter Oauth Demo" width="600" height="400" />
 
-- Screenshots for app (api endpoints, secrets, permissions) 
+Click on the Keys and Access token Tab. Copy the the API Key and API secret. We will need these later. 
+
+<img src="https://i.imgur.com/HzNZTzq.png" alt="Twitter Oauth Demo" width="600" height="400" />
+
+Finally, back on the details tab, copy the request token, Authorization token and Access Token API URL's. This is what we will use to perform the authentication in our app. More on this later. 
+
+<img src="http://i.imgur.com/oDhtkGh.png" alt="Twitter Oauth Demo" width="600" height="400" />
+
+### Building your demo app in xcode
+
 - Create app in swift 
 - put keys in
 - login page for twitter
