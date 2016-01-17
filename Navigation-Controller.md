@@ -1,9 +1,12 @@
-<a href="http://imgur.com/7STmvxL"><img src="http://i.imgur.com/7STmvxL.gif" title="source: imgur.com" /></a>
+## Overview
+
 
 In a typical iOS project you will create one view controller for each
 "screen" in your application.  This means you need a way to coordinate
 the interaction of these view controllers and the presentation of their
 associated views.
+
+## Navigation Controller
 
 A common way to manage a group of view controllers that are associated
 with a hierarchy of content is to use a
@@ -17,6 +20,8 @@ The navigation controller is one example of a built-in UIKit [container
 view controller][containervc].  An in-depth guide by Apple covering
 navigation controllers and all other built-in container view controllers
 can be found [here][uikitcontainers].
+
+<a href="http://imgur.com/7STmvxL"><img src="http://i.imgur.com/7STmvxL.gif" title="source: imgur.com" /></a>
 
 [stack]: http://en.wikipedia.org/wiki/Stack_%28abstract_data_type%29
 [containervc]: https://developer.apple.com/library/ios/featuredarticles/ViewControllerPGforiPhoneOS/CreatingCustomContainerViewControllers/CreatingCustomContainerViewControllers.html
