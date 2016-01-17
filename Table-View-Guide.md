@@ -1257,7 +1257,7 @@ override func viewDidLoad() {
 We need to implement an action for handling our list. It's common to fire a network request to get updated data, so below we're assuming that `fetchStories` exists. Make sure to call self.tableView.reloadData and refreshControl.endRefreshing after updating your data source.
 
 ```swift
-func refreshControlAction(refreshControl: UIRefreshControlAction) {
+func refreshControlAction(refreshControl: UIRefreshControl) {
 
     // Make network request to fetch latest data
 
