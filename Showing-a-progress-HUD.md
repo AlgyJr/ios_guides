@@ -2,7 +2,7 @@
 
 In mobile apps, it's helpful to give the user an indication that content is being loaded while the app sends a network request to get new data. A common method is to use a **Progress HUD (Heads Up Display)** while fetching the data. We can use CocoaPods to install a library that provides us with a convenient way to show a loading indicator while our network request is pending.
 
-#### Sample Progress HUD:
+#### Sample Progress HUD
 
 ![Progress HUD][progress-HUD]
 
