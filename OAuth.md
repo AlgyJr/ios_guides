@@ -12,3 +12,10 @@ the first thing you need to do is create a new app on [twitter's developer porta
 
 <img src="https://i.imgur.com/iIL9d5W.png" alt="Twitter Oauth Demo" width="600" height="400" />
 
+
+
+- Screenshots for app (api endpoints, secrets, permissions) 
+- Create app in swift 
+- put keys in
+- login page for twitter
+- table view for tweets
