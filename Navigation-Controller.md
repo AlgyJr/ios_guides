@@ -24,7 +24,7 @@ can be found [here][uikitcontainers].
 <a href="http://imgur.com/7STmvxL"><img src="http://i.imgur.com/7STmvxL.gif" title="source: imgur.com" /></a>
 
 [stack]: http://en.wikipedia.org/wiki/Stack_%28abstract_data_type%29
-[containervc]: https://developer.apple.com/library/ios/featuredarticles/ViewControllerPGforiPhoneOS/CreatingCustomContainerViewControllers/CreatingCustomContainerViewControllers.html
+[containervc]: https://developer.apple.com/library/ios/featuredarticles/ViewControllerPGforiPhoneOS/ImplementingaContainerViewController.html
 [navigationcontroller]: https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UINavigationController_Class/index.html
 [uikitcontainers]: https://developer.apple.com/library/ios/documentation/WindowsViews/Conceptual/ViewControllerCatalog/Introduction.html#//apple_ref/doc/uid/TP40011313-CH1-SW1
 
@@ -1003,4 +1003,3 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 <a href="http://imgur.com/W4XwDwF"><img src="http://i.imgur.com/W4XwDwF.gif" title="source: imgur.com" /></a>
 
 <!-- TODO: ## Example: implementing a search bar in the navigation bar -->
-
