@@ -54,8 +54,8 @@ First we'll set up our table to show the list of names.  Starting with
 the Xcode `Single View Application` template.  We add a table view to
 the initial view controller that Xcode has generated and add a single prototype cell that just uses the built-in `UITableViewCell`
 class.  We hook up our Table View's `dataSource` property to finish the
-initial setup.  If you are unfamiliar with how work with table views,
-please refer to the [[table view guide|Table View Guide]].
+initial setup.  If you are unfamiliar with table views please refer to 
+the [[table view guide|Table View Guide]].
 
 <a href="http://imgur.com/WBH4TcV"><img src="http://i.imgur.com/WBH4TcV.png" title="source: imgur.com" /></a>
 
