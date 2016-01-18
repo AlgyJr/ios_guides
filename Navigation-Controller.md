@@ -97,10 +97,10 @@ class ViewController: UIViewController, UITableViewDataSource {
 Next we'll need to add a navigation controller.  When we instantiate a
 navigation controller, we must also set its [_root view
 controller_][rootvc].  This is the first view controller that will be
-shown when the navigation controller is loaded.  Think of of it as the
+shown when the navigation controller is loaded.  Think of it as the
 "home page" in our web browser analogy.
 
-One way to to add a navigation controller is by dragging a `Navigation
+One way to add a navigation controller is by dragging a `Navigation
 Controller` from the object library into our storyboard.  You'll notice
 that if you do this, Xcode will automatically create a separate view
 controller to act as the root view controller.  We'll want to set the
@@ -160,21 +160,21 @@ bar to indicate that it will be shown as part of the navigation stack.
 <a href="http://imgur.com/WqWi2kL"><img src="http://i.imgur.com/WqWi2kL.gif" title="source: imgur.com" /></a>
 
 It is important that we select the `show` segue since this corresponds
-to the navigation controller pushing a new view controller the onto the
+to the navigation controller pushing a new view controller onto the
 stack.  The other segues correspond to other ways of transitioning to a
 new view controller including presenting it modally.
 
 Since we initiated our control-drag from the prototype cell, the
 `Selection Segue` group was available.  Selecting a segue under this
 group means "respond to the selection event with this transition." Other
-events be available depending on the control that initiates the segue.
+events could be available depending on the control that initiates the segue.
 For example control-dragging from a button will show possible `Action
-Segues`.  Running our application right now we see the following.
+Segues`.  Running our application right now shows the following.
 
 <a href="http://imgur.com/CmFK6Bw"><img src="http://i.imgur.com/CmFK6Bw.gif" title="source: imgur.com" /></a>
 
 #### Configuring a view controller before it is pushed
-You'll notice at least one problem imediately with the current behavior:
+You'll notice at least one problem immediately with the current behavior:
 the name we selected is not populated in first and last name fields of
 our `NameController`.  We'll need to configure the name controller
 before it gets displayed on the screen.  We do this by first providing
@@ -184,7 +184,7 @@ respond should a segue with this identifier be triggered.
 
 [prepareforsegue]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIViewController_Class/index.html#//apple_ref/occ/instm/UIViewController/prepareForSegue:sender:
 
-We give the segue an identifier by selecting it story board and using
+We give the segue an identifier by selecting the storyboard and using
 the Attributes Inspector.  Notice that our prototype cell is also
 highlighted to indicate that segue will be trigged by selecting a cell.
 
@@ -197,7 +197,7 @@ response a user selecting a cell, and thus the `sender` parameter will
 be the cell.  If for example the segue had been triggered by a button
 tap, the `sender` would be the button.
 
-The `segue` paramater of `prepareForSegue` gives us access to the
+The `segue` parameter of `prepareForSegue` gives us access to the
 `destinationViewController` so that we can configure the new view
 controller before it is displayed.  In this case we know that for this
 particular segue the `destinationViewController` will be a
@@ -253,7 +253,7 @@ controller that is one below the current view controller on the
 navigation stack.
 
 First off, we'll need a way for the user to indicate they want to save
-the change.  We can add button to the right side of the navigation bar
+the change.  We can add a button to the right side of the navigation bar
 in our name controller by dragging a `Navigation Item` and then a `Bar
 Button Item` from the Object Library.
 
@@ -340,7 +340,7 @@ Notice that we were able to obtain a reference to the name controller in
 `saveName` by using `segue.sourceViewController`.  This makes sense
 because the name controller is the source of the _unwind segue_, whereas
 the destination controller is the root view controller.  The other thing
-to note is that we had to maintain an aditional state variable
+to note is that we had to maintain an additional state variable
 `selectedIndexPath` to help us remember which name it was we were
 editing.  Putting everything together we get the following
 functionality:
@@ -368,7 +368,7 @@ storyboard file base name`.
 Without the storyboard, we'll have to set up our window and root view
 controller manually by changing the `didFinishLaunchingWithOptions`
 method in our `AppDelegate`.  More on the `AppDelegate` can be found in
-the [[basic applicaton architecture guide|Application Architecture]].
+the [[basic application architecture guide|Application Architecture]].
 
 
 
@@ -392,7 +392,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 Notice that we made use of the main `ViewController` class that Xcode
 generated for us.  Now we can add our table of names to this view
 controller.  We do everything programmatically here, but we could have
-just as easily set up a seperate `.xib` file for this view controller.
+just as easily set up a separate `.xib` file for this view controller.
 If you are unfamiliar with table views please refer to
 the [[table view guide|Table View Guide]].
 
@@ -442,7 +442,7 @@ controller with the table.
 
 We can do this all in code by simply instantiating a
 `UINavigationController` and setting its properties.  Since we want the
-navigation controller to be first view controller shown when the app is
+navigation controller to be the first view controller shown when the app is
 loaded, we can do this in our `AppDelegate`'s
 `didFinishLaunchingWithOptions` method where we also set the
 _application window_'s root view controller to be the navigation
@@ -474,7 +474,7 @@ grey navigation bar at the top.
 #### Initializing and pushing a view controller onto the stack
 As in our storyboard example, we'll need to create another view
 controller class to display and allow the user to edit an individual
-name.  Instead of laying out our view programatically as we did in the
+name.  Instead of laying out our view programmatically as we did in the
 main `ViewController` class, we'll create new class `NameController` and
 associated `.xib` by selecting `File -> New -> File... -> iOS -> Source
 -> Cocoa Touch Class`.  Be sure to tick in the `Also Create XIB file`.
@@ -574,7 +574,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 }
 ```
 
-Notice the we are able to obtain a reference to the navigation
+Notice that we are able to obtain a reference to the navigation
 controller via `self.navigationController`.  This is set automatically
 for us by UIKit when any view controller comes onto the navigation
 stack.  In this case, it happened when we set this view controller as
@@ -605,7 +605,7 @@ Since there's no such thing as an _unwind segue_ without a storyboard,
 we'll have to implement our own mechanism for sending the new name back
 to the main `ViewController`.
 
-The typical pattern to accomplish this in iOS programming is to use a
+The typical pattern to accomplish this in iOS programmatically is to use a
 [delegate][delegatepattern].  What this means in this case is that the
 `NameController` needs to keep a reference to the main `ViewController`
 so that it can inform the main `ViewController` when the user has saved
@@ -618,7 +618,7 @@ there is no way in general, to tell what view controller has
 instantiated it and pushed it onto the navigation stack (if there is
 even a navigation stack).  For example, later on, we might want to reuse
 `NameController` to edit names a different situation where we
-instatiated it and presented it from a view controller class we haven't
+instantiated it and presented it from a view controller class we haven't
 even created at this time.
 
 Thus maintaining a reference to something of type `ViewController` would
