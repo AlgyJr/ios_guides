@@ -213,7 +213,7 @@ configuration.
 As before, the method `didPickColor` updates our background color and
 dismisses the `ColorPickerViewController`.
 
-```
+```swift
 class ViewController: UIViewController {
     @IBAction func openColorPickerTapped(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
@@ -284,26 +284,58 @@ An another construct used to propagate events in iOS is the
 pattern that allows a class to register a method (_action_ or
 _selector_) to be executed on some object (_target_) at some point
 later.  This pattern is used throughout many iOS libraries for example
-the following code tells the `button` to call `myObject.myMethod()` when
+the following code tells the `button` to call `self.onButtonTap()` when
 it is tapped.
 
+This pattern is pretty much the same as creating an `@IBAction`
+from the interface builder in XCode; however, this is done in code. 
+It's used when you have to dynamically create view objects in code 
+and add actions to it based on control events.
+
+In the following example, you're creating a button dynamically in
+code.
+
 ```swift
-let button = UIButton()
-button.addTarget(myObject, action: "myMethod", forControlEvents: .TouchUpInside)
-// add button to view hierarchy
+class CodePathViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let button = UIButton()
+        button.addTarget(self, action: "onButtonTap", forControlEvents: .TouchUpInside)
+        button.frame = CGRectMake(0, 0, 300, 500)
+
+        //Add button to the view
+        self.view.addSubview(letterButton)
+    }
+
+    func onButtonTap() {
+        print("Button Tapped!")
+    }
+}
 ```
 
-In Swift, it is not possible to implement a method that can _accept_ a
-target-action since `NSObject`'s [`performSelector`][performselector]
-methods and the [`NSInvocation`][nsinvocation] APIs are disabled in
-Swift.  This was because these APIs do not allow the compiler to check
-for type safety.  Another downside is that its is not easy to use the
-target-action pattern to invoke methods that require more than two
-parameters.
+Let's take a look at the parameters of `addTarget` method:
+* target - The target parameter is the object that is going to respond to the control event.
+           In this case, the event is `.TouchUpInside` (Tap). Usually, the target is the
+           object of the ViewController class in which the button was created.
+           In the example, we reference the object of the ViewController class with the
+           keyword self. 
 
-[nsinvocation]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSInvocation_Class/index.html
-[performselector]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Protocols/NSObject_Protocol/index.html#//apple_ref/occ/intfm/NSObject/performSelector:
+* action - The action parameter is simply the name of the method that needs to be invoked in
+           the target object.
+
+* forControlEvents - This is where you pass the type of event for your button.
+                     Here's a list of [events][events] you can use for UIButton.
+
+To simplify, in the above example, we let the button know that it has to call the instance
+method `onButtonTap` of the class `CodePathViewController` when it is tapped.
+
+One downside is that its is not easy to use the target-action pattern to invoke methods 
+that require two or more parameters.
+
 [targetaction]: https://developer.apple.com/library/ios/documentation/General/Conceptual/Devpedia-CocoaApp/TargetAction.html
+[events]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIControl_Class/index.html#//apple_ref/doc/constant_group/Control_Events
 
 _TODO: rewrite example in Objective-C to use target-action pattern_
 
