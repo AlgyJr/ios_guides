@@ -26,6 +26,12 @@ Finally, back on the details tab, copy the request token, Authorization token an
 
 ### Building your demo app in xcode
 
+Open xcode and create a new single view application. Navigate to Build Phases and add the Accounts and Social frameworks. We will be using these frameworks to build our app. 
+
+%RED% screenshot %ENDCOLOR%
+
+For the purpose of this guide, we need two files. A view controller to let users login and Twitter Client file, that implements the logic to query Twitter API's to send and receive tweets. 
+
 - Create app in swift 
 - put keys in
 - login page for twitter
