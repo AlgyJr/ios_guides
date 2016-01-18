@@ -632,15 +632,15 @@ represent something that is able to respond events from
 `UITableView`.
 
 Our `NameControllerDelegate` protocol defines a single method
-`didSaveName` that will be called when the user has initiates a save
-action in our `NameController`.  In order call this method, we'll need
+`didSaveName` that will be called when the user has initiated a save
+action in our `NameController`.  In order to call this method, we'll need
 to keep a reference to the `delegate` in our `NameController`.
 
 Lastly, we need to add a save button to our navigation bar and set its
 action to call a method `saveButtonTapped` in our `NameController` that
 will propagate the event to our `NameControllerDelegate`.
 
-Putting everything together the code looks like this:
+After putting everything together the code looks like this:
 
 ```swift
 import UIKit
@@ -732,10 +732,10 @@ cycles that lead to memory leaks.  An extensive discussion of ARC can be
 found [here][arc2].
 
 * The `navigationItem` property of `NameController` is used by the
-  navigation controller to to determine what to display in the
+  navigation controller to determine what to display in the
 navigation bar when `NameController` is on top of the navigation stack.
 This provides us with a convenient hook to customize the content of the
-navigation bar.  More on this can found below in discussion of
+navigation bar.  More on this can be found below in discussion of
 customizing the navigation bar's appearance
 [below](#customizing-the-appearance-of-navigation-bar).
 
@@ -801,14 +801,14 @@ The [top][topitem] and [second from top][backitem] `UINavigationItems`
 in the navigation bar's item stack are used to determine which
 components are added to navigation bar.  Specifically the top navigation
 item determines the title view and button(s) on the right hand side of
-the nav bar.  It can also determine the button(s) on the left hand size
+the nav bar.  It can also determine the button(s) on the left hand side
 of the nav bar, but if no left-side button is set, the navigation bar
 will use the _second from top navigation item_ in order to determine
 what "Back" button to show.
 
 In some rarer cases you may want to use a `UINavigationBar` without the
 backing of a `UINavigationController`.  In these instances, you may have
-manually manage the `UINavigationBar`'s navigation item stack by
+to manually manage the `UINavigationBar`'s navigation item stack by
 [pushing][pushnavitem]/[popping][popnavitem] navigation items in order
 to achieve the appearance you want.
 
@@ -831,7 +831,7 @@ your navigation controller.
 <a href="http://imgur.com/judIATc"><img src="http://i.imgur.com/judIATc.png" title="source: imgur.com" /></a>
 
 The navigation item with your view controller can also be edited
-directly in the storyboard.  For example to add more buttons to the
+directly in the storyboard.  For example, to add more buttons to the
 navigation item, you can simply drag buttons from the Object Library as
 we did in our storyboard example
 [above](#unwind-segues-and-passing-information-back-up-the-hierarchy).
@@ -843,8 +843,8 @@ your view controller in a navigation controller will automatically add
 the navigation item.
 
 
-### Navigation bar colors, background image, and text atrributes
-There a [few properties][navbarproperites] that you can manipulate in
+### Navigation bar colors, background image, and text attributes
+There are a [few properties][navbarproperites] that you can manipulate in
 order to control the appearance of a navigation bar.  Since a navigation
 controller is associated with a single navigation bar, __any change here
 will be visible across all view controllers in a navigation controller's
@@ -891,7 +891,7 @@ setting `navigationItem.title` on our _view controller_'s navigation
 item.  Since the navigation item is distinct per view controller, we can
 set separate titles for each view controller.
 
-In rare cases you may wish to replace a navigation items entire
+In rare cases you may wish to replace a navigation item's entire
 [`titleView`][titleview].  This is useful for example if you need
 customized styling of the title text only for a specific view
 controller.  Continuing with our previous example
