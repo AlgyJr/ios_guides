@@ -3,11 +3,9 @@
 
 - [Overview](#overview)
 - [Basic example](#basic-example)
-- [Using segues in a storyboard](#using-segues-in-a-storyboard)
 - [The delegate pattern in iOS](#the-delegate-pattern-in-ios)
 - [Passing blocks](#passing-blocks)
 - [The target-action pattern](#the-target-action-pattern)
-- [Key-Value observing](#key-value-observing)
 - [Broadcasting messages with `NSNotificationCenter`](#broadcasting-messages-with-nsnotificationcenter)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -24,12 +22,10 @@ each other in order to respond properly.
 In iOS, there are quite a few standard ways to pass data and propagate
 events between objects:
 
-* segues in storyboards
-* delegate pattern
-* passing blocks (closures) around
-* target-action pattern
-* key-value observation
-* a publish/subscribe message bus with `NSNotificationCenter`
+* Delegate pattern
+* Passing blocks (closures) around
+* Target-Action pattern
+* Publish/Subscribe message bus with `NSNotificationCenter`
 
 This guide gives an high-level overview of each of these mechanisms with
 a focus on passing data and propagating events between two different
@@ -57,117 +53,6 @@ color picker view controller.
 
 
 <!-- TODO: for each type of thing we need to link to example in apple api -->
-
-## Using segues in a storyboard
-
-When working in a project with storyboards, the most common way to
-transition two view controllers is via a _segue_ (pronounced seg-way).
-Segues are a way to create and visualize the transition inside your
-storyboard.  They provide a way to initialize the destinationView
-controller in [`prepareForSegue`][prepareforsegue].  They also provide
-for a way to propagate events and information back to the original
-source view controller via [unwind segues][unwindsegues].
-
-[unwindsegues]: https://developer.apple.com/library/ios/technotes/tn2298/_index.html
-[prepareforsegue]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIViewController_Class/index.html#//apple_ref/occ/instm/UIViewController/prepareForSegue:sender:
-
-We create our [example app](#basic-example) by starting with `Single
-View Application` project template.  We add a single button "Open Color
-Picker" to the root view controller `ViewController`. We add a second
-view controller with custom class `ColorPickerViewController` with an
-`@IBOutlet` for the segmented control that will contain our color
-choices.
-
-In the storyboard we create a modal segue from the "Open Color Picker" button
-to the color picker view controller by control-dragging.
-
-We also create an _unwind segue_ by control dragging from the "Done"
-button to the red exit door above the color picker view controller.  An
-unwind segue is a way for a view controller to respond to an event by
-navigating back to the view controller that caused it to be loaded.  In
-order for any unwind segues to be available we must first add an
-`@IBAction` method to the original source view controller that will be
-_unwound to_ taking a single `UIStoryboardSegue` parameter.  In our case
-this means we added the `didPickColorUnwind` method to the
-`ViewController` class (see code below).
-
-<a href="http://imgur.com/FTwy73j"><img src="http://i.imgur.com/FTwy73j.gif" title="source: imgur.com" /></a>
-
-In order to able to idenfy a storyboard segue in our class code we must
-provide it with an identifier by selecting the segue and using the
-Attributes Inspector.
-
-<a href="http://imgur.com/0kwo5vS"><img src="http://i.imgur.com/0kwo5vS.png" title="source: imgur.com" /></a>
-
-In our source view controller `ViewController` we prepare for the segue
-by configuring the color picker view controller's initally selected
-color with our current background color.  Our
-`ColorPickerViewController` provides us with a way to obtain the
-currently selected color when the unwind segue is triggered with the
-`colorFromSelection` method.  We set the selected color be our
-background color when the unwind segue happens.
-
-```swift
-class ViewController: UIViewController {
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "OpenColorPickerSegue" {
-            let colorPickerVC = segue.destinationViewController as ColorPickerViewController
-            colorPickerVC.startingColor = view.backgroundColor
-        }
-    }
-
-    @IBAction func didPickColorUnwind(segue: UIStoryboardSegue) {
-        let colorPickerVC = segue.sourceViewController as ColorPickerViewController
-        if let selectedColor = colorPickerVC.colorFromSelection() {
-            view.backgroundColor = selectedColor
-        }
-    }
-}
-```
-
-In `ColorPickerViewController` initialize our segmented control with our
-color choices in `viewDidLoad`.  We also sync the selected segment on
-our segmented control with the inital `startingColor`.
-
-The `colorFromSelection` allows the unwind segue handler in
-`ViewController` to obtain the currently selected color.
-
-```swift
-class ColorPickerViewController: UIViewController {
-
-    @IBOutlet weak var colorsSegmentedControl: UISegmentedControl!
-
-    let colors = [("Cyan", UIColor.cyanColor()),  ("Magenta", UIColor.magentaColor()), ("Yellow", UIColor.yellowColor())]
-
-    var startingColor: UIColor?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // initalize segmented control and select the starting color if it is one of our segments
-        colorsSegmentedControl.removeAllSegments()
-        var selectedIndex = UISegmentedControlNoSegment
-        for (index, color) in enumerate(colors) {
-            if color.1.isEqual(startingColor) {
-                selectedIndex = index
-            }
-            colorsSegmentedControl.insertSegmentWithTitle(color.0, atIndex: index, animated: false)
-        }
-        colorsSegmentedControl.selectedSegmentIndex = selectedIndex
-    }
-
-    func colorFromSelection() -> UIColor? {
-        let selectedIndex = colorsSegmentedControl.selectedSegmentIndex
-        if selectedIndex != UISegmentedControlNoSegment {
-            return colors[selectedIndex].1
-        }
-        return nil
-    }
-}
-```
-
-For another example of working with segues see our
-[[navigation controller guide|Navigation Controller]].
 
 ## The delegate pattern in iOS
 Since segues are only available in storyboards, we'll need a different
@@ -422,114 +307,6 @@ parameters.
 
 _TODO: rewrite example in Objective-C to use target-action pattern_
 
-## Key-Value observing
-iOS provides a way for any object to listen to changes in another
-object's properties via a powerful mechanism known as [Key-Value
-observing (KVO)][kvo].  The basic outline for using KVO is
-
-1. Register an object for observation by calling `addObserver:forKeyPath:`
-2. Implement `observeValueForKeyPath` in the class doing the observing
-3. Update properties in object being observed with the corresponding
-   `keyPath`.
-
-[kvo]: https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html
-
-In our [running example](#basic-example), we have `ViewController`
-observe the `selectedColor` property on our `ColorPickerViewController`.
-We set up the observation when initializing the
-`ColorPickerViewController` by adding ourself (`ViewController`) as an
-observer.
-
-When this property is set, we know that the user has finished selecting
-a color.  We then remove the observer and call `didPickColor` to set the
-background color and dismiss the `ColorPickerViewController`.
-
-__It is important that we remove the observer once we are done.__
-Failure to properly remove observers may cause unexpected behavior or
-your app to crash.
-
-```swift
-private var colorPickerObservationContext = 0
-private let selectedColorKeyPath = "selectedColor"
-
-class ViewController: UIViewController {
-
-    @IBAction func openColorPickerTapped(sender: AnyObject) {
-        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        let colorPickerVC = storyboard.instantiateViewControllerWithIdentifier("ColorPicker") as ColorPickerViewController
-        colorPickerVC.initialColor = view.backgroundColor
-        colorPickerVC.addObserver(self, forKeyPath: selectedColorKeyPath, options: .New, context: &colorPickerObservationContext)
-        presentViewController(colorPickerVC, animated: true, completion: nil)
-    }
-
-    func didPickColor(color: UIColor?) {
-        if let selectedColor = color {
-            view.backgroundColor = selectedColor
-        }
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
-        if context == &colorPickerObservationContext && keyPath == selectedColorKeyPath
-            && object is ColorPickerViewController {
-
-            let colorPickerVC = object as ColorPickerViewController
-            colorPickerVC.removeObserver(self, forKeyPath: selectedColorKeyPath, context: &colorPickerObservationContext)
-
-            let selectedColor = change[NSKeyValueChangeNewKey] as UIColor
-            didPickColor(selectedColor)
-        }
-    }
-}
-```
-
-In `ColorPickerViewController` we never explicitly call any method or
-invoke any closure that refers directly to `ViewController`.  We simply
-introduce a property `selectedColor` that is only set once the user taps
-on the "Done" button.  We already registered the `ViewController` as
-listener to changes in this property above.  Any change will then
-automatically trigger the `observeValueForKeyPath` method in
-`ViewController`.
-
-```swift
-class ColorPickerViewController: UIViewController {
-    @IBOutlet weak var colorsSegmentedControl: UISegmentedControl!
-
-    let colors = [("Cyan", UIColor.cyanColor()),  ("Magenta", UIColor.magentaColor()), ("Yellow", UIColor.yellowColor())]
-    var initialColor: UIColor?
-    dynamic var selectedColor: UIColor?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // initalize segmented control and select the starting color if it is one of our segments
-        colorsSegmentedControl.removeAllSegments()
-        var selectedIndex = UISegmentedControlNoSegment
-
-        for (index, color) in enumerate(colors) {
-            if color.1.isEqual(initialColor) {
-                selectedIndex = index
-            }
-            colorsSegmentedControl.insertSegmentWithTitle(color.0, atIndex: index, animated: false)
-        }
-        colorsSegmentedControl.selectedSegmentIndex = selectedIndex
-    }
-
-    func colorFromSelection() -> UIColor? {
-        let selectedIndex = colorsSegmentedControl.selectedSegmentIndex
-        if selectedIndex != UISegmentedControlNoSegment {
-            return colors[selectedIndex].1
-        }
-        return nil
-    }
-
-    @IBAction func doneButtonTapped(sender: AnyObject) {
-        selectedColor = colorFromSelection()
-    }
-}
-```
-
-
 ## Broadcasting messages with `NSNotificationCenter`
 Finally, iOS provides a mechanism for implementing a basic
 subcribe/publish message queue via [notification
@@ -638,4 +415,3 @@ class ColorPickerViewController: UIViewController {
     }
 }
 ```
-
