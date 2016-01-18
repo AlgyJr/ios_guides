@@ -52,7 +52,7 @@ example would be built without using storyboards.
 
 First we'll set up our table to show the list of names.  Starting with
 the Xcode `Single View Application` template.  We add a table view to
-the initial view controller that Xcode has generated and add a single prototype cell that justs uses the built-in `UITableViewCell`
+the initial view controller that Xcode has generated and add a single prototype cell that just uses the built-in `UITableViewCell`
 class.  We hook up our Table View's `dataSource` property to finish the
 initial setup.  If you are unfamiliar with how work with table views,
 please refer to the [[table view guide|Table View Guide]].
@@ -95,7 +95,7 @@ class ViewController: UIViewController, UITableViewDataSource {
 #### Adding the navigation controller and setting the root view controller
 
 Next we'll need to add a navigation controller.  When we instantiate a
-navigation controller, we must also set it's [_root view
+navigation controller, we must also set its [_root view
 controller_][rootvc].  This is the first view controller that will be
 shown when the navigation controller is loaded.  Think of of it as the
 "home page" in our web browser analogy.
@@ -393,7 +393,7 @@ Notice that we made use of the main `ViewController` class that Xcode
 generated for us.  Now we can add our table of names to this view
 controller.  We do everything programmatically here, but we could have
 just as easily set up a seperate `.xib` file for this view controller.
-If you are unfamiliar with how work with table views, please refer to
+If you are unfamiliar with table views please refer to
 the [[table view guide|Table View Guide]].
 
 
