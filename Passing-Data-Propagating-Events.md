@@ -320,7 +320,7 @@ Let's take a look at the parameters of `addTarget` method:
            In this case, the event is `.TouchUpInside` (Tap). Usually, the target is the
            object of the ViewController class in which the button was created.
            In the example, we reference the object of the ViewController class with the
-           keyword self. 
+           keyword `self`. 
 
 * action - (**What to tell them**) The action parameter is simply the name of the method that needs to be invoked in
            the target object.
