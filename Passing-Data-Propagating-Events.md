@@ -316,16 +316,16 @@ class CodePathViewController: UIViewController {
 ```
 
 Let's take a look at the parameters of `addTarget` method:
-* target - The target parameter is the object that is going to respond to the control event.
+* target - (**Who to tell**) The target parameter is the object that is going to respond to the control event.
            In this case, the event is `.TouchUpInside` (Tap). Usually, the target is the
            object of the ViewController class in which the button was created.
            In the example, we reference the object of the ViewController class with the
            keyword self. 
 
-* action - The action parameter is simply the name of the method that needs to be invoked in
+* action - (**What to tell them**) The action parameter is simply the name of the method that needs to be invoked in
            the target object.
 
-* forControlEvents - This is where you pass the type of event for your button.
+* forControlEvents - (**When to tell them**) This is where you pass the type of event for your button.
                      Here's a list of [events][events] you can use for UIButton.
 
 To simplify, in the above example, we let the button know that it has to call the instance
