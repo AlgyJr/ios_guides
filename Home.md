@@ -25,6 +25,7 @@ Read about our [mission to change the way engineers learn new technologies](http
 * [[Managing Dependencies with CocoaPods|CocoaPods]]
 * [[Application Architecture and MVC in iOS|Application-Architecture]]
 * [[Using Swift and Objective-C in the Same Project|Swift-ObjectiveC-Interoperability]]
+* [[Understanding Navigation in iOS]]
 
 ## Networking and Models
 
@@ -49,6 +50,7 @@ Diving into the networking and model layers for data-driven apps:
   * [[Guide|Container View Controllers]]
 * [[Search Bar and Search Controllers|Search Bar Guide]]
 * [[View Controller Transitions|View Controller Transitions]]
+* [[View Controller Lifecycle]]
 
 ## View Programming and UIKit components
 
