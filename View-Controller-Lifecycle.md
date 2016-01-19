@@ -1,4 +1,7 @@
 
+![View Controller Life Cycle Image](http://i.stack.imgur.com/g19fw.png)
+
+
 **init(coder:)**
 
 - When it is called / When it is used : 
