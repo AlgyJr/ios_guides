@@ -1,6 +1,6 @@
 ### Overview
 
-In mobile apps, it's helpful to give the user an indication that content is being loaded while the app sends a network request to get new data. A common method is to use a **Progress HUD (Heads Up Display)** while fetching the data. We can use CocoaPods to install a library that provides us with a convenient way to show a loading indicator while our network request is pending.
+In mobile apps, it's helpful to give the user an indication that content is being loaded while the app sends a network request to get new data. A common method is to use a **Progress HUD (Heads Up Display)** while fetching the data. We can use [CocoaPods](http://guides.codepath.com/ios/CocoaPods) to install a library that provides us with a convenient way to show a loading indicator while our network request is pending.
 
 #### Sample Progress HUD
 
@@ -8,7 +8,7 @@ In mobile apps, it's helpful to give the user an indication that content is bein
 
 ### Setting Up the Podfile
 
-Since this project previously did not use **[CocoaPods](http://guides.codepath.com/ios/CocoaPods)**, use `pod init` to create a template **Podfile**. It should contain some lines at the top, lets uncomment them so they look like below:
+We'll start by doing `pod init` to create a template **Podfile**. It should contain some lines at the top, lets uncomment them so they look like below:
 
     platform :ios, "8.0"
     use_frameworks!
@@ -55,18 +55,25 @@ class ViewController: UIViewController {
 
     func loadDataFromNetwork() {
 
-        // Display HUD right before next request is made
+        // ... Create the NSURLRequest (myRequest) ...
+
+        // Configure session so that completion handler is executed on main UI thread
+        let session = NSURLSession(
+            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+            delegate:nil,
+            delegateQueue:NSOperationQueue.mainQueue()
+        )
+
+        // Display HUD right before the request is made
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
 
-        // ...
-
-        let task : NSURLSessionDataTask = mySession.dataTaskWithRequest(request,
+        let task : NSURLSessionDataTask = session.dataTaskWithRequest(myRequest,
             completionHandler: { (data, response, error) in
             
-            // Hide HUD once network request comes back (must be done on main UI thread)
+            // Hide HUD once the network request comes back (must be done on main UI thread)
             MBProgressHUD.hideHUDForView(self.view, animated: true)
             
-            // ...
+            // ... Remainder of response handling code ...
 
         });
         task.resume()
