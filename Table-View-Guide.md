@@ -1253,22 +1253,42 @@ override func viewDidLoad() {
 }
 ```
 
-####Implement an action to update the list
-We need to implement an action for handling our list. It's common to fire a network request to get updated data, so below we're assuming that `fetchStories` exists. Make sure to call self.tableView.reloadData and refreshControl.endRefreshing after updating your data source.
+#### Implement an action to update the list
+
+We need to implement an action to update our list. It's common to fire a network request to get updated data, so that is shown in the example below. **Note:** Make sure to call `tableView.reloadData` and `refreshControl.endRefreshing` after updating the data source.
 
 ```swift
+// Makes a network request to get updated data
+// Updates the tableView with the new data
+// Hides the RefreshControl
 func refreshControlAction(refreshControl: UIRefreshControl) {
 
-    // Make network request to fetch latest data
+    // ... Create the NSURLRequest (myRequest) ...
 
-    // Do the following when the network request comes back successfully:
-    // Update tableView data source
-    self.myTableView.reloadData()
-    refreshControl.endRefreshing()	
+    // Configure session so that completion handler is executed on main UI thread
+    let session = NSURLSession(
+        configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+        delegate:nil,
+        delegateQueue:NSOperationQueue.mainQueue()
+    )
+
+    let task : NSURLSessionDataTask = session.dataTaskWithRequest(myRequest,
+        completionHandler: { (data, response, error) in
+
+        // ... Use the new data to update the data source ...
+        
+        // Reload the tableView now that there is new data
+        self.myTableView.reloadData()
+
+        // Tell the refreshControl to stop spinning
+        refreshControl.endRefreshing()	
+    });
+    task.resume()
 }
 ```
 
-####Bind the action to the refresh control
+#### Bind the action to the refresh control
+
 With the action implemented, it now needs to be binded to the `UIRefreshControl` so that something will happen when you pull-to-refresh.
 
 ```swift
