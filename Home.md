@@ -22,7 +22,6 @@ Ever been **frustrated finding information on outdated one-off blog posts and tu
 * [[Managing Dependencies with CocoaPods|CocoaPods]]
 * [[Understanding an Xcode Project|Project Basics]]
 * [[Understanding the Application Lifecycle]] (**Needs Attention**)
-
 * [[Application Architecture and MVC in iOS|Application-Architecture]]
 * [[Using Swift and Objective-C in the Same Project|Swift-ObjectiveC-Interoperability]]
 * [[Understanding Navigation in iOS]]
