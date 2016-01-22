@@ -50,6 +50,14 @@ Check the [issues](https://github.com/codepath/ios_guides/issues) for this repos
        print("Hello World!")
    }
    &#96;&#96;&#96;</code></pre>
+
+   which outputs the code as:
+
+   ```swift
+   func helloWorld() {
+       print("Hello World!") 
+   }
+   ```
  * Prefer **comments in the code** over text describing the code
  * Make sure to use **spaces (4) over tabs**
  * **Line length** should not exceed 100 characters
