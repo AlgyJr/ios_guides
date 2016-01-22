@@ -44,7 +44,7 @@ Check the [issues](https://github.com/codepath/ios_guides/issues) for this repos
 
 ### Code Snippets
 
- * For code snippets, use Swift code formatting:
+ * For code snippets, use Swift code blocks using the following markdown syntax:
    <pre><code>&#96;&#96;&#96;swift
    func helloWorld() {
        print("Hello World!")
