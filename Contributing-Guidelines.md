@@ -45,11 +45,11 @@ Check the [issues](https://github.com/codepath/ios_guides/issues) for this repos
 ### Code Snippets
 
  * For code snippets, use Swift code formatting:
-   <pre><code>&#96;``swift
+   <pre><code>&#96;&#96;&#96;swift
    func helloWorld() {
        print("Hello World!")
    }
-   &#96;``
+   &#96;&#96;&#96;
    </code></pre>
  * Prefer **comments in the code** over text describing the code
  * Make sure to use **spaces (4) over tabs**
