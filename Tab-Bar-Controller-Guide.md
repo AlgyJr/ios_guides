@@ -234,7 +234,56 @@ in IB so that they can be initialized in code:
 _to be completed_
 
 ## The "More.." button
-_to be completed_
+The tab bar has limited space for displaying your custom items. If you add six or more 
+custom view controllers to a tab bar controller, the tab bar controller displays only 
+the first four items plus the standard `More` item on the tab bar. 
+Tapping the More item brings up a standard interface for selecting the remaining items.
+
+```swift
+import UIKit
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    var window: UIWindow?
+
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        let vc1 = setUpViewController("First", backgroundColor: UIColor.orangeColor())
+        let vc2 = setUpViewController("Second", backgroundColor: UIColor.purpleColor())
+        let vc3 = setUpViewController("Third", backgroundColor: UIColor.redColor())
+        let vc4 = setUpViewController("Fourth", backgroundColor: UIColor.greenColor())
+        let vc5 = setUpViewController("Fifth", backgroundColor: UIColor.blueColor())
+        let vc6 = setUpViewController("Sixth", backgroundColor: UIColor.yellowColor())
+        
+        // Set up the Tab Bar Controller
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [vc1, vc2, vc3, vc4, vc5, vc6]
+        
+        // Make the Tab Bar Controller the root view controller
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
+
+        return true
+    }
+    
+    func setUpViewController(title: String, backgroundColor: UIColor) -> UIViewController {
+        let vc = UIViewController()
+        vc.view.backgroundColor = backgroundColor
+        vc.tabBarItem.title = title
+        vc.tabBarItem.image = UIImage(named: "star")
+        return vc
+    }
+}
+```
+
+In More tab, user can tap on Edit button. That will allow user to reorder
+tabs so that they can pick the which 4 view controllers will appear on the tab view
+and which view controllers will be in More tab.
+
+<a href="http://imgur.com/QEmPU1e"><img src="http://i.imgur.com/QEmPU1e.gif" title="source: imgur.com" /></a>
+
 ### Configuring what is allowed to be reordered
 _to be completed_
 
