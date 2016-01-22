@@ -174,7 +174,61 @@ class StopwatchViewController: UIViewController {
 <a href="http://imgur.com/j2tg3ul"><img src="http://i.imgur.com/j2tg3ul.gif" title="source: imgur.com" /></a>
 
 ## Programatically setting up a tab bar controller
-_to be completed_
+If you have 2 view controllers vc1 and vc2 created programmatically, then you can instantiate a `UITabBarController` and initialize it like this:
+
+```swift
+let tabBarController = UITabBarController()
+tabBarController.viewControllers = [vc1, vc2]
+```
+
+Before we set up tab view controller programmatically, we need to remove the tab view
+controller that we added in the Interface Builder (IB).
+
+In IB, remove the segues you have from tab bar view controller to both clock view controller 
+and stop watch view controller. After that delete the tab view controller
+altogether from IB.
+
+Your story board should look something like this now:
+
+<a href="http://imgur.com/L4MZl1d"><img src="http://i.imgur.com/L4MZl1d.gif" title="source: imgur.com" /></a>
+
+When the app starts up, our AppDelegate's function `didFinishLaunchingWithOptions` 
+gets called. This is where we can do any custom view controller set up.
+
+This is sample code from AppDelegate.swift:
+
+```swift
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        // create UIWindow with the same size as main screen
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        // create story board. Default story board will be named as Main.storyboard in your project.
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        // create view controllers from storyboard
+        // Make sure you set Storyboard ID for both the viewcontrollers in 
+        // Interface Builder -> Identitiy Inspector -> Storyboard ID
+        let clockViewController = storyboard.instantiateViewControllerWithIdentifier("ClockViewController")
+        let stopWatchViewController = storyboard.instantiateViewControllerWithIdentifier("StopWatchViewController")
+        
+        // Set up the Tab Bar Controller to have two tabs
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [clockViewController, stopWatchViewController]
+        
+        // Make the Tab Bar Controller the root view controller
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
+
+        return true
+    }
+
+```
+
+Make sure you provide story board id for both clock and stop watch view controllers
+in IB so that they can be initialized in code:
+
+<a href="http://imgur.com/ySOAC6i"><img src="http://i.imgur.com/ySOAC6i.gif" title="source: imgur.com" /></a>
+
 
 ## Responding to a tab being selected
 _to be completed_
