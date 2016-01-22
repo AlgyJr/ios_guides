@@ -18,7 +18,7 @@ Ever been **frustrated finding information on outdated one-off blog posts and tu
 
 ## Fundamentals
 
-* [[Swift Fundamentals]]
+* [[Swift Fundamentals|Understanding-Swift]]
 * [[Managing Dependencies with CocoaPods|CocoaPods]]
 * [[Understanding an Xcode Project|Project Basics]]
 * [[Understanding the Application Lifecycle]] (**Needs Attention**)
