@@ -285,7 +285,24 @@ and which view controllers will be in More tab.
 <a href="http://imgur.com/QEmPU1e"><img src="http://i.imgur.com/QEmPU1e.gif" title="source: imgur.com" /></a>
 
 ### Configuring what is allowed to be reordered
-_to be completed_
+By default, the user is allowed to rearrange all items on the tab bar.
+You can specify what view controllers user can rearrange by setting
+the `customizableViewControllers` property.
+By default, all the items added to tab bar are also added to `customizableViewControllers`.
+
+If we don't want to allow user to change the view controllers for the 
+first 2 tabs, then we can set customizableViewControllers to the other
+4 view controllers:
+
+```swift
+let tabBarController = UITabBarController()
+tabBarController.viewControllers = [vc1, vc2, vc3, vc4, vc5, vc6]
+tabBarController.customizableViewControllers = [vc3, vc4, vc5, vc6]
+```
+
+In More tab -> Edit, user can now only see and reorder 3rd, 4th, 5th, 6th tabs.
+
+- add screenshot -
 
 ## Customizing the appearance of the tab bar
 _to be completed_
