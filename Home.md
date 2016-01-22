@@ -1,12 +1,10 @@
 # CodePath iOS Guides
 
-Welcome to the open-source [CodePath](http://thecodepath.com) iOS Cliffnotes! Our goal is to become the **central crowdsourced resource** for complete and up-to-date iOS content and tutorials. **If you are a designer learning iOS** you may want to start with the [[CodePath iOS Guides for Designers|Designer Guides|]].
+Welcome to the open-source [CodePath](http://thecodepath.com) iOS Guides! Our goal is to become the **central crowdsourced resource** for complete and up-to-date iOS content and tutorials. **If you are a designer learning iOS** you may want to start with the [[CodePath iOS Guides for Designers|Designer Guides|]].
 
 ## Motivation
 
 Ever been **frustrated finding information on outdated one-off blog posts and tutorials** that has since become irrelevant? How many times were you googling only to find your answer only on a **2 year old StackOverflow post**? We believe there's got to be a better way. Why not have the community work together to create useful and detailed documentation for every aspect of iOS (or any platform)? There's absolutely no reason that we should have to make do with outdated, vague or un-editable content anymore.
-
-Read about our [mission to change the way engineers learn new technologies](https://github.com/thecodepath/android_guides/wiki/The-CodePath-Goal) and we would love for you to [get involved](https://github.com/thecodepath/android_guides/wiki/The-CodePath-Goal#how-do-i-help)! If you like this guide and what we are trying to do, please consider following us on twitter [@codepath](https://twitter.com/codepath)!
 
 # The Guides
 
@@ -16,17 +14,18 @@ Read about our [mission to change the way engineers learn new technologies](http
 
 * [[Setting Up Your Environment|Setup|]]
 * [[Starting a New Project|New Project]]
+* [[Troubleshooting Common Issues]] (**Needs Attention**)
 
 ## Fundamentals
 
-* [[Basic Swift|Swift Basics]]
-* [[Intermediate Swift|Swift Intermediate]]
-* [[Xcode Project Basics|Project Basics]]
+* [[Swift Fundamentals]]
 * [[Managing Dependencies with CocoaPods|CocoaPods]]
+* [[Understanding an Xcode Project|Project Basics]]
+* [[Understanding the Application Lifecycle]] (**Needs Attention**)
+
 * [[Application Architecture and MVC in iOS|Application-Architecture]]
 * [[Using Swift and Objective-C in the Same Project|Swift-ObjectiveC-Interoperability]]
 * [[Understanding Navigation in iOS]]
-* [[Understanding the Application Lifecycle]]
 
 ## Networking and Models
 
@@ -71,17 +70,13 @@ Diving into the networking and model layers for data-driven apps:
 
 ## Device Frameworks
 
-* Location
-  * [[Quick start|Location Quickstart]]
-* Camera and Camera Roll
-  * [[Quick start|Camera Quickstart]]
+* [[Retrieving Location|Location Quickstart]]
+* [[Working with the Camera|Camera Quickstart]]
+* [[Maps]] (**Needs Attention**)
 
 ## Other topics
 * [[Services and Frameworks|Services-Frameworks]]
-
-## Troubleshooting
-
-* [[Fixing Xcode|Fixing Xcode]] - If Xcode acts strange, use these steps to reset it
+* [[Troubleshooting Xcode Issues|Fixing Xcode]]
 
 ## Great External Resources
 
@@ -93,16 +88,3 @@ Diving into the networking and model layers for data-driven apps:
   - [objc.io](http://www.objc.io/). A periodical about best practices and advanced techniques.
   - [NSScreencast](http://nsscreencast.com/). Screencasts that implement things on iOS.
   - [Mike Ash's blog](https://www.mikeash.com/pyblog/). There is nothing this guy doesn't know.
-
-## Credits
-
-Add your name to the list if you've made a contribution.
-
-### Editors
-
-* [Ben Sandofsky](https://sandofsky.com)
-
-### Contributors
-
-* [Roger Hu](https://github.com/rogerhu)
-* [Ben Sandofsky](https://sandofsky.com)
