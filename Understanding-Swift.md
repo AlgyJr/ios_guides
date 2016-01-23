@@ -564,7 +564,6 @@ Below is an example of JSON that simulates the type of JSON you might get back w
   * An open bracket means the start of an array
 
 ```json
-// Sample JSON you might get back from a movie rating API:
 {
     "status": "OK",
     "movies": [
