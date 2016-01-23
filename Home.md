@@ -76,6 +76,8 @@ Diving into the networking and model layers for data-driven apps:
 ## Other topics
 * [[Services and Frameworks|Services-Frameworks]]
 * [[Troubleshooting Xcode Issues|Fixing Xcode]]
+* [[Building Data-driven Apps with Parse]]
+* [[Multithreading in iOS]]
 
 ## Great External Resources
 
