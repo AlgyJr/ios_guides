@@ -17,7 +17,7 @@ let name: String = "Bob"
 print("Hello \(name)!")     // Prints "Hello Bob!"
 ```
 
-## When to use "let" vs "var"
+## When to use let vs var
 
 You'll notice in the example above we've used `let` to create the new variable for the name "Bob". In Swift, you'll choose from the following 2 options when creating a new variable:
 
