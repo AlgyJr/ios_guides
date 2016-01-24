@@ -110,6 +110,27 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
             return dataString.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
         })
 
+    }
+
+    // This method updates filteredData based on the text in the Search Box
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        // When there is no text, filteredData is the same as the original data
+        if searchText.isEmpty {
+            filteredData = data
+        } else {
+            // The user has entered text into the search box
+            // Use the filter method to iterate over all items in the data array
+            // For each item, return true if the item should be included and false if the
+            // item should NOT be included
+            filteredData = data.filter({(dataItem: String) -> Bool in
+                // If dataItem matches the searchText, return true to include it
+                if dataItem.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil {
+                    return true
+                } else {
+                    return false
+                }
+            })
+        }
         tableView.reloadData()
     }
 }
