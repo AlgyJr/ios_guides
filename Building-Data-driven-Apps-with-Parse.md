@@ -44,3 +44,4 @@ If you have not already done so please [sign up for a Parse account.](https://ww
 From your [Parse App's dashboard](https://www.parse.com/apps), click `quickstart guide` for the app that you want to use with your iOS app.
 Then navigate to instructions for setting up the application id and key. (`Data` > `Mobile` > `iOS` > `Swift` > `New Project`)
 
+<img src="http://i.imgur.com/vEP5TbZ.gif" alt="Parse Quickstart" width="750"/>
