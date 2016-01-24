@@ -41,7 +41,20 @@ If you have not already done so please [sign up for a Parse account.](https://ww
 
 #### Adding your Parse app's `ApplicationId` and `ClientKey` to you iOS app
 
-From your [Parse App's dashboard](https://www.parse.com/apps), click `quickstart guide` for the app that you want to use with your iOS app.
-Then navigate to instructions for setting up the application id and key. (`Data` > `Mobile` > `iOS` > `Swift` > `New Project`)
-
+1. From your [Parse App's dashboard](https://www.parse.com/apps),
+   - Click `quickstart guide` for the app that you want to use with your iOS app.
+   - Navigate to instructions for setting up the application id and key. (`Data` > `Mobile` > `iOS` > `Swift` > `New Project`) 
 <img src="http://i.imgur.com/vEP5TbZ.gif" alt="Parse Quickstart" width="750"/>
+
+2. In you Xcode project, make following edits to project's `AppDelegate.swift`:
+   - Import Parse by adding `import Parse` in the beginning of the file
+   - Add your Parse application id and key in `application:didFinishLaunchingWithOptions` function by copying the code `Parse.setApplicationId("<your-application-id>", clientKey: "your-client-key")`from Parse
+
+      ```swift
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        // Override point for customization after application launch.
+        Parse.setApplicationId("pZRoLzE1EXdcfaiMwvL3frpHHv3pIVClD6RFw8LI",**
+            clientKey: "ZkiuDctukNhPjIOwXvpYiHW8hQ2ywds843AixEPm")**
+        return true
+    }
+      ```
