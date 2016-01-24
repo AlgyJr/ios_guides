@@ -1356,7 +1356,8 @@ Here is a sample image of what we're going to make:
 
 ###Detecting when to request more data
 
-####How to bind actions to changes in scrolling
+#### How to bind actions to changes in scrolling
+
 In order to detect when to request more data, we need to use the `UIScrollViewDelegate`. `UITableView` is a subclass of `UIScrollView` and therefore can be treated as a `UIScrollView`. For `UIScrollView`, we use the `UIScrollViewDelegate` to perform actions when scrolling events occur. We want to detect when a `UIScrollView` has scrolled, so we use the method [`scrollViewDidScroll`][scrollviewdidscrolllink].
 
 [scrollviewdidscrolllink]:https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollViewDelegate_Protocol/#//apple_ref/occ/intfm/UIScrollViewDelegate/scrollViewDidScroll:
@@ -1366,16 +1367,17 @@ Add `UIScrollViewDelegate` to the protocol list and add the `scrollViewDidScroll
 ```swift
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
 	
-	...
-	
-	func scrollViewDidScroll(scrollView: UIScrollView) {
-		// Handle scroll behavior here
-	}
+    ...
+
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        // Handle scroll behavior here
+    }
 }
 
 ```
 
-####Understanding [`scrollViewDidScroll`][scrollviewdidscrolllink]
+#### Understanding [`scrollViewDidScroll`][scrollviewdidscrolllink]
+
 When a user scrolls down a list, the `UIScrollView` continuously fires `scrollViewDidScroll` after the `UIScrollView` has changed. This means that whatever code is inside `scrollViewDidScroll` will repeatedly fire. In order to avoid 10s or 100s of requests to the server, we need to indicate when the app has already made a request to the server.
 
 Create a flag called `isMoreDataLoading`, and add a check in `scrollViewDidScroll`:
@@ -1383,87 +1385,83 @@ Create a flag called `isMoreDataLoading`, and add a check in `scrollViewDidScrol
 ```swift
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
 	
-	var isMoreDataLoading = false
+    var isMoreDataLoading = false
 	
-	func scrollViewDidScroll(scrollView: UIScrollView) {
-		if (!isMoreDataLoading) {
-			isMoreDataLoading = true
-			
-			// Code to load more results
-			
-			...
-		}
-	}
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if (!isMoreDataLoading) {
+            isMoreDataLoading = true
+		
+            // ... Code to load more results ...
+
+        }
+    }
 }
 ```
 
-####Define the conditions for requesting more data
+#### Define the conditions for requesting more data
+
 Ideally for infinite scrolling, we want to load more results before the user reaches the end of the existing content, and therefore would start loading at some point past halfway. However, for this specific tutorial, we will load more results when the user reaches near the end of the existing content.
 
 We need to know how far down a user has scrolled in the `UITableView`. The property `contentOffset` of `UIScrollView` tells us how far down or to the right the user has scrolled in a `UIScrollView`. The property `contentSize` tells us how much total content there is in a `UIScrollView`. We will define a variable `scrollOffsetThreshold` for when we want to trigger requesting more data - one screen length before the end of the results.
 
 ```swift
 func scrollViewDidScroll(scrollView: UIScrollView) {
-	if (!isMoreDataLoading) {
-		// Calculate the position of one screen length before the bottom of the results
-		let scrollViewContentHeight = tableView.contentSize.height
-		let scrollOffsetThreshold = scrollViewContentHeight -tableView.bounds.size.height
+    if (!isMoreDataLoading) {
+        // Calculate the position of one screen length before the bottom of the results
+        let scrollViewContentHeight = tableView.contentSize.height
+        let scrollOffsetThreshold = scrollViewContentHeight -tableView.bounds.size.height
 		
-		// When the user has scrolled past the threshold, start requesting
-		if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging) {
-		
-			isMoreDataLoading = true
-			
-			// Code to load more results
-			
-			...
-			
-			
-		}
-	}
+        // When the user has scrolled past the threshold, start requesting
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging) {
+            isMoreDataLoading = true
+	
+        // ... Code to load more results ...
+        }
+    }
 }
 ```
 
-###Request more data
+### Request more data
+
 Define a separate function to request more data, and call this function in `scrollViewDidScroll`:
 
 ```swift
 func loadMoreData() {
 
-	/*
-		// Fetch more data and in the callback:
-			// Update flag
-			self.isMoreDataLoading = false
+    /*
+    // Fetch more data and in the callback:
+    // Update flag
+    self.isMoreDataLoading = false
 			
-			// Update data source with latest data
-			self.data = data
-			self.tableView.reloadData()
-	*/
-
+    // Update data source with latest data
+    self.data = data
+    self.tableView.reloadData()
+    */
 }
 
 func scrollViewDidScroll(scrollView: UIScrollView) {
-	if (!isMoreDataLoading) {
-		// Calculate the position of one screen length before the bottom of the results
-		let scrollViewContentHeight = tableView.contentSize.height
-		let scrollOffsetThreshold = scrollViewContentHeight -tableView.bounds.size.height
+    if (!isMoreDataLoading) {
+        // Calculate the position of one screen length before the bottom of the results
+        let scrollViewContentHeight = tableView.contentSize.height
+        let scrollOffsetThreshold = scrollViewContentHeight -tableView.bounds.size.height
 		
-		// When the user has scrolled past the threshold, start requesting
-		if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging) {
-		
-			isMoreDataLoading = true
+        // When the user has scrolled past the threshold, start requesting
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging) {
+	
+            isMoreDataLoading = true
 			
-			// Code to load more results
-			loadMoreData()
+            // Code to load more results
+            loadMoreData()
 
-		}
-	}
+        }
+    }
 }
 ```
 
 When you run the app, you should see new data load into the list, each time you reach the bottom. But there's a problem: there's no indicator to the user that anything is happening.
 
-###Creating a progress indicator
+### Creating a progress indicator
+
 To indicate to the user that something is happening, we need to create a progress indicator.
 
 There are a number of different ways a progress indicator can be added. Many cocoapods are available to provide this. However, for this guide, we'll create a custom view class and add it to the tableView's view hierarchy. Below is the code to create a custom view class that can be used as a progress indicator. 
@@ -1513,19 +1511,21 @@ class InfiniteScrollActivityView: UIView {
 }
 ```
 
-###Update progress to indicate with UI when data is being requested
+### Update progress to indicate with UI when data is being requested
+
 Now that we have a progress indicator, we need to load it when more data is being requested from the server.
 
-####Add a loading view to your view controller
+#### Add a loading view to your view controller
+
 For this example, use the class `InfiniteScrollActivityView`, and add it to your view controller to use for later.
 
 ```swift
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
 	
-	var isMoreDataLoading = false
-	var loadingMoreView:InfiniteScrollActivityView?
+    var isMoreDataLoading = false
+    var loadingMoreView:InfiniteScrollActivityView?
 
-	...
+    // ...
 }
 ```
 In `viewDidLoad`, initialize and add the loading indicator to the tableView's view hierarchy. Then add new insets to allow room for seeing the loading indicator at the bottom of the tableView.
@@ -1534,15 +1534,15 @@ In `viewDidLoad`, initialize and add the loading indicator to the tableView's vi
 override func viewDidLoad() {
     super.viewDidLoad()
 
-	// Set up Infinite Scroll loading indicator
-	let frame = CGRectMake(0, tableView.contentSize.height, tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight)
-	loadingMoreView = InfiniteScrollActivityView(frame: frame)
-	loadingMoreView!.hidden = true
-	tableView.addSubview(loadingMoreView!)
+    // Set up Infinite Scroll loading indicator
+    let frame = CGRectMake(0, tableView.contentSize.height, tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight)
+    loadingMoreView = InfiniteScrollActivityView(frame: frame)
+    loadingMoreView!.hidden = true
+    tableView.addSubview(loadingMoreView!)
 	
-	var insets = tableView.contentInset;
-	insets.bottom += InfiniteScrollActivityView.defaultHeight;
-	tableView.contentInset = insets
+    var insets = tableView.contentInset;
+    insets.bottom += InfiniteScrollActivityView.defaultHeight;
+    tableView.contentInset = insets
 }
 
 ```
@@ -1550,26 +1550,24 @@ Update the `scrollViewDidScroll` function to load the indicator:
 
 ```swift
 func scrollViewDidScroll(scrollView: UIScrollView) {
-	if (!isMoreDataLoading) {
-		// Calculate the position of one screen length before the bottom of the results
-		let scrollViewContentHeight = tableView.contentSize.height
-		let scrollOffsetThreshold = scrollViewContentHeight -tableView.bounds.size.height
+    if (!isMoreDataLoading) {
+        // Calculate the position of one screen length before the bottom of the results
+        let scrollViewContentHeight = tableView.contentSize.height
+        let scrollOffsetThreshold = scrollViewContentHeight -tableView.bounds.size.height
 		
-		// When the user has scrolled past the threshold, start requesting
-		if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging) {
-		
-			isMoreDataLoading = true
-			                
+        // When the user has scrolled past the threshold, start requesting
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging) {
+            isMoreDataLoading = true
+
             // Update position of loadingMoreView, and start loading indicator
             let frame = CGRectMake(0, tableView.contentSize.height, tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight)
             loadingMoreView?.frame = frame
             loadingMoreView!.startAnimating()
 
-			// Code to load more results
-			loadMoreData()
-			
-		}
-	}
+            // Code to load more results
+            loadMoreData()		
+        }
+    }
 }
 ```
 
@@ -1577,31 +1575,32 @@ Finally, update the `loadMoreData` function to stop the indicator, when the requ
 
 ```swift
 func loadMoreData() {
-
-	/*
-		// Fetch more data and in the callback:
-			// Update flag and stop the loading indicator
-			self.isMoreDataLoading = false
-			self.loadingMoreView!.stopAnimating()
-			
-			// Update data source with latest data
-			self.data = data
-			self.tableView.reloadData()
-	*/
+    /*
+    // Fetch more data and in the callback:
+    // Update flag and stop the loading indicator
+    self.isMoreDataLoading = false
+    self.loadingMoreView!.stopAnimating()
+		
+    // Update data source with latest data
+    self.data = data
+    self.tableView.reloadData()
+    */
 }
-
 ```
 
-###Credits
+### Credits
+
 Thanks to [SVPullToRefresh][svpulltorefreshlink] for providing source code and a general flow to follow for this basic version of an infinite scroll.
 
 
-###Using a cocoapod to implement instead
+### Using a cocoapod to implement instead
+
 Infinite Scroll can also be implemented with the following cocoapod: [SVPullToRefresh][svpulltorefreshlink]
 
 [svpulltorefreshlink]: https://github.com/samvermette/SVPullToRefresh
 
-###Common Gotchas
+### Common Gotchas
+
 To be added...
 
 ## Editing mode
