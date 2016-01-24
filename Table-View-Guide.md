@@ -1367,7 +1367,7 @@ Add `UIScrollViewDelegate` to the protocol list and add the `scrollViewDidScroll
 ```swift
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
 	
-    ...
+    // ...
 
     func scrollViewDidScroll(scrollView: UIScrollView) {
         // Handle scroll behavior here
@@ -1415,7 +1415,7 @@ func scrollViewDidScroll(scrollView: UIScrollView) {
         if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging) {
             isMoreDataLoading = true
 	
-        // ... Code to load more results ...
+            // ... Code to load more results ...
         }
     }
 }
@@ -1428,15 +1428,27 @@ Define a separate function to request more data, and call this function in `scro
 ```swift
 func loadMoreData() {
 
-    /*
-    // Fetch more data and in the callback:
-    // Update flag
-    self.isMoreDataLoading = false
+    // ... Create the NSURLRequest (myRequest) ...
+
+    // Configure session so that completion handler is executed on main UI thread
+    let session = NSURLSession(
+        configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+        delegate:nil,
+        delegateQueue:NSOperationQueue.mainQueue()
+    )
+
+    let task : NSURLSessionDataTask = session.dataTaskWithRequest(myRequest,
+        completionHandler: { (data, response, error) in    
+
+        // Update flag
+        self.isMoreDataLoading = false
+
+        // ... Use the new data to update the data source ...
 			
-    // Update data source with latest data
-    self.data = data
-    self.tableView.reloadData()
-    */
+        // Reload the tableView now that there is new data
+        self.myTableView.reloadData()
+    });
+    task.resume()
 }
 
 func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -1452,7 +1464,6 @@ func scrollViewDidScroll(scrollView: UIScrollView) {
 			
             // Code to load more results
             loadMoreData()
-
         }
     }
 }
@@ -1575,16 +1586,31 @@ Finally, update the `loadMoreData` function to stop the indicator, when the requ
 
 ```swift
 func loadMoreData() {
-    /*
-    // Fetch more data and in the callback:
-    // Update flag and stop the loading indicator
-    self.isMoreDataLoading = false
-    self.loadingMoreView!.stopAnimating()
-		
-    // Update data source with latest data
-    self.data = data
-    self.tableView.reloadData()
-    */
+
+    // ... Create the NSURLRequest (myRequest) ...
+
+    // Configure session so that completion handler is executed on main UI thread
+    let session = NSURLSession(
+        configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+        delegate:nil,
+        delegateQueue:NSOperationQueue.mainQueue()
+    )
+
+    let task : NSURLSessionDataTask = session.dataTaskWithRequest(myRequest,
+        completionHandler: { (data, response, error) in    
+
+        // Update flag
+        self.isMoreDataLoading = false
+
+       // Stop the loading indicator
+        self.loadingMoreView!.stopAnimating()
+
+        // ... Use the new data to update the data source ...
+			
+        // Reload the tableView now that there is new data
+        self.myTableView.reloadData()
+    });
+    task.resume()
 }
 ```
 
