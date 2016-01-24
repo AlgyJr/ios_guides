@@ -1,6 +1,6 @@
 ## Overview
 
-This wiki covers a range of topics to serve as a primer for building data driven iOS applications with Parse. Some of the topics covered here are:
+This page covers a range of topics to serve as a primer for building data driven iOS applications with Parse. Some of the topics covered here are:
 
 - Parse registration
 - User Registration/Authentication
