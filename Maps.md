@@ -82,7 +82,7 @@ Click on Info.plist and add a new row with key: NSLocationWhenInUseUsageDescript
 ![Info.plist](http://i.imgur.com/2hz5Mok.png)
 
 To show the user's location on the map:
-Click on your map view and then check Shows User Location in the Attributes Inspector
+Click on your map view and then check Shows User Location in the Attributes Inspector  
 ![Show User Location](http://i.imgur.com/CAChYxf.png)
 
 Go to the user's location when permission has been given:
