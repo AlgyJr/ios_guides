@@ -71,7 +71,7 @@ Diving into the networking and model layers for data-driven apps:
 
 * [[Retrieving Location|Location Quickstart]]
 * [[Working with the Camera|Camera Quickstart]]
-* [[Maps]] (**Needs Attention**)
+* [[Maps]]
 
 ## Other topics
 * [[Services and Frameworks|Services-Frameworks]]
