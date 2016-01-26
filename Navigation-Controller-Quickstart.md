@@ -1,21 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-- [Overview](#overview)
-- [Storyboard setup](#storyboard-setup)
-  - [Step 1: Embed root view controller inside a navigation controller](#step-1-embed-root-view-controller-inside-a-navigation-controller)
-  - [Step 2: Add components to control the navigation](#step-2-add-components-to-control-the-navigation)
-  - [Step 3: Create a segue to navigate to a new view controller](#step-3-create-a-segue-to-navigate-to-a-new-view-controller)
-  - [Step 4: Set an identifier for the segue](#step-4-set-an-identifier-for-the-segue)
-  - [Step 5: Prepare view controller before navigating to it](#step-5-prepare-view-controller-before-navigating-to-it)
-- [Programmatic setup](#programmatic-setup)
-  - [Step 1: Instantiate the root view controller for the navigation controller](#step-1-instantiate-the-root-view-controller-for-the-navigation-controller)
-  - [Step 2: Create navigation controller with root view controller](#step-2-create-navigation-controller-with-root-view-controller)
-  - [Step 3: Respond to events by pushing new view controllers](#step-3-respond-to-events-by-pushing-new-view-controllers)
-- [Further reading](#further-reading)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 ## Overview
 <a href="http://imgur.com/7STmvxL"><img src="http://i.imgur.com/7STmvxL.gif" title="source: imgur.com" /></a>
 
