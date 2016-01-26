@@ -80,6 +80,52 @@ itself (or wants to propagate events to the original view controller).
 You probably have already seen this pattern in action with
 [`UITableViewDataSource` and `UITableViewDelegate`](Table-View-Guide#the-datasource-and-delegate-properties).
 
+**UITableViewDataSource Protocol example**: 
+```swift
+public protocol UITableViewDataSource : NSObjectProtocol {
+    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    
+    optional public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) 
+    optional public func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool
+}
+```
+
+Take a look at the protocol above; common usage would be to extend the protocol and in a view controller that has a table view. Here's what you would do:
+
+* Make the class conform to the protocol
+    
+```swift
+    class CodePathViewController: UIViewController, UITableViewDataSource {
+        @IBOutlet weak var tableView: UITableView!
+    }
+```
+* Set the dataSource object of the tableView to `self`. Here `self` represents an object of the class `CodePathViewController`
+    
+```swift
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tableView.dataSource = self
+    }
+```
+Note that the `dataSource` object is actually an object of type `UITableViewDataSource`. This
+will act as the delegate object that respond to the methods of the protocol.
+ 
+```swift     
+   weak public var dataSource: UITableViewDataSource?
+```
+* Now your class `CodePathViewController` will respond to the mandatory methods of the protocol `UITableViewDataSource`
+
+```swift
+    class CodePathViewController: UIViewController, UITableViewDataSource {
+        @IBOutlet weak var tableView: UITableView!
+   
+        func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return 1
+        }
+    }
+```
+
 The delegate pattern is ubiquitous throughout the iOS frameworks and
 libraries.  It is useful for creating a well defined (compile-time)
 interface for communication between objects.  You might also prefer it
