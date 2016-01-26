@@ -1,17 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-- [Overview](#overview)
-- [Using tab bar controllers in storyboards](#using-tab-bar-controllers-in-storyboards)
-  - [Adding tabs to the tab bar controller](#adding-tabs-to-the-tab-bar-controller)
-- [Programatically setting up a tab bar controller](#programatically-setting-up-a-tab-bar-controller)
-- [Responding to a tab being selected](#responding-to-a-tab-being-selected)
-- [The "More.." button](#the-more-button)
-  - [Configuring what is allowed to be reordered](#configuring-what-is-allowed-to-be-reordered)
-- [Customizing the appearance of the tab bar](#customizing-the-appearance-of-the-tab-bar)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 ## Overview
 
 <a href="http://imgur.com/WhoidE5"><img src="http://i.imgur.com/WhoidE5.gif" title="source: imgur.com" /></a>
