@@ -58,3 +58,26 @@ If you have not already done so please [sign up for a Parse account.](https://ww
         return true
     }
       ```
+
+## Parse User (`PFUser`)
+
+Parse provides a specialized user class called `PFUser` that automatically handles much of the functionality required for user account management. With this class, you'll be able to add user account functionality in your app.
+
+##### Properties
+
+`PFUser` has several properties but following are the most important ones:
+
+* **username**: The username for the user (required).
+* **password**: The password for the user (required on signup).
+* **email**: The email address for the user (optional).
+
+#### User Registration
+
+
+#### User Login
+
+
+## Reference
+
+* Parse Documentation - https://parse.com/docs/ios/guide#getting-started
+
