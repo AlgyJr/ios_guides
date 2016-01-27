@@ -16,11 +16,11 @@ This page covers a range of topics to serve as a primer for building data driven
 
 ## Getting started with Parse
 
-#### Parse Registration
+### Parse Registration
 
 If you have not already done so please [sign up for a Parse account.](https://www.parse.com/signup) While you are creating the account, go ahead and provide the name of the first application you are going to create with it. In this case we are calling it `InstaParse`.
 
-#### Setting up Parse SDK on iOS application (using Cocoapods)
+### Setting up Parse SDK on iOS application (using Cocoapods)
 (Assumes that you have already [setup CocoaPods](http://guides.codepath.com/ios/CocoaPods) on your Mac)
 
 1. Create a new iOS project (`Single View Application`)
@@ -39,7 +39,7 @@ If you have not already done so please [sign up for a Parse account.](https://ww
 4. Setup Parse SDK by executing `pod install` command in terminal.
 5. After Pod install is complete, open the project workspace created in step (4)
 
-#### Adding your Parse app's `ApplicationId` and `ClientKey` to you iOS app
+### Adding your Parse app's `ApplicationId` and `ClientKey` to you iOS app
 
 1. Get the application id and key from your [Parse App's dashboard](https://www.parse.com/apps),
    - Click `quickstart guide` for the app that you want to use with your iOS app.
