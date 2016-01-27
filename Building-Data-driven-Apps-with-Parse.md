@@ -147,4 +147,4 @@ Returns an instance of the successfully logged in `PFUser`. This also caches the
 
 ## Reference
 
-* Parse Documentation - https://parse.com/docs/ios/guide#getting-started
+Parse Documentation - https://parse.com/docs/ios/guide#getting-started
