@@ -75,7 +75,7 @@ Parse provides a specialized user class called `PFUser` that automatically handl
 
 One of the basic use cases for user management is to have them sign up. Once you have setup a view (in storyboard) and created a corresponding view controller (as shown in below image):
 
-<img src="http://i.imgur.com/6kvrKOU.png" alt="Parse Quickstart" width="750"/>
+<img src="http://i.imgur.com/6kvrKOU.png" alt="Parse User Sign Up" width="750"/>
 
 Following code snippet shows how to sign up user:
 
@@ -110,6 +110,38 @@ Parameters:
 
 #### User Login
 
+Once the user has signed up, next step would to have them log in to you app. The image below shows the Xcode setup to do the same, followed by code snippet for user login.
+
+<img src="http://i.imgur.com/DEKJjP0.png" alt="Parse User Login" width="750"/>
+
+```swift
+    @IBAction func loginUser(sender: UIButton) {
+
+        let username = usernameLabel.text ?? ""
+        let password = passwordLabel.text ?? ""
+
+        PFUser.logInWithUsernameInBackground(username, password: password) { (user: PFUser?, error: NSError?) -> Void in
+            if let error = error {
+                print("User login failed.")
+                print(error.localizedDescription)
+            } else {
+                print("User logged in successfully")
+                // display view controller that needs to shown after successful login
+            }
+        }
+        
+    }
+```
+
+1. `??` used in above code snippet is a *nil coalescing operator* - (`a ?? b`) unwraps an optional `a` if it contains a value, or returns a default value `b` if a is nil. The expression `a` is always of an optional type. The expression `b` must match the type that is stored inside `a`.
+2. `logInWithUsernameInBackground` - Makes an *asynchronous* request to log in a user with specified credentials.
+Returns an instance of the successfully logged in `PFUser`. This also caches the user locally so that calls to `PFUser.currentUser()` will use the latest logged in user.
+
+ - Parameters:
+    - username: The username of the user.
+    - password: The password of the user.
+    - block: The block to execute. It should have the following argument signature: `^(PFUser *user, NSError *error)`.
+3. `PFUser.currentUser()` - Once a user successfully logs in to your application, Parse caches the logged in user object for convenient access through out your application. This method call returns the cached user object.
 
 ## Reference
 
