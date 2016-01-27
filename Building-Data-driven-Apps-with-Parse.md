@@ -71,7 +71,7 @@ Parse provides a specialized user class called `PFUser` that automatically handl
 * **password**: The password for the user (required on signup).
 * **email**: The email address for the user (optional).
 
-#### User Registration
+### User Registration
 
 One of the basic use cases for user management is to have them sign up. Once you have setup a view (in storyboard) and created a corresponding view controller (as shown in below image):
 
@@ -108,7 +108,7 @@ Parameters:
 
 [Parse User Sign-Up documentation](https://parse.com/docs/ios/guide#users-signing-up).
 
-#### User Login
+### User Login
 
 Once the user has signed up, next step would to have them log in to you app. The image below shows the Xcode setup to do the same, followed by code snippet for user login.
 
