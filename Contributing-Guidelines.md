@@ -64,5 +64,5 @@ Check the [issues](https://github.com/codepath/ios_guides/issues) for this repos
 
 ### Linking to Other Guides
 
- * Link to other guides using: http://guides.codepath.com/ios/Understanding-Swift
+ * Link to other guides using: https://guides.codepath.com/ios/Understanding-Swift
  * **Don't** link to other guides using: https://github.com/codepath/ios_guides/wiki/Understanding-Swift
