@@ -145,6 +145,8 @@ Returns an instance of the successfully logged in `PFUser`. This also caches the
 
 [Parse User Login documentation](https://parse.com/docs/ios/guide#users-logging-in).
 
+## Parse Data Objects (`PFObject`)
+
 ## Reference
 
 Parse Documentation - https://parse.com/docs/ios/guide#getting-started
