@@ -112,7 +112,7 @@ Parameters:
 
 Once the user has signed up, next step would to have them log in to you app. The image below shows the Xcode setup to do the same, followed by code snippet for user login.
 
-<img src="http://i.imgur.com/DEKJjP0.png" alt="Parse User Login" width="750"/>
+<a target="_blank" href="http://i.imgur.com/DEKJjP0.png"><img src="http://i.imgur.com/DEKJjP0.png" alt="Parse User Login" width="750"/></a>
 
 ```swift
     @IBAction func loginUser(sender: UIButton) {
