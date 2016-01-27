@@ -73,6 +73,40 @@ Parse provides a specialized user class called `PFUser` that automatically handl
 
 #### User Registration
 
+One of the basic use cases for user management is to have them sign up. Once you have setup a view (in storyboard) and created a corresponding view controller (as shown in below image):
+
+<img src="http://i.imgur.com/6kvrKOU.png" alt="Parse Quickstart" width="750"/>
+
+Following code snippet shows how to sign up user:
+
+```swift
+    @IBAction func registerUser(sender: UIButton) {
+        # initialize a user object
+        let newUser = PFUser()
+
+        # set user properties
+        newUser.username = usernameLabel.text
+        newUser.email = emailLabel.text
+        newUser.password = passwordLabel.text
+
+        # call sign up function on the object
+        newUser.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("User Registered successfully")
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
+        
+    }
+```
+`signUpInBackgroundWithBlock` signs up the user *asynchronously*. This will also enforce that the username isn't already taken. (Warning: Make sure that password and username are set before calling this method.)
+
+Parameters:
+`block` - The block to execute. It should have the following argument signature: `^(BOOL succeeded, NSError *error)`.
+
+[Parse User Sign-Up documentation](https://parse.com/docs/ios/guide#users-signing-up).
 
 #### User Login
 
