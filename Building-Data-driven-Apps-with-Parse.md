@@ -147,6 +147,10 @@ Returns an instance of the successfully logged in `PFUser`. This also caches the
 
 ## Parse Data Objects (`PFObject`)
 
+Storing data on Parse is built around the `ParseObject`. Each `ParseObject` contains key-value pairs of JSON-compatible data. This data is schemaless, which means that you don't need to specify ahead of time what keys exist on each `ParseObject`. You simply set whatever key-value pairs you want, and Parse backend will store it.
+
+Each `ParseObject` has a class name that you can use to distinguish different sorts of data. For example, in case of our application we might call `ParseObject` to store uploaded images with name `UserMedia`
+
 ## Reference
 
 Parse Documentation - https://parse.com/docs/ios/guide#getting-started
