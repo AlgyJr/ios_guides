@@ -20,7 +20,7 @@ This page covers a range of topics to serve as a primer for building data driven
 
 If you have not already done so please [sign up for a Parse account.](https://www.parse.com/signup) While you are creating the account, go ahead and provide the name of the first application you are going to create with it. In this case we are calling it `InstaParse`.
 
-### Setting up Parse SDK on iOS application (using Cocoapods)
+### Setting up Parse SDK in iOS application (using Cocoapods)
 (Assumes that you have already [setup CocoaPods](http://guides.codepath.com/ios/CocoaPods) on your Mac)
 
 1. Create a new iOS project (`Single View Application`)
