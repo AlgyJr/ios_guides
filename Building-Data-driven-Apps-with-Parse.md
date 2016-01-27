@@ -75,7 +75,7 @@ Parse provides a specialized user class called `PFUser` that automatically handl
 
 One of the basic use cases for user management is to have them sign up. Once you have setup a view (in storyboard) and created a corresponding view controller (as shown in below image):
 
-<img src="http://i.imgur.com/6kvrKOU.png" alt="Parse User Sign Up" width="750"/>
+<a target="_blank" href="http://i.imgur.com/6kvrKOU.png"><img src="http://i.imgur.com/6kvrKOU.png" alt="Parse User Sign Up" width="750"/></a>
 
 Following code snippet shows how to sign up user:
 
