@@ -77,7 +77,7 @@ One of the basic use cases for user management is to have them sign up. Once you
 
 <a target="_blank" href="http://i.imgur.com/6kvrKOU.png"><img src="http://i.imgur.com/6kvrKOU.png" alt="Parse User Sign Up" width="750"/></a>
 
-Following code snippet shows how to sign up user:
+use following code snippet that shows how to sign up user:
 
 ```swift
     @IBAction func registerUser(sender: UIButton) {
