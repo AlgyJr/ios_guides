@@ -59,6 +59,22 @@ With the `use_frameworks!` directive, you can also consume Objective-C libraries
 
 **Potential Issue:** Unfortunately, all Objective-C Pods haven't been updated to work with the new dynamic frameworks behavior. You might come across certain Objective-C Pods that no longer build after adding the `use_frameworks!` directive. In these cases you can either not use the `use_frameworks!` directive (you'll now need to create a [[bridging header|Swift-ObjectiveC-Interoperability#the-objective-c-bridging-header]]) or manually edit the offending Pod to help it find the headers (as done in the [linked issue](https://github.com/bdbergeron/BDBOAuth1Manager/issues/35)).
 
+## Removing CocoaPods
+
+If you want to **fully remove all traces of CocoaPods** from your Xcode project, there's a [tool](https://github.com/CocoaPods/cocoapods-deintegrate) that can do this for you. Run the following command to install the tool:
+
+```shell
+sudo gem install cocoapods-deintegrate
+```
+
+And then navigate to the directory that contains your project (the same directory that has the `.xcodeproj` and `Podfile` files) and run the following command:
+
+```shell
+pod deintegrate
+```
+
+**Note:** This will remove all traces of CocoaPods from your project, but will leave 3 files hanging around on disk. If you want to fully remove all traces of CocoaPods, you'll also want to delete the following 3 files: `Podfile`, `Podfile.lock`, and `*.xcworkspace`.
+
 ## Alternatives to CocoaPods
 [Carthage](https://github.com/Carthage/Carthage) is an alternative dependency management system for Cocoa applications that has gained some traction recently. It prides itself on being a simple dependency manager that avoids the complexity of CocoaPods. To keep this simplicity, it doesn't automatically integrate the dependencies into your project (you must do that yourself). It also only supports iOS8 and above. 
 
