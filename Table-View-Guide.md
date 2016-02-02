@@ -1409,7 +1409,7 @@ func scrollViewDidScroll(scrollView: UIScrollView) {
     if (!isMoreDataLoading) {
         // Calculate the position of one screen length before the bottom of the results
         let scrollViewContentHeight = tableView.contentSize.height
-        let scrollOffsetThreshold = scrollViewContentHeight -tableView.bounds.size.height
+        let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
 		
         // When the user has scrolled past the threshold, start requesting
         if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging) {
@@ -1455,7 +1455,7 @@ func scrollViewDidScroll(scrollView: UIScrollView) {
     if (!isMoreDataLoading) {
         // Calculate the position of one screen length before the bottom of the results
         let scrollViewContentHeight = tableView.contentSize.height
-        let scrollOffsetThreshold = scrollViewContentHeight -tableView.bounds.size.height
+        let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
 		
         // When the user has scrolled past the threshold, start requesting
         if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging) {
@@ -1564,7 +1564,7 @@ func scrollViewDidScroll(scrollView: UIScrollView) {
     if (!isMoreDataLoading) {
         // Calculate the position of one screen length before the bottom of the results
         let scrollViewContentHeight = tableView.contentSize.height
-        let scrollOffsetThreshold = scrollViewContentHeight -tableView.bounds.size.height
+        let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
 		
         // When the user has scrolled past the threshold, start requesting
         if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging) {
