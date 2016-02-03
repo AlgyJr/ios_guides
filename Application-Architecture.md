@@ -1,19 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-- [Structure of a `UIApplication`](#structure-of-a-uiapplication)
-  - [The entry point to your application](#the-entry-point-to-your-application)
-  - [The root view controller](#the-root-view-controller)
-    - [The root view controller in storyboard applications](#the-root-view-controller-in-storyboard-applications)
-    - [Programatically setting the root view controller](#programatically-setting-the-root-view-controller)
-  - [Other hooks in the application lifecycle](#other-hooks-in-the-application-lifecycle)
-- [Model-View-Controller in iOS](#model-view-controller-in-ios)
-  - [Models](#models)
-  - [Views](#views)
-  - [View Controllers](#view-controllers)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 An iOS project is composed of many files that define different aspects
 the application.  This guide presents high level overview of the most
 common components of an application and how they fit together.  A more
