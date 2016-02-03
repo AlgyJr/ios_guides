@@ -68,5 +68,5 @@ For example, your shipping apps will commonly have two app targets:  the app you
 # Further Reading
 
 * [Xcode Basics](https://developer.apple.com/library/mac/recipes/xcode_help-general/_index.html): A quick overview of the Xcode UI
-* [Xcode Overview](https://developer.apple.com/library/iOs/documentation/ToolsLanguages/Conceptual/Xcode_Overview/About_Xcode/about.html): An in-depth look at Xcode
+* [Xcode Overview](https://developer.apple.com/library/ios/documentation/ToolsLanguages/Conceptual/Xcode_Overview/index.html): An in-depth look at Xcode
 * [iOS App Programming Guide](https://developer.apple.com/library/iOs/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Introduction/Introduction.html): A tour of all iOS fundamentals
