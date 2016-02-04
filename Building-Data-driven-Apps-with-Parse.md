@@ -151,6 +151,13 @@ Storing data on Parse is built around the `ParseObject`. Each `ParseObject` cont
 
 Each `ParseObject` has a class name that you can use to distinguish different sorts of data. For example, in case of our application we might call `ParseObject` to store uploaded images with name `UserMedia`
 
+PFObject detailed functionality explained below via a user of the application:
+
+#### (Use Case) Create and save an object to for user image
+
+
+
+
 ## Reference
 
 Parse Documentation - https://parse.com/docs/ios/guide#getting-started
