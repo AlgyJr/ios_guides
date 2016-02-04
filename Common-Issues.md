@@ -63,7 +63,7 @@ The console will be our first source for error printouts. Scroll all the way to 
 ## Unintended Run-Time Behaviors
 
 #### 1. Scroll View has weird gap.
-- **Solution:** Click on View Controller that contains the Scroll View, navigate to the Attributes Inspector (DJ Slider) inside the Utilities Pane. **Uncheck, "Adjust Scroll View Insets"**.  
+- **Solution:** Click on View Controller that contains the Scroll View, navigate to the Attributes Inspector (DJ Slider) inside the Utilities Pane. **Uncheck, "Adjust Scroll View Insets"**. This is a feature for iOS 6.0 compatibility and who cares about them!
 
 ![Adjust Scroll View Insets gif](http://i.imgur.com/lQH6X5r.gif)
 
