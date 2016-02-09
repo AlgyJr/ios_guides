@@ -155,9 +155,32 @@ PFObject detailed functionality explained below via a user of the application:
 
 #### (Use Case) Create and save an object to for user image
 
+1. Let's create a `model` class for `UserMedia` object
 
+    ```swift
+    class UserMedia: NSObject {
+        // implementation details
+    }
+    ```
 
+2. Next, let's add PFObjectName and properties
 
+    ```swift
+    class UserMedia: NSObject {
+
+        // MARK: Constants
+        static let ObjectName = "UserMedia"
+        struct Fields {
+            static let OjbectId = "objectId"
+            static let Media = "media"
+            static let LikesCount = "likesCount"
+            static let CommentsCount = "commentsCount"
+        }
+
+        // MARK: Properties
+        private var mediaObject: PFObject
+    }
+    ```
 ## Reference
 
 Parse Documentation - https://parse.com/docs/ios/guide#getting-started
