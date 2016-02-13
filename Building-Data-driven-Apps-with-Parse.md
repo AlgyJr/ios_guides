@@ -193,12 +193,12 @@ In this example, we will create and save an object to Parse for image that the u
         - parameter completion: Block to be executed after save operation is complete
          */
         class func postUserImage(image: UIImage?, withCaption caption: String?, withCompletion completion: PFBooleanResultBlock?) {
-            // Create Parse object `PFObject`
+            // Create Parse object PFObject
             let media = PFObject(className: UserMedia.ObjectName)
 
             // Add relevant fields to the object
-            media["media"] = getPFFileFromImage(image) // `PFFile` column type
-            media["author"] = PFUser.currentUser() // `Pointer` column type that points to `PFUser`
+            media["media"] = getPFFileFromImage(image) // PFFile column type
+            media["author"] = PFUser.currentUser() // Pointer column type that points to PFUser
             media["caption"] = caption
             media["likesCount"] = 0
             media["commentsCount"] = 0
