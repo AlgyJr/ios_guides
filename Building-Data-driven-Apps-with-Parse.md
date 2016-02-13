@@ -253,7 +253,7 @@ query.getObjectInBackgroundWithId("imkmJsHVIH") {
 
 Adding constraints to `PFQuery` can be done by either specifying `NSPredicate` or by using methods provided by `PFQuery`
 
-##### `NSPredicate`
+##### Using `NSPredicate`
 
 A `NSPredicate` can be passed to `PFQuery` constructor to specify query constraints. Below example shows how to construct a query to fetch user media post with more than 100 likes on the post.
 
@@ -272,7 +272,9 @@ query.findObjectsInBackgroundWithBlock { (media: [PFObject]?, error: NSError?) -
 }
 ```
 
-##### `PFQuery Methods`
+A complete list of features supported by Parse for `NSPredicate` can be found [here](https://parse.com/docs/ios/guide#queries-specifying-constraints-with-nspredicate).
+
+##### Using `PFQuery Methods`
 There are several other methods that `PFQuery` provides to support SQL-like querying of objects. For example, you get 20 user media posts that have more than 100 likes on the post with following code:
 
 ```swift
@@ -290,6 +292,9 @@ query.findObjectsInBackgroundWithBlock { (media: [PFObject]?, error: NSError?) -
     }
 }
 ```
+
+For more examples and list of other methods supported by `PFQuery` for specifying constraints can be found [here](https://parse.com/docs/ios/guide#queries-query-constraints).
+
 
 ## FAQ
 
