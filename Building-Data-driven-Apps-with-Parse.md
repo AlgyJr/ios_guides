@@ -178,7 +178,7 @@ Each `ParseObject` has a class name that you can use to distinguish different so
 
 In this example, we will create and save an object to Parse for image that the user wants to upload along with some other details. Let's create a `model` class for `UserMedia` object. We will use this model as a wrapper around PBObject to encapsulate CRUD functionality from the ViewControllers.
 
-    ```swift
+```swift
     class UserMedia: NSObject {
         /**
          * Other methods
@@ -205,27 +205,7 @@ In this example, we will create and save an object to Parse for image that the u
             // Save object (following function will save the object in Parse asynchronously)
             media.saveInBackgroundWithBlock(completion)
         }
-
-        /**
-        Method to post user media to Parse by uploading image file
-     
-        - parameter image: Image that the user wants upload to parse
-
-        - returns: PFFile for the the data in the image
-         */
-        class func getPFFileFromImage(image: UIImage?) -> PFFile? {
-            // check if image is not nil
-            if let image = image {
-                // get image data and check if that is not nil
-                if let imageData = UIImagePNGRepresentation(image) {
-                      return PFFile(name: "image.png", data: imageData)
-                }
-            }
-            return nil
-        }
-    }
-    ```
-
+```
 
 ## Reference
 
