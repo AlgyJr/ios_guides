@@ -318,6 +318,11 @@ query.findObjectsInBackgroundWithBlock { (media: [PFObject]?, error: NSError?) -
 
 ## FAQ
 
+1)  Is there a way to put some key into an app (binary which is delivered form AppStore) and be completely secure?
+
+Please refer to this comprehensive [explanation on Stack Overflow](http://stackoverflow.com/a/14865695)
+
+
 ## Reference
 
 Parse Documentation - https://parse.com/docs/ios/guide#getting-started
