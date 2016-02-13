@@ -206,6 +206,13 @@ In this example, we will create and save an object to Parse for image that the u
             media.saveInBackgroundWithBlock(completion)
         }
 
+        /**
+        Method to post user media to Parse by uploading image file
+     
+        - parameter image: Image that the user wants upload to parse
+
+        - returns: PFFile for the the data in the image
+         */
         class func getPFFileFromImage(image: UIImage?) -> PFFile? {
             // check if image is not nil
             if let image = image {
