@@ -304,7 +304,7 @@ Based on above discussion, we can easily construct a `PFQuery` to fetch most rec
 let query = PFQuery(className: "UserMedia")
 query.orderByDescending("createdAt")
 query.includeKey("author")
-query.limit = limit
+query.limit = 20
 
 // fetch data asynchronously
 query.findObjectsInBackgroundWithBlock { (media: [PFObject]?, error: NSError?) -> Void in
