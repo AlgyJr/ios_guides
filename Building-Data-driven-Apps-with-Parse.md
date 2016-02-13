@@ -295,6 +295,26 @@ query.findObjectsInBackgroundWithBlock { (media: [PFObject]?, error: NSError?) -
 
 For more examples and list of other methods supported by `PFQuery` for specifying constraints can be found [here](https://parse.com/docs/ios/guide#queries-query-constraints).
 
+### (Use Case) View the last 20 posts submitted to "Instagram"
+
+Based on above discussion, we can easily construct a `PFQuery` to fetch most recent posts from Parse as following:
+
+```swift
+// construct PFQuery
+let query = PFQuery(className: "UserMedia")
+query.orderByDescending("createdAt")
+query.includeKey("author")
+query.limit = limit
+
+// fetch data
+query.findObjectsInBackgroundWithBlock { (media: [PFObject]?, error: NSError?) -> Void in
+    if let media = media {
+        // do someething with the data fetched
+    } else {
+        // handle error
+    }
+}
+```
 
 ## FAQ
 
