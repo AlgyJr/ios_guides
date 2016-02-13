@@ -205,6 +205,18 @@ In this example, we will create and save an object to Parse for image that the u
             // Save object (following function will save the object in Parse asynchronously)
             media.saveInBackgroundWithBlock(completion)
         }
+
+        class func getPFFileFromImage(image: UIImage?) -> PFFile? {
+            // check if image is not nil
+            if let image = image {
+                // get image data and check if that is not nil
+                if let imageData = UIImagePNGRepresentation(image) {
+                      return PFFile(name: "image.png", data: imageData)
+                }
+            }
+            return nil
+        }
+    }
 ```
 
 ## Reference
