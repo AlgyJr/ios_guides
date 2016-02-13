@@ -226,6 +226,7 @@ In this example, we will create and save an object to Parse for image that the u
     }
 ```
 
+1. To upload the user image to Parse, get the user input from the view controller and then call the `postUserImage` method from the view controller by passing all the required arguments into it (Please see method's comments for more details on arguments).
 ## Reference
 
 Parse Documentation - https://parse.com/docs/ios/guide#getting-started
