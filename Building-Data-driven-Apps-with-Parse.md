@@ -141,7 +141,8 @@ Returns an instance of the successfully logged in `PFUser`. This also caches the
     - username: The username of the user.
     - password: The password of the user.
     - block: The block to execute. It should have the following argument signature: `^(PFUser *user, NSError *error)`.
-3. `PFUser.currentUser()` - Once a user successfully logs in to your application, Parse caches the logged in user object for convenient access through out your application. This method call returns the cached user object.
+
+3. `PFUser.currentUser()` - Once a user successfully logs in to your application, Parse caches the logged in user object for convenient access through out your application. This method call returns the cached user object. 
 
 [Parse User Login documentation](https://parse.com/docs/ios/guide#users-logging-in).
 
