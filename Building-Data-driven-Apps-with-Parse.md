@@ -174,6 +174,8 @@ Each `ParseObject` has a class name that you can use to distinguish different so
 #### `PFFile`
 `PFFile` lets you store application files in the cloud that would otherwise be too large or cumbersome to fit into a regular `PFObject`. The most common use case is storing images but you can also use it for documents, videos, music, and any other binary data (up to 10 megabytes).
 
+[Parse Documentation on handling Images using `PFFile`](https://parse.com/docs/ios/guide#files-images)
+
 ### (Use Case) Post photos to Instagram (Parse)
 
 In this example, we will create and save an object to Parse for image that the user wants to upload along with some other details. Let's create a `model` class for `UserMedia` object. We will use this model as a wrapper around PBObject to encapsulate CRUD functionality from the ViewControllers.
@@ -227,6 +229,10 @@ In this example, we will create and save an object to Parse for image that the u
 ```
 
 1. To upload the user image to Parse, get the user input from the view controller and then call the `postUserImage` method from the view controller by passing all the required arguments into it (Please see method's comments for more details on arguments).
+
+## Fetching data from Parse (via `PFQuery`)
+
+## FAQ
 
 ## Reference
 
