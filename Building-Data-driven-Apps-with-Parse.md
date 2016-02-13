@@ -145,66 +145,58 @@ Returns an instance of the successfully logged in `PFUser`. This also caches the
 
 [Parse User Login documentation](https://parse.com/docs/ios/guide#users-logging-in).
 
-## Parse Data Objects (`PFObject`)
+## Parse Data Objects (`PFObject`) & Parse Files (`PFFile`)
 
+#### `PFObject`
 Storing data on Parse is built around the `ParseObject`. Each `ParseObject` contains key-value pairs of JSON-compatible data. This data is schemaless, which means that you don't need to specify ahead of time what keys exist on each `ParseObject`. You simply set whatever key-value pairs you want, and Parse backend will store it.
 
 Each `ParseObject` has a class name that you can use to distinguish different sorts of data. For example, in case of our application we might call `ParseObject` to store uploaded images with name `UserMedia`
 
-PFObject detailed functionality explained below via a user of the application:
+#### `PFFile`
+`PFFile` lets you store application files in the cloud that would otherwise be too large or cumbersome to fit into a regular `PFObject`. The most common use case is storing images but you can also use it for documents, videos, music, and any other binary data (up to 10 megabytes).
 
-#### (Use Case) Create and save an object to for user image
+#### (Use Case) Create and save an object to Parse for image that the user wants to upload
 
 1. Let's create a `model` class for `UserMedia` object. We will use this model as a wrapper around PBObject to encapsulate CRUD functionality from the ViewControllers.
 
     ```swift
     class UserMedia: NSObject {
-        // implementation details
-    }
-    ```
+        /**
+         * Other methods
+         */
 
-2. Next, let's add PFObjectName and properties
-
-    ```swift
-    class UserMedia: NSObject {
-
-        // MARK: - Constants
-        static let ObjectName = "UserMedia"
-        struct Fields {
-            static let OjbectId = "objectId"
-            static let Media = "media"
-            static let LikesCount = "likesCount"
-            static let CommentsCount = "commentsCount"
-            static let Caption = "caption"
-            static let MediaAuthor = "author"
-            static let CreatedAt = "createdAt"
+        /**
+        Method to post user media to Parse by uploading image file
+     
+        - parameter image: Image that the user wants upload to parse
+        - parameter caption: Caption text input by the user
+        - parameter completion: Block to be executed after save operation is complete
+         */
+        class func postUserImage(image: UIImage?, withCaption caption: String?, withCompletion completion: PFBooleanResultBlock?) {
+            let media = PFObject(className: UserMedia.ObjectName)
+            media["media"] = getPFFileFromImage(image) // class method implemented below
+            media["caption"] = caption
+            media["likesCount"] = 0
+            media["commentsCount"] = 0
+            media[""] = PFUser.currentUser()
+            media.saveInBackgroundWithBlock(completion)
         }
-    
-        // MARK: - Stored Properties
-        private var mediaObject: PFObject
 
-        // MARK: Computed Properties
-        var likesCount: Int {
-            if let count = mediaObject[Fields.LikesCount] as? Int {
-                return count
+        /**
+        Method to post user media to Parse by uploading image file
+     
+        - parameter image: Image that the user wants upload to parse
+
+        - returns: PFFile for the the data in the image
+         */
+        class func getPFFileFromImage(image: UIImage?) -> PFFile? {
+            if let image = image, let imageData = UIImagePNGRepresentation(image) {
+                return PFFile(name: "image.png", data: imageData)
             }
-            return 0
-        }
-
-        var username: String? {
-            return (mediaObject[Fields.MediaAuthor] as? PFUser)?.username ?? nil
-        }
-
-        var dateCreated: NSDate? {
-            return mediaObject.createdAt
-        }
-        
-        var mediaCaption: String? {
-            return mediaObject[Fields.Caption] as? String
+            return nil
         }
     }
     ```
-
 
 ## Reference
 
