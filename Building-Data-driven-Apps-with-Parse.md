@@ -232,6 +232,65 @@ In this example, we will create and save an object to Parse for image that the u
 
 ## Fetching data from Parse (via `PFQuery`)
 
+`PFQuery` is used to retrieve data that is stored in Parse. The simplest way to do this is when you have the `objectId`. This is an asynchronous method, with variations for using either blocks or callback methods:
+
+```swift
+var query = PFQuery(className: "UserMedia")
+query.getObjectInBackgroundWithId("imkmJsHVIH") {
+  (userMedia: PFObject?, error: NSError?) -> Void in
+  if error == nil && gameScore != nil {
+    print(userMedia)
+  } else {
+    print(error)
+  }
+}
+// The getObjectInBackgroundWithId methods are asynchronous, so any code after this will run
+// immediately.  Any code that depends on the query result should be moved
+// inside the completion block above.
+```
+
+#### Query constraints (filter, order, group the data)
+
+Adding constraints to `PFQuery` can be done by either specifying `NSPredicate` or by using methods provided by `PFQuery`
+
+##### `NSPredicate`
+
+A `NSPredicate` can be passed to `PFQuery` constructor to specify query constraints. Below example shows how to construct a query to fetch user media post with more than 100 likes on the post.
+
+```swift
+// construct query
+let predicate = NSPredicate(format: "likesCount > 100")
+var query = PFQuery(className: "UserMedia", predicate: predicate)
+
+// fetch data asynchronously
+query.findObjectsInBackgroundWithBlock { (media: [PFObject]?, error: NSError?) -> Void in
+    if let media = media {
+        // do something with the array of object returned by the call
+    } else {
+        print(error?.localizedDescription)
+    }
+}
+```
+
+##### `PFQuery Methods`
+There are several other methods that `PFQuery` provides to support SQL-like querying of objects. For example, you get 20 user media posts that have more than 100 likes on the post with following code:
+
+```swift
+// construct query
+let query = PFQuery(className: "UserMedia")
+query.whereKey("likesCount", greaterThan: 100)
+query.limit = 20
+
+// fetch data asynchronously
+query.findObjectsInBackgroundWithBlock { (media: [PFObject]?, error: NSError?) -> Void in
+    if let media = media {
+        // do something with the array of object returned by the call
+    } else {
+        print(error?.localizedDescription)
+    }
+}
+```
+
 ## FAQ
 
 ## Reference
