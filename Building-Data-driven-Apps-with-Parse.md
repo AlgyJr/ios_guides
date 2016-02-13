@@ -155,7 +155,7 @@ PFObject detailed functionality explained below via a user of the application:
 
 #### (Use Case) Create and save an object to for user image
 
-1. Let's create a `model` class for `UserMedia` object
+1. Let's create a `model` class for `UserMedia` object. We will use this model as a wrapper around PBObject to encapsulate CRUD functionality from the ViewControllers.
 
     ```swift
     class UserMedia: NSObject {
@@ -168,19 +168,44 @@ PFObject detailed functionality explained below via a user of the application:
     ```swift
     class UserMedia: NSObject {
 
-        // MARK: Constants
+        // MARK: - Constants
         static let ObjectName = "UserMedia"
         struct Fields {
             static let OjbectId = "objectId"
             static let Media = "media"
             static let LikesCount = "likesCount"
             static let CommentsCount = "commentsCount"
+            static let Caption = "caption"
+            static let MediaAuthor = "author"
+            static let CreatedAt = "createdAt"
+        }
+    
+        // MARK: - Stored Properties
+        private var mediaObject: PFObject
+
+        // MARK: Computed Properties
+        var likesCount: Int {
+            if let count = mediaObject[Fields.LikesCount] as? Int {
+                return count
+            }
+            return 0
         }
 
-        // MARK: Properties
-        private var mediaObject: PFObject
+        var username: String? {
+            return (mediaObject[Fields.MediaAuthor] as? PFUser)?.username ?? nil
+        }
+
+        var dateCreated: NSDate? {
+            return mediaObject.createdAt
+        }
+        
+        var mediaCaption: String? {
+            return mediaObject[Fields.Caption] as? String
+        }
     }
     ```
+
+
 ## Reference
 
 Parse Documentation - https://parse.com/docs/ios/guide#getting-started
