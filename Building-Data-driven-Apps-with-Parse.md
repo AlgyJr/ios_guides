@@ -155,9 +155,9 @@ Each `ParseObject` has a class name that you can use to distinguish different so
 #### `PFFile`
 `PFFile` lets you store application files in the cloud that would otherwise be too large or cumbersome to fit into a regular `PFObject`. The most common use case is storing images but you can also use it for documents, videos, music, and any other binary data (up to 10 megabytes).
 
-#### (Use Case) Create and save an object to Parse for image that the user wants to upload
+### (Use Case) Post photos to Instagram (Parse)
 
-1. Let's create a `model` class for `UserMedia` object. We will use this model as a wrapper around PBObject to encapsulate CRUD functionality from the ViewControllers.
+In this example, we will create and save an object to Parse for image that the user wants to upload along with some other details. Let's create a `model` class for `UserMedia` object. We will use this model as a wrapper around PBObject to encapsulate CRUD functionality from the ViewControllers.
 
     ```swift
     class UserMedia: NSObject {
@@ -173,12 +173,17 @@ Each `ParseObject` has a class name that you can use to distinguish different so
         - parameter completion: Block to be executed after save operation is complete
          */
         class func postUserImage(image: UIImage?, withCaption caption: String?, withCompletion completion: PFBooleanResultBlock?) {
+            // Create Parse object `PFObject`
             let media = PFObject(className: UserMedia.ObjectName)
+
+            // Add relevant fields to the object
             media["media"] = getPFFileFromImage(image) // `PFFile` column type
             media["author"] = PFUser.currentUser() // `Pointer` column type that points to `PFUser`
             media["caption"] = caption
             media["likesCount"] = 0
             media["commentsCount"] = 0
+
+            // Save object (following function will save the object in Parse asynchronously)
             media.saveInBackgroundWithBlock(completion)
         }
 
@@ -190,8 +195,12 @@ Each `ParseObject` has a class name that you can use to distinguish different so
         - returns: PFFile for the the data in the image
          */
         class func getPFFileFromImage(image: UIImage?) -> PFFile? {
-            if let image = image, let imageData = UIImagePNGRepresentation(image) {
-                return PFFile(name: "image.png", data: imageData)
+            // check if image is not nil
+            if let image = image {
+                // get image data and check if that is not nil
+                if let imageData = UIImagePNGRepresentation(image) {
+                      return PFFile(name: "image.png", data: imageData)
+                }
             }
             return nil
         }
