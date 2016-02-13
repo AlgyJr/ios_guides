@@ -306,10 +306,10 @@ query.orderByDescending("createdAt")
 query.includeKey("author")
 query.limit = limit
 
-// fetch data
+// fetch data asynchronously
 query.findObjectsInBackgroundWithBlock { (media: [PFObject]?, error: NSError?) -> Void in
     if let media = media {
-        // do someething with the data fetched
+        // do something with the data fetched
     } else {
         // handle error
     }
