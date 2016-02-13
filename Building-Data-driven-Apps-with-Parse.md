@@ -174,11 +174,11 @@ Each `ParseObject` has a class name that you can use to distinguish different so
          */
         class func postUserImage(image: UIImage?, withCaption caption: String?, withCompletion completion: PFBooleanResultBlock?) {
             let media = PFObject(className: UserMedia.ObjectName)
-            media["media"] = getPFFileFromImage(image) // class method implemented below
+            media["media"] = getPFFileFromImage(image) // `PFFile` column type
+            media["author"] = PFUser.currentUser() // `Pointer` column type that points to `PFUser`
             media["caption"] = caption
             media["likesCount"] = 0
             media["commentsCount"] = 0
-            media[""] = PFUser.currentUser()
             media.saveInBackgroundWithBlock(completion)
         }
 
