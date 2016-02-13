@@ -157,7 +157,6 @@ Once a user successfully logs in to your application, Parse caches the logged in
         // check if the user is cached.
         if let _ = PFUser.currentUser() {
             // if the user is cached then load the home view controller
-            window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("HomeNavViewController") as! UINavigationController
         }
 
         return true
