@@ -16,9 +16,16 @@ This page covers a range of topics to serve as a primer for building data driven
 
 ## Getting started with Parse
 
-### Parse Registration
+### Parse Registration (FYI)
 
-If you have not already done so please [sign up for a Parse account.](https://www.parse.com/signup) While you are creating the account, go ahead and provide the name of the first application you are going to create with it. In this case we are calling it `InstaParse`.
+~~If you have not already done so please [sign up for a Parse account.](https://www.parse.com/signup) While you are creating the account, go ahead and provide the name of the first application you are going to create with it. In this case we are calling it `InstaParse`.~~
+
+As of February 2016, Parse has stopped new account registration as they have announced that the service will be shutdown on January 28th, 2017. However, they have open sourced their server code which you can host to provide the same functionality.
+
+### Deploying and Configuring a Parse Server
+
+Please refer to this guide for instructions on how to [host and configure your own Parse server](https://guides.codepath.com/ios/Configuring-a-Parse-Server).
+
 
 ### Setting up Parse SDK in iOS application (using Cocoapods)
 (Assumes that you have already [setup CocoaPods](http://guides.codepath.com/ios/CocoaPods) on your Mac)
