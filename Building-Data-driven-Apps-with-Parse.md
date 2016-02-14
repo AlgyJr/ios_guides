@@ -298,6 +298,15 @@ query.findObjectsInBackgroundWithBlock { (media: [PFObject]?, error: NSError?) -
 
 For more examples and list of other methods supported by `PFQuery` for specifying constraints can be found [here](https://parse.com/docs/ios/guide#queries-query-constraints).
 
+#### `Pointer` type fields and fetching their value (getting value of the object)
+
+If one of the keys in your `PFObject` refers to another `PFObject` (note that `PFUser` is a sub-class of `PFObject`) then that field is of `Pointer` type. For example, in `UserMedia` object which represents an Instagram post, one field that you would want to store is the author of the post. You can do this by assigning current user to the `author` key when saving the post.
+
+```swift
+let media = PFObject(className: UserMedia.ObjectName)
+media["author"] = PFUser.currentUser() // get the current user and assign it to "author" field. "author" field is now of Pointer type
+```
+
 ### (Use Case) View the last 20 posts submitted to "Instagram"
 
 Based on above discussion, we can easily construct a `PFQuery` to fetch most recent posts from Parse as following:
