@@ -304,8 +304,18 @@ If one of the keys in your `PFObject` refers to another `PFObject` (note that `P
 
 ```swift
 let media = PFObject(className: UserMedia.ObjectName)
-media["author"] = PFUser.currentUser() // get the current user and assign it to "author" field. "author" field is now of Pointer type
+
+// get the current user and assign it to "author" field. "author" field is now of Pointer type
+media["author"] = PFUser.currentUser() 
 ```
+
+By default, when you fetch a `UserMedia` object it won't have the author information. In order to get the information for the "author" you will have to use `PFQuery` method `includeKey`.
+
+```swift
+query.includeKey("author")
+```
+
+Please see below example for more context.
 
 ### (Use Case) View the last 20 posts submitted to "Instagram"
 
