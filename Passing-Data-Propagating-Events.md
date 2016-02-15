@@ -1,15 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-- [Overview](#overview)
-- [Basic example](#basic-example)
-- [The delegate pattern in iOS](#the-delegate-pattern-in-ios)
-- [Passing blocks](#passing-blocks)
-- [The target-action pattern](#the-target-action-pattern)
-- [Broadcasting messages with `NSNotificationCenter`](#broadcasting-messages-with-nsnotificationcenter)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 ## Overview
 
 While your application runs, as [events are triggered and
@@ -54,7 +42,8 @@ color picker view controller.
 
 <!-- TODO: for each type of thing we need to link to example in apple api -->
 
-## The delegate pattern in iOS
+## Delegate Pattern
+
 Since segues are only available in storyboards, we'll need a different
 way to coordinate the interaction between view controllers in a
 non-storyboard application.  One very common method to do this in iOS is
