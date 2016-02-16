@@ -25,6 +25,7 @@ Ever been **frustrated finding information on outdated one-off blog posts and tu
 * [[Application Architecture and MVC in iOS|Application-Architecture]]
 * [[Using Swift and Objective-C in the Same Project|Swift-ObjectiveC-Interoperability]]
 * [[Understanding Navigation in iOS]]
+* [[Debugging Apps]]
 
 ## Networking and Models
 
