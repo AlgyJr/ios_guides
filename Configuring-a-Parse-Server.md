@@ -40,7 +40,7 @@ If you ever need to change these values later, you can go to (`https://dashboard
 
 After deployment, try to connect to the site.  You should see `I dream of being a web site.` if the site loaded correctly.   If you try to connect to the `/parse` endpoint, you should see `{error: "unauthorized"}`.  If both tests pass, the basic configuration is successful.
 
-Next, make sure you can create Parse objects.  You do not need a client Key to write new data:
+Next, make sure you can create Parse objects.  You do not need a client Key to write new data. **Note:** You might need to [download curl](https://curl.haxx.se/download.html) if you are using Windows.
 
 ```bash
 curl -X POST -H "X-Parse-Application-Id: myAppId" -H "Content-Type: application/json" -d '{"score":1337,"playerName":"Sean Plott","cheatMode":false}'   https://yourappname.herokuapp.com/parse/classes/GameScore
