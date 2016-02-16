@@ -84,21 +84,21 @@ use following code snippet that shows how to sign up user:
 
 ```swift
     @IBAction func registerUser(sender: UIButton) {
-        # initialize a user object
+        // initialize a user object
         let newUser = PFUser()
 
-        # set user properties
+        // set user properties
         newUser.username = usernameLabel.text
         newUser.email = emailLabel.text
         newUser.password = passwordLabel.text
 
-        # call sign up function on the object
+        // call sign up function on the object
         newUser.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
             if let error = error {
                 print(error.localizedDescription)
             } else {
                 print("User Registered successfully")
-                self.dismissViewControllerAnimated(true, completion: nil)
+                // manually segue to logged in view
             }
         }
         
