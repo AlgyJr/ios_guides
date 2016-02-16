@@ -56,8 +56,7 @@ Please refer to this guide for instructions on how to [host and configure your o
       ```swift
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        Parse.setApplicationId("pZRoLzE1EXdcfaiMwvL3frpHHv3pIVClD6RFw8LI",**
-            clientKey: "ZkiuDctukNhPjIOwXvpYiHW8hQ2ywds843AixEPm")**
+        Parse.setApplicationId("myAppId", clientKey: "myClientKey")
         return true
     }
       ```
@@ -154,8 +153,7 @@ Once a user successfully logs in to your application, Parse caches the logged in
 ```swift
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // setup parse keys
-        Parse.setApplicationId("myAppId",
-            clientKey: "myClientKey")
+        Parse.setApplicationId("myAppId", clientKey: "myClientKey")
 
         // check if user is logged in.
         if PFUser.currentUser() != nil {
