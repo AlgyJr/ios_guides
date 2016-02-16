@@ -154,12 +154,12 @@ Once a user successfully logs in to your application, Parse caches the logged in
 ```swift
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // setup parse keys
-        Parse.setApplicationId("pZRoLzE1EXdcfaiMwvL3frpHHv3pIVClD6RFw8LI",
-            clientKey: "ZkiuDctukNhPjIOwXvpYiHW8hQ2ywds843AixEPm")
+        Parse.setApplicationId("myAppId",
+            clientKey: "myClientKey")
 
-        // check if the user is cached.
-        if let _ = PFUser.currentUser() {
-            // if the user is cached then load the home view controller
+        // check if user is logged in.
+        if PFUser.currentUser() != nil {
+            // if there is a logged in user then load the home view controller
         }
 
         return true
