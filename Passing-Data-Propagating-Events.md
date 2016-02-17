@@ -39,173 +39,91 @@ color picker view controller.
 
 <a href="http://imgur.com/XgIWavY"><img src="http://i.imgur.com/XgIWavY.gif" title="source: imgur.com" /></a>
 
-
-<!-- TODO: for each type of thing we need to link to example in apple api -->
-
 ## Delegate Pattern
 
-Since segues are only available in storyboards, we'll need a different
-way to coordinate the interaction between view controllers in a
-non-storyboard application.  One very common method to do this in iOS is
-the [delegate pattern].
-[delegatepattern]: https://developer.apple.com/library/ios/documentation/General/Conceptual/DevPedia-CocoaCore/Delegation.html
+The [delegate pattern](https://developer.apple.com/library/ios/documentation/General/Conceptual/DevPedia-CocoaCore/Delegation.html) is a common pattern in iOS. It can be used to communicate events between multiple
+view controllers, between view controllers and views, etc. If you've implemented a TableView, then you've used the delegate pattern when you implemented [UITableViewDataSource](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewDataSource_Protocol) and [UITableViewDelegate](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewDelegate_Protocol).
 
-The delegate pattern works by having a _delegating_ object maintain a
-reference to another _delegate_ object that is able to provide data and
-handle events in cases it is inconvenient for the delegating object to
-do so.  A typical use of this to coordinate events between multiple
-view-controllers or between view controllers and views is as folows:
+It can be really useful to create your own delegate. To do so, requires the following 4 steps:
 
-1. A view controller `VC1` instantiates another view controller (or
-   view) `V2` that won't have all the information it needs to configure
-itself (or wants to propagate events to the original view controller).
-2. `VC1` implements a delegate protocol corresponding to the `V2` and
-   sets itself as `V2`'s delegate
-3. `V2` may call its delegate (in this case `VC1`) to obtain data it
-   needs to show itself on the screen
-4. `V2` may respond to events by calling delegate methods and thus
-   propagating the event/offloading the responsiblity to `VC1`.
+1. Create a [protocol](http://guides.codepath.com/ios/Understanding-Swift#protocols) that has methods for each event:
 
-You probably have already seen this pattern in action with
-[`UITableViewDataSource` and `UITableViewDelegate`](Table-View-Guide#the-datasource-and-delegate-properties).
-
-**UITableViewDataSource Protocol example**: 
-```swift
-public protocol UITableViewDataSource : NSObjectProtocol {
-    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-    
-    optional public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) 
-    optional public func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool
-}
-```
-
-Take a look at the protocol above; common usage would be to extend the protocol and in a view controller that has a table view. Here's what you would do:
-
-* Make the class conform to the protocol
-    
-```swift
-    class CodePathViewController: UIViewController, UITableViewDataSource {
-        @IBOutlet weak var tableView: UITableView!
+    ```swift
+    protocol ColorPickerDelegate: class {
+        func colorPicker(picker: ColorPickerViewController, didPickColor color: UIColor?)
     }
-```
-* Set the dataSource object of the tableView to `self`. Here `self` represents an object of the class `CodePathViewController`
-    
-```swift
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.tableView.dataSource = self
+    ```
+2. In the source class, create a property to hold a reference to the listener.
+
+    ```swift
+    class ColorPickerViewController: UIViewController {
+        weak var delegate: ColorPickerDelegate?
+
+        // ... Rest of class ...
     }
-```
-Note that the `dataSource` object is actually an object of type `UITableViewDataSource`. This
-will act as the delegate object that respond to the methods of the protocol.
- 
-```swift     
-   weak public var dataSource: UITableViewDataSource?
-```
-* Now your class `CodePathViewController` will respond to the mandatory methods of the protocol `UITableViewDataSource`
+    ```
+3. In the source class, call the appropriate delegate method when an event occurs.
 
-```swift
-    class CodePathViewController: UIViewController, UITableViewDataSource {
-        @IBOutlet weak var tableView: UITableView!
-   
-        func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 1
-        }
-    }
-```
+    ```swift
+    class ColorPickerViewController: UIViewController {
 
-The delegate pattern is ubiquitous throughout the iOS frameworks and
-libraries.  It is useful for creating a well defined (compile-time)
-interface for communication between objects.  You might also prefer it
-if there are many different kinds of messages that you might want to
-pass between objects.
+        weak var delegate: ColorPickerDelegate?
 
-We modify our [example](#basic-example) from above to use the delegate
-pattern as follows.  We remove the segues from our story board, and have
-the main `ViewController` instantiate and present the
-`ColorPickerViewController` manually.
+        @IBOutlet weak var colorsSegmentedControl: UISegmentedControl!
 
-Importantly, we also have the `ViewController` class implement
-`ColorPickerDelegate` (see next code block) and set itself as the color
-picker view controller's delegate before presenting it to the user.  We
-implement the delegate method `didPickColor` to respond by setting the
-our background color to the selected color and dismissing the color
-picker view controller.  Finally we provide our background color as the
-initial color by implementing the delegate method `initialColor`.
+        let colors = [("Cyan", UIColor.cyanColor()),  ("Magenta", UIColor.magentaColor()), ("Yellow", UIColor.yellowColor())]
 
-```swift
-class ViewController: UIViewController, ColorPickerDelegate {
-    @IBAction func openColorPickerTapped(sender: AnyObject) {
-        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        let colorPickerVC = storyboard.instantiateViewControllerWithIdentifier("ColorPicker") as ColorPickerViewController
-        colorPickerVC.delegate = self
-        presentViewController(colorPickerVC, animated: true, completion: nil)
-    }
+        override func viewDidLoad() {
+            super.viewDidLoad()
 
-    func colorPicker(picker: ColorPickerViewController, didPickColor color: UIColor?) {
-        if let selectedColor = color {
-            view.backgroundColor = selectedColor
-        }
-        dismissViewControllerAnimated(true, completion: nil)
-    }
+            // initialize segmented control and select the starting color if it is one of our segments
+            colorsSegmentedControl.removeAllSegments()
+            var selectedIndex = UISegmentedControlNoSegment
 
-    func initialColor() -> UIColor? {
-        return view.backgroundColor
-    }
-}
-```
-
-Our `ColorPickerDelegate` has two methods.  The `didPickColor` method
-lets `ColorPickerViewController` notify its delegate when the user has
-selected a color by tapping on the "Done" button.  The `initialColor`
-color method lets the delegate inform `ColorPickerViewController` of
-which color to set as its initially selected color in `viewDidLoad`.
-
-```swift
-protocol ColorPickerDelegate: class {
-    func colorPicker(picker: ColorPickerViewController, didPickColor color:UIColor?)
-    func initialColor() -> UIColor?
-}
-
-class ColorPickerViewController: UIViewController {
-    @IBOutlet weak var colorsSegmentedControl: UISegmentedControl!
-
-    let colors = [("Cyan", UIColor.cyanColor()),  ("Magenta", UIColor.magentaColor()), ("Yellow", UIColor.yellowColor())]
-    weak var delegate: ColorPickerDelegate?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // initalize segmented control and select the starting color if it is one of our segments
-        colorsSegmentedControl.removeAllSegments()
-        var selectedIndex = UISegmentedControlNoSegment
-        let initialColor = delegate?.initialColor()
-
-        for (index, color) in enumerate(colors) {
-            if color.1.isEqual(initialColor) {
-                selectedIndex = index
+            for (index, color) in enumerate(colors) {
+                if color.1.isEqual(initialColor) {
+                    selectedIndex = index
+                }
+                colorsSegmentedControl.insertSegmentWithTitle(color.0, atIndex: index, animated: false)
             }
-            colorsSegmentedControl.insertSegmentWithTitle(color.0, atIndex: index, animated: false)
+            colorsSegmentedControl.selectedSegmentIndex = selectedIndex
         }
-        colorsSegmentedControl.selectedSegmentIndex = selectedIndex
-    }
 
-    func colorFromSelection() -> UIColor? {
-        let selectedIndex = colorsSegmentedControl.selectedSegmentIndex
-        if selectedIndex != UISegmentedControlNoSegment {
-            return colors[selectedIndex].1
+        func colorFromSelection() -> UIColor? {
+            let selectedIndex = colorsSegmentedControl.selectedSegmentIndex
+            if selectedIndex != UISegmentedControlNoSegment {
+                return colors[selectedIndex].1
+            }
+            return nil
         }
-        return nil
-    }
 
-    @IBAction func doneButtonTapped(sender: AnyObject) {
-        delegate?.colorPicker(self, didPickColor: colorFromSelection())
+        @IBAction func doneButtonTapped(sender: AnyObject) {
+            delegate?.colorPicker(self, didPickColor: colorFromSelection())
+        }
     }
-}
-```
+    ```
+4. In the listening class, implement the protocol.
+
+    ```swift
+    class ViewController: UIViewController, ColorPickerDelegate {
+        @IBAction func openColorPickerTapped(sender: AnyObject) {
+            let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+            let colorPickerVC = storyboard.instantiateViewControllerWithIdentifier("ColorPicker") as ColorPickerViewController
+            colorPickerVC.delegate = self
+            presentViewController(colorPickerVC, animated: true, completion: nil)
+        }
+
+        func colorPicker(picker: ColorPickerViewController, didPickColor color: UIColor?) {
+            if let selectedColor = color {
+                view.backgroundColor = selectedColor
+            }
+            dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+    ```
 
 ## Passing blocks
+
 [Closures in Swift][swiftclosures] and [blocks in
 Objective-C][objectivecblocks] are first class concepts.  This means
 that you can pass closures as parameters and assign them to variables to
@@ -253,7 +171,6 @@ class ViewController: UIViewController {
     @IBAction func openColorPickerTapped(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
         let colorPickerVC = storyboard.instantiateViewControllerWithIdentifier("ColorPicker") as ColorPickerViewController
-        colorPickerVC.initialColor = view.backgroundColor
         colorPickerVC.doneHandler = {(color: UIColor?) -> Void in
             self.didPickColor(color)
         }
@@ -279,7 +196,6 @@ class ColorPickerViewController: UIViewController {
     @IBOutlet weak var colorsSegmentedControl: UISegmentedControl!
 
     let colors = [("Cyan", UIColor.cyanColor()),  ("Magenta", UIColor.magentaColor()), ("Yellow", UIColor.yellowColor())]
-    var initialColor: UIColor?
     var doneHandler: ((UIColor?) -> Void)?
 
     override func viewDidLoad() {
