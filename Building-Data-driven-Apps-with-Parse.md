@@ -135,7 +135,7 @@ Once the user has signed up, next step would to have them log in to you app. The
     }
 ```
 
-1. `??` used in above code snippet is a *nil coalescing operator* - (`a ?? b`) unwraps an optional `a` if it contains a value, or returns a default value `b` if a is nil. The expression `a` is always of an optional type. The expression `b` must match the type that is stored inside `a`.
+1. `??` used in above code snippet is a <a href="http://guides.codepath.com/ios/Understanding-Swift#understanding-the-question-mark" target="_blank">*nil coalescing operator*</a> - (`a ?? b`) unwraps an optional `a` if it contains a value, or returns a default value `b` if a is nil. The expression `a` is always of an optional type. The expression `b` must match the type that is stored inside `a`.
 2. `logInWithUsernameInBackground` - Makes an *asynchronous* request to log in a user with specified credentials.
 Returns an instance of the successfully logged in `PFUser`. This also caches the user locally so that calls to `PFUser.currentUser()` will use the latest logged in user.
 
