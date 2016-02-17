@@ -26,7 +26,7 @@ Please refer to this guide for instructions on how to [host and configure your o
 ### Setting up Parse SDK in iOS application (using Cocoapods)
 (Assumes that you have already [setup CocoaPods](http://guides.codepath.com/ios/CocoaPods#installing-cocoapods) on your Mac)
 
-Add `pod 'Parse'` under target in your Podfile. For more detailed instructions see this [link](http://guides.codepath.com/ios/CocoaPods#adding-a-pod).
+Add `pod 'Parse'` under target in your Podfile. For more detailed instructions see this <a href="http://guides.codepath.com/ios/CocoaPods#adding-a-pod" target="_blank">link</a>.
 
 ### Adding your Parse app's `ApplicationId` and `ClientKey` to you iOS app
 
@@ -63,7 +63,7 @@ Parse provides a specialized user class called `PFUser` that automatically handl
 
 One of the basic use cases for user management is to have them sign up. Once you have setup a view (in storyboard) and created a corresponding view controller (as shown in below image):
 
-<a target="_blank" href="http://i.imgur.com/6kvrKOU.png"><img src="http://i.imgur.com/6kvrKOU.png" alt="Parse User Sign Up" width="750"/></a>
+<!--a target="_blank" href="http://i.imgur.com/6kvrKOU.png"><img src="http://i.imgur.com/6kvrKOU.png" alt="Parse User Sign Up" width="750"/></a-->
 
 use following code snippet that shows how to sign up user:
 
@@ -100,7 +100,7 @@ Parameters:
 
 Once the user has signed up, next step would to have them log in to you app. The image below shows the Xcode setup to do the same, followed by code snippet for user login (note that the username you enter is case sensitive).
 
-<a target="_blank" href="http://i.imgur.com/DEKJjP0.png"><img src="http://i.imgur.com/DEKJjP0.png" alt="Parse User Login" width="750"/></a>
+<!--a target="_blank" href="http://i.imgur.com/DEKJjP0.png"><img src="http://i.imgur.com/DEKJjP0.png" alt="Parse User Login" width="750"/></a-->
 
 ```swift
     @IBAction func loginUser(sender: UIButton) {
