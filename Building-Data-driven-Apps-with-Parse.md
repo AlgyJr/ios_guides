@@ -182,7 +182,7 @@ In this example, we will create and save an object to Parse for image that the u
          */
         class func postUserImage(image: UIImage?, withCaption caption: String?, withCompletion completion: PFBooleanResultBlock?) {
             // Create Parse object PFObject
-            let media = PFObject(className: UserMedia.ObjectName)
+            let media = PFObject(className: "UserMedia")
 
             // Add relevant fields to the object
             media["media"] = getPFFileFromImage(image) // PFFile column type
@@ -287,7 +287,7 @@ For more examples and list of other methods supported by `PFQuery` for specifyin
 If one of the keys in your `PFObject` refers to another `PFObject` (note that `PFUser` is a sub-class of `PFObject`) then that field is of `Pointer` type. For example, in `UserMedia` object which represents an Instagram post, one field that you would want to store is the author of the post. You can do this by assigning current user to the `author` key when saving the post.
 
 ```swift
-let media = PFObject(className: UserMedia.ObjectName)
+let media = PFObject(className: "UserMedia")
 
 // get the current user and assign it to "author" field. "author" field is now of Pointer type
 media["author"] = PFUser.currentUser() 
