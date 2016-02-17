@@ -24,23 +24,9 @@ Please refer to this guide for instructions on how to [host and configure your o
 
 
 ### Setting up Parse SDK in iOS application (using Cocoapods)
-(Assumes that you have already [setup CocoaPods](http://guides.codepath.com/ios/CocoaPods) on your Mac)
+(Assumes that you have already [setup CocoaPods](http://guides.codepath.com/ios/CocoaPods#installing-cocoapods) on your Mac)
 
-1. Create a new iOS project (`Single View Application`)
-2. In Terminal, navigate to your project folder and create the `Podfile`.
-3. Next edit your pod file to add `pod 'Parse'` under target.
-      ```ruby
-      # Podfile
-      platform :ios, '9.0'
-
-      use_frameworks!
-
-      target 'InstaParse' do
-         pod 'Parse'
-      end
-      ```
-4. Setup Parse SDK by executing `pod install` command in terminal.
-5. After Pod install is complete, open the project workspace created in step (4)
+Add `pod 'Parse'` under target in your Podfile. For more detailed instructions see this [link](http://guides.codepath.com/ios/CocoaPods#adding-a-pod).
 
 ### Adding your Parse app's `ApplicationId` and `ClientKey` to you iOS app
 
