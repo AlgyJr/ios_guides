@@ -1,23 +1,18 @@
-# Overview
+## Overview
 
 Production applications will often need to perform heavier operations such as downloading high-resolution images or a executing non-cached database queries. To prevent stalling the main thread (and a hit in frame rate), Apple has provided a few tools to help you out! We'll take a look at Grand Central Dispatch, [`NSOperation`](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/NSOperation_class/)s, and the [`performSelectorInBackground`](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSObject_Class/#//apple_ref/occ/instm/NSObject/performSelectorInBackground:withObject:) method on `NSObject`.
 
-# Options
+## Available Options
 
-- Grand Central Dispatch
-
-  Grand Central Dispatch is a technology that abstracts away the low-level details of multithreading. When using GCD, you only have to think about the tasks you want to perform. These tasks can then be added to serial or concurrent queues. Moreover, you can add tasks to groups and run code after all tasks within the group complete!
-
-- `NSOperation` and `NSOperationQueue`
-
-  `NSOperation`s and `NSOperationQueue`s provide you with a higher-level API, when compared to GCD. They were first introduced in iOS 4 and are actually implemented with GCD under the hood. Typically, you'll want to use this API over GCD, unless you're performing a simple unit of work on a specific queue. `NSOperation`s provide you with powerful functionality such as cancellation and dependencies.
-
-- `performSelectorInBackground`
-
-  If you need to perform a simple unit of work on a new thread, `NSObject` provides you with
+1. Grand Central Dispatch
+   * Grand Central Dispatch is a technology that abstracts away the low-level details of multithreading. When using GCD, you only have to think about the tasks you want to perform. These tasks can then be added to serial or concurrent queues. Moreover, you can add tasks to groups and run code after all tasks within the group complete!
+2. `NSOperation` and `NSOperationQueue`
+   * `NSOperation`s and `NSOperationQueue`s provide you with a higher-level API, when compared to GCD. They were first introduced in iOS 4 and are actually implemented with GCD under the hood. Typically, you'll want to use this API over GCD, unless you're performing a simple unit of work on a specific queue. `NSOperation`s provide you with powerful functionality such as cancellation and dependencies.
+3. `performSelectorInBackground`
+   * If you need to perform a simple unit of work on a new thread, `NSObject` provides you with
   `performSelectorInBackground(_:withObject:)`. Using this, you can run a function (with an argument) on a background thread.
 
-# GCD
+### Grand Central Dispatch
 
 Let's walk through an example where we download an image from a remote URL and then use it to populate a `UIImageView`.
 
@@ -167,7 +162,7 @@ Queue.Background.execute {
 }
 ```
 
-# NSOperation
+### NSOperation
 
 To start, we'll port the wallpaper downloading example to use an `NSBlockOperation`. `NSBlockOperation` is a simple wrapper on a block of work that can be added to a queue.
 
@@ -203,7 +198,7 @@ queue.suspended = true
 - The `maxConcurrentOperationCount` property allows you to set a limit on how many operations may run concurrently in a given queue. Setting this to 1, implies your queue will be serial (queing order may not be preserved, as operations only run when their `ready` flag is set to true). If this property isn't set, it defaults to `NSOperationQueueDefaultMaxConcurrentOperationCount`, which is dictated by system conditions.
 - By default, all operations that are ready (`ready` property is true) are run when added to a queue. You can halt all execution on a queue by setting the `suspended` property to true.
 
-`NSoperation`s become really powerful when you separate them out into operation subclasses. To demonstrate this, let's make a wallpaper resizing operation. We'll need to subclass a [custom wrapper](https://gist.github.com/Jasdev/ba9f03747086d4939e55) of `NSOperation` that has the proper KVO notifications in place (see 'Subclassing Notes' in the [docs](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/NSOperation_class/)).
+`NSOperation`s become really powerful when you separate them out into operation subclasses. To demonstrate this, let's make a wallpaper resizing operation. We'll need to subclass a [custom wrapper](https://gist.github.com/Jasdev/ba9f03747086d4939e55) of `NSOperation` that has the proper KVO notifications in place (see 'Subclassing Notes' in the [docs](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/NSOperation_class/)).
 
 ```swift
 class ResizeImageOperation: Operation {
@@ -336,7 +331,7 @@ if
 - Moreover, in the completion block of `resizeOperation`, we check for errors and proceed with displaying the resized image.
 - Note: we make sure to suspend the queue first, then add the operations. This prevents the operations from beginning immediately upon addition.
 
-# `performSelectorInBackground`
+### PerformSelectorInBackground
 
 To wrap up, let's show a simple example of `performSelectorInBackground`. Assuming `self` has a method `sleepAndPrint(_:)`, we can make the following call:
 
@@ -353,7 +348,7 @@ func sleepAndPrint(message: String) {
 }
 ```
 
-# Key Takeaways
+## Key Takeaways
 
 We've used GCD, `NSoperation`s, and `NSObject`'s `performSelectorInBackground` method as means of performing work in a multithreaded fashion. If you have small units of work to perform, you'll want to reach for GCD or `performSelectorInBackground`. On the other hand, if you have larger operations that may have dependencies, `NSOperation` should be your tool of choice. For more info on these topics check out Apple's [Thread Programming Guide](https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Multithreading/Introduction/Introduction.html) and the WWDC 2015 session on [Advanced NSOperations](https://developer.apple.com/videos/play/wwdc2015-226/)!
 
