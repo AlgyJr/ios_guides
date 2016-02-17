@@ -85,11 +85,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
         // Initialize Parse
-        // Set applicationId, clientKey, and server based on the values in the Heroku settings.
+        // Set applicationId and server based on the values in the Heroku settings.
+        // clientKey is not used on Parse open source unless explicitly configured
         Parse.initializeWithConfiguration(
             ParseClientConfiguration(block: { (configuration:ParseMutableClientConfiguration) -> Void in
                 configuration.applicationId = "myAppId"
-                configuration.clientKey = "myMasterKey"    
                 configuration.server = "https://myAppName.herokuapp.com/parse"
             })
         )
