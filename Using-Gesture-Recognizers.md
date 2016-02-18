@@ -298,7 +298,6 @@ Within the `didPinch` method...
 @IBAction func didPinch(sender: UIPinchGestureRecognizer) {
 let scale = sender.scale
 let imageView = sender.view as! UIImageView
-let currentTransform = imageView.transform
 imageView.transform = CGAffineTransformScale(imageView.transform, scale, scale)
 sender.scale = 1
 }
@@ -321,8 +320,7 @@ Within the `didRotate` method...
 @IBAction func didRotate(sender: UIRotationGestureRecognizer) {
    let rotation = sender.rotation
    let imageView = sender.view as! UIImageView
-   let previousTransform = imageView.transform
-   imageView.transform = CGAffineTransformRotate(previousTransform, rotation)
+   imageView.transform = CGAffineTransformRotate(imageView.transform, rotation)
    sender.rotation = 0
 }
 ```
