@@ -351,7 +351,7 @@ The Visual Format Language is a declarative language that is used to define Auto
 
 To use VFL, ensure `translatesAutoresizingMaskIntoConstraints` is set to `false`.
 
-```Swift
+```swift
   func addConstraints() {
     //Collect Views to apply VFL
     let buttonsDictionary = ["button1": flagButton1,
