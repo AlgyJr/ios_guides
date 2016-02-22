@@ -16,19 +16,26 @@ This page covers a range of topics to serve as a primer for building data-driven
 
 ## Getting started with Parse
 
-### Deploying and Configuring a Parse Server
+### Deploying and Configuring a Parse Server (if you do not have a Parse account)
 
 Parse used to provide a hosted version of their backend service with free registration. But as of February 2016, Parse has stopped new account registration as they have announced that the service will be shutdown on January 28th, 2017. They have open sourced their server code which you can host by yourself and use it as the backend to your application.
 
 Please refer to this guide for instructions on how to [host and configure your own Parse server](https://guides.codepath.com/ios/Configuring-a-Parse-Server).
 
+Note: If you are deploying your own Prase server, you can skip the next section and directly go to [Parse User](https://github.com/codepath/ios_guides/wiki/Building-Data-driven-Apps-with-Parse#parse-user-pfuser).
 
-### Setting up Parse SDK in iOS application (using Cocoapods)
+### Using existing Parse account
+
+(Skip this section if you are deploying your own Parse server)
+
+Login to your Prase account and create a new app.
+
+##### Setting up Parse SDK in iOS application (using Cocoapods)
 (Assumes that you have already [setup CocoaPods](http://guides.codepath.com/ios/CocoaPods#installing-cocoapods) on your Mac)
 
 Add `pod 'Parse'` under target in your Podfile. For more detailed instructions see this <a href="http://guides.codepath.com/ios/CocoaPods#adding-a-pod" target="_blank">link</a>.
 
-### Adding your Parse app's `ApplicationId` and `ClientKey` to you iOS app
+##### Adding your Parse app's `ApplicationId` and `ClientKey` to you iOS app
 
 1. Get the application id and key from your [Parse App's dashboard](https://www.parse.com/apps),
    - Click `quickstart guide` for the app that you want to use with your iOS app.
