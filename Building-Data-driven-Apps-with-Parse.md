@@ -1,6 +1,6 @@
 ## Overview
 
-This page covers a range of topics to serve as a primer for building data driven iOS applications with Parse. Some of the topics covered here are:
+This page covers a range of topics to serve as a primer for building data-driven iOS applications with Parse. Some of the topics covered here are:
 
 - Parse registration
 - User Registration/Authentication
@@ -10,7 +10,7 @@ This page covers a range of topics to serve as a primer for building data driven
 
 #### What is Parse?
 
-[Parse](https://parse.com/) is a service that allows app developers to effortlessly add a backend to their apps without worrying about server setup and maintenance. With some basic setup one is able to get a database and RESTful API up and running. Additionally, it is easy to further add push notification and social integration capabilities in your app. 
+[Parse](https://parse.com/) is a service that allows app developers to effortlessly add a backend to their apps without worrying about server setup and maintenance. With some basic setup, one is able to get a database and RESTful API up and running. Additionally, it is easy to further add push notification and social integration capabilities in your app. 
 
 [More about Parse on Quora](https://www.quora.com/What-is-Parse)
 
@@ -18,7 +18,7 @@ This page covers a range of topics to serve as a primer for building data driven
 
 ### Deploying and Configuring a Parse Server
 
-Parse used to provided a hosted version of their backend service with free registration. But as of February 2016, Parse has stopped new account registration as they have announced that the service will be shutdown on January 28th, 2017. They have open sourced their server code which you can host by yourself and use it as backend to your application.
+Parse used to provide a hosted version of their backend service with free registration. But as of February 2016, Parse has stopped new account registration as they have announced that the service will be shutdown on January 28th, 2017. They have open sourced their server code which you can host by yourself and use it as the backend to your application.
 
 Please refer to this guide for instructions on how to [host and configure your own Parse server](https://guides.codepath.com/ios/Configuring-a-Parse-Server).
 
@@ -98,7 +98,7 @@ Parameters:
 
 ### User Login
 
-Once the user has signed up, next step would to have them log in to you app. The image below shows the Xcode setup to do the same, followed by code snippet for user login (note that the username you enter is case sensitive).
+Once the user has signed up, next step is to have them log in to you app. The image below shows the Xcode setup to do the same, followed by code snippet for user login (note that the username you enter is case sensitive).
 
 <!--a target="_blank" href="http://i.imgur.com/DEKJjP0.png"><img src="http://i.imgur.com/DEKJjP0.png" alt="Parse User Login" width="750"/></a-->
 
@@ -134,7 +134,7 @@ Returns an instance of the successfully logged in `PFUser`. This also caches the
 
 ### Persisting user session via `PFUser.currentUser()`
 
-Once a user successfully logs in to your application, Parse caches the logged in user object for convenient access through out your application. `PFUser.currentUser()` can be used to get the current user. You can use this functionality in `AppDelegate` to check if there is a current user in Parse cache or not. If there is a cached user already present then you can directly load the Home view controller (without asking user to login again).
+Once a user successfully logs into your application, Parse caches the logged in user object for convenient access throughout your application. `PFUser.currentUser()` can be used to get the current user. You can use this functionality in `AppDelegate` to check if there is a current user in Parse cache or not. If there is a cached user already present then you can directly load the Home view controller (without asking the user to login again).
 
 ```swift
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -156,7 +156,7 @@ Once a user successfully logs in to your application, Parse caches the logged in
 #### `PFObject`
 Storing data on Parse is built around the `ParseObject`. Each `ParseObject` contains key-value pairs of JSON-compatible data. This data is schemaless, which means that you don't need to specify ahead of time what keys exist on each `ParseObject`. You simply set whatever key-value pairs you want, and Parse backend will store it.
 
-Each `ParseObject` has a class name that you can use to distinguish different sorts of data. For example, in case of our application we might call `ParseObject` to store uploaded images with name `UserMedia`
+Each `ParseObject` has a class name that you can use to distinguish different sorts of data. For example, in case of our application, we might call `ParseObject` to store uploaded images with name `UserMedia`
 
 #### `PFFile`
 `PFFile` lets you store application files in the cloud that would otherwise be too large or cumbersome to fit into a regular `PFObject`. The most common use case is storing images but you can also use it for documents, videos, music, and any other binary data (up to 10 megabytes).
@@ -165,7 +165,7 @@ Each `ParseObject` has a class name that you can use to distinguish different so
 
 ### (Use Case) Post photos to Instagram (Parse)
 
-In this example, we will create and save an object to Parse for image that the user wants to upload along with some other details. Let's create a `model` class for `UserMedia` object. We will use this model as a wrapper around PBObject to encapsulate CRUD functionality from the ViewControllers.
+In this example, we will create and save an object to Parse for an image that the user wants to upload along with some other details. Let's create a `model` class for `UserMedia` object. We will use this model as a wrapper around PBObject to encapsulate CRUD functionality from the ViewControllers.
 
 ```swift
     class UserMedia: NSObject {
@@ -198,7 +198,7 @@ In this example, we will create and save an object to Parse for image that the u
         /**
         Method to post user media to Parse by uploading image file
      
-        - parameter image: Image that the user wants upload to parse
+        - parameter image: Image that the user wants to upload to parse
 
         - returns: PFFile for the the data in the image
          */
@@ -284,7 +284,7 @@ For more examples and list of other methods supported by `PFQuery` for specifyin
 
 #### `Pointer` type fields and fetching their value (getting value of the object)
 
-If one of the keys in your `PFObject` refers to another `PFObject` (note that `PFUser` is a sub-class of `PFObject`) then that field is of `Pointer` type. For example, in `UserMedia` object which represents an Instagram post, one field that you would want to store is the author of the post. You can do this by assigning current user to the `author` key when saving the post.
+If one of the keys in your `PFObject` refers to another `PFObject` (note that `PFUser` is a sub-class of `PFObject`) then that field is of `Pointer` type. For example, in `UserMedia` object which represents an Instagram post, one field that you would want to store is the author of the post. You can do this by assigning the current user to the `author` key when saving the post.
 
 ```swift
 let media = PFObject(className: "UserMedia")
@@ -324,7 +324,7 @@ query.findObjectsInBackgroundWithBlock { (media: [PFObject]?, error: NSError?) -
 
 ## FAQ
 
-1)  Is there a way to put some key into an app (binary which is delivered form AppStore) and be completely secure?
+1)  Is there a way to put some key into an app (binary which is delivered from AppStore) and be completely secure?
 
 Please refer to this comprehensive <a href="http://stackoverflow.com/a/14865695" target="_blank">explanation on Stack Overflow</a>
 
