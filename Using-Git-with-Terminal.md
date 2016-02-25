@@ -54,8 +54,6 @@ touch .gitignore
 - Navigate to your Xcode Project folder in Terminal.
 - Open your `.gitignore` file using, `open .gitignore`  
 - Copy and paste the [latest and greatest list of files and folders you want to ignore](https://raw.githubusercontent.com/github/gitignore/master/Swift.gitignore) into the .gitignore file.
-   - NOTE: Be sure to "un-comment" the `#Pods/` by deleting the `#` so you have, `Pods/`  
-!["un-comment" the #Pods/ gif|800](http://i.imgur.com/JtOsEw2.gif)  
 
 ### Create and Configure .gitattributes File
   
