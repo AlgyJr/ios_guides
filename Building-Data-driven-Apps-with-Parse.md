@@ -170,7 +170,7 @@ Once a user successfully logs into your application, Parse caches the logged in 
 ```
 ### User Logout
 
-You can clear the current user by calling class function on `PFUser`:
+You can clear the current user by calling following class function on `PFUser`:
 
 ```swift
 PFUser.logOut()
