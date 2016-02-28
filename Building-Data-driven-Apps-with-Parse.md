@@ -1,6 +1,6 @@
 ## Overview
 
-This page covers a range of topics to serve as a primer for building data-driven iOS applications with Parse. Some of the topics covered here are:
+This page covers a range of topics to serve as a primer for building data-driven iOS applications with **Parse**. Some of the topics covered here are:
 
 - Parse registration
 - User Registration/Authentication
@@ -13,6 +13,18 @@ This page covers a range of topics to serve as a primer for building data-driven
 [Parse](https://parse.com/) is a service that allows app developers to effortlessly add a backend to their apps without worrying about server setup and maintenance. With some basic setup, one is able to get a database and RESTful API up and running. Additionally, it is easy to further add push notification and social integration capabilities in your app. 
 
 [More about Parse on Quora](https://www.quora.com/What-is-Parse)
+
+## Instagram App
+
+In covering Parse SDK functionality, we will be using example of building an Instagram like application from ground up (i.e. with your own backend). In each of the following section we will following use cases to build a basic version of the application:
+
+* User account creation, user login and sesssion persistence
+* User can take a photo, add a caption, and post it to "Instagram"
+* User can view the last 20 posts submitted to "Instagram"
+
+The final application should look something like following:
+
+<img src="http://i.imgur.com/EjhojU6.gif" alt="Instangram app demo"/>
 
 ## Getting started with Parse
 
