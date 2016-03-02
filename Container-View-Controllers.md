@@ -272,9 +272,9 @@ If you are familiar with built-in container view controllers such as the
 you'll know that in order to use them in a storyboard you have to create
 a _relationship segue_ (e.g. to the navigation controller's root view
 controller).  Unfortunately there is no way to create a custom
-relationship segue for your custom cntainer view controllers.
+relationship segue for your custom container view controllers.
 
-This means that is difficult to custom container view controllers as the
+This means that is difficult to set custom container view controllers as the
 root view of your storyboard.  We can try something like implementing
 `initWithCoder` to load our nib and then setting the custom class of
 a view controller in the storyboard (see the [custom views
@@ -289,8 +289,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
 }
 ```
 
-However because there is no way create relationship segues, the only
-place can initialize the other view controllers that will be in our
+However because there is no way to create relationship segues, the only
+place to initialize the other view controllers that will be in our
 `viewControllers` array is in `viewDidLoad`.  However, if we want to
 make our `MenuViewController` reusable, this clearly breaks
 encapsulation.
