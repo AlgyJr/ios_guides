@@ -221,7 +221,7 @@ In this example, we will create and save an object to Parse for an image that th
          */
 
         /**
-        Method to post user media to Parse by uploading image file
+        Method to add a user post to Parse (uploading image file)
      
         - parameter image: Image that the user wants upload to parse
         - parameter caption: Caption text input by the user
@@ -229,21 +229,21 @@ In this example, we will create and save an object to Parse for an image that th
          */
         class func postUserImage(image: UIImage?, withCaption caption: String?, withCompletion completion: PFBooleanResultBlock?) {
             // Create Parse object PFObject
-            let media = PFObject(className: "Post")
+            let post = PFObject(className: "Post")
 
             // Add relevant fields to the object
-            media["media"] = getPFFileFromImage(image) // PFFile column type
-            media["author"] = PFUser.currentUser() // Pointer column type that points to PFUser
-            media["caption"] = caption
-            media["likesCount"] = 0
-            media["commentsCount"] = 0
+            post["media"] = getPFFileFromImage(image) // PFFile column type
+            post["author"] = PFUser.currentUser() // Pointer column type that points to PFUser
+            post["caption"] = caption
+            post["likesCount"] = 0
+            post["commentsCount"] = 0
 
             // Save object (following function will save the object in Parse asynchronously)
-            media.saveInBackgroundWithBlock(completion)
+            post.saveInBackgroundWithBlock(completion)
         }
 
         /**
-        Method to post user media to Parse by uploading image file
+        Method to convert UIImage to PFFile
      
         - parameter image: Image that the user wants to upload to parse
 
@@ -289,7 +289,7 @@ Adding constraints to `PFQuery` can be done by either specifying `NSPredicate` o
 
 ##### Using `NSPredicate`
 
-A `NSPredicate` can be passed to `PFQuery` constructor to specify query constraints. Below example shows how to construct a query to fetch user media post with more than 100 likes on the post.
+A `NSPredicate` can be passed to `PFQuery` constructor to specify query constraints. Below example shows how to construct a query to fetch all instagram posts with more than 100 likes on them.
 
 ```swift
 // construct query
@@ -297,8 +297,8 @@ let predicate = NSPredicate(format: "likesCount > 100")
 var query = PFQuery(className: "Post", predicate: predicate)
 
 // fetch data asynchronously
-query.findObjectsInBackgroundWithBlock { (media: [PFObject]?, error: NSError?) -> Void in
-    if let media = media {
+query.findObjectsInBackgroundWithBlock { (posts: [PFObject]?, error: NSError?) -> Void in
+    if let posts = posts {
         // do something with the array of object returned by the call
     } else {
         print(error?.localizedDescription)
@@ -334,10 +334,10 @@ For more examples and list of other methods supported by `PFQuery` for specifyin
 If one of the keys in your `PFObject` refers to another `PFObject` (note that `PFUser` is a sub-class of `PFObject`) then that field is of `Pointer` type. For example, in `Post` object which represents an Instagram post, one field that you would want to store is the author of the post. You can do this by assigning the current user to the `author` key when saving the post.
 
 ```swift
-let media = PFObject(className: "Post")
+let post = PFObject(className: "Post")
 
 // get the current user and assign it to "author" field. "author" field is now of Pointer type
-media["author"] = PFUser.currentUser() 
+post["author"] = PFUser.currentUser() 
 ```
 
 By default, when you fetch a `Post` object it won't have the author information. In order to get the information for the "author" you will have to use `PFQuery` method `includeKey`.
@@ -360,8 +360,8 @@ query.includeKey("author")
 query.limit = 20
 
 // fetch data asynchronously
-query.findObjectsInBackgroundWithBlock { (media: [PFObject]?, error: NSError?) -> Void in
-    if let media = media {
+query.findObjectsInBackgroundWithBlock { (posts: [PFObject]?, error: NSError?) -> Void in
+    if let posts = posts {
         // do something with the data fetched
     } else {
         // handle error
