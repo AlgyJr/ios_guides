@@ -28,19 +28,19 @@ The final application should look something like following:
 
 ## Getting started with Parse
 
-### Deploying and Configuring a Parse Server (if you do not have a Parse account)
+### Deploying your own Parse Server
 
 Parse used to provide a hosted version of their backend service with free registration. But as of February 2016, Parse has stopped new account registration as they have announced that the service will be shutdown on January 28th, 2017. They have open sourced their server code which you can host by yourself and use it as the backend to your application.
 
 Please refer to this guide for instructions on how to [host and configure your own Parse server](https://guides.codepath.com/ios/Configuring-a-Parse-Server).
 
-Note: If you are deploying your own Prase server, you can skip the next section and directly go to [Parse User](https://github.com/codepath/ios_guides/wiki/Building-Data-driven-Apps-with-Parse#parse-user-pfuser).
+Note: If you are deploying your own Parse server, you can skip the next section and directly go to [Parse User](https://github.com/codepath/ios_guides/wiki/Building-Data-driven-Apps-with-Parse#parse-user-pfuser).
 
-### Using existing Parse account
+### Using Parse.com
 
-(Skip this section if you are deploying your own Parse server)
+Parse.com no longer allows you to create a new account so you can only use Parse.com if you already have a Parse account.
 
-Login to your Prase account and create a new app.
+Login to your Parse account and create a new app.
 
 ##### Setting up Parse SDK in iOS application (using Cocoapods)
 (Assumes that you have already [setup CocoaPods](http://guides.codepath.com/ios/CocoaPods#installing-cocoapods) on your Mac)
