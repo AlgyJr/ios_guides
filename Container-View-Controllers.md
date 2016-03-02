@@ -151,7 +151,7 @@ custom view controlers can be found in [guide from Apple][applecustomvcguide].
 [didmovetoparent]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIViewController_Class/index.html#//apple_ref/occ/instm/UIViewController/didMoveToParentViewController:
 [addchildviewcontroller]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIViewController_Class/index.html#//apple_ref/occ/instm/UIViewController/addChildViewController:
 [removefromparent]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIViewController_Class/index.html#//apple_ref/occ/instm/UIViewController/removeFromParentViewController
-[applecustomvcguide]: https://developer.apple.com/library/ios/featuredarticles/ViewControllerPGforiPhoneOS/CreatingCustomContainerViewControllers/CreatingCustomContainerViewControllers.html#//apple_ref/doc/uid/TP40007457-CH18-SW13
+[applecustomvcguide]: https://developer.apple.com/library/ios/featuredarticles/ViewControllerPGforiPhoneOS/ImplementingaContainerViewController.html
 
 ```swift
 class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
