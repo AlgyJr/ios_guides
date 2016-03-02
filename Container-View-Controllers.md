@@ -334,11 +334,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-Notice that we instiated our `MenuViewController` by calling
+Notice that we instantiated our `MenuViewController` by calling
 [`initWithNibName`][initwithnibname].  We can also load in other view
 controllers (say the items in our menu) this way.  Since this was a demo
-app we just instatiated the child view controllers as instances of
-`UIViewController`.  If we had needed to load instatiate a view
+app we just instantiated the child view controllers as instances of
+`UIViewController`.  If we had needed to instantiate a view
 controller from the storyboard we could have done something like this
 
 ```swift
