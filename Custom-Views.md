@@ -279,7 +279,7 @@ might load it as follows
 ```swift
         let captionableImageView = CaptionableImageView(frame: CGRectMake(0, 20, view.bounds.width, 200))
         let nib = UINib(nibName: "CaptionableImageView", bundle: nil)
-        let objects = nib.instantiateWithOwner(imageView, options: nil)
+        let objects = nib.instantiateWithOwner(captionableImageView, options: nil)
 
         // in this case the only top-level object is the top level view
         captionableImageView.addSubview(objects.first as UIView)
