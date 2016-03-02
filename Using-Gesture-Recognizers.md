@@ -173,7 +173,7 @@ The following steps describe the process of creating a **vertically** sliding Tr
 Define an **Instance Variable** that can be accessed throughout the View Controller. We define these variables at the top of the ViewController Swift file, right above the `viewDidLoad` method.
 
 ```swift
-var initialTrayCenter: CGPoint!
+var trayOriginalCenter: CGPoint!
 ```
 
 ### Step 4: Make the Tray Draggable
