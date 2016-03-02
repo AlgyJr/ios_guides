@@ -246,7 +246,7 @@ trayDownOffset = 160
 trayUp = trayView.center
 trayDown = CGPoint(x: trayView.center.x ,y: trayView.center.y + trayDownOffset)
 ```
-- Back in your `didPanTray` method, within the gesture state, `.Ended`, create a conditional statement to check the y component of the velocity. In the case that the tray is moving down, animate the tray position to the `trayDown` point, otherwise, animate it towards the `trayDown` point. [Animating View Properties](https://guides.codepath.com/ios/Animating-View-Properties)
+- Back in your `didPanTray` method, within the gesture state, `.Ended`, create a conditional statement to check the y component of the velocity. In the case that the tray is moving down, animate the tray position to the `trayDown` point, otherwise, animate it towards the `trayUp` point. [Animating View Properties](https://guides.codepath.com/ios/Animating-View-Properties)
 
 ```swift
 if velocity.y > 0 {
