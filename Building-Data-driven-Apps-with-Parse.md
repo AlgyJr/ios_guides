@@ -157,8 +157,10 @@ Once a user successfully logs into your application, Parse caches the logged in 
 
 ```swift
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // setup parse keys
-        Parse.setApplicationId("myAppId", clientKey: "myClientKey")
+        /*
+         * Code to initialize Parse
+         * (See the section 'Getting started with Parse' above if you have not already set it up)
+         */
 
         // check if user is logged in.
         if PFUser.currentUser() != nil {
