@@ -369,6 +369,38 @@ query.findObjectsInBackgroundWithBlock { (media: [PFObject]?, error: NSError?) -
 }
 ```
 
+## `ParseUI`
+
+`ParseUI` is a collection of a handy user interface components to be used with Parse iOS SDK, which streamline and simplify logging in/signing up PFUsers and displaying a list of PFObjects.
+
+### Adding `PraseUI` cocoapod
+
+Add `pod 'ParseUI'` under target in your Podfile and run `pod install`. For more detailed instructions see this <a href="http://guides.codepath.com/ios/CocoaPods#adding-a-pod" target="_blank">link</a>.
+
+### Displaying images via `PFImageView`
+
+Many apps need to display images stored in the Parse Cloud as `PFFile`s. However, to load remote images with the built-in `UIImageView` involves writing many lines of boilerplate code. `PFImageView` simplifies this task by abstracting away these parts.
+
+Following code snippet show how to use a `PFImageView` to display images stored as `PFFile`
+
+```swift
+import UIKit
+import Parse
+import ParseUI
+
+class InstagramPostTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var photoView: PFImageView!
+
+    var instagramPost: PFObject! {
+        didSet {
+            self.photoView.file = instagramPost["image"] as? PFFile
+            self.photoView.loadInBackground()
+        }
+    }
+}
+```
+
 ## FAQ
 
 1)  Is there a way to put some key into an app (binary which is delivered from AppStore) and be completely secure?
@@ -378,4 +410,6 @@ Please refer to this comprehensive <a href="http://stackoverflow.com/a/14865695"
 
 ## Reference
 
-Parse Documentation - https://parse.com/docs/ios/guide#getting-started
+[Parse Documentation](https://parse.com/docs/ios/guide#getting-started)
+
+[Parse UI Cocoapods](https://cocoapods.org/pods/ParseUI)
