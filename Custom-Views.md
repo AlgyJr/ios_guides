@@ -333,7 +333,7 @@ We'll then need to create our nib by selecting `File -> New -> File...
 the same name as your class, so we'll also name it
 `CaptionableImageView` (the `.xib extension gets added automatically).
 
-We can now open the nib and the image view, label background, and label
+We can now open the nib and add the image view, label background, and label
 to our top-level view in interface builder.  In this case we'll also add
 auto layout constraints so that our image expands with with the
 top-level view and the label and label background are pinned to the
@@ -427,7 +427,7 @@ class ViewController: UIViewController {
 
 ### Within a another nib or storyboard
 Again the procedure to use the `CaptionableImageView` inside another nib
-or storyboard remains exactly teh same [as
+or storyboard remains exactly the same [as
 before](#embedding-in-a-nib-or-storyboard) when we defined the custom
 view programatically.  We add a `View` object to our nib/storyboard in
 Interface Builder and set its custom class to `CaptionableImageView`.
@@ -544,8 +544,7 @@ all the outlets to file's owner as we did
 on our custom class when the top-level view is instantiated.
 
 ## A note about view controllers
-So far we have only discussed using nibs with views.  However, we
-something that is relatively common is to instantiate a nib with the
+So far we have only discussed using nibs with views.  However, something that is relatively common is to instantiate a nib with the
 file's owner set to a view controller.  This allows you bind outlets to
 elements inside a nib directly to properties inside your view
 controller.
