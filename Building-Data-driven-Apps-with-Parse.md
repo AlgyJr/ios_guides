@@ -38,7 +38,7 @@ Note: If you are deploying your own Parse server, you can skip the next section 
 
 ### Using Parse.com
 
-Parse.com no longer allows you to create a new account so you can only use Parse.com if you already have a Parse account.
+Note: Parse.com no longer allows you to create a new account so you can only use Parse.com if you already have a Parse account.
 
 Login to your Parse account and create a new app.
 
