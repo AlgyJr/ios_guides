@@ -183,7 +183,7 @@ The above code should be added to the action associated with the logout button (
 #### `PFObject`
 Storing data on Parse is built around the `ParseObject`. Each `ParseObject` contains key-value pairs of JSON-compatible data. This data is schemaless, which means that you don't need to specify ahead of time what keys exist on each `ParseObject`. You simply set whatever key-value pairs you want, and Parse backend will store it.
 
-Each `ParseObject` has a class name that you can use to distinguish different sorts of data. For example, in case of our application, we might call `ParseObject` to store uploaded images with name `UserMedia`
+Each `ParseObject` has a class name that you can use to distinguish different sorts of data. For example, in case of our application, we might call `ParseObject` to store uploaded images with name `Post`
 
 #### `PFFile`
 `PFFile` lets you store application files in the cloud that would otherwise be too large or cumbersome to fit into a regular `PFObject`. The most common use case is storing images but you can also use it for documents, videos, music, and any other binary data (up to 10 megabytes).
@@ -192,10 +192,10 @@ Each `ParseObject` has a class name that you can use to distinguish different so
 
 ### (Use Case) Post photos to Instagram (Parse)
 
-In this example, we will create and save an object to Parse for an image that the user wants to upload along with some other details. Let's create a `model` class for `UserMedia` object. We will use this model as a wrapper around PBObject to encapsulate CRUD functionality from the ViewControllers.
+In this example, we will create and save an object to Parse for an image that the user wants to upload along with some other details. Let's create a `model` class for `Post` object. We will use this model as a wrapper around PBObject to encapsulate CRUD functionality from the ViewControllers.
 
 ```swift
-    class UserMedia: NSObject {
+    class Post: NSObject {
         /**
          * Other methods
          */
@@ -209,7 +209,7 @@ In this example, we will create and save an object to Parse for an image that th
          */
         class func postUserImage(image: UIImage?, withCaption caption: String?, withCompletion completion: PFBooleanResultBlock?) {
             // Create Parse object PFObject
-            let media = PFObject(className: "UserMedia")
+            let media = PFObject(className: "Post")
 
             // Add relevant fields to the object
             media["media"] = getPFFileFromImage(image) // PFFile column type
@@ -249,11 +249,11 @@ In this example, we will create and save an object to Parse for an image that th
 `PFQuery` is used to retrieve data that is stored in Parse. The simplest way to do this is when you have the `objectId`. This is an asynchronous method, with variations for using either blocks or callback methods:
 
 ```swift
-var query = PFQuery(className: "UserMedia")
+var query = PFQuery(className: "Post")
 query.getObjectInBackgroundWithId("imkmJsHVIH") {
-  (userMedia: PFObject?, error: NSError?) -> Void in
+  (post: PFObject?, error: NSError?) -> Void in
   if error == nil && gameScore != nil {
-    print(userMedia)
+    print(post)
   } else {
     print(error)
   }
@@ -274,7 +274,7 @@ A `NSPredicate` can be passed to `PFQuery` constructor to specify query constrai
 ```swift
 // construct query
 let predicate = NSPredicate(format: "likesCount > 100")
-var query = PFQuery(className: "UserMedia", predicate: predicate)
+var query = PFQuery(className: "Post", predicate: predicate)
 
 // fetch data asynchronously
 query.findObjectsInBackgroundWithBlock { (media: [PFObject]?, error: NSError?) -> Void in
@@ -293,7 +293,7 @@ There are several other methods that `PFQuery` provides to support SQL-like quer
 
 ```swift
 // construct query
-let query = PFQuery(className: "UserMedia")
+let query = PFQuery(className: "Post")
 query.whereKey("likesCount", greaterThan: 100)
 query.limit = 20
 
@@ -311,16 +311,16 @@ For more examples and list of other methods supported by `PFQuery` for specifyin
 
 #### `Pointer` type fields and fetching their value (getting value of the object)
 
-If one of the keys in your `PFObject` refers to another `PFObject` (note that `PFUser` is a sub-class of `PFObject`) then that field is of `Pointer` type. For example, in `UserMedia` object which represents an Instagram post, one field that you would want to store is the author of the post. You can do this by assigning the current user to the `author` key when saving the post.
+If one of the keys in your `PFObject` refers to another `PFObject` (note that `PFUser` is a sub-class of `PFObject`) then that field is of `Pointer` type. For example, in `Post` object which represents an Instagram post, one field that you would want to store is the author of the post. You can do this by assigning the current user to the `author` key when saving the post.
 
 ```swift
-let media = PFObject(className: "UserMedia")
+let media = PFObject(className: "Post")
 
 // get the current user and assign it to "author" field. "author" field is now of Pointer type
 media["author"] = PFUser.currentUser() 
 ```
 
-By default, when you fetch a `UserMedia` object it won't have the author information. In order to get the information for the "author" you will have to use `PFQuery` method `includeKey`.
+By default, when you fetch a `Post` object it won't have the author information. In order to get the information for the "author" you will have to use `PFQuery` method `includeKey`.
 
 ```swift
 query.includeKey("author")
@@ -334,7 +334,7 @@ Based on above discussion, we can easily construct a `PFQuery` to fetch most rec
 
 ```swift
 // construct PFQuery
-let query = PFQuery(className: "UserMedia")
+let query = PFQuery(className: "Post")
 query.orderByDescending("createdAt")
 query.includeKey("author")
 query.limit = 20
