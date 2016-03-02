@@ -66,6 +66,25 @@ Add `pod 'Parse'` under target in your Podfile. For more detailed instructions s
     }
       ```
 
+### Parse `initializeWithConfiguration` vs `setApplicationId`
+
+If you already understand these `Parse` functions, you may skip this section.
+
+Both **<a href="https://parse.com/docs/ios/api/Classes/Parse.html#/c:objc(cs)Parse(cm)initializeWithConfiguration:" target="_blank">initializeWithConfiguration</a>** and **<a href="https://parse.com/docs/ios/api/Classes/Parse.html#/c:objc(cs)Parse(cm)setApplicationId:clientKey:" target="_blank">setApplicationId</a>** are static methods that are use to initialize Parse and sets global configuration.
+
+**You have to use only one of two methods** depending on whether you are using self hosted version of Parse server or the hosted version provided by Parse.
+
+##### `initializeWithConfiguration:`
+
+* Used when you are using [self deployed version of Parse](https://guides.codepath.com/ios/Building-Data-driven-Apps-with-Parse#deploying-and-configuring-a-parse-server-if-you-do-not-have-a-parse-account) 
+* Accepts **<a href="https://parse.com/docs/osx/api/Classes/ParseClientConfiguration.html" target="_blank"> ParseClientConfiguration </a>** where you specify `sever` and `applicationId` 
+
+##### `setApplicationId:clientKey:`
+
+* Used when you are using server hosted by Parse (i.e. you have a Parse account)
+* Accepts `applicationId` and `clientKey`
+* A default value of `server` is set as part of Parse SDK.
+
 ## Parse User (`PFUser`)
 
 Parse provides a specialized user class called `PFUser` that automatically handles much of the functionality required for user account management. With this class, you'll be able to add user account functionality in your app.
