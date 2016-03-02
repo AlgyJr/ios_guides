@@ -263,6 +263,7 @@ In this example, we will create and save an object to Parse for an image that th
 ```
 
 1. To upload the user image to Parse, get the user input from the view controller and then call the `postUserImage` method from the view controller by passing all the required arguments into it (Please see method's comments for more details on arguments).
+2. Please refer to <a href="https://github.com/codepath/ios_guides/wiki/Camera-Quickstart" target="_blank">Camera Quickstart</a> to find more details on how to get images using your device's Camera or Photo Library.
 
 ## Fetching data from Parse (via `PFQuery`)
 
