@@ -16,7 +16,7 @@ Slide out trays, Hamburger menus, and any other view you want to move by sliding
 Define an **Instance Variable** that can be accessed throughout the View Controller. We define these variables at the top of the ViewController Swift file, right above the `viewDidLoad` method.
 
 ```swift
-var initialTrayCenter: CGPoint!
+var trayOriginalCenter: CGPoint!
 ```
 
 ### Step 4: Make the Tray Draggable
