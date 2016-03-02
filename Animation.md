@@ -46,7 +46,7 @@ A layer is a container for a bitmap image. Layers are rendered on screen via the
 
 UIKit's view hierarchies are backed by a near-identical layer hierarchy. In fact, every UIView has a `.layer` property for accessing its corresponding layer. Behind the scenes, UIView populates layer's contents for you. So while a UILabel displays text, it is ultimately flattened to a bitmap and handed over to its associated layer.
 
-Views are are so tightly associated to views that many attributes are shared; for instance, if you change the layer's `opacity` value, then the view's `alpha` will also change.
+Views are are so tightly associated to layers that many attributes are shared; for instance, if you change the layer's `opacity` value, then the view's `alpha` will also change.
 
 The big difference between a view and a layer is a view can receive events. If you don't need the overhead, you can managed your layer's sublayers yourself. This might improve performance if you're dealing with hundreds of layers on screen at once, such as if you're building a particle system. Most of the time, this is overkill.
 
