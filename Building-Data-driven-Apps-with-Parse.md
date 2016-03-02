@@ -81,7 +81,7 @@ Both **<a href="https://parse.com/docs/ios/api/Classes/Parse.html#/c:objc(cs)Par
 
 ##### `setApplicationId:clientKey:`
 
-* Used when you are using server hosted by Parse (i.e. you have a Parse account)
+* Used when you are using [server hosted by Parse](https://guides.codepath.com/ios/Building-Data-driven-Apps-with-Parse#using-existing-parse-account) (i.e. you have a Parse account)
 * Accepts `applicationId` and `clientKey`
 * A default value of `server` is set as part of Parse SDK.
 
