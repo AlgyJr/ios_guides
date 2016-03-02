@@ -70,9 +70,9 @@ Add `pod 'Parse'` under target in your Podfile. For more detailed instructions s
 
 If you already understand these `Parse` functions, you may skip this section.
 
-Both **<a href="https://parse.com/docs/ios/api/Classes/Parse.html#/c:objc(cs)Parse(cm)initializeWithConfiguration:" target="_blank">initializeWithConfiguration</a>** and **<a href="https://parse.com/docs/ios/api/Classes/Parse.html#/c:objc(cs)Parse(cm)setApplicationId:clientKey:" target="_blank">setApplicationId</a>** are static methods that are use to initialize Parse and sets global configuration.
+Both **<a href="https://parse.com/docs/ios/api/Classes/Parse.html#/c:objc(cs)Parse(cm)initializeWithConfiguration:" target="_blank">initializeWithConfiguration</a>** and **<a href="https://parse.com/docs/ios/api/Classes/Parse.html#/c:objc(cs)Parse(cm)setApplicationId:clientKey:" target="_blank">setApplicationId</a>** are static methods that are used to initialize Parse and set global configuration.
 
-**You have to use only one of two methods** depending on whether you are using self hosted version of Parse server or the hosted version provided by Parse.
+**You have to use only one of the two methods** depending on whether you are using self hosted version of Parse server or the hosted version provided by Parse.
 
 ##### `initializeWithConfiguration:`
 
