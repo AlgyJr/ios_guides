@@ -22,8 +22,14 @@ In the class interface, declare that it implements two protocols: `UIImagePicker
 ```swift
 func imagePickerController(picker: UIImagePickerController,
     didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    // Get the images captured by the UIImagePickerController
     let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
     let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
+
+    // Do something with the images (based on your use case)
+
+    // Dismiss UIImagePickerController to go back to your original view controller
+    dismissViewControllerAnimated(true, completion: nil)
 }
 ```
 
