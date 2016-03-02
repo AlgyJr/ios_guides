@@ -401,6 +401,9 @@ class InstagramPostTableViewCell: UITableViewCell {
 }
 ```
 
+1. `import ParseUI` - **Make sure to import `ParseUI`** wherever you want to use it's components
+
+
 ## FAQ
 
 1)  Is there a way to put some key into an app (binary which is delivered from AppStore) and be completely secure?
