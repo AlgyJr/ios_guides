@@ -127,10 +127,12 @@ use following code snippet that shows how to sign up user:
         
     }
 ```
-`signUpInBackgroundWithBlock` signs up the user *asynchronously*. This will also enforce that the username isn't already taken. (Warning: Make sure that password and username are set before calling this method.)
 
-Parameters:
-`block` - The block to execute. It should have the following argument signature: `^(BOOL succeeded, NSError *error)`.
+###### Notes:
+1. `signUpInBackgroundWithBlock` signs up the user *asynchronously*. This will also enforce that the username isn't already taken. (Warning: Make sure that password and username are set before calling this method.)
+
+   Parameters:
+   `block` - The block to execute. It should have the following argument signature: `^(BOOL succeeded, NSError *error)`.
 
 [Parse User Sign-Up documentation](https://parse.com/docs/ios/guide#users-signing-up).
 
@@ -158,7 +160,7 @@ Once the user has signed up, next step is to have them log in to you app. The im
         
     }
 ```
-
+###### Notes:
 1. `??` used in above code snippet is a <a href="http://guides.codepath.com/ios/Understanding-Swift#understanding-the-question-mark" target="_blank">*nil coalescing operator*</a>
 2. `logInWithUsernameInBackground` - Makes an *asynchronous* request to log in a user with specified credentials.
 Returns an instance of the successfully logged in `PFUser`. This also caches the user locally so that calls to `PFUser.currentUser()` will use the latest logged in user.
@@ -261,7 +263,7 @@ In this example, we will create and save an object to Parse for an image that th
         }
     }
 ```
-
+###### Notes:
 1. To upload the user image to Parse, get the user input from the view controller and then call the `postUserImage` method from the view controller by passing all the required arguments into it (Please see method's comments for more details on arguments).
 2. Please refer to <a href="https://github.com/codepath/ios_guides/wiki/Camera-Quickstart" target="_blank">Camera Quickstart</a> to find more details on how to get images using your device's Camera or Photo Library.
 
