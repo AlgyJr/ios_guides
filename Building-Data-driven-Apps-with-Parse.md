@@ -401,7 +401,7 @@ class InstagramPostTableViewCell: UITableViewCell {
 }
 ```
 
-1. `import ParseUI` - **Make sure to import `ParseUI`** wherever you want to use it's components
+Note: **Make sure to import `ParseUI`** wherever you want to use it's components
 
 
 ## FAQ
