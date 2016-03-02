@@ -169,4 +169,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 * [Apple's official guide][appleguide] provides comprehensive coverage
   of this topic
 
-[appleguide]: https://developer.apple.com/library/ios/featuredarticles/ViewControllerPGforiPhoneOS/CreatingCustomContainerViewControllers/CreatingCustomContainerViewControllers.html
+[appleguide]: https://developer.apple.com/library/ios/featuredarticles/ViewControllerPGforiPhoneOS/ImplementingaContainerViewController.html
