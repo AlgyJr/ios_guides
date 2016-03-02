@@ -309,7 +309,7 @@ query.findObjectsInBackgroundWithBlock { (posts: [PFObject]?, error: NSError?) -
 A complete list of features supported by Parse for `NSPredicate` can be found [here](https://parse.com/docs/ios/guide#queries-specifying-constraints-with-nspredicate).
 
 ##### Using `PFQuery Methods`
-There are several other methods that `PFQuery` provides to support SQL-like querying of objects. For example, you get 20 user media posts that have more than 100 likes on the post with following code:
+There are several other methods that `PFQuery` provides to support SQL-like querying of objects. For example, you can get 20 instagram posts that have more than 100 likes on the post with following code:
 
 ```swift
 // construct query
@@ -318,8 +318,8 @@ query.whereKey("likesCount", greaterThan: 100)
 query.limit = 20
 
 // fetch data asynchronously
-query.findObjectsInBackgroundWithBlock { (media: [PFObject]?, error: NSError?) -> Void in
-    if let media = media {
+query.findObjectsInBackgroundWithBlock { (posts: [PFObject]?, error: NSError?) -> Void in
+    if let posts = posts {
         // do something with the array of object returned by the call
     } else {
         print(error?.localizedDescription)
