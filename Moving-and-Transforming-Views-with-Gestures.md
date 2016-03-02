@@ -150,6 +150,7 @@ sender.scale = 1
 ### Step 5: Make the Image View Rotatable 
   
 ![Make the Image View Rotatable gif](http://i.imgur.com/aqzTp2A.gif)
+
 Within the `didRotate` method... 
 - Access the **rotation** parameter of the Rotation Gesture Recognizer and store it in a constant.
 - Access the view that was rotated and store it in a constant.
