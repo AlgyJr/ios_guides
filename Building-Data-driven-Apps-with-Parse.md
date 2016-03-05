@@ -70,7 +70,7 @@ Additional fields created by default are:
    desc: object permissions (out of the scope for this tutorial)
 ```
 
-`Post` and `_User` should be enough to store data based on use cases mentioned above.
+`Post` and `_User` data classes should be enough to store data based on use cases mentioned above.
 
 ## Getting started with Parse
 
