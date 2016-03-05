@@ -43,10 +43,13 @@ For this app, we will be using just 1 additional data class (represented by `PFO
 3. image
    type: PFFile
    desc: image that user posts
-4. commentsCount
+4. caption
+   type: String
+   desc: image caption by author
+5. commentsCount
    type: Number
    desc: number of comments that has been posted to an image
-5. likesCount
+6. likesCount
    type: Number
    desc: number of likes for the post
 
@@ -56,13 +59,13 @@ For this app, we will be using just 1 additional data class (represented by `PFO
 Additional fields created by default are:
 
 ```
-6. createdAt
+7. createdAt
    type: Date
    desc: date when post is created (added automatically by parse SDK, no need to explicitly specify in `PFObject` for the class)
-7. updatedAt
+8. updatedAt
    type: Date
    desc: date when post is last updated (updated automatically by parse SDK, no need to explicitly specify in `PFObject` for the class)
-8.ACL
+9. ACL
    type: ACL
    desc: object permissions (out of the scope for this tutorial)
 ```
