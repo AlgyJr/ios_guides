@@ -422,7 +422,7 @@ query.findObjectsInBackgroundWithBlock { (posts: [PFObject]?, error: NSError?) -
 
 `ParseUI` is a collection of a handy user interface components to be used with Parse iOS SDK, which streamline and simplify logging in/signing up PFUsers and displaying a list of PFObjects.
 
-### Adding `PraseUI` cocoapod
+### Adding `ParseUI` cocoapod
 
 Add `pod 'ParseUI'` under target in your Podfile and run `pod install`. For more detailed instructions see this <a href="http://guides.codepath.com/ios/CocoaPods#adding-a-pod" target="_blank">link</a>.
 
