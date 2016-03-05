@@ -26,6 +26,34 @@ The final application should look something like following:
 
 <img src="http://i.imgur.com/EjhojU6.gif" alt="Instangram app demo"/>
 
+### Data Schema Design
+
+An important aspect of the any data driven application is to be able to design the data schema. This helps in data organization so that related data are added to a single table or class and non-related data are put into different tables or classes.
+
+For this app, we will be using just 1 additional data class (represented by `PFObject`) apart from `_User` class that is created by default when first user is registered. This class is will be called `Post` and will have following fields:
+
+```
++- Post
+  +- objectId
+     type: String
+     desc: unique id for the user post
+  +- author
+     type: Pointer
+     desc: _User class object for image author
+  +- image
+     type: PFFile
+     desc: image that user posts
+  +- commentsCount
+     type: Number
+     desc: number of comments that has been posted to an image
+  +- likesCount
+     type: Number
+     desc: number of likes for the post
+
+* desc - description
+```
+
+
 ## Getting started with Parse
 
 ### Deploying your own Parse Server
