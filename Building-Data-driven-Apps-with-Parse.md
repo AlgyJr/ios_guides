@@ -452,7 +452,7 @@ class InstagramPostTableViewCell: UITableViewCell {
 
 ##### Notes
 1. **Make sure to import `ParseUI`** wherever you want to use it's components
-2. You have set the UIImageView class to `PFImageView` in Interface Builder
+2. Make sure that you have set the `UIImageView` class to `PFImageView` in Interface Builder
 <img src="http://i.imgur.com/ZV0BMn6.gif" alt="Parse Quickstart" width="750"/>
 
 
