@@ -53,6 +53,21 @@ For this app, we will be using just 1 additional data class (represented by `PFO
 * desc - description
 ```
 
+Additional fields created by default are:
+
+```
+6. createdAt
+   type: Date
+   desc: date when post is created (added automatically by parse SDK, no need to explicitly specify in `PFObject` for the class)
+7. updatedAt
+   type: Date
+   desc: date when post is last updated (updated automatically by parse SDK, no need to explicitly specify in `PFObject` for the class)
+8.ACL
+   type: ACL
+   desc: object permissions (out of the scope for this tutorial)
+```
+
+`Post` and `_User` should be enough to store data based on use cases mentioned above.
 
 ## Getting started with Parse
 
