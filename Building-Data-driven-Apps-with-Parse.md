@@ -33,22 +33,21 @@ An important aspect of the any data driven application is to be able to design t
 For this app, we will be using just 1 additional data class (represented by `PFObject`) apart from `_User` class that is created by default when first user is registered. This class is will be called `Post` and will have following fields:
 
 ```
-+- Post
-  +- objectId
-     type: String
-     desc: unique id for the user post
-  +- author
-     type: Pointer
-     desc: _User class object for image author
-  +- image
-     type: PFFile
-     desc: image that user posts
-  +- commentsCount
-     type: Number
-     desc: number of comments that has been posted to an image
-  +- likesCount
-     type: Number
-     desc: number of likes for the post
+1. objectId
+   type: String
+   desc: unique id for the user post
+2. author
+   type: Pointer
+   desc: _User class object for image author
+3. image
+   type: PFFile
+   desc: image that user posts
+4. commentsCount
+   type: Number
+   desc: number of comments that has been posted to an image
+5. likesCount
+   type: Number
+   desc: number of likes for the post
 
 * desc - description
 ```
