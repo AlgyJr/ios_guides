@@ -28,9 +28,9 @@ The final application should look something like following:
 
 ### Data Schema Design
 
-An important aspect of the any data driven application is to be able to design the data schema. This helps in data organization so that related data are added to a single table or class and non-related data are put into different tables or classes.
+An important aspect of the any data driven application is to be able to design the data schema. This helps in data organization so that related data is stored in to a single table or class (in `Parse` terminology) and non-related data is stored into different tables or classes.
 
-For this app, we will be using just 1 additional data class (represented by `PFObject`) apart from `_User` class that is created by default when first user is registered. This class is will be called `Post` and will have following fields:
+For this app, we will be using just 1 additional data class (represented by `PFObject`) apart from `_User` class that Parse SDK created when first user is registered. `_User` is specifically reserved for `PFUser` and we can not change the class name for `PFUser`. However, we do get to name other classes that store the data. This class is will be called `Post` and will have following fields:
 
 ```
 1. objectId
@@ -38,7 +38,8 @@ For this app, we will be using just 1 additional data class (represented by `PFO
    desc: unique id for the user post
 2. author
    type: Pointer
-   desc: _User class object for image author
+   target class: _User
+   desc: image author
 3. image
    type: PFFile
    desc: image that user posts
