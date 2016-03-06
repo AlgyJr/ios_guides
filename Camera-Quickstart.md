@@ -51,3 +51,7 @@ self.presentViewController(vc, animated: true, completion: nil)
 ### Step 2: Implement the delegate
 
 This is the same as Step 2 above.
+
+## Things to Keep in Mind
+
+Make sure you add `UIImagePickerControllerDelegate` and `UINavigationControllerDelegate` when defining your class
