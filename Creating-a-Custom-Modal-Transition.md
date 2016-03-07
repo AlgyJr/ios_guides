@@ -4,7 +4,7 @@ Xcode allows us to choose from 3 different modal transitions, Cover Vertical, Fl
 
 ### Step 1: Add Custom Transition Files to your Project.  
 
-[Download the Custom Transition Swift Files](https://www.dropbox.com/s/x1kz6kymfpzsl0h/Transition%20Files.zip?dl=0) and drag them into your project. The **Base Transition** file contains the "behind the scenes" code to execute our transition. The **Fade transition** describes what happens during the transition, a fading transition between ViewControllers. 
+[Download the Custom Transition Swift Files](https://www.dropbox.com/s/v22rpvqi606d4dq/Transition%20Files.zip?dl=0) and drag them into your project. The **Base Transition** file contains the "behind the scenes" code to execute our transition. The **Fade transition** describes what happens during the transition, a fading transition between ViewControllers. 
 
 ![add transition files to project](http://i.imgur.com/vWq788n.gif)  
 
