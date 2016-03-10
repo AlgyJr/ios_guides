@@ -12,4 +12,4 @@ Layout in iOS is very simple, it's based on absolute positioning and nesting vie
 
 Until we learn how to use Auto Layout, it can complicate things unnecessarily, so disable it for new projects by selecting the Storyboard and unchecking Auto Layout, as shown below.
 
-![Disable Auto Layout|600](http://i.imgur.com/QTqgV9N.gif)
+![Disable Auto Layout|600](http://i.imgur.com/UPRQRIy.gif)
