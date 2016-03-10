@@ -34,6 +34,8 @@ Note where it is in the context of the rest of the xml file.
 </plist>
 ```
 
+![Add NSAllowsArbitraryLoads|400](http://i.imgur.com/qqP7KHp.gif)
+
 ### Read More
 
 [Working with Apple's App Transport Security](http://www.neglectedpotential.com/2015/06/working-with-apples-application-transport-security/)
