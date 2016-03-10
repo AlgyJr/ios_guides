@@ -19,22 +19,7 @@ Right-Click **info.plist** and **Open As -> Source Code**. This will open the fi
 
 Note where it is in the context of the rest of the xml file.
 
-```xml
-    <key>UISupportedInterfaceOrientations</key>
-    <array>
-        <string>UIInterfaceOrientationPortrait</string>
-        <string>UIInterfaceOrientationLandscapeLeft</string>
-        <string>UIInterfaceOrientationLandscapeRight</string>
-    </array>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key><true/>
-    </dict>
-</dict>
-</plist>
-```
-
-![Add NSAllowsArbitraryLoads|400](http://i.imgur.com/qqP7KHp.gif)
+![Add NSAllowsArbitraryLoads|600](http://i.imgur.com/qqP7KHp.gif)
 
 ### Read More
 
