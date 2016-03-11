@@ -1,11 +1,6 @@
 This guide provides a quick overview and basic examples of the most
-common uses cases for using Auto Layout in Interface Builder.  A guide
-on some more advanced features of Auto Layout including how to work with
-Auto Layout programmatically can be found
-[here](advancedautolayoutguide).  Another good resource is Apple's
-[official Auto Layout guide][appleautolayoutguide].
-
-<!--- TODO: insert link to advanced guide here -->
+common uses cases for using Auto Layout in Interface Builder. You can also check out [Apple's
+official Auto Layout guide](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/AutolayoutPG).
 
 ## What is Auto Layout and why use it?
 Until the introduction of iPad and iPhone 5, all screens in the iOS
