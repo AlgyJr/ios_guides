@@ -21,7 +21,7 @@ Control-drag from the view to the implementation file to create an outlet to the
 
 Declare that the class implements the table view datasource and delegate protocols. Look for the class declaration at the top of your Swift file. Add `UITableViewDataSource` and `UITableViewDelegate` after `UIViewController`. Note that there will be an error that your class doesn't implement the required UITableViewDataSource functions. The error won't go away until you complete Step 4 below.
 
-```
+```swift
 class YourViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
   ...
 }
@@ -30,7 +30,7 @@ class YourViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
 In viewDidLoad, configure the datasource and delegate of the table view.
 
-```
+```swift
 override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -44,13 +44,13 @@ override func viewDidLoad() {
 
 There are many table view methods, but the only required methods are to set the number of rows for the table view and to return the cell for each row.
 
-```
+```swift
 func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 5
 }
 
 func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    var cell = UITableViewCell()
+    let cell = UITableViewCell()
     cell.textLabel.text = "This is row \(indexPath.row)"
 
     return cell
@@ -76,9 +76,9 @@ Create outlets to the custom cell class for any view you want to configure in co
 
 #### Step 2: Dequeue the cell
 
-```
+```swift
 func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    var cell = tableView.dequeueReusableCellWithIdentifier("YourCustomCell") as YourCustomCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("YourCustomCell") as YourCustomCell
 
     // Configure YourCustomCell using the outlets that you've defined.
 
