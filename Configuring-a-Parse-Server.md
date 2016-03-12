@@ -77,6 +77,10 @@ Make sure to pull in the latest Parse SDK in your `Podfile` (it should be at lea
 ```ruby
 # Podfile
 
+# If using Swift, make sure to add the following two lines
+platform :ios, "8.0"
+use frameworks!
+
 pod 'Parse'
 ```
 
