@@ -140,3 +140,11 @@ The `/parse` path needs to match the `PARSE_MOUNT` environment variable, which i
    ```
    2016-02-07T08:28:14.292475+00:00 heroku[router]: at=info method=POST path="/parse/classes/Message" host=parse-testing-port.herokuapp.com request_id=804c2533-ac56-4107-ad05-962d287537e9 fwd="101.12.34.12" dyno=web.1 connect=1ms service=2ms status=404 bytes=179
    ```
+
+### Push Notifications
+
+1. Follow these [steps #1-#2](https://github.com/ParsePlatform/PushTutorial/blob/master/iOS/README.md#1-creating-the-ssl-certificate) to create SSL certificates.
+
+2. See Parse's [quickstart guide](https://github.com/ParsePlatform/parse-server/wiki/Push#quick-start) to initialize the Parse server.  In particular, you will know the `.p12` certificate, bundleId, and whether the certificate is used for development or production purposes.
+ 
+3. Follow [steps #5](https://github.com/ParsePlatform/PushTutorial/blob/master/iOS/README.md#5-adding-code-for-a-push-enabled-application) to enable Push notifications inside your app.
