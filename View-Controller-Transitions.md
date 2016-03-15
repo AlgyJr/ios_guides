@@ -45,7 +45,7 @@ Your `animateTransition` method must do two things: add the new view controller 
 
 Here is a very simple implementation that just fades between view controller:
 
-```
+```swift
 class SimpleAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
         return 0.35
@@ -67,7 +67,7 @@ class SimpleAnimationController: NSObject, UIViewControllerAnimatedTransitioning
 
 To wire this up to your view controller:
 
-```
+```swift
 class MyViewController: UIViewController, UINavigationControllerDelegate  {
 
     override func awakeFromNib() {
@@ -89,7 +89,7 @@ In this example, we'll use a pan gesture to trigger a custom animation for poppi
 
 We attach the gesture recognizer, and have it call `didPan` on our transition controller. When we want the interactive animation to kick off, we call `popViewController` as normal.
 
-```
+```swift
 class MyFadeTransition: NSObject, UIViewControllerAnimatedTransitioning {
     unowned var transitioningController: UIViewController
 
@@ -110,7 +110,7 @@ class MyFadeTransition: NSObject, UIViewControllerAnimatedTransitioning {
 
 Now the view controller will ask the transition delegate for an interactive transition controller. If you return nil, it will just run the previous, non-interactive transition.
 
-```
+```swift
 func navigationController(navigationController: UINavigationController, interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
     if myInteractiveTransitionAnimation.usingGesture {
       return myInteractiveTransitionAnimation
@@ -126,7 +126,7 @@ Next, we would implement the `UIViewControllerInteractiveTransitioning` methods.
 
 Here is an abridged version of our code, now subclassing this "Percent Driven" transition.
 
-```
+```swift
 class MyFadeTransition: UIPercentDrivenInteractiveTransition, UIViewControllerAnimatedTransitioning {
 
     // Previous code omitted
