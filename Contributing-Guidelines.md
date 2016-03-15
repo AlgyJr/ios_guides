@@ -7,11 +7,11 @@ If you want to contribute to the guides, you can [edit the wiki](https://github.
 The guides philosophy is all about cutting down the content keeping the guides **clean and practical**. In particular:
 
  * **Don't** include long preambles, blocks of text or extensive vocabulary lessons
+ * **Don't** use elaborate examples that take way too much time to understand.
  * **Do** focus on the **practical** and be to-the-point
  * **Do** include screen captures and images that supplements the content 
  * **Do** discuss third-party open-source libraries that save you tons of time
  * **Do** put the code blocks first. **Always include practical code samples**
- * **Don't** use elaborate examples that take way too much time to understand.
  * **Do** mention the implications and practical conclusions you've made
 
 ## Principles
@@ -53,14 +53,19 @@ Check the [issues](https://github.com/codepath/ios_guides/issues) for this repos
 
    which outputs the code as:
 
-   ```swift
-   func helloWorld() {
-       print("Hello World!") 
-   }
-   ```
+    ```swift
+    func helloWorld() {
+        print("Hello World!")
+    }
+    ```
  * Prefer **comments in the code** over text describing the code
  * Make sure to use **spaces (4) over tabs**
  * **Line length** should not exceed 100 characters
+
+### Including Images in the Guides
+
+ * [LICEcap](http://www.cockos.com/licecap) is a great tool for creating animated gifs.
+ * Upload images / gifs to [Imgur](http://imgur.com) and then use the "Markdown Link" to include them in the guides.
 
 ### Linking to Other Guides
 
