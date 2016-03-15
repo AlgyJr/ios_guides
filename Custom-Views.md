@@ -1,23 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-- [Overview](#overview)
-- [How views are defined and instantiated](#how-views-are-defined-and-instantiated)
-- [Example: an image view with caption](#example-an-image-view-with-caption)
-- [Using custom views defined programatically](#using-custom-views-defined-programatically)
-  - [Programmatic instantiation](#programmatic-instantiation)
-  - [Embedding in a nib or storyboard](#embedding-in-a-nib-or-storyboard)
-- [Nibs and how they are loaded](#nibs-and-how-they-are-loaded)
-  - [The file's owner object](#the-files-owner-object)
-  - [Nib loading process](#nib-loading-process)
-- [Using custom views defined in a nib](#using-custom-views-defined-in-a-nib)
-  - [Loading programatically](#loading-programatically)
-  - [Within a another nib or storyboard](#within-a-another-nib-or-storyboard)
-  - [Why you shouldn't set top-level view's custom class](#why-you-shouldnt-set-top-level-views-custom-class)
-- [A note about view controllers](#a-note-about-view-controllers)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 ## Overview
 [View objects](Application-Architecture#views) encapsulate logic to
 display information on the screen and respond to user events.  UIKit
