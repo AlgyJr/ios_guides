@@ -190,7 +190,7 @@ The `/parse` path needs to match the `PARSE_MOUNT` environment variable, which i
           production: false // dev certificate
         }
       ]
-    ```
+   ```
 
 5. Make sure to include this `pushConfig` into your definition:
 
