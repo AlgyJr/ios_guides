@@ -167,7 +167,7 @@ The `/parse` path needs to match the `PARSE_MOUNT` environment variable, which i
    2016-02-07T08:28:14.292475+00:00 heroku[router]: at=info method=POST path="/parse/classes/Message" host=parse-testing-port.herokuapp.com request_id=804c2533-ac56-4107-ad05-962d287537e9 fwd="101.12.34.12" dyno=web.1 connect=1ms service=2ms status=404 bytes=179
    ```
 
-### Push Notifications
+### Enabling Push Notifications
 
 1. Follow Parse's [step #1](https://github.com/ParsePlatform/PushTutorial/blob/master/iOS/README.md#1-creating-the-ssl-certificate) for creating a development SSL certificate.  You will need this certificates to connect to Apple's Push Notification Service (APNS) sandbox system.  
 
@@ -229,3 +229,28 @@ The `/parse` path needs to match the `PARSE_MOUNT` environment variable, which i
         installation.saveInBackground()
     }
     ```
+
+9. Test out whether you can receive push notifications by using this Curl command: 
+
+    ```bash
+    curl -X POST \
+    -H "X-Parse-Application-Id: myAppId" \
+    -H "X-Parse-Master-Key: masterKey" \
+    -H "Content-Type: application/json" \
+    -d '{
+          "where": {
+            "deviceType": "ios"
+          },
+          "data": {
+            "title": "The Shining",
+            "alert": "All work and no play makes Jack a dull boy."
+          }
+        }'\   http://yourherouapp.herokuapp.com/parse/push
+     ```
+
+     You should see inside your logs:
+
+     ```
+     APNS Connection 0 Connected
+     APNS Connection 0 Notification transmitted to <device_token>
+     ```
