@@ -329,3 +329,44 @@ You can then invoke this function inside your iOS client by adding the following
 ```swift
 PFCloud.callFunctionInBackground("iosPushTest", withParameters: ["text" : "Testing"])
 ```
+
+### Troubleshooting
+
+* Query the `Installation` table and make sure your app has registered a device token.   
+
+  ```bash
+  curl -X GET \
+       -H "X-Parse-Application-Id: myAppId" \
+       -H "X-Parse-Master-Key: masterKey" \
+       http://myappname.herokuapp.com/parse/installations | python -mjson.tool
+  ```
+
+  You should see:
+
+  ```
+    {
+            "appIdentifier": "beta.codepath.pushtest",
+            "appName": "pushtest",
+            "appVersion": "1",
+            "badge": 0,
+            "channels": [
+                "global"
+            ],
+            "createdAt": "2016-03-13T07:07:12.184Z",
+            "deviceToken": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+            "deviceType": "ios",
+            "installationId": "498afd36-1987-4762-a5a3-9b958de41089",
+            "localeIdentifier": "en-US",
+            "objectId": "E6RQBu4q3e",
+            "parseVersion": "1.12.0",
+            "timeZone": "America/Los_Angeles",
+            "updatedAt": "2016-03-13T07:07:12.184Z"
+        }
+    ```
+
+* Make sure your bundle ID matches what you specified in your `index.js`.  If you get `Invalid Token` responses, it means that you may have a mismatch issue. 
+
+* If you are using a development certificate, make sure it is marked as `production: false` in your Parse server configuration.
+
+* Verify you can connect to Apple's APNS service by following [these instructions](https://github.com/argon/node-apn/wiki/Preparing-Certificates).
+
