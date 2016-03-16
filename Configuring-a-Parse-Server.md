@@ -52,23 +52,48 @@ If you ever need to change these values later, you can go to (`https://dashboard
 
 After deployment, try to connect to the site.  You should see `I dream of being a web site.` if the site loaded correctly.   If you try to connect to the `/parse` endpoint, you should see `{error: "unauthorized"}`.  If both tests pass, the basic configuration is successful.
 
-Next, make sure you can create Parse objects.  You do not need a client Key to write new data. **Note:** You might need to [download curl](https://curl.haxx.se/download.html) if you are using Windows.
+Next, make sure you can create Parse objects.  You do not need a client Key to write new data:
 
 ```bash
-curl -X POST -H "X-Parse-Application-Id: myAppId" -H "Content-Type: application/json" -d '{"score":1337,"playerName":"Sean Plott","cheatMode":false}'   https://yourappname.herokuapp.com/parse/classes/GameScore
+curl -X POST -H "X-Parse-Application-Id: myAppId" -H "X-Parse-Master-Key: abc" \
+-H "Content-Type: application/json" \
+-d '{"score":1337,"playerName":"Sean Plott","cheatMode":false}' \
+https://yourappname.herokuapp.com/parse/classes/GameScore
 ```
 
-To read data back, you will need to specify the master key:
+Be sure to **replace the values** for `myAppId` and the server URL. If you see `Cannot POST` error then be sure both the `X-Parse-Application-Id` and the URL are correct for your application. To read data back, you will need to specify your master key as well:
 
 ```bash
-curl -X GET -H "X-Parse-Application-Id: myAppId" -H "X-Parse-Master-Key: abc"    https://yourappname.herokuapp.com/parse/classes/GameScore
+curl -X GET -H "X-Parse-Application-Id: myAppId" -H "X-Parse-Master-Key: abc"  \  https://yourappname.herokuapp.com/parse/classes/GameScore
 ```
 
-If you are using Heroku, You can also verify whether the objects were created by clicking on the MongoDB instance in the Heroku panel:
+Be sure to **replace the values** for `myAppId` and the server URL. If these commands work as expected, then your Parse instance is now setup and ready to be used!
+
+### Browsing Parse Data
+
+The hosted Parse instance deployed uses [mLab](https://mlab.com/) (previously called MongoLab) to store all of your data. mLab is a hosted version of [MongoDB](https://www.mongodb.org/) which is a document-store which uses JSON to store your data.
+
+If you are using Heroku, you can verify whether the objects were created by clicking on the MongoDB instance in the Heroku panel:
 
 <img src="http://imgur.com/bbj2e9N.png"/>
 
 <img src="http://imgur.com/snPqYkz.png"/>
+
+You can also setup [Robomongo](https://robomongo.org/download) to connect to your remote mongo database hosted on Heroku to get a better data browser and dashboard for your app.
+
+<a href="https://robomongo.org/download"><img src="http://i.imgur.com/9Qtt6Xs.png" width="450" /></a>
+
+To access mLab databases using Robomongo, be sure to go the MongoDB instance in the Heroku panel as shown above. Look for the following URL: `mongodb://<dbuser>:<dbpassword>@ds017212.mlab.com:11218/heroku_2flx41aa`. Use that to identify the login credentials:
+
+```
+address: ds017212.mlab.com
+port: 11218
+db: heroku_2flx41aa
+user: dbuser
+password: dbpassword
+```
+
+Using that cross-platform app to easily access and modify the data for your Parse MongoDB data. 
 
 ### Enabling Client SDK integration
 
