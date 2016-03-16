@@ -169,8 +169,63 @@ The `/parse` path needs to match the `PARSE_MOUNT` environment variable, which i
 
 ### Push Notifications
 
-1. Follow these [steps #1-#2](https://github.com/ParsePlatform/PushTutorial/blob/master/iOS/README.md#1-creating-the-ssl-certificate) to create SSL certificates.
+1. Follow Parse's [step #1](https://github.com/ParsePlatform/PushTutorial/blob/master/iOS/README.md#1-creating-the-ssl-certificate) for creating a development SSL certificate.  You will need this certificates to connect to Apple's Push Notification Service (APNS) sandbox system.  
 
-2. See Parse's [quickstart guide](https://github.com/ParsePlatform/parse-server/wiki/Push#quick-start) to initialize the Parse server.  In particular, you will know the `.p12` certificate, bundleId, and whether the certificate is used for development or production purposes.
+2. Fork your own [copy](https://github.com/ParsePlatform/parse-server-example) of the Parse server code that initially used to deploy to Heroku.  You will need to reconfigure your Heroku instance to point to this repo instead of Parse's because of additional customizations needed to be made on the `index.js` file within this repo.  
+
+3. Copy the `.p12` certificate you exported into this forked repo.  This `.p12` file should not have a passphrase with it.  
+
+4. You will now need to edit the `index.js` of to include to the APNS certificate.  You will need to specify the filename of this `.p12` certificate, the bundle identifier of the app, and whether the certificate generated is for development or production purposes.
+
+   Note that you the `ios` key/value pair can be included as an array.   You could also include the production certificate in this same list.  See the [Parse wiki](https://github.com/ParsePlatform/parse-server/wiki/Push#2-configure-parse-server) for more context.
+
+   ```javascript
+      var pushConfig = {'ios': [
+        {
+          pfx: 'ParsePushDevelopmentCertificate.p12', // P12 file only
+          bundleId: 'beta.codepath.parsetesting',  // change to match bundleId
+          production: false // dev certificate
+        }
+      ]
+    ```
+
+5. Make sure to include this `pushConfig` into your definition:
+
+       ```javascript
+       var api = new ParseServer({
+       .
+       .
+       push: pushConfig,
+       });
+       ```
  
-3. Follow [steps #5](https://github.com/ParsePlatform/PushTutorial/blob/master/iOS/README.md#5-adding-code-for-a-push-enabled-application) to enable Push notifications inside your app.
+6. Follow [steps #4-#5](https://github.com/ParsePlatform/PushTutorial/blob/master/iOS/README.md#5-adding-code-for-a-push-enabled-application) to enable Push notifications inside your app.  
+     * Make sure to use the same bundle identifier as the name specified in your server configuration.
+     * Verify that you've turned on Push Notifications in the `Capabilities` section.
+     * Click on `Build Setting`", and find (or search for) the `Code Signing Identity` field. This field should be set to `iOS Developer` if you're testing against development, or `iOS Distribution` if you're testing in production or building your app for the App Store.
+
+7. Make sure to register your application for push notifications.  First, you should specify inside `AppDelegate.swift` the notification types to which the app will respond:
+
+   ```swift
+   // Swift
+   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+    {
+      ...
+      let userNotificationTypes: UIUserNotificationType = [.Alert, .Badge, .Sound]
+      let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
+      application.registerUserNotificationSettings(settings)
+      application.registerForRemoteNotifications()
+       ...
+    }
+    ```
+
+8.  Next, the `application:didRegisterForRemoteNotificationsWithDeviceToken:` will be called if registration is successful.  The response comes with a device token which we want to pass along to the server.
+
+    ```swift
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        let installation = PFInstallation.currentInstallation()
+        installation.setDeviceTokenFromData(deviceToken)
+        installation.channels = ["global"]
+        installation.saveInBackground()
+    }
+    ```
