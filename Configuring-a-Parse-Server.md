@@ -174,7 +174,7 @@ The `/parse` path needs to match the `PARSE_MOUNT` environment variable, which i
 
 2. Fork your own [copy](https://github.com/ParsePlatform/parse-server-example) of the Parse server code that initially used to deploy to Heroku.  You will need to reconfigure your Heroku instance to point to this repo instead of Parse's because of additional customizations needed to be made on the `index.js` file within this repo.  
 
-3. Copy the `.p12` certificate you exported into this forked repo.  This `.p12` file should not have a passphrase with it.  
+3. Copy the `.p12` certificate you exported and add it to this forked repo.  This `.p12` file should not have a passphrase with it.  
 
 4. You will now need to edit the `index.js` of to include to the APNS certificate.  You will need to specify the filename of this `.p12` certificate, the bundle identifier of the app, and whether the certificate generated is for development or production purposes.
 
