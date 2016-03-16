@@ -254,3 +254,78 @@ The `/parse` path needs to match the `PARSE_MOUNT` environment variable, which i
      APNS Connection 0 Connected
      APNS Connection 0 Notification transmitted to <device_token>
      ```
+
+#### Sending Pushes from Clients
+
+While support for push notifications is now available with the open source Parse server, **you cannot implement this type of code** on the actual client:   
+ 
+```swift
+   // Note: This does NOT work with open Parse Server at this time
+   let push = PFPush.init()
+   push.setChannel("mychannel")
+   push.setMessage("this is my message")
+   push.sendPushInBackground()
+```
+
+You will likely see this error in the API response:
+
+```json
+unauthorized: master key is required (Code: 0, Version: 1.12.0)
+```
+
+Instead, you need to write your own server-side Parse code and have the client invoke it.   
+
+Verify that `cloud/main.js` is the default value of `CLOUD_CODE_MAIN` environment variable.    You should modify your `cloud/main.js` file to define this Parse Cloud function:
+
+```javascript
+// iOS push testing
+Parse.Cloud.define("iosPushTest", function(request, response) {
+
+  // request has 2 parameters: params passed by the client and the authorized user                                                                                                                               
+  var params = request.params;
+  var user = request.user;
+
+  // Our "Message" class has a "text" key with the body of the message itself                                                                                                                                    
+  var messageText = params.text;
+
+  var pushQuery = new Parse.Query(Parse.Installation);
+  pushQuery.equalTo('deviceType', 'ios'); // targeting iOS devices only                                                                                                                                          
+
+  Parse.Push.send({
+    where: pushQuery, // Set our Installation query                                                                                                                                                              
+    data: {
+      alert: "Message: " + messageText
+    }
+  }, { success: function() {
+      console.log("#### PUSH OK");
+  }, error: function(error) {
+      console.log("#### PUSH ERROR" + error.message);
+  }, useMasterKey: true});
+
+  response.success('success');
+});
+```
+
+Make sure to redeploy your code with these changes to Heroku first.  Then you can use the client to test:
+
+```bash
+curl -X POST \
+-H "X-Parse-Application-Id: myAppId" \
+-H "X-Parse-Master-Key: masterKey" \
+-H "Content-Type: application/json" \
+-d '{ 
+      "where": {
+        "deviceType": "ios"
+      },
+      "text": "This is a test"
+    }' \
+http://myherokuapp.herokuapp.com/parse/functions/iosPushTest
+```
+
+You should receive a `{"result":"success"}` message back if your `application ID` and `masterKey` matches your configuration.
+
+You can then invoke this function inside your iOS client by adding the following command.  Note how the `text` parameter is used for the message to be sent:
+
+```swift
+PFCloud.callFunctionInBackground("iosPushTest", withParameters: ["text" : "Testing"])
+```
