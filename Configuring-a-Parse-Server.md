@@ -181,9 +181,11 @@ The `/parse` path needs to match the `PARSE_MOUNT` environment variable, which i
    Note that you the `ios` key/value pair can be included as an array.   You could also include the production certificate in this same list.  See the [Parse wiki](https://github.com/ParsePlatform/parse-server/wiki/Push#2-configure-parse-server) for more context.
 
    ```javascript
+      var devCertPath = path.resolve(__dirname, 'ParsePushDevelopmentCertificate.p12');
+
       var pushConfig = {'ios': [
         {
-          pfx: 'ParsePushDevelopmentCertificate.p12', // P12 file only
+          pfx: devCertPath, // P12 file only
           bundleId: 'beta.codepath.parsetesting',  // change to match bundleId
           production: false // dev certificate
         }
@@ -370,4 +372,3 @@ PFCloud.callFunctionInBackground("iosPushTest", withParameters: ["text" : "Testi
 * If you are using a development certificate, make sure it is marked as `production: false` in your Parse server configuration.
 
 * Verify you can connect to Apple's APNS service by following [these instructions](https://github.com/argon/node-apn/wiki/Preparing-Certificates).
-
