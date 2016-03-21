@@ -459,6 +459,18 @@ class InstagramPostTableViewCell: UITableViewCell {
 2. Make sure that you have set the `UIImageView` class to `PFImageView` in Interface Builder
 <img src="http://i.imgur.com/ZV0BMn6.gif" alt="Parse Quickstart" width="750"/>
 
+## Push Notifications
+
+Push notifications let your application notify a user of new messages or events even when the user is not actively using your application.
+
+#### How does push notification work?
+[This tutorial](https://www.raywenderlich.com/32960/apple-push-notification-services-in-ios-6-tutorial-part-1) at raywenderlich.com provides a good introduction on how push notification works.
+
+#### Enabling push notification 
+**Note**: This section is only applicable if you have deployed your own Parse server.
+
+[This section](http://guides.codepath.com/ios/Configuring-a-Parse-Server#enabling-push-notifications) in `Configuring a Parse Server` guides provides detailed steps on enabling push notifications on your server.
+
 
 ## FAQ
 
