@@ -32,10 +32,6 @@ An important aspect of the any data driven application is to be able to design t
 
 For this app, we will be using just 1 additional data class (represented by `PFObject`) apart from `_User` class that Parse SDK created when first user is registered. `_User` is specifically reserved for `PFUser` and we can not change the class name for `PFUser`. However, we do get to name other classes that store the data. This class is will be called `Post` and will have following fields:
 
-<img src="http://i.imgur.com/8YpEEcm.gif" alt="Data Model"/>
-
-Below is description of each field.
-
 ```
 1. objectId: unique id for the user post
 2. author: image author
@@ -47,6 +43,12 @@ Below is description of each field.
 8. updatedAt: date when post is last updated (updated automatically by parse SDK, no need to explicitly specify in `PFObject` for the class)
 9. ACL: object permissions (out of the scope for this tutorial)
 ```
+
+Here is how data model would look like: (`field_name`: `field_type`)
+
+<img src="http://i.imgur.com/8YpEEcm.gif" alt="Data Model"/>
+
+
 
 `Post` and `_User` data classes should be enough to store data based on use cases mentioned above.
 
