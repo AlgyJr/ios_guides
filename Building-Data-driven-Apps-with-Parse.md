@@ -26,6 +26,15 @@ The final application should look something like following:
 
 <img src="http://i.imgur.com/EjhojU6.gif" alt="Instangram app demo"/>
 
+### Architecture Overview:
+
+Below is a quick overview of the app architecture:
+
+<img src="http://i.imgur.com/Xo47jSc.gif" alt="Parse" width="750" />
+
+1) To fetch the data from the cloud (Parse server) you will be using `PFQuery` ([More details](http://guides.codepath.com/ios/Building-Data-driven-Apps-with-Parse#parse-data-objects-pfobject-parse-files-pffile))
+2) To add data to cloud you will be using `PFObject` and it's methods. ([More details](http://guides.codepath.com/ios/Building-Data-driven-Apps-with-Parse#fetching-data-from-parse-via-pfquery))
+
 ### Data Schema Design
 
 An important aspect of the any data driven application is to be able to design the data schema. This helps in data organization so that related data is stored in to a single table or class (in `Parse` terminology) and non-related data is stored into different tables or classes.
