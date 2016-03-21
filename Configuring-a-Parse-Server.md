@@ -250,14 +250,14 @@ The `/parse` path needs to match the `PARSE_MOUNT` environment variable, which i
               "alert": "All work and no play makes Jack a dull boy."
             }
           }'\   http://yourherouapp.herokuapp.com/parse/push
-       ```
+      ```
 
-       You should see inside your logs:
+      You should see inside your logs:
 
-       ```
-       APNS Connection 0 Connected
-       APNS Connection 0 Notification transmitted to <device_token>
-       ```
+      ```
+      APNS Connection 0 Connected
+      APNS Connection 0 Notification transmitted to <device_token>
+      ```
 
 #### Sending Pushes from Clients
 
