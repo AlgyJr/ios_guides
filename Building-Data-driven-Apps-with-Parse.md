@@ -80,11 +80,11 @@ Parse used to provide a hosted version of their backend service with free regist
 
 Please refer to this guide for instructions on how to [host and configure your own Parse server](https://guides.codepath.com/ios/Configuring-a-Parse-Server).
 
-#### Setting up Parse Server Dashboard
+##### Setting up Parse Server Dashboard
 
 After setting up Parse Server in above step, you can setup Parse Dashboard for following [these instructions](http://blog.parse.com/announcements/introducing-the-parse-server-dashboard/). With Parse dashboard you can manage your manage your app. This dashboard is similar to one that you may find when using Prase.com.
 
-Note: If you are deploying your own Parse server, you can skip the next section and directly go to [Parse User](https://github.com/codepath/ios_guides/wiki/Building-Data-driven-Apps-with-Parse#parse-user-pfuser).
+**Note**: If you are deploying your own Parse server, you can skip the next section and directly go to [Parse User](https://github.com/codepath/ios_guides/wiki/Building-Data-driven-Apps-with-Parse#parse-user-pfuser).
 
 ### Using Parse.com
 
