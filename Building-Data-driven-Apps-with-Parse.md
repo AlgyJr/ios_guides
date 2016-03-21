@@ -64,7 +64,7 @@ Here is how data model would look like: (`field_name`: `field_type`)
 
 ## Getting started with Parse
 
-### Deploying your own Parse Server
+### [Option 1] Deploying your own Parse Server (Recommended)
 
 Parse used to provide a hosted version of their backend service with free registration. But as of February 2016, Parse has stopped new account registration as they have announced that the service will be shutdown on January 28th, 2017. They have open sourced their server code which you can host by yourself and use it as the backend to your application.
 
@@ -78,7 +78,7 @@ After setting up Parse Server in above step, you can setup Parse Dashboard for f
 
 **Note**: If you are deploying your own Parse server, you can skip the next section and directly go to [Parse User](https://github.com/codepath/ios_guides/wiki/Building-Data-driven-Apps-with-Parse#parse-user-pfuser).
 
-### Using Parse.com
+### [Option 2] Using Parse.com
 
 Note: Parse.com no longer allows you to create a new account so you can only use Parse.com if you already have a Parse account.
 
