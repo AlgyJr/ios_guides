@@ -180,17 +180,17 @@ The `/parse` path needs to match the `PARSE_MOUNT` environment variable, which i
 
        Note that you the `ios` key/value pair can be included as an array.   You could also include the production certificate in this same list.  See the [Parse wiki](https://github.com/ParsePlatform/parse-server/wiki/Push#2-configure-parse-server) for more context.
 
-       ```javascript
-         var devCertPath = path.resolve(__dirname, 'ParsePushDevelopmentCertificate.p12');
+         ```javascript
+           var devCertPath = path.resolve(__dirname, 'ParsePushDevelopmentCertificate.p12');
 
-         var pushConfig = {'ios': [
-           {
-             pfx: devCertPath, // P12 file only
-             bundleId: 'beta.codepath.parsetesting',  // change to match bundleId
-             production: false // dev certificate
-           }
-         ]
-       ```
+           var pushConfig = {'ios': [
+             {
+               pfx: devCertPath, // P12 file only
+               bundleId: 'beta.codepath.parsetesting',  // change to match bundleId
+               production: false // dev certificate
+             }
+           ]
+         ```
 
 5. Make sure to include this `pushConfig` into your definition:
 
@@ -209,54 +209,54 @@ The `/parse` path needs to match the `PARSE_MOUNT` environment variable, which i
 
 7. Make sure to register your application for push notifications.  First, you should specify inside `AppDelegate.swift` the notification types to which the app will respond:
 
-   ```swift
-   // Swift
-   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
-    {
-      ...
-      let userNotificationTypes: UIUserNotificationType = [.Alert, .Badge, .Sound]
-      let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
-      application.registerUserNotificationSettings(settings)
-      application.registerForRemoteNotifications()
-       ...
-    }
-   ```
+       ```swift
+       // Swift
+       func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+        {
+          ...
+          let userNotificationTypes: UIUserNotificationType = [.Alert, .Badge, .Sound]
+          let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
+          application.registerUserNotificationSettings(settings)
+          application.registerForRemoteNotifications()
+           ...
+        }
+       ```
 
 8. Next, the `application:didRegisterForRemoteNotificationsWithDeviceToken:` will be called if registration is successful.  The response comes with a device token which we want to pass along to the server.
 
-    ```swift
-    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        let installation = PFInstallation.currentInstallation()
-        installation.setDeviceTokenFromData(deviceToken)
-        installation.channels = ["global"]
-        installation.saveInBackground()
-    }
-    ```
+      ```swift
+      func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+          let installation = PFInstallation.currentInstallation()
+          installation.setDeviceTokenFromData(deviceToken)
+          installation.channels = ["global"]
+          installation.saveInBackground()
+      }
+      ```
 
 9. Test out whether you can receive push notifications by using this Curl command:
 
-    ```bash
-    curl -X POST \
-    -H "X-Parse-Application-Id: myAppId" \
-    -H "X-Parse-Master-Key: masterKey" \
-    -H "Content-Type: application/json" \
-    -d '{
-          "where": {
-            "deviceType": "ios"
-          },
-          "data": {
-            "title": "The Shining",
-            "alert": "All work and no play makes Jack a dull boy."
-          }
-        }'\   http://yourherouapp.herokuapp.com/parse/push
-     ```
+      ```bash
+      curl -X POST \
+      -H "X-Parse-Application-Id: myAppId" \
+      -H "X-Parse-Master-Key: masterKey" \
+      -H "Content-Type: application/json" \
+      -d '{
+            "where": {
+              "deviceType": "ios"
+            },
+            "data": {
+              "title": "The Shining",
+              "alert": "All work and no play makes Jack a dull boy."
+            }
+          }'\   http://yourherouapp.herokuapp.com/parse/push
+       ```
 
-     You should see inside your logs:
+       You should see inside your logs:
 
-     ```
-     APNS Connection 0 Connected
-     APNS Connection 0 Notification transmitted to <device_token>
-     ```
+       ```
+       APNS Connection 0 Connected
+       APNS Connection 0 Notification transmitted to <device_token>
+       ```
 
 #### Sending Pushes from Clients
 
