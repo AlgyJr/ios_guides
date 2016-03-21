@@ -76,8 +76,6 @@ Please refer to this guide for instructions on how to [host and configure your o
 
 After setting up Parse Server in above step, you can setup Parse Dashboard for following [these instructions](http://blog.parse.com/announcements/introducing-the-parse-server-dashboard/). With Parse dashboard you can manage your manage your app. This dashboard is similar to one that you may find when using Prase.com.
 
-**Note**: If you are deploying your own Parse server, you can skip the next section and directly go to [Parse User](https://github.com/codepath/ios_guides/wiki/Building-Data-driven-Apps-with-Parse#parse-user-pfuser).
-
 ### [Option 2] Using Parse.com
 
 Note: Parse.com no longer allows you to create a new account so you can only use Parse.com if you already have a Parse account.
