@@ -469,7 +469,7 @@ Push notifications let your application notify a user of new messages or events 
 #### Enabling push notification 
 **Note**: This section is only applicable if you have deployed your own Parse server.
 
-[This section](http://guides.codepath.com/ios/Configuring-a-Parse-Server#enabling-push-notifications) in `Configuring a Parse Server` guides provides detailed steps on enabling push notifications on your server.
+Please refer to [this section](http://guides.codepath.com/ios/Configuring-a-Parse-Server#enabling-push-notifications) in `Configuring a Parse Server` guide for detailed steps on enabling push notifications on your server.
 
 
 ## FAQ
