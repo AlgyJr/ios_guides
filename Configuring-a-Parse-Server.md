@@ -189,9 +189,9 @@ The `/parse` path needs to match the `PARSE_MOUNT` environment variable, which i
           bundleId: 'beta.codepath.parsetesting',  // change to match bundleId
           production: false // dev certificate
          }
-       ]
-      };
-      ```
+        ]
+       };
+       ```
 
 5. Make sure to include this `pushConfig` into your definition:
 
