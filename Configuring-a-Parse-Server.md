@@ -9,7 +9,7 @@ While there are many
 
 You can review this [Wiki](https://github.com/ParsePlatform/parse-server/wiki) to understand the current development progress of this app.  There are a few notable differences in the open source version:
 
-* **Authentication**: By default, only an application ID is needed to authenticate with open source Parse.  The [base configuration](https://github.com/ParsePlatform/parse-server-example/blob/master/index.js#L13-L18) that comes with the one-click deploy options does not require authenticating with any other types of keys.   Therefore, specifying client keys on Android or iOS is not needed. 
+* **Authentication**: By default, only an application ID is needed to authenticate with open source Parse.  The [base configuration](https://github.com/ParsePlatform/parse-server-example/blob/master/index.js#L13-L18) that comes with the one-click deploy options does not require authenticating with any other types of keys.   Therefore, specifying client keys on Android or iOS is not needed.
 
 * **Push notifications**: Because of the implicit [security issues](https://github.com/ParsePlatform/parse-server/issues/396#issuecomment-183792657) with allowing push notifications to be sent through Android or iOS directly to other devices, this feature is disabled.  Normally in Parse.com you can toggle an option to override this security restriction.  For open source Parse, you must implement pre-defined code written in JavaScript that can be called by the clients to execute, otherwise known as [Parse Cloud]( http://blog.parse.com/announcements/pushing-from-the-javascript-sdk-and-cloud-code/).
 
@@ -43,7 +43,7 @@ Use Heroku if you have little or no experience with setting up web sites. Heroku
       * Set `APP_ID` for the app identifier.  If you do not set one, the default is set as `myAppId`.  You will need this info for the Client SDK setup.
       * Set `MASTER_KEY` to be the master key used to read/write all data.  **Note**: in hosted Parse, client keys are not used by default.
       * If you intend to use Parse's Facebook authentication, set `FACEBOOK_APP_ID` to be the [FB application ID](https://developers.facebook.com/apps).
-      
+
 4. Deploy the Heroku app.  The app should be hosted at `https://<app name>.herokuapp.com`.
 
 If you ever need to change these values later, you can go to (`https://dashboard.heroku.com/apps/<app name>/settings`).
@@ -94,7 +94,7 @@ user: dbuser
 password: dbpassword
 ```
 
-Using that cross-platform app to easily access and modify the data for your Parse MongoDB data. 
+Using that cross-platform app to easily access and modify the data for your Parse MongoDB data.
 
 ### Enabling Client SDK integration
 
@@ -180,17 +180,17 @@ The `/parse` path needs to match the `PARSE_MOUNT` environment variable, which i
 
    Note that you the `ios` key/value pair can be included as an array.   You could also include the production certificate in this same list.  See the [Parse wiki](https://github.com/ParsePlatform/parse-server/wiki/Push#2-configure-parse-server) for more context.
 
-   ```javascript
-      var devCertPath = path.resolve(__dirname, 'ParsePushDevelopmentCertificate.p12');
+     ```javascript
+        var devCertPath = path.resolve(__dirname, 'ParsePushDevelopmentCertificate.p12');
 
-      var pushConfig = {'ios': [
-        {
-          pfx: devCertPath, // P12 file only
-          bundleId: 'beta.codepath.parsetesting',  // change to match bundleId
-          production: false // dev certificate
-        }
-      ]
-   ```
+        var pushConfig = {'ios': [
+          {
+            pfx: devCertPath, // P12 file only
+            bundleId: 'beta.codepath.parsetesting',  // change to match bundleId
+            production: false // dev certificate
+          }
+        ]
+     ```
 
 5. Make sure to include this `pushConfig` into your definition:
 
@@ -201,7 +201,7 @@ The `/parse` path needs to match the `PARSE_MOUNT` environment variable, which i
        push: pushConfig,
        });
        ```
- 
+
 6. Follow [steps #4-#5](https://github.com/ParsePlatform/PushTutorial/blob/master/iOS/README.md#5-adding-code-for-a-push-enabled-application) to enable Push notifications inside your app.  
      * Make sure to use the same bundle identifier as the name specified in your server configuration.
      * Verify that you've turned on Push Notifications in the `Capabilities` section.
@@ -233,7 +233,7 @@ The `/parse` path needs to match the `PARSE_MOUNT` environment variable, which i
     }
     ```
 
-9. Test out whether you can receive push notifications by using this Curl command: 
+9. Test out whether you can receive push notifications by using this Curl command:
 
     ```bash
     curl -X POST \
@@ -261,7 +261,7 @@ The `/parse` path needs to match the `PARSE_MOUNT` environment variable, which i
 #### Sending Pushes from Clients
 
 While support for push notifications is now available with the open source Parse server, **you cannot implement this type of code** on the actual client:   
- 
+
 ```swift
    // Note: This does NOT work with open Parse Server at this time
    let push = PFPush.init()
@@ -316,7 +316,7 @@ curl -X POST \
 -H "X-Parse-Application-Id: myAppId" \
 -H "X-Parse-Master-Key: masterKey" \
 -H "Content-Type: application/json" \
--d '{ 
+-d '{
       "where": {
         "deviceType": "ios"
       },
@@ -367,7 +367,7 @@ PFCloud.callFunctionInBackground("iosPushTest", withParameters: ["text" : "Testi
         }
     ```
 
-* Make sure your bundle ID matches what you specified in your `index.js`.  If you get `Invalid Token` responses, it means that you may have a mismatch issue. 
+* Make sure your bundle ID matches what you specified in your `index.js`.  If you get `Invalid Token` responses, it means that you may have a mismatch issue.
 
 * If you are using a development certificate, make sure it is marked as `production: false` in your Parse server configuration.
 
