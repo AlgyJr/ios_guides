@@ -32,42 +32,20 @@ An important aspect of the any data driven application is to be able to design t
 
 For this app, we will be using just 1 additional data class (represented by `PFObject`) apart from `_User` class that Parse SDK created when first user is registered. `_User` is specifically reserved for `PFUser` and we can not change the class name for `PFUser`. However, we do get to name other classes that store the data. This class is will be called `Post` and will have following fields:
 
-```
-1. objectId
-   type: String
-   desc: unique id for the user post
-2. author
-   type: Pointer
-   target class: _User
-   desc: image author
-3. image
-   type: PFFile
-   desc: image that user posts
-4. caption
-   type: String
-   desc: image caption by author
-5. commentsCount
-   type: Number
-   desc: number of comments that has been posted to an image
-6. likesCount
-   type: Number
-   desc: number of likes for the post
+<img src="http://i.imgur.com/8YpEEcm.gif" alt="Data Model"/>
 
-* desc - description
-```
-
-Additional fields created by default are:
+Below is description of each field.
 
 ```
-7. createdAt
-   type: Date
-   desc: date when post is created (added automatically by parse SDK, no need to explicitly specify in `PFObject` for the class)
-8. updatedAt
-   type: Date
-   desc: date when post is last updated (updated automatically by parse SDK, no need to explicitly specify in `PFObject` for the class)
-9. ACL
-   type: ACL
-   desc: object permissions (out of the scope for this tutorial)
+1. objectId: unique id for the user post
+2. author: image author
+3. image: image that user posts
+4. caption: image caption by author
+5. commentsCount: number of comments that has been posted to an image
+6. likesCount: number of likes for the post
+7. createdAt: date when post is created (added automatically by parse SDK, no need to explicitly specify in `PFObject` for the class)
+8. updatedAt: date when post is last updated (updated automatically by parse SDK, no need to explicitly specify in `PFObject` for the class)
+9. ACL: object permissions (out of the scope for this tutorial)
 ```
 
 `Post` and `_User` data classes should be enough to store data based on use cases mentioned above.
