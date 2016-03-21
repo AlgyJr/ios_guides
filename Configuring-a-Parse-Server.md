@@ -180,17 +180,18 @@ The `/parse` path needs to match the `PARSE_MOUNT` environment variable, which i
 
        Note that you the `ios` key/value pair can be included as an array.   You could also include the production certificate in this same list.  See the [Parse wiki](https://github.com/ParsePlatform/parse-server/wiki/Push#2-configure-parse-server) for more context.
 
-         ```javascript
-           var devCertPath = path.resolve(__dirname, 'ParsePushDevelopmentCertificate.p12');
+       ```javascript
+       var devCertPath = path.resolve(__dirname, 'ParsePushDevelopmentCertificate.p12');
 
-           var pushConfig = {'ios': [
-             {
-               pfx: devCertPath, // P12 file only
-               bundleId: 'beta.codepath.parsetesting',  // change to match bundleId
-               production: false // dev certificate
-             }
-           ]
-         ```
+       var pushConfig = {'ios': [
+         {
+          pfx: devCertPath, // P12 file only
+          bundleId: 'beta.codepath.parsetesting',  // change to match bundleId
+          production: false // dev certificate
+         }
+       ]
+      };
+      ```
 
 5. Make sure to include this `pushConfig` into your definition:
 
