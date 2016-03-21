@@ -180,7 +180,7 @@ The `/parse` path needs to match the `PARSE_MOUNT` environment variable, which i
 
    Note that you the `ios` key/value pair can be included as an array.   You could also include the production certificate in this same list.  See the [Parse wiki](https://github.com/ParsePlatform/parse-server/wiki/Push#2-configure-parse-server) for more context.
 
-     ```javascript
+   ```javascript
      var devCertPath = path.resolve(__dirname, 'ParsePushDevelopmentCertificate.p12');
 
      var pushConfig = {'ios': [
@@ -190,17 +190,17 @@ The `/parse` path needs to match the `PARSE_MOUNT` environment variable, which i
          production: false // dev certificate
        }
      ]
-     ```
+   ```
 
 5. Make sure to include this `pushConfig` into your definition:
 
-       ```javascript
+   ```javascript
        var api = new ParseServer({
        .
        .
        push: pushConfig,
        });
-       ```
+   ```
 
 6. Follow [steps #4-#5](https://github.com/ParsePlatform/PushTutorial/blob/master/iOS/README.md#5-adding-code-for-a-push-enabled-application) to enable Push notifications inside your app.  
      * Make sure to use the same bundle identifier as the name specified in your server configuration.
@@ -220,9 +220,9 @@ The `/parse` path needs to match the `PARSE_MOUNT` environment variable, which i
       application.registerForRemoteNotifications()
        ...
     }
-    ```
+   ```
 
-8.  Next, the `application:didRegisterForRemoteNotificationsWithDeviceToken:` will be called if registration is successful.  The response comes with a device token which we want to pass along to the server.
+8. Next, the `application:didRegisterForRemoteNotificationsWithDeviceToken:` will be called if registration is successful.  The response comes with a device token which we want to pass along to the server.
 
     ```swift
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
