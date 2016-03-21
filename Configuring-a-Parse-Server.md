@@ -366,7 +366,7 @@ PFCloud.callFunctionInBackground("iosPushTest", withParameters: ["text" : "Testi
             "timeZone": "America/Los_Angeles",
             "updatedAt": "2016-03-13T07:07:12.184Z"
         }
-    ```
+   ```
 
 * Make sure your bundle ID matches what you specified in your `index.js`.  If you get `Invalid Token` responses, it means that you may have a mismatch issue.
 
