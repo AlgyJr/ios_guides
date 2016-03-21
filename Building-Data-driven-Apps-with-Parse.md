@@ -46,7 +46,7 @@ For this app, we will be using just 1 additional data class (represented by `PFO
 
 Here is how data model would look like: (`field_name`: `field_type`)
 
-<img src="http://i.imgur.com/8YpEEcm.gif" alt="Data Model"/>
+<img src="http://i.imgur.com/ekvdstz.gif" alt="Data Model"/>
 
 
 
