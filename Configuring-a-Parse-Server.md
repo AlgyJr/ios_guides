@@ -107,9 +107,7 @@ Make sure to pull in the latest Parse SDK in your `Podfile` (it should be at lea
 platform :ios, "8.0"
 use frameworks!
 
-# Use the latest version since clientKey is allowed to be nil now
-# https://github.com/ParsePlatform/Parse-SDK-iOS-OSX/pull/827/files
-pod 'Parse', :git => 'https://github.com/ParsePlatform/Parse-SDK-iOS-OSX.git'
+pod 'Parse'
 ```
 
 Initialize Parse in your `AppDelegate` to point to your own server:
