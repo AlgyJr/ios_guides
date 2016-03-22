@@ -51,6 +51,7 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Using UIScrollView]]
 * [[Using UIImageView]]
 * [[Using UIAlertView]]
+* [[Using-UIAlertController]]
 * [[Using UIActionSheet]]
 * [[Using UIPageControl]]
 * [[Using UIRefreshControl]]
