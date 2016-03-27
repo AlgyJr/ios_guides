@@ -100,9 +100,7 @@ Using that cross-platform app to easily access and modify the data for your Pars
 
 Make sure to pull in the latest Parse SDK in your `Podfile` (it should be at least `1.13.0`).  There have been recent changes to support open source Parse, most notably the ability not to need a client key.
 
-```bash
-pod update
-```
+Make sure to declare your `Podfile` as the following:
 
 ```ruby
 # Podfile
@@ -112,6 +110,12 @@ platform :ios, "8.0"
 use frameworks!
 
 pod 'Parse'
+```
+
+Make sure to update your `Podfile` configuration:
+
+```bash
+pod update
 ```
 
 Initialize Parse in your `AppDelegate` to point to your own server:
