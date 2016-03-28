@@ -379,3 +379,5 @@ PFCloud.callFunctionInBackground("iosPushTest", withParameters: ["text" : "Testi
 * If you are using a development certificate, make sure it is marked as `production: false` in your Parse server configuration.
 
 * Verify you can connect to Apple's APNS service by following [these instructions](https://github.com/argon/node-apn/wiki/Preparing-Certificates).
+
+* Enable network logging on your IOS client by reviewing [this Parse guide](https://github.com/ParsePlatform/Parse-SDK-iOS-OSX/wiki/Network-Debug-Tool).
