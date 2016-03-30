@@ -1,6 +1,6 @@
 # Introduction
 
-In iOS 9, Apple introduced "App Transport Security," or ATS. This defaults apps to requiring an HTTPS connection, and returning an error for non-HTTPS connections.
+In iOS 9, Apple introduced "App Transport Security," or ATS. This defaults apps to requiring an HTTPS connection, and returning an error for non-HTTPS connections.  In addition, HTTPS connections must also be using the latest protocol, Transport Layer Security (TLS) v1.2 and will fail to establish a connection if an older version is being used by the web server.
 
 With modern web services, there is no reason to send data in the clear. Thanks to SSL session reuse, performance should no longer be a concern. All data should be sent over SSL.
 
@@ -37,6 +37,20 @@ You can test out issues with App Transport Security by using the `nscurl` comman
 
 ```bash
 nscurl --ats-diagnostics <URL>
+```
+
+The results will show you whether default connections will fail, and whether using using older versions of Transport Layer Security (TLS) or disabling options such as Perfect Forward Secrecy (PFS) will resolve the issue.  For instance, you may need to modify `Info.plist` to include downgrading TLS versions or disabling PFS options:
+
+```xml
+<key>mywebsite.com</key>
+<dict>
+   <key>NSExceptionAllowsInsecureHTTPLoads</key>
+   <false/>
+   <key>NSTemporaryExceptionMinimumTLSVersion</key>
+   <string>1.0</string>
+   <key>NSTemporaryExceptionRequiresForwardSecrecy</key>
+   <false/>
+</dict>
 ```
 
 ### Read More
