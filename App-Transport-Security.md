@@ -31,6 +31,14 @@ Or in XML:
 
 **This is strongly discouraged.** Only use this during development.
 
+### Testing
+
+You can test out issues with App Transport Security by using the `nscurl` command:
+
+```bash
+nscurl --ats-diagnostics <URL>
+```
+
 ### Read More
 
 [Working with Apple's App Transport Security](http://www.neglectedpotential.com/2015/06/working-with-apples-application-transport-security/)
