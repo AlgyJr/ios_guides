@@ -36,7 +36,7 @@ func scrollViewDidEndDecelerating(scrollView: UIScrollView!) {
 ### Step 4: Customize Page Control Properties
 You can configure the number of dots as well as the color of the unselected or selected dots.  
 
-*Number of dots to display:* You can set the number of pages for the page control to show as dots.
+**Number of dots to display:** You can set the number of pages for the page control to show as dots.
 If I had four pages, I would set...
 ```swift
 pageControl.numberOfPages = 4
