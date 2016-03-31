@@ -5,7 +5,7 @@ While UIPageViewController comes with its own UIPageControl, its often useful to
 
 - Add a UIScrollview to the storyboard.
 - Create an outlet from the Scroll View.
-- Add the `UIScrollViewDelegate` protocol to your ViewController. [ScrollViewDelegate gif](http://i.imgur.com/m8OftbU.png)
+- Add the `UIScrollViewDelegate` protocol to your ViewController. ![ScrollViewDelegate gif](http://i.imgur.com/m8OftbU.png)
 - within the `viewDidLoad` method, set the view controller to be the scroll view delegate
 ```swift
 scrollView.delegate = self
