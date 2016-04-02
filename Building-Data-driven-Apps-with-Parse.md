@@ -72,9 +72,9 @@ Please refer to this guide for instructions on how to [host and configure your o
 
 ##### Setting up Parse Server Dashboard
 
-**Note**: Before you go ahead and setup Parse Dashboard, please note that is still very raw, and has limited functionality (no push testing). The mLab data viewer or Robomongo probably is sufficient to use.
+**Note**: Before you go ahead and setup Parse Dashboard, please note that is still has limited functionality. The mLab data viewer or Robomongo probably is sufficient to use.
 
-After setting up Parse Server in above step, you can setup Parse Dashboard for following [these instructions](http://blog.parse.com/announcements/introducing-the-parse-server-dashboard/). With Parse dashboard you can manage your manage your app. This dashboard is similar to one that you may find when using Prase.com.
+After setting up Parse Server in above step, you can setup Parse Dashboard for following [[these instructions|Configuring-a-Parse-Server#parse-dashboard]]. With Parse dashboard you can manage your manage your app. This dashboard is similar to one that you may find when using Prase.com.
 
 ### [Option 2] Using Parse.com
 
