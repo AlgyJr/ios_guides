@@ -235,8 +235,9 @@ Once a user successfully logs into your application, Parse caches the logged in 
 You can clear the current user by calling following class function on `PFUser`:
 
 ```swift
-PFUser.logOut()
-// PFUser.currentUser() will now be nil
+PFUser.logOutInBackgroundWithBlock { (error: NSError?) in
+// PFUser.currentUser() will now be nil     
+}
 ```
 The above code should be added to the action associated with the logout button (or any other event needs to log out current user)
 
