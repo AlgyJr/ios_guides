@@ -72,11 +72,11 @@ We now need to make an **AVCaptureDeviceInput**. The AVCaptureDeviceInput will s
 var error: NSError?
 var input: AVCaptureDeviceInput!
 do {
-   input = try AVCaptureDeviceInput(device: backCamera)
+  input = try AVCaptureDeviceInput(device: backCamera)
 } catch let error1 as NSError {
-   error = error1
-   input = nil
-   print(error!.localizedDescription)
+  error = error1
+  input = nil
+  print(error!.localizedDescription)
 }
 ```
 
@@ -85,9 +85,9 @@ If there are no errors from our last step and the session is able to accept inpu
 
 ```swift
 if error == nil && session!.canAddInput(input) {
-   session!.addInput(input)
-   ...
-   // The remainder of the session setup will go here...
+  session!.addInput(input)
+  // ...
+  // The remainder of the session setup will go here...
 }
 ``` 
 
@@ -106,9 +106,9 @@ If the session is able to accept our output, then we will **attach the output to
 
 ```swift
 if session!.canAddOutput(stillImageOutput) {
-   session!.addOutput(stillImageOutput)
-   ...
-   // Configure the Live Preview here... 
+  session!.addOutput(stillImageOutput)
+  // ...
+  // Configure the Live Preview here... 
 }
 ```
 
@@ -150,8 +150,8 @@ NOTE: The simulator does NOT have a camera so you need to run your app on an **A
 
 ```swift
 if let videoConnection = stillImageOutput!.connectionWithMediaType(AVMediaTypeVideo) {
-...
-// Code for photo capture goes here...
+  // ...
+  // Code for photo capture goes here...
 }
 ```
 
@@ -161,8 +161,8 @@ if let videoConnection = stillImageOutput!.connectionWithMediaType(AVMediaTypeVi
 
 ```swift
 stillImageOutput?.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: { (sampleBuffer, error) -> Void in
-...
-// Process the image data (sampleBuffer) here to get an image file we can put in our captureImageView
+  // ...
+  // Process the image data (sampleBuffer) here to get an image file we can put in our captureImageView
 })
 ```
 
@@ -171,12 +171,12 @@ stillImageOutput?.captureStillImageAsynchronouslyFromConnection(videoConnection,
 
 ```swift
 if sampleBuffer != nil {
-   let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer)
-   let dataProvider = CGDataProviderCreateWithCFData(imageData)
-   let cgImageRef = CGImageCreateWithJPEGDataProvider(dataProvider, nil, true, CGColorRenderingIntent.RenderingIntentDefault)
-   let image = UIImage(CGImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.Right)
-...
-// Add the image to captureImageView here...
+  let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer)
+  let dataProvider = CGDataProviderCreateWithCFData(imageData)
+  let cgImageRef = CGImageCreateWithJPEGDataProvider(dataProvider, nil, true, CGColorRenderingIntent.RenderingIntentDefault)
+  let image = UIImage(CGImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.Right)
+  // ...
+  // Add the image to captureImageView here...
 }
 ```
 
@@ -184,7 +184,7 @@ if sampleBuffer != nil {
 - Finally, add the image to `captureImageView`.
 
 ```swift
-self.capturedImage.image = image
+self.captureImageView.image = image
 ```
 
 ### Step 5: Run Your App ON A REAL DEVICE!!!
