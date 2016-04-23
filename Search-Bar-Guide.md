@@ -241,7 +241,7 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
         searchController.searchResultsUpdater = self
 
         // If we are using this same view controller to present the results
-        // dimming it out wouldn't make sense.  Should set probably only set
+        // dimming it out wouldn't make sense. Should probably only set
         // this to yes if using another controller to display the search results.
         searchController.dimsBackgroundDuringPresentation = false
 
