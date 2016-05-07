@@ -14,6 +14,8 @@ Production applications will often need to perform heavier operations such as do
 
 ### Grand Central Dispatch
 
+<img src="http://imgur.com/cjRYJZq.png"/>
+
 Let's walk through an example where we download an image from a remote URL and then use it to populate a `UIImageView`.
 
 ```swift
