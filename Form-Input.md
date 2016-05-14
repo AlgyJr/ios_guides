@@ -1,14 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-- [Overview](#overview)
-- [Static Forms](#static-forms)
-  - [Example: Basic preferences page](#example-basic-preferences-page)
-- [Dynamic Forms](#dynamic-forms)
-  - [Challenges of tables with dynamically created form inputs](#challenges-of-tables-with-dynamically-created-form-inputs)
-  - [Example: Basic preferences page revisited](#example-basic-preferences-page-revisited)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 ## Overview
 
 This guide covers how to handle basic form input in iOS.
