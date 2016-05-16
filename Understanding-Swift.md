@@ -522,7 +522,7 @@ let informalGreeting = "Hi \(nickName ?? fullName)"   // Prints "Hi Bob Smith"
 
 ## Understanding the Exclamation Mark (!)
 
-There are various places where you'll come across the need for using exclamation marks in your code. The following examples are meant to capture the major types of use cases for the exclamation mark operator that can cause confusion when first learning Swift.
+There are various places you might come across an exclamation mark in Swift code. The following examples are meant to capture the major types of use cases for the exclamation mark operator that can cause confusion when first learning Swift.
 
 When getting the actual value out of an optional (called **unwrapping an optional**):
 
@@ -536,6 +536,12 @@ let forcedString: String = possibleString!
 if let actualString = possibleString {
     // do something with actualString
 }
+
+// SAFE: Generally preferred alternate syntax to "if let" that can exit early
+guard let actualString = possibleString else {
+    // exit early or throw exception
+}
+// do something with actualString
 ```
 
 When type casting (called **forced conversion**):
