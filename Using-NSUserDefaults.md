@@ -8,6 +8,7 @@ To save a key to NSUserDefaults, do something like this:
 var defaults = NSUserDefaults.standardUserDefaults()
 defaults.setObject("some_string_to_save", forKey: "some_key_that_you_choose")
 defaults.setInteger(123, forKey: "another_key_that_you_choose")
+defaults.setBool(true, forKey: "yet_another_key_that_you_choose")
 defaults.synchronize()
 
 ```
@@ -22,5 +23,5 @@ To load a key from NSUserDefaults, do something like this:
 var defaults = NSUserDefaults.standardUserDefaults()
 var stringValue = defaults.objectForKey("some_key_that_you_choose") as String
 var intValue = defaults.integerForKey("another_key_that_you_choose")
-
+var boolValue = defaults.boolForKey("yet_another_key_that_you_choose")
 ```
