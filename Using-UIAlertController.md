@@ -10,7 +10,7 @@ The alert style presents modally in the center of their presenting view controll
 
 Create the alert controller as below, setting preferredStyle to Alert
 
-```
+```swift
 let alertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .Alert)
 ```
 
@@ -18,7 +18,7 @@ let alertController = UIAlertController(title: "Title", message: "Message", pref
 
 Create a UIAlertAction for each button to display and respond to.
 
-```
+```swift
 // create a cancel action
 let cancelAction = UIAlertAction(title: "OK", style: .Cancel) { (action) in
     // handle cancel response here. Doing nothing will dismiss the view.
@@ -32,8 +32,6 @@ let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
 }
 // add the OK action to the alert controller
 alertController.addAction(OKAction)
-
-
 ```
 
 Adding two buttons will place them side by side in the alert. Adding more than two buttons stacks them in the view similar to the ActionSheet style.
@@ -41,7 +39,7 @@ Adding two buttons will place them side by side in the alert. Adding more than t
 
 ### Step 3: Show the UIAlertController
 
-```
+```swift
 presentViewController(alertController, animated: true) {
     // optional code for what happens after the alert controller has finished presenting
 }
@@ -57,7 +55,7 @@ The action sheet style anchors the view to the bottom of the presenting view con
 
 Create the alert controller as below, setting preferredStyle to ActionSheet
 
-```
+```swift
 let alertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .ActionSheet)
 ```
 
@@ -65,7 +63,7 @@ let alertController = UIAlertController(title: "Title", message: "Message", pref
 
 Create a UIAlertAction for each button to display and respond to. The destructive style options shows the button text in red.
 
-```
+```swift
 let logoutAction = UIAlertAction(title: "Log Out", style: .Destructive) { (action) in
     // handle case of user logging out
 }
@@ -81,7 +79,7 @@ alertController.addAction(cancelAction)
 
 ### Step 3: Show the UIAlertController
 
-```
+```swift
 presentViewController(alertController, animated: true) {
     // optional code for what happens after the alert controller has finished presenting
 }
