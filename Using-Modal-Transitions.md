@@ -37,7 +37,7 @@ Sometimes, you want the transition to happen, but it's not the result of a butto
 
 Once, you've given the segue a unique name, you can call invoke it in code, which will trigger the modal transition.
 
-```
+```swift
 performSegueWithIdentifier("firstSegue", sender: self)
 
 ```
@@ -48,7 +48,7 @@ Sometimes, you may want to present different View Controllers dynamically based 
 
 To do so, first instantiate the View Controller using it's storyboard Id as below:
 
-```
+```swift
 let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
 let userVC = mainStoryboard.instantiateViewControllerWithIdentifier("userVC") as! UserViewController
 
@@ -56,7 +56,7 @@ let userVC = mainStoryboard.instantiateViewControllerWithIdentifier("userVC") as
 
 Then, present the View Controller using the following API
 
-```
+```swift
 presentViewController(userVC, animated: true, completion: nil)
 
 ```
@@ -70,7 +70,7 @@ The easiest way to dismiss a modal transition and return to the original view co
 
 In the button action, call the method below to dismiss the current view controller.
 
-```
+```swift
 dismissViewControllerAnimated(true, completion: nil)
 
 ```
@@ -82,7 +82,7 @@ Often, you will need to pass data from a view controller to the view controller 
 
 In the source view controller, implement the following method. Often, you'll want to cast the destination view controller to the specific view controller so you can set the appropriate property.
 
-```
+```swift
 override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
 	var destinationViewController = segue.destinationViewController as PhotoViewController
 
@@ -94,7 +94,7 @@ override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
 
 This assumes that the destination view controller has a property called `image`.
 
-```
+```swift
 class PhotoViewController : UIViewController {
 	var image: UIImage!
 
@@ -104,7 +104,7 @@ class PhotoViewController : UIViewController {
 
 Then, in the destination view controller, after the view loads, set the image property of the image view.
 
-```
+```swift
 override func viewDidLoad() {
 	super.viewDidLoad()
 
