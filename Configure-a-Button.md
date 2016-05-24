@@ -15,7 +15,7 @@ You can control the amount the title or image edges are inset within the button.
 ![Button Insets|700](http://i.imgur.com/72kMTmW.gif)
 
 ### Step 5: Call a function when the button is tapped
-To run code on button events like touch down or touch up, switch to assistant mode to show the button side by side with the Swift view controller. Ctrl-drag from the button to the Swift file and create an action with the event that you want. You can create multiple actions for different events.
+To run code on button events like *touch down* or *touch up inside*, switch to assistant mode to show the button side by side with the Swift view controller. Ctrl-drag from the button to the Swift file and create an action with the event that you want. You can create multiple actions for different events.
 
 ![Assistant|700](http://i.imgur.com/L2bdou3.gif)
 
