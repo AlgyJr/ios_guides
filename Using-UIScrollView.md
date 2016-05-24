@@ -14,13 +14,13 @@ In order to make the UIScrollView scroll, you have to manually tell it how tall 
 
 ### Step 2: Set the content size
 
-```
+```swift
 scrollView.contentSize = CGSize(width: 320, height: 1000)
 ```
 
 If you want to embed a tall image into the scrollView, then you can set the contentSize to the size of the image, as below. This assumes that you've also created an outlet for the UIImageView.
 
-```
+```swift
 scrollView.contentSize = imageView.image!.size
 ```
 
