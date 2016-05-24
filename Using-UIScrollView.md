@@ -32,32 +32,30 @@ scrollView.contentSize = imageView.image!.size
 
 Create an outlet for the UIScrollView and in `viewDidLoad`, set the delegate of the UIScrollView to self. This is telling the scroll view to call the view controller with the scroll view event methods. You will have a compile error on the line below until you complete step 2.
 
-```
+```swift
 override func viewDidLoad() {
     super.viewDidLoad()
 
 	scrollView.delegate = self
 }
-
 ```
 
 #### Step 2: Declaring the UIScrollViewDelegate
 
 Create a comma-delimited list of all the delegates that your view controller supports.
 
-```
+```swift
 class MyViewController: UIViewController, UIScrollViewDelegate {
 
 	...
 }
-
 ```
 
 #### Step 3: Implement the desired event
 
 If you Command-click on the UIScrolLViewDelegate, it will pull up the list of events for the UIScrollView. Choose the event that you want, and add the function to your view controller file. Be sure to remove the text `optional` and also delete the underscore symbol.
 
-```
+```swift
     func scrollViewDidScroll(scrollView: UIScrollView) {
         // This method is called as the user scrolls
     }
@@ -74,7 +72,6 @@ If you Command-click on the UIScrolLViewDelegate, it will pull up the list of ev
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         // This method is called when the scrollview finally stops scrolling.
     }
-
 ```
 
 ### Zooming in scroll view
@@ -93,9 +90,8 @@ Optionally, you can choose to allow bouncing zoom when the user reaches the mini
 
 As above, register the view controller to be the delegate of the scroll view. Then, implement the following method and return the view to be zoomed. This can be an image view or it can be an arbitrary UIView that contains many other views.
 
-```
+```swift
 func viewForZoomingInScrollView(scrollView: UIScrollView!) -> UIView! {
     return imageView
 }
-
 ```
