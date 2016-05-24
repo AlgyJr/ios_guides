@@ -20,7 +20,8 @@ To run code on button events like *touch down* or *touch up inside*, switch to a
 ![Assistant|700](http://i.imgur.com/L2bdou3.gif)
 
 ### Step 6: Toggle the selected state in the Action
-Ctrl-drag from the button to the Swift file. Select Action (not Outlet) and this time change the Type from AnyObject to UIButton. Select the event, which is usually Touch Up Inside. Now the action function in your Swift file will show sender as type UIButton. This means that you can change properties on the button that was tapped. Now set ```sender.selected = true```.
+Ctrl-drag from the button to the Swift file. Select Action (not Outlet) and this time change the Type from AnyObject to UIButton. Select the event, which is usually Touch Up Inside. Now the action function in your Swift file will show sender as type UIButton. This means that you can change properties on the button that was tapped. - To set the button state to selected you can use: ``sender.selected = true``.
+- To toggle back and forth between selected and normal states you can use: ``sender.selected = !sender.selected``
 ![Assistant|700](http://i.imgur.com/0deF0SS.gif)
 
 ### Step 7: Disable a button
