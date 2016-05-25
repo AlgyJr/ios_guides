@@ -1,4 +1,3 @@
-
 ## Basic Use Case
 ![Keyboard GIF | 250](http://i.imgur.com/bQsqmhT.gif)
 
@@ -20,7 +19,7 @@ func keyboardWillHide(notification: NSNotification!) {
 }
 ```
 
-You can put the methods above anywhere in the view controller file.
+You can put the methods above anywhere in the view controller file, except inside another method of course.
 
 ### Step 2: Register for the keyboard events
 
@@ -31,23 +30,21 @@ NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keybo
 NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil)
 ```
 
-Note: You must place a colon in selector names for functions with a parameter, i.e ``"keyboardWillShow:"``
-
 ### Step 3: Add the Views You Want to Move When the Keyboard Appears.
 
-In this use case, we want to move several views the same offset amount when the keyboard shows. For this reason, it is useful to add all the views you want to move into a **parent view**; this way you only have to move the parent view, and all the other views within will go along for the ride.
+In this use case, we want to move several views the same offset amount when the keyboard is shown. To avoid having to animate each view individually, we can contain all the views inside another view.
 
-- [Add the Parent View](https://guides.codepath.com/ios/Creating-Nested-Views#step-1-add-the-parent-view)
-- [Add the Child Views](https://guides.codepath.com/ios/Creating-Nested-Views#step-2-nest-the-child-views) inside the parent view.
+- [Add the superview](https://guides.codepath.com/ios/Creating-Nested-Views#step-1-add-the-parent-view).
+- [Add the subviews](https://guides.codepath.com/ios/Creating-Nested-Views#step-2-nest-the-child-views).
 
 ### Step 4: Create Outlets For the Views You Want to Offset.
 
-- Create an outlet for the **fieldParentView**. Drag from fieldParentView in the Document Outline to your ViewContoller swift file.  
-![Create outlet for fieldParentView](http://i.imgur.com/maYqgkO.gif)
+- Create an outlet for the **fieldSuperview**. Drag from fieldSuperview in the Document Outline to your ViewContoller swift file.  
+![Create outlet for fieldSuperview](http://i.imgur.com/maYqgkO.gif)
 
 ### Step 5: Define Variables
 
-Near the top of the ViewController, where you create outlets, **define variables for the initial y position of the text field and the offset amount**.
+Near the top of the ViewController, where you create outlets, define variables for the initial y position of the text field and the offset amount.
 
 ```swift
 var initialY: CGFloat!
@@ -57,12 +54,12 @@ var offset: CGFloat!
 ![Define Variables](http://i.imgur.com/1kLmcGm.gif)
 
 ### Step 6: Assign Values to Variables
-Within the ```viewDidLoad``` method... 
-- Record the initial y position of the `fieldParentView`
+Within the `viewDidLoad( )` method... 
+- Record the initial y position of the `fieldSuperview`
 - Give your `offset` variable a value. This is the amount that your view will be offset when the keyboard is shown. Remember, going "up" on the screen is *decreasing*  the Y value amount. 
 
 ```swift
-initialY = fieldParentView.frame.origin.y
+initialY = fieldSuperview.frame.origin.y
 offset = -50
 ```
 
@@ -72,10 +69,10 @@ offset = -50
 
 ![keyboardWillShow demo|150](http://i.imgur.com/MjPaRct.gif)
 
-Within the `keyboardWillShow` method, offset the y position of the fieldParentView using your `offset` value.
+Within the `keyboardWillShow` method, offset the y position of the fieldSuperview using your `offset` value.
 
 ```swift
-fieldParentView.frame.origin.y = initialY + offset
+fieldSuperview.frame.origin.y = initialY + offset
 ```
 
 NOTE: In this example, we are offsetting our views by an arbitrary amount. Sometimes you will want to offset your views based on the actual dimensions of the keyboard. In that case, you can get the frame of the keyboard, (a CGRect), like this...
@@ -85,14 +82,14 @@ let frame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).
     // do stuff based on the keyboard frame
 ```
  
-Note: If your keyboard does not show when you click within the text field. Make sure that you have the external keyboard simulation disabled. Go to menu Hardware | Keyboard and make sure "Connect Hardware Keyboard" is unchecked. You can also "toggle" the software keyboard using "cmd + k".
+Note: If your keyboard does not show when you click within the text field, Go to the Simulator menu and choose: Hardware -> Keyboard -> Toggle Software Keyboard, or use **cmd + k**.
 
 ### Step 8: Move View Back When Keyboard is Hidden
 
 Now we will simply move the UITextField back to its original y position when the keyboard is hidden. This will occur within the ```keyboardWillHide``` method.
 
 ```swift
-fieldParentView.frame.origin.y = initialY 
+fieldSuperview.frame.origin.y = initialY 
 ```
 
 ### Step 9: Hide the Keyboard When Tapping Outside the TextField
