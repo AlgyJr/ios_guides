@@ -19,7 +19,7 @@ Most of the time, your app reacts to state changes through the application deleg
 
 For example:
 
-```
+```swift
     func application(application: UIApplication,
             didFinishLaunchingWithOptions launchOptions:[NSObject: AnyObject]?) -> Bool {
         
