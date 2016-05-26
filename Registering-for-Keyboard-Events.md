@@ -30,6 +30,13 @@ NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keybo
 NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil)
 ```
 
+**Note:** If you the above code is not compiling, it may be because you are on an earlier version of Xcode. In that case try:
+
+```swift
+NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name:UIKeyboardWillShowNotification, object: nil)
+NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name:UIKeyboardWillHideNotification, object: nil)
+```
+
 ### Step 3: Add the Views You Want to Move When the Keyboard Appears.
 
 In this use case, we want to move several views the same offset amount when the keyboard is shown. To avoid having to animate each view individually, we can contain all the views inside another view.
