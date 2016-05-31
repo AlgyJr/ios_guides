@@ -85,7 +85,7 @@ fieldSuperview.frame.origin.y = initialY + offset
 NOTE: In this example, we are offsetting our views by an arbitrary amount. Sometimes you will want to offset your views based on the actual dimensions of the keyboard. In that case, you can get the frame of the keyboard, (a CGRect), like this...
 
 ```swift
-let frame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+let frame = notification.userInfo![UIKeyboardFrameEndUserInfoKey].CGRectValue()
     // do stuff based on the keyboard frame
 ```
  
