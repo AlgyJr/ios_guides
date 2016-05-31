@@ -70,5 +70,8 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Internet Permissions]]
 * [[Using Git with Terminal]]
 
+## Helpful 3rd Party Libraries 
+* [[TTTAttributedLabel]]
+
 ## App Submission and Testing
 * [[Testing with Testflight]]
