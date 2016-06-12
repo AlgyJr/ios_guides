@@ -18,8 +18,7 @@
 **init(nibName:bundle:)**
 
 - When it is called / When it is used :
-    - Sometimes you might decide to put your view controller’s interface in a separate nib file instead of a storyboard. This might happen, for example, to work in a larger team where different members need to be change view controller interfaces without affecting the work of others. You also might have a project that was created when storyboards did not exist yet, so every view controller had its own nib file.Keep in mind that if your main storyboard starts getting too big, you can split it into more storyboards. You do not need to move every view controller in a separate nib fil- e.
-
+    - Sometimes you might decide to put your view controller’s interface in a separate nib file instead of a storyboard. This might happen, for example, to work in a larger team where different members need to be change view controller interfaces without affecting the work of others. You also might have a project that was created when storyboards did not exist yet, so every view controller had its own nib file.Keep in mind that if your main storyboard starts getting too big, you can split it into more storyboards. You do not need to move every view controller in a separate nib file.
     - If you create a view controller from a nib file, this initializer is called instead of init(coder:).
 
 **loadView()**
@@ -36,7 +35,7 @@
     - A common case are network calls that you need to do only once when the screen is loaded.
     - Good place to init and setup objects used in the viewController.
 
-- ViewDidLoad V/S ViewDidAppear : 
+- viewDidLoad V/S viewDidAppear : 
     - If you need to repeat them (background activity/ UI changes/ make network calls ) to update the data in the view controller ,viewDidAppear(_:) is more appropriate to do so.
 
 - Important thing to remember : 
@@ -50,7 +49,7 @@
 - Application : 
     - Usually you use this method to update the user interface with data that might have changed while the view controller was not on the screen.
     - You can also prepare the interface for animations you want to trigger when the view controller appears.
-- ViewDidLoad V/S ViewDidAppear : 
+- viewDidLoad V/S viewDidAppear : 
     - Code you need to execute only once should go into an initializer or viewDidLoad().
     - In this step the view has bounds defined but the orientation is not applied
 
