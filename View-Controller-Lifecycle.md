@@ -18,9 +18,9 @@
 **init(nibName:bundle:)**
 
 - When it is called / When it is used :
-Sometimes you might decide to put your view controller’s interface in a separate nib file instead of a storyboard. This might happen, for example, to work in a larger team where different members need to be change view controller interfaces without affecting the work of others. You also might have a project that was created when storyboards did not exist yet, so every view controller had its own nib file.Keep in mind that if your main storyboard starts getting too big, you can split it into more storyboards. You do not need to move every view controller in a separate nib file.
+    - Sometimes you might decide to put your view controller’s interface in a separate nib file instead of a storyboard. This might happen, for example, to work in a larger team where different members need to be change view controller interfaces without affecting the work of others. You also might have a project that was created when storyboards did not exist yet, so every view controller had its own nib file.Keep in mind that if your main storyboard starts getting too big, you can split it into more storyboards. You do not need to move every view controller in a separate nib fil- e.
 
-- If you create a view controller from a nib file, this initializer is called instead of init(coder:).
+    - If you create a view controller from a nib file, this initializer is called instead of init(coder:).
 
 **loadView()**
 
