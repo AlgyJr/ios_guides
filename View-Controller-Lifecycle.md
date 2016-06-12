@@ -13,7 +13,7 @@
     - Previous view controllers might also pass these objects to the current one, so you do not always need to instantiate them in every view controller.
 
 - Things to take care of :  
-    - Beware that the view of the view controller has still not been instantiated at this point. If you try to access it through the view property of UIViewController, theloadView() method will be called. This might create unexpected behavior and bugs, so it’s safer not to access the view until later in the lifecycle.
+    - Beware that the view of the view controller has still not been instantiated at this point. If you try to access it through the view property of UIViewController, the loadView() method will be called. This might create unexpected behavior and bugs, so it’s safer not to access the view until later in the lifecycle.
 
 **init(nibName:bundle:)**
 
