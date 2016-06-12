@@ -13,7 +13,7 @@ Sometimes the standard iOS tab bar just doesn't have the look or functionality y
 - Add a UIView that fills the screen above the tabBar. This will serve as our content view.
 - Add UIViewControllers that correspond to each tab. (5 tabs = 5 ViewControllers)
 - Give each UIViewController a unique Storyboard ID.
-- Add what ever content you want in each ViewController. (We will be pulling in the content from particular ViewController when it's respective tab is tapped.)  
+- Add what ever content you want in each ViewController. (We will be pulling in the content from a particular ViewController when it's respective tab is tapped.)  
 
 ### Step 2: Hook up IBOutlets
 
