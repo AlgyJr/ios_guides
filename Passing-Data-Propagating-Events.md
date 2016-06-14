@@ -80,7 +80,7 @@ It can be really useful to create your own delegate. To do so, requires the foll
             colorsSegmentedControl.removeAllSegments()
             var selectedIndex = UISegmentedControlNoSegment
 
-            for (index, color) in enumerate(colors) {
+            for (index, color) in colors.enumerate() {
                 if color.1.isEqual(initialColor) {
                     selectedIndex = index
                 }
