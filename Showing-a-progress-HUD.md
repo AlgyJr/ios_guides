@@ -45,6 +45,8 @@ Finally we update our **View Controller** to display the progress HUD
 while our network request is pending and dismiss the HUD once we receive
 a response.
 
+**NOTE: The below code shows the implementation of the Progress HUD in a sample network request. If your aim is to add the Progress HUD to an existing network request already in your project, you will only need to add `MBProgressHUD.showHUDAddedTo(self.view, animated: true)` at the beginning of the request and `MBProgressHUD.hideHUDForView(self.view, animated: true)` in the completion handler**
+
 ```swift
 import UIKit
 import MBProgressHUD
