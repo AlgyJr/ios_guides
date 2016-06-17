@@ -27,3 +27,4 @@ security find-identity -v -p codesigning
 ## References
 
 * <https://www.objc.io/issues/17-security/inside-code-signing>
+* <http://multithreaded.stitchfix.com/blog/2015/11/09/ios-code-signing-part-1/>
