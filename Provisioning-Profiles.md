@@ -23,3 +23,7 @@ If you want to find out what code identities currently installed, you can type:
 ```bash
 security find-identity -v -p codesigning
 ```
+
+## References
+
+* <https://www.objc.io/issues/17-security/inside-code-signing>
