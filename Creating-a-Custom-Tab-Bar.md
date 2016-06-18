@@ -38,7 +38,7 @@ var accountViewController: UIViewController!
 var trendingViewController: UIViewController!
 ```
 
-We will use an array to hold all are ViewControllers. That way, we can simply pluck out any particular ViewController we want based on the button that was pushed.
+We will use an array to hold all our ViewControllers. That way, we can simply pluck out any particular ViewController we want based on the button that was pushed.
 - Define a variable for an array to hold the ViewControllers named, ``viewControllers``.
 
 ```Swift
