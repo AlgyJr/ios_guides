@@ -21,7 +21,7 @@ To load a key from NSUserDefaults, do something like this:
 
 ```swift
 var defaults = NSUserDefaults.standardUserDefaults()
-var stringValue = defaults.objectForKey("some_key_that_you_choose") as String
+var stringValue = defaults.objectForKey("some_key_that_you_choose") as! String
 var intValue = defaults.integerForKey("another_key_that_you_choose")
 var boolValue = defaults.boolForKey("yet_another_key_that_you_choose")
 ```
