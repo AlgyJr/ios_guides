@@ -2,7 +2,7 @@ To a user, a local notification looks the same as a push notification. However, 
 
 ## Step 1: Request Permissions
 
-Add the code below to request permission to send the user notifications. For testing, you can add it in the AppDelegate.swift in the `application:didFinishLaunchingWithOptions:` function. This will cause the permissions alert to display as soon as the user launches the app. Be careful though: if a user denies the permission, the app will never show the alert again even if you request the permission again.
+Add the code below to request permission to send the user notifications. For testing, you can add it in the AppDelegate.swift in the `application:didFinishLaunchingWithOptions:` function. This will cause the permissions alert to display as soon as the user launches the app. Be careful though: if a user denies the permission, the app will never show the alert again even if you request the permission again. During testing, if you accidentally denied the permission, you can delete the app from the simulator to reset it.
 
 ```swift
 UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil))
