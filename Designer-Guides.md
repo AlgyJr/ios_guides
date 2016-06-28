@@ -70,6 +70,11 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Internet Permissions]]
 * [[Using Git with Terminal]]
 
+## Notifications
+
+* [[Local Notifications]]
+* [[Remote Notifications]]
+
 ## Helpful 3rd Party Libraries 
 * [[TTTAttributedLabel]]
 
