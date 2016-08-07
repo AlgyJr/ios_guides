@@ -292,8 +292,8 @@ class PreferencesViewController: UIViewController, UITableViewDataSource, Prefer
     func preferencesFromTableData() -> Preferences {
         let ret = Preferences()
         ret.autoRefresh = prefValues[.AutoRefresh] ?? ret.autoRefresh
-        ret.playSounds = prefValues[.PlaySounds] ?? ret.autoRefresh
-        ret.showPhotos = prefValues[.ShowPhotos] ?? ret.autoRefresh
+        ret.playSounds = prefValues[.PlaySounds] ?? ret.playSounds
+        ret.showPhotos = prefValues[.ShowPhotos] ?? ret.showPhotos
         return ret
     }
 
