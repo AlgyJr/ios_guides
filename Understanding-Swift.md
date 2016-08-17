@@ -263,7 +263,13 @@ for var index = 0; index < 3; index++ {
     print("Hello")
 }
 ```
+C-style **for loops** are deprecated and will be removed in future versions of Swift, more info available on the [SE-0007 Proposal](https://github.com/apple/swift-evolution/blob/master/proposals/0007-remove-c-style-for-loops.md).  **For-in loops** are preferred instead. The above example could be re-written as:
 
+```swift
+        for _ in 0..<3 {
+            print("Hello")
+        }
+```
 **For-in loops** come in really handy when you want to do something to each item in a collection (such as an array):
 
 ```swift
