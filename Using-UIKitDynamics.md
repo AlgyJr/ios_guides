@@ -13,7 +13,6 @@ The UIDynamicAnimator is instantiated with a reference view, which is usually th
 var animator: UIDynamicAnimator!
 
 override func viewDidLoad() {
-{
     super.viewDidLoad()
     animator = UIDynamicAnimator(referenceView: self.view)
 }
