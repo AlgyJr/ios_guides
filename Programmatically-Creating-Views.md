@@ -28,7 +28,7 @@ Next, you have to add the view into another view. This view can be the main view
 ```
 view.addSubview(blueView)
 
-``
+```
 
 Adding the subview as above will add the subview on top of the other subviews. You can also insert the subview at an arbitrary z-index.
 
