@@ -16,6 +16,5 @@ func onTimer() {
 For example, to schedule the `onTimer` method to be called every 5 seconds, use the code below. If you want the timer to fire every 100ms, just use 0.1 for the time interval.
 
 ```
-NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "onTimer", userInfo: nil, repeats: true)
-
+NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
 ```
