@@ -8,7 +8,7 @@ If the issue is building, the first step is to clean the build, which will force
 
 ### Reset the Simulator
 
-Launch the iOS Simulator. From the *iOS Simulator* menu, choose *Reset Content and Settings...*, and click *Reset* to confirm.
+Launch the iOS Simulator. From the *iOS Simulator* menu, choose *Reset Content and Settings...*, and click *Reset* to confirm. SUCK MY DICK BITCH
 
 ### Delete Derived Data
 
