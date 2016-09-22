@@ -5,29 +5,18 @@ Often, you will have to rearrange views when the keyboard is shown or hidden to 
 
 This mechanism is called NSNotifications. It is commonly used for system events like keyboard, device rotation, and coming back from or going into standby. For example, when coming back from standby, it's common to refresh the network data of the view controller.
 
-### Step 1: Defining the method to be called
-
-In your view controller, define 2 methods that you want to be called when the keyboard is shown or hidden.
-
-```swift
-func keyboardWillShow(notification: NSNotification!) {
-        
-}
-
-func keyboardWillHide(notification: NSNotification!) {
-        
-}
-```
-
-You can put the methods above anywhere in the view controller file, except inside another method of course.
-
-### Step 2: Register for the keyboard events
+### Step 1: Register for the keyboard events
 
 Within the `init` or `viewDidLoad` methods, register for keyboard events and tie them to the methods you defined in Step 1.  
 
 ```swift
-NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: nil)
-NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil)
+NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillShow, object: nil, queue: OperationQueue.main) { (Notification) in
+   // Any code you put in here will be called when the keyboard is about to display
+}
+
+NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillHide, object: nil, queue: OperationQueue.main) { (Notification) in
+   // Any code you put in here will be called when the keyboard is about to hide
+}
 ```
 
 **Note:** If you the above code is not compiling, it may be because you are on an earlier version of Xcode. In that case try:
