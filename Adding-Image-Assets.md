@@ -34,7 +34,7 @@ var chat = UIImage(named: "Chat")
 var chatImageView = UIImageView(image: chat)
 ```
 
-##### Swift 3
+#### Swift 3
 Swift 3 introduces Image Literals. NOTE: The technique above, initializing a UIImage using it's name, still works too.
 
 ![](http://i.imgur.com/5U0SFYf.gif)
