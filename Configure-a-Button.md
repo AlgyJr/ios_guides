@@ -31,6 +31,7 @@ Ctrl-drag from the button to the Swift file. Select Action (not Outlet) and this
 ```swift
 sender.isSelected = true
 ```
+
 - For **toggling back and forth** between selected and normal states: 
 
 ```swift
