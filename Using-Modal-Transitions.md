@@ -38,8 +38,22 @@ Sometimes, you want the transition to happen, but it's not the result of a butto
 Once, you've given the segue a unique name, you can call invoke it in code, which will trigger the modal transition.
 
 ```swift
-performSegueWithIdentifier("firstSegue", sender: self)
+performSegue(withIdentifier: "firstSegue", sender: nil)
+```
 
+
+Below is an example of presenting a View Controller programmatically
+![Present VC|700](http://i.imgur.com/5Bl9ze2.gif)
+
+
+#### Dismissing Modal Transitions
+
+The easiest way to dismiss a modal transition and return to the original view controller is to do it in code. Create a button that will dismiss the view controller and add a button action.
+
+In the button action, call the method below to dismiss the current view controller.
+
+```swift
+dismiss(animated: true, completion: nil)
 ```
 
 #### Presenting View Controllers Programmatically
@@ -60,21 +74,6 @@ Then, present the View Controller using the following API
 presentViewController(userVC, animated: true, completion: nil)
 
 ```
-Below is an example of presenting a View Controller programmatically
-![Present VC|700](http://i.imgur.com/5Bl9ze2.gif)
-
-
-#### Dismissing Modal Transitions
-
-The easiest way to dismiss a modal transition and return to the original view controller is to do it in code. Create a button that will dismiss the view controller and add a button action.
-
-In the button action, call the method below to dismiss the current view controller.
-
-```swift
-dismissViewControllerAnimated(true, completion: nil)
-
-```
-
 
 ### Passing Data
 
@@ -83,13 +82,11 @@ Often, you will need to pass data from a view controller to the view controller 
 In the source view controller, implement the following method. Often, you'll want to cast the destination view controller to the specific view controller so you can set the appropriate property.
 
 ```swift
-override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-	var destinationViewController = segue.destinationViewController as PhotoViewController
-
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+	var destinationViewController = segue.destination as! PhotoViewController
+        
 	destinationViewController.image = self.imageView.image
-
 }
-
 ```
 
 This assumes that the destination view controller has a property called `image`.
