@@ -18,21 +18,27 @@ Any control that has images like UIImageViews or UIButtons can set images in Int
 
 <img src="http://i.imgur.com/hPVX8b3.gif" width="301" height="226" />
 
-#### Example 1: Using the image set programatically
+#### Example 1: Using the image set programmatically
 
-To access images in the Asset Catalog programatically, create UIImages using the `imageNamed:` method as shown in the snippet below.
+To access images in the Asset Catalog programmatically, create UIImages using the `imageNamed:` method as shown in the snippet below.
 
-**Objective-C**
+##### Objective-C
 ```
 UIImage *chat = [UIImage imageNamed:@"Chat"];
 UIImageView *chatImageView = [[UIImageView alloc] initWithImage:chat];
 ```
 
-**Swift**
+##### Swift
 ```
 var chat = UIImage(named: "Chat")
 var chatImageView = UIImageView(image: chat)
 ```
+
+##### Swift 3
+Swift 3 introduces Image Literals. NOTE: The technique above, initializing a UIImage using it's name, still works too.
+
+![](http://i.imgur.com/5U0SFYf.gif)
+
 
 ### App Icon
 
