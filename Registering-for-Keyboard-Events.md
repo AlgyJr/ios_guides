@@ -10,11 +10,11 @@ This mechanism is called NSNotifications. It is commonly used for system events 
 Within the `init` or `viewDidLoad` methods, register for keyboard events and tie them to the methods you defined in Step 1.  
 
 ```swift
-NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillShow, object: nil, queue: OperationQueue.main) { (Notification) in
+NotificationCenter.default.addObserver(forName: Notification.Name.UIKeyboardWillShow, object: nil, queue: OperationQueue.main) { (notification: Notification) in
    // Any code you put in here will be called when the keyboard is about to display
 }
 
-NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillHide, object: nil, queue: OperationQueue.main) { (Notification) in
+NotificationCenter.default.addObserver(forName: Notification.Name.UIKeyboardWillHide, object: nil, queue: OperationQueue.main) { (notification: Notification) in
    // Any code you put in here will be called when the keyboard is about to hide
 }
 ```
@@ -74,7 +74,7 @@ fieldSuperview.frame.origin.y = initialY + offset
 NOTE: In this example, we are offsetting our views by an arbitrary amount. Sometimes you will want to offset your views based on the actual dimensions of the keyboard. In that case, you can get the frame of the keyboard, (a CGRect), like this...
 
 ```swift
-let frame = notification.userInfo![UIKeyboardFrameEndUserInfoKey].CGRectValue()
+let frame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
     // do stuff based on the keyboard frame
 ```
  
