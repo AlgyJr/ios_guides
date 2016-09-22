@@ -56,22 +56,21 @@ class MyViewController: UIViewController, UIScrollViewDelegate {
 If you Command-click on the UIScrolLViewDelegate, it will pull up the list of events for the UIScrollView. Choose the event that you want, and add the function to your view controller file. Be sure to remove the text `optional` and also delete the underscore symbol.
 
 ```swift
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        // This method is called as the user scrolls
-    }
-    
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        
-    }
-    
-    func scrollViewDidEndDragging(scrollView: UIScrollView,
-        willDecelerate decelerate: Bool) {
-            // This method is called right as the user lifts their finger
-    }
-    
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        // This method is called when the scrollview finally stops scrolling.
-    }
+func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    // This method is called as the user scrolls
+}
+
+func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+
+}
+
+func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    // This method is called right as the user lifts their finger
+}
+
+func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    // This method is called when the scrollview finally stops scrolling.
+}
 ```
 
 ### Zooming in scroll view
@@ -91,7 +90,7 @@ Optionally, you can choose to allow bouncing zoom when the user reaches the mini
 As above, register the view controller to be the delegate of the scroll view. Then, implement the following method and return the view to be zoomed. This can be an image view or it can be an arbitrary UIView that contains many other views.
 
 ```swift
-func viewForZoomingInScrollView(scrollView: UIScrollView!) -> UIView! {
+func viewForZooming(in scrollView: UIScrollView) -> UIView? {
     return imageView
 }
 ```
