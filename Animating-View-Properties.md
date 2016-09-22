@@ -43,7 +43,8 @@ If you **DO NOT** want any animation options, you can plug in `[]` for the `opti
 
 ```swift
 UIView.animate(withDuration:0.4, delay: 0.0,   
-   options: [], animations: { () -> Void in
+   options: [], 
+   animations: { () -> Void in
       self.imageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
    }, completion: nil)
 ```
