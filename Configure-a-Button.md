@@ -28,11 +28,11 @@ Ctrl-drag from the button to the Swift file. Select Action (not Outlet) and this
 
 - For **setting the button state** to selected: 
 ```swift
-sender.selected = true
+sender.isSelected = true
 ```
 - For **toggling back and forth** between selected and normal states: 
 ```swift
-sender.selected = !sender.selected
+sender.isSelected = !sender.isSelected
 ```
   
 ![Assistant|700](http://i.imgur.com/0deF0SS.gif)
