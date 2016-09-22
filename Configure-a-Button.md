@@ -27,10 +27,12 @@ To run code on button events like *touch down* or *touch up inside*, switch to a
 Ctrl-drag from the button to the Swift file. Select Action (not Outlet) and this time change the Type from AnyObject to UIButton. Select the event, which is usually Touch Up Inside. Now the action function in your Swift file will show sender as type UIButton. This means that you can change properties on the button that was tapped.
 
 - For **setting the button state** to selected: 
+
 ```swift
 sender.isSelected = true
 ```
 - For **toggling back and forth** between selected and normal states: 
+
 ```swift
 sender.isSelected = !sender.isSelected
 ```
