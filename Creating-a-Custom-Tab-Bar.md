@@ -111,7 +111,7 @@ So as you can see, it is no coincidence that we set our first button **tag** val
 - Within your ``didPressTab`` method, use your ``previousIndex`` value to access your previous button and set it to the non-selected state.
 
 ```Swift
-buttons[previousIndex].selected = false
+buttons[previousIndex].isSelected = false
 ```
 
 - Use the ``previousIndex`` to access the previous ViewController from the ``viewControllers`` array.
@@ -123,7 +123,7 @@ let previousVC = viewControllers[previousIndex]
 - Remove the previous ViewController
 
 ```Swift
-previousVC.willMoveToParentViewController(nil)
+previousVC.willMove(toParentViewController: nil)
 previousVC.view.removeFromSuperview()
 previousVC.removeFromParentViewController()
 ```
@@ -133,7 +133,7 @@ previousVC.removeFromParentViewController()
 - Within your ``didPressTab`` method, access your current selected button and set it to the selected state.
 
 ```Swift
-sender.selected = true
+sender.isSelected = true
 ```
 
 - Use the ``selectedIndex`` to access the current ViewController from the ``viewControllers`` array.
@@ -155,10 +155,10 @@ vc.view.frame = contentView.bounds
 contentView.addSubview(vc.view)
 ```
 
-- Call the ``viewDidAppear`` method of the ViewController you are adding using ``didMoveParentViewController(self)``.
+- Call the ``viewDidAppear`` method of the ViewController you are adding using ``didMove(toParentViewController: self)``.
 
 ```Swift
-vc.didMoveToParentViewController(self)
+vc.didMove(toParentViewController: self)
 ```
 
 ### Step 10: Set the Initial Tab when the App Starts.
@@ -168,7 +168,7 @@ We will probably want to set a default tab to be initiated when we start our app
 - Within the ``viewDidLoad`` method, near the bottom, set the button state and call the ``didPressTab`` method. We will plug in ``buttons[selectedIndex]`` as arguments in the ``didPressTab`` method to specify the initial button, since we haven't actually "tapped" a button yet and there is no ``sender`` to access.
 
 ```Swift
-buttons[selectedIndex].selected = true
+buttons[selectedIndex].isSelected = true
 didPressTab(buttons[selectedIndex])
 ``` 
 
