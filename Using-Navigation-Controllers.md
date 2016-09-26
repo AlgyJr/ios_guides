@@ -16,7 +16,7 @@ Follow the steps below to set up a navigation controller using both Storyboard a
 
 ### Step 3: Popping a View Controller
 
-By default, navigation controllers provide a navigation bar with a back button. If you want to go back to the previous view controller using code, then you can call the popViewControllerAnimated method, as shown below.
+By default, navigation controllers provide a navigation bar with a back button. If you want to go back to the previous view controller using code, then you can call the popViewController method, as shown below.
 
 ```
 navigationController!.popViewController(animated: true)
