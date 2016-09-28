@@ -17,11 +17,11 @@ In this example, we will check to see if either the username field or password f
 // create a conditional statement: if the username OR password fields are empty than...
 if usernameField.text!.isEmpty || passwordField.text!.isEmpty {
   // set the button state to disabled
-  loginButton.enabled = false
+  loginButton.isEnabled = false
 // otherwise
 } else {
   // set the button state to enabled
-  loginButton.enabled = true
+  loginButton.isEnabled = true
   }
 }
 ``` 
