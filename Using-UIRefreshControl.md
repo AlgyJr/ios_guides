@@ -7,9 +7,9 @@ Pull to refresh has been a standard UI convention in iOS since early days of Twi
 It's useful to create the UIRefreshControl as an instance variable at the top of the class because you need to access it to stop the loading behavior.
 
 ```swift
-    var refreshControl: UIRefreshControl!
+var refreshControl: UIRefreshControl!
     
-    ...
+...
 
 ```
 
@@ -27,17 +27,17 @@ func onRefresh() {
 In the `viewDidLoad()` method, add the refresh control as a subview of the scroll view. It's best to insert it at the lowest index so that it appears behind all the views in the scroll view.
 
 ```swift   
-    refreshControl = UIRefreshControl()
-    refreshControl.addTarget(self, action: #selector(onRefresh), forControlEvents: .ValueChanged)
-    scrollView.insertSubview(refreshControl, at: 0)
+refreshControl = UIRefreshControl()
+refreshControl.addTarget(self, action: #selector(onRefresh), forControlEvents: .valueChanged)
+scrollView.insertSubview(refreshControl, at: 0)
 ```
 
 **Note:** If the above code is not compiling, it may be because you are using an older version of Xcode. In that case try:
 
 ```swift
-    refreshControl = UIRefreshControl()
-    refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
-    scrollView.insertSubview(refreshControl, atIndex: 0)
+refreshControl = UIRefreshControl()
+refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+scrollView.insertSubview(refreshControl, atIndex: 0)
 ```
 
 ### Step 4: Use Delay to Simulate Network Loading
