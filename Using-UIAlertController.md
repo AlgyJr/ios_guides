@@ -11,7 +11,7 @@ The alert style presents modally in the center of their presenting view controll
 Create the alert controller as below, setting preferredStyle to Alert
 
 ```swift
-let alertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .Alert)
+let alertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .alert)
 ```
 
 ### Step 2: Add buttons
@@ -20,14 +20,14 @@ Create a UIAlertAction for each button to display and respond to.
 
 ```swift
 // create a cancel action
-let cancelAction = UIAlertAction(title: "OK", style: .Cancel) { (action) in
+let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
     // handle cancel response here. Doing nothing will dismiss the view.
 }
 // add the cancel action to the alertController
 alertController.addAction(cancelAction)
 
 // create an OK action
-let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
     // handle response here.
 }
 // add the OK action to the alert controller
@@ -56,7 +56,7 @@ The action sheet style anchors the view to the bottom of the presenting view con
 Create the alert controller as below, setting preferredStyle to ActionSheet
 
 ```swift
-let alertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .ActionSheet)
+let alertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .actionSheet)
 ```
 
 ### Step 2: Add buttons
@@ -64,13 +64,13 @@ let alertController = UIAlertController(title: "Title", message: "Message", pref
 Create a UIAlertAction for each button to display and respond to. The destructive style options shows the button text in red.
 
 ```swift
-let logoutAction = UIAlertAction(title: "Log Out", style: .Destructive) { (action) in
+let logoutAction = UIAlertAction(title: "Log Out", style: .destructive) { (action) in
     // handle case of user logging out
 }
 // add the logout action to the alert controller
 alertController.addAction(logoutAction)     
 
-let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
     // handle case of user canceling. Doing nothing will dismiss the view.
 }
 // add the cancel action to the alert controller
