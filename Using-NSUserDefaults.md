@@ -2,13 +2,22 @@ There are several different persistence mechanisms in iOS. The simplest to use i
 
 ### Step 1: Saving Data
 
+There are many data types that can be stored in UserDefaults including: `array`, `bool`, `data`, `dictionary`, `float`, `integer`, `object`, `stringArray`, `string`, `double` and `url`. Checkout the [UserDefaults API Reference](https://developer.apple.com/reference/foundation/userdefaults) for more info.
+
 To save a key to UserDefaults, do something like this:
 
 ```swift
-var defaults = UserDefaults.standard
-defaults.set("some_string_to_save", forKey: "some_key_that_you_choose")
-defaults.set(123, forKey: "another_key_that_you_choose")
-defaults.set(true, forKey: "yet_another_key_that_you_choose")
+//Access UserDefaults
+let defaults = UserDefaults.standard
+
+// Set a string value for some key.
+defaults.set("Hello World!", forKey: "myString")
+// Set an int value for some key.
+defaults.set(123, forKey: "myInt")
+// Set a bool value for some key.
+defaults.set(true, forKey: "myBool")
+
+// Force UserDefaults to save.
 defaults.synchronize()
 
 ```
@@ -20,8 +29,13 @@ Note the `synchronize` call. UserDefaults automatically and periodically synchro
 To load a key from UserDefaults, do something like this:
 
 ```swift
-var defaults = UserDefaults.standard
-var stringValue = defaults.value("some_key_that_you_choose") as! String
-var intValue = defaults.value("another_key_that_you_choose")
-var boolValue = defaults.value("yet_another_key_that_you_choose")
+// Access UserDefaults
+let defaults = UserDefaults.standard
+
+// Get a string value for a given key and provide a default string in the case the string is nil.
+let stringValue = defaults.string(forKey: "myString") ?? "my default string"
+// Get an int value for a given key.
+let intValue = defaults.integer(forKey: "myInt")
+// Get a bool value for a given key.
+let boolValue = defaults.bool(forKey: "myBool")
 ```
