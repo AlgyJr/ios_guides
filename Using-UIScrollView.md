@@ -21,7 +21,7 @@ scrollView.contentSize = CGSize(width: 320, height: 1000)
 If you want to embed a tall image into the scrollView, then you can set the contentSize to the size of the image, as below. This assumes that you've also created an outlet for the Image View and added it as a subview of the scroll view.
 
 ```swift
-scrollView.contentSize = imageView.image!.size
+scrollView.contentSize = imageView.frame.size
 ```
 
 ## Other Tasks
