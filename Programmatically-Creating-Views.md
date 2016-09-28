@@ -25,14 +25,14 @@ imageView.isUserInteractionEnabled = true
 
 Next, you have to add the view into another view. This view can be the main view or any other view in the hierarchy. Its up to you where you want to embed the newly created view.
 
-```
+```swift
 view.addSubview(blueView)
 
 ```
 
 Adding the subview as above will add the subview on top of the other subviews. You can also insert the subview at an arbitrary z-index.
 
-```
+```swift
 view.insertSubview(blueView, at:0)
 
 ```
