@@ -29,7 +29,7 @@ In the `viewDidLoad()` method, add the refresh control as a subview of the scrol
 ```swift   
     refreshControl = UIRefreshControl()
     refreshControl.addTarget(self, action: #selector(onRefresh), forControlEvents: .ValueChanged)
-    scrollView.insertSubview(refreshControl, atIndex: 0)
+    scrollView.insertSubview(refreshControl, at: 0)
 ```
 
 **Note:** If the above code is not compiling, it may be because you are using an older version of Xcode. In that case try:
@@ -46,21 +46,17 @@ For prototyping, you can simulate network loading by canceling refreshing after 
 
 ```swift
 // Implement the delay method
-func delay(delay:Double, closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        dispatch_get_main_queue(), closure)
+func run(after wait: TimeInterval, closure: @escaping () -> Void) {
+    let queue = DispatchQueue.main
+    queue.asyncAfter(deadline: DispatchTime.now() + wait, execute: closure)
 }
 ```
 
 ```swift
 // Call the delay method in your onRefresh() method
-func onRefresh() {
-    delay(2, closure: {
-        self.refreshControl.endRefreshing()
-    })
+func refresh() {
+    run(after: 2) { 
+       self.refreshControl.endRefreshing()
+    }
 }
 ```
