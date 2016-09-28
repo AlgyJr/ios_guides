@@ -40,7 +40,7 @@ Adding two buttons will place them side by side in the alert. Adding more than t
 ### Step 3: Show the UIAlertController
 
 ```swift
-presentViewController(alertController, animated: true) {
+present(alertController, animated: true) {
     // optional code for what happens after the alert controller has finished presenting
 }
 ```
@@ -80,7 +80,7 @@ alertController.addAction(cancelAction)
 ### Step 3: Show the UIAlertController
 
 ```swift
-presentViewController(alertController, animated: true) {
+present(alertController, animated: true) {
     // optional code for what happens after the alert controller has finished presenting
 }
 ```
