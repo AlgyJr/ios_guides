@@ -28,26 +28,26 @@ scrollView.contentSize = imageView.frame.size
 
 ### Registering for Scroll Events
 
-#### Step 1: Set the scroll view delegate
+#### Step 1: Declaring the UIScrollViewDelegate
 
-Create an outlet for the UIScrollView and in `viewDidLoad`, set the delegate of the UIScrollView to self. This is telling the scroll view to call the view controller with the scroll view event methods. You will have a compile error on the line below until you complete step 2.
+Create a comma-delimited list of all the delegates that your view controller supports. Don't paste the snippet below. Instead, go to your view controller, and add the `UIScrollViewDelegate` in the same place that's shown in the snippet.
+
+```swift
+class MyViewController: UIViewController, UIScrollViewDelegate {
+
+	...
+}
+```
+
+#### Step 2: Set the scroll view delegate
+
+Create an outlet for the UIScrollView and in `viewDidLoad`, set the delegate of the UIScrollView to self. This is telling the scroll view to call the view controller with the scroll view event methods.
 
 ```swift
 override func viewDidLoad() {
     super.viewDidLoad()
 
 	scrollView.delegate = self
-}
-```
-
-#### Step 2: Declaring the UIScrollViewDelegate
-
-Create a comma-delimited list of all the delegates that your view controller supports.
-
-```swift
-class MyViewController: UIViewController, UIScrollViewDelegate {
-
-	...
 }
 ```
 
