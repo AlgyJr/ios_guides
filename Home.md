@@ -34,6 +34,7 @@ Diving into the networking and model layers for data-driven apps:
 * [[Network Programming Basics|Network-Programming]]
 * [[App Transport Security|App-Transport-Security]]
 * [[Showing a progress HUD|Showing-a-progress-HUD]] (with Long-Running Tasks)
+* [[Troubleshooting API Calls]]
 
 ## Working with View Controllers
 
