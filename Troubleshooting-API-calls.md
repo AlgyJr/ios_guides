@@ -8,7 +8,7 @@ While setting up breakpoints in your code is usually the first place to check, i
 * What is the server error code?
 * What is the server response?
 
-It is often useful to monitor the network traffic to help diagnose these issues.  One way to monitor network traffic on your iOS device is to setup an HTTP proxy that can intercept the network requests.  The process requires two parts: one on the PC that will act as the proxy, and the other on the iOS device.
+It is often useful to monitor the network traffic to help diagnose these issues.  One way to do so is to setup an HTTP proxy that can intercept the network requests.  The process requires two parts: one on the PC that will act as the proxy, and the other on the iOS device.
 
 ## Setting up a Proxy
 
