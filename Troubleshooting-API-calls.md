@@ -42,9 +42,9 @@ It is often useful to monitor the network traffic to help diagnose these issues.
      
 3. Connect to any web site.  **You need to go back to the PC to grant authorization for the device to connect.**
 
-Go back to your PC and start recording network traffic!
+   Go back to your PC and start recording network traffic!
 
-<img src="http://imgur.com/c0q6j2j.png"/>
+   <img src="http://imgur.com/c0q6j2j.png"/>
 
 ## References
 
