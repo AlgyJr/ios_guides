@@ -24,11 +24,11 @@ One way to monitor network traffic on your iOS device is to  setup an HTTP proxy
 
 2. Go to the Settings app, tap Wi-Fi, find the network you are connected to and then tap it to configure the network. 
 
+   <img src="http://imgur.com/8KUEzr1.png"/>
+
    Scroll down to the HTTP Proxy setting, tap Manual. 
 
    Enter the IP address of your computer running Charles in the Server field, and the port Charles is running on in the Port field (usually 8888). Leave Authentication set to Off.
-
-   <img src="http://imgur.com/8KUEzr1.png"/>
      
 3. Connect to any web site.  **You need to go back to the PC to grant authorization for the device to connect.***
 
