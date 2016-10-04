@@ -8,7 +8,7 @@ Cocoa-based) projects.  It is very similar in function and usage to
 CocoaPods is packaged as a Ruby gem. Since Ruby comes with new OS X installations, you can install CocoaPods simply by running the following commands in a terminal:
 
 ```
-sudo gem install cocoapods     # Install CocoaPods gem
+gem install -n /usr/local/bin cocoapods     # Install CocoaPods gem
 pod setup                      # Clones the CocoaPods specs repo to ~/.cocoapods
 ```
 
