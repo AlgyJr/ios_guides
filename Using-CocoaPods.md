@@ -14,7 +14,7 @@ This guide covers 1) setting-up CocoaPods, and 2) adding and installing Pods int
 
 ```
 gem update --system
-sudo gem install cocoapods
+gem install -n /usr/local/bin cocoapods
 pod setup
 ```
 
