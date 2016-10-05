@@ -142,8 +142,7 @@ This section covers some common issues that arise when using table view
 cells.
 
 ### Automatically resize row heights
-Sometimes you'll have cells that vary in height.  The easiest way to have
-the your rows be correctly sized is to set an `estimatedRowHeight` and
+Sometimes you'll have cells that vary in height.  The easiest way to have your rows be correctly sized is to set an `estimatedRowHeight` and
 set the table view's `rowHeight` to `UITableViewAutomaticDimension`.
 This only works in iOS 8 and above.  For a discussion of other ways to
 have variable row heights see our more in depth [table view
