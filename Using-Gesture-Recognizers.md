@@ -1,5 +1,21 @@
 Gesture recognizers are a powerful and easy to use tool for handling user gestures like tap or pinch and performing actions like triggering animations or view changes. This is a quick guide for the steps in setting up gesture recognizers.
 
+### Gesture Recognizer Options
+
+There are many builtin gesture recognizers in iOS, and you can also create your own. Choose one from the following list.
+
+#### UITapGestureRecognizer. Can be configured with the number of required taps to handle single, double, or more taps.
+
+#### UILongPressGestureRecognizer. Can be configured with the required delay to be considered a long press. Defaults to 0.5 s.
+
+#### UIPanGestureRecognizer
+
+#### UIPinchGestureRecognizer. Used for pinch in and pinch out, this gesture recognizer continuously outputs to a `scale` property as the user moves their finger.
+
+#### UIRotationGestureRecognizer. Continuously outputs to `rotation` in radians.
+
+#### UIScreenEdgePanGestureRecognizer. Can be configured with which edge to detect pans from. Only detects pan movements that begin from the specified edge.
+
 ## Add and Configure a Gesture Recognizer in Storyboard
 
 ### Step 1: Choose a Gesture Recognizer
@@ -20,100 +36,109 @@ Ctrl-drag from your Gesture Recognizer to the ViewController swift file to creat
 
 ## Programmatically Add and Configure a Gesture Recognizer
 
-### Step 1: Choose a gesture recognizer
+### Step 1: Implement the event handler method
 
-There are many builtin gesture recognizers in iOS, and you can also create your own. Choose one from the following list.
-
-- UITapGestureRecognizer. Can be configured with the number of required taps to handle single, double, or more taps.
-- UILongPressGestureRecognizer. Can be configured with the required delay to be considered a long press. Defaults to 0.5 s.
-- UIPanGestureRecognizer
-- UIPinchGestureRecognizer. Used for pinch in and pinch out, this gesture recognizer continuously outputs to a `scale` property as the user moves their finger.
-- UIRotationGestureRecognizer. Continuously outputs to `rotation` in radians.
-- UIScreenEdgePanGestureRecognizer. Can be configured with which edge to detect pans from. Only detects pan movements that begin from the specified edge.
-
-### Step 2: Instantiate the gesture recognizer
-
-You can create the gesture recognizer in Storyboard or Interface Builder by dragging the gesture recognizer onto the view you want to detect gestures for.
-
-Alternatively, if you want to create the gesture programmatically, it is common to create the gesture recognizers in the `viewDidLoad` method, as shown below. After you create the gesture recognizer, attach it to the view you want to detect gestures on.
-
-#### Example 1: Tap gesture recognizer
-
-```swift
-override func viewDidLoad() {
-   // The onCustomTap: method will be defined in Step 3 below.
-   var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "onCustomTap:")
-
-   // Optionally set the number of required taps, e.g., 2 for a double click
-   tapGestureRecognizer.numberOfTapsRequired = 2;
-
-   // Attach it to a view of your choice. If it's a UIImageView, remember to enable user interaction
-   yourView.userInteractionEnabled = true
-   yourView.addGestureRecognizer(tapGestureRecognizer)
-}
-
-```
-
-#### Example 2: Pan gesture recognizer
-
-```swift
-override func viewDidLoad() {
-   // The onCustomPan: method will be defined in Step 3 below.
-   var panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "onCustomPan:")
-
-   // Attach it to a view of your choice. If it's a UIImageView, remember to enable user interaction
-   yourView.userInteractionEnabled = true
-   yourView.addGestureRecognizer(panGestureRecognizer)
-}
-
-```
-
-### Step 3: Implement the event handler method
-
-When the gesture recognizer detects the gesture, it will call the event handler method on the target. The event handler method is specified when you created the gesture recognizer in Step 2. Declare the method in the interface and implement it.
+When the gesture recognizer detects the gesture, it will call the event handler method on the target. Declare the method you want called by the gesture recognizer.
 
 Gesture recognizers call the same selector as it transitions through various states. For example, a pan gesture recognizer calls the selector when the user first touches down on the view, and then it calls the selector repeatedly as the user drags their finger across the screen, and finally it calls the selector one last time when the user lifts their finger off the screen.
 
 #### Example 1: Tap gesture recognizer
 
-
 ```swift
-func onCustomTap(sender: UITapGestureRecognizer) {
-   let point = sender.locationInView(view)
+func didTap(sender: UITapGestureRecognizer) {
+   let point = let location = sender.location(in: view)
 
    // User tapped at the point above. Do something with that if you want.
 }
-
 ```
 
 #### Example 2: Pan gesture recognizer
 
 ```swift
-func onCustomPan(sender: UIPanGestureRecognizer) {
-   var point = sender.locationInView(view)
-   var velocity = sender.velocityInView(view)
-   var translation = sender.translationInView(view)
+func didPan(sender: UIPanGestureRecognizer) {
+   let location = sender.location(in: view)
+   let velocity = sender.velocity(in: view)
+   let translation = sender.translation(in: view)
     
-   if sender.state == UIGestureRecognizerState.Began {
+   if sender.state == .began {
       print("Gesture began")
-   } else if sender.state == UIGestureRecognizerState.Changed {
+   } else if sender.state == .changed {
       print("Gesture is changing")
-   } else if sender.state == UIGestureRecognizerState.Ended {
+   } else if sender.state == .ended {
       print("Gesture ended")
    }
 }
-
 ```
 
 #### Example 3: Pinch Gesture Recognizer
+
 ```swift
-func didPinchNewFace(sender: UIPinchGestureRecognizer) {
+func didPinch(sender: UIPinchGestureRecognizer) {
 
    // get the scale value from the pinch gesture recognizer
-   let scale = sender.scale
-        
- 
+   let scale = sender.scale 
 }
+```
+
+### Step 2: Instantiate the gesture recognizer
+
+It is common to create the gesture recognizers in the `viewDidLoad()` method, as shown below. After you create the gesture recognizer, attach it to the view you want to detect gestures on.
+
+#### Example 1: Tap gesture recognizer
+
+```swift
+override func viewDidLoad() {
+   // The didTap: method will be defined in Step 3 below.
+   let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTap(sender:)))
+
+   // Optionally set the number of required taps, e.g., 2 for a double click
+   tapGestureRecognizer.numberOfTapsRequired = 2;
+
+   // Attach it to a view of your choice. If it's a UIImageView, remember to enable user interaction
+   yourView.isUserInteractionEnabled = true
+   yourView.addGestureRecognizer(tapGestureRecognizer)
+}
+```
+
+#### Example 2: Pan gesture recognizer
+
+```swift
+override func viewDidLoad() {
+   // The didPan: method will be defined in Step 3 below.
+   let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didPan(sender:)))
+
+   // Attach it to a view of your choice. If it's a UIImageView, remember to enable user interaction
+   yourView.isUserInteractionEnabled = true
+   yourView.addGestureRecognizer(panGestureRecognizer)
+}
+```
+
+### Common properties to access from each gesture recognizer
+#### Tap Gesture Recognizer
+
+```swift
+let location = sender.location(in: view)
+``` 
+
+#### Pan Gesture Recognizer
+
+```swift
+let location = sender.location(in: view)
+let translation = sender.translation(in: view)
+let velocity = sender.velocity(in: view)
+```
+
+#### Pinch Gesture Recognizer
+
+```swift
+var scale = sender.scale
+var velocity = sender.velocity
+```
+#### Rotation Gesture Recognizer
+   
+```swift
+var rotation = sender.rotation 
+var velocity = sender.velocity
 ```
 
 ## Other Gesture Recognizer Tasks
@@ -144,7 +169,7 @@ class MainViewController : UIViewController, UIGestureRecognizerDelegate
 
 ```
 
-Copy the following UIGestureRecognizerDelegate method into the Swift file.
+Implement the following UIGestureRecognizerDelegate method in your Swift file.
 
 ```swift
 func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -191,32 +216,33 @@ NOTE: If you created your Gesture Recognizer and added an Action in Storyboard, 
 - Within the `didPanTray` method, we want to access the **translation** property of the UIPanGestureRecognizer and store it in a variable. This will tell us how far our finger has moved from the original "touch-down" point as we drag. We will also print the translation value to the console to get a feel for what it means. You should see that the translation is a **CGPoint** with values for the x and y components. 
 
 ```swift
-var translation = sender.translationInView(view)
+let translation = sender.translation(in: view)
 print("translation \(translation)")
 ```
 
-- Create a conditional statement to check for the current gesture state during the pan: .Began, .Changed or .Ended
-   - `.Began` is called once at the very beginning of each gesture recognition.
-   - `.Changed` is called continuously as the user is in the process of "gesturing".
-   - `.Ended` is called once at the end of the gesture.
+- Create a conditional statement to check for the current gesture state during the pan: .began, .changed or .ended
+   - `.began` is called once at the very beginning of each gesture recognition.
+   - `.changed` is called continuously as the user is in the process of "gesturing".
+   - `.ended` is called once at the end of the gesture.
    - HINT: You will use this conditional statement to check gesture states SO often, that is extremely helpful to [create a Code Snippet](https://guides.codepath.com/ios/Using-Custom-Code-Snippets) for quick access in the future!  
 
 ```
-if sender.state == UIGestureRecognizerState.Began {
+if sender.state == .began {
             
-} else if sender.state == UIGestureRecognizerState.Changed {
+} else if sender.state == .changed {
             
-} else if sender.state == UIGestureRecognizerState.Ended {
+} else if sender.state == .ended {
             
 }
 ```
 
-- When the gesture begins (`.Began`), store the tray's center into the trayOriginalCenter variable: 
+- When the gesture begins (`.began`), store the tray's center into the trayOriginalCenter variable: 
 ```swift
 trayOriginalCenter = trayView.center
 ```
 
-- As the user pans (`.Changed`), change the `trayView.center` by the translation. Note: we ignore the x translation because we only want the tray to move up and down: 
+- As the user pans (`.changed`), change the `trayView.center` by the translation. Note: we ignore the x translation because we only want the tray to move up and down: 
+
 ```swift
 trayView.center = CGPoint(x: trayOriginalCenter.x, y: trayOriginalCenter.y + translation.y)
 ```
@@ -228,9 +254,9 @@ When a user stops panning the Tray, we want the tray to animate to an up or down
   
 We can tell which way a user is panning by looking at the gesture property, **velocity**. Like translation, velocity has a value for both x and y components. If the **y component** of the velocity is a **positive** value, the user is **panning down**. If the **y component** is **negative**, the user is **panning** up.
 
-Since we are focusing on the user's **last** gesture movement, we will check for the velocity in the `.Ended` condition of our gesture state conditional statement.
+Since we are focusing on the user's **last** gesture movement, we will check for the velocity in the `.ended` condition of our gesture state conditional statement.
 
-- Get the velocity: `var velocity = sender.velocityInView(view)`. [Pan Gesture Recognizer](https://guides.codepath.com/ios/Using-Gesture-Recognizers#example-2-pan-gesture-recognizer-1)
+- Get the velocity: `let velocity = sender.velocity(in: view)`. [Pan Gesture Recognizer](https://guides.codepath.com/ios/Using-Gesture-Recognizers#example-2-pan-gesture-recognizer-1)
 - Define Instance variables to store the tray's position when it's "up" and "down" as well as the offset amount that the tray will move down when it is in it's down position.
      
 ```swift
@@ -246,7 +272,7 @@ trayDownOffset = 160
 trayUp = trayView.center
 trayDown = CGPoint(x: trayView.center.x ,y: trayView.center.y + trayDownOffset)
 ```
-- Back in your `didPanTray` method, within the gesture state, `.Ended`, create a conditional statement to check the y component of the velocity. In the case that the tray is moving down, animate the tray position to the `trayDown` point, otherwise, animate it towards the `trayUp` point. [Animating View Properties](https://guides.codepath.com/ios/Animating-View-Properties)
+- Back in your `didPanTray(_:)` method, within the gesture state, `.ended`, create a conditional statement to check the y component of the velocity. In the case that the tray is moving down, animate the tray position to the `trayDown` point, otherwise, animate it towards the `trayUp` point. [Animating View Properties](https://guides.codepath.com/ios/Animating-View-Properties)
 
 ```swift
 if velocity.y > 0 {
