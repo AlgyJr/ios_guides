@@ -23,7 +23,7 @@ XCode 8 has a backwards compatible Swift 2.3 version, but there are still some m
 
 ### Downgrading to XCode 7.3.1
 
-If you accidentally upgraded to XCode 8 and wish to get to XCode 7, you can follow similar steps:
+If you accidentally upgraded to XCode 8 and wish to get to XCode 7 that can run in parallel, you can follow similar steps:
 
 1. Rename your XCode 8 version:
 
