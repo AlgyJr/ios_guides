@@ -6,18 +6,18 @@ Currently, iOS 10 devices will not run against XCode 7.3.1 (you will see `Could 
 
 1. Rename your Xcode.app to Xcode7.app:
 
-   ```bash
-   sudo mv /Applications/Xcode.app /Applications/Xcode7.app
-   ```
+      ```bash
+      sudo mv /Applications/Xcode.app /Applications/Xcode7.app
+      ```
 
 2. Download Xcode 8 from the app store.  You need to upgrade your OS version to at least 10.11.5.  There are two updates, which will likely take about 2 hours to download.
 3. Run Xcode 8 once to install it.
 4. Open the terminal and create a symbolic link from Xcode 8 Developer Disk Image 10.0 to Xcode 8 Developer 
 Disk Image folder using this command:
 
-    ```bash 
-    sudo ln -s /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport/10.0 (14A345)/ /Applications/Xcode7.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport/10.0
-     ```
+       ```bash 
+       sudo ln -s /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport/10.0 (14A345)/ /Applications/Xcode7.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport/10.0
+       ```
 
 XCode 8 has a backwards compatible Swift 2.3 version, but there are still some minor changes (i.e. first argument parameters labels) from the Swift 2.3 version supported in XCode 7.3.1.  There is a built-in converter tool can usually help handle most of these minor fixes, but if there are third-party library dependencies, you may need to first check what version it supports.  
 
