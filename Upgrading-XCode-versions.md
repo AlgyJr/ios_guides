@@ -34,3 +34,8 @@ If you accidentally upgraded to XCode 8 and wish to get to XCode 7, you can foll
 2. Download XCode 7.3.1 with this [link](http://adcdownload.apple.com/Developer_Tools/Xcode_7.3.1/Xcode_7.3.1.dmg) from the Apple Developer store.
 
 3. Reinstall the XCode 7.3.1 image.
+
+## References
+
+* <http://stackoverflow.com/questions/39576363/could-not-find-developer-disk-image-ios-10>
+* <http://stackoverflow.com/questions/37945376/use-xcode-7-with-ios-10>
