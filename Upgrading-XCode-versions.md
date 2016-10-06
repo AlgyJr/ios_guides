@@ -19,7 +19,7 @@ Disk Image folder using this command:
     sudo ln -s /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport/10.0\ (14A345)/    /Applications/Xcode7.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport/10.0
      ```
 
-XCode 8 has a backwards compatible Swift 2.3 version, but there are still some minor changes (i.e. first argument parameters labels).  The converter tool can usually help handle most of these minor fixes, but if there are third-party library dependencies, you may need to first check what version it supports.  
+XCode 8 has a backwards compatible Swift 2.3 version, but there are still some minor changes (i.e. first argument parameters labels) from the Swift 2.3 version supported in XCode 7.3.1.  There is a built-in converter tool can usually help handle most of these minor fixes, but if there are third-party library dependencies, you may need to first check what version it supports.  
 
 ### Downgrading to XCode 7.3.1
 
