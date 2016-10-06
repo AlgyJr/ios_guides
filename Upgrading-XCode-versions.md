@@ -2,7 +2,7 @@
 
 ### Upgrading to XCode 8
 
-Currently, iOS 10 devices will not run against XCode 7.3.1 (you will see `Developer Disk Image Not Found`).  If you have yet to update but have concerns about Swift 2.3 or Swift 3.0 version compatibility (especially with third-party libraries) with your existing code base, you should keep your XCode 7 version by renaming the directory.  Here are the basic steps:
+Currently, iOS 10 devices will not run against XCode 7.3.1 (you will see `Could Not Find Developer Disk Image`).  If you have yet to update but have concerns about Swift 2.3 or Swift 3.0 version compatibility (especially with third-party libraries) with your existing code base, you should keep your XCode 7 version by renaming the directory.  Here are the basic steps:
 
 1. Rename your Xcode.app to Xcode7.app:
 
