@@ -281,13 +281,13 @@ trayDown = CGPoint(x: trayView.center.x ,y: trayView.center.y + trayDownOffset)
 
 ```swift
 if velocity.y > 0 {
-   UIView.animateWithDuration(0.3, animations: { () -> Void in
-   trayView.center = trayDown                 
-   })
+   UIView.animate(withDuration: 0.3) { 
+      trayView.center = trayDown
+   }   
 } else {
-   UIView.animateWithDuration(0.3, animations: { () -> Void in
-   trayView.center = trayUp                 
-   })
+   UIView.animate(withDuration: 0.3) {
+      trayView.center = trayUp                 
+   }
 }
 ```  
 You can also try animating the ending tray motion with a bounce using the damping ratio and initial spring velocity. [Spring Animation](https://guides.codepath.com/ios/Animating-View-Properties#spring-animation)
