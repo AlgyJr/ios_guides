@@ -81,6 +81,7 @@ Diving into the networking and model layers for data-driven apps:
 * [[Building Data-driven Apps with Parse]]
 * [[Multithreading in iOS]]
 * [[Provisioning Profiles]]
+* [[Upgrading XCode Versions]]
 
 ## Great External Resources
 
