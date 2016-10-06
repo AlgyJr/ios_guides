@@ -10,8 +10,8 @@ Currently, iOS 10 devices will not run against XCode 7.3.1 (you will see `Could 
    sudo mv /Applications/Xcode.app /Applications/Xcode7.app
    ```
 
-2. Download Xcode 8 from the app store.  You need to upgrade your OS version to at least 10.11.5.
-3. Run Xcode 8 once to install it.  It will take about 2 hours to install.
+2. Download Xcode 8 from the app store.  You need to upgrade your OS version to at least 10.11.5.  There are two updates, which will likely take about 2 hours to download.
+3. Run Xcode 8 once to install it.
 4. Open the terminal and create a symbolic link from Xcode 8 Developer Disk Image 10.0 to Xcode 8 Developer 
 Disk Image folder using this command:
 
