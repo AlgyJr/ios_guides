@@ -4,17 +4,22 @@ Gesture recognizers are a powerful and easy to use tool for handling user gestur
 
 There are many builtin gesture recognizers in iOS, and you can also create your own. Choose one from the following list.
 
-#### UITapGestureRecognizer. Can be configured with the number of required taps to handle single, double, or more taps.
+#### UITapGestureRecognizer 
+Can be configured with the number of required taps to handle single, double, or more taps.
 
-#### UILongPressGestureRecognizer. Can be configured with the required delay to be considered a long press. Defaults to 0.5 s.
+#### UILongPressGestureRecognizer
+Can be configured with the required delay to be considered a long press. Defaults to 0.5 s.
 
 #### UIPanGestureRecognizer
 
-#### UIPinchGestureRecognizer. Used for pinch in and pinch out, this gesture recognizer continuously outputs to a `scale` property as the user moves their finger.
+#### UIPinchGestureRecognizer
+Used for pinch in and pinch out, this gesture recognizer continuously outputs to a `scale` property as the user moves their finger.
 
-#### UIRotationGestureRecognizer. Continuously outputs to `rotation` in radians.
+#### UIRotationGestureRecognizer 
+Continuously outputs to `rotation` in radians.
 
-#### UIScreenEdgePanGestureRecognizer. Can be configured with which edge to detect pans from. Only detects pan movements that begin from the specified edge.
+#### UIScreenEdgePanGestureRecognizer 
+Can be configured with which edge to detect pans from. Only detects pan movements that begin from the specified edge.
 
 ## Add and Configure a Gesture Recognizer in Storyboard
 
