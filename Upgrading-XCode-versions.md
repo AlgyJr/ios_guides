@@ -19,6 +19,18 @@ Disk Image folder using this command:
     sudo ln -s /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport/10.0\ (14A345)/    /Applications/Xcode7.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport/10.0
      ```
 
-XCode 8 has a backwards compatible Swift 2.3 version, but there are still some minor changes (i.e. first argument parameters labels).  The converter tool can usually help handle most of these minor fixes, but if there are third-party library dependencies, you may need to first check what version it supports.
+XCode 8 has a backwards compatible Swift 2.3 version, but there are still some minor changes (i.e. first argument parameters labels).  The converter tool can usually help handle most of these minor fixes, but if there are third-party library dependencies, you may need to first check what version it supports.  
 
-If you accidentally upgraded to XCode 8 and wish to get to XCode 7, you can follow similar steps (i.e. rename /Applications/Xcode.app to /Applications/XCode8.app) and reinstall the XCode 7.3.1 image by downloading this [link](http://adcdownload.apple.com/Developer_Tools/Xcode_7.3.1/Xcode_7.3.1.dmg) form the Apple Developer store.
+### Downgrading to XCode 7.3.1
+
+If you accidentally upgraded to XCode 8 and wish to get to XCode 7, you can follow similar steps:
+
+1. Rename your XCode 8 version:
+
+   ```bash
+      sudo mv /Applications/Xcode.app /Applications/Xcode8.app
+   ```
+
+2. Download XCode 7.3.1 with this [link](http://adcdownload.apple.com/Developer_Tools/Xcode_7.3.1/Xcode_7.3.1.dmg) from the Apple Developer store.
+
+3. Reinstall the XCode 7.3.1 image.
