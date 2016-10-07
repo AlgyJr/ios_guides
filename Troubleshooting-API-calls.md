@@ -26,7 +26,11 @@ It is often useful to monitor the network traffic to help diagnose these issues.
 
      <img src="http://imgur.com/YXTqq93.png"/>
 
-4. Make sure to ascertain your IP address of the machine with the proxy installed.  You can go to the `Help` -> `Local IP Address` to find it:
+4. Disable the proxy from being used on your desktop web browser by simply going to `Proxy` -> `Proxy Settings` and uncheck the `Enable macOS proxy` option:
+
+     <img src="http://imgur.com/zzWkuEX.png"/>
+
+5. Make sure to ascertain your IP address of the machine with the proxy installed.  You can go to the `Help` -> `Local IP Address` to find it:
 
 <img src="http://imgur.com/AwbbEwA.png"/>
 
@@ -41,7 +45,7 @@ It is often useful to monitor the network traffic to help diagnose these issues.
    Scroll down to the HTTP Proxy setting, tap Manual. 
 
    Enter the IP address of your computer running Charles in the Server field, and the port Charles is running on in the Port field (usually 8888). Leave Authentication set to Off.
-     
+   
 3. Connect to any web site.  You need to go back to the PC to grant authorization for the device to connect:
 
    <img src="http://imgur.com/yuRmGRC.png">
