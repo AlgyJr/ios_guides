@@ -259,7 +259,7 @@ The two most common types of loops you'll need in Swift are **for loops** and **
 
 ```swift
 // Simple for loop that prints "Hello" 3 times
-for var index = 0; index < 3; index++ {
+for index in 0..< 3 {
     print("Hello")
 }
 ```
