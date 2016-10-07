@@ -259,7 +259,8 @@ The two most common types of loops you'll need in Swift are **for loops** and **
 
 ```swift
 // Simple for loop that prints "Hello" 3 times
-for index in 0 ..< 3 {
+// Use ..< to make a range that omits its upper value, and use ... to make a range that includes both values.
+for index in 0..<3 {
     print("Hello")
 }
 ```
