@@ -14,7 +14,7 @@ This guide is designed to be concise. For in-depth details, check out the offici
 ```swift
 var myArray: [AnyObject] = Array()
 myArray.append(Dog()) // Legal
-myArray.append(Homework.InProgress)   // Illegal. An enum is not a class instance
+myArray.append(Homework.inProgress)   // Illegal. An enum is not a class instance
 ```
 
 While strong typing is preferred, sometimes it's unavoidable. For instance, a JSON dictionary can have mixed types of values.
@@ -23,9 +23,9 @@ To check an object's type, use `is`
 
 ```swift
 if userDictionary["bio"] is String {
-    println("The bio is present")
+    print("The bio is present")
 } else if userDictionary["bio"] is NSNull {
-    println("The bio is not available.")
+    print("The bio is not available.")
 }
 ```
 
@@ -39,9 +39,9 @@ It's safer to downcast with `as?`, which returns an optional, in case the downca
 
 ```swift
 if let bio = userDictionary["bio"] as? String {
-    println("Bio: \(bio)")
+    print("Bio: \(bio)")
 } else {
-    println("Bio is unavailable.")
+    print("Bio is unavailable.")
 }
 ```
 
@@ -120,12 +120,12 @@ class Dog: Animal {
 
 ### Initializer Inheritance
 
-Swift tries to only inherit initializers when it's safe to do so, which can be confusing. For instance, you' commonly override UIViewcontroller's designated initializer to perform setup logic. If you just added this code, you would get a compilation error:
+Swift tries to only inherit initializers when it's safe to do so, which can be confusing. For instance, you commonly override UIViewController's designated initializer to perform setup logic. If you just added this code, you would get a compilation error:
 
 ```swift
-override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    self.edgesForExtendedLayout = UIRectEdge.None
+    self.edgesForExtendedLayout = [] // This used to be UIRectEdge.None
 }
 ```
 
@@ -152,11 +152,11 @@ If an enum, class, or struct is only used within a certain context, such as one 
 
 ```swift
 class Homework {
-  var status: State = .InProgress
+  var status: State = .inProgress
 
   enum State {
-    case InProgress
-    case Submitted
+    case inProgress
+    case submitted
   }
 }
 ```
@@ -232,23 +232,23 @@ Enums may also have methods and conform to protocols.
 
 ```swift
 enum HomeworkState {
-  case InProgress
-  case Submitted
+  case inProgress
+  case submitted
   init(){
-    self = .InProgress
+    self = .inProgress
   }
   func description() -> String {
     switch self {
-      case .InProgress:
+      case .inProgress:
         return "In Progress"
-      case .Submitted:
+      case .submitted:
       return "Submitted"
     }
   }
 }
 
 let state = HomeworkState()
-println(state.description()) // "In Progress
+print(state.description()) // "In Progress"
 ```
 
 ### Associated Values
@@ -257,12 +257,12 @@ Enums can store associated values:
 
 ```swift
 enum HomeworkState {
-  case InProgress
-  case Submitted
-  case Graded(Int)
+  case inProgress
+  case submitted
+  case graded(Int)
 }
 
-let homework = HomeworkState.Graded(100)
+let homework = HomeworkState.graded(100)
 ```
 
 ## Extending Basic Types
@@ -285,9 +285,9 @@ Pattern matching allows a concise way to filter values, and bind those values to
 ```swift
 switch statusCode {
   case 200...299:
-    println("Success")
+    print("Success")
   default:
-    println("Error")
+    print("Error")
 }
 ```
 
@@ -298,13 +298,13 @@ let point = (0, 10)
 
 switch point {
   case (0, 0):
-    println("Origin")
+    print("Origin")
   case (let x, 0):
-    println("X-Axis:\(x)")
+    print("X-Axis:\(x)")
   case (0, let y):
-    println("Y-Axis: \(y)")
+    print("Y-Axis: \(y)")
   case (let x, let y):
-    println("Off axis: \(x), \(y)")
+    print("Off axis: \(x), \(y)")
 }
 // "Y-Axis: 10"
 ```
@@ -313,20 +313,20 @@ They can be applied to enum associated values:
 
 ```swift
 switch homeworkStatus {
-  case .InProgress:
-    println("In progress")
-  case .Submitted:
-    println("Submitted")
-  case .Graded(60 ..< 70):
-    println("Received a D")
-  case .Graded(70 ..< 80):
-    println("Received a C")
-  case .Graded(80 ..< 90):
-    println("Received a B")
-  case .Graded(90 ... 100):
-    println("Aced it!")
-  case .Graded(let grade):
-    println("Failed, with a \(grade)")
+  case .inProgress:
+    print("In progress")
+  case .submitted:
+    print("Submitted")
+  case .graded(60 ..< 70):
+    print("Received a D")
+  case .graded(70 ..< 80):
+    print("Received a C")
+  case .graded(80 ..< 90):
+    print("Received a B")
+  case .graded(90 ... 100):
+    print("Aced it!")
+  case .graded(let grade):
+    print("Failed, with a \(grade)")
 }
 ```
 
