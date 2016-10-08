@@ -121,10 +121,15 @@ override func viewDidLoad() {
 #### Example: Screen edge pan gesture recognizer
 
 ```swift
+// Instantiate and initialize the screen edge pan gesture recognizer
 let screenEdgePanGestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(didScreenEdgePan(sender:)))
-screenEdgePanGestureRecognizer.edges = UIRectEdge.left
-view.addGestureRecognizer(screenEdgePanGestureRecognizer)
 
+// Configure the screen edges you want to detect.
+screenEdgePanGestureRecognizer.edges = UIRectEdge.left
+
+// Attach the screen edge pan gesture recognizer to some view.
+yourView.isUserInteractionEnabled = true
+yourView.addGestureRecognizer(screenEdgePanGestureRecognizer)
 ```
 
 ### Common properties to access from each gesture recognizer
