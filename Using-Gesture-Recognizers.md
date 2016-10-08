@@ -81,7 +81,7 @@ func didPinch(sender: UIPinchGestureRecognizer) {
 #### Example: Screen edge pan gesture recognizer
 
 ```swift
-func didEdgePan(sender: UIScreenEdgePanGestureRecognizer) {
+func didScreenEdgePan(sender: UIScreenEdgePanGestureRecognizer) {
    // Do something when the user does a screen edge pan.
 }
 ```
@@ -121,7 +121,7 @@ override func viewDidLoad() {
 #### Example: Screen edge pan gesture recognizer
 
 ```swift
-let screenEdgePanGestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(didEdgePan(sender:)))
+let screenEdgePanGestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(didScreenEdgePan(sender:)))
 screenEdgePanGestureRecognizer.edges = UIRectEdge.left
 view.addGestureRecognizer(screenEdgePanGestureRecognizer)
 
