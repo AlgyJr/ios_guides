@@ -282,7 +282,7 @@ Sometimes you want to loop over each item in an array and also keep track of the
 ```swift
 let names = ["Anna", "Alex", "Brian", "Jack"]
 
-for (index, value) in names.enumerate() {
+for (index, value) in names.enumerated() {
     print("Item \(index + 1): \(value)")
 }
 ```
@@ -302,7 +302,7 @@ class Person {
         self.lastName = lastName
 
         // Increment type property each time a new person is created
-        Person.numberOfPeople++
+        Person.numberOfPeople+=1
     }
 	
     // *** Properties ***
