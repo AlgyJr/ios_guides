@@ -42,17 +42,16 @@ When the gesture recognizer detects the gesture, it will call the event handler 
 
 Gesture recognizers call the same selector as it transitions through various states. For example, a pan gesture recognizer calls the selector when the user first touches down on the view, and then it calls the selector repeatedly as the user drags their finger across the screen, and finally it calls the selector one last time when the user lifts their finger off the screen.
 
-#### Example 1: Tap gesture recognizer
+#### Example: Tap gesture recognizer
 
 ```swift
 func didTap(sender: UITapGestureRecognizer) {
    let point = let location = sender.location(in: view)
-
    // User tapped at the point above. Do something with that if you want.
 }
 ```
 
-#### Example 2: Pan gesture recognizer
+#### Example: Pan gesture recognizer
 
 ```swift
 func didPan(sender: UIPanGestureRecognizer) {
@@ -70,21 +69,27 @@ func didPan(sender: UIPanGestureRecognizer) {
 }
 ```
 
-#### Example 3: Pinch Gesture Recognizer
+#### Example: Pinch gesture recognizer
 
 ```swift
 func didPinch(sender: UIPinchGestureRecognizer) {
-
    // get the scale value from the pinch gesture recognizer
    let scale = sender.scale 
 }
 ```
 
+#### Example: Screen edge pan gesture recognizer
+
+```swift
+func didEdgePan(sender: UIScreenEdgePanGestureRecognizer) {
+   // Do something when the user does a screen edge pan.
+}
+```
 ### Step 2: Instantiate the gesture recognizer
 
 It is common to create the gesture recognizers in the `viewDidLoad()` method, as shown below. After you create the gesture recognizer, attach it to the view you want to detect gestures on.
 
-#### Example 1: Tap gesture recognizer
+#### Example: Tap gesture recognizer
 
 ```swift
 override func viewDidLoad() {
@@ -100,7 +105,7 @@ override func viewDidLoad() {
 }
 ```
 
-#### Example 2: Pan gesture recognizer
+#### Example: Pan gesture recognizer
 
 ```swift
 override func viewDidLoad() {
@@ -111,6 +116,15 @@ override func viewDidLoad() {
    yourView.isUserInteractionEnabled = true
    yourView.addGestureRecognizer(panGestureRecognizer)
 }
+```
+
+#### Example: Screen edge pan gesture recognizer
+
+```swift
+let screenEdgePanGestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(didEdgePan(sender:)))
+screenEdgePanGestureRecognizer.edges = UIRectEdge.left
+view.addGestureRecognizer(screenEdgePanGestureRecognizer)
+
 ```
 
 ### Common properties to access from each gesture recognizer
