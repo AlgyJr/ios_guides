@@ -302,7 +302,7 @@ class Person {
         self.lastName = lastName
 
         // Increment type property each time a new person is created
-        Person.numberOfPeople+=1
+        Person.numberOfPeople += 1
     }
 	
     // *** Properties ***
