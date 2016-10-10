@@ -86,3 +86,7 @@ We will be creating a new ImageView each time we scroll to the bottom of our Scr
         }
     }
 ```
+
+### Using with UITableView
+
+To see how to implement infinite scrolling effects using UITableViews, see [[this guide|Table-View-Guide#adding-infinite-scroll]].
