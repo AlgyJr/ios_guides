@@ -60,3 +60,5 @@ func refresh() {
     }
 }
 ```
+
+For a detailed explanation on how to tie pull to refresh to data from UITableViews, see [[this guide|Table-View-Guide#adding-pull-to-refresh]].
