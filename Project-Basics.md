@@ -40,7 +40,7 @@ Your project file contains all the details of your project, such as the source f
 
 This is the entry point for critical events in the life of your app. For instance, fill in `application(application, didFinishLaunchingWithOptions:options)` with any code you want run after your application finishes launching.
 
-For more, read about [[App Architecture|Architecture]]
+For more, read about [[App Architecture|Application-Architecture]]
 
 ### Main.storyboard
 
