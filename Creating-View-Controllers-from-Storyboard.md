@@ -9,8 +9,10 @@ In the Storyboard, select the view controller that you want to instantiate in co
 In order to instantiate the view controller, you need a variable for the storyboard. Most storyboards are named "Main" (this is case sensitive!), but if your storyboard has a different filename, make sure you use that name.
 
 ```swift
-var storyboard = UIStoryboard(name: "Main", bundle: nil)
+// Create a reference to the the appropriate storyboard
+let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
-var vc = storyboard.instantiateViewControllerWithIdentifier("YourViewController") as YourViewController
-
+// Instantiate the desired view controller in the storyboard using the view controllers identifier
+// Cast is as the custom view controller type you created in order to access it's properties and methods
+let yourViewController = storyboard.instantiateViewController(withIdentifier: "YourViewController") as! YourViewController
 ```
