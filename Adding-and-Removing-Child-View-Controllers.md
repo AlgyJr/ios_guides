@@ -3,19 +3,34 @@ Adding and removing child view controllers ensures that the parent view controll
 ### Adding a child view controller
 
 ```swift
+addChildViewController(yourViewController)
+view.addSubview(yourViewController.view)
+yourViewController.didMove(toParentViewController: self)
+```
+
+#### Example function
+
+```swift
 func displayContentController(content: UIViewController) {
     addChildViewController(content)
     self.view.addSubview(content.view)
-    content.didMoveToParentViewController(self)
+    content.didMove(toParentViewController: self)
 }
-
 ```
 
 ### Removing a child view controller
 
 ```swift
+yourViewController.willMove(toParentViewController: nil)
+yourViewController.view.removeFromSuperview()
+yourViewController.removeFromParentViewController()
+```
+
+#### Example function
+
+```swift
 func hideContentController(content: UIViewController) {
-    content.willMoveToParentViewController(nil)
+    content.willMove(toParentViewController: nil)
     content.view.removeFromSuperview()
     content.removeFromParentViewController()
 }
