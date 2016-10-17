@@ -105,7 +105,7 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
         return filteredData.count
     }
 
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_: UISearchBar, textDidChange searchText: String) {
         filteredData = searchText.isEmpty ? data : data.filter({(dataString: String) -> Bool in
             return dataString.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
         })
