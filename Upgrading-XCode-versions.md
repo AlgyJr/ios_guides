@@ -33,7 +33,7 @@ If you accidentally upgraded to XCode 8 and wish to get to XCode 7 that can run 
    sudo mv /Applications/Xcode.app /Applications/Xcode8.app
    ```
 
-2. Download XCode 7.3.1 with this [link](http://adcdownload.apple.com/Developer_Tools/Xcode_7.3.1/Xcode_7.3.1.dmg) from the Apple Developer store. You may need to login to https://developer.apple.com/download/more/ first.
+2. Download XCode 7.3.1 by first signing into [https://developer.apple.com/download/more/](https://developer.apple.com/download/more/) first.  You can then download [XCode 7.3.1](http://adcdownload.apple.com/Developer_Tools/Xcode_7.3.1/Xcode_7.3.1.dmg) from the Apple Developer store. 
 
 3. Reinstall the XCode 7.3.1 image.
 
