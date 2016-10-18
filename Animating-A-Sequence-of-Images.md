@@ -15,7 +15,7 @@ We will hold our image animation in a UIImageView. It will need to be the same s
 Instance Variables are defined below the ``class ViewController: UIViewController { `` and above the ``override func viewDidLoad() {``
 - Define instance variables for your images.
 
-```Swift
+```swift
 var loading_1: UIImage!
 var loading_2: UIImage!
 var loading_3: UIImage!
