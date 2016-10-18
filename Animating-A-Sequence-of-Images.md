@@ -30,7 +30,7 @@ var images: [UIImage]!
 ```
 
 We will store our animated image into another variable of type UIImage.  
-- Define a class variable for your animated image.
+- Define an instance variable for your animated image.
 
 ```Swift
 var animatedImage: UIImage!
@@ -40,7 +40,7 @@ var animatedImage: UIImage!
 It is good practice to define your class variables with an object type, and then assign them values within the ``viewDidLoad`` method.  
 - Link the actual image files in your assets to your image variables. ``myImage = UIImage(named: "image file name)"``
 
-```Swift
+```swift
 loading_1 = UIImage(named: "loading-1")
 loading_2 = UIImage(named: "loading-2")
 loading_3 = UIImage(named: "loading-3")
@@ -48,7 +48,7 @@ loading_3 = UIImage(named: "loading-3")
 
 - Put your images into your ``images`` array.
 
-```Swift
+```swift
 images = [loading_1, loading_2, loading_3]
 ```
 
@@ -56,13 +56,13 @@ images = [loading_1, loading_2, loading_3]
    - The array of images you want it to cycle through
    - The duration you want it to cycle at in seconds. Meaning it will go through all the frames in that time.
 
-```Swift
-animatedImage = UIImage.animatedImageWithImages(images, duration: 1.0)
+```swift
+animatedImage = UIImage.animatedImage(with: images, duration: 1.0)
 ```
 
 - Set the image inside your ImageView to be, ``animatedImage``.
 
-```Swift
+```swift
 ImageView.image = animatedImage
 ```
 
