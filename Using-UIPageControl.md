@@ -24,7 +24,7 @@ In the Storyboard, add a UIPageControl to the view controller. Often, you will p
 Register for the UIScrollView scroll event, for example, you can update the UIPageControl every time the UIScrollView stops moving.
 
 ```swift
-func scrollViewDidEndDecelerating(scrollView: UIScrollView!) {
+func scrollViewDidEndDecelerating(_ scrollView: UIScrollView!) {
     // Get the current page based on the scroll offset
     var page : Int = Int(round(scrollView.contentOffset.x / 320))
     
@@ -44,7 +44,7 @@ pageControl.numberOfPages = 4
 
 **Color of current page dot:**
 ```swift
-pageControl.currentPageIndicatorTintColor = UIColor.redColor()
+pageControl.currentPageIndicatorTintColor = UIColor.red
 ```
 
 For more details, see [[Registering for Scroll Events|Using UIScrollView#heading-registering-for-scroll-events]].
