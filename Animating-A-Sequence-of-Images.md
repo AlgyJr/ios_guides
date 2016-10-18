@@ -25,14 +25,14 @@ We will need to store our images an array in order to easily reference them for 
 - Define a class variable for your ``images`` array. 
 - Note: ``images`` is plural because it will contain multiple images. ``[UIImage]!`` means it will contain a collection of items, each item being of type, UIImage.
 
-```Swift
+```swift
 var images: [UIImage]!
 ```
 
 We will store our animated image into another variable of type UIImage.  
 - Define an instance variable for your animated image.
 
-```Swift
+```swift
 var animatedImage: UIImage!
 ```
 
