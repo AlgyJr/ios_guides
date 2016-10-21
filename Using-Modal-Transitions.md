@@ -8,7 +8,7 @@ This is a quick guide to presenting and dismissing view controllers in Storyboar
 
 #### Step 1: Create the Segue
 
-Ctrl-drag from the button to the view controller that you want to present modally, as show below.
+Ctrl-drag from the button to the view controller that you want to present modally, as shown below.
 
 ![Create Segue|700](http://i.imgur.com/HjGJq93.gif)
 
