@@ -9,8 +9,7 @@ If you create a new window (this is rare), you can also choose its level, which 
 To retrieve the window that is created for you in Storyboard or in the app delegate, do the following:
 
 ```
-var window = UIApplication.sharedApplication().keyWindow
-
+let window = UIApplication.shared.keyWindow
 ```
 
 ### Step 2: Adding a View
@@ -20,8 +19,7 @@ The coordinate (0,0) of the window is at the top left of the phone. Its sometime
 For example, if there is an image view embedded in some other view, you can get its frame in the coordinate system of the window by doing the following:
 
 ```
-var frame = window.convertRect(imageView.frame, fromView: containerView)
-
+let frame = window!.convert(imageView.frame, from: containerView)
 ```
 
 In the example above, the imageView is a subview of containerView. The new frame variable is the coordinate of the imageView if it were a subview of the window.
@@ -29,6 +27,9 @@ In the example above, the imageView is a subview of containerView. The new frame
 To add a view to the window, simply use the add or insert subview methods.
 
 ```
-window.addSubview(imageView)
-
+window!.addSubview(imageView)
 ```
+
+let window = UIApplication.shared.keyWindow
+        
+        
