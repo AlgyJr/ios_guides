@@ -1502,7 +1502,7 @@ class InfiniteScrollActivityView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        activityIndicatorView.center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2)
+        activityIndicatorView.center = CGPoint(x: self.bounds.size.width/2, y: self.bounds.size.height/2)
     }
     
     func setupActivityIndicator() {
