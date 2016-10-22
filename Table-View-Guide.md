@@ -1413,7 +1413,7 @@ func scrollViewDidScroll(scrollView: UIScrollView) {
         let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
 		
         // When the user has scrolled past the threshold, start requesting
-        if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging) {
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
             isMoreDataLoading = true
 	
             // ... Code to load more results ...
