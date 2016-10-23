@@ -149,7 +149,7 @@ There is a nifty `searchBarTextDidBeginEditing` method for UISearchBarDelegate
 that gets called when user starts editing search text. You can show Cancel
 button in that method:
 ```swift
-func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         self.searchBar.showsCancelButton = true
 }
 ```
@@ -159,7 +159,7 @@ method gets called. At this point, you can hide the Cancel button,
 clear existing text in search bar and hide the keyboard like this:
 
 ```swift
-func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
