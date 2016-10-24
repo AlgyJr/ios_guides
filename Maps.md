@@ -118,11 +118,28 @@ MKPointAnnotation is a simple annotation and supports a title.
 ![MKPointAnnotation](http://i.imgur.com/7tskBjZ.png)
 
 ```swift
+// add an Annotation with a coordinate: CLLocationCoordinate2D
 func addAnnotationAtCoordinate(coordinate: CLLocationCoordinate2D) {
     let annotation = MKPointAnnotation()
     annotation.coordinate = coordinate
     annotation.title = "An annotation!"
     mapView.addAnnotation(annotation)
+}
+
+// add an annotation with an address: String
+func addAnnotationAtAddress(address: String) {
+    let geocoder = CLGeocoder()
+    geocoder.geocodeAddressString(address) { (placemarks, error) in
+        if let placemarks = placemarks {
+            if placemarks.count != 0 {
+                let coordinate = placemarks.first!.location!
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = coordinate.coordinate
+                annotation.title = self.nameLabel.text
+                self.mapView.addAnnotation(annotation)
+            }
+        }
+    }
 }
 ```
 
