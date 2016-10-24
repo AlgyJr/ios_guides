@@ -127,7 +127,7 @@ func addAnnotationAtCoordinate(coordinate: CLLocationCoordinate2D) {
 }
 
 // add an annotation with an address: String
-func addAnnotationAtAddress(address: String) {
+func addAnnotationAtAddress(address: String, title: String) {
     let geocoder = CLGeocoder()
     geocoder.geocodeAddressString(address) { (placemarks, error) in
         if let placemarks = placemarks {
@@ -135,7 +135,7 @@ func addAnnotationAtAddress(address: String) {
                 let coordinate = placemarks.first!.location!
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = coordinate.coordinate
-                annotation.title = self.nameLabel.text
+                annotation.title = title
                 self.mapView.addAnnotation(annotation)
             }
         }
