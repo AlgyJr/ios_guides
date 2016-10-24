@@ -61,7 +61,7 @@ import CoreLocation
 Add a locationManager:
 
 ```swift
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, CLLocationManagerDelegate {
   @IBOutlet weak var mapView: MKMapView!
   var locationManager : CLLocationManager!
 
@@ -88,17 +88,17 @@ Click on your map view and then check Shows User Location in the Attributes Insp
 Go to the user's location when permission has been given:
 
 ```swift
-func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-    if status == CLAuthorizationStatus.AuthorizedWhenInUse {
+func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    if status == CLAuthorizationStatus.authorizedWhenInUse {
         locationManager.startUpdatingLocation()
     }
 }
 
-func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     if let location = locations.first {
-      let span = MKCoordinateSpanMake(0.1, 0.1)
-      let region = MKCoordinateRegionMake(location.coordinate, span)
-      mapView.setRegion(region, animated: false)
+        let span = MKCoordinateSpanMake(0.1, 0.1)
+        let region = MKCoordinateRegionMake(location.coordinate, span)
+        mapView.setRegion(region, animated: false)
     }
 }
 ```
