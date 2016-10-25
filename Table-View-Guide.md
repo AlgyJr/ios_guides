@@ -916,7 +916,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath) as UITableViewCell
-        let citiesInSection = data[indexPath.section][1]
+        let citiesInSection = data[indexPath.section].1
         cell.textLabel?.text = citiesInSection[indexPath.row]
         return cell
     }
