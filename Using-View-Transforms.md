@@ -25,6 +25,9 @@ To apply a rotation transform, create it as below. Since the units are in radian
 
 ```swift
 view.transform = CGAffineTransform(rotationAngle: CGFloat(45 * M_PI / 180))
+
+or in Swift 3 syntax:
+view.transform = view.transform.rotated(by:rotation)
 ```
 
 #### Update the rotation from an existing transform
