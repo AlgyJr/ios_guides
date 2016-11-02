@@ -21,8 +21,7 @@ UIView.animate(withDuration:0.4, animations: {
     // This causes first view to fade in and second view to fade out
     self.firstView.alpha = 1
     self.secondView.alpha = 0
-})
-        
+}      
 ```
 
 ### Animation Options:
