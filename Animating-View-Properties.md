@@ -9,7 +9,7 @@ Many UIView properties can be animated, including:
    - scale
    - translation
 
-### Step 1: Create an animation block
+### Basic Animation:
 
 In order to animate one or more views, simply create an animation block. The animation block will animate from the current value to the value that's set within the block. You can call multiple views within the block.
 
@@ -22,6 +22,18 @@ UIView.animate(withDuration:0.4, animations: {
     self.firstView.alpha = 1
     self.secondView.alpha = 0
 }      
+```
+
+### Animation with Completion Block
+
+If you want to run code after the animation has finished, you can use the animation with completion block method.
+
+```swift
+UIView.animate(withDuration: 0.3, animations: { 
+    // Animate view properties here...
+    }) { (Bool) in
+        // Code to run after animation has finished...
+}
 ```
 
 ### Animation Options:
