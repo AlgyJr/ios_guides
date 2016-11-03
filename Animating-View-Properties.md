@@ -24,7 +24,7 @@ UIView.animate(withDuration:0.4, animations: {
 }      
 ```
 
-### Animation with Completion Block
+### Animation with Completion Block:
 
 If you want to run code after the animation has finished, you can use the animation with completion block method.
 
