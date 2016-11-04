@@ -180,6 +180,8 @@ if sampleBuffer != nil {
 }
 ```
 
+**ATTENTION:** pay attention here. We are generating a rotated `UIImage` instance, but the backed `CGImage` will still be rotated in the wrong way.
+
 ### Step 4: Add the Image to the ImageView
 - Finally, add the image to `captureImageView`.
 
