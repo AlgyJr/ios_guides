@@ -31,7 +31,7 @@ Creating an array of buttons will help us easily keep track of what button is ge
 
 - Define variables to hold each ViewController associated with a tab.
 
-```Swift
+```swift
 var homeViewController: UIViewController!
 var searchViewController: UIViewController!
 var accountViewController: UIViewController!
@@ -41,13 +41,13 @@ var trendingViewController: UIViewController!
 We will use an array to hold all our ViewControllers. That way, we can simply pluck out any particular ViewController we want based on the button that was pushed.
 - Define a variable for an array to hold the ViewControllers named, ``viewControllers``.
 
-```Swift
+```swift
 var viewControllers: [UIViewController]!
 ```  
 
 - Define a variable to keep track of the tab button that is selected. Set it to an initial value of ``0``. We will link the button's **tag** value to this variable. So an initial value of ``0`` will reference our first button.
 
-```Swift
+```swift
 var selectedIndex: Int = 0
 ```
 
@@ -57,18 +57,18 @@ Remember, all the ViewControllers we create in the Storyboard don't actually exi
 
 - Within the ``ViewDidLoad()`` method, access the main Storyboard through code.
 
-```Swift
+```swift
 let storyboard = UIStoryboard(name: "Main", bundle: nil)
 ```
 
 - Next, instantiate **each** ViewController by referencing ``storyboard`` and the particular ViewController's **Storyboard ID**
 
-```Swift
+```swift
 homeViewController = storyboard.instantiateViewControllerWithIdentifier("HomeViewController")
 ```
 ### Step 5: Add each ViewController to your viewControllers array
 
-```Swift
+```swift
 viewControllers = [homeViewController, searchViewController, accountViewController, trendingViewController]
 ```
 ### Step 6: Create a Shared Action for the Buttons.
@@ -90,7 +90,7 @@ The ``selectedIndex`` will store the **tag** value of whatever button is selecte
   
 - So, within the ``didPressTab`` method, we can keep track of the **previous** button like this...
 
-```Swift
+```swift
 let previousIndex = selectedIndex
 ```
 
@@ -98,7 +98,7 @@ Remember when we changed **AnyObject** to ``UIButton`` when we hooked up our act
   
 - Set the ``selectedIndex`` to the **tag** value of which ever button was tapped.
 
-```Swift
+```swift
 selectedIndex = sender.tag
 ```
 
@@ -110,19 +110,19 @@ So as you can see, it is no coincidence that we set our first button **tag** val
 
 - Within your ``didPressTab`` method, use your ``previousIndex`` value to access your previous button and set it to the non-selected state.
 
-```Swift
+```swift
 buttons[previousIndex].isSelected = false
 ```
 
 - Use the ``previousIndex`` to access the previous ViewController from the ``viewControllers`` array.
 
-```Swift
+```swift
 let previousVC = viewControllers[previousIndex]
 ```
 
 - Remove the previous ViewController
 
-```Swift
+```swift
 previousVC.willMove(toParentViewController: nil)
 previousVC.view.removeFromSuperview()
 previousVC.removeFromParentViewController()
@@ -132,32 +132,32 @@ previousVC.removeFromParentViewController()
 
 - Within your ``didPressTab`` method, access your current selected button and set it to the selected state.
 
-```Swift
+```swift
 sender.isSelected = true
 ```
 
 - Use the ``selectedIndex`` to access the current ViewController from the ``viewControllers`` array.
 
-```Swift
+```swift
 let vc = viewControllers[selectedIndex]
 ```
 
 - Add the new ViewController. (Calls the ``viewWillAppear`` method of the ViewController you are adding)
 
-```Swift
+```swift
 addChildViewController(vc)
 ```
 
 - Adjust the size of the ViewController view you are adding to match the ``contentView`` of your tabBarViewController and add it as a subView of the ``contentView``.
 
-```Swift
+```swift
 vc.view.frame = contentView.bounds
 contentView.addSubview(vc.view)
 ```
 
 - Call the ``viewDidAppear`` method of the ViewController you are adding using ``didMove(toParentViewController: self)``.
 
-```Swift
+```swift
 vc.didMove(toParentViewController: self)
 ```
 
@@ -167,7 +167,7 @@ We will probably want to set a default tab to be initiated when we start our app
 
 - Within the ``viewDidLoad`` method, near the bottom, set the button state and call the ``didPressTab`` method. We will plug in ``buttons[selectedIndex]`` as arguments in the ``didPressTab`` method to specify the initial button, since we haven't actually "tapped" a button yet and there is no ``sender`` to access.
 
-```Swift
+```swift
 buttons[selectedIndex].isSelected = true
 didPressTab(buttons[selectedIndex])
 ``` 
