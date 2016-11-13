@@ -62,7 +62,7 @@ in your `Main.storyboard`.  By default Xcode will generate an initial
 view controller for you and set it to be the root view controller.  This
 is indicated by the arrow that points to the view controller.  Once you
 start adding more view controllers to your application, you can change
-the root view controller by dragging this this arrow around.  You can
+the root view controller by dragging this arrow around.  You can
 also select a view controller and set it to be the root view controller
 by using the `Is Initial View Controller` checkbox in the Attributes
 Inspector.
