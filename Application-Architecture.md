@@ -8,7 +8,7 @@ comprehensive guide by Apple can be found [here][appguide].
 ## Structure of a `UIApplication`
 
 All iOS applications are instances of [`UIApplication`][uiapplication].
-Each application has a number events in its lifecycle (e.g. launched,
+Each application has a number of events in its lifecycle (e.g. launched,
 went into the background, terminated).  As with other classes in the
 UIKit framework, you control how the application will respond to these
 events by providing it with a [delegate][delegatepattern].  A
