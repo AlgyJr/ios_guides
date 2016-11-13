@@ -40,7 +40,7 @@ app.  It is commonly used as an entry point where you can implement
 custom logic that initializes your application and sets up the first
 view controller.  For example, in applications that require log ins,
 this is a good place to check whether there is a current user and
-initialize different view controllers depending the "logged in" state.
+initialize different view controllers depending on the "logged in" state.
 
 [didfinishlaunching]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIApplicationDelegate_Protocol/index.html#//apple_ref/occ/intfm/UIApplicationDelegate/application:didFinishLaunchingWithOptions:
 
