@@ -80,9 +80,9 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow!
+    var window: UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let vc = UIViewController()
 
         let label = UILabel()
@@ -92,15 +92,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // by default a UIViewController's .view property is set to an instance of UIView
         // of course you can set this to any custom subclass of UIView
         // one way to do this is subclass UIViewController and override the loadView method
-        vc.view.backgroundColor = UIColor.cyanColor()
+        vc.view.backgroundColor = UIColor.cyan
         vc.view.addSubview(label)
 
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window = UIWindow(frame: UIScreen.main.bounds)
 
         // This can be set to any subclass of UIViewController.  You can also use conditional
         // logic here to set up different view controllers depending on application state
-        window.rootViewController =  vc
-        window.makeKeyAndVisible()
+        window?.rootViewController = vc
+        window?.makeKeyAndVisible()
+
         return true
     }
     ...
