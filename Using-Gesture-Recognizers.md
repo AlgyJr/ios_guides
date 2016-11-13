@@ -46,7 +46,7 @@ Gesture recognizers call the same selector as it transitions through various sta
 
 ```swift
 func didTap(sender: UITapGestureRecognizer) {
-   let point = let location = sender.location(in: view)
+   let location = sender.location(in: view)
    // User tapped at the point above. Do something with that if you want.
 }
 ```
