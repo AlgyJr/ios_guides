@@ -14,5 +14,5 @@ let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
 // Instantiate the desired view controller from the storyboard using the view controllers identifier
 // Cast is as the custom view controller type you created in order to access it's properties and methods
-let yourViewController = storyboard.instantiateViewController(withIdentifier: "YourViewController") as! YourViewController
+let customViewController = storyboard.instantiateViewController(withIdentifier: "CustomViewController") as! CustomViewController
 ```
