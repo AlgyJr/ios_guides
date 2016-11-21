@@ -40,16 +40,16 @@ It is also often useful to monitor the network traffic to help diagnose these is
 
 ***On your phone:***
 
-1. If you are on an iOS device, open Safari and go to [http://www.charlesproxy.com/getssl](http://www.charlesproxy.com/getssl).  If you are using the simulator, the certificate should already be installed if you followed the previous steps.
-
-2. Go to the Settings app, tap Wi-Fi, find the network you are connected to and then tap it to configure the network. 
+1. Go to the Settings app, tap Wi-Fi, find the network you are connected to and then tap it to configure the network. 
 
    <img src="http://imgur.com/8KUEzr1.png"/>
 
    Scroll down to the HTTP Proxy setting, tap Manual. 
 
    Enter the IP address of your computer running Charles in the Server field, and the port Charles is running on in the Port field (usually 8888). Leave Authentication set to Off.
-   
+
+2. If you are on an iOS device, open Safari and go to [http://www.charlesproxy.com/getssl](http://www.charlesproxy.com/getssl).  If you are using the simulator, the certificate should already be installed if you followed the previous steps.
+  
 3. Connect to any web site.  You need to go back to the PC to grant authorization for the device to connect:
 
    <img src="http://imgur.com/yuRmGRC.png">
