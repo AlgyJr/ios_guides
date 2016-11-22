@@ -195,7 +195,7 @@ The `/parse` path needs to match the `PARSE_MOUNT` environment variable, which i
 
 ### Enabling Push Notifications
 
-1. Follow Parse's [step #1](https://github.com/ParsePlatform/PushTutorial/blob/master/iOS/README.md#1-creating-the-ssl-certificate) for creating a development SSL certificate.  You will need this certificates to connect to Apple's Push Notification Service (APNS) sandbox system.  
+1. Follow Parse's [step #1](https://github.com/ParsePlatform/PushTutorial/blob/master/iOS/README.md#1-creating-the-ssl-certificate) for creating a development SSL certificate.  You will need these certificates to connect to Apple's Push Notification Service (APNS) sandbox system.  
 
 2. Fork your own [copy](https://github.com/ParsePlatform/parse-server-example) of the Parse server code that initially used to deploy to Heroku.  You will need to reconfigure your Heroku instance to point to this repo instead of Parse's because of additional customizations needed to be made on the `index.js` file within this repo.  
 
