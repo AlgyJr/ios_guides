@@ -7,7 +7,6 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 # The Guides
 
 ## Getting Started
-
 * [[Setting Up Your Environment|Setup|]]
 * [[Starting a New Project|New Project (designers)]]
 * [[Common Issues]]
@@ -46,7 +45,6 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Registering for Text Field Events]]
 * [[Creating a Log In Screen]]
 
-
 ## Common UIViews
 * [[Using UIScrollView]]
 * [[Using UIImageView]]
@@ -71,9 +69,11 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Using Git with Terminal]]
 
 ## Notifications
-
 * [[Local Notifications]]
 * [[Remote Notifications]]
+
+## Schema
+* [[Local Data Persistence using Realm]]
 
 ## Helpful 3rd Party Libraries 
 * [[TTTAttributedLabel]]
