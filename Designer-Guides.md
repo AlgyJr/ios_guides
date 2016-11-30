@@ -67,6 +67,7 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Using Custom Code Snippets]]
 * [[Internet Permissions]]
 * [[Using Git with Terminal]]
+* [[Asynchronous Queues]]
 
 ## Notifications
 * [[Local Notifications]]
