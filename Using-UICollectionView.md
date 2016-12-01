@@ -68,7 +68,7 @@ Create outlets to the custom cell class for any view you want to configure in co
 There are many collection view methods, but the only required methods are to set the number of items for the collection view and to return the cell for each item.
 
 ```
-func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {   
+func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {   
     // Set the number of items in your collection view.
     return 20        
 }
@@ -77,9 +77,9 @@ func collectionView(collectionView: UICollectionView, numberOfItemsInSection sec
 Use the `dequeueReusableCellWithReuseIdentifier()` method to access your reusable cell. In order to access properties and methods in your Custom Cell Swift file, you will need to cast your cell to be of type, `YourCustomCell` using `as! YourCustomCell`. 
 
 ```
-func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     // Access
-    let cell = yourCollectionView.dequeueReusableCellWithReuseIdentifier("YourCustomCell", forIndexPath: indexPath) as! YourCustomCell
+    let cell = yourCollectionView.dequeueReusableCell(withReuseIdentifier: "YourCustomCell", for: indexPath) as! YourCustomCell
     // Do any custom modifications you your cell, referencing the outlets you defined in the Custom cell file.
     cell.backgroundColor = UIColor.whiteColor()
     cell.label.text = "item \(indexPath.item)"
