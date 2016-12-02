@@ -1,4 +1,4 @@
-# Local Data Persistance - Realm
+# Local Data Persistence - Using Realm
 
 ## Overview
 
@@ -35,7 +35,7 @@ end
 ```
 pod install
 ```
-- Close your Xcode Project and open up the `.xcworkspace` file (Once you add Cocoapods, you will always use the `.xcworkspace` file instead of `.xcproject`)
+- Close your Xcode Project and open up the `.xcworkspace` file (Once you add Cocoapods, you will always use the `.xcworkspace` file instead of `.xcodeproj`)
 
 ## Create a Class
 
