@@ -74,7 +74,7 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 * [[Remote Notifications]]
 
 ## Schema
-* [[Local Data Persistence using Realm]]
+* [[Local Data Persistence Using Realm]]
 
 ## Helpful 3rd Party Libraries 
 * [[TTTAttributedLabel]]
