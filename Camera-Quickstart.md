@@ -20,8 +20,8 @@ self.present(vc, animated: true, completion: nil)
 In the class interface, declare that it implements two protocols: `UIImagePickerControllerDelegate` and `UINavigationControllerDelegate`.
 
 ```swift
-func imagePickerController(picker: UIImagePickerController,
-    didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+func imagePickerController(_ picker: UIImagePickerController, 
+didFinishPickingMediaWithInfo info: [String : Any]) {
     // Get the image captured by the UIImagePickerController
     let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
     let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
