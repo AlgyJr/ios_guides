@@ -10,9 +10,9 @@ This is a quickstart guide for using the taking a photo or picking an image from
 let vc = UIImagePickerController()
 vc.delegate = self
 vc.allowsEditing = true
-vc.sourceType = UIImagePickerControllerSourceType.Camera
+vc.sourceType = UIImagePickerControllerSourceType.camera
 
-self.presentViewController(vc, animated: true, completion: nil)
+self.present(vc, animated: true, completion: nil)
 ```
 
 ### Step 2: Implement the delegate
@@ -29,7 +29,7 @@ func imagePickerController(picker: UIImagePickerController,
     // Do something with the images (based on your use case)
 
     // Dismiss UIImagePickerController to go back to your original view controller
-    dismissViewControllerAnimated(true, completion: nil)
+    dismiss(animated: true, completion: nil)
 }
 ```
 
@@ -43,9 +43,9 @@ When the user finishes taking the picture, `UIImagePickerController` returns a d
 let vc = UIImagePickerController()
 vc.delegate = self
 vc.allowsEditing = true
-vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+vc.sourceType = UIImagePickerControllerSourceType.photoLibrary
 
-self.presentViewController(vc, animated: true, completion: nil)
+self.present(vc, animated: true, completion: nil)
 ```
 
 ### Step 2: Implement the delegate
