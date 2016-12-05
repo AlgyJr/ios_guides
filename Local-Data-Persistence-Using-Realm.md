@@ -1,6 +1,7 @@
 # Local Data Persistence - Using Realm
 
 ## Overview
+The RealmSwift library allows you to easily persist your data model.
 
 ## Project Setup - CocoaPods
 - Navigate to your project directory in Terminal
@@ -36,8 +37,15 @@ end
 pod install
 ```
 - Close your Xcode Project and open up the `.xcworkspace` file (Once you add Cocoapods, you will always use the `.xcworkspace` file instead of `.xcodeproj`)
+- Clean `cmd + shift + k` and build `cmd + b` your project. This is nessesary to get your project to "see" any pods you have added. 
 
 ## Create a Class
+- Import the RealmSwift module anywhere you want access to RealmSwift objects and methods
+```
+import RealmSwift
+// If you get a "no module 'RealmSwift'" error, erase the import line and clean and build your project.
+```
+- Create your class as a subclass of the RealmSwift
 
 ## Saving Data
 
