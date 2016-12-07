@@ -11,8 +11,8 @@ We will hold our image animation in a UIImageView. It will need to be the same s
 - Add a UIImageView to your ViewController. You can do this in Storyboard or programmatically. View the [Using UIImageView](http://courses.codepath.com/courses/ios_for_designers/pages/using_uiimageview) article to learn how to use the `UIImageView` class. **HINT:** A simple way is to just drag the first image "frame" on to the Storyboard from the *Media Library* at the bottom of the *Utilities* pane and it will automatically create an ImageView the correct size of your image frame. 
 - If you created your ImageView in Storyboard, create an outlet to your ViewController code file by <kbd>ctrl + drag</kbd> from the ImageView.
   
-### Step 3: Define Your Instance Variables  
-Instance Variables are defined below the ``class ViewController: UIViewController { `` and above the ``override func viewDidLoad() {``
+### Step 3: Declare Your Instance Variables  
+Instance Variables are declared below the ``class ViewController: UIViewController { `` and above the ``override func viewDidLoad() {``
 - Define instance variables for your images.
 
 ```swift
@@ -22,7 +22,7 @@ var loading_3: UIImage!
 ```  
 
 We will need to store our images an array in order to easily reference them for our animation.  
-- Define a class variable for your ``images`` array. 
+- Define an instance variable for your ``images`` array. 
 - Note: ``images`` is plural because it will contain multiple images. ``[UIImage]!`` means it will contain a collection of items, each item being of type, UIImage.
 
 ```swift
@@ -37,8 +37,8 @@ var animatedImage: UIImage!
 ```
 
 ### Step 4: Assign Values to Your Variables
-It is good practice to define your class variables with an object type, and then assign them values within the ``viewDidLoad`` method.  
-- Link the actual image files in your assets to your image variables. ``myImage = UIImage(named: "image file name)"``
+Assign values to the variables you declared above within the ``viewDidLoad()`` method.  
+- Assign the image files in your assets to your image variables.
 
 ```swift
 loading_1 = UIImage(named: "loading-1")
