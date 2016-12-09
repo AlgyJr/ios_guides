@@ -240,7 +240,7 @@ Finally we use our table view data source and delegate methods to
 populate our menu table with one cell for each view controller in the
 `viewControllerArray`.  When the user selects a cell we set the
 corresponding view controller to be the active view controller and hide
-the menu.  Notice that observer on `activeViewController` above will the
+the menu.  Notice that the observer on `activeViewController` above will do the
 swapping in/out of the child view controllers for us.
 
 ```swift
