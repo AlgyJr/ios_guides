@@ -66,8 +66,12 @@ You can set the Map's region whenever you want.
 ```swift 
 override func viewDidLoad() {
     super.viewDidLoad()
-
-    mapView.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.783333, -122.416667), MKCoordinateSpanMake(0.1, 0.1)), animated: false) 
+    ...
+    
+    let mapCenter = CLLocationCoordinate2D(latitude: 37.783333, longitude: -122.416667)
+    let mapSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+    let region = MKCoordinateRegion(center: mapCenter, span: mapSpan)
+    mapView.setRegion(region, animated: false)
 }
 ```
 
@@ -77,13 +81,16 @@ In general use `animated: false` if the map isn't on screen, and `animated: true
 
 ### Drop Pins at locations
 
+![drop a pin|200]()
+
 When you add a `MKPointAnnotation` to your view, a Pin appears!
 
 ```swift 
 func addPin() {
     let annotation = MKPointAnnotation()
-    var locationCoordinate = CLLocationCoordinate2DMake(37.783333, -122.416667)
+    let locationCoordinate = CLLocationCoordinate2D(latitude: 37.779560, longitude: -122.393027)
     annotation.coordinate = locationCoordinate
+    annotation.title = "Founders Den"
     mapView.addAnnotation(annotation)
 }
 ```
@@ -96,8 +103,12 @@ You can trigger any action when a user taps on your Annotation.
 * Add this function, letting you know that your Annotation was tapped
 
 ```swift 
-func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
-    UIAlertView(title: "tapped Annotation!", message: view.annotation.title, delegate: nil, cancelButtonTitle: "OK").show()
+func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+    if let annotation = view.annotation {
+        if let title = annotation.title! {
+            print("Tapped \(title) pin")
+        }
+    }
 }
 ```
 
@@ -107,14 +118,28 @@ func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView
 * Implement the following function in your view controller
 
 ```swift
-func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     let reuseID = "myAnnotationView"
-    var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseID)
-    if (annotationView == nil) {
-        annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
+    var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseID)
+    if annotationView == nil {
+        annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
+        /// show the callout "bubble" when annotation view is selected
+        annotationView?.canShowCallout = true
     }
-    
-    annotationView.image = UIImage(named: "pinImage") 
+
+    /// Set the "pin" image of the annotation view
+    let pinImage = UIImage(named: "pin")
+    annotationView?.image = pinImage
+
+    /// Add an info button to the callout "bubble" of the annotation view
+    let rightCalloutButton = UIButton(type: .detailDisclosure)
+    annotationView?.rightCalloutAccessoryView = rightCalloutButton
+
+    /// Add image to the callout "bubble" of the annotation view
+    let image = UIImage(named: "founders_den")
+    let leftCalloutImageView = UIImageView(image: image)
+    annotationView?.leftCalloutAccessoryView = leftCalloutImageView
+
     return annotationView
 }
 ```
@@ -128,10 +153,13 @@ To have a different image for each Annotation, you will need to store which imag
 The following example will take a tapped Annotation's coordinate, and use it to open Apple Maps where they can get directions, etc.
 
 ```swift
-func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
-    var appleMapsURL = "http://maps.apple.com/?q=\(view.annotation.coordinate.latitude),\(view.annotation.coordinate.longitude)"
-    UIApplication.sharedApplication().openURL(NSURL(string: appleMapsURL)!)
+func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+    let lattitude = view.annotation?.coordinate.latitude
+    let longitude = view.annotation?.coordinate.longitude
+    guard let appleMapsURL = URL(string: "http://maps.apple.com/?q=\(lattitude),\(longitude)") else { return }
+    UIApplication.shared.open(appleMapsURL, options: [:], completionHandler: nil)
 }
+
 ```
 
 ### Get permission to use the user's location
