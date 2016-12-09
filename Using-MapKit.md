@@ -81,8 +81,6 @@ In general use `animated: false` if the map isn't on screen, and `animated: true
 
 ### Drop Pins at locations
 
-![drop a pin|200]()
-
 When you add a `MKPointAnnotation` to your view, a Pin appears!
 
 ```swift 
