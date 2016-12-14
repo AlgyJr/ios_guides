@@ -10,11 +10,13 @@ To save a key to UserDefaults, do something like this:
 //Access UserDefaults
 let defaults = UserDefaults.standard
 
-// Set a string value for some key.
+// Set a String value for some key.
 defaults.set("Hello World!", forKey: "myString")
-// Set an int value for some key.
+// Set an Integer value for some key.
 defaults.set(123, forKey: "myInt")
-// Set a bool value for some key.
+// Set a Double value for some key.
+defaults.set(123.00, forKey: "myDouble")
+// Set a Bool value for some key.
 defaults.set(true, forKey: "myBool")
 
 // Force UserDefaults to save.
@@ -31,11 +33,16 @@ To load a key from UserDefaults, do something like this:
 ```swift
 // Access UserDefaults
 let defaults = UserDefaults.standard
+```
 
-// Get a string value for a given key and provide a default string in the case the string is nil.
+Get values of different types from a given key
+```swift
+// Get a string value and provide a default string in the case the string is nil.
 let stringValue = defaults.string(forKey: "myString") ?? "my default string"
-// Get an int value for a given key.
+// Get an Integer value.
 let intValue = defaults.integer(forKey: "myInt")
-// Get a bool value for a given key.
+// Get a Double value.
+let doubleValue = defaults.double(forKey: "myDouble")
+// Get a Bool value.
 let boolValue = defaults.bool(forKey: "myBool")
 ```
