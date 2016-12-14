@@ -61,7 +61,7 @@ In terms of prototyping, the goal of the guides is to first provide the tools ne
 ## Helpful System Utilities
 * [[Using UIKitDynamics]]
 * [[Calling a Method After Delay]]
-* [[Using NSUserDefaults]]
+* [[UserDefaults]]
 * [[Using Timers]]
 * [[Color Matching]]
 * [[Using Custom Code Snippets]]
