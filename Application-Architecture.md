@@ -1,5 +1,5 @@
 An iOS project is composed of many files that define different aspects
-the application.  This guide presents high level overview of the most
+of the application.  This guide presents high level overview of the most
 common components of an application and how they fit together.  A more
 comprehensive guide by Apple can be found [here][appguide].
 
