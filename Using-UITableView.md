@@ -78,7 +78,7 @@ Create outlets to the custom cell class for any view you want to configure in co
 
 ```swift
 func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("YourCustomCell") as YourCustomCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "YourCustomCell") as! YourCustomCell
 
     // Configure YourCustomCell using the outlets that you've defined.
 
