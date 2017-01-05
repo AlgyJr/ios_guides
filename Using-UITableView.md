@@ -45,13 +45,13 @@ override func viewDidLoad() {
 There are many table view methods, but the only required methods are to set the number of rows for the table view and to return the cell for each row.
 
 ```swift
-func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 5
 }
 
 func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = UITableViewCell()
-    cell.textLabel.text = "This is row \(indexPath.row)"
+    cell.textLabel?.text = "This is row \(indexPath.row)"
 
     return cell
 }
