@@ -49,7 +49,7 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
     return 5
 }
 
-func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = UITableViewCell()
     cell.textLabel?.text = "This is row \(indexPath.row)"
 
