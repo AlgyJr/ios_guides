@@ -14,7 +14,7 @@ animating the addition or removal of rows.
 This guide covers typical use cases and common issues that arise when
 using `UITableViews`.  All our examples are provided in Swift, but they
 should be easy to adapt for an Objective-C project.  A more
-comprehensive guide by Apple (writen for Objective-C) can found
+comprehensive guide by Apple (written for Objective-C) can found
 [here][tableviewprogrammingguide].
 
 [tableviewprogrammingguide]: https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/TableView_iPhone/AboutTableViewsiPhone/AboutTableViewsiPhone.html#//apple_ref/doc/uid/TP40007451-CH1-SW1
@@ -94,13 +94,14 @@ class ViewController: UIViewController, UITableViewDataSource {
         tableView.dataSource = self
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         cell.textLabel?.text = data[indexPath.row]
         return cell
     }
-
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
 }
@@ -128,16 +129,16 @@ situations.
 
 We implement the two required methods in the `UITableViewDataSource` protocol:
 
-1. `func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int`
+1. `func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int`
 is responsible for telling the `UITableView` how many rows are in each section
 of the table.  Since we only have one section, we simply return the length of
 our `data` array which corresponds to the number of total cells we want.  To
 create tables with multiple sections we would implement the
-[`numberOfSectionsInTableView`][numberofsections] method and possibly return different
+[`numberOfSections][numberofsections] method and possibly return different
 values in our [`numberOfRowsInSection`][numberofrowsinsection] method depending
 the `section` that was passed in.
 
-2. `func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell` is responsible for
+2. `func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell` is responsible for
 returning a preconfigured cell that will be used to render the row in
 the table specified by the `indexPath`.   The [`indexPath`][nsindexpath]
 identifies a specific row in a specific section of the table the via the
@@ -151,11 +152,11 @@ one section, we can ignore `section` for now.
 ## Reusing `UITableViewCells`
 
 An implementation of the
-[`cellForRowAtIndexPath`][cellforrowatindexpath] method must return an
+[`cellForRowAt`][cellforrowat] method must return an
 instance of [`UITableViewCell`][uitableviewcell] that is configured with
 the data for the row specified by the `indexPath`.  In the above code we
 created a new instance of the UIKit-provided `UITableViewCell`
-class for each call to `cellForRowAtIndexPath`.  Since our table had
+class for each call to `cellForRowAt`.  Since our table had
 only a few simple cells you might not have noticed any appreciable
 performance drop.  However, in practice, you will almost __never create
 a new cell object for each row__ due to performance costs and memory
@@ -175,7 +176,7 @@ currently being displayed and to be able to respond if the set of visible rows
 is changed.  Luckily `UITableView` has built-in methods that make cell reuse
 quite simple to implement.  We can modify our code example above to read
 
-[cellforrowatindexpath]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewDataSource_Protocol/index.html#//apple_ref/occ/intfm/UITableViewDataSource/tableView:cellForRowAtIndexPath:
+[cellforrowat]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewDataSource_Protocol/index.html#//apple_ref/occ/intfm/UITableViewDataSource/tableView:cellForRowAtIndexPath:
 
 ```swift
 import UIKit
@@ -194,33 +195,33 @@ class ViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: CellIdentifier)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: CellIdentifier)
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier, for: indexPath) as UITableViewCell
         cell.textLabel?.text = data[indexPath.row]
         return cell
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
 }
 ```
 
 In `viewDidLoad` we call our `UITableView`'s
-[`registerClass:forCellReuseIdentifier:`][registerclass] to associate the
+[`register(AnyClass?, forCellReuseIdentifier:`][register] to associate the
 built-in class `UITableViewCell` with the constant string identifier
 `CellIdentifier`.  Notice that we do not explicitly create an instance here.
 The `UITableView` will handle the creation of all cell objects for us.
 
 In `cellForRowAtIndexPath`, we call
-[`dequeueReusableCellWithIdentifier:forIndexPath:`][dequeuecell] to obtain a
+[`dequeueReusableCell:withIdentifier:forIndexPath:`][dequeuecell] to obtain a
 pre-created instance of `UITableViewCell` and then we proceed to populate this
 cell with the data for the given row before returning it.
 
-[registerclass]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instm/UITableView/registerClass:forCellReuseIdentifier:
+[register]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instm/UITableView/registerClass:forCellReuseIdentifier:
 [dequeuecell]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instm/UITableView/dequeueReusableCellWithIdentifier:forIndexPath:
 
 #### Notes about the cell reuse pattern
@@ -229,19 +230,19 @@ cell with the data for the given row before returning it.
 an instance of the wrong type of cell.  Also be sure to register
 a cell identifer with the `UITableView` before attempting to dequeue
 a cell using that identifier.  Attempting to call
-`dequeueReusableCellWithIdentifier` with an unregistered identifier will
+`dequeueReusableCell` with an unregistered identifier will
 cause your app to crash.
 
-* When we explicitly instantiated each cell object in `cellForRowAtIndexPath` we
+* When we explicitly instantiated each cell object in `cellForRowAt` we
   were able to specify the cell `style: .Default`.  When we called
-`dequeueReusableCellWithIdentifier` there was no place to specify the style.
-When using `dequeueReusableCellWithIdentifier` you have no control over the
+`dequeueReusableCell` there was no place to specify the style.
+When using `dequeueReusableCell` you have no control over the
 initilization of your cell.  [In practice][cellstyle], you will want to create
 your own subclass of `UITableViewCell` and add initialization common to all
 cells in the class in the initializer.
 
 * Any configuration of the cell on a per row basis should be done in
-  `cellForRowAtIndexPath`.  When designing a custom cell class be sure
+  `cellForRowAt`.  When designing a custom cell class be sure
 to expose a way to configure properties you need to change on a per row
 basis.  In this case the built-in `UITableViewCell` gives us access to
 its `textLabel` so that we are able to set different text for each row.
@@ -249,7 +250,7 @@ With more complex cells however, you may want to provide convenience
 methods that wrap the configuration logic within the custom cell class.
 
 * There are no guarantees on the state of the cell that is returned by
-  `dequeueReusableCellWithIdentifier`.  __The cell will not necessarily
+  `dequeueReusableCell`.  __The cell will not necessarily
 be in the newly initialized state.__  In general, it will have
 properties that were previously set when configuring it with the data of
 another row.  Be sure reconfigure __all__ properties to match the data of
@@ -839,11 +840,11 @@ class ViewController: UIViewController, UITableViewDataSource {
 Rows in a `UITableView` can be grouped under section headers.  You can
 control how many sections are in the table and how many rows are
 in each section by implementing the
-[`numberOfSectionsInTableView`][numberofsections] and the
+[`numberOfSections`][numberofsections] and the
 [`numberOfRowsInSection`][numberofrowsinsection] methods respectively in
 our `UITableViewDataSource`.  You would then need your
 [`cellForRowAtIndexPath`][cellforrowatindexpath] implementation to
-support multiple sections and recturn the correct row under the correct
+support multiple sections and return the correct row under the correct
 section specified by the `indexPath`.
 
 ### Section header views
