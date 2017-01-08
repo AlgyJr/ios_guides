@@ -6,7 +6,7 @@
 
 <a href="http://imgur.com/sI6L9Bx"><img src="http://i.imgur.com/sI6L9Bx.jpg" title="Table Views" /></a>
 
-This guide provides a quick recipes for setting up and using a simple
+This guide provides a quick recipe for setting up and using a simple
 table view with Interface Builder and prototype cells.
 
 ## Table view setup
@@ -17,7 +17,7 @@ abbreviations.
 
 ### Step 1: Determine what data you need to display in the table
 Figure out what data you need to display in the table and how you're
-going to obtain this data.  In our example we have static fixture which
+going to obtain this data.  In our example, we have a static fixture which
 is a list of strings.
 
 ```swift
@@ -123,15 +123,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("com.codepath.DemoPrototypeCell", forIndexPath: indexPath) as DemoPrototypeCell
-        let cityState = data[indexPath.row].componentsSeparatedByString(", ")
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "com.codepath.DemoPrototypeCell", for: indexPath) as! DemoPrototypeCell
+        let cityState = data[indexPath.row].components(separatedBy: ", ")
         cell.cityLabel.text = cityState.first
         cell.stateLabel.text = cityState.last
         return cell
     }
-
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
 }
@@ -167,7 +167,7 @@ The most common event you'll need respond to is the user selecting a row
 in the table.
 
 #### Segue to another view controller
-A common behavior when a row is selected is to push a new view
+A common behavior when a row is selected, is to push a new view
 controller with details about that row.  You can do this in a storyboard
 by control-dragging from the cell and selecting the appropriate segue
 under the `Selection Segue` section.
@@ -182,12 +182,12 @@ You can also respond programmatically by implementing the
 [didselectrow]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewDelegate_Protocol/index.html#//apple_ref/occ/intfm/UITableViewDelegate/tableView:didSelectRowAtIndexPath:
 
 ```swift
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView,didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         // do something here
     }
 ```
 
 ## Further reading
-* [Our table view guide](Table-View-Guide#) offers more in depth coverage of this topic
+* [Our table view guide](Table-View-Guide#) offers more in-depth coverage of this topic
 * [Apple's table view programming guide](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/TableView_iPhone/AboutTableViewsiPhone/AboutTableViewsiPhone.html)
