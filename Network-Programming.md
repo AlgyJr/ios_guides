@@ -20,7 +20,7 @@ to make URL requests and is part of Apple's Foundation Framework.
 * does not handle parsing of common content types
 * not much built in support for HTTP error codes / request parameters
 
-[nsurlconnectionguide]: https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/URLLoadingSystem/Tasks/UsingNSURLConnection.html
+[nsurlconnectionguide]: https://developer.apple.com/reference/foundation/nsurlconnection
 
 **[NSURLSession][nsurlsessionguide]** a higher level library that is part
 of Apple's Foundation Framework.
@@ -162,23 +162,23 @@ class Post {
     class func fetchPosts(successCallback: (NSDictionary) -> Void, errorCallback: ((NSError?) -> Void)?) {
         let clientId = "Put_Your_Client_Id_Here"
         let url = NSURL(string:"https://api.instagram.com/v1/media/popular?client_id=\(clientId)")
-        let request = NSURLRequest(URL: url!)
-        let session = NSURLSession(
-            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+        let request = NSURLRequest(url: url! as URL)
+        let session = URLSession(
+            configuration: URLSessionConfiguration.default,
             delegate:nil,
-            delegateQueue:NSOperationQueue.mainQueue()
+            delegateQueue:OperationQueue.mainQueue
         )
         
-        let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
-            completionHandler: { (dataOrNil, responseOrNil, errorOrNil) in
-                if let requestError = errorOrNil {
+        let task : URLSessionDataTask = 
+            session.dataTaskWithRequest(request, completionHandler: 
+            { (dataOrNil, responseOrNil, errorOrNil) in
+                if let requestError = errorOrNil { 
                     errorCallback?(requestError)
                 } else {
                     if let data = dataOrNil {
-                        if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
-                            data, options:[]) as? NSDictionary {
-                                NSLog("response: \(responseDictionary)")
-                                successCallback(responseDictionary)
+                        if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData( data, options:[]) as? NSDictionary { 
+                            NSLog("response: \(responseDictionary)")
+                            successCallback(responseDictionary)
                         }
                     }
                 }
