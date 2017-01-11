@@ -1548,7 +1548,7 @@ override func viewDidLoad() {
     super.viewDidLoad()
 
     // Set up Infinite Scroll loading indicator
-    let frame = CGRectMake(0, tableView.contentSize.height, tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight)
+    let frame = CGRect(x: 0, y: tableView.contentSize.height, width: tableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
     loadingMoreView = InfiniteScrollActivityView(frame: frame)
     loadingMoreView!.hidden = true
     tableView.addSubview(loadingMoreView!)
@@ -1573,7 +1573,7 @@ func scrollViewDidScroll(scrollView: UIScrollView) {
             isMoreDataLoading = true
 
             // Update position of loadingMoreView, and start loading indicator
-            let frame = CGRectMake(0, tableView.contentSize.height, tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight)
+            let frame = CGRect(x: 0, y: tableView.contentSize.height, width: tableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
             loadingMoreView?.frame = frame
             loadingMoreView!.startAnimating()
 
@@ -1649,7 +1649,7 @@ class MyTableViewController: UITableViewController {
 }
 ```
 
-Then, in your cell, disable the margins, and the margins it may inherent from parent views.
+Then, in your cell, disable the margins, and the margins it may inherit from parent views.
 
 ```
 class MyTableViewCell: UITableViewCell
