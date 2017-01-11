@@ -216,8 +216,8 @@ built-in class `UITableViewCell` with the constant string identifier
 `CellIdentifier`.  Notice that we do not explicitly create an instance here.
 The `UITableView` will handle the creation of all cell objects for us.
 
-In `cellForRowAtIndexPath`, we call
-[`dequeueReusableCell:withIdentifier:forIndexPath:`][dequeuecell] to obtain a
+In `cellForRowAt indexPath:`, we call
+[`dequeueReusableCell(withIdentifier: for:)`][dequeuecell] to obtain a
 pre-created instance of `UITableViewCell` and then we proceed to populate this
 cell with the data for the given row before returning it.
 
@@ -230,27 +230,27 @@ cell with the data for the given row before returning it.
 an instance of the wrong type of cell.  Also be sure to register
 a cell identifer with the `UITableView` before attempting to dequeue
 a cell using that identifier.  Attempting to call
-`dequeueReusableCell` with an unregistered identifier will
+`dequeueReusableCell(withIdentifier: for:)` with an unregistered identifier will
 cause your app to crash.
 
 * When we explicitly instantiated each cell object in `cellForRowAt` we
   were able to specify the cell `style: .Default`.  When we called
-`dequeueReusableCell` there was no place to specify the style.
-When using `dequeueReusableCell` you have no control over the
-initilization of your cell.  [In practice][cellstyle], you will want to create
+`dequeueReusableCell(withIdentifier: for:)` there was no place to specify the style.
+When using `dequeueReusableCell(withIdentifier: for:)` you have no control over the
+initialization of your cell.  [In practice][cellstyle], you will want to create
 your own subclass of `UITableViewCell` and add initialization common to all
 cells in the class in the initializer.
 
 * Any configuration of the cell on a per row basis should be done in
   `cellForRowAt`.  When designing a custom cell class be sure
 to expose a way to configure properties you need to change on a per row
-basis.  In this case the built-in `UITableViewCell` gives us access to
+basis.  In this case, the built-in `UITableViewCell` gives us access to
 its `textLabel` so that we are able to set different text for each row.
-With more complex cells however, you may want to provide convenience
+With more complex cells, however, you may want to provide convenience
 methods that wrap the configuration logic within the custom cell class.
 
 * There are no guarantees on the state of the cell that is returned by
-  `dequeueReusableCell`.  __The cell will not necessarily
+  `dequeueReusableCell(withIdentifier: for:)`.  __The cell will not necessarily
 be in the newly initialized state.__  In general, it will have
 properties that were previously set when configuring it with the data of
 another row.  Be sure reconfigure __all__ properties to match the data of
@@ -339,8 +339,8 @@ a unique string that can be used to identify this type of cell.
 
 <a href="http://imgur.com/nZdbnm5"><img src="http://i.imgur.com/nZdbnm5.png" title="Setting the Reuse Identifier" /></a>
 
-You can now use this identifier when calling `dequeueReusableCellWithIdentifier`
-in your implementation of `cellForRowAtIndexPath`.  Notice that the compiler
+You can now use this identifier when calling `dequeueReusableCell(withIdentifier: for:)`
+in your implementation of `cellForRowAt indexPath:`.  Notice that the compiler
 cannot infer the type of your custom cell class from the reuse identifier and
 you must explicitly cast the resulting object to the correct class.
 
@@ -370,17 +370,19 @@ class ViewController: UIViewController, UITableViewDataSource {
         tableView.dataSource = self
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("com.codepath.DemoPrototypeCell", forIndexPath: indexPath) as DemoPrototypeCell
-        let cityState = data[indexPath.row].componentsSeparatedByString(", ")
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "com.codepath.DemoPrototypeCell", for: indexPath) as! DemoPrototypeCell
+        let cityState = data[indexPath.row].components(separatedBy: ", ")
         cell.cityLabel.text = cityState.first
         cell.stateLabel.text = cityState.last
         return cell
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
+
+    
 }
 ```
 Putting everything together we get a table that looks like this:
@@ -453,15 +455,15 @@ class ViewController: UIViewController, UITableViewDataSource {
         tableView.registerNib(cellNib, forCellReuseIdentifier: "com.codepath.DemoNibTableViewCell")
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("com.codepath.DemoNibTableViewCell", forIndexPath: indexPath) as DemoNibTableViewCell
-        let cityState = data[indexPath.row].componentsSeparatedByString(", ")
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "com.codepath.DemoNibTableViewCell", for: indexPath) as! DemoNibTableViewCell
+        let cityState = data[indexPath.row].components(separatedBy: ", ")
         cell.cityLabel.text = cityState.first
         cell.stateLabel.text = cityState.last
         return cell
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
 }
@@ -479,11 +481,11 @@ identifier.
 ### Laying out your cell programmatically
 
 Finally, you may work with projects that do not use Interface Builder at
-all.  In this case, you must lay out your custom cell programatically.
+all.  In this case, you must lay out your custom cell programmatically.
 Create a custom cell class that subclasses `UITableViewCell`, but be
 sure __not__ to tick the `Also create XIB file` checkbox.
 
-In order to be able register your custom cell for reuse you must
+In order to be able to register your custom cell for reuse you must
 implement the [`init(style:reuseIdentifier:)`][initwithstyle] method
 since this is the one that will be called by the `UITableView` when
 instantiating cells.  As with any other `UIView`, you can also take
@@ -505,14 +507,14 @@ class DemoProgrammaticTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         initViews()
     }
-
+    
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
         initViews()
     }
-
+    
     func initViews() {
-        let (stateRect, cityRect) = frame.rectByInsetting(dx: 10, dy: 10).rectsByDividing(40, fromEdge:.MaxXEdge)
+        let (stateRect, cityRect) = frame.insetBy(dx: 10, dy: 10).divided(atDistance: 40, from:.maxXEdge)
         cityLabel.frame = cityRect
         stateLabel.frame = stateRect
         addSubview(cityLabel)
@@ -538,15 +540,15 @@ class ViewController: UIViewController, UITableViewDataSource {
         tableView.registerClass(DemoProgrammaticTableViewCell.self, forCellReuseIdentifier: "com.codepath.DemoProgrammaticCell")
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("com.codepath.DemoProgrammaticCell", forIndexPath: indexPath) as DemoProgrammaticTableViewCell
-        let cityState = data[indexPath.row].componentsSeparatedByString(", ")
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "com.codepath.DemoProgrammaticCell", for: indexPath) as! DemoProgrammaticTableViewCell
+        let cityState = data[indexPath.row].components(separatedBy: ", ")
         cell.cityLabel.text = cityState.first
         cell.stateLabel.text = cityState.last
         return cell
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
 }
@@ -766,6 +768,14 @@ class ViewController: UIViewController, UITableViewDataSource {
     ...
 
     let accessoryTypes: [UITableViewCellAccessoryType] = [.None, .DisclosureIndicator, .DetailDisclosureButton, .Checkmark, .DetailButton]
+
+   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "com.codepath.DemoPrototypeCell", for: indexPath) as! DemoPrototypeCell
+        let cityState = data[indexPath.row].components(separatedBy: ", ")
+        cell.cityLabel.text = cityState.first
+        cell.stateLabel.text = cityState.last
+        return cell
+    }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("com.codepath.DemoPrototypeCell", forIndexPath: indexPath) as DemoPrototypeCell
