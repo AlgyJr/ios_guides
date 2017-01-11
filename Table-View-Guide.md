@@ -1381,7 +1381,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 	
     // ...
 
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // Handle scroll behavior here
     }
 }
@@ -1399,7 +1399,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 	
     var isMoreDataLoading = false
 	
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (!isMoreDataLoading) {
             isMoreDataLoading = true
 		
@@ -1417,7 +1417,7 @@ Ideally for infinite scrolling, we want to load more results before the user rea
 We need to know how far down a user has scrolled in the `UITableView`. The property `contentOffset` of `UIScrollView` tells us how far down or to the right the user has scrolled in a `UIScrollView`. The property `contentSize` tells us how much total content there is in a `UIScrollView`. We will define a variable `scrollOffsetThreshold` for when we want to trigger requesting more data - one screen length before the end of the results.
 
 ```swift
-func scrollViewDidScroll(scrollView: UIScrollView) {
+func scrollViewDidScroll(_ scrollView: UIScrollView) {
     if (!isMoreDataLoading) {
         // Calculate the position of one screen length before the bottom of the results
         let scrollViewContentHeight = tableView.contentSize.height
@@ -1463,7 +1463,7 @@ func loadMoreData() {
     task.resume()
 }
 
-func scrollViewDidScroll(scrollView: UIScrollView) {
+func scrollViewDidScroll(_ scrollView: UIScrollView) {
     if (!isMoreDataLoading) {
         // Calculate the position of one screen length before the bottom of the results
         let scrollViewContentHeight = tableView.contentSize.height
@@ -1572,7 +1572,7 @@ override func viewDidLoad() {
 Update the `scrollViewDidScroll` function to load the indicator:
 
 ```swift
-func scrollViewDidScroll(scrollView: UIScrollView) {
+func scrollViewDidScroll(_ scrollView: UIScrollView) {
     if (!isMoreDataLoading) {
         // Calculate the position of one screen length before the bottom of the results
         let scrollViewContentHeight = tableView.contentSize.height
