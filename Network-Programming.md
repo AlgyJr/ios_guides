@@ -149,42 +149,33 @@ class Story {
 }
 ```
 
-### NSURLSession
+### URLSession
 [NSURLSession](https://developer.apple.com/library/ios/documentation/Foundation/Reference/NSURLSession_class) is now the preferred built-in method of performing network requests on iOS.
 
 #### Swift
 
 ```swift
-class Post {
+class Movie {
 
     // ... 
 
-    class func fetchPosts(successCallback: (NSDictionary) -> Void, errorCallback: ((NSError?) -> Void)?) {
-        let clientId = "Put_Your_Client_Id_Here"
-        let url = NSURL(string:"https://api.instagram.com/v1/media/popular?client_id=\(clientId)")
-        let request = NSURLRequest(url: url! as URL)
-        let session = URLSession(
-            configuration: URLSessionConfiguration.default,
-            delegate:nil,
-            delegateQueue:OperationQueue.mainQueue
-        )
-        
-        let task : URLSessionDataTask = 
-            session.dataTaskWithRequest(request, completionHandler: 
-            { (dataOrNil, responseOrNil, errorOrNil) in
-                if let requestError = errorOrNil { 
-                    errorCallback?(requestError)
-                } else {
-                    if let data = dataOrNil {
-                        if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData( data, options:[]) as? NSDictionary { 
-                            NSLog("response: \(responseDictionary)")
-                            successCallback(responseDictionary)
-                        }
-                    }
-                }
-        });
+    class func fetchMovies(successCallBack: @escaping (NSDictionary) -> (), errorCallBack: @escaping (Error?) -> ()) {
+        let apiKey = "Put_Your_Client_Id_Here"
+        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")!
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let task: URLSessionDataTask = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+            if let error = error {
+                errorCallBack(error)
+            } else if let data = data,
+                let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
+                //print(dataDictionary)
+                successCallBack(dataDictionary)
+            }
+        }
         task.resume()
     }
+    // ...
 }
 ```
 
