@@ -150,7 +150,7 @@ class Story {
 ```
 
 ### URLSession
-[NSURLSession](https://developer.apple.com/library/ios/documentation/Foundation/Reference/NSURLSession_class) is now the preferred built-in method of performing network requests on iOS.
+[URLSession](https://developer.apple.com/library/ios/documentation/Foundation/Reference/NSURLSession_class) is now the preferred built-in method of performing network requests on iOS.
 
 #### Swift
 
@@ -159,14 +159,14 @@ class Movie {
 
     // ... 
 
-    class func fetchMovies(successCallBack: @escaping (NSDictionary) -> (), errorCallBack: @escaping (Error?) -> ()) {
+    class func fetchMovies(successCallBack: @escaping (NSDictionary) -> (), errorCallBack: ((Error?) -> ())?) {
         let apiKey = "Put_Your_Client_Id_Here"
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task: URLSessionDataTask = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
             if let error = error {
-                errorCallBack(error)
+                errorCallBack?(error)
             } else if let data = data,
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
                 //print(dataDictionary)
