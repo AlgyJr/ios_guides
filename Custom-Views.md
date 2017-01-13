@@ -328,7 +328,7 @@ called `contentView`.  The reason for this will be apparent soon.
 
 Finally we add the code for our `CaptionableImageView` class as follows
 
-```swift
+```swift 
 class CaptionableImageView: UIView {
 
     @IBOutlet var contentView: UIView!
@@ -381,6 +381,25 @@ _NB: In this case, `contentView` is actually the same as the first
 object in the array returned by `instantiateWithOwner`. However creating
 an outlet for it is slightly safer and allows us to define more than one
 top-level view in the nib._
+
+### Rendering custom view in Interface Builder
+Custom views added inside another nib or storyboard will not render in the InterFace Builder canvas by default. If we want our custom views to appear like any other UIKit view while we design in Interface Builder we just need to set the custom view class to be `@IBDesignable` and then initialize or nib with bundle, `Bundle(for: type(of: self))`
+
+Modify the above snippet like this to get your custom view rendering in Interface Builder canvass:
+
+```swift
+// Tell Interface Builder to render in storyboard canvas
+@IBDesignable
+class CaptionableImageView: UIView {
+...
+    func initSubviews() {
+        // Set bundle
+        let nib = UINib(nibName: "CaptionableImageView", bundle: Bundle(for: type(of: self)))   
+    ...
+    }
+...
+}
+```
 
 ### Loading programatically
 How we use the `CaptionableImageView` actually remains exactly the same
