@@ -1248,9 +1248,9 @@ Pull-to-refresh is a ubiquitous method to update your list with the latest infor
 Using a basic `UIRefreshControl` requires the following steps:
 
 1. Initialize an instance of UIRefreshControl
-2. Implement an action to handle updating your list view
+2. Implement an action to handle updating your table view
 3. Bind the action to the instance of UIRefreshControl
-4. Insert the UIRefreshControl as a subview of your list view
+4. Insert the UIRefreshControl as a subview of your table view
 
 ####Initializing a UIRefreshControl
 In order to implement a `UIRefreshControl`, we need an instance of `UIRefreshControl`. Update the `viewDidLoad` function to include the following code:
@@ -1269,33 +1269,27 @@ override func viewDidLoad() {
 We need to implement an action to update our list. It's common to fire a network request to get updated data, so that is shown in the example below. **Note:** Make sure to call `tableView.reloadData` and `refreshControl.endRefreshing` after updating the data source.
 
 ```swift
-// Makes a network request to get updated data
-// Updates the tableView with the new data
-// Hides the RefreshControl
-func refreshControlAction(refreshControl: UIRefreshControl) {
+    // Makes a network request to get updated data
+    // Updates the tableView with the new data
+    // Hides the RefreshControl
+    func refreshControlAction(refreshControl: UIRefreshControl) {
 
-    // ... Create the NSURLRequest (myRequest) ...
+        // ... Create the URLRequest `myRequest` ...
 
-    // Configure session so that completion handler is executed on main UI thread
-    let session = NSURLSession(
-        configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
-        delegate:nil,
-        delegateQueue:NSOperationQueue.mainQueue()
-    )
+        // Configure session so that completion handler is executed on main UI thread
+        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let task: URLSessionDataTask = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
 
-    let task : NSURLSessionDataTask = session.dataTaskWithRequest(myRequest,
-        completionHandler: { (data, response, error) in
+            // ... Use the new data to update the data source ...
 
-        // ... Use the new data to update the data source ...
-        
-        // Reload the tableView now that there is new data
-        self.myTableView.reloadData()
+            // Reload the tableView now that there is new data
+            myTableView.reloadData()
 
-        // Tell the refreshControl to stop spinning
-        refreshControl.endRefreshing()	
-    });
-    task.resume()
-}
+            // Tell the refreshControl to stop spinning
+            refreshControl.endRefreshing()
+        }
+        task.resume()
+    }
 ```
 
 #### Bind the action to the refresh control
@@ -1313,7 +1307,7 @@ override func viewDidLoad() {
 ```
 
 ####Insert the refresh control into the list
-The `UIRefreshControl` now needs to be added to the list view.
+The `UIRefreshControl` now needs to be added to the table view.
 
 ```swift
 override func viewDidLoad() {
@@ -1353,7 +1347,7 @@ _to be completed..._
 
 ## Adding Infinite Scroll
 
-As a user is going through the list, they will eventually reach the end. When they reach the end, the service may still have more data for them. In order to provide the user with a smooth experience, and avoid pagination, we implement infinite scrolling to a list view.
+As a user is going through the table view, they will eventually reach the end. When they reach the end, the service may still have more data for them. In order to provide the user with a smooth experience, and avoid pagination, we implement infinite scrolling to a table view.
 
 Implementing infinite scroll behavior involves the following:
 
@@ -1390,7 +1384,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 #### Understanding [`scrollViewDidScroll`][scrollviewdidscrolllink]
 
-When a user scrolls down a list, the `UIScrollView` continuously fires `scrollViewDidScroll` after the `UIScrollView` has changed. This means that whatever code is inside `scrollViewDidScroll` will repeatedly fire. In order to avoid 10s or 100s of requests to the server, we need to indicate when the app has already made a request to the server.
+When a user scrolls down, the `UIScrollView` continuously fires `scrollViewDidScroll` after the `UIScrollView` has changed. This means that whatever code is inside `scrollViewDidScroll` will repeatedly fire. In order to avoid 10s or 100s of requests to the server, we need to indicate when the app has already made a request to the server.
 
 Create a flag called `isMoreDataLoading`, and add a check in `scrollViewDidScroll`:
 
@@ -1481,7 +1475,7 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
 }
 ```
 
-When you run the app, you should see new data load into the list, each time you reach the bottom. But there's a problem: there's no indicator to the user that anything is happening.
+When you run the app, you should see new data load into the table view, each time you reach the bottom. But there's a problem: there's no indicator to the user that anything is happening.
 
 ### Creating a progress indicator
 
