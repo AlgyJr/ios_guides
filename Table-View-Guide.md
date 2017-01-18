@@ -198,7 +198,7 @@ class ViewController: UIViewController, UITableViewDataSource {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: CellIdentifier)
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier, for: indexPath) as UITableViewCell
         cell.textLabel?.text = data[indexPath.row]
         return cell
@@ -777,7 +777,7 @@ class ViewController: UIViewController, UITableViewDataSource {
         return cell
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("com.codepath.DemoPrototypeCell", forIndexPath: indexPath) as DemoPrototypeCell
         let cityState = data[indexPath.row].componentsSeparatedByString(", ")
         cell.cityLabel.text = cityState.first
@@ -829,7 +829,7 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource {
     ...
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("com.codepath.DemoPrototypeCell", forIndexPath: indexPath) as DemoPrototypeCell
         let cityState = data[indexPath.row].componentsSeparatedByString(", ")
         cell.cityLabel.text = cityState.first
@@ -1000,13 +1000,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: CellIdentifier)
     }
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         checked[indexPath.row] = !checked[indexPath.row]
         tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath) as UITableViewCell
         cell.textLabel?.text = data[indexPath.row]
         if checked[indexPath.row] {
@@ -1144,7 +1144,7 @@ class ViewController: UIViewController, UITableViewDataSource {
         }, error: nil)
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("StoryCell") as StoryCell
         cell.story = stories[indexPath.row]
         return cell
