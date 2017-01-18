@@ -1017,7 +1017,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
 }
@@ -1067,7 +1067,7 @@ class DemoProgrammaticTableViewCell: UITableViewCell {
     }
 
     func initViews() {
-        selectedBackgroundView=UIView(frame: frame)
+        selectedBackgroundView = UIView(frame: frame)
         selectedBackgroundView.backgroundColor = UIColor(red: 0.5, green: 0.7, blue: 0.9, alpha: 0.8)
     }
 
@@ -1150,7 +1150,7 @@ class ViewController: UIViewController, UITableViewDataSource {
         return cell
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return stories.count
     }
 }
@@ -1177,7 +1177,7 @@ class StoryCell: UITableViewCell {
 import UIKit
 
 private let apiKey = "53eb9541b4374660d6f3c0001d6249ca:19:70900879"
-private let resourceUrl = NSURL(string: "http://api.nytimes.com/svc/topstories/v1/home.json?api-key=\(apiKey)")!
+private let resourceUrl = URL(string: "http://api.nytimes.com/svc/topstories/v1/home.json?api-key=\(apiKey)")!
 
 class Story {
     var headline: String?
