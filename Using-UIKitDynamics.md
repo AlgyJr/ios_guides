@@ -98,7 +98,7 @@ collision.removeItem(self.blueView)
 You can add arbitrary boundaries for objects to collide with. Choose an identifier, so that when a collision event happens, you can check which boundary an object collided with.
 
 ```
-collision.addBoundaryWithIdentifier("shelf" fromPoint:CGPointMake(0, 200) toPoint:CGPointMake(150, 240))
+collision.addBoundary(withIdentifier: "shelf" as NSCopying, from: CGPoint(x: 0, y: 200), to: CGPoint(x: 150, y: 240))
 ```
 
 You can set the bounds of the view to automatically be boundaries by setting the `translatesReferenceBoundsIntoBoundaries` property.
