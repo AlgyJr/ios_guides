@@ -134,17 +134,16 @@ Implement one of the appropriate collision events, e.g., collision between two o
 For example, to detect the collision of an object with a boundary, implement the following method:
 
 ```
-func collisionBehavior(behavior: UICollisionBehavior, beganContactForItem item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying, atPoint p: CGPoint) {
-
+func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, at p: CGPoint) {
     // You have to convert the identifier to a string
-    var boundary = identifier as String
-
+    let boundary = identifier as! String
+    
     // The view that collided with the boundary has to be converted to a view
-    var view = item as UIView
-
+    let view = item as! UIView
+    
     if boundary == "shelf" {
         // Detected collision with a boundary called "shelf"
-    } else if (boundary == "") {
+    } else if (boundary == "bottom") {
         // Detected collision with bounds of reference view
     }
 }
