@@ -13,8 +13,8 @@ print("Hello World!")      // Prints "Hello World!" to the output window in Xcod
 To make this a little more personal, let's look at one of the handy features of Swift (called **string interpolation**) where we can insert values into strings using the `\(...)` syntax. Below, we've inserted `name` into the middle of our string:
 
 ```swift
-let name: String = "Bob"
-print("Hello \(name)!")     // Prints "Hello Bob!"
+let name: String = "Samman"
+print("Hello \(name)!")     // Prints "Hello Samman!"
 ```
 
 ## When to use let vs var
