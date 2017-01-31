@@ -1272,7 +1272,7 @@ We need to implement an action to update our list. It's common to fire a network
     // Makes a network request to get updated data
     // Updates the tableView with the new data
     // Hides the RefreshControl
-    func refreshControlAction(refreshControl: UIRefreshControl) {
+    func refreshControlAction(_ refreshControl: UIRefreshControl) {
 
         // ... Create the URLRequest `myRequest` ...
 
