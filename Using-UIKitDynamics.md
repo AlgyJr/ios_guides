@@ -57,13 +57,13 @@ You can change the direction and force of gravity by modifying the `gravityDirec
 
 ```
 // Gravity still goes down, but at a reduced force
-self.gravity.gravityDirection = CGVectorMake(0,0.1)
+self.gravity.gravityDirection = CGVector(dx: 0, dy: 0.1)
 
 // Gravity goes up
-self.gravity.gravityDirection = CGVectorMake(0,-1)
+self.gravity.gravityDirection = CGVector(dx: 0, dy: -1)
 
 // Gravity goes diagonal
-self.gravity.gravityDirection = CGVectorMake(1,1)
+self.gravity.gravityDirection = CGVector(dx: 1, dy: 1)
 ```
 
 ### Collision
