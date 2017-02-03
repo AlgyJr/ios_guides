@@ -1294,7 +1294,7 @@ We need to implement an action to update our list. It's common to fire a network
 
 #### Bind the action to the refresh control
 
-With the action implemented, it now needs to be binded to the `UIRefreshControl` so that something will happen when you pull-to-refresh.
+With the action implemented, it now needs to be bound to the `UIRefreshControl` so that something will happen when you pull-to-refresh.
 
 ```swift
 override func viewDidLoad() {
@@ -1315,7 +1315,7 @@ override func viewDidLoad() {
 	
     // Initialize a UIRefreshControl
     let refreshControl = UIRefreshControl()
-    refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), forControlEvents: UIControlEvents.ValueChanged)
+    refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
     // add refresh control to table view
     tableView.insertSubview(refreshControl, at: 0)
 }
