@@ -1554,7 +1554,7 @@ override func viewDidLoad() {
     // Set up Infinite Scroll loading indicator
     let frame = CGRect(x: 0, y: tableView.contentSize.height, width: tableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
     loadingMoreView = InfiniteScrollActivityView(frame: frame)
-    loadingMoreView!.hidden = true
+    loadingMoreView!.isHidden = true
     tableView.addSubview(loadingMoreView!)
 	
     var insets = tableView.contentInset;
