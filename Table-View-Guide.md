@@ -21,7 +21,7 @@ comprehensive guide by Apple (written for Objective-C) can found
 [uitableview]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html
 
 ## Your first `UITableView`
-In order to use a `UITableView` you must first add one to your view
+In order to use a `UITableView`, you must first add one to your view
 controller's root view.  When working with storyboards, this can be done
 in Interface Builder simply by dragging a `UITableView` from the Object
 Library onto your view controller and then creating an `@IBOutlet` so
@@ -31,7 +31,7 @@ controller's code.
 <a href="http://imgur.com/DSHZu9r"><img src="http://i.imgur.com/DSHZu9r.gif" title="Adding A Table View" /></a>
 
 Of course, you can also programmatically instantiate a `UITableView` and
-add it as subview to your view controller's root view.  The remainder of
+add it as a subview to your view controller's root view.  The remainder of
 this guide assumes that you are able to properly instantiate and obtain
 a reference to a `UITableView`.
 
@@ -154,7 +154,7 @@ one section, we can ignore `section` for now.
 An implementation of the
 [`cellForRowAt`][cellforrowat] method must return an
 instance of [`UITableViewCell`][uitableviewcell] that is configured with
-the data for the row specified by the `indexPath`.  In the above code we
+the data for the row specified by the `indexPath`.  In the above code, we
 created a new instance of the UIKit-provided `UITableViewCell`
 class for each call to `cellForRowAt`.  Since our table had
 only a few simple cells you might not have noticed any appreciable
@@ -218,8 +218,7 @@ The `UITableView` will handle the creation of all cell objects for us.
 
 In `cellForRowAt indexPath:`, we call
 [`dequeueReusableCell(withIdentifier: for:)`][dequeuecell] to obtain a
-pre-created instance of `UITableViewCell` and then we proceed to populate this
-cell with the data for the given row before returning it.
+pre-created instance of `UITableViewCell` and then we proceed to populate this cell with the data for the given row before returning it.
 
 [register]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instm/UITableView/registerClass:forCellReuseIdentifier:
 [dequeuecell]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instm/UITableView/dequeueReusableCellWithIdentifier:forIndexPath:
@@ -228,7 +227,7 @@ cell with the data for the given row before returning it.
 * Be sure to provide a unique reuse identifier for each type of cell
   that you in your table so that you don't end up accidentally getting
 an instance of the wrong type of cell.  Also be sure to register
-a cell identifer with the `UITableView` before attempting to dequeue
+a cell identifier with the `UITableView` before attempting to dequeue
 a cell using that identifier.  Attempting to call
 `dequeueReusableCell(withIdentifier: for:)` with an unregistered identifier will
 cause your app to crash.
@@ -267,12 +266,12 @@ used with the built-in `UITableViewCell` class.  Depending on the cell
 style you specify when initializing the `UITableViewCell` you can use
 the properties `textLabel`, `detailTextLabel`, and `imageView` to
 configure the contents of your cell.  In practice, you'll almost never
-use any of the built in cell styles except maybe the default one that
+use any of the built-in cell styles except maybe the default one that
 contains a single `textLabel`.  However, you should be aware of these
 properties when subclassing `UITableViewCell` and avoid using these
 names for properties that refer to subviews in your own custom cell
 classes.  Doing so may lead to strange bugs when manipulating the sizes
-of a elements in a cell.
+of elements in a cell.
 
 [defaultcellstyles]: https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/TableView_iPhone/TableViewStyles/TableViewCharacteristics.html#//apple_ref/doc/uid/TP40007451-CH3-SW14
 
@@ -289,7 +288,7 @@ All three methods can be broken down into the following steps:
 
 1.  Design your cell's layout and populate it with UI elements that
     configurable.  This creates a template that can then be configured later on a
-per row basis with different data.
+per-row basis with different data.
 2.  Create a subclass of `UITableViewCell` and associate it with the
     user interface for the cell.  This includes binding properties in
 your class to UI elements.  You will also need to expose a way for users
@@ -307,7 +306,7 @@ state initials.
 <!-- TODO: what about interface builder nib for view controller? -->
 To use prototype cells you must be in the Interface Builder and have already
 placed a table view in your view controller.  In order to create a prototype
-cell you simply drag a `Table View Cell` from the Object Library onto your table
+cell, you simply drag a `Table View Cell` from the Object Library onto your table
 view.  You can now layout and add objects your prototype cell as you would with
 any other view.
 
@@ -326,7 +325,7 @@ the name of the class you just created.
 You will now be able to select your custom cell class in the Assistant Editor
 (tuxedo mode) and connect IBOutlets from your prototype cell into your class as
 you would with any other view.  Note that you must select the "content
-view" of your prototype cell in order for the your custom cell class to
+view" of your prototype cell in order for your custom cell class to
 show up under the Assistant Editor's automatic matching.
 
 <a href="http://imgur.com/Tkofhwo"><img src="http://i.imgur.com/Tkofhwo.gif" title="Connecting Outlets in a Prototype Cell" /></a>
@@ -392,10 +391,10 @@ Putting everything together we get a table that looks like this:
 ### Creating a separate NIB for your cell
 
 There may be times when you do not want to use prototype cells, but
-still want to use Interface Builder to lay out the design of your custom
+still want to use Interface Builder to layout the design of your custom
 cell.  For example, you may be working on a project without storyboards
 or you may want to isolate your custom cell's complexity from the rest
-of your storyboard.  In these cases you will create a separate Interface
+of your storyboard.  In these cases, you will create a separate Interface
 Builder file ([NIB][nib]) to contain your custom cell's UI template.
 
 _NB: Technically NIB and XIB are different formats that both store
@@ -469,7 +468,7 @@ class ViewController: UIViewController, UITableViewDataSource {
 }
 ```
 
-By default your NIB will be in the main resource bundle, although you
+By default, your NIB will be in the main resource bundle, although you
 may change this in larger projects by editing your build steps.  The
 code in `viewDidLoad` loads your NIB by creating an instance of
 [UINib][uinib] and registers it for reuse with the provided reuse
@@ -485,11 +484,11 @@ all.  In this case, you must lay out your custom cell programmatically.
 Create a custom cell class that subclasses `UITableViewCell`, but be
 sure __not__ to tick the `Also create XIB file` checkbox.
 
-In order to be able to register your custom cell for reuse you must
+In order to be able to register your custom cell for reuse, you must
 implement the [`init(style:reuseIdentifier:)`][initwithstyle] method
 since this is the one that will be called by the `UITableView` when
 instantiating cells.  As with any other `UIView`, you can also take
-advantage of other entry points in the view's lifecycle (e.g.
+the advantage of other entry points in the view's lifecycle (e.g.
 [`drawRect:`][drawrect]) when programming your custom cell.
 
 Once you are ready to use the cell, you must then register your custom
@@ -565,7 +564,7 @@ There are a few pitfalls to aware of when manipulating the height of
 rows in a table.
 
 One of the implementation strategies that keeps `UITableViews`
-performant is avoiding instatiating and laying out cells that are not
+performant is avoiding instantiating and laying out cells that are not
 currently on the screen.  However, in order to compute some geometries
 (e.g. how long the scrollbar segment is and how quickly it scrolls down
 your screen), iOS needs to have at least an estimate of the total size
@@ -601,7 +600,7 @@ class ViewController: UIViewController, UITableViewDataSource {
 ### Variable row height
 There are two ways to have different row heights on a per cell basis.
 If project is targeted only for iOS 8 and above, you can simply have
-Auto Layout adjust your row heights as necessary.  In other cases you
+Auto Layout adjust your row heights as necessary.  In other cases, you
 will need to manually compute the height of each row in your
 `UITableViewDelegate`.
 
@@ -631,12 +630,12 @@ class ViewController: UIViewController, UITableViewDataSource {
 
 If your estimate is wildly incorrect or if you have extremely variable
 row heights, you may find the behavior and sizing of the scroll bar
-to be less than satisfactory.  In this case you may want to implement
+to be less than satisfactory.  In this case, you may want to implement
 the
 [`estimatedHeightForRowAtIndexPath:`][estimatedrowheightforindexpath]
 method in your `UITableViewDelegate`.  This is rare in practice and is
 only useful if you have a way of estimating the individual row heights
-that is significantly faster than computing the exact height.
+that are significantly faster than computing the exact height.
 
 [estimatedrowheight]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instp/UITableView/estimatedRowHeight
 [estimatedrowheightforindexpath]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewDelegate_Protocol/index.html#//apple_ref/occ/intfm/UITableViewDelegate/tableView:estimatedHeightForRowAtIndexPath:
@@ -669,14 +668,13 @@ class ViewController: UIViewController, UITableViewDataSource {
 
 #### Manually computing row heights
 
-In other situations you will need to manually compute the height of each
-row in your table and provide it to `UITableView` by implementing the
+In other situations, you will need to manually compute the height of each row in your table and provide it to `UITableView` by implementing the
 [`heightForRowAtIndexPath:`][heightforrow] method in your
 `UITableViewDelegate`.
 
 If you are using Auto Layout, you may wish to still have Auto Layout
 figure out the row height for you.  One way you accomplish this is to
-instatiate a reference cell that is not in your view hierarchy and use
+instantiate a reference cell that is not in your view hierarchy and use
 it to compute the height of each row after configuring it with the data
 for the row.  You can call [`layoutSubviews`][layoutsubviews] and
 [`systemLayoutSizeFittingSize`][systemlayoutsize] to obtain the size
@@ -721,14 +719,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 In some cases, the height of your cell may be entirely dominated by one
 or more elements so that you are able to figure out the row height by
-simply doing some arithmetic and without actually needing to layout the
-subviews.  For example if the height of you row is determined by an
+simply doing some arithmetic and without actually needing to lay out the
+subviews.  For example, if the height of you row is determined by an
 image thumbnail with some padding around it, you can simply return the
 value of the size of the image added to the appropriate padding.  In
 many cases, the height of your row will be determined by the height of
-the text in one or more labels.  In these cases, you can compute the the
-space a piece of text will occupy without actually rendering it by
-calling `NSString`'s [`boundingRectWithSize`][boundingrectwithsize]
+the text in one or more labels.  In these cases, you can compute the the space a piece of text will occupy without actually rendering it by calling `NSString`'s [`boundingRectWithSize`][boundingrectwithsize]
 method.  A discussion of how to do this in Swift can be found
 [here][boundingrectwithsizeswift]
 
@@ -737,11 +733,11 @@ method.  A discussion of how to do this in Swift can be found
 
 ## Cell Accessory Views
 
-`UITableViewCell` and every subclass of it you create comes built-in
+`UITableViewCell` and every subclass of you create comes built-in
 with an _accessory view_ that can be useful for displaying a status
 indicator or small control to the right of your cell's main _content
 view_.  If the accessory view is visible, the size content view will be
-shrunk to accommedate it.  If you plan on using accessory views, be sure
+shrunk to accommodate it.  If you plan on using accessory views, be sure
 the elements in your content view are configured to properly resize when
 the width available to them changes.
 
@@ -753,10 +749,10 @@ both properties.
 [accessorytype]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/index.html#//apple_ref/occ/instp/UITableViewCell/accessoryType
 [accessoryview]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/index.html#//apple_ref/occ/instp/UITableViewCell/accessoryView
 
-### Built in accessory views
+### Built-in accessory views
 There are a few built-in accessory views that can be activated by
 setting the [`accessoryType`][accessorytype] property on your
-`UITableViewCell`.  By default this value is is `.None`.  Returning to
+`UITableViewCell`.  By default this value is `.None`.  Returning to
 our prototype cell example, you can see what each accessory type looks
 like below.
 
@@ -806,7 +802,7 @@ You can use any `UIView`&mdash;including custom ones&mdash;as an
 accessory view by setting the  [`accessoryView`][accessoryview] property on
 your `UITableViewCell`.  You should be aware of the same performance
 considerations regarding the creation of `UIViews` per row when using
-this feature.  Also note that if you want to handle any events from a
+this feature.  Also, note that if you want to handle any events from a
 custom accessory view, you will have to implement your own event
 handling logic (see how to propagate events below).  For more complex
 situations, you might opt to simply include this custom "accessory view"
@@ -1025,7 +1021,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 Notice that we deselect the cell immediately after selection event.
 [Selection is not a good way to store or indicate
-state][selectionuiguidelines].  Also notice that we reload the row once
+state][selectionuiguidelines].  Also, notice that we reload the row once
 we've modified our `checked` data model.  This necessary so that the
 table knows to reconfigure and rerender the corresponding cell to have a
 checkmark.  More info on [handling updates to your
@@ -1322,7 +1318,7 @@ override func viewDidLoad() {
 ```
 
 ###Understanding a UIRefreshControl
-The `UIRefreshControl` is a subclass of `UIView`, and consequently a view, so it can be added as a subview to another view. It's behavior and interaction is already built in. `UIRefreshControl` is a subclass of `UIControl`, and pulling down on the parent view will initiate a `UIControlEventValueChanged` event. When the event is triggered, a binded action will be fired. In this action, we update the data source and reset the `UIRefreshControl`. 
+The `UIRefreshControl` is a subclass of `UIView`, and consequently a view, so it can be added as a subview to another view. It's behavior and interaction is already built in. `UIRefreshControl` is a subclass of `UIControl`, and pulling down on the parent view will initiate a `UIControlEventValueChanged` event. When the event is triggered, a bound action will be fired. In this action, we update the data source and reset the `UIRefreshControl`. 
 
 ###Creating a custom pull-to-refresh
 For now, see the following [reference][customRefreshControl]
@@ -1336,7 +1332,7 @@ The following are common mistakes:
 - Is the UI changing in a strange sequence or the wrong order? Did you update the UI on the main thread (`dispatch_async(dispatch_get_main_queue())`)?
 
 ###Further notes
-Apple documentation does specify that [`UIRefreshControl`][uirefreshcontrol] is only meant to be used with a `UITableViewController` where it is included, however we have not seen any problems in practice before.
+Apple documentation does specify that [`UIRefreshControl`][uirefreshcontrol] is only meant to be used with a `UITableViewController` where it is included, however, we have not seen any problems in practice before.
 
 >Because the refresh control is specifically designed for use in a table
 >view that's managed by a table view controller, using it in a different
@@ -1406,7 +1402,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 #### Define the conditions for requesting more data
 
-Ideally for infinite scrolling, we want to load more results before the user reaches the end of the existing content, and therefore would start loading at some point past halfway. However, for this specific tutorial, we will load more results when the user reaches near the end of the existing content.
+Ideally, for infinite scrolling, we want to load more results before the user reaches the end of the existing content, and therefore would start loading at some point past halfway. However, for this specific tutorial, we will load more results when the user reaches near the end of the existing content.
 
 We need to know how far down a user has scrolled in the `UITableView`. The property `contentOffset` of `UIScrollView` tells us how far down or to the right the user has scrolled in a `UIScrollView`. The property `contentSize` tells us how much total content there is in a `UIScrollView`. We will define a variable `scrollOffsetThreshold` for when we want to trigger requesting more data - one screen length before the end of the results.
 
