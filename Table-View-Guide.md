@@ -1449,7 +1449,7 @@ func loadMoreData() {
 			
         // Reload the tableView now that there is new data
         self.myTableView.reloadData()
-    });
+    })
     task.resume()
 }
 
@@ -1553,8 +1553,8 @@ override func viewDidLoad() {
     loadingMoreView!.isHidden = true
     tableView.addSubview(loadingMoreView!)
 	
-    var insets = tableView.contentInset;
-    insets.bottom += InfiniteScrollActivityView.defaultHeight;
+    var insets = tableView.contentInset
+    insets.bottom += InfiniteScrollActivityView.defaultHeight
     tableView.contentInset = insets
 }
 
@@ -1611,7 +1611,7 @@ func loadMoreData() {
 			
         // Reload the tableView now that there is new data
         self.myTableView.reloadData()
-    });
+    })
     task.resume()
 }
 ```
