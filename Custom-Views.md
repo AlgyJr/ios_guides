@@ -211,7 +211,7 @@ class might need a reference to a label defined inside the nib.
 Interface Builder allows you to accomplish these things by providing a
 placeholder [file's owner][filesowner] object.  You can define outlets
 from the file's owner to objects in your nib by setting its custom class
-and then using the associate editor (tuxedo view) and control dragging
+and then using the assistant editor and control dragging
 objects into the custom class.
 
 For example in our `CaptionableImageView` [example](#example-an-image-view-with-caption)
