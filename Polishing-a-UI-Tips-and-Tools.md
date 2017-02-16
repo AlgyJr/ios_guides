@@ -2,8 +2,8 @@
 
 Building beautiful iOS apps starts with understanding how to approach building a delightful UI and each of the components that contributes:
 
-https://pttrns.com/applications/2#2913
-<a>
+
+<a href="https://pttrns.com/iphone-patterns">
   <img src="https://pttrns.com/applications/2#2913" alt="design" width="250" />&nbsp;
   <img src="https://pttrns.com/applications/576#7142" alt="design" width="250" />&nbsp;
   <img src="https://pttrns.com/applications/494?did=1#5279" alt="design" width="250" />
