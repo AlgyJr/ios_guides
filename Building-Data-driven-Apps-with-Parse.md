@@ -163,8 +163,7 @@ use following code snippet that shows how to sign up user:
                 print("User Registered successfully")
                 // manually segue to logged in view
             }
-        }
-        
+        }   
     }
 ```
 
