@@ -88,6 +88,7 @@ Diving into the networking and model layers for data-driven apps:
 - [Apple official guides](https://developer.apple.com/library/ios/navigation/#section=Resource%20Types&topic=Guides). The high level guides are a fantastic resource when starting out:
   - [iOS App Programming Guide](https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Introduction/Introduction.html)
   - [View Programming Guide](https://developer.apple.com/library/ios/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/Introduction/Introduction.html)
+- [Notate: Annotated YouTube Lectures](http://www.notatevideo.com/)
 - Blogs
   - [NSHipster](http://nshipster.com/). A journal of the overlooked bits in Objective-C and Cocoa. Updated weekly.
   - [objc.io](http://www.objc.io/). A periodical about best practices and advanced techniques.
