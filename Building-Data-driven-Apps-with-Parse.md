@@ -76,55 +76,25 @@ Please refer to this guide for instructions on how to [host and configure your o
 
 After setting up Parse Server in above step, you can setup Parse Dashboard for following [[these instructions|Configuring-a-Parse-Server#parse-dashboard]]. With Parse dashboard you can manage your manage your app. This dashboard is similar to one that you may find when using Prase.com.
 
-### [Option 2] Using Parse.com
-
-Note: Parse.com no longer allows you to create a new account so you can only use Parse.com if you already have a Parse account.
-
-Login to your Parse account and create a new app.
-
 ##### Setting up Parse SDK in iOS application (using Cocoapods)
 (Assumes that you have already [setup CocoaPods](http://guides.codepath.com/ios/CocoaPods#installing-cocoapods) on your Mac)
 
 Add `pod 'Parse'` under target in your Podfile. For more detailed instructions see this <a href="http://guides.codepath.com/ios/CocoaPods#adding-a-pod" target="_blank">link</a>.
 
-##### Adding your Parse app's `ApplicationId` and `ClientKey` to you iOS app
+##### Configure your Parse App
 
-1. Get the application id and key from your [Parse App's dashboard](https://www.parse.com/apps),
-   - Click `quickstart guide` for the app that you want to use with your iOS app.
-   - Navigate to instructions for setting up the application id and key. (`Data` > `Mobile` > `iOS` > `Swift` > `New Project`) 
-<img src="http://i.imgur.com/vEP5TbZ.gif" alt="Parse Quickstart" width="750"/>
+1. TODO: How to get APP_ID and SERVER from your self hosted Parse App
 
 2. In your Xcode project, make following edits to project's `AppDelegate.swift` to add the id and key to your app:
    - Import Parse by adding `import Parse` in the beginning of the file
-   - Add your Parse application id and key in `application:didFinishLaunchingWithOptions` function by copying the code `Parse.setApplicationId("<your-application-id>", clientKey: "your-client-key")`from Parse
+   - Initialize your Parse application with your app id and server url in `application:didFinishLaunchingWithOptions`.
 
       ```swift
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        Parse.setApplicationId("myAppId", clientKey: "myClientKey")
-        return true
-    }
-      ```
-
-### Parse `initializeWithConfiguration` vs `setApplicationId`
-
-If you already understand these `Parse` functions, you may skip this section.
-
-Both **<a href="https://parse.com/docs/ios/api/Classes/Parse.html#/c:objc(cs)Parse(cm)initializeWithConfiguration:" target="_blank">initializeWithConfiguration</a>** and **<a href="https://parse.com/docs/ios/api/Classes/Parse.html#/c:objc(cs)Parse(cm)setApplicationId:clientKey:" target="_blank">setApplicationId</a>** are static methods that are used to initialize Parse and set global configuration.
-
-**You have to use only one of the two methods** depending on whether you are using self hosted version of Parse server or the hosted version provided by Parse.
-
-##### `initializeWithConfiguration:`
-
-* Used when you are using [self deployed version of Parse](https://guides.codepath.com/ios/Building-Data-driven-Apps-with-Parse#deploying-and-configuring-a-parse-server-if-you-do-not-have-a-parse-account) 
-* Accepts **<a href="https://parse.com/docs/osx/api/Classes/ParseClientConfiguration.html" target="_blank"> ParseClientConfiguration </a>** where you specify `sever` and `applicationId` 
-
-##### `setApplicationId:clientKey:`
-
-* Used when you are using [server hosted by Parse](https://guides.codepath.com/ios/Building-Data-driven-Apps-with-Parse#using-existing-parse-account) (i.e. you have a Parse account)
-* Accepts `applicationId` and `clientKey`
-* A default value of `server` is set as part of Parse SDK.
-
+      Parse.initialize(with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) in
+      configuration.applicationId = "YOUR_APP_ID"
+      configuration.server = "YOUR_SERVER_URL"
+      }))
+      ``` 
 ## Parse User (`PFUser`)
 
 Parse provides a specialized user class called `PFUser` that automatically handles much of the functionality required for user account management. With this class, you'll be able to add user account functionality in your app.
