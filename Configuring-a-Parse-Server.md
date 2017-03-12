@@ -117,7 +117,11 @@ Using that cross-platform app to easily access and modify the data for your Pars
 
 ### Enabling Client SDK integration
 
-Make sure to pull in the latest Parse SDK in your `Podfile` (it should be at least `1.13.0`).  There have been recent changes to support open source Parse, most notably the ability not to need a client key.
+Create a Podsfile file:
+
+```
+pod init
+```
 
 Make sure to declare your `Podfile` as the following:
 
@@ -156,8 +160,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Initialize Parse
         // Set applicationId and server based on the values in the Heroku settings.
         // clientKey is not used on Parse open source unless explicitly configured
-        Parse.initializeWithConfiguration(
-            ParseClientConfiguration(block: { (configuration:ParseMutableClientConfiguration) -> Void in
+        Parse.initialize(
+            with: ParseClientConfiguration(block: { (configuration:ParseMutableClientConfiguration) -> Void in
                 configuration.applicationId = "myAppId"
                 configuration.clientKey = nil  // set to nil assuming you have not set clientKey
                 configuration.server = "https://myAppName.herokuapp.com/parse"
