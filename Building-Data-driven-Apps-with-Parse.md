@@ -64,8 +64,6 @@ Here is how data model would look like: (`field_name`: `field_type`)
 
 ## Getting started with Parse
 
-### [Option 1] Deploying your own Parse Server (Recommended)
-
 Parse used to provide a hosted version of their backend service with free registration. But as of February 2016, Parse has stopped new account registration as they have announced that the service will be shutdown on January 28th, 2017. They have open sourced their server code which you can host by yourself and use it as the backend to your application.
 
 Please refer to this guide for instructions on how to [host and configure your own Parse server](https://guides.codepath.com/ios/Configuring-a-Parse-Server).
@@ -75,11 +73,6 @@ Please refer to this guide for instructions on how to [host and configure your o
 **Note**: Before you go ahead and setup Parse Dashboard, please note that is still has limited functionality. The mLab data viewer or Robomongo probably is sufficient to use.
 
 After setting up Parse Server in above step, you can setup Parse Dashboard for following [[these instructions|Configuring-a-Parse-Server#parse-dashboard]]. With Parse dashboard you can manage your manage your app. This dashboard is similar to one that you may find when using Prase.com.
-
-##### Setting up Parse SDK in iOS application (using Cocoapods)
-(Assumes that you have already [setup CocoaPods](http://guides.codepath.com/ios/CocoaPods#installing-cocoapods) on your Mac)
-
-Add `pod 'Parse'` under target in your Podfile. For more detailed instructions see this <a href="http://guides.codepath.com/ios/CocoaPods#adding-a-pod" target="_blank">link</a>.
 
 ##### Configure your Parse App
 
