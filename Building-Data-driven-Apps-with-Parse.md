@@ -288,6 +288,10 @@ var query = PFQuery(className: "Post", predicate: predicate)
 query.findObjectsInBackgroundWithBlock { (posts: [PFObject]?, error: NSError?) -> Void in
     if let posts = posts {
         // do something with the array of object returned by the call
+        for post in posts {
+            // access the object as a dictionary and cast type
+            let likeCount = post["likesCount"] as? Int    // post.value(forKey: "likesCount") is equivalent 
+        }
     } else {
         print(error?.localizedDescription)
     }
