@@ -68,26 +68,8 @@ Parse used to provide a hosted version of their backend service with free regist
 
 Please refer to this guide for instructions on how to [host and configure your own Parse server](https://guides.codepath.com/ios/Configuring-a-Parse-Server).
 
-##### Setting up Parse Server Dashboard
+See this section on the [client SDK integration](https://guides.codepath.com/ios/Configuring-a-Parse-Server#enabling-client-sdk-integration).
 
-**Note**: Before you go ahead and setup Parse Dashboard, please note that is still has limited functionality. The mLab data viewer or Robomongo probably is sufficient to use.
-
-After setting up Parse Server in above step, you can setup Parse Dashboard for following [[these instructions|Configuring-a-Parse-Server#parse-dashboard]]. With Parse dashboard you can manage your manage your app. This dashboard is similar to one that you may find when using Prase.com.
-
-##### Configure your Parse App
-
-1. TODO: How to get APP_ID and SERVER from your self hosted Parse App
-
-2. In your Xcode project, make following edits to project's `AppDelegate.swift` to add the id and key to your app:
-   - Import Parse by adding `import Parse` in the beginning of the file
-   - Initialize your Parse application with your app id and server url in `application:didFinishLaunchingWithOptions`.
-
-      ```swift
-      Parse.initialize(with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) in
-      configuration.applicationId = "YOUR_APP_ID"
-      configuration.server = "YOUR_SERVER_URL"
-      }))
-      ``` 
 ## Parse User (`PFUser`)
 
 Parse provides a specialized user class called `PFUser` that automatically handles much of the functionality required for user account management. With this class, you'll be able to add user account functionality in your app.
