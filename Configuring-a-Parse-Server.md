@@ -1,6 +1,6 @@
 ### Overview
 
-Parse provides a cloud-based backend service to build data-driven mobile apps quickly.  Facebook, which [acquired the company](https://en.wikipedia.org/wiki/Parse_(company)) in 2013, shut down service on January 28, 2017. An [open source version](https://github.com/ParsePlatform/parse-server) enables developers to continue using their apps was published, along with a [migration guide](https://parse.com/docs/server/guide#migrating).
+Parse provides a cloud-based backend service to build data-driven mobile apps quickly.  Facebook, which [acquired the company](https://en.wikipedia.org/wiki/Parse_(company)) in 2013, shut down service on January 28, 2017. An [open source version](https://github.com/ParsePlatform/parse-server) enables developers to continue using their apps was published, along with a [migration guide](https://github.com/ParsePlatform/parse-server#migrating-an-existing-parse-app).
 
 While there are many
 [alternate options to Parse](https://github.com/relatedcode/ParseAlternatives), most of them lack either the functionality, documentation, or sample code to enable quick prototyping.  For this reason, the open source Parse version is a good option to use with minimal deployment/configuration needed.
