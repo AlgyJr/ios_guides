@@ -97,7 +97,7 @@ override func viewDidLoad() {
    let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTap(sender:)))
 
    // Optionally set the number of required taps, e.g., 2 for a double click
-   tapGestureRecognizer.numberOfTapsRequired = 2;
+   tapGestureRecognizer.numberOfTapsRequired = 2
 
    // Attach it to a view of your choice. If it's a UIImageView, remember to enable user interaction
    yourView.isUserInteractionEnabled = true
