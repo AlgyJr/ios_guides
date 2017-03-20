@@ -108,8 +108,7 @@ override func viewDidLoad() {
 #### Example: Pan gesture recognizer
 
 ```swift
-override func viewDidLoad() {
-   // The didPan: method will be defined in Step 3 below.
+   // Here we use the method didPan(sender:), which we defined in the previous step, as the action.
    let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didPan(sender:)))
 
    // Attach it to a view of your choice. If it's a UIImageView, remember to enable user interaction
