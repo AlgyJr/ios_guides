@@ -122,10 +122,20 @@ Create a Podfile file:
 ```
 pod init
 ```
-Add dependencies (Don't forget to save your Podfile):
+Add dependencies in your Podfile (Don't forget to save your Podfile):
 
 ```ruby
-pod 'Parse'
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'YOUR_APP' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for YOUR_APP
+  pod 'Parse'
+
+  ...
 ```
 Install the new pods:
 
