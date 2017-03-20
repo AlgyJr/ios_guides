@@ -117,28 +117,20 @@ Using that cross-platform app to easily access and modify the data for your Pars
 
 ### Enabling Client SDK integration
 
-Create a Podsfile file:
+Create a Podfile file:
 
 ```
 pod init
 ```
-
-Make sure to declare your `Podfile` as the following:
+Add dependencies (Don't forget to save your Podfile):
 
 ```ruby
-# Podfile
-
-# If using Swift, make sure to add the following two lines
-platform :ios, "8.0"
-use frameworks!
-
 pod 'Parse'
 ```
-
-Make sure to update your `Podfile` configuration:
+Install the new pods:
 
 ```bash
-pod update
+pod install
 ```
 
 Initialize Parse in your `AppDelegate` to point to your own server:
