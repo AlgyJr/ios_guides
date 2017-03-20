@@ -92,7 +92,6 @@ It is common to create the gesture recognizers in the `viewDidLoad()` method, as
 #### Example: Tap gesture recognizer
 
 ```swift
-override func viewDidLoad() {
    // The didTap: method will be defined in Step 3 below.
    let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTap(sender:)))
 
@@ -102,7 +101,6 @@ override func viewDidLoad() {
    // Attach it to a view of your choice. If it's a UIImageView, remember to enable user interaction
    yourView.isUserInteractionEnabled = true
    yourView.addGestureRecognizer(tapGestureRecognizer)
-}
 ```
 
 #### Example: Pan gesture recognizer
@@ -114,7 +112,6 @@ override func viewDidLoad() {
    // Attach it to a view of your choice. If it's a UIImageView, remember to enable user interaction
    yourView.isUserInteractionEnabled = true
    yourView.addGestureRecognizer(panGestureRecognizer)
-}
 ```
 
 #### Example: Screen edge pan gesture recognizer
