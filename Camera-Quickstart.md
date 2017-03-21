@@ -26,7 +26,7 @@ self.present(vc, animated: true, completion: nil)
 
 **NOTE:** The Xcode simulator does not support taking pictures, so you may want to check that the camera is indeed supported on the device before trying to present it.
 
-```
+```swift
 if UIImagePickerController.isSourceTypeAvailable(.camera) {
    print("Camera is available 📸")
    vc.sourceType = .camera
