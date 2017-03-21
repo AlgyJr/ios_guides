@@ -49,7 +49,7 @@ If you wish to call `present()` outside a view controller, you would do:
 
 ```swift
 UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true) {
-
+    // optional code for what happens after the alert controller has finished presenting
 }
 ```
 
