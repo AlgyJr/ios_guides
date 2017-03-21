@@ -24,6 +24,18 @@ vc.sourceType = UIImagePickerControllerSourceType.camera
 self.present(vc, animated: true, completion: nil)
 ```
 
+**NOTE:** The Xcode simulator does not support taking pictures, so you may want to check that the camera is indeed supported on the device before trying to present it.
+
+```
+if UIImagePickerController.isSourceTypeAvailable(.camera) {
+   print("Camera is available 📸")
+   vc.sourceType = .camera
+} else {
+   print("Camera 🚫 available so we will use photo library instead")
+   vc.sourceType = .photoLibrary
+}
+```
+
 ### Step 3: Implement the delegate method
 
 ```swift
