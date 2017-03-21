@@ -23,7 +23,7 @@ Click on your project, select your app target, press general, then add the frame
 
 In every swift file you need to access the framework's methods and classes, you'll need to `import` the framework. For example, to use MKMapView in your MapViewController, `import MapKit`.
 
-```Swift
+```swift
 import UIKit
 import MapKit
 import CoreLocation
