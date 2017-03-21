@@ -45,6 +45,14 @@ present(alertController, animated: true) {
 }
 ```
 
+If you wish to call `present()` outside a view controller, you would do:
+
+```swift
+UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true) {
+
+}
+```
+
 ## Using Action Sheets style
 
 The action sheet style anchors the view to the bottom of the presenting view controller.
