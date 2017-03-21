@@ -4,7 +4,16 @@ This is a quickstart guide for using the taking a photo or picking an image from
 
 ## Taking a Picture
 
-### Step 1: Instantiate a UIImagePickerController
+### Step 1: Declare that your class implements the required protocols
+- Add `UIImagePickerControllerDelegate` and `UINavigationControllerDelegate` when defining your class or as an [extension](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html) of your view controller class.
+
+    ```swift
+    class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    ...
+    }
+    ```
+
+### Step 2: Instantiate a UIImagePickerController
 
 ```swift
 let vc = UIImagePickerController()
@@ -15,9 +24,7 @@ vc.sourceType = UIImagePickerControllerSourceType.camera
 self.present(vc, animated: true, completion: nil)
 ```
 
-### Step 2: Implement the delegate
-
-In the class interface, declare that it implements two protocols: `UIImagePickerControllerDelegate` and `UINavigationControllerDelegate`.
+### Step 3: Implement the delegate method
 
 ```swift
 func imagePickerController(_ picker: UIImagePickerController, 
@@ -37,7 +44,16 @@ When the user finishes taking the picture, `UIImagePickerController` returns a d
 
 ## Picking a Picture from the Camera Roll
 
-### Step 1: Instantiate a UIImagePickerController
+### Step 1: Declare that your class implements the required protocols
+- Add `UIImagePickerControllerDelegate` and `UINavigationControllerDelegate` when defining your class or as an [extension](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html) of your view controller class.
+
+    ```swift
+    class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    ...
+    }
+    ```
+
+### Step 2: Instantiate a UIImagePickerController
 
 ```swift
 let vc = UIImagePickerController()
@@ -48,10 +64,18 @@ vc.sourceType = UIImagePickerControllerSourceType.photoLibrary
 self.present(vc, animated: true, completion: nil)
 ```
 
-### Step 2: Implement the delegate
+### Step 3: Implement the delegate method
 
-This is the same as Step 2 above.
+```swift
+func imagePickerController(_ picker: UIImagePickerController, 
+didFinishPickingMediaWithInfo info: [String : Any]) {
+    // Get the image captured by the UIImagePickerController
+    let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+    let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
 
-## Things to Keep in Mind
+    // Do something with the images (based on your use case)
 
-Make sure you add `UIImagePickerControllerDelegate` and `UINavigationControllerDelegate` when defining your class
+    // Dismiss UIImagePickerController to go back to your original view controller
+    dismiss(animated: true, completion: nil)
+}
+```
