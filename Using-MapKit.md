@@ -137,9 +137,8 @@ func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnota
     annotationView?.rightCalloutAccessoryView = rightCalloutButton
 
     /// Add image to the callout "bubble" of the annotation view
-    let image = UIImage(named: "founders_den")
-    let leftCalloutImageView = UIImageView(image: image)
-    annotationView?.leftCalloutAccessoryView = leftCalloutImageView
+    let imageView = annotationView?.leftCalloutAccessoryView as! UIImageView
+    imageView.image = UIImage(named: "camera")
 
     return annotationView
 }
