@@ -7,7 +7,7 @@ Cocoa-based) projects.  It is very similar in function and usage to
 ## Installing CocoaPods
 CocoaPods is packaged as a Ruby gem. Since Ruby comes with new OS X installations, you can install CocoaPods simply by running the following commands in a terminal:
 
-```
+```bash
 sudo gem install -n /usr/local/bin cocoapods     # Install CocoaPods gem
 pod setup                      # Clones the CocoaPods specs repo to ~/.cocoapods
 ```
@@ -21,19 +21,25 @@ You can find available Pods using the search box on the [official CocoaPods site
    - Run `pod init` from a terminal (in the root directory of your project)
    - This will create a plain text file named `Podfile`.
 2. Add the required dependency to the `Podfile`. In the case below, we'll add AFNetworking:
-      ```ruby
-      # Podfile
+    
+    ```ruby
+    # Uncomment the next line to define a global platform for your project
+    # platform :ios, '9.0'
 
-      # This tells CocoaPods we want to target iOS versions 8.0 and above.
-      platform :ios, '8.0'
+    target 'MyApp' do
+      # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+      use_frameworks!
+
+      # Pods for MyApp
+      # This pulls in the latest version of Alamofire >= 4.4 but less than 5.0.
+      pod 'Alamofire', '~> 4.4'
+      # Add additional dependencies
+      pod 'OAuthSwift', '~> 1.1.0'
+      pod 'OAuthSwiftAlamofire'
       
-      target 'MyApp' do
+    end
+    ```
 
-      # This pulls in the latest version of AFNetworking >= 2.6 but less than 3.0.
-      pod 'AFNetworking', '~> 2.6'
-
-      end
-      ```
    - Refer to the [podfile documentation](https://guides.cocoapods.org/using/the-podfile.html) to see versioning options and more complex use cases.
 3. Download and integrate the dependencies into your project:
    - From a terminal, run `pod install`
