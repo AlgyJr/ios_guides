@@ -257,7 +257,7 @@ class CodePathViewController: UIViewController {
         button.frame = CGRectMake(0, 0, 300, 500)
 
         //Add button to the view
-        self.view.addSubview(letterButton)
+        self.view.addSubview(button)
     }
 
     func onButtonTap() {
