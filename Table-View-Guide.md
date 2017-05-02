@@ -199,7 +199,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // will always return a cell so long as the cell identifier has been registered
+        // If there are no cells available for reuse, it will always return a cell so long as the identifier has previously been registered
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier, for: indexPath) as UITableViewCell
         cell.textLabel?.text = data[indexPath.row]
         return cell
