@@ -2,16 +2,27 @@
 
 ## 1. Create the Project
 
-Click on File -> New -> Project and create a "Single View" project, and click *Next*. You'll be presented with a number of options.
+1. Launch Xcode and choose "Create a new Xcode project" or from within Xcode, Click on File -> New -> Project</br>
 
-- **Product Name** - The product name is just the name of your app, e.g., "MyProject"
-- **Organization Name** - This is the name of your company, e.g. "Acme"
-- **Company Identifier** - With the above values, this becomes `com.acme`. By convention, iOS uses [reverse domain name notation](http://en.wikipedia.org/wiki/Reverse_domain_name_notation) for identifiers.
-- **Devices** - This determines if your app is for the iPhone, iPad, or Universal (both). Use Universal.
-- **Language** - Use Swift.
-- **Use Core Data** - It will add the boilerplate Core Data setup code for you. Leave it unchecked.
+   <img src="http://i.imgur.com/7oDWujw.gif" width="300" /></br>
 
-When you click *Next*, you'll be prompted for a location to save it. Enable "Create a Git respository."
+1. Create a "Single View" project, and click *Next*.</br>
+
+   <img src="http://i.imgur.com/Kjr10ht.png" width="400" /></br>
+
+1. You'll be presented with a number of options.
+   - **Product Name** - The product name is just the name of your app, e.g., "MyProject"
+   - **Organization Name** - This is the name of your company, e.g. "Acme"
+   - **Company Identifier** - With the above values, this becomes `com.acme`. By convention, iOS uses [reverse domain name notation](http://en.wikipedia.org/wiki/Reverse_domain_name_notation) for identifiers.
+   - **Devices** - This determines if your app is for the iPhone, iPad, or Universal (both). Use Universal.
+   - **Language** - Use Swift.
+   - **Use Core Data** - It will add the boilerplate Core Data setup code for you. Leave it unchecked.</br>
+
+   <img src="http://i.imgur.com/ssbMW5b.png" width="400" />
+
+1. When you click *Next*, you'll be prompted for a location to save it. Enable "Create a Git respository."</br>
+
+   <img src="http://i.imgur.com/HM7FDKK.png" width="500" /></br>
 
 ## 2. Add .gitignores
 
