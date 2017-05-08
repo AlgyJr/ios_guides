@@ -18,7 +18,7 @@ gem install -n /usr/local/bin cocoapods    # Install CocoaPods gem
 pod setup                                  # Clones the CocoaPods specs repo to ~/.cocoapods
 ```
 
-   * ☝️ **NOTE** If you are not able to install using `gem install -n /usr/local/bin cocoapods`, then try using `sudo`.
+   * ☝️ **NOTE** If you are not able to install using `gem install -n /usr/local/bin cocoapods`, then try using `sudo`as shown in the following snippet.
 
    ```bash
    sudo gem install -n /usr/local/bin cocoapods     # Install CocoaPods gem
