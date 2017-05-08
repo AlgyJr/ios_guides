@@ -17,14 +17,16 @@ Note: There are alternate instructions if you need to perform a [sudo-less insta
 ## Adding a Pod
 You can find available Pods using the search box on the [official CocoaPods site](http://cocoapods.org/) or using the [Wantedly search](http://cocoapods.wantedly.com/). When you find a pod you want to add to your project, follow these steps:
 
-1. Create the `Podfile` (only needs to be done once per project):
-   - From a terminal in the root directory of your project, run...
+### Create the Podfile
+You only need a single Podfile per project. The Podfile is a plain text file where you can add multiple pods.
+- From a terminal in the root directory of your project, run...
 
     ```bash 
     pod init
     ```
-   - This will create a plain text file named `Podfile`.
-2. Add the required dependency to the `Podfile`. In the case below, we'll add Alamofire and a few others:
+
+### Add required dependencies to the Podfile
+- In the case below, we'll add Alamofire and a few others:
     
     ```ruby
     # Uncomment the next line to define a global platform for your project
@@ -44,15 +46,16 @@ You can find available Pods using the search box on the [official CocoaPods site
     end
     ```
 
-   - Refer to the [podfile documentation](https://guides.cocoapods.org/using/the-podfile.html) to see versioning options and more complex use cases.
-3. Download and integrate the dependencies into your project:
-   - From a terminal in the root directory of your project, run... 
+- Refer to the [podfile documentation](https://guides.cocoapods.org/using/the-podfile.html) to see versioning options and more complex use cases.
+
+### Download and integrate the dependencies into your project
+- From a terminal in the root directory of your project, run... 
 
     ```bash
     pod install
     ```
 
-4. Open the Xcode workspace:
+### Open the Xcode workspace:
    - Close the project (`MyApp.xcodeproject`) if you have it open and open the workspace (`MyApp.xcworkspace`).
    - CocoaPods creates an additional project for all the dependencies so you need to open the `.xcworkspace` from now on (which will contain your original project and the pods project).
 
