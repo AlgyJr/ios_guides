@@ -12,11 +12,18 @@ This guide covers 1) setting-up CocoaPods, and 2) adding and installing Pods int
 
 * Install CocoaPods by typing the following commands into Terminal
 
-```
+```bash
 gem update --system
-gem install -n /usr/local/bin cocoapods
-pod setup
+gem install -n /usr/local/bin cocoapods    # Install CocoaPods gem
+pod setup                                  # Clones the CocoaPods specs repo to ~/.cocoapods
 ```
+
+   * ☝️ **NOTE** If you are not able to install using `gem install -n /usr/local/bin cocoapods`, then try using `sudo`.
+
+   ```bash
+   sudo gem install -n /usr/local/bin cocoapods     # Install CocoaPods gem
+   pod setup                                        # Clones the CocoaPods specs repo to ~/.cocoapods
+   ```
 
 * Just close your Terminal window and re-open it to complete setup!
 
