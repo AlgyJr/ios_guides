@@ -250,3 +250,8 @@ class Story {
     }
 }
 ```
+
+```swift
+// Test snippet for [[String: Any]]
+var swiftDictionary: [[String: Any]] = []
+```
