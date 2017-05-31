@@ -22,7 +22,7 @@ It is also often useful to monitor the network traffic to help diagnose these is
 
 1. Download a 30-day trial of [Charles Proxy](https://www.charlesproxy.com/download/).  There are versions available for Windows, Mac OS, and Linux.
 
-2. You will need to insert a special root certificate in order to inspect SSL traffic.  If you are running an iOS simulator, run Charles Proxy and navigate to `Help` -> `SSL Proxying` -> `Install Charles Root Certificate on iOS Simulators`.
+2. You will need to insert a special root certificate in order to inspect SSL traffic.  If you are running an iOS simulator, run Charles Proxy and navigate to `Help` -> `SSL Proxying` -> `Install Charles Root Certificate on iOS Simulators`.  If you are not running an iOS simulator, skip this step for now.  You will be asked to install the SSL cert on the phone later.
 
      <img src="http://imgur.com/Ac5QR0x.png"/>
 
