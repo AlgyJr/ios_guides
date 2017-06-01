@@ -26,7 +26,7 @@ It is also often useful to monitor the network traffic to help diagnose these is
 
      <img src="http://imgur.com/Ac5QR0x.png"/>
 
-3. SSL sites that must be inspected must be explicitly declared by going to `Proxy` -> `SSL Proxying Settings`.  Type the domain name and port 443 assuming the site is connecting to a standard SSL port.
+3. SSL sites that must be inspected must be explicitly declared by going to `Proxy` -> `SSL Proxying Settings`.  Type the domain name and port 443 assuming the site is connecting to a standard SSL port.  You can also use wildcards (i.e. `*.myexample.com')
 
      <img src="http://imgur.com/YXTqq93.png"/>
 
