@@ -57,4 +57,4 @@ The results will show you whether default connections will fail, and whether usi
 
 [Working with Apple's App Transport Security](http://www.neglectedpotential.com/2015/06/working-with-apples-application-transport-security/)
 
-If you need to troubleshoot, read [Apple's docs](https://developer.apple.com/library/content/qa/qa1887/_index.html) for more information how to debug any SSL-related issues.
+If you need to troubleshoot, read [Apple's docs](https://developer.apple.com/library/content/qa/qa1887/_index.html) for more information how to debug any SSL-related issues.  Here are the [technical docs](https://developer.apple.com/library/content/technotes/tn2232/_index.html) for any specific error codes you may see in logs.
