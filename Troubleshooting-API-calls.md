@@ -54,7 +54,7 @@ It is also often useful to monitor the network traffic to help diagnose these is
 
    <img src="http://imgur.com/yuRmGRC.png">
 
-4. Go to Settings and navigate to General > About > Certificate Trust Settings, and find the Charles Proxy certificate, and switch it on to enable full trust for it.
+4. Go to Settings and navigate to General > About > Certificate Trust Settings, and find the Charles Proxy certificate, and switch it on to enable full trust for it.  If you forget this step, all SSL connections will likely to fail.
 
    <img src="http://imgur.com/k62CUwH.png"/>
 
