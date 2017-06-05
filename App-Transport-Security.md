@@ -82,7 +82,7 @@ nmap --script ssl-enum-ciphers -p 443 <URL>
 
 In addition, there are public sites such as [https://apptransport.info](https://apptransport.info) and [ssllabs.com/ssltest/analyze.html](ssllabs.com/ssltest/analyze.html) that allow you to check whether public web sites are ATS-compatible.  For apptransportinfo, Simply add the URL at the end (i.e. https://apptransport.info/www.codepath.com) to run the test.   
 
-#### Packet Traces
+### Further Troubleshooting
 
 Troubleshooting ATS-related issues can be difficult to do.  If you need to analyze the network traffic, you can follow Apple's guides to run [packet traces](https://developer.apple.com/library/content/qa/qa1176/_index.html#//apple_ref/doc/uid/DTS10001707-CH1-SECIOSPACKETTRACING) using a tool such as [Wireshark](https://www.wireshark.org/).  You can use these tools to understand the TLS handshake.
 
