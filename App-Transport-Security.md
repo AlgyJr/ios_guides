@@ -53,6 +53,69 @@ The results will show you whether default connections will fail, and whether usi
 </dict>
 ```
 
+### Encryption Ciphers
+
+ATS requires strict encryption ciphers.  You can use the Chrome Security tab (`View` -> `Developer` -> `Developer Tools`) to check what encryption standard is used:
+
+<img src="http://imgur.com/QblJSTn.png"/>
+
+Make sure web sites must implement strong encryption ciphers that implement perfect forward secrecy.  Here is the current list that iOS10 devices will support (in order of preference):
+
+* TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+* TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+* TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+* TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
+* TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+* TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
+* TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+* TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+* TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+
+If you are trying to test an internal site, the `nmap` tool can also be used to extract the encryption ciphers that a web site supports.
+
+```bash
+brew install nmap
+nmap --script ssl-enum-ciphers -p 443 <URL>
+```
+
+In addition, there are public sites such as [https://apptransport.info](https://apptransport.info) and [ssllabs.com/ssltest/analyze.html](ssllabs.com/ssltest/analyze.html) that allow you to check whether public web sites are ATS-compatible.  For apptransportinfo, Simply add the URL at the end (i.e. https://apptransport.info/www.codepath.com) to run the test.   
+
+#### Packet Traces
+
+Troubleshooting ATS-related issues can be difficult to do.  If you need to analyze the network traffic, you can follow Apple's guides to run [packet traces](https://developer.apple.com/library/content/qa/qa1176/_index.html#//apple_ref/doc/uid/DTS10001707-CH1-SECIOSPACKETTRACING) using a tool such as [Wireshark](https://www.wireshark.org/).  You can use these tools to understand the TLS handshake.
+
+First, connect an iPhone to the USB port of a Mac.  Next, get the current list of interfaces:
+```bash
+$ ifconfig -l
+lo0 gif0 stf0 en0 en1 p2p0 fw0 ppp0 utun0
+```
+
+Open iTunes on the Mac.  Click on the icon for the iPhone device.
+
+Click the Serial number text to display the UDID.  Record the UDID by using Ctrl-Click to copy the UDID.
+
+<img src="http://imgur.com/MLWsrsl.png"/>
+
+Then run the tool with the UDID of the device:
+
+```bash
+$ rvictl -s <UDID>
+```
+
+You should see:
+Starting device <UDID [SUCCEEDED]
+ 
+Get the list of interfaces again, and you can see the new virtual network interface, rvi0, added by the previous command:
+
+```bash
+$ ifconfig -l
+lo0 gif0 stf0 en0 en1 p2p0 fw0 ppp0 utun0 rvi0
+```
+
+You can then use WireShark to capture network traffic on the `rvi0` interface.
+
 ### Read More
 
 [Working with Apple's App Transport Security](http://www.neglectedpotential.com/2015/06/working-with-apples-application-transport-security/)
