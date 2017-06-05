@@ -34,7 +34,7 @@ Or in XML:
 
 ### Complexities Combining Exceptions
 
-in iOS 10, Apple provided a few `.plist` keys that can be used to narrow down the exceptions you include to ATS's strict security. Instead of using `NSAllowsArbitraryLoads` by itself, you can also now use a few keys that override this key's behavior. Quoting the [Apple doc](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW60) on the topic: 
+Starting in iOS 10, Apple provided a few `.plist` keys that can be used to narrow down the exceptions you include to ATS's strict security. Instead of using `NSAllowsArbitraryLoads` by itself, you can also now use a few keys that override this key's behavior. Quoting the [Apple doc](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW60) on the topic: 
 > In iOS 10 and later, and macOS 10.12 and later, the value of [`NSAllowsArbitraryLoads`] is ignored—resulting in an effective value for this key of its default value of NO—if any of the following keys are [also] present in your app’s Info.plist file:
 > * NSAllowsArbitraryLoadsForMedia
 > * NSAllowsArbitraryLoadsInWebContent
