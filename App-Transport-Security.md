@@ -31,6 +31,27 @@ Or in XML:
 
 **This is strongly discouraged.** Only use this during development.
 
+
+### Complexities Combining Exceptions
+
+in iOS 10, Apple provided a few `.plist` keys that can be used to narrow down the exceptions you include to ATS's strict security. Instead of using `NSAllowsArbitraryLoads` by itself, you can also now use a few keys that override this key's behavior. Quoting the [Apple doc](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW60) on the topic: 
+> In iOS 10 and later, and macOS 10.12 and later, the value of [`NSAllowsArbitraryLoads`] is ignored—resulting in an effective value for this key of its default value of NO—if any of the following keys are [also] present in your app’s Info.plist file:
+> * NSAllowsArbitraryLoadsForMedia
+> * NSAllowsArbitraryLoadsInWebContent
+> * NSAllowsLocalNetworking
+
+Here's a quick table of what each key is used for. The [Apple doc](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW60) has more complete information on each key, if you need more information.
+
+| Key | Usage | Requires Justification |
+|------|-------|-|
+| `NSAllowsArbitraryLoadsForMedia` | An optional Boolean value that, when set to `YES`, disables all App Transport Security restrictions for media loaded using APIs from the AV Foundation framework. | Yes |
+| `NSAllowsArbitraryLoadsInWebContent` | Set this key’s value to `YES` to obtain exemption from ATS policies in your app’s web views (`WKWebView`s and `UIWebView`s), without affecting the ATS-mandated security of your NSURLSession connections. | Yes |
+| `NSAllowsLocalNetworking` | An optional Boolean value that, when set to `YES`, removes App Transport Security protections for connections to unqualified domains and to `.local` domains, without disabling ATS for the rest of your app. | No |
+
+> The keys that require justification will trigger an App Store review. The [Apple doc](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW60) lists some valid reasons you can submit, just search for `justification` on the doc - if you're using third party SDKs, one valid reason is that your app "must connect to a server managed by another entity that does not support secure connections".
+
+Using any of these keys will effectively cancel out the blanket effects of the `NSAllowsArbitraryLoads` key on iOS 10+ devices. This seems great, since many users of these special keys may *only* want exceptions for downloaded videos, user-controlled web browsing, advertisement browser redirects, or other use cases. However, users of multiple third-party SDKs should be careful: If any third-party SDK requests that you use the `NSAllowsArbitraryLoads` key **by itself**, then you can't include any of these more specific keys in your `.plist`. Otherwise, you may break some functionality in the SDK that required the `NSAllowsArbitraryLoads` key by itself, since it may be relying on the effects of that key outside of web views, media playback, and/or local networking.
+
 ### Testing
 
 You can test out issues with App Transport Security by using the `nscurl` command:
