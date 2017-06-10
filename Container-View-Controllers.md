@@ -226,7 +226,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     private func showMenu() {
         UIView .animateWithDuration(0.3, animations: { () -> Void in
-            let totalHeight = self.tableView.rowHeight * CGFloat(self.tableView.numberOfRowsInSection(0))
+            let totalHeight = self.tableView.rowHeight * CGFloat(self.tableView.numberOfRows(inSection: 0))
             self.tableViewHeightConstraint.constant = totalHeight
             self.tableView.layoutIfNeeded()
         });
