@@ -112,7 +112,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             viewControllerArray = newValue
 
             // set the active view controller to the first one in the new array if the current one is not in there
-            if activeViewController == nil || find(viewControllerArray, activeViewController!) == nil {
+if activeViewController == nil || viewControllerArray.index(of:activeViewController!) == nil {
+            if activeViewController == nil || viewControllerArray.index(of:activeViewController!) == nil {
                 activeViewController = viewControllerArray.first
             }
         }
