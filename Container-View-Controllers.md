@@ -309,17 +309,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+
         let vc1 = UIViewController()
         let vc2 = UIViewController()
         let vc3 = UIViewController()
 
-        vc1.view.backgroundColor = UIColor.redColor()
-        vc2.view.backgroundColor = UIColor.greenColor()
-        vc3.view.backgroundColor = UIColor.blueColor()
+        vc1.title = "First"
+        vc2.title = "Second"
+        vc3.title = "Third"
 
-        vc1.title = "One"
-        vc2.title = "Two"
-        vc3.title = "Three"
+        vc1.view.backgroundColor = UIColor.blue
+        vc2.view.backgroundColor = UIColor.green
+        vc3.view.backgroundColor = UIColor.yellow
 
         let menuViewController = MenuViewController(nibName: "MenuViewController", bundle: nil)
 
