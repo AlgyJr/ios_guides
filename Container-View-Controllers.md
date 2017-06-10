@@ -348,3 +348,6 @@ controller from the storyboard we could have done something like this
 ```
 
 [initwithnibname]: https://developer.apple.com/library/ios/featuredarticles/ViewControllerPGforiPhoneOS/ViewLoadingandUnloading/ViewLoadingandUnloading.html#//apple_ref/doc/uid/TP40007457-CH10
+
+
+[Download sample code](https://github.com/jayliew/ContainerViewController/tree/master)
