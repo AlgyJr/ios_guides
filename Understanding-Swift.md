@@ -281,12 +281,12 @@ for name in names {
 }
 ```
 
-Sometimes you want to loop over each item in an array and also keep track of the index of the item. Array's `enumerate()` method can help you achieve this:
+Sometimes you want to loop over each item in an array and also keep track of the index of the item. Array's `enumerated()` method can help you achieve this:
 
 ```swift
 let names = ["Anna", "Alex", "Brian", "Jack"]
 
-for (index, value) in names.enumerate() {
+for (index, value) in names.enumerated() {
     print("Item \(index + 1): \(value)")
 }
 ```
