@@ -28,7 +28,7 @@ Control-drag from the collection view to the View Controller file to create an o
 
 Declare that the class implements the table view dataSource, delegate, and flowLayout protocols. Look for the class declaration at the top of your Swift file. Add `UICollectionViewDataSource`, `UICollectionViewDelegate` and `UICollectionViewDelegateFlowLayout` after `UIViewController`. Note that there will be an error that your class doesn't implement the required UICollectionViewDataSource functions. The error won't go away until you complete Step 4 below.
 
-```
+```swift
 class YourViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
   ...
 }
@@ -36,7 +36,7 @@ class YourViewController: UIViewController, UICollectionViewDataSource, UICollec
 
 In viewDidLoad, configure the datasource and delegate of the collection view.
 
-```
+```swift
 override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -67,7 +67,7 @@ Create outlets to the custom cell class for any view you want to configure in co
 
 There are many collection view methods, but the only required methods are to set the number of items for the collection view and to return the cell for each item.
 
-```
+```swift
 func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {   
     // Set the number of items in your collection view.
     return 20        
@@ -76,7 +76,7 @@ func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection s
 
 Use the `dequeueReusableCellWithReuseIdentifier()` method to access your reusable cell. In order to access properties and methods in your Custom Cell Swift file, you will need to cast your cell to be of type, `YourCustomCell` using `as! YourCustomCell`. 
 
-```
+```swift
 func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     // Access
     let cell = yourCollectionView.dequeueReusableCell(withReuseIdentifier: "YourCustomCell", for: indexPath) as! YourCustomCell
@@ -96,7 +96,7 @@ If you run your App at this point, you will notice that there is a big gap betwe
 
 Adding the following Flow Layout methods allows you to adjust the space between the cells.
 
-```
+```swift
 func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
         
     return 4
