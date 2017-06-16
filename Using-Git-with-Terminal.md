@@ -153,7 +153,7 @@ git push origin master
 <enter your password at prompt>
 ```
 
-- Create a new Repository on GitHub  
+#### Create a new Repository on GitHub  
     ![Create a new Repository on GitHub gif|800](http://i.imgur.com/UmHxuhN.gif)  
 
 - Navigate to your Xcode Project folder in Terminal.  
@@ -162,7 +162,7 @@ git push origin master
   
     ![Link to the remote repository gif|800](http://i.imgur.com/48uur3D.gif)  
 
-   - NOTE: Decide if you want the remote to use https or ssh before setting your remote in the next step. I like ssh for the convenience of not always having to input my credentials.  
+   - NOTE: Decide if you want the remote to use [SSH or HTTPS](http://guides.codepath.com/ios/Using-Git-with-Terminal#ssh-setup) before setting your remote in the next step. I like ssh for the convenience of not always having to input my credentials.  
 
     ```bash
     git remote add origin https://github.com/yourUserName/yourRepoName.git
