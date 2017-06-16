@@ -154,7 +154,8 @@ git push origin master
 ```
 
 #### Create a new Repository on GitHub  
-    ![Create a new Repository on GitHub gif|800](http://i.imgur.com/UmHxuhN.gif)  
+    
+   <img src="http://i.imgur.com/UmHxuhN.gif" width="600" />
 
 - Navigate to your Xcode Project folder in Terminal.  
 - Link to the remote repository by adding the following code in Terminal, provided from your GitHub repository. We want to "push an existing repository from the command line".
