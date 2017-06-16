@@ -129,6 +129,30 @@ Now that your local Git is all setup from the last step, you can update your loc
 alt="Loading" width="240" height="180" border="10" /></a>  
   
 There are many remote repository options. In this guide we will be using [GitHub](https://github.com/). You will need a GitHub account if you don't have one already.
+
+#### Repository URLs
+
+There are two types of repository URLs, [HTTPS and SSH](https://help.github.com/articles/which-remote-url-should-i-use/):
+
+- HTTPS: `https://github.com/homer/duff_project.git`
+- SSH: `git@github.com:homer/duff_project.git`
+
+The general workflow is the same for both URLs, but there are some differences in the specifics of commands.
+
+#### SSH Setup
+You'll first need to [register your machine's SSH keys](https://help.github.com/articles/generating-an-ssh-key/) with your Github account. You only need to perform this step **once** for each machine you use.
+
+Once you've added your SSH key, the SSH repository URL will look like `git@github.com:myusername/reponame.git` but for your username and project. You won't need to provide credentials (username/password) for any further git commands.
+
+#### HTTPS Setup
+
+There is no additional setup required for using HTTPS. However, you'll need to enter your username and password each time you run the `git pull` or `git push` commands:
+```
+git push origin master
+<enter your username at promt>
+<enter your password at prompt>
+```
+
 - Create a new Repository on GitHub  
     ![Create a new Repository on GitHub gif|800](http://i.imgur.com/UmHxuhN.gif)  
 
@@ -137,6 +161,8 @@ There are many remote repository options. In this guide we will be using [GitHub
    - NOTE: Make sure you add YOUR GitHub remote address! 
   
     ![Link to the remote repository gif|800](http://i.imgur.com/48uur3D.gif)  
+
+   - NOTE: Decide if you want the remote to use https or ssh before setting your remote in the next step. I like ssh for the convenience of not always having to input my credentials.  
 
     ```bash
     git remote add origin https://github.com/yourUserName/yourRepoName.git
