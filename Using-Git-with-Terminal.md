@@ -84,10 +84,17 @@ alt="Loading" width="240" height="180" border="10" /></a>
   
 Now that your local Git is all setup from the last step, you can update your local Git repository with any changes you make to your project.
 - Navigate to your Xcode Project folder in Terminal.
-- Stage all the changes you made.
+- Check for any changes that have been made to files since your last commit
 
 ```
-git add .
+git status
+```
+
+- Stage any files with changes you'd like to commit.
+
+```
+git add [filepath] # This adds an individual file
+git add . # This adds all files with changes
 ``` 
 
 - Check to see what was added.
