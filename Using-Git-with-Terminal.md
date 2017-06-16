@@ -76,6 +76,18 @@ This file allows us to tell Git how we want certain files to be treated. We will
     ```bash
     *.pbxproj binary merge=union
     ```
+### Add and configure README
+
+- Add a README.md file to your repo
+    
+    ```bash
+    touch README.md
+    ```
+- Open and edit your README.md
+
+    ```bash
+    open README.md
+    ```
 
 ### Adding and Committing Changes to Local Repository
   
