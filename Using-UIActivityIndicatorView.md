@@ -2,13 +2,13 @@
 - Add the Activity Indicator View to your storyboard from the Object Library
 - Choose a style and color
 - Select "Hides When Stopped" in order to automatically hide the activity indicator any time it's not animating.</br>
-
+   
    <img src="http://i.imgur.com/EBJYKdf.gif" width="600" />
  
 
 ### Create an Outlet
 - <kbd>control</kbd> + <kbd>drag</kbd> from activity in storyboard canvas (or document outline) to swift file.</br>
-
+   
    <img src="http://i.imgur.com/Oj0RZyM.gif" width="600" />
 
 ### Start / Stop animating
