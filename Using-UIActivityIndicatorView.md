@@ -1,11 +1,24 @@
-### Step 1: Add activity indicator to storyboard
-Add the Activity Indicator View to your storyboard from the Object browser and check the animating property.
-![Add Activity Indicator|250](http://i.imgur.com/CYS7YwM.gif)
+### Add activity indicator to storyboard
+- Add the Activity Indicator View to your storyboard from the Object Library
+- Choose a style and color
+- Select "Hides When Stopped" in order to automatically hide the activity indicator any time it's not animating.</br>
 
-### Step 2: Set default properties
-Move the Activity Indicator View inside a button. Set the style of the Activity Indicator to be Large White. Select hidden when stopped and uncheck animating.
-![Activity Indicator Large|250](http://i.imgur.com/ydhab4Y.gif)
+   <img src="http://i.imgur.com/EBJYKdf.gif" width="600" />
+ 
 
-### Step 3: Start animating on button tap
-Add an outlet for the Activity Indicator View in your View Controller. Then, add a tap handler for your button. Inside the tap handler, tell the Activity Indicator View to start animating.
-![Activity Indicator Large|250](http://i.imgur.com/ic8fzUT.gif)
+### Create an Outlet
+- <kbd>control</kbd> + <kbd>drag</kbd> from activity in storyboard canvas (or document outline) to swift file.</br>
+
+   <img src="http://i.imgur.com/Oj0RZyM.gif" width="600" />
+
+### Start / Stop animating
+Tell the Activity Indicator View to start animating.
+
+```swift
+// Start the activity indicator
+activityIndicator.startAnimating()
+
+// Stop the activity indicator
+// Hides automatically if "Hides When Stopped" is enabled
+activityIndicator.stopAnimating()
+```
