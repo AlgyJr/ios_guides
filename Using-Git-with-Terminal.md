@@ -1,4 +1,4 @@
-Git is an essential tool in the developers toolkit. Git stores your files like a stream of snapshots, allowing you and other collaborators to make changes to projects and keep everything in sync. This Guide will cover using Git with Terminal.
+Git is an essential tool in the developers toolkit. Git stores your files like a stream of snapshots, allowing you and other collaborators to make changes to projects and keep everything in sync. This Guide introduces using Git with Terminal. You can click the video link in each section for a video walkthrough or [watch the video playlist now](https://www.youtube.com/playlist?list=PLrT2tZ9JRrf4KDwVwtpszLUxf_CuL2l4y).
 
 ### Basic Terminal Navigation
 The Terminal is much like the finder, but less pretty. There are just a few basic commands needed to navigate around in Terminal. Using Terminal, we often refer to folders as directories. Check out this [Terminal Cheat Sheet for Mac](https://github.com/0nn0/terminal-mac-cheatsheet/wiki/Terminal-Cheatsheet-for-Mac-(-basics-)) for a more complete list of commands.
