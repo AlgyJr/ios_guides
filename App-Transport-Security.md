@@ -74,6 +74,40 @@ The results will show you whether default connections will fail, and whether usi
 </dict>
 ```
 
+### Further Troubleshooting
+
+Troubleshooting ATS-related issues can be difficult to do.  If you need to analyze the network traffic, you can follow Apple's guides to run [packet traces](https://developer.apple.com/library/content/qa/qa1176/_index.html#//apple_ref/doc/uid/DTS10001707-CH1-SECIOSPACKETTRACING) using a tool such as [Wireshark](https://www.wireshark.org/).  You can use these tools to understand the TLS handshake.
+
+First, connect an iPhone to the USB port of a Mac.  Next, get the current list of interfaces:
+```bash
+$ ifconfig -l
+lo0 gif0 stf0 en0 en1 p2p0 fw0 ppp0 utun0
+```
+
+Open iTunes on the Mac.  Click on the icon for the iPhone device.
+
+Click the Serial number text to display the UDID.  Record the UDID by using Ctrl-Click to copy the UDID.
+
+<img src="http://imgur.com/MLWsrsl.png"/>
+
+Then run the tool with the UDID of the device:
+
+```bash
+$ rvictl -s <UDID>
+```
+
+You should see:
+Starting device <UDID [SUCCEEDED]
+ 
+Get the list of interfaces again, and you can see the new virtual network interface, rvi0, added by the previous command:
+
+```bash
+$ ifconfig -l
+lo0 gif0 stf0 en0 en1 p2p0 fw0 ppp0 utun0 rvi0
+```
+
+You can then use WireShark to capture network traffic on the `rvi0` interface.
+
 ### Encryption Ciphers
 
 ATS requires strict encryption ciphers.  You can use the Chrome Security tab (`View` -> `Developer` -> `Developer Tools`) to check what encryption standard is used:
@@ -157,40 +191,6 @@ Nmap done: 1 IP address (1 host up) scanned in 0.97 seconds
 ```
 
 In addition, there are public sites such as [https://apptransport.info](https://apptransport.info) and [ssllabs.com/ssltest/analyze.html](ssllabs.com/ssltest/analyze.html) that allow you to check whether public web sites are ATS-compatible.  For apptransportinfo, Simply add the URL at the end (i.e. https://apptransport.info/www.codepath.com) to run the test.   
-
-### Further Troubleshooting
-
-Troubleshooting ATS-related issues can be difficult to do.  If you need to analyze the network traffic, you can follow Apple's guides to run [packet traces](https://developer.apple.com/library/content/qa/qa1176/_index.html#//apple_ref/doc/uid/DTS10001707-CH1-SECIOSPACKETTRACING) using a tool such as [Wireshark](https://www.wireshark.org/).  You can use these tools to understand the TLS handshake.
-
-First, connect an iPhone to the USB port of a Mac.  Next, get the current list of interfaces:
-```bash
-$ ifconfig -l
-lo0 gif0 stf0 en0 en1 p2p0 fw0 ppp0 utun0
-```
-
-Open iTunes on the Mac.  Click on the icon for the iPhone device.
-
-Click the Serial number text to display the UDID.  Record the UDID by using Ctrl-Click to copy the UDID.
-
-<img src="http://imgur.com/MLWsrsl.png"/>
-
-Then run the tool with the UDID of the device:
-
-```bash
-$ rvictl -s <UDID>
-```
-
-You should see:
-Starting device <UDID [SUCCEEDED]
- 
-Get the list of interfaces again, and you can see the new virtual network interface, rvi0, added by the previous command:
-
-```bash
-$ ifconfig -l
-lo0 gif0 stf0 en0 en1 p2p0 fw0 ppp0 utun0 rvi0
-```
-
-You can then use WireShark to capture network traffic on the `rvi0` interface.
 
 ### Read More
 
