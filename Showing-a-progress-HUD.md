@@ -8,12 +8,14 @@ In mobile apps, it's helpful to give the user an indication that content is bein
 
 ### Setting Up the Podfile
 
-We'll start by doing `pod init` to create a template **Podfile**. It should contain some lines at the top, lets uncomment them so they look like below:
-
-    platform :ios, "8.0"
+We'll start by doing `pod init` to create a template **Podfile**. It should contain some lines at the top similar to the below:
+    
+    # Uncomment the next line to define a global platform for your project
+    # platform :ios, "9.0"
+    ...
     use_frameworks!
 
-This tells CocoaPods that your project is targeting *iOS 8.0* and will be using *frameworks* instead of *static libraries* heading toward a more [complex][1] **Podfile** that works with *Swift*.
+This tells CocoaPods that your project will be using *frameworks* instead of *static libraries* heading toward a more [complex][1] **Podfile** that works with *Swift*.
 
 You could also include the line **below** to supress any warnings from *Pods* we install if you're getting a lot of noise from them:
 
