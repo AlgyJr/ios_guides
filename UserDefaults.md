@@ -18,6 +18,8 @@ defaults.set(123, forKey: "myInt")
 defaults.set(123.00, forKey: "myDouble")
 // Set a Bool value for some key.
 defaults.set(true, forKey: "myBool")
+// Set a Data value for some key.
+defaults.set(data, forKey: "currentUserData")
 
 // Force UserDefaults to save.
 defaults.synchronize()
@@ -45,4 +47,6 @@ let intValue = defaults.integer(forKey: "myInt")
 let doubleValue = defaults.double(forKey: "myDouble")
 // Get a Bool value.
 let boolValue = defaults.bool(forKey: "myBool")
+// Get a Data value
+let dataValue = defaults.data(forKey: "myData")
 ```
