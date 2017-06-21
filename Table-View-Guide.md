@@ -1299,7 +1299,7 @@ override func viewDidLoad() {
 	
     // Initialize a UIRefreshControl
     let refreshControl = UIRefreshControl()
-    refreshControl.addTarget(self, action: #selector(refreshControlAction(_refreshControl:)), for: UIControlEvents.valueChanged)
+    refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
 }
 ```
 
@@ -1312,7 +1312,7 @@ override func viewDidLoad() {
 	
     // Initialize a UIRefreshControl
     let refreshControl = UIRefreshControl()
-    refreshControl.addTarget(self, action: #selector(refreshControlAction(_refreshControl:)), for: UIControlEvents.valueChanged)
+    refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
     // add refresh control to table view
     tableView.insertSubview(refreshControl, at: 0)
 }
