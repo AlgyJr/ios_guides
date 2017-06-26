@@ -159,13 +159,13 @@ Returns an instance of the successfully logged in `PFUser`. This also caches the
 Once a user successfully logs into your application, Parse caches the logged in user object for convenient access throughout your application. `PFUser.currentUser()` can be used to get the current user. You can use this functionality in `AppDelegate` to check if there is a current user in Parse cache or not. If there is a cached user already present then you can directly load the Home view controller (without asking the user to login again).
 
 ```swift
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         // Code to initialize Parse
         // (See above section 'Parse `initializeWithConfiguration` vs `setApplicationId`', if you have not already set it up)
 
         // check if user is logged in.
-        if PFUser.currentUser() != nil {
+        if PFUser.current() != nil {
             // if there is a logged in user then load the home view controller
         }
 
