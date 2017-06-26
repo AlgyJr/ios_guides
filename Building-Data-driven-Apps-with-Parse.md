@@ -88,7 +88,7 @@ One of the basic use cases for user management is to have them sign up. Once you
 
 <!--a target="_blank" href="http://i.imgur.com/6kvrKOU.png"><img src="http://i.imgur.com/6kvrKOU.png" alt="Parse User Sign Up" width="750"/></a-->
 
-use following code snippet that shows how to sign up user:
+The following code snippet shows how to sign up user:
 
 ```swift
     @IBAction func registerUser(sender: UIButton) {
@@ -101,7 +101,7 @@ use following code snippet that shows how to sign up user:
         newUser.password = passwordLabel.text
 
         // call sign up function on the object
-        newUser.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+        newUser.signUpInBackground { (success: Bool, error: Error?) in
             if let error = error {
                 print(error.localizedDescription)
             } else {
@@ -132,16 +132,14 @@ Once the user has signed up, next step is to have them log in to your app. The i
         let username = usernameLabel.text ?? ""
         let password = passwordLabel.text ?? ""
 
-        PFUser.logInWithUsernameInBackground(username, password: password) { (user: PFUser?, error: NSError?) -> Void in
+        PFUser.logInWithUsername(inBackground: username, password: password) { (user: PFUser?, error: Error?) in
             if let error = error {
-                print("User login failed.")
-                print(error.localizedDescription)
+               print("User log in failed: \(error.localizedDescription)")
             } else {
-                print("User logged in successfully")
-                // display view controller that needs to shown after successful login
+               print("User logged in successfully")
+               // display view controller that needs to shown after successful login
             }
-        }
-        
+        }   
     }
 ```
 ###### Notes:
