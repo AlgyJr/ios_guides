@@ -283,7 +283,7 @@ let predicate = NSPredicate(format: "likesCount > 100")
 var query = PFQuery(className: "Post", predicate: predicate)
 
 // fetch data asynchronously
-query.findObjectsInBackgroundWithBlock { (posts: [PFObject]?, error: NSError?) -> Void in
+query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
     if let posts = posts {
         // do something with the array of object returned by the call
         for post in posts {
@@ -308,7 +308,7 @@ query.whereKey("likesCount", greaterThan: 100)
 query.limit = 20
 
 // fetch data asynchronously
-query.findObjectsInBackgroundWithBlock { (posts: [PFObject]?, error: NSError?) -> Void in
+query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
     if let posts = posts {
         // do something with the array of object returned by the call
     } else {
