@@ -117,58 +117,59 @@ Using that cross-platform app to easily access and modify the data for your Pars
 
 ### Enabling Client SDK integration
 
-Create a Podfile file:
+1. Create a Podfile file:
 
-```
-pod init
-```
-Add dependencies in your Podfile (Don't forget to save your Podfile):
+    ```
+    pod init
+    ```
+1. Add dependencies in your Podfile (Don't forget to save your Podfile):
 
-```ruby
-# Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+    ```ruby
+    # Uncomment the next line to define a global platform for your project
+    # platform :ios, '9.0'
 
-target 'YOUR_APP' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
+    target 'YOUR_APP' do
+      # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+      use_frameworks!
 
-  # Pods for YOUR_APP
-  pod 'Parse'
+      # Pods for YOUR_APP
+      pod 'Parse'
 
-  ...
-```
-Install the new pods:
+      ...
+    ```
 
-```bash
-pod install
-```
+1. Install the new pods:
 
-Initialize Parse in your `AppDelegate` to point to your own server:
+    ```bash
+    pod install
+    ```
 
-```swift
-// AppDelegate.swift
+1. Initialize Parse in your `AppDelegate` to point to your own server:
 
-// ...
-
-import Parse
-
-class AppDelegate: UIResponder, UIApplicationDelegate {
+    ```swift
+    // AppDelegate.swift
 
     // ...
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    import Parse
 
-        // Initialize Parse
-        // Set applicationId and server based on the values in the Heroku settings.
-        // clientKey is not used on Parse open source unless explicitly configured
-        Parse.initialize(
-            with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
-                configuration.applicationId = "myAppId"
-                configuration.clientKey = nil  // set to nil assuming you have not set clientKey
-                configuration.server = "https://myAppName.herokuapp.com/parse"
-            })
-        )
-```
+    class AppDelegate: UIResponder, UIApplicationDelegate {
+
+        // ...
+
+        func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
+            // Initialize Parse
+            // Set applicationId and server based on the values in the Heroku settings.
+            // clientKey is not used on Parse open source unless explicitly configured
+            Parse.initialize(
+                with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
+                    configuration.applicationId = "myAppId"
+                    configuration.clientKey = nil  // set to nil assuming you have not set clientKey
+                    configuration.server = "https://myAppName.herokuapp.com/parse"
+                })
+            )
+    ```
 
 The `/parse` path needs to match the `PARSE_MOUNT` environment variable, which is set to this value by default.
 
