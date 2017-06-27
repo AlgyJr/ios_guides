@@ -2,6 +2,16 @@
 
 This is a quickstart guide for using the taking a photo or picking an image from the camera roll using the stock camera and camera roll. In both cases, we'll modally present the `UIImagePickerController` class which has a delegate. The delegate has a method which is called after a user takes/picks a picture.
 
+## Permissions
+As of iOS 10, the following camera and photo library usage descriptions are required in the `info.plist`. The description you enter will be shown to the user when prompted to allow permissions to the camera or photo library.
+
+```xml
+<key>NSPhotoLibraryUsageDescription</key>               <!-- added this for photo library permission -->
+<string>NeedLibrary access for uploading Images</string> <!-- added this for photo library permission -->
+<key>NSCameraUsageDescription</key> <!-- added this for camera permission -->
+<string>Need camera access for uploading Images</string> <!-- added this for camera permission -->
+```
+
 ## Taking a Picture
 
 ### Step 1: Declare that your class implements the required protocols
