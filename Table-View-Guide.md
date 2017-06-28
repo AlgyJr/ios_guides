@@ -753,7 +753,7 @@ both properties.
 ### Built-in accessory views
 There are a few built-in accessory views that can be activated by
 setting the [`accessoryType`][accessorytype] property on your
-`UITableViewCell`.  By default this value is `.None`.  Returning to
+`UITableViewCell`.  By default this value is `.none`.  Returning to
 our prototype cell example, you can see what each accessory type looks
 like below.
 
@@ -764,7 +764,7 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource {
     ...
 
-    let accessoryTypes: [UITableViewCellAccessoryType] = [.None, .DisclosureIndicator, .DetailDisclosureButton, .Checkmark, .DetailButton]
+    let accessoryTypes: [UITableViewCellAccessoryType] = [.none, .DisclosureIndicator, .DetailDisclosureButton, .Checkmark, .DetailButton]
 
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "com.codepath.DemoPrototypeCell", for: indexPath) as! DemoPrototypeCell
@@ -1009,7 +1009,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if checked[indexPath.row] {
             cell.accessoryType = .Checkmark
         } else {
-            cell.accessoryType = .None
+            cell.accessoryType = .none
         }
         return cell
     }
@@ -1036,7 +1036,7 @@ data](#handling-updates-to-your-data) can be found below.
 There are several ways the `UITableViewCell` itself can respond to a
 selection event.  The most basic is setting the
 [`selectionStyle`][cellselectionstyle].  In particular, the value
-`.None` can be useful here&mdash;though you should set the flag
+`.none` can be useful here&mdash;though you should set the flag
 [allowsSelection][allowsselection] on your `UITableView` if you wish to
 disable selection globally.
 
@@ -1096,7 +1096,7 @@ To customize what happens for the **Selected** event, you can use one of the fol
 
     ```swift
     // No color when the user selects cell
-    cell.selectionStyle = .None
+    cell.selectionStyle = .none
     ```
 2. Set a custom [selectedBackgroundView](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/#//apple_ref/occ/instp/UITableViewCell/selectedBackgroundView). This gives you full control to create a view and set it as the cell's `selectedBackgroundView`.
 
