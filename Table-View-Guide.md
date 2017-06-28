@@ -1201,19 +1201,26 @@ class Story {
         }
     }
 
-    class func fetchStories(successCallback: ([Story]) -> Void, error: ((NSError?) -> Void)?) {
-        NSURLSession.sharedSession().dataTaskWithURL(resourceUrl, completionHandler: {(data, response, requestError) -> Void in
-            if let requestError = requestError? {
+    class func fetchStories(successCallback: @escaping ([Story]) -> Void, error: ((NSError?) -> Void)?) {
+    URLSession.shared.dataTask(with: resourceUrl, completionHandler: {(data, response, requestError) -> Void in
+            if let requestError = requestError as NSError? {
                 error?(requestError)
             } else {
-                if let data = data? {
-                    let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
-                    if let results = json["results"] as? NSArray {
-                        var stories: [Story] = []
-                        for result in results as [NSDictionary] {
-                            stories.append(Story(jsonResult: result))
+                if let data = data {
+                    do {
+                        let json = try JSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? NSDictionary
+                        
+                        if let results = json?["results"] as? NSArray {
+                            var stories: [Story] = []
+                            for result in results as [NSDictionary] {
+                                stories.append(Story(jsonResult: result))
+                            }
+                            successCallback(stories)
                         }
-                        successCallback(stories)
+                    }
+                    catch {
+                        //JSON serialization failed
+                        error?(nil)
                     }
                 } else {
                     // unexepected error happened
