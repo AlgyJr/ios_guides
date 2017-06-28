@@ -1103,7 +1103,7 @@ To customize what happens for the **Selected** event, you can use one of the fol
     ```swift
     // Use a red color when the user selects the cell
     let backgroundView = UIView()
-    backgroundView.backgroundColor = UIColor.redColor()
+    backgroundView.backgroundColor = UIColor.red
     cell.selectedBackgroundView = backgroundView
     ```
 
