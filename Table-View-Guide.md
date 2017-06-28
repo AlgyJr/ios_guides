@@ -451,7 +451,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
-        let cellNib = UINib(nibName: "DemoNibTableViewCell", bundle: NSBundle.mainBundle())
+        let cellNib = UINib(nibName: "DemoNibTableViewCell", bundle: Bundle.main)
         tableView.registerNib(cellNib, forCellReuseIdentifier: "com.codepath.DemoNibTableViewCell")
     }
 
@@ -695,7 +695,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.delegate = self
         tableView.estimatedRowHeight = 50
 
-        let cellNib = UINib(nibName: "DemoNibTableViewCell", bundle: NSBundle.mainBundle())
+        let cellNib = UINib(nibName: "DemoNibTableViewCell", bundle: Bundle.main)
         tableView.registerNib(cellNib, forCellReuseIdentifier: "com.codepath.DemoNibTableViewCell")
 
         referenceCell = cellNib.instantiateWithOwner(nil, options: nil).first as DemoNibTableViewCell
