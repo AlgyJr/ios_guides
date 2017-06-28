@@ -200,7 +200,7 @@ class ViewController: UIViewController, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // If there are no cells available for reuse, it will always return a cell so long as the identifier has previously been registered
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier, for: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier, for: indexPath)
         cell.textLabel?.text = data[indexPath.row]
         return cell
     }
@@ -1004,7 +1004,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath)
         cell.textLabel?.text = data[indexPath.row]
         if checked[indexPath.row] {
             cell.accessoryType = .Checkmark
