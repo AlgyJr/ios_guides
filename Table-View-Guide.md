@@ -1434,15 +1434,12 @@ func loadMoreData() {
     // ... Create the NSURLRequest (myRequest) ...
 
     // Configure session so that completion handler is executed on main UI thread
-    let session = NSURLSession(
-        configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
-        delegate:nil,
-        delegateQueue:NSOperationQueue.mainQueue()
+    let session = URLSession(configuration: URLSessionConfiguration.default,
+                            delegate:nil,
+                            delegateQueue:OperationQueue.main
     )
-
-    let task : NSURLSessionDataTask = session.dataTaskWithRequest(myRequest,
-        completionHandler: { (data, response, error) in    
-
+    let task : URLSessionDataTask = session.dataTask(with: myRequest, completionHandler: { (data, response, error) in
+    
         // Update flag
         self.isMoreDataLoading = false
 
