@@ -200,7 +200,7 @@ class ViewController: UIViewController, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // If there are no cells available for reuse, it will always return a cell so long as the identifier has previously been registered
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier, for: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier, for: indexPath)
         cell.textLabel?.text = data[indexPath.row]
         return cell
     }
@@ -451,7 +451,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
-        let cellNib = UINib(nibName: "DemoNibTableViewCell", bundle: NSBundle.mainBundle())
+        let cellNib = UINib(nibName: "DemoNibTableViewCell", bundle: Bundle.main)
         tableView.registerNib(cellNib, forCellReuseIdentifier: "com.codepath.DemoNibTableViewCell")
     }
 
@@ -695,7 +695,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.delegate = self
         tableView.estimatedRowHeight = 50
 
-        let cellNib = UINib(nibName: "DemoNibTableViewCell", bundle: NSBundle.mainBundle())
+        let cellNib = UINib(nibName: "DemoNibTableViewCell", bundle: Bundle.main)
         tableView.registerNib(cellNib, forCellReuseIdentifier: "com.codepath.DemoNibTableViewCell")
 
         referenceCell = cellNib.instantiateWithOwner(nil, options: nil).first as DemoNibTableViewCell
@@ -753,7 +753,7 @@ both properties.
 ### Built-in accessory views
 There are a few built-in accessory views that can be activated by
 setting the [`accessoryType`][accessorytype] property on your
-`UITableViewCell`.  By default this value is `.None`.  Returning to
+`UITableViewCell`.  By default this value is `.none`.  Returning to
 our prototype cell example, you can see what each accessory type looks
 like below.
 
@@ -764,7 +764,7 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource {
     ...
 
-    let accessoryTypes: [UITableViewCellAccessoryType] = [.None, .DisclosureIndicator, .DetailDisclosureButton, .Checkmark, .DetailButton]
+    let accessoryTypes: [UITableViewCellAccessoryType] = [.none, .DisclosureIndicator, .DetailDisclosureButton, .Checkmark, .DetailButton]
 
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "com.codepath.DemoPrototypeCell", for: indexPath) as! DemoPrototypeCell
@@ -930,7 +930,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterViewWithIdentifier(HeaderViewIdentifier) as UITableViewHeaderFooterView
+        let header = tableView.dequeueReusableHeaderFooterViewWithIdentifier(HeaderViewIdentifier) as! UITableViewHeaderFooterView
         header.textLabel.text = data[section].0
         return header
     }
@@ -1004,12 +1004,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath)
         cell.textLabel?.text = data[indexPath.row]
         if checked[indexPath.row] {
             cell.accessoryType = .Checkmark
         } else {
-            cell.accessoryType = .None
+            cell.accessoryType = .none
         }
         return cell
     }
@@ -1036,7 +1036,7 @@ data](#handling-updates-to-your-data) can be found below.
 There are several ways the `UITableViewCell` itself can respond to a
 selection event.  The most basic is setting the
 [`selectionStyle`][cellselectionstyle].  In particular, the value
-`.None` can be useful here&mdash;though you should set the flag
+`.none` can be useful here&mdash;though you should set the flag
 [allowsSelection][allowsselection] on your `UITableView` if you wish to
 disable selection globally.
 
@@ -1096,14 +1096,14 @@ To customize what happens for the **Selected** event, you can use one of the fol
 
     ```swift
     // No color when the user selects cell
-    cell.selectionStyle = .None
+    cell.selectionStyle = .none
     ```
 2. Set a custom [selectedBackgroundView](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/#//apple_ref/occ/instp/UITableViewCell/selectedBackgroundView). This gives you full control to create a view and set it as the cell's `selectedBackgroundView`.
 
     ```swift
     // Use a red color when the user selects the cell
     let backgroundView = UIView()
-    backgroundView.backgroundColor = UIColor.redColor()
+    backgroundView.backgroundColor = UIColor.red
     cell.selectedBackgroundView = backgroundView
     ```
 
@@ -1434,15 +1434,12 @@ func loadMoreData() {
     // ... Create the NSURLRequest (myRequest) ...
 
     // Configure session so that completion handler is executed on main UI thread
-    let session = NSURLSession(
-        configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
-        delegate:nil,
-        delegateQueue:NSOperationQueue.mainQueue()
+    let session = URLSession(configuration: URLSessionConfiguration.default,
+                            delegate:nil,
+                            delegateQueue:OperationQueue.main
     )
-
-    let task : NSURLSessionDataTask = session.dataTaskWithRequest(myRequest,
-        completionHandler: { (data, response, error) in    
-
+    let task : URLSessionDataTask = session.dataTask(with: myRequest, completionHandler: { (data, response, error) in
+    
         // Update flag
         self.isMoreDataLoading = false
 
@@ -1591,29 +1588,27 @@ Finally, update the `loadMoreData` function to stop the indicator, when the requ
 func loadMoreData() {
 
     // ... Create the NSURLRequest (myRequest) ...
-
     // Configure session so that completion handler is executed on main UI thread
-    let session = NSURLSession(
-        configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
-        delegate:nil,
-        delegateQueue:NSOperationQueue.mainQueue()
+    let session = URLSession(configuration: URLSessionConfiguration.default,
+                            delegate:nil,
+                            delegateQueue:OperationQueue.main
     )
-
-    let task : NSURLSessionDataTask = session.dataTaskWithRequest(myRequest,
-        completionHandler: { (data, response, error) in    
+    
+    let task : URLSessionDataTask = session.dataTask(with: myRequest, completionHandler: { (data, response, error) in
 
         // Update flag
         self.isMoreDataLoading = false
 
-       // Stop the loading indicator
+        // Stop the loading indicator
         self.loadingMoreView!.stopAnimating()
 
         // ... Use the new data to update the data source ...
-			
+
         // Reload the tableView now that there is new data
         self.myTableView.reloadData()
     })
     task.resume()
+
 }
 ```
 
