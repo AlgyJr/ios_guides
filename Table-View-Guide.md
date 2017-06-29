@@ -1588,29 +1588,27 @@ Finally, update the `loadMoreData` function to stop the indicator, when the requ
 func loadMoreData() {
 
     // ... Create the NSURLRequest (myRequest) ...
-
     // Configure session so that completion handler is executed on main UI thread
-    let session = NSURLSession(
-        configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
-        delegate:nil,
-        delegateQueue:NSOperationQueue.mainQueue()
+    let session = URLSession(configuration: URLSessionConfiguration.default,
+                            delegate:nil,
+                            delegateQueue:OperationQueue.main
     )
-
-    let task : NSURLSessionDataTask = session.dataTaskWithRequest(myRequest,
-        completionHandler: { (data, response, error) in    
+    
+    let task : URLSessionDataTask = session.dataTask(with: myRequest, completionHandler: { (data, response, error) in
 
         // Update flag
         self.isMoreDataLoading = false
 
-       // Stop the loading indicator
+        // Stop the loading indicator
         self.loadingMoreView!.stopAnimating()
 
         // ... Use the new data to update the data source ...
-			
+
         // Reload the tableView now that there is new data
         self.myTableView.reloadData()
     })
     task.resume()
+
 }
 ```
 
