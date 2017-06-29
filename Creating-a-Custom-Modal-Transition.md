@@ -16,7 +16,7 @@ Xcode allows us to choose from 3 different modal transitions, Cover Vertical, Fl
 
 Define a "global" variable for the custom transition *above* the viewDidLoad method. It will be of type, ``FadeTransition``.  
 
-```Swift
+```swift
 var fadeTransition: FadeTransition!
 ```
 
@@ -26,7 +26,7 @@ The ``prepareForSegue`` method runs any code that we want right before the segue
 
 - Remove the comment ``/* */`` to activate the ``prepareForSegue`` method and add the following code within the ``prepareForSegue`` method.  
 
-```Swift
+```swift
 override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 
 // Access the ViewController that you will be transitioning too, a.k.a, the destinationViewController.
