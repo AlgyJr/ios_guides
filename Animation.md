@@ -9,9 +9,9 @@ It's best to start out using Springs-and-Struts layout. Later in the guide we'll
 Most of the time, you will perform animation by working directly with UIKit. Say you have a view, `myView`, and you want to animate its movement from its current position to a new position, the `myNewFrame` rect. You simply call:
 
 ```
-UIView.animateWithDuration(0.35) {
+UIView.animate(withDuration: 0.35, animations: {
     self.myView.frame = myNewFrame
-}
+})
 ```
 
 Behind the scenes, it is making calls to a lower layer in the stack, **Core Animation.** You work with Core Animation directly when you need to create complex animation, or do something performance intensive.
@@ -19,20 +19,20 @@ Behind the scenes, it is making calls to a lower layer in the stack, **Core Anim
 There are more complex animation methods available to avoid going lower. If you need to call code with the animation completes:
 
 ```
-UIView.animateWithDuration(0.35, animations: {
+UIView.animate(withDuration: 0.35, animations: {
     self.myView.frame = myNewFrame
-}, completion: { (finished) in
-    NSLog("Animation completed.")
+}, completion: { finished in
+    print("Animation completed.")
 })
 ```
 
 If you want to pass even more options, such as the animation curve:
 
 ```
-UIView.animateWithDuration(0.35, delay: 0.5, options: .CurveEaseInOut, animations: {
-  self.myView.frame = myNewFrame
-}, completion: { (finished) in
-  NSLog("Animation completed.")
+UIView.animate(withDuration: 0.35, delay: 0.5, options: .curveEaseInOut, animations: {
+    self.myView.frame = myNewFrame
+}, completion: { finished in
+    print("Animation completed.")
 })
 ```
 
@@ -76,10 +76,10 @@ To construct a basic animation:
 ```
 myView.layer.position = endPosition
 let animation = CABasicAnimation(keyPath: "position")
-animation.fromValue = NSValue(CGPoint:startPosition)
-animation.toValue = NSValue(CGPoint:endPosition)
+animation.fromValue = NSValue(cgPoint: startPosition)
+animation.toValue = NSValue(cgPoint: endPosition)
 animation.duration = 1.0
-myView.layer.addAnimation(animation, forKey: "MyAnimationKey")
+myView.layer.add(animation, forKey: "MyAnimationKey")
 ```
 
 The `position` key is the name of the property you want animated. The key in the `addAnimation` method is a made-up key you will use to identify the animation in flight.
