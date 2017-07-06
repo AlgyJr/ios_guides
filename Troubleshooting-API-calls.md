@@ -32,13 +32,19 @@ It is also often useful to monitor the network traffic to help diagnose these is
 
      <img src="http://imgur.com/YXTqq93.png"/>
 
-4. **If are using a device to test**, disable the proxy from being used on your desktop web browser by simply going to `Proxy` -> `Proxy Settings` and uncheck the `Enable macOS proxy` option:
+4. **Skip this step if you are using an emulator to test.**  If are using a device to test, disable the proxy from being used on your desktop web browser by simply going to `Proxy` -> `Proxy Settings` and uncheck the `Enable macOS proxy` option:
 
      <img src="http://imgur.com/zzWkuEX.png"/>
 
 5. Make sure to ascertain your IP address of the machine with the proxy installed.  You can go to the `Help` -> `Local IP Address` to find it:
 
 <img src="http://imgur.com/AwbbEwA.png"/>
+
+6. If you see SSL errors while browsing, such as the following error:
+
+<img src="http://imgur.com/n4TdVuG.png" width="600"/>
+
+You can either uncheck the `Enable macOS proxy` as shown in step 4 or follow the steps outlined [here](https://www.charlesproxy.com/documentation/using-charles/ssl-certificates/) to avoid the browser warning. 
 
 ***On your phone:***
 
