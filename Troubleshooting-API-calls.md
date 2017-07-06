@@ -22,15 +22,17 @@ It is also often useful to monitor the network traffic to help diagnose these is
 
 1. Download a 30-day trial of [Charles Proxy](https://www.charlesproxy.com/download/).  There are versions available for Windows, Mac OS, and Linux.
 
-2. You will need to insert a special root certificate in order to inspect SSL traffic.  If you are running an iOS simulator, run Charles Proxy and navigate to `Help` -> `SSL Proxying` -> `Install Charles Root Certificate on iOS Simulators`.  If you are not running an iOS simulator, skip this step for now.  You will be asked to install the SSL cert on the phone later.
+2. You will need to insert a special root certificate in order to inspect SSL traffic. 
+    a. If you are running an iOS simulator, run Charles Proxy and navigate to `Help` -> `SSL Proxying` -> `Install Charles Root Certificate on iOS Simulators`.    You will need to restart your app/simulator for this certificate to take into effect.
+    b. If you are not running an iOS simulator, skip this step for now.  You will be asked to install the SSL cert on the phone later.
 
      <img src="http://imgur.com/Ac5QR0x.png"/>
 
-3. SSL sites that must be inspected must be explicitly declared by going to `Proxy` -> `SSL Proxying Settings`.  Type the domain name and port 443 assuming the site is connecting to a standard SSL port.  You can also use wildcards (i.e. `*.myexample.com')
+3. SSL sites that must be inspected must be explicitly declared by going to `Proxy` -> `SSL Proxying Settings`.  Type the domain name and port 443 assuming the site is connecting to a standard SSL port.  You can also use wildcards (i.e. `*.twitter.com, port 443')
 
      <img src="http://imgur.com/YXTqq93.png"/>
 
-4. Disable the proxy from being used on your desktop web browser by simply going to `Proxy` -> `Proxy Settings` and uncheck the `Enable macOS proxy` option:
+4. **If are using a device to test**, disable the proxy from being used on your desktop web browser by simply going to `Proxy` -> `Proxy Settings` and uncheck the `Enable macOS proxy` option:
 
      <img src="http://imgur.com/zzWkuEX.png"/>
 
