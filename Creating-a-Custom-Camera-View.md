@@ -30,7 +30,7 @@ Above the `viewDidLoad` method, where you create variables you want to be access
 
 ```swift
 var session: AVCaptureSession?
-var stillImageOutput: AVCapturePhotoOutput?
+var stillImageOutput: AVCaptureStillImageOutput?
 var videoPreviewLayer: AVCaptureVideoPreviewLayer?
 ``` 
 
