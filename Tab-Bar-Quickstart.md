@@ -11,7 +11,7 @@ controllers for each tab.
 
 ## Storyboard setup
 ### Step 1: Add tab bar controller as initial view controller
-In Interface Builder delete the pegenerated view controller and
+In Interface Builder delete the pregenerated view controller and
 drag a `Tab Bar Controller` from the Object Library
 into your storyboard.  It will come preconfigured with two tabs
 corresponding to two view controllers.  Many times you will want your
