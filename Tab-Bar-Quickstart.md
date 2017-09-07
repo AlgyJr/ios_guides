@@ -1,4 +1,7 @@
 ## Overview
+_Updated with iOS 10.3, Xcode 8.3.3 and Swift 3_
+
+
 <a href="http://imgur.com/WhoidE5"><img src="http://i.imgur.com/WhoidE5.gif" title="source: imgur.com" /></a>
 
 Tab bars controllers provide a simple interface for a users to switch
@@ -8,7 +11,8 @@ controllers for each tab.
 
 ## Storyboard setup
 ### Step 1: Add tab bar controller as initial view controller
-In Interface Builder drag a `Tab Bar Controller` from the Object Library
+In Interface Builder delete the pegenerated view controller and
+drag a `Tab Bar Controller` from the Object Library
 into your storyboard.  It will come preconfigured with two tabs
 corresponding to two view controllers.  Many times you will want your
 tab bar controller to be the initial view controller.  You can set this
@@ -19,7 +23,7 @@ Controller`.
 
 ### Step 2: Add a view controller for each tab
 The tab bar controller is configured with two tabs by default.  You can
-delete a tab by selecting the corresponding view controller and deleting
+delete a tab by selecting the corresponding view controller (or segue) and deleting
 it the storyboard.  To add a tab, first drag a new `View Controller`
 object to the storybard.  Next control-drag from the tab bar controller
 to new view controller and select `view controllers` under `Relationship
@@ -63,18 +67,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
             window = UIWindow(frame: UIScreen.main.bounds)
             
             // Set up the first View Controller
             let vc1 = UIViewController()
-            vc1.view.backgroundColor = UIColor.orangeColor()
+            vc1.view.backgroundColor = UIColor.orange
             vc1.tabBarItem.title = "Orange"
             vc1.tabBarItem.image = UIImage(named: "heart")
             
             // Set up the second View Controller
             let vc2 = UIViewController()
-            vc2.view.backgroundColor = UIColor.purpleColor()
+            vc2.view.backgroundColor = UIColor.purple
             vc2.tabBarItem.title = "Purple"
             vc2.tabBarItem.image = UIImage(named: "star")
             
