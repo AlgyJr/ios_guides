@@ -1,3 +1,5 @@
+_Updated with iOS 10.3, Xcode 8.3.3 and Swift 3_
+
 ## Overview
 
 
@@ -77,12 +79,12 @@ class ViewController: UIViewController, UITableViewDataSource {
         tableView.dataSource = self
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return names.count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("NameCell") as UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NameCell", for: indexPath)
         cell.textLabel?.text = names[indexPath.row]
         return cell
     }
@@ -210,11 +212,11 @@ selected once we go back from the name controller.
 ```swift
 class ViewController: UIViewController, UITableViewDataSource {
     ...
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showNameControllerSegue" {
-            let cell = sender as UITableViewCell
-            if let indexPath = tableView.indexPathForCell(cell) {
-                let nameController = segue.destinationViewController as NameController
+            let cell = sender as! UITableViewCell
+            if let indexPath = tableView.indexPath(for: cell) {
+                let nameController = segue.destination as! NameController
                 nameController.fullName = names[indexPath.row]
                 tableView.deselectRowAtIndexPath(indexPath, animated: true)
             }
@@ -231,8 +233,8 @@ class NameController: UIViewController {
     var fullName: String?
 
     override func viewDidLoad() {
-        if let fullName = self.fullName? {
-            let firstLast = fullName.componentsSeparatedByString(" ")
+        if let fullName = self.fullName {
+            let firstLast = fullName.components(separatedBy: " ")
             firstNameTextField.text = firstLast[0]
             lastNameTextField.text = firstLast[1]
         }
@@ -268,11 +270,11 @@ to our _root view controller_.
 ```swift
 class ViewController: UIViewController, UITableViewDataSource {
     ...
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showNameControllerSegue" {
-            let cell = sender as UITableViewCell
-            if let indexPath = tableView.indexPathForCell(cell) {
-                let nameController = segue.destinationViewController as NameController
+            let cell = sender as! UITableViewCell
+            if let indexPath = tableView.indexPath(for: cell) {
+                let nameController = segue.destination as! NameController
                 nameController.fullName = names[indexPath.row]
                 tableView.deselectRowAtIndexPath(indexPath, animated: true)
             }
@@ -305,17 +307,18 @@ class ViewController: UIViewController, UITableViewDataSource {
         "Valentine Lindsey", "Slade Thornton", "Jelani Dickson", "Vance Hurley",
         "Wayne Ellison", "Kasimir Mueller", "Emery Pruitt", "Lucius Lawrence",
         "Kenneth Mendez"]
-    var selectedIndexPath: NSIndexPath?
+
+    var selectedIndexPath: IndexPath?
 
     @IBOutlet weak var tableView: UITableView!
 
     ...
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showNameControllerSegue" {
-            let cell = sender as UITableViewCell
-            if let indexPath = tableView.indexPathForCell(cell) {
-                let namesController = segue.destinationViewController as NameController
+            let cell = sender as! UITableViewCell
+            if let indexPath = tableView.indexPath(for: cell) {
+                let namesController = segue.destination as! NameController
                 namesController.fullName = names[indexPath.row]
                 tableView.deselectRowAtIndexPath(indexPath, animated: true)
                 selectedIndexPath = indexPath
@@ -324,12 +327,12 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
 
     @IBAction func saveName(segue: UIStoryboardSegue) {
-        let nameController = segue.sourceViewController as NameController
-        let name = nameController.firstNameTextField.text + " " + nameController.lastNameTextField.text;
+        let nameController = segue.source as! NameController
+        let name = nameController.firstNameTextField.text! + " " + nameController.lastNameTextField.text!
 
-        if let indexPath = selectedIndexPath? {
+        if let indexPath = selectedIndexPath {
             names[indexPath.row] = name
-            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
             selectedIndexPath = nil
         }
     }
@@ -380,8 +383,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = ViewController()
         window?.makeKeyAndVisible()
         return true
@@ -414,16 +417,16 @@ class ViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         tableView = UITableView(frame: view.frame)
         tableView.dataSource = self
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "NameCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "NameCell")
         view.addSubview(tableView)
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return names.count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("NameCell") as UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NameCell", for: indexPath)
         cell.textLabel?.text = names[indexPath.row]
         return cell
     }
@@ -454,8 +457,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        window = UIWindow(frame: UIScreen.main.bounds)
         let mainVC = ViewController()
         let navigationVC = UINavigationController(rootViewController: mainVC)
         window?.rootViewController = navigationVC
@@ -512,8 +515,8 @@ class NameController: UIViewController {
     var fullName: String?
 
     override func viewDidLoad() {
-        if let fullName = self.fullName? {
-            let firstLast = fullName.componentsSeparatedByString(" ")
+        if let fullName = self.fullName {
+            let firstLast = fullName.components(separatedBy: " ")
             firstNameTextField.text = firstLast[0]
             lastNameTextField.text = firstLast[1]
         }
@@ -558,17 +561,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView = UITableView(frame: view.frame)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "NameCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "NameCell")
         view.addSubview(tableView)
     }
 
     ...
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let nameVC = NameController()
         nameVC.fullName = names[indexPath.row]
 
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
         self.navigationController?.pushViewController(nameVC, animated: true)
     }
 }
@@ -658,11 +661,11 @@ class NameController: UIViewController {
     var fullName: String?
 
     override func viewDidLoad() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: "saveButtonTapped")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(NameController.saveButtonTapped)
         self.navigationItem.title = "Edit Name"
 
-        if let fullName = self.fullName? {
-            let firstLast = fullName.componentsSeparatedByString(" ")
+        if let fullName = self.fullName {
+            let firstLast = fullName.components(separatedBy: " ")
             firstNameTextField.text = firstLast[0]
             lastNameTextField.text = firstLast[1]
         }
@@ -687,24 +690,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         "Kenneth Mendez"]
 
     var tableView: UITableView!
-    var selectedIndexPath: NSIndexPath?
+    var selectedIndexPath: IndexPath?
 
     ...
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let nameVC = NameController()
         nameVC.fullName = names[indexPath.row]
         nameVC.delegate = self
 
         selectedIndexPath = indexPath
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
         self.navigationController?.pushViewController(nameVC, animated: true)
     }
 
     func nameController(nameVC: NameController, didSaveName name: String) {
-        if let indexPath = selectedIndexPath? {
+        if let indexPath = selectedIndexPath {
             names[indexPath.row] = name
-            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
         }
         self.navigationController?.popViewControllerAnimated(true)
     }
@@ -866,15 +869,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         self.navigationItem.title = "Names"
         if let navigationBar = navigationController?.navigationBar {
-            navigationBar.setBackgroundImage(UIImage(named: "codepath-logo"), forBarMetrics: .Default)
+            navigationBar.setBackgroundImage(UIImage(named: "codepath-logo"), forBarMetrics: .default)
             navigationBar.tintColor = UIColor(red: 1.0, green: 0.25, blue: 0.25, alpha: 0.8)
 
             let shadow = NSShadow()
-            shadow.shadowColor = UIColor.grayColor().colorWithAlphaComponent(0.5)
-            shadow.shadowOffset = CGSizeMake(2, 2);
-            shadow.shadowBlurRadius = 4;
+            shadow.shadowColor = UIColor.gray.colorWithAlphaComponent(0.5)
+            shadow.shadowOffset = CGSizeMake(width: 2, high: 2)
+            shadow.shadowBlurRadius = 4
             navigationBar.titleTextAttributes = [
-                NSFontAttributeName : UIFont.boldSystemFontOfSize(22),
+                NSFontAttributeName : UIFont.boldSystemFont(ofSize: 22),
                 NSForegroundColorAttributeName : UIColor(red: 0.5, green: 0.15, blue: 0.15, alpha: 0.8),
                 NSShadowAttributeName : shadow
             ]
@@ -901,17 +904,17 @@ class NameController: UIViewController {
     ...
 
     override func viewDidLoad() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: "saveButtonTapped")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(NameController.saveButtonTapped)
 
         let titleLabel = UILabel()
 
         let shadow = NSShadow()
         shadow.shadowColor = UIColor.redColor().colorWithAlphaComponent(0.5)
-        shadow.shadowOffset = CGSizeMake(2, 2);
-        shadow.shadowBlurRadius = 4;
+        shadow.shadowOffset = CGSizeMake(width: 2, high: 2)
+        shadow.shadowBlurRadius = 4
 
         let titleText = NSAttributedString(string: "Edit Name", attributes: [
-            NSFontAttributeName : UIFont.boldSystemFontOfSize(28),
+            NSFontAttributeName : UIFont.boldSystemFont(ofSize: 28),
             NSForegroundColorAttributeName : UIColor(red: 0.5, green: 0.25, blue: 0.15, alpha: 0.8),
             NSShadowAttributeName : shadow
             ])
@@ -947,13 +950,13 @@ class NameController: UIViewController {
     ...
 
     override func viewDidLoad() {
-        let saveButton = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: "saveButtonTapped")
+        let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(NameController.saveButtonTapped)
 
         let segmentedControl = UISegmentedControl(items: ["Foo", "Bar"])
         segmentedControl.sizeToFit()
         let segmentedButton = UIBarButtonItem(customView: segmentedControl)
 
-        let dummyButton = UIBarButtonItem(title: "Dummy", style: .Plain, target: nil, action: nil)
+        let dummyButton = UIBarButtonItem(title: "Dummy", style: .plain, target: nil, action: nil)
 
         navigationItem.rightBarButtonItems = [saveButton, segmentedButton]
         navigationItem.leftBarButtonItem = dummyButton
@@ -986,11 +989,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         ...
 
         self.navigationItem.title = "Names"
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
         ...
     }
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let nameVC = NameController()
         nameVC.fullName = names[indexPath.row]
         nameVC.delegate = self
