@@ -1,3 +1,5 @@
+_Updated with iOS 10.3, Xcode 8.3.3 and Swift 3_
+
 ## Overview
 <a href="http://imgur.com/7STmvxL"><img src="http://i.imgur.com/7STmvxL.gif" title="source: imgur.com" /></a>
 
@@ -57,14 +59,14 @@ appropriately.
 
 ```swift
 class ViewController: UIViewController {
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destinationViewController as UIViewController
         if segue.identifier == "redSegue" {
             destinationVC.title = "Red"
-            destinationVC.view.backgroundColor = UIColor.redColor()
+            destinationVC.view.backgroundColor = UIColor.red
         } else if segue.identifier == "blueSegue" {
             destinationVC.title = "Blue"
-            destinationVC.view.backgroundColor = UIColor.blueColor()
+            destinationVC.view.backgroundColor = UIColor.blue
         }
     }
 }
@@ -93,9 +95,9 @@ controller here directly or by loading a nib with
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let pickColorVC = storyboard.instantiateViewControllerWithIdentifier("PickAColor") as UIViewController
+        let pickColorVC = storyboard.instantiateViewController(withIdentifier: "PickAColor") as UIViewController
         ...
     }
     ...
@@ -113,11 +115,11 @@ controller.
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         ...
         let navigationController = UINavigationController(rootViewController: pickColorVC)
 
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window = UIWindow(frame: UIScreen.main.bounds)
         if let window = window {
           window.rootViewController = navigationController
           window.makeKeyAndVisible()
@@ -137,12 +139,12 @@ pushing it onto the navigation stack with [`pushViewController`][pushvc].
 ```swift
 class ColorPickerViewController: UIViewController {
 
-    @IBAction func didTapRedButton(sender: AnyObject) {
-        pushViewController("Red", color: UIColor.redColor())
+    @IBAction func didTapRedButton(sender: Any) {
+        pushViewController(title: "Red", color: UIColor.red)
     }
 
-    @IBAction func didTapBlueButton(sender: AnyObject) {
-        pushViewController("Blue", color: UIColor.blueColor())
+    @IBAction func didTapBlueButton(sender: Any) {
+        pushViewController(title: "Blue", color: UIColor.blue)
     }
 
     private func pushViewController(title: String, color: UIColor) {
