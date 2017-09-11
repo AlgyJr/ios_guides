@@ -3,7 +3,7 @@ of the application.  This guide presents high level overview of the most
 common components of an application and how they fit together.  A more
 comprehensive guide by Apple can be found [here][appguide].
 
-[appguide]: https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Introduction/Introduction.html
+[appguide]: https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Introduction/Introduction.html
 
 ## Structure of a `UIApplication`
 
