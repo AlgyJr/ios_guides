@@ -33,7 +33,7 @@ class ViewController: UIViewController {
 
         let contentWidth = scrollView.bounds.width
         let contentHeight = scrollView.bounds.height * 3
-        scrollView.contentSize = CGSizeMake(contentWidth, contentHeight)
+        scrollView.contentSize = CGSize(width: contentWidth, height: contentHeight)
         ...
     }
 }
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
 
         let contentWidth = scrollView.bounds.width
         let contentHeight = scrollView.bounds.height * 3
-        scrollView.contentSize = CGSizeMake(contentWidth, contentHeight)
+        scrollView.contentSize = CGSize(width: contentWidth, height: contentHeight)
 
         let subviewHeight = CGFloat(120)
         var currentViewOffset = CGFloat(0);
