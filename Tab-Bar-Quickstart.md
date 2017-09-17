@@ -97,7 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-```
+```objective_c
 // AppDelegate.m
 
 // ...
