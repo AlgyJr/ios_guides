@@ -94,6 +94,7 @@ Note that it is common for each view controller to be contained within a navigat
 // Create the two view controllers, each within a navigation controller
 let firstNavigationController = UINavigationController.init(rootViewController: firstViewController)
 let secondNavigationController = UINavigationController.init(rootViewController: secondViewController)
+
 tabBarController.viewControllers = [firstNavigationController, secondNavigationController]
 
 ```
@@ -114,6 +115,7 @@ tabBarController.viewControllers = @[firstNavigationController, secondNavigation
 You can configure the title, image, and selected image of the tab bar item in each view controller. The snippet below demonstrates setting the title and icon of each of the tab bar items.
 
 ```swift
+// Configure the titles and images of the tab bar items
 firstNavigationController.tabBarItem.title = "First"
 firstNavigationController.tabBarItem.image = UIImage(named: "House")
 
