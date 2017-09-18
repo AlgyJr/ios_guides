@@ -32,7 +32,7 @@ To configure the tab bar image and title, double-click on the view controller, a
 
 To create the tab bar controller in the image above, create a UITabBarController in the application delegate and set it to be the rootViewController of the window.
 
-```
+```objective_c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -54,7 +54,7 @@ Create a view controller for each tab that you want. It's common to have 2, 3, o
 
 #### Example 1: Creating two view controllers
 
-```
+```objective_c
 // Create the two view controllers
 FirstViewController *firstViewController = [[FirstViewController alloc] init];
 SecondViewController *secondViewController = [[SecondViewController alloc] init];
@@ -66,7 +66,7 @@ tabBarController.viewControllers = @[firstViewController, firstViewController];
 
 Note that it is common for each view controller to be contained within a navigation controller. Each view controller has their own navigation controller because each tab has its own navigation history.
 
-```
+```objective_c
 // Create the two view controllers, each within a navigation controller
 FirstViewController *firstViewController = [[FirstViewController alloc] init];
 UINavigationController *firstNavigationController = [[UINavigationController alloc] initWithRootViewController:firstViewController];
@@ -81,7 +81,7 @@ tabBarController.viewControllers = @[firstNavigationController, secondNavigation
 
 You can configure the title, image, and selected image of the tab bar item in each view controller. The snippet below demonstrates setting the title and icon of each of the tab bar items.
 
-```
+```objective_c
 // Configure the titles and images of the tab bar items
 firstNavigationController.tabBarItem.title = @"First";
 firstNavigationController.tabBarItem.image = [UIImage imageNamed:@"House"];
@@ -94,7 +94,7 @@ secondNavigationController.tabBarItem.image = [UIImage imageNamed:@"Martini"];
 
 Combine the 3 steps above to get a code snippet like the following:
 
-```
+```objective_c
 #import "AppDelegate.h"
 #import "FirstViewController.h"
 #import "SecondViewController.h"
