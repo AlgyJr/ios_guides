@@ -32,6 +32,19 @@ To configure the tab bar image and title, double-click on the view controller, a
 
 To create the tab bar controller in the image above, create a UITabBarController in the application delegate and set it to be the rootViewController of the window.
 
+```swift
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+
+        // Create the tab bar controller
+        let tabBarController = UITabBarController()
+
+        self.window?.rootViewController = tabBarController
+        self.window?.backgroundColor = UIColor.white
+        self.window?.makeKeyAndVisible()
+```
+
 ```objective_c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -54,6 +67,17 @@ Create a view controller for each tab that you want. It's common to have 2, 3, o
 
 #### Example 1: Creating two view controllers
 
+```swift
+// Create the two view controllers
+let firstViewController = FirstViewController()
+let secondViewController = SecondViewController()
+
+let firstNavigationController = UINavigationController.init(rootViewController: firstViewController)
+let secondNavigationController = UINavigationController.init(rootViewController: secondViewController)
+
+tabBarController.viewControllers = [firstViewController, secondViewController]
+```
+
 ```objective_c
 // Create the two view controllers
 FirstViewController *firstViewController = [[FirstViewController alloc] init];
@@ -65,6 +89,14 @@ tabBarController.viewControllers = @[firstViewController, firstViewController];
 #### Example 2: Creating two view controllers within navigation controllers
 
 Note that it is common for each view controller to be contained within a navigation controller. Each view controller has their own navigation controller because each tab has its own navigation history.
+
+```swift
+// Create the two view controllers, each within a navigation controller
+let firstNavigationController = UINavigationController.init(rootViewController: firstViewController)
+let secondNavigationController = UINavigationController.init(rootViewController: secondViewController)
+tabBarController.viewControllers = [firstNavigationController, secondNavigationController]
+
+```
 
 ```objective_c
 // Create the two view controllers, each within a navigation controller
@@ -80,6 +112,14 @@ tabBarController.viewControllers = @[firstNavigationController, secondNavigation
 ### Step 3: Configuring the Tab Bar Items
 
 You can configure the title, image, and selected image of the tab bar item in each view controller. The snippet below demonstrates setting the title and icon of each of the tab bar items.
+
+```swift
+firstNavigationController.tabBarItem.title = "First"
+firstNavigationController.tabBarItem.image = UIImage(named: "House")
+
+secondNavigationController.tabBarItem.title = "Second"
+secondNavigationController.tabBarItem.image = UIImage(named: "Martini")
+```
 
 ```objective_c
 // Configure the titles and images of the tab bar items
