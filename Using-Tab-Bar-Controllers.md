@@ -33,7 +33,7 @@ To configure the tab bar image and title, double-click on the view controller, a
 To create the tab bar controller in the image above, create a UITabBarController in the application delegate and set it to be the rootViewController of the window.
 
 ```swift
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         self.window = UIWindow(frame: UIScreen.main.bounds)
 
@@ -43,6 +43,7 @@ To create the tab bar controller in the image above, create a UITabBarController
         self.window?.rootViewController = tabBarController
         self.window?.backgroundColor = UIColor.white
         self.window?.makeKeyAndVisible()
+}
 ```
 
 ```objective_c
@@ -135,6 +136,45 @@ secondNavigationController.tabBarItem.image = [UIImage imageNamed:@"Martini"];
 ### Summary
 
 Combine the 3 steps above to get a code snippet like the following:
+
+```swift
+import UIKit
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    var window: UIWindow?
+
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+
+        // Create the tab bar controller
+        let tabBarController = UITabBarController()
+
+        // Create the two view controllers
+        let firstViewController = FirstViewController()
+        let secondViewController = SecondViewController()
+
+        let firstNavigationController = UINavigationController.init(rootViewController: firstViewController)
+        let secondNavigationController = UINavigationController.init(rootViewController: secondViewController)
+
+        firstNavigationController.tabBarItem.title = "First"
+        firstNavigationController.tabBarItem.image = UIImage(named: "House")
+
+        secondNavigationController.tabBarItem.title = "Second"
+        secondNavigationController.tabBarItem.image = UIImage(named: "Martini")
+
+        tabBarController.viewControllers = [firstNavigationController, secondNavigationController]
+
+        self.window?.rootViewController = tabBarController
+        self.window?.backgroundColor = UIColor.white
+        self.window?.makeKeyAndVisible()
+
+        return true
+    }
+```
 
 ```objective_c
 #import "AppDelegate.h"
