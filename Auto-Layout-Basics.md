@@ -58,7 +58,7 @@ You can add constraints in Interface Builder by selecting one or more
 views and using the the Auto Layout controls (boxed in red below).  The
 buttons are from left to right:
 
-1. Aligntool - specify how views should be aligned relative to each
+1. Align tool - specify how views should be aligned relative to each
    other
 2. Pin tool - specify that a view should be a fixed distance from
    another view
