@@ -86,7 +86,7 @@ Here we pin the the red view to the top right corner of its parent view.
 This might be useful for example if the red view is a menu button that
 we want to always be accessible from the same location.  Notice that we
 had to specify the height and width of the view as well so that Auto
-Layout would have enough informatin to figure out both the location and
+Layout would have enough information to figure out both the location and
 size of the red view.
 
 <a href="http://imgur.com/TDwD12X"><img src="http://i.imgur.com/TDwD12X.gif" title="source: imgur.com" /></a>
