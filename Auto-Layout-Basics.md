@@ -117,7 +117,7 @@ or both) within another view.
 Here we center the red view vertically on the screen.  This might be
 useful if we need to show our logo in the Launch Screen.  Notice that we
 had select "Update Frames" after setting our constraints.  More on this
-[below].
+below:
 
 <a href="http://imgur.com/VfQLiGI"><img src="http://i.imgur.com/VfQLiGI.gif" title="source: imgur.com" /></a>
 
