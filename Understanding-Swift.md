@@ -194,6 +194,17 @@ if let convertedInput = optionalConvertedInput {
 
 In other languages like Java, NullPointerException's (exceptions that are fired when a null reference is accessed) are a common source of crashes. Swift's Optionals goes a long way to reduce this type of programming error.
 
+### Optionals in string interpolation
+
+When using optionals in string interpolation, the value with either be `Optional(...)` or `nil` without being explicitly unwrapped. When the inner value is needed, the optional must be unwrapped.
+
+```swift
+let maybeString: String! = "value"
+
+print("\(maybeString)")  // prints -> Optional("value")
+print("\(maybeString!)")  // prints -> "value"
+```
+
 ## Functions
 
 Functions in Swift are very similar to other languages. The simplest function in Swift can be written as:
