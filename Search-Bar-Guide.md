@@ -73,7 +73,9 @@ in `viewDidLoad` method.
 The code to implement the search behavior is as follows.  We maintain an
 additional array `filteredData` to represent rows of data that match our
 search text.  When the search text changes we update `filteredData` and
-reload our table.
+reload our table. Notice that we use `filteredData` as the backing array
+for the table view's data source. The original `data` array is our source
+of truth since `filteredData` will be changing constantly.
 
 ```swift
 class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate {
