@@ -215,6 +215,16 @@ in IB so that they can be initialized in code:
 
 <a href="http://imgur.com/ySOAC6i"><img src="http://i.imgur.com/ySOAC6i.gif" title="source: imgur.com" /></a>
 
+It is very common for a tab bar controller to have navigation controllers as root
+view controllers. If this is the case, you will want to assign the storyboard ID
+to the navigation controller instead of the view controller directly. You can access
+the top view controller in the navigation stack to do any additional configuration.
+
+```swift
+let nav = storyboard.instantiateViewController(withIdentifier: "ExampleNavigationController") as! UINavigationController
+let vc = nav.topViewController as! ClockViewController
+// perform any initial configuration of vc here...
+```
 
 ## Responding to a tab being selected
 _to be completed_
