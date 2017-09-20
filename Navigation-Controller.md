@@ -138,7 +138,9 @@ the name the user will be editing.  We create a new subclass of
 controller's `Custom Class` property to be `NameController` in our
 storyboard.  Once the custom class is set, we can go ahead and create
 outlets in our `NameController` class corresponding to the two text
-fields.
+fields. **Note**: we recommend pressing Enter or Tab after entering
+the class value since Xcode may not apply the change if you navigate
+out of the text field otherwise.
 
 <a href="http://imgur.com/UgE77Nm"><img src="http://i.imgur.com/UgE77Nm.png" title="source: imgur.com" /></a>
 
