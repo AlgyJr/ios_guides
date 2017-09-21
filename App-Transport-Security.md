@@ -78,7 +78,7 @@ The results will show you whether default connections will fail, and whether usi
 
 Troubleshooting ATS-related issues can be difficult to do.  The error codes you see in the XCode device logs are the first place to check.  Next, if this information is insufficient, you may need to examine via packet tracing since these network protocols operate at a lower level than HTTP.
 
-### Error codes
+#### Error codes
 
 The different CFError codes such as -9800 are defined in Apple's [open source code](https://opensource.apple.com/source/libsecurity_ssl/libsecurity_ssl-36800/lib/SecureTransport.h).  You can review these error codes to see if there is an obvious error.
 
