@@ -76,7 +76,15 @@ The results will show you whether default connections will fail, and whether usi
 
 ### Further Troubleshooting
 
-Troubleshooting ATS-related issues can be difficult to do.  If you need to analyze the network traffic, you can follow Apple's guides to run [packet traces](https://developer.apple.com/library/content/qa/qa1176/_index.html#//apple_ref/doc/uid/DTS10001707-CH1-SECIOSPACKETTRACING) using a tool such as [Wireshark](https://www.wireshark.org/).  You can use these tools to understand the TLS handshake.
+Troubleshooting ATS-related issues can be difficult to do.  The error codes you see in the XCode device logs are the first place to check.  Next, if this information is insufficient, you may need to examine via packet tracing since these network protocols operate at a lower level than HTTP.
+
+### Error codes
+
+The different CFError codes such as -9800 are defined in Apple's [open source code](https://opensource.apple.com/source/libsecurity_ssl/libsecurity_ssl-36800/lib/SecureTransport.h).  You can review these error codes to see if there is an obvious error.
+
+#### Network Traffic
+
+If you need to analyze the network traffic, you can follow Apple's guides to run [packet traces](https://developer.apple.com/library/content/qa/qa1176/_index.html#//apple_ref/doc/uid/DTS10001707-CH1-SECIOSPACKETTRACING) using a tool such as [Wireshark](https://www.wireshark.org/).  You can use these tools to understand the TLS handshake.
 
 First, connect an iPhone to the USB port of a Mac.  Next, get the current list of interfaces:
 ```bash
