@@ -43,7 +43,8 @@ class myViewController {
 
         // AFNetworking extension to UIImageView that allows
         // specifying a URL for the image
-        myImageView.setImageWithURL(NSURL(string: myImageUrlString)!)
+        // Swift 3 should use URL instead of NSURL
+        myImageView.setImageWithURL(URL(string: myImageUrlString)!)
     }
 }
 ```
@@ -58,7 +59,7 @@ It can be a little jarring for the user to have images pop into place once they 
 
 ```swift
 let imageUrl = "https://i.imgur.com/tGbaZCY.jpg"
-let imageRequest = NSURLRequest(URL: NSURL(string: imageUrl)!)
+let imageRequest = URLRequest(url: URL(string: imageUrl)!)
 
 self.myImageView.setImageWithURLRequest(
     imageRequest,
@@ -88,8 +89,8 @@ self.myImageView.setImageWithURLRequest(
 Since pulling down high resolution images over the network takes time, it's common to first show a low resolution image so the user sees something in the UIImageView and then load the higher resolution image immediately afterwards.
 
 ```swift
-let smallImageRequest = NSURLRequest(URL: NSURL(string: smallImageUrl)!)
-let largeImageRequest = NSURLRequest(URL: NSURL(string: largeImageUrl)!)
+let smallImageRequest = URLRequest(url: URL(string: smallImageUrl)!)
+let largeImageRequest = URLRequest(url: URL(string: largeImageUrl)!)
 
 self.myImageView.setImageWithURLRequest(
     smallImageRequest,
