@@ -117,7 +117,7 @@ It can be really useful to create your own delegate. To do so, requires the foll
             if let selectedColor = color {
                 view.backgroundColor = selectedColor
             }
-            dismissViewControllerAnimated(true, completion: nil)
+            dismiss(animated: true, completion: nil)
         }
     }
     ```
@@ -182,7 +182,7 @@ class ViewController: UIViewController {
         if let selectedColor = color {
             view.backgroundColor = selectedColor
         }
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }
 ```
@@ -344,7 +344,7 @@ class ViewController: UIViewController {
         if let selectedColor = color {
             view.backgroundColor = selectedColor
         }
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }
 ```
