@@ -151,14 +151,14 @@ At this Point, taping a cell in the tableView should take you to the detail View
 <img src="http://i.imgur.com/q5bxlrb.gif" width="200"/>  
  
 #### Step 7: Pass the Data
-We need to add a `prepareForSegue` method in our CustomTableViewController file. The `prepareForSegue` method is called right before any segue happens from that ViewController. This will give us the opportunity to pass any data we need to the DetailViewController right before the segue happens. 
+We need to add a `prepare` method in our CustomTableViewController file. The `prepare` method is called right before any segue happens from that ViewController. This will give us the opportunity to pass any data we need to the DetailViewController right before the segue happens. 
 
 Segues know where they are coming from, `segue.sourceViewController` and where they are going to, `segue.destinationViewController`. We can get in touch with the DetailViewController easily by referencing `segue.destinationViewController`, since that is where the Segue is going. If we want to access variable properties in the DetailViewController, we just need to add, `as! DetailViewController` to let swift know that we are not just taking about ANY old destinationViewController, we are talking about the one that is DetailViewController. At this point, we have full access to anything in the DetailViewController!  
 
-- Add and configure the `prepareForSegue` method to the **CustomTableViewController** file.
+- Add and configure the `prepare` method to the **CustomTableViewController** file.
 
 ```swift
-override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
    
     // Get the index path from the cell that was tapped
     let indexPath = tableView.indexPathForSelectedRow
