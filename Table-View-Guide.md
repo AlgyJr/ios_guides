@@ -1124,6 +1124,8 @@ model class `Story` that also handles our network request and response
 parsing logic.  More on making network requests can be found in the
 [[basic network programming guide|Network Programming]].
 
+Here is the view controller:
+
 ```swift
 import UIKit
 
@@ -1156,6 +1158,8 @@ class ViewController: UIViewController, UITableViewDataSource {
 }
 ```
 
+Here is the table view cell defined:
+
 ```swift
 import UIKit
 
@@ -1172,6 +1176,8 @@ class StoryCell: UITableViewCell {
     }
 }
 ```
+
+Here is the model for parsing from the network:
 
 ```swift
 import UIKit
