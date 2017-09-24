@@ -110,7 +110,7 @@ It can be really useful to create your own delegate. To do so, requires the foll
             let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
             let colorPickerVC = storyboard.instantiateViewControllerWithIdentifier("ColorPicker") as ColorPickerViewController
             colorPickerVC.delegate = self
-            presentViewController(colorPickerVC, animated: true, completion: nil)
+            present(viewControllerToPresent: colorPickerVC, animated: true, completion: nil)
         }
 
         func colorPicker(picker: ColorPickerViewController, didPickColor color: UIColor?) {
@@ -175,7 +175,7 @@ class ViewController: UIViewController {
             self.didPickColor(color)
         }
 
-        presentViewController(colorPickerVC, animated: true, completion: nil)
+        present(viewControllerToPresent: colorPickerVC, animated: true, completion: nil)
     }
 
     func didPickColor(color: UIColor?) {
@@ -337,7 +337,7 @@ class ViewController: UIViewController {
 
         }
 
-        presentViewController(colorPickerVC, animated: true, completion: nil)
+        present(viewControllerToPresent: colorPickerVC, animated: true, completion: nil)
     }
 
     func didPickColor(color: UIColor?) {
