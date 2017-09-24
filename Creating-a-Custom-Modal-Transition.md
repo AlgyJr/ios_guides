@@ -20,14 +20,14 @@ Define a "global" variable for the custom transition *above* the viewDidLoad met
 var fadeTransition: FadeTransition!
 ```
 
-### Step 4: Setup the prepareForSegue Method.  
+### Step 4: Setup the prepare method 
 
-The ``prepareForSegue`` method runs any code that we want right before the segue happens. It's kind of like the ``viewWillAppear`` of the segue world.
+The ``prepare()`` method runs any code that we want right before the segue happens. It's kind of like the ``viewWillAppear`` of the segue world.
 
-- Remove the comment ``/* */`` to activate the ``prepareForSegue`` method and add the following code within the ``prepareForSegue`` method.  
+- Remove the comment ``/* */`` to activate the ``prepare`` method and add the following code within the ``prepare`` method.  
 
 ```swift
-override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
 
 // Access the ViewController that you will be transitioning too, a.k.a, the destinationViewController.
 var destinationViewController = segue.destinationViewController
