@@ -522,6 +522,9 @@ class DemoProgrammaticTableViewCell: UITableViewCell {
     }
 }
 ```
+
+Then you would use this custom table view cell in your view controller:
+
 ```swift
 import UIKit
 
