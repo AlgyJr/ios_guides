@@ -176,7 +176,7 @@ currently being displayed and to be able to respond if the set of visible rows
 is changed.  Luckily `UITableView` has built-in methods that make cell reuse
 quite simple to implement.  We can modify our code example above to read
 
-[cellforrowat]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewDataSource_Protocol/index.html#//apple_ref/occ/intfm/UITableViewDataSource/tableView:cellForRowAtIndexPath:
+[cellforrowatindexpath]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewDataSource_Protocol/index.html#//apple_ref/occ/intfm/UITableViewDataSource/tableView:cellForRowAtIndexPath:
 
 ```swift
 import UIKit
