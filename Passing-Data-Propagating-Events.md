@@ -253,7 +253,7 @@ class CodePathViewController: UIViewController {
         super.viewDidLoad()
 
         let button = UIButton()
-        button.addTarget(self, action: "onButtonTap", forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: #selector(onButtonTap), forControlEvents: .TouchUpInside)
         button.frame = CGRectMake(0, 0, 300, 500)
 
         //Add button to the view
