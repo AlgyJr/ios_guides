@@ -394,7 +394,7 @@ A `NSPredicate` can be passed to `PFQuery` constructor to specify query constrai
 ```swift
 // construct query
 let predicate = NSPredicate(format: "likesCount > 100")
-var query = PFQuery(className: "Post", predicate: predicate)
+var query = Post.query(with: predicate)
 
 // fetch data asynchronously
 query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
