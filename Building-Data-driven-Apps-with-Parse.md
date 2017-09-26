@@ -253,7 +253,7 @@ First, we need to add the [ParseLiveQuery](https://github.com/parse-community/Pa
 pod 'ParseLiveQuery'
 ```
 
-Next, we need to create the live query:
+Next, we need to create the live query.  First, we need to instantiate a websocket client using the `ParseLiveQuery.Client`.  Next, we need to create a subscription to events that may be triggered by the back-end.   
 
 ```swift
 // make sure to import in 
@@ -281,6 +281,8 @@ class ViewController: UIViewController {
                                    }
    }  
 ```
+
+Note that the `Message` class must be designated by the Parse back-end to support live queries.  See [this section](https://guides.codepath.com/ios/Configuring-a-Parse-Server#adding-support-for-live-queries) on how to do so.
 
 ### `PFFile`
 `PFFile` lets you store application files in the cloud that would otherwise be too large or cumbersome to fit into a regular `PFObject`. The most common use case is storing images but you can also use it for documents, videos, music, and any other binary data (up to 10 megabytes).
