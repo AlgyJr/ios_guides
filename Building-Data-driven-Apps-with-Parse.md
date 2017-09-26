@@ -188,6 +188,8 @@ The above code should be added to the action associated with the logout button (
 ### `PFObject`
 Storing data on Parse is built around the `ParseObject`. Each `ParseObject` contains key-value pairs of JSON-compatible data. This data is schemaless, which means that you don't need to specify ahead of time what keys exist on each `ParseObject`. You simply set whatever key-value pairs you want, and Parse backend will store it.
 
+#### Creating Parse Objects
+
 Each `ParseObject` has a class name that you can use to distinguish different sorts of data. For example, in case of our application, we might call `ParseObject` to store uploaded images with name `Post`:
 
 ```swift
@@ -199,7 +201,7 @@ shield["fireProof"] = false
 shield["rupees"] = 50
 ```
 
-#### Subclassing PFOBject
+#### Subclassing PFObject
 
 You can also declare models that can be later used by using [native subclasses](http://blog.parse.com/announcements/stay-classy-objective-c-introducing-native-subclasses-for-parse-objects/), which help for autocomplete checks. In this case, we need to set the fields/properties ahead of time and annotating with the `@NSManaged` property:
 
