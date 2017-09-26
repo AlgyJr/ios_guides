@@ -248,7 +248,7 @@ armor.saveInBackground(block: { (success, error) in
 First, we need to add the [ParseLiveQuery](https://github.com/parse-community/ParseLiveQuery-iOS-OSX#cocoapods) to our `Podfile`:
 
 ```ruby
-   pod 'ParseLiveQuery'
+pod 'ParseLiveQuery'
 ```
 
 Next, we need to create the live query:
