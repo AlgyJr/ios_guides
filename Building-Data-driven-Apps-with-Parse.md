@@ -265,7 +265,7 @@ pod 'ParseLiveQuery'
 First, we need to instantiate a websocket client using the `ParseLiveQuery.Client`.  Next, we need to create a subscription to events that may be triggered by the back-end.   
 
 ```swift
-// make sure to import in 
+// make sure to import module at the top
 import ParseLiveQuery
 
 class ViewController: UIViewController {
@@ -302,8 +302,18 @@ Note that the `Message` class must be designated by the Parse back-end to suppor
 In this example, we will create and save an object to Parse for an image that the user wants to upload along with some other details. Let's create a `model` class for `Post` object. We will use this model as a wrapper around PFObject to encapsulate CRUD functionality from the ViewControllers.
 
 ```swift
-    // use non-subclass approach
-    class Post: NSObject {
+    class Post: PFObject, PFSubclassing {
+        @NSManaged var media : PFFile
+        @NSManaged var author: PFUser
+        @NSManaged var caption: String
+        @NSManaged var likesCount: Int
+        @NSManaged var commentsCount: Int
+ 
+        /* Needed to implement PFSubclassing interface */
+        class func parseClassName() -> String {
+          return "Post"
+        }
+
         /**
          * Other methods
          */
@@ -316,15 +326,15 @@ In this example, we will create and save an object to Parse for an image that th
         - parameter completion: Block to be executed after save operation is complete
          */
         class func postUserImage(image: UIImage?, withCaption caption: String?, withCompletion completion: PFBooleanResultBlock?) {
-            // Create Parse object PFObject
-            let post = PFObject(className: "Post")
+            // use subclass approach
+            let post = Post()
 
             // Add relevant fields to the object
-            post["media"] = getPFFileFromImage(image) // PFFile column type
-            post["author"] = PFUser.currentUser() // Pointer column type that points to PFUser
-            post["caption"] = caption
-            post["likesCount"] = 0
-            post["commentsCount"] = 0
+            post.media = getPFFileFromImage(image) // PFFile column type
+            post.author = PFUser.current() // Pointer column type that points to PFUser
+            post.caption = caption
+            post.likesCount = 0
+            post.commentsCount = 0
 
             // Save object (following function will save the object in Parse asynchronously)
             post.saveInBackgroundWithBlock(completion)
@@ -358,7 +368,9 @@ In this example, we will create and save an object to Parse for an image that th
 `PFQuery` is used to retrieve data that is stored in Parse. The simplest way to do this is when you have the `objectId`. This is an asynchronous method, with variations for using either blocks or callback methods:
 
 ```swift
-var query = PFQuery(className: "Post")
+var query = Post.query()
+```
+
 query.getObjectInBackgroundWithId("imkmJsHVIH") {
   (post: PFObject?, error: NSError?) -> Void in
   if error == nil && gameScore != nil {
@@ -406,7 +418,7 @@ There are several other methods that `PFQuery` provides to support SQL-like quer
 
 ```swift
 // construct query
-let query = PFQuery(className: "Post")
+let query = Post.query()
 query.whereKey("likesCount", greaterThan: 100)
 query.limit = 20
 
@@ -427,10 +439,10 @@ For more examples and list of other methods supported by `PFQuery` for specifyin
 If one of the keys in your `PFObject` refers to another `PFObject` (note that `PFUser` is a sub-class of `PFObject`) then that field is of `Pointer` type. For example, in `Post` object which represents an Instagram post, one field that you would want to store is the author of the post. You can do this by assigning the current user to the `author` key when saving the post.
 
 ```swift
-let post = PFObject(className: "Post")
+let post = Post()
 
 // get the current user and assign it to "author" field. "author" field is now of Pointer type
-post["author"] = PFUser.currentUser() 
+post.author = PFUser.current() 
 ```
 
 By default, when you fetch a `Post` object it won't have the author information. In order to get the information for the "author" you will have to use `PFQuery` method `includeKey`.
@@ -447,7 +459,7 @@ Based on above discussion, we can easily construct a `PFQuery` to fetch most rec
 
 ```swift
 // construct PFQuery
-let query = PFQuery(className: "Post")
+let query = Post.query()
 query.orderByDescending("createdAt")
 query.includeKey("author")
 query.limit = 20
