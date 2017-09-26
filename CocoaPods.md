@@ -63,7 +63,7 @@ You only need a single Podfile per project. The Podfile is a plain text file whe
 
 ### Open the Xcode workspace:
    - Close the project (`MyApp.xcodeproject`) if you have it open and open the workspace (`MyApp.xcworkspace`).
-   - CocoaPods creates an additional project for all the dependencies so you need to open the `.xcworkspace` from now on (which will contain your original project and the pods project).
+   - CocoaPods creates an additional project for all the dependencies so you need to **open the `.xcworkspace` from now on (which will contain your original project and the pods project).**        
 
 ## Swift Support
 CocoaPods version 0.36 was the first version to add [support for Swift](http://blog.cocoapods.org/CocoaPods-0.36) with the `use_frameworks!` directive.
