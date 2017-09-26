@@ -266,18 +266,18 @@ class ViewController: UIViewController {
  
     override func viewDidLoad() {
       var armorQuery: PFQuery<Armor> {
-            return (Armor.query()!
-                .whereKeyExists("displayName")
-                .order(byAscending: "createdAt")) as! PFQuery<Armor>
-        }
-        client = ParseLiveQuery.Client()
-        subscription = ParseLiveQuery.Client()
-            .subscribe(armorQuery)
-            // handle creation events, we can also listen for update, leave, enter events
-            .handle(Event.created) { _, armor in
-                print("\(armor.displayName)")
-        }
-     }
+        return (Armor.query()!
+                     .whereKeyExists("displayName")
+                     .order(byAscending: "createdAt")) as! PFQuery<Armor>
+      }
+      client = ParseLiveQuery.Client()
+      subscription = ParseLiveQuery.Client()
+                                   .subscribe(armorQuery)
+                    // handle creation events, we can also listen for update, leave, enter events
+                                   .handle(Event.created) { _, armor in
+                                      print("\(armor.displayName)")
+                                   }
+   }  
 ```
 
 ### `PFFile`
