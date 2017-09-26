@@ -55,6 +55,12 @@ You only need a single Podfile per project. The Podfile is a plain text file whe
     pod install
     ```
 
+- CocoaPods currently forks the [spec repo](https://github.com/cocoapods/specs).  If the pod install fails, you may need to update your current specs:
+
+    ```bash
+    pod repo update
+    ``` 
+
 ### Open the Xcode workspace:
    - Close the project (`MyApp.xcodeproject`) if you have it open and open the workspace (`MyApp.xcworkspace`).
    - CocoaPods creates an additional project for all the dependencies so you need to open the `.xcworkspace` from now on (which will contain your original project and the pods project).
