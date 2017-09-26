@@ -185,7 +185,7 @@ The above code should be added to the action associated with the logout button (
 
 ## Parse Data Objects (`PFObject`) & Parse Files (`PFFile`)
 
-#### `PFObject`
+### `PFObject`
 Storing data on Parse is built around the `ParseObject`. Each `ParseObject` contains key-value pairs of JSON-compatible data. This data is schemaless, which means that you don't need to specify ahead of time what keys exist on each `ParseObject`. You simply set whatever key-value pairs you want, and Parse backend will store it.
 
 Each `ParseObject` has a class name that you can use to distinguish different sorts of data. For example, in case of our application, we might call `ParseObject` to store uploaded images with name `Post`:
@@ -198,6 +198,8 @@ shield["displayName"] = "Wooden Shield"
 shield["fireProof"] = false
 shield["rupees"] = 50
 ```
+
+#### Subclassing PFOBject
 
 You can also declare models that can be later used by using [native subclasses](http://blog.parse.com/announcements/stay-classy-objective-c-introducing-native-subclasses-for-parse-objects/), which help for autocomplete checks. In this case, we need to set the fields/properties ahead of time and annotating with the `@NSManaged` property:
 
@@ -223,7 +225,25 @@ class Armor: PFObject, PFSubclassing {
 }
 ```
 
-#### `PFFile`
+#### Saving
+
+We can save simply by calling `saveInBackground()`:
+```swift
+shield.saveInBackground()
+```
+
+We can also pass a completion block handler to check the success/failure of the save operation:
+```swift
+armor.saveInBackground(block: { (success, error) in
+   if (success) {
+    // The object has been saved.
+  } else {
+    // There was a problem, check error.description
+  }
+})
+```
+
+### `PFFile`
 `PFFile` lets you store application files in the cloud that would otherwise be too large or cumbersome to fit into a regular `PFObject`. The most common use case is storing images but you can also use it for documents, videos, music, and any other binary data (up to 10 megabytes).
 
 [Parse Documentation on handling Images using `PFFile`](https://parse.com/docs/ios/guide#files-images)
