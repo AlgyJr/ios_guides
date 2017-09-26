@@ -190,7 +190,7 @@ Storing data on Parse is built around the `ParseObject`. Each `ParseObject` cont
 
 Each `ParseObject` has a class name that you can use to distinguish different sorts of data. For example, in case of our application, we might call `ParseObject` to store uploaded images with name `Post`.
 
-If we wish to declare an object that inherits from `ParseObject`, we need to do the following:
+You can also declare models that can be later used by inheriting from `ParseObject`.  In this case, we need to set the fields/properties ahead of time:
 
 ```swift
 // needs to be imported 
