@@ -397,12 +397,12 @@ let predicate = NSPredicate(format: "likesCount > 100")
 var query = Post.query(with: predicate)
 
 // fetch data asynchronously
-query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+query.findObjectsInBackground { (posts: [Post]?, error: Error?) in
     if let posts = posts {
         // do something with the array of object returned by the call
         for post in posts {
             // access the object as a dictionary and cast type
-            let likeCount = post["likesCount"] as? Int    // post.value(forKey: "likesCount") is equivalent 
+            let likeCount = post.likesCount     
         }
     } else {
         print(error?.localizedDescription)
@@ -422,7 +422,7 @@ query.whereKey("likesCount", greaterThan: 100)
 query.limit = 20
 
 // fetch data asynchronously
-query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+query.findObjectsInBackground { (posts: [Post]?, error: Error?) in
     if let posts = posts {
         // do something with the array of object returned by the call
     } else {
@@ -464,7 +464,7 @@ query.includeKey("author")
 query.limit = 20
 
 // fetch data asynchronously
-query.findObjectsInBackgroundWithBlock { (posts: [PFObject]?, error: NSError?) -> Void in
+query.findObjectsInBackgroundWithBlock { (posts: [Post]?, error: NSError?) -> Void in
     if let posts = posts {
         // do something with the data fetched
     } else {
