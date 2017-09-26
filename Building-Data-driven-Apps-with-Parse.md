@@ -91,7 +91,7 @@ One of the basic use cases for user management is to have them sign up. Once you
 The following code snippet shows how to sign up user:
 
 ```swift
-    @IBAction func registerUser(sender: UIButton) {
+   func registerUser() {
         // initialize a user object
         let newUser = PFUser()
 
@@ -127,7 +127,7 @@ Once the user has signed up, next step is to have them log in to your app. The i
 <!--a target="_blank" href="http://i.imgur.com/DEKJjP0.png"><img src="http://i.imgur.com/DEKJjP0.png" alt="Parse User Login" width="750"/></a-->
 
 ```swift
-    @IBAction func loginUser(sender: UIButton) {
+    func loginUser() {
 
         let username = usernameLabel.text ?? ""
         let password = passwordLabel.text ?? ""
