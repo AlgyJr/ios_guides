@@ -188,7 +188,26 @@ The above code should be added to the action associated with the logout button (
 #### `PFObject`
 Storing data on Parse is built around the `ParseObject`. Each `ParseObject` contains key-value pairs of JSON-compatible data. This data is schemaless, which means that you don't need to specify ahead of time what keys exist on each `ParseObject`. You simply set whatever key-value pairs you want, and Parse backend will store it.
 
-Each `ParseObject` has a class name that you can use to distinguish different sorts of data. For example, in case of our application, we might call `ParseObject` to store uploaded images with name `Post`
+Each `ParseObject` has a class name that you can use to distinguish different sorts of data. For example, in case of our application, we might call `ParseObject` to store uploaded images with name `Post`.
+
+If we wish to declare an object that inherits from `ParseObject`, we need to do the following:
+
+```swift
+// needs to be imported 
+import Parse
+
+// subclassing PFObject will automatically register with Parse SDK now
+// See https://github.com/parse-community/Parse-SDK-iOS-OSX/pull/967
+class MyCustomObject: PFObject, PFSubclassing {
+    // properties/fields must be declared as dynamic synthesizers
+    @NSManaged var text: String?
+
+    // returns the Parse name that should be used
+    class func parseClassName() -> String {
+        return "MyCustomObject"
+    }
+}
+```
 
 #### `PFFile`
 `PFFile` lets you store application files in the cloud that would otherwise be too large or cumbersome to fit into a regular `PFObject`. The most common use case is storing images but you can also use it for documents, videos, music, and any other binary data (up to 10 megabytes).
