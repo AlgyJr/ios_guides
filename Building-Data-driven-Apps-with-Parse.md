@@ -227,6 +227,15 @@ class Armor: PFObject, PFSubclassing {
 }
 ```
 
+Instantiating an Armor class then looks like:
+
+```swift
+let shield = Armor()
+shield.displayName = "Wooden Shield"
+shield.fireProof = false
+shield.rupees = 50
+```
+
 #### Saving
 
 We can save simply by calling `saveInBackground()`:
