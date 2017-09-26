@@ -145,7 +145,7 @@ Once the user has signed up, next step is to have them log in to your app. The i
 ###### Notes:
 1. `??` used in above code snippet is a <a href="http://guides.codepath.com/ios/Understanding-Swift#understanding-the-question-mark" target="_blank">*nil coalescing operator*</a>
 2. `logInWithUsernameInBackground` - Makes an *asynchronous* request to log in a user with specified credentials.
-Returns an instance of the successfully logged in `PFUser`. This also caches the user locally so that calls to `PFUser.currentUser()` will use the latest logged in user.
+Returns an instance of the successfully logged in `PFUser`. This also caches the user locally so that calls to `PFUser.current()` will use the latest logged in user.
 
  - Parameters:
     - username: The username of the user.
@@ -369,7 +369,6 @@ In this example, we will create and save an object to Parse for an image that th
 
 ```swift
 var query = Post.query()
-```
 
 query.getObjectInBackgroundWithId("imkmJsHVIH") {
   (post: PFObject?, error: NSError?) -> Void in
