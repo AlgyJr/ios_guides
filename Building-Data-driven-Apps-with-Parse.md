@@ -188,9 +188,18 @@ The above code should be added to the action associated with the logout button (
 #### `PFObject`
 Storing data on Parse is built around the `ParseObject`. Each `ParseObject` contains key-value pairs of JSON-compatible data. This data is schemaless, which means that you don't need to specify ahead of time what keys exist on each `ParseObject`. You simply set whatever key-value pairs you want, and Parse backend will store it.
 
-Each `ParseObject` has a class name that you can use to distinguish different sorts of data. For example, in case of our application, we might call `ParseObject` to store uploaded images with name `Post`.
+Each `ParseObject` has a class name that you can use to distinguish different sorts of data. For example, in case of our application, we might call `ParseObject` to store uploaded images with name `Post`:
 
-You can also declare models that can be later used by inheriting from `ParseObject`.  In this case, we need to set the fields/properties ahead of time:
+```swift
+import Parse
+
+var shield = PFObject(className: "Armor")
+shield["displayName"] = "Wooden Shield"
+shield["fireProof"] = false
+shield["rupees"] = 50
+```
+
+You can also declare models that can be later used by using [native subclasses](http://blog.parse.com/announcements/stay-classy-objective-c-introducing-native-subclasses-for-parse-objects/), which help for autocomplete checks. In this case, we need to set the fields/properties ahead of time and annotating with the `@NSManaged` property:
 
 ```swift
 // needs to be imported 
@@ -198,13 +207,18 @@ import Parse
 
 // subclassing PFObject will automatically register with Parse SDK now
 // See https://github.com/parse-community/Parse-SDK-iOS-OSX/pull/967
-class MyCustomObject: PFObject, PFSubclassing {
-    // properties/fields must be declared as dynamic synthesizers
-    @NSManaged var text: String?
+class Armor: PFObject, PFSubclassing {
+    // properties/fields must be declared here
+    // @NSManaged to tell compiler these are dynamic properties
+    // See https://stackoverflow.com/questions/31357564/what-does-nsmanaged-do
+    @NSManaged var displayName: String?
+    // Objective C has no concept of optionals 
+    @NSManaged var fireProof: Bool
+    @NSManaged var rupees: Int
 
     // returns the Parse name that should be used
     class func parseClassName() -> String {
-        return "MyCustomObject"
+        return "Armor"
     }
 }
 ```
@@ -219,6 +233,7 @@ class MyCustomObject: PFObject, PFSubclassing {
 In this example, we will create and save an object to Parse for an image that the user wants to upload along with some other details. Let's create a `model` class for `Post` object. We will use this model as a wrapper around PFObject to encapsulate CRUD functionality from the ViewControllers.
 
 ```swift
+    // use non-subclass approach
     class Post: NSObject {
         /**
          * Other methods
