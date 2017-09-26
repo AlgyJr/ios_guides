@@ -20,7 +20,7 @@ Create a UIAlertAction for each button to display and respond to.
 
 ```swift
 // create a cancel action
-let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
     // handle cancel response here. Doing nothing will dismiss the view.
 }
 // add the cancel action to the alertController
