@@ -52,7 +52,7 @@ You only need a single Podfile per project. The Podfile is a plain text file whe
 - From a terminal in the root directory of your project, run... 
 
     ```bash
-    pod install
+    pod install --verbose
     ```
 
 - CocoaPods currently forks the [spec repo](https://github.com/cocoapods/specs).  If the pod install fails, you may need to update your current specs:
