@@ -418,6 +418,5 @@ Please refer to this comprehensive <a href="http://stackoverflow.com/a/14865695"
 
 ## Reference
 
-[Parse Documentation](https://parse.com/docs/ios/guide#getting-started)
-
-[Parse UI Cocoapods](https://cocoapods.org/pods/ParseUI)
+* [Parse Documentation](http://docs.parseplatform.org/ios/guide/#getting-started)
+* [Parse UI Cocoapods](https://cocoapods.org/pods/ParseUI)
