@@ -282,12 +282,11 @@ class ViewController: UIViewController {
                      .order(byAscending: "createdAt")) as! PFQuery<Armor>
       }
       client = ParseLiveQuery.Client()
-      subscription = ParseLiveQuery.Client()
-                                   .subscribe(armorQuery)
+      subscription = client.subscribe(armorQuery)
                     // handle creation events, we can also listen for update, leave, enter events
-                                   .handle(Event.created) { _, armor in
-                                      print("\(armor.displayName)")
-                                   }
+                           .handle(Event.created) { _, armor in
+                              print("\(armor.displayName)")
+                           }
    }  
 ```
 
