@@ -236,7 +236,7 @@ shield.saveInBackground()
 
 We can also pass a completion block handler to check the success/failure of the save operation:
 ```swift
-armor.saveInBackground(block: { (success, error) in
+shield.saveInBackground(block: { (success, error) in
    if (success) {
     // The object has been saved.
   } else {
