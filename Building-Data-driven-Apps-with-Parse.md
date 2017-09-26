@@ -243,6 +243,43 @@ armor.saveInBackground(block: { (success, error) in
 })
 ```
 
+### Live Queries
+
+First, we need to add the [ParseLiveQuery](https://github.com/parse-community/ParseLiveQuery-iOS-OSX#cocoapods) to our `Podfile`:
+
+```ruby
+   pod 'ParseLiveQuery'
+```
+
+Next, we need to create the live query:
+
+```swift
+// make sure to import in 
+import ParseLiveQuery
+
+class ViewController: UIViewController {
+
+   // make sure to declare both client and subscriptions variables outside lifecycle methods
+   // otherwise, websocket delegate methods won't fire
+    var client : ParseLiveQuery.Client!
+    var subscription : Subscription<Message>!
+ 
+    override func viewDidLoad() {
+      var armorQuery: PFQuery<Armor> {
+            return (Armor.query()!
+                .whereKeyExists("displayName")
+                .order(byAscending: "createdAt")) as! PFQuery<Armor>
+        }
+        client = ParseLiveQuery.Client()
+        subscription = ParseLiveQuery.Client()
+            .subscribe(armorQuery)
+            // handle creation events, we can also listen for update, leave, enter events
+            .handle(Event.created) { _, armor in
+                print("\(armor.displayName)")
+        }
+     }
+```
+
 ### `PFFile`
 `PFFile` lets you store application files in the cloud that would otherwise be too large or cumbersome to fit into a regular `PFObject`. The most common use case is storing images but you can also use it for documents, videos, music, and any other binary data (up to 10 megabytes).
 
