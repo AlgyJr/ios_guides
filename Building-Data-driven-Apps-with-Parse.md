@@ -116,7 +116,7 @@ The following code snippet shows how to sign up user:
 1. `signUpInBackgroundWithBlock` signs up the user *asynchronously*. This will also enforce that the username isn't already taken. (Warning: Make sure that password and username are set before calling this method.)
 
    Parameters:
-   `block` - The block to execute. It should have the following argument signature: `^(BOOL succeeded, NSError *error)`.
+   `block` - The block to execute. 
 
 [Parse User Sign-Up documentation](https://parse.com/docs/ios/guide#users-signing-up).
 
@@ -150,7 +150,7 @@ Returns an instance of the successfully logged in `PFUser`. This also caches the
  - Parameters:
     - username: The username of the user.
     - password: The password of the user.
-    - block: The block to execute. It should have the following argument signature: `^(PFUser *user, NSError *error)`.
+    - block: The block to execute. 
 
 [Parse User Login documentation](https://parse.com/docs/ios/guide#users-logging-in).
 
@@ -262,7 +262,7 @@ First, we need to add the [ParseLiveQuery](https://github.com/parse-community/Pa
 pod 'ParseLiveQuery'
 ```
 
-Next, we need to instantiate a websocket client using the `ParseLiveQuery.Client`.  We also need to create a subscription to events that may be triggered by the backend.   
+Next, we need to instantiate a websocket client using the `ParseLiveQuery.Client`.  We also need to create a subscription to events that may be triggered by the backend.   Both the client and subscription are not [auto released](https://github.com/parse-community/ParseLiveQuery-iOS-OSX/issues/105#issuecomment-304708482).
 
 ```swift
 // make sure to import module at the top
