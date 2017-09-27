@@ -154,9 +154,9 @@ Returns an instance of the successfully logged in `PFUser`. This also caches the
 
 [Parse User Login documentation](https://parse.com/docs/ios/guide#users-logging-in).
 
-### Persisting user session via `PFUser.currentUser()`
+### Persisting user session via `PFUser.current()`
 
-Once a user successfully logs into your application, Parse caches the logged in user object for convenient access throughout your application. `PFUser.currentUser()` can be used to get the current user. You can use this functionality in `AppDelegate` to check if there is a current user in Parse cache or not. If there is a cached user already present then you can directly load the Home view controller (without asking the user to login again).
+Once a user successfully logs into your application, Parse caches the logged in user object for convenient access throughout your application. `PFUser.current()` can be used to get the current user. You can use this functionality in `AppDelegate` to check if there is a current user in Parse cache or not. If there is a cached user already present then you can directly load the Home view controller (without asking the user to login again).
 
 ```swift
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -178,7 +178,7 @@ You can clear the current user by calling following class function on `PFUser`:
 
 ```swift
 PFUser.logOutInBackgroundWithBlock { (error: NSError?) in
-// PFUser.currentUser() will now be nil     
+// PFUser.current() will now be nil     
 }
 ```
 The above code should be added to the action associated with the logout button (or any other event needs to log out current user)
