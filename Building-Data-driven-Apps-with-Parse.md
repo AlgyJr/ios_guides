@@ -262,7 +262,7 @@ First, we need to add the [ParseLiveQuery](https://github.com/parse-community/Pa
 pod 'ParseLiveQuery'
 ```
 
-Next, we need to instantiate a websocket client using the `ParseLiveQuery.Client`.  We also need to create a subscription to events that may be triggered by the backend.   Both the client and subscription are not [auto released](https://github.com/parse-community/ParseLiveQuery-iOS-OSX/issues/105#issuecomment-304708482).
+Next, we need to instantiate a websocket client using the `ParseLiveQuery.Client`.  We also need to create a subscription to events that may be triggered by the backend.   Both the client and subscription should be declared outside lifecycle methods so they are not [auto released](https://github.com/parse-community/ParseLiveQuery-iOS-OSX/issues/105#issuecomment-304708482).  Otherwise, no subscription events will be triggered.
 
 ```swift
 // make sure to import module at the top
