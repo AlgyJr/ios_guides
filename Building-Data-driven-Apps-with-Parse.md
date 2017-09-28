@@ -256,7 +256,9 @@ shield.saveInBackground(block: { (success, error) in
 
 ### Live Queries
 
-First, we need to add the [ParseLiveQuery](https://github.com/parse-community/ParseLiveQuery-iOS-OSX#cocoapods) to our `Podfile`:
+Live queries allows your client to be informed about events when changes to a given Parse query changes.  There are currently 5 type of events supported: creation, update, delete, enter (an existing object now fulfills the conditions of the Parse query), leave (when an existing object no longer fulfills the condition).  See [this documentation](https://github.com/parse-community/parse-server/wiki/Parse-LiveQuery-Protocol-Specification) for more context of the Parse LiveQuery spec.
+
+To setup, we need to add the [ParseLiveQuery](https://github.com/parse-community/ParseLiveQuery-iOS-OSX#cocoapods) to our `Podfile`:
 
 ```ruby
 pod 'ParseLiveQuery'
@@ -293,8 +295,7 @@ class ViewController: UIViewController {
 Note that the `Armor` class must be designated by the Parse back-end to support live queries.  See [this section](https://guides.codepath.com/ios/Configuring-a-Parse-Server#adding-support-for-live-queries) on how to do so.
 
 #### Handling Results from the Subscription
-When you are pushed results in your subscription handler, the callback function will not be running on the main thread.
-If you want to do any UI operations (including something like reloading the table view), you must instruct the runtime to run the contents of your callback on the main thread.
+When you are pushed results in your subscription handler, the callback function will not be running on the main thread.  If you want to do any UI operations (including something like reloading the table view), you must instruct the runtime to run the contents of your callback on the main thread.
 The inside of the callback might look like this:
 
 ```swift
