@@ -524,14 +524,7 @@ Please refer to [this section](http://guides.codepath.com/ios/Configuring-a-Pars
 
 ## Debugging
 
-If you need to troubleshoot whether network calls to the Parse server, you can add networking logs to Parse.  First, enable log level debugging:
-
-```swift
-Parse.setLogLevel(PFLogLevel.debug)
-Parse.initialize(with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) in
-```
-
-Add a few custom notification types:
+If you need to troubleshoot whether network calls to the Parse server, you can monitor the requests and responses.  First, add a few custom notification types:
 
 ```swift
 extension Notification.Name {
@@ -540,10 +533,13 @@ extension Notification.Name {
 }
 ```
 
-Add notification observers in your application delegate:
+Enable Parse debugging logs and add notification observers in your application delegate:
 
 ```swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
+  // set init log level
+  Parse.setLogLevel(PFLogLevel.debug)
 
   NotificationCenter.default.addObserver(self, selector: #selector(receiveWillSendURLRequestNotification), name: Notification.Name.ParseWillSendURLRequestNotification, object: nil)
   NotificationCenter.default.addObserver(self, selector: #selector(receiveDidReceiveURLResponseNotification), name: Notification.Name.ParseDidReceiveURLResponseNotification, object: nil)
