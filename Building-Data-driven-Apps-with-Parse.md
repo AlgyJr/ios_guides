@@ -166,7 +166,7 @@ Once a user successfully logs into your application, Parse caches the logged in 
 
         // check if user is logged in.
         if PFUser.current() != nil {
-            // if there is a logged in user then load the home view controller
+            // if there is a logged in user then advance to the authenticated view controller
         }
 
         return true
