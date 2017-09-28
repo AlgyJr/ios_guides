@@ -127,20 +127,20 @@ Once the user has signed up, next step is to have them log in to your app. The i
 <!--a target="_blank" href="http://i.imgur.com/DEKJjP0.png"><img src="http://i.imgur.com/DEKJjP0.png" alt="Parse User Login" width="750"/></a-->
 
 ```swift
-    func loginUser() {
+func loginUser() {
 
-        let username = usernameLabel.text ?? ""
-        let password = passwordLabel.text ?? ""
+   let username = usernameLabel.text ?? ""
+   let password = passwordLabel.text ?? ""
 
-        PFUser.logInWithUsername(inBackground: username, password: password) { (user: PFUser?, error: Error?) in
-            if let error = error {
-               print("User log in failed: \(error.localizedDescription)")
-            } else {
-               print("User logged in successfully")
-               // display view controller that needs to shown after successful login
-            }
-        }   
-    }
+   PFUser.logInWithUsername(inBackground: username, password: password) { (user: PFUser?, error: Error?) in
+        if let error = error {
+          print("User log in failed: \(error.localizedDescription)")
+        } else {
+          print("User logged in successfully")
+          // display view controller that needs to shown after successful login
+        }
+     }   
+}
 ```
 ###### Notes:
 1. `??` used in above code snippet is a <a href="http://guides.codepath.com/ios/Understanding-Swift#understanding-the-question-mark" target="_blank">*nil coalescing operator*</a>
