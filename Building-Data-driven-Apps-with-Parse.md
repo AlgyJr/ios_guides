@@ -522,6 +522,59 @@ Push notifications let your application notify a user of new messages or events 
 
 Please refer to [this section](http://guides.codepath.com/ios/Configuring-a-Parse-Server#enabling-push-notifications) in `Configuring a Parse Server` guide for detailed steps on enabling push notifications on your server.
 
+## Debugging
+
+If you need to troubleshoot whether network calls to the Parse server, you can add networking logs to Parse.  First, enable log level debugging:
+
+```swift
+Parse.setLogLevel(PFLogLevel.debug)
+Parse.initialize(with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) in
+```
+
+Add a few custom notification types:
+
+```swift
+extension Notification.Name {
+    static let ParseWillSendURLRequestNotification = Notification.Name(rawValue: "PFNetworkWillSendURLRequestNotification")
+    static let ParseDidReceiveURLResponseNotification = Notification.Name(rawValue: "PFNetworkDidReceiveURLResponseNotification")
+}
+```
+
+Add notification observers in your application delegate:
+
+```swift
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
+  NotificationCenter.default.addObserver(self, selector: #selector(receiveWillSendURLRequestNotification), name: Notification.Name.ParseWillSendURLRequestNotification, object: nil)
+  NotificationCenter.default.addObserver(self, selector: #selector(receiveDidReceiveURLResponseNotification), name: Notification.Name.ParseDidReceiveURLResponseNotification, object: nil)
+```
+
+Add these functions to listen to notifications:
+
+```swift
+@objc func receiveWillSendURLRequestNotification(notification: Notification) {
+   let request = notification.userInfo?[PFNetworkNotificationURLRequestUserInfoKey];
+
+   if let nsRequest = request as? NSMutableURLRequest {
+      print("URL: \(nsRequest.url?.absoluteString)!")
+   }
+}
+
+@objc func receiveDidReceiveURLResponseNotification(notification: Notification) {
+   let response = notification.userInfo?[PFNetworkNotificationURLResponseUserInfoKey];
+   let responseBody = notification.userInfo?[PFNetworkNotificationURLResponseBodyUserInfoKey]
+
+   if let response = response as? HTTPURLResponse {
+       print ("Status Code: \(response.statusCode)")
+   } else {
+       return
+   }
+
+  if let responseBody = responseBody as? String {
+     print ("Response Body: \(responseBody)")
+  }
+}
+```
 
 ## FAQ
 
