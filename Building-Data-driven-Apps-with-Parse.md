@@ -264,6 +264,21 @@ To setup, we need to add the [ParseLiveQuery](https://github.com/parse-community
 pod 'ParseLiveQuery'
 ```
 
+If you are using XCode 9, there is a currently incompatibility with Swift 4.  Here is a [workaround](https://github.com/parse-community/Parse-SDK-iOS-OSX/issues/1193) to force all dependencies to compile using Swift 3.2:
+
+```ruby
+target 'Parselab` do
+   pod 'ParseLiveQuery'
+   post_install do |installer|
+     installer.pods_project.targets.each do |target|
+       target.build_configurations.each do |config|
+         config.build_settings['SWIFT_VERSION'] = '3.2'
+       end
+     end
+   end
+ end
+```
+
 Next, we need to instantiate a websocket client using the `ParseLiveQuery.Client`.  We also need to create a subscription to events that may be triggered by the backend.   Both the client and subscription should be declared outside lifecycle methods so they are not [auto released](https://github.com/parse-community/ParseLiveQuery-iOS-OSX/issues/105#issuecomment-304708482).  Otherwise, no subscription events will be triggered.
 
 ```swift
