@@ -166,7 +166,9 @@ Once a user successfully logs into your application, Parse caches the logged in 
 
         // check if user is logged in.
         if PFUser.current() != nil {
-            // if there is a logged in user then advance to the authenticated view controller
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            // view controller currently being set in Storyboard as default will be overridden
+            window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "AuthenticatedViewController")
         }
 
         return true
