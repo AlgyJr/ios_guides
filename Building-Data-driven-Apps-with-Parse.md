@@ -152,6 +152,17 @@ Returns an instance of the successfully logged in `PFUser`. This also caches the
     - password: The password of the user.
     - block: The block to execute. 
 
+Once a user is logged in, you can skip requesting this information by checking `PFUser.current()` to see if there is a current user session saved:
+
+```swift
+override func viewDidAppear(_ animated: Bool) {
+  if(PFUser.current() != nil)
+  {
+     // do work here, i.e. advance to next view controller
+  }
+}
+```
+
 [Parse User Login documentation](https://parse.com/docs/ios/guide#users-logging-in).
 
 ### Persisting user session via `PFUser.current()`
