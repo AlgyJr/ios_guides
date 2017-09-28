@@ -273,7 +273,7 @@ class ViewController: UIViewController {
    // make sure to declare both client and subscriptions variables outside lifecycle methods
    // otherwise, websocket delegate methods won't fire
     var client : ParseLiveQuery.Client!
-    var subscription : Subscription<Message>!
+    var subscription : Subscription<Armor>!
  
     override func viewDidLoad() {
       var armorQuery: PFQuery<Armor> {
@@ -290,7 +290,23 @@ class ViewController: UIViewController {
    }  
 ```
 
-Note that the `Message` class must be designated by the Parse back-end to support live queries.  See [this section](https://guides.codepath.com/ios/Configuring-a-Parse-Server#adding-support-for-live-queries) on how to do so.
+Note that the `Armor` class must be designated by the Parse back-end to support live queries.  See [this section](https://guides.codepath.com/ios/Configuring-a-Parse-Server#adding-support-for-live-queries) on how to do so.
+
+#### Handling Results from the Subscription
+When you are pushed results in your subscription handler, the callback function will not be running on the main thread.
+If you want to do any UI operations (including something like reloading the table view), you must instruct the runtime to run the contents of your callback on the main thread.
+The inside of the callback might look like this:
+
+```swift
+// ...
+subscription = client.subscribe(armorQuery)
+                         .handle(Event.created) { _, armor in
+                             DispatchQueue.main.async {
+                                 self.tableView.reloadData()
+                             }
+                         }
+```
+
 
 ### `PFFile`
 `PFFile` lets you store application files in the cloud that would otherwise be too large or cumbersome to fit into a regular `PFObject`. The most common use case is storing images but you can also use it for documents, videos, music, and any other binary data (up to 10 megabytes).
