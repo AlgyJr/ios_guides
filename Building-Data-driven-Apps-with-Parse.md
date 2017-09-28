@@ -154,7 +154,7 @@ Returns an instance of the successfully logged in `PFUser`. This also caches the
 
 [Parse User Login documentation](https://parse.com/docs/ios/guide#users-logging-in).
 
-### Persisting user session via `PFUser.current()`
+### Persisting user session
 
 Once a user successfully logs into your application, Parse caches the logged in user object for convenient access throughout your application. `PFUser.current()` can be used to get the current user. You can use this functionality in `AppDelegate` to check if there is a current user in Parse cache or not. If there is a cached user already present then you can directly load the Home view controller (without asking the user to login again).
 
