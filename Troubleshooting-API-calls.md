@@ -18,7 +18,7 @@ It is also often useful to monitor the network traffic to help diagnose these is
 
 ## Debugging with AFNetworking
 
-If you are using AFNetworking for your main library, add the [AFNetworkActivityLogger](https://github.com/AFNetworking/AFNetworkActivityLogger) to your `Podfile`:
+If you are using AFNetworking for your main networking library, add the [AFNetworkActivityLogger](https://github.com/AFNetworking/AFNetworkActivityLogger) to your `Podfile`:
 
 ```ruby
 pod 'AFNetworkActivityLogger', :git => 'https://github.com/AFNetworking/AFNetworkActivityLogger.git', :branch => '3_0_0'
