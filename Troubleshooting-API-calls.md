@@ -16,6 +16,51 @@ It is also often useful to monitor the network traffic to help diagnose these is
 
 **Note**: one drawback of this approach is that if you are using a network where the IP address of your PC changes, you will need to re-update the proxy settings on the device each time.
 
+## Debugging with AFNetworking
+
+If you are using AFNetworking for your main library, add the [AFNetworkActivityLogger](https://github.com/AFNetworking/AFNetworkActivityLogger) to your `Podfile`:
+
+```ruby
+pod 'AFNetworkActivityLogger', :git => 'https://github.com/AFNetworking/AFNetworkActivityLogger.git', :branch => '3_0_0'
+```
+
+You can then add logging in your `AppDelegate.swift` code:
+
+```swift
+import AFNetworkActivityLogger
+
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
+  AFNetworkActivityLogger.shared().startLogging()
+
+}
+```
+
+By default, the log level shows the request and response in subsequent lines: 
+
+```
+2017-09-28 22:47:25.489551-0700 03 Tweeter[10993:9087136] GET 'https://api.twitter.com/oauth/request_token?'
+2017-09-28 22:47:25.742744-0700 03 Tweeter[10993:9087136] 200 'https://api.twitter.com/oauth/request_token?' [0.2600 s]
+```
+
+If you want more verbose logging, you can adjust the log level:
+
+```swift
+if let logger = AFNetworkActivityLogger.shared().loggers.first as? AFNetworkActivityLoggerProtocol {
+  logger.level = .AFLoggerLevelDebug
+}
+
+AFNetworkActivityLogger.shared().startLogging()
+```
+
+Here are how the different log levels compare.  Mostly debug levels will include the headers and request/response bodies.
+
+| Debug level        |  Description  |
+|--------------------|---------------|
+| AFLoggerLevelDebug | Logs HTTP method, URL, header fields, & request body for requests, and status code, URL, header fields, response string, & elapsed time for responses. |
+| AFLoggerLevelInfo  | Logs HTTP method & URL for requests, and status code, URL, & elapsed time for responses. |
+| AFLoggerLevelError | Logs HTTP method & URL for requests, and status code, URL, & elapsed time for responses, but only for failed requests. |
+
 ## Setting up a Proxy
 
 ***On your PC***:
