@@ -7,14 +7,11 @@ While setting up breakpoints in your code is usually the first place to check, i
 * Do I have the right URL pattern?
 * What is the server error code?
 * What is the server response?
+* If an authenticated request is needed, a valid access token being used?
 
 You should first try to verify whether your API calls are correct by visiting [https://dhc.restlet.com/](https://dhc.restlet.com/).   You can also install a Chrome browser extension [Dev HTTP Client](https://chrome.google.com/webstore/detail/dhc-rest-client/aejoelaoggembcahagimdiliamlcdmfm) or any other available REST-based client tester. 
 
 <img src="http://imgur.com/GfVK80o.png" width="600"/>
-
-It is also often useful to monitor the network traffic to help diagnose these issues.  One way to do so is to setup an HTTP proxy that can intercept the network requests.  The process requires two parts: one on the PC that will act as the proxy, and the other on the iOS device.  
-
-**Note**: one drawback of this approach is that if you are using a network where the IP address of your PC changes, you will need to re-update the proxy settings on the device each time.
 
 ## Debugging with AFNetworking
 
@@ -62,6 +59,10 @@ Here are how the different log levels compare.  Mostly debug levels will include
 | AFLoggerLevelError | Logs HTTP method & URL for requests, and status code, URL, & elapsed time for responses, but only for failed requests. |
 
 ## Setting up a Proxy
+
+It is also often useful to monitor the network traffic to help diagnose these issues.  One way to do so is to setup an HTTP proxy that can intercept the network requests.  The process requires two parts: one on the PC that will act as the proxy, and the other on the iOS device.  
+
+**Note**: one drawback of this approach is that if you are using a network where the IP address of your PC changes, you will need to re-update the proxy settings on the device each time.
 
 ***On your PC***:
 
