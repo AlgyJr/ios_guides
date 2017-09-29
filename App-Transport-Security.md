@@ -1,6 +1,6 @@
 # Introduction
 
-In iOS 9, Apple introduced "App Transport Security," or ATS. This defaults apps to requiring an HTTPS connection, and returning an error for non-HTTPS connections.  In addition, HTTPS connections must also be using the latest protocol, Transport Layer Security (TLS) v1.2 and will fail to establish a connection if an older version is being used by the web server.
+In iOS 9, Apple introduced "App Transport Security," or ATS. This defaults apps to requiring an HTTPS connection, and returning an error for non-HTTPS connections.  In addition, HTTPS connections must also be using the latest protocol, Transport Layer Security (TLS) v1.2 and will fail to establish a connection if an older version is being used by the web server.  In addition, there are hardened encryption standards that are expected that sometimes go beyond the standard TLS v1.2 implementation.
 
 With modern web services, there is no reason to send data in the clear. Thanks to SSL session reuse, performance should no longer be a concern. All data should be sent over SSL.
 
