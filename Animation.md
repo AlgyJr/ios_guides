@@ -8,7 +8,7 @@ It's best to start out using Springs-and-Struts layout. Later in the guide we'll
 
 Most of the time, you will perform animation by working directly with UIKit. Say you have a view, `myView`, and you want to animate its movement from its current position to a new position, the `myNewFrame` rect. You simply call:
 
-```
+```swift
 UIView.animate(withDuration: 0.35, animations: {
     self.myView.frame = myNewFrame
 })
@@ -18,7 +18,7 @@ Behind the scenes, it is making calls to a lower layer in the stack, **Core Anim
 
 There are more complex animation methods available to avoid going lower. If you need to call code with the animation completes:
 
-```
+```swift
 UIView.animate(withDuration: 0.35, animations: {
     self.myView.frame = myNewFrame
 }, completion: { finished in
@@ -28,7 +28,7 @@ UIView.animate(withDuration: 0.35, animations: {
 
 If you want to pass even more options, such as the animation curve:
 
-```
+```swift
 UIView.animate(withDuration: 0.35, delay: 0.5, options: .curveEaseInOut, animations: {
     self.myView.frame = myNewFrame
 }, completion: { finished in
@@ -60,7 +60,7 @@ All animation changes are bundled together in a transaction. This is usually inv
 
 Imagine you make two changes to your layer:
 
-```
+```swift
 myLayer.opacity = 0.0
 myLayer.opacity = 1.0
 ```
@@ -73,7 +73,7 @@ An explicit animation allows you to construct more complex animations, such as a
 
 To construct a basic animation:
 
-```
+```swift
 myView.layer.position = endPosition
 let animation = CABasicAnimation(keyPath: "position")
 animation.fromValue = NSValue(cgPoint: startPosition)
