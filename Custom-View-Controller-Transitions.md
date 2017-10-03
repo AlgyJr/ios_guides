@@ -131,7 +131,7 @@ func interactionControllerForPresentation(animator: UIViewControllerAnimatedTran
 
 This will make your interaction transition interactive based on the user's actions. Here we are using a pinchGestureRecognizer. You can use other gestures too.
 
-````swift
+```swift
 func onPinch(sender: UIPinchGestureRecognizer) {
     var scale = sender.scale
     var velocity = sender.velocity
