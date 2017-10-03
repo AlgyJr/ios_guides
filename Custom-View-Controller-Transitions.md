@@ -4,7 +4,7 @@ By default, modal transitions can only be one of a few stock transitions. As of 
 
 Create a modal transition in the Storyboard, as usual. Before a segue occurs, the framework will call a method called `prepareForSegue` in the source view controller. You'll have to override that method and specify that you want a custom transition.
 
-```
+```swift
 override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
     var destinationVC = segue.destinationViewController as UIViewController
     destinationVC.modalPresentationStyle = UIModalPresentationStyle.Custom
@@ -20,7 +20,7 @@ The example above assumes that you only have one segue originating from the view
 
 Declare the `UIViewControllerTransitioningDelegate` and `UIViewControllerAnimatedTransitioning` protocols in the class definition. Its also convenient to add a property to track whether the view controller is being presented or dismissed.
 
-```
+```swift
 class MyViewController: UIViewController, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
 
 var isPresenting: Bool = true
@@ -32,7 +32,7 @@ var isPresenting: Bool = true
 
 Implement the transition delegate methods.
 
-```
+```swift
 func animationControllerForPresentedController(presented: UIViewController!, presentingController presenting: UIViewController!, sourceController source: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
     isPresenting = true
     return self
@@ -47,7 +47,7 @@ func animationControllerForDismissedController(dismissed: UIViewController!) -> 
 
 Finally, implement the method that actually controls the transition.
 
-```
+```swift
 func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
     // The value here should be the duration of the animations scheduled in the animationTransition method
     return 0.4
@@ -67,7 +67,7 @@ In order to animate the transition, you generally have to add the view of the de
 
 For example, to fade the view controller, do the following:
 
-```
+```swift
 func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
     println("animating transition")
     var containerView = transitionContext.containerView()
@@ -103,7 +103,7 @@ Interactive transitions are a great way to add control to the transition. For ex
 
 You should have followed the steps above, now you just need to a variable `interactiveTransition` as a class variable. You can see it below:
 
-```
+```swift
 class MyViewController: UIViewController, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
 
 var isPresenting: Bool = true
@@ -117,7 +117,7 @@ var interactiveTransition: UIPercentDrivenInteractiveTransition!
 
 When you cmd + click `UIViewControllerTransitioningDelegate` you should see this function `interactionControllerForPresentation`. Add this to your ViewController file and initialize the interactive transition.
 
-```
+```swift
 func interactionControllerForPresentation(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         interactiveTransition = UIPercentDrivenInteractiveTransition()
         //Setting the completion speed gets rid of a weird bounce effect bug when transitions complete
@@ -131,7 +131,7 @@ func interactionControllerForPresentation(animator: UIViewControllerAnimatedTran
 
 This will make your interaction transition interactive based on the user's actions. Here we are using a pinchGestureRecognizer. You can use other gestures too.
 
-````
+````swift
 func onPinch(sender: UIPinchGestureRecognizer) {
     var scale = sender.scale
     var velocity = sender.velocity
