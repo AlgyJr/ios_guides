@@ -104,6 +104,8 @@ class ClockViewController: UIViewController {
 
 ```
 
+We also need to add a stop watch controller:
+
 ```swift
 import UIKit
 
