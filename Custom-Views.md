@@ -494,8 +494,8 @@ class ViewController: UIViewController {
 }
 ```
 
-This works perfectly fine except for the fact that we have now have to
-load the load the nib `CaptionableImageView.xib` everywhere we want to
+This works perfectly fine except for the fact that we now have to
+load the nib `CaptionableImageView.xib` everywhere we want to
 use `CaptionableImageView`.  In particular it is not possible to embed
 `CaptionableImageView` as a subview in another nib/storyboard. This is
 because when the `initWithCoder` method is called on
