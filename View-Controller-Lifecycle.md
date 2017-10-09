@@ -39,7 +39,7 @@
     - If you need to repeat them (background activity/ UI changes/ make network calls ) to update the data in the view controller ,viewDidAppear(_:) is more appropriate to do so.
 
 - Important thing to remember : 
-    - This method is called only once in the lifetime of a view controller, so you use it for things that need to happen only once. If you need to perform some task every time a view controller comes on screen, then you need the next method.
+    - This method is called only once in the lifetime of a view controller, so you use it for things that need to happen only once. If you need to perform some task every time a view controller comes on screen, then you need to override the viewWillAppear() or viewDidAppear() methods.
     - Keep in mind that in this lifecycle step the view bounds are not final.
 
 **viewWillAppear(_:)**
