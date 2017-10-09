@@ -24,7 +24,7 @@
 **loadView()**
 
 - This is the method that creates the view for the view controller. You override this method only in case you want to build the whole interface for the view controller from code. Don’t use this unless there is a valid reason.
-- If you are working with storyboards or nib files you do not have to anything with this method and you can ignore it. Its implementation in UIVIewController loads the interface from the interface file and connects all the outlets and actions for you.
+- If you are working with storyboards or nib files you do not have to do anything with this method and you can ignore it. Its implementation in UIVIewController loads the interface from the interface file and connects all the outlets and actions for you.
 
 **viewDidLoad()**
 
