@@ -222,7 +222,7 @@ Websocket URLs are usually prefixed with ws:// or wss:// (secure) URLs.  Heroku 
 
 1. Create an auth token through [developer.apple.com](http://developer.apple.com) by clicking on the `Keys` -> `All` section.  Fill out a name and make sure the APNS service is **checked**:
       <img src="https://imgur.com/MfQWtqy.png" width="700">
-   Save the `.p8` file and record the key ID and teamID.  You will need to add this information to your Parse configuration.
+   Save the `.p8` file and record the key ID.  You will need to add this information to your Parse configuration.
 
 2. Fork your own [copy](https://github.com/ParsePlatform/parse-server-example) of the Parse server code that initially used to deploy to Heroku.  You will need to reconfigure your Heroku instance to point to this repo instead of Parse's because of additional customizations needed to be made on the `index.js` file within this repo.  
 
@@ -235,7 +235,7 @@ Websocket URLs are usually prefixed with ws:// or wss:// (secure) URLs.  Heroku 
        var pushConfig = {'ios': { token: {
           key: authKeyPath, // P8 file only
           keyId: 'XXXXX', // key ID
-          teamId: 'YYYYY', // team ID 
+          teamId: 'YYYYY', // The Team ID of your Apple Developer Account (available at https://developer.apple.com/account/#/membership/)
          },
          production: false // set explicitly
         }
