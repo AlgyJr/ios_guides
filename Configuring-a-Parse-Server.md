@@ -220,28 +220,33 @@ Websocket URLs are usually prefixed with ws:// or wss:// (secure) URLs.  Heroku 
 
 ### Enabling Push Notifications
 
-1. Follow Parse's [step #1](https://github.com/ParsePlatform/PushTutorial/blob/master/iOS/README.md#1-creating-the-ssl-certificate) for creating a development SSL certificate.  You will need these certificates to connect to Apple's Push Notification Service (APNS) sandbox system.  
+1. Create an auth token through [developer.apple.com](http://developer.apple.com) by clicking on the `Keys` -> `All` section.  Fill out a name and make sure the APNS service is **checked**:
+
+      <img src="https://imgur.com/MfQWtqy.png" width="600">
+
+   Save the `.p8` file and record the key ID and teamID.  You will need to add this information to your Parse configuration.
 
 2. Fork your own [copy](https://github.com/ParsePlatform/parse-server-example) of the Parse server code that initially used to deploy to Heroku.  You will need to reconfigure your Heroku instance to point to this repo instead of Parse's because of additional customizations needed to be made on the `index.js` file within this repo.  
 
-3. Copy the `.p12` certificate you exported and add it to this forked repo.  This `.p12` file should not have a passphrase with it.  
+3. Copy the `.p8` certificate you exported and add it to this forked repo.  This `.p8` file should not have a passphrase with it.  
 
-4. You will now need to edit the `index.js` of to include to the APNS certificate.  You will need to specify the filename of this `.p12` certificate, the bundle identifier of the app, and whether the certificate generated is for development or production purposes.
+4. You will now need to edit the `index.js` of to include to the APNS certificate.  You will need to specify the filename of this `.p8` certificate, the bundle identifier of the app, and whether the certificate generated is for development or production purposes.
 
        Note that you the `ios` key/value pair can be included as an array.   You could also include the production certificate in this same list.  See the [Parse wiki](https://github.com/ParsePlatform/parse-server/wiki/Push#2-configure-parse-server) for more context.
 
        ```javascript
-       var devCertPath = path.resolve(__dirname, 'ParsePushDevelopmentCertificate.p12');
+       var authKeyPath = path.resolve(__dirname, 'AuthKey.p8');
 
-       var pushConfig = {'ios': [
-         {
-          pfx: devCertPath, // P12 file only
-          bundleId: 'beta.codepath.parsetesting',  // change to match bundleId
-          production: false // dev certificate
+       var pushConfig = {'ios': { token: {
+          key: authKeyPath, // P8 file only
+          keyId: 'XXXXX', // key ID
+          teamId: 'YYYYY', // team ID 
          }
-        ]
+        }
        };
        ```
+
+The Parse server relies on the [node-apn](https://github.com/node-apn/) module for sending Apple push notifications.  See [this guide](https://github.com/node-apn/node-apn/blob/master/doc/provider.markdown) for more information about iOS push options.  Note that for auth keys, the production value will be set automatically depending on whether `NODE_ENV` is to set to be production.
 
 5. Make sure to include this `pushConfig` into your definition:
 
@@ -253,7 +258,7 @@ Websocket URLs are usually prefixed with ws:// or wss:// (secure) URLs.  Heroku 
            });
        ```
 
-6. Follow [steps #4-#5](https://github.com/ParsePlatform/PushTutorial/blob/master/iOS/README.md#5-adding-code-for-a-push-enabled-application) to enable Push notifications inside your app.  
+6. Follow [client steps](http://docs.parseplatform.org/parse-server/guide/#configuring-your-clients-to-receive-push-notifications) to enable Push notifications inside your app.  
      * Make sure to use the same bundle identifier as the name specified in your server configuration.
      * Verify that you've turned on Push Notifications in the `Capabilities` section.
      * Click on `Build Setting`", and find (or search for) the `Code Signing Identity` field. This field should be set to `iOS Developer` if you're testing against development, or `iOS Distribution` if you're testing in production or building your app for the App Store.
