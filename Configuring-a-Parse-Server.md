@@ -243,7 +243,6 @@ Websocket URLs are usually prefixed with ws:// or wss:// (secure) URLs.  Heroku 
         }
        };
        ```
-
 The Parse server relies on the [node-apn](https://github.com/node-apn/) module for sending Apple push notifications.  See [this guide](https://github.com/node-apn/node-apn/blob/master/doc/provider.markdown) for more information about iOS push options.  Note that for auth keys, the production value will be set automatically depending on whether `NODE_ENV` is to set to be production.
 
 5. Make sure to include this `pushConfig` into your definition:
