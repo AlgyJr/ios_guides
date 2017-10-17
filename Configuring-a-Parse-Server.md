@@ -228,10 +228,7 @@ Websocket URLs are usually prefixed with ws:// or wss:// (secure) URLs.  Heroku 
 
 3. Copy the `.p8` certificate you exported and add it to this forked repo.  This `.p8` file should not have a passphrase with it.  
 
-4. You will now need to edit the `index.js` of to include to the APNS certificate.  You will need to specify the filename of this `.p8` certificate, the bundle identifier of the app, and whether the certificate generated is for development or production purposes.
-
-       Note that you the `ios` key/value pair can be included as an array.   You could also include the production certificate in this same list.  See the [Parse wiki](https://github.com/ParsePlatform/parse-server/wiki/Push#2-configure-parse-server) for more context.
-
+4. You will now need to edit the `index.js` to include to the APNS certificate.  You will need to specify the key ID, team ID, and the location of this `p8` certificate.
        ```javascript
        var authKeyPath = path.resolve(__dirname, 'AuthKey.p8');
 
@@ -239,11 +236,16 @@ Websocket URLs are usually prefixed with ws:// or wss:// (secure) URLs.  Heroku 
           key: authKeyPath, // P8 file only
           keyId: 'XXXXX', // key ID
           teamId: 'YYYYY', // team ID 
-         }
+         },
+         production: false // set explicitly
         }
        };
        ```
-The Parse server relies on the [node-apn](https://github.com/node-apn/) module for sending Apple push notifications.  See [this guide](https://github.com/node-apn/node-apn/blob/master/doc/provider.markdown) for more information about iOS push options.  Note that for auth keys, the production value will be set automatically depending on whether `NODE_ENV` is to set to be production.
+The Parse server relies on the [node-apn](https://github.com/node-apn/) module for sending Apple push notifications.  See [this guide](https://github.com/node-apn/node-apn/blob/master/doc/provider.markdown) for more information about iOS push options.  
+
+Apple has two separate push notification environments for production and development purposes.  Whether your push tokens are granted for development or production purposes depends on the certificate used to build your app.  If the app was signed using an App Store certificate, it is designated for production.  Otherwise, in most other cases, the token is relying on the development environment.
+
+If you are building and testing your app in XCode (note that push notifications cannot be tested on an emulator), you will likely be testing in the development environment.  Once your app is distributed through the app store, you will need to setup the Parse server to be rely on the `production: true` setting.  You will most likely need to have separate Parse servers, one setup for production and the other setup for development purposes.
 
 5. Make sure to include this `pushConfig` into your definition:
 
