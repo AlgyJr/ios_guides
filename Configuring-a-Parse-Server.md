@@ -244,10 +244,6 @@ Websocket URLs are usually prefixed with ws:// or wss:// (secure) URLs.  Heroku 
 
     The Parse server relies on the [node-apn](https://github.com/node-apn/) module for sending Apple push notifications.  See [this guide](https://github.com/node-apn/node-apn/blob/master/doc/provider.markdown) for more information about iOS push options.  
 
-    Apple has two separate push notification environments for production and development purposes.  Whether your push tokens are granted for development or production purposes depends on the certificate used to build your app.  If the app was signed using an App Store certificate, it is designated for production.  Otherwise, in most other cases, the token is relying on the development environment.
-
-    If you are building and testing your app in XCode (note that push notifications cannot be tested on an emulator), you will likely be testing in the development environment.  Once your app is distributed through the app store, you will need to setup the Parse server to be rely on the `production: true` setting.  You will most likely need to have separate Parse servers, one setup for production and the other setup for development purposes.
-
 5. Make sure to include this `pushConfig` into your definition:
 
        ```javascript
@@ -313,6 +309,10 @@ Websocket URLs are usually prefixed with ws:// or wss:// (secure) URLs.  Heroku 
       APNS Connection 0 Connected
       APNS Connection 0 Notification transmitted to <device_token>
       ```
+
+NOTE: Apple has two separate push notification environments for production and development purposes.  Whether your push tokens are granted for development or production purposes depends on the certificate used to build your app.  If the app was signed using an App Store certificate, it is designated for production.  Otherwise, in most other cases, the token is relying on the development environment.
+
+If you are building and testing your app in XCode (note that push notifications cannot be tested on an emulator), you will likely be testing in the development environment.  Once your app is distributed through the app store, you will need to setup the Parse server to be rely on the `production: true` setting.  You will most likely need to have separate Parse servers, one setup for production and the other setup for development purposes.
 
 #### Sending Pushes from Clients
 
