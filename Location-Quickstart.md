@@ -15,7 +15,7 @@ So the first thing you need to do is to add one or both of the following keys to
 
 In the app delegate,
 
-```
+```swift
 import CoreLocation
 
 @UIApplicationMain
@@ -27,19 +27,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 ### Step 4: Request permission
 
-```
+```swift
 locationManager.requestAlwaysAuthorization()
 ```
 
 ### Step 5: Start Updating Location
 
-```
+```swift
 locationManager.startUpdatingLocation()
 ```
 
 ### Step 6: Implement Location Delegate
 
-```
+```swift
 func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
     var location = locations[0] as CLLocation
     
