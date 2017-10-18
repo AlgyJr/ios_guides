@@ -4,7 +4,7 @@ This guide will demonstrate one method for creating a repeating "flip book" or a
 Make sure the images for your animation are all the same size.  
 - Add the image assets that you want to use as "frames" in your animation to the Assets.xcassets folder. View the [Adding Image Assets](https://github.com/codepath/ios_guides/wiki/Adding-Image-Assets) article to learn how to add image assets to your views.
  
-![frame 1](http://i.imgur.com/SnGmQAi.png) ![frame 2](http://i.imgur.com/Pzw1BNR.png) ![frame 3](http://i.imgur.com/NTfz9I7.png)
+![frame 1](https://i.imgur.com/SnGmQAi.png) ![frame 2](https://i.imgur.com/Pzw1BNR.png) ![frame 3](https://i.imgur.com/NTfz9I7.png)
 
 ### Step 2: Add an ImageView
 We will hold our image animation in a UIImageView. It will need to be the same size as our image "frames".  
@@ -67,4 +67,4 @@ ImageView.image = animatedImage
 ```
 
 ### Step 5: Run Your App!  
-![animated image example](http://i.imgur.com/SjDREPj.gif)
+![animated image example](https://i.imgur.com/SjDREPj.gif)

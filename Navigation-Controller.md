@@ -13,7 +13,7 @@ In this lesson we will show you how to
 - Pass data between view controllers
 - Create a navigation flow with or without a storyboard
 
-<a href="http://imgur.com/7STmvxL"><img src="http://i.imgur.com/7STmvxL.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/7STmvxL"><img src="https://i.imgur.com/7STmvxL.gif" title="source: imgur.com" /></a>
 
 ## Navigation Controller
 
@@ -59,7 +59,7 @@ class.  We hook up our Table View's `dataSource` property to finish the
 initial setup.  If you are unfamiliar with table views please refer to 
 the [[table view guide|Table View Guide]].
 
-<a href="http://imgur.com/WBH4TcV"><img src="http://i.imgur.com/WBH4TcV.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/WBH4TcV"><img src="https://i.imgur.com/WBH4TcV.png" title="source: imgur.com" /></a>
 
 ```swift
 import UIKit
@@ -92,7 +92,7 @@ class ViewController: UIViewController, UITableViewDataSource {
 
 ```
 
-<a href="http://imgur.com/OuawCqi"><img src="http://i.imgur.com/OuawCqil.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/OuawCqi"><img src="https://i.imgur.com/OuawCqil.png" title="source: imgur.com" /></a>
 
 #### Adding the navigation controller and setting the root view controller
 
@@ -116,7 +116,7 @@ also need to set the _initial view controller_ to the navigation
 controller by dragging the arrow that was pointing to the view
 controller with our table.
 
-<a href="http://imgur.com/83IhGlK"><img src="http://i.imgur.com/83IhGlK.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/83IhGlK"><img src="https://i.imgur.com/83IhGlK.gif" title="source: imgur.com" /></a>
 
 In most cases if we have a view controller already set up that we want
 to act as our root view controller, we can accomplish all the above
@@ -124,7 +124,7 @@ steps simply by selecting the menu item `Editor -> Embed In ->
 Navigation Controller`.  Running the app, we can see our navigation
 controller's translucent grey navigation bar at the top of the screen.
 
-<a href="http://imgur.com/5WtqwmM"><img src="http://i.imgur.com/5WtqwmMl.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/5WtqwmM"><img src="https://i.imgur.com/5WtqwmMl.png" title="source: imgur.com" /></a>
 
 [rootvc]: https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UINavigationController_Class/index.html#//apple_ref/occ/instm/UINavigationController/initWithRootViewController:
 
@@ -142,7 +142,7 @@ fields. **Note**: we recommend pressing Enter or Tab after entering
 the class value since Xcode may not apply the change if you navigate
 out of the text field otherwise.
 
-<a href="http://imgur.com/UgE77Nm"><img src="http://i.imgur.com/UgE77Nm.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/UgE77Nm"><img src="https://i.imgur.com/UgE77Nm.png" title="source: imgur.com" /></a>
 
 ```swift
 import UIKit
@@ -161,7 +161,7 @@ controller and selecting `show` under `Selection Segue`.  Once this is
 done, notice how our name controller now also shows the grey navigation
 bar to indicate that it will be shown as part of the navigation stack.
 
-<a href="http://imgur.com/WqWi2kL"><img src="http://i.imgur.com/WqWi2kL.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/WqWi2kL"><img src="https://i.imgur.com/WqWi2kL.gif" title="source: imgur.com" /></a>
 
 It is important that we select the `show` segue since this corresponds
 to the navigation controller pushing a new view controller onto the
@@ -175,7 +175,7 @@ events could be available depending on the control that initiates the segue.
 For example control-dragging from a button will show possible `Action
 Segues`.  Running our application right now shows the following.
 
-<a href="http://imgur.com/CmFK6Bw"><img src="http://i.imgur.com/CmFK6Bw.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/CmFK6Bw"><img src="https://i.imgur.com/CmFK6Bw.gif" title="source: imgur.com" /></a>
 
 #### Configuring a view controller before it is pushed
 You'll notice at least one problem immediately with the current behavior:
@@ -192,7 +192,7 @@ We give the segue an identifier by selecting the storyboard and using
 the Attributes Inspector.  Notice that our prototype cell is also
 highlighted to indicate that segue will be trigged by selecting a cell.
 
-<a href="http://imgur.com/Q71yKws"><img src="http://i.imgur.com/Q71yKws.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/Q71yKws"><img src="https://i.imgur.com/Q71yKws.png" title="source: imgur.com" /></a>
 
 In our root view controller's `prepareForSegue` method, we check to see
 if the segue that was triggered matches the identifier we gave our segue
@@ -245,7 +245,7 @@ class NameController: UIViewController {
 
 ```
 
-<a href="http://imgur.com/qWis8Ya"><img src="http://i.imgur.com/qWis8Ya.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/qWis8Ya"><img src="https://i.imgur.com/qWis8Ya.gif" title="source: imgur.com" /></a>
 
 #### Unwind segues and passing information back up the hierarchy
 Next we'll need a way for the user to save any changes to a name back to
@@ -261,7 +261,7 @@ the change.  We can add a button to the right side of the navigation bar
 in our name controller by dragging a `Navigation Item` and then a `Bar
 Button Item` from the Object Library.
 
-<a href="http://imgur.com/ScyeS2O"><img src="http://i.imgur.com/ScyeS2O.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/ScyeS2O"><img src="https://i.imgur.com/ScyeS2O.gif" title="source: imgur.com" /></a>
 
 To implement an unwind segue we create an `@IBAction` method in the view
 controller that will be _unwound to_ taking a single `UIStoryboardSegue`
@@ -295,7 +295,7 @@ control-dragging from the button to the `Exit` outlet and selecting the
 `@IBAction` we just created.  The `Exit` outlet is the red exit door
 that appears above of your active view controller in the storyboard.
 
-<a href="http://imgur.com/QusMqmi"><img src="http://i.imgur.com/QusMqmi.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/QusMqmi"><img src="https://i.imgur.com/QusMqmi.gif" title="source: imgur.com" /></a>
 
 Finally we'll need to write the code in our root view controller to
 handle updating the name once the `saveName` method is called.
@@ -350,7 +350,7 @@ to note is that we had to maintain an additional state variable
 editing.  Putting everything together we get the following
 functionality:
 
-<a href="http://imgur.com/t1krDPG"><img src="http://i.imgur.com/t1krDPG.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/t1krDPG"><img src="https://i.imgur.com/t1krDPG.gif" title="source: imgur.com" /></a>
 
 ### Using navigation controllers without storyboards
 
@@ -368,7 +368,7 @@ update `Info.plist` file (under `Supporting Files`) to remove the
 reference to it by clicking on the minus sign after selecting `Main
 storyboard file base name`.
 
-<a href="http://imgur.com/wTiqnWZ"><img src="http://i.imgur.com/wTiqnWZ.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/wTiqnWZ"><img src="https://i.imgur.com/wTiqnWZ.png" title="source: imgur.com" /></a>
 
 Without the storyboard, we'll have to set up our window and root view
 controller manually by changing the `didFinishLaunchingWithOptions`
@@ -437,7 +437,7 @@ class ViewController: UIViewController, UITableViewDataSource {
 
 Running the app at this point gives us:
 
-<a href="http://imgur.com/OuawCqi"><img src="http://i.imgur.com/OuawCqil.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/OuawCqi"><img src="https://i.imgur.com/OuawCqil.png" title="source: imgur.com" /></a>
 
 #### Adding the navigation controller and setting its root view controller
 Next we'll need to add a navigation controller and set its [_root view
@@ -474,7 +474,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 Running the application at this point will show the same table with a
 grey navigation bar at the top.
 
-<a href="http://imgur.com/5WtqwmM"><img src="http://i.imgur.com/5WtqwmMl.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/5WtqwmM"><img src="https://i.imgur.com/5WtqwmMl.png" title="source: imgur.com" /></a>
 
 #### Initializing and pushing a view controller onto the stack
 As in our storyboard example, we'll need to create another view
@@ -484,7 +484,7 @@ main `ViewController` class, we'll create new class `NameController` and
 associated `.xib` by selecting `File -> New -> File... -> iOS -> Source
 -> Cocoa Touch Class`.  Be sure to tick in the `Also Create XIB file`.
 
-<a href="http://imgur.com/2LNtYpi"><img src="http://i.imgur.com/2LNtYpi.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/2LNtYpi"><img src="https://i.imgur.com/2LNtYpi.png" title="source: imgur.com" /></a>
 
 _NB: Most of the time you'll want to be consistent and use only one
 method of laying out your views (programmatic, separate `.xib`s, or have
@@ -500,7 +500,7 @@ Editor (tuxedo) view we also create outlets in our `NameController`
 class corresponding to the two text fields by controlling dragging the
 fields into the code view.
 
-<a href="http://imgur.com/bEH8mLO"><img src="http://i.imgur.com/bEH8mLO.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/bEH8mLO"><img src="https://i.imgur.com/bEH8mLO.gif" title="source: imgur.com" /></a>
 
 We'll go ahead and add the code that will allow us to configure the
 `NameController` to with the `fullName` that it will display when
@@ -716,7 +716,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 }
 ```
 
-<a href="http://imgur.com/t1krDPG"><img src="http://i.imgur.com/t1krDPG.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/t1krDPG"><img src="https://i.imgur.com/t1krDPG.gif" title="source: imgur.com" /></a>
 
 There are quite a few things to note in the above code.
 
@@ -833,7 +833,7 @@ want to change about a navigation bar's appearance can be edited in the
 Attributes Inspector by selecting the navigation bar associated with
 your navigation controller.
 
-<a href="http://imgur.com/judIATc"><img src="http://i.imgur.com/judIATc.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/judIATc"><img src="https://i.imgur.com/judIATc.png" title="source: imgur.com" /></a>
 
 The navigation item with your view controller can also be edited
 directly in the storyboard.  For example, to add more buttons to the
@@ -887,7 +887,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 ```
 
-<a href="http://imgur.com/AJjy8Nq"><img src="http://i.imgur.com/AJjy8Nq.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/AJjy8Nq"><img src="https://i.imgur.com/AJjy8Nq.gif" title="source: imgur.com" /></a>
 
 ### Title text and view of a navigation item
 
@@ -931,7 +931,7 @@ class NameController: UIViewController {
 }
 ```
 
-<a href="http://imgur.com/BYV6p9s"><img src="http://i.imgur.com/BYV6p9s.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/BYV6p9s"><img src="https://i.imgur.com/BYV6p9s.gif" title="source: imgur.com" /></a>
 
 [titleview]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UINavigationItem_Class/index.html#//apple_ref/occ/instp/UINavigationItem/titleView
 
@@ -967,7 +967,7 @@ class NameController: UIViewController {
    ...
 }
 ```
-<a href="http://imgur.com/FptSf6y"><img src="http://i.imgur.com/FptSf6yl.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/FptSf6y"><img src="https://i.imgur.com/FptSf6yl.png" title="source: imgur.com" /></a>
 
 #### The Back button
 Notice that above when we set the top navigation item's
@@ -1009,6 +1009,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 }
 ```
 
-<a href="http://imgur.com/W4XwDwF"><img src="http://i.imgur.com/W4XwDwF.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/W4XwDwF"><img src="https://i.imgur.com/W4XwDwF.gif" title="source: imgur.com" /></a>
 
 <!-- TODO: ## Example: implementing a search bar in the navigation bar -->

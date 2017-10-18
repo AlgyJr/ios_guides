@@ -19,7 +19,7 @@ You can poke holes in ATS by adding a `NSAppTransportSecurity` dictionary to Inf
 
 You may also use `NSAllowsArbitraryLoads` to completely disable ATS in your app:
 
-![Imgur](http://i.imgur.com/Tmy1wYL.png)
+![Imgur](https://i.imgur.com/Tmy1wYL.png)
 
 Or in XML:
 ```xml
@@ -96,7 +96,7 @@ Open iTunes on the Mac.  Click on the icon for the iPhone device.
 
 Click the Serial number text to display the UDID.  Record the UDID by using Ctrl-Click to copy the UDID.
 
-<img src="http://imgur.com/MLWsrsl.png"/>
+<img src="https://imgur.com/MLWsrsl.png"/>
 
 Then run the tool with the UDID of the device:
 
@@ -120,7 +120,7 @@ You can then use WireShark to capture network traffic on the `rvi0` interface.
 
 ATS requires strict encryption ciphers.  You can use the Chrome Security tab (`View` -> `Developer` -> `Developer Tools`) to check what encryption standard is used:
 
-<img src="http://imgur.com/QblJSTn.png"/>
+<img src="https://imgur.com/QblJSTn.png"/>
 
 Make sure web sites must implement strong encryption ciphers that implement perfect forward secrecy.  Here is the current list that iOS10 devices will support (in order of preference):
 

@@ -4,7 +4,7 @@ MapKit lets you use native maps in your app and overlay custom Annotations, a.k.
 
 This page covers some of the most common tasks requiring MapKit, by the end of it you should be equipped for the majority of MapKit use cases. 
 
-![Custom MapKit annotations gif](http://i.imgur.com/WIwqNtn.gif)
+![Custom MapKit annotations gif](https://i.imgur.com/WIwqNtn.gif)
 
 ### Necessary knowledge
 
@@ -23,7 +23,7 @@ Be sure you `import MapKit` into whatever view controllers will need to use maps
 
 * You can drag a `MapKit View` from Interface Builder's Object Library onto your Storyboard Scene, and configure it just like a regular view. 
 
-![MapKit View's configuration options](http://i.imgur.com/MjOMcsu.png)
+![MapKit View's configuration options](https://i.imgur.com/MjOMcsu.png)
 
 Here are the configuration options for `MKMapView` in the "DJ tab" shown above:
 
@@ -199,7 +199,7 @@ Finally, we'll need to add a line to a file called `Info.plist`
 
 Now when you run your project, you should see a pop-up to request permission for the user's location!
 
-![Requesting location permission gif](http://i.imgur.com/lTThTzk.gif)
+![Requesting location permission gif](https://i.imgur.com/lTThTzk.gif)
 
 ### Show the user their location on-map
 

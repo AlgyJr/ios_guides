@@ -1,7 +1,7 @@
 
 Table views are the center of many iOS applications and have many features to customize their appearance and behavior. The sections below cover basic as well as more custom table views.
 
-<img src="http://i.imgur.com/rYbUIR1.png" />
+<img src="https://i.imgur.com/rYbUIR1.png" />
 
 Download the sample code [here](https://github.com/codepath/ios_guides/tree/master/demos/SimpleTableView).
 
@@ -11,7 +11,7 @@ Download the sample code [here](https://github.com/codepath/ios_guides/tree/mast
 
 Create a view controller, and drag a UITableView into the view, as shown below.
 
-<img src="http://i.imgur.com/uDwEPMA.gif" />
+<img src="https://i.imgur.com/uDwEPMA.gif" />
 
 #### Step 2: Create a table view outlet
 
@@ -66,11 +66,11 @@ In practice, a UITableViewCell is rarely appropriate for your table views. Inste
 
 In Storyboard, drag a UITableViewCell onto the table view. Create a new Swift file for the custom cell. It should be a subclass of UITableViewCell. Select the UITableViewCell in Storyboard and type in the name of the custom cell in the Identity Inspector.
 
-![Identity](http://i.imgur.com/TMmgLJh.png)
+![Identity](https://i.imgur.com/TMmgLJh.png)
 
 Then, in the Attribute Inspector, set the Identifier of the custom cell.
 
-![Attribute](http://i.imgur.com/WTGsMc8.png)
+![Attribute](https://i.imgur.com/WTGsMc8.png)
 
 Create outlets to the custom cell class for any view you want to configure in code.
 
@@ -89,7 +89,7 @@ func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexP
 
 ### Passing Data from Table View Cells
   
-<img src="http://i.imgur.com/LnuC2nk.gif" width="250"/>  
+<img src="https://i.imgur.com/LnuC2nk.gif" width="250"/>  
   
 When a user taps a cell in your table view, we will often want to navigate to another view controller that contains information related to the cell that was tapped. In order to do this,  we will need to figure out which cell was tapped, and then pass the relevant data from that cell to the next view controller.  
   
@@ -102,27 +102,27 @@ The basic setup for this Use Case will include two UIViewControllers with a UINa
 
 - [Create a basic Table View](https://guides.codepath.com/ios/Using-UITableView#basic-table-view) including the two required table view methods.
 - Add a UILabel inside your cell  
-<img src="http://i.imgur.com/weWzUm5.png" width="250"/>
+<img src="https://i.imgur.com/weWzUm5.png" width="250"/>
 
 #### Step 2: Create a Custom Cell
 
 - [Set up a table view with Custom Cell](https://guides.codepath.com/ios/Using-UITableView#table-view-with-custom-cells)
 - Create an outlet from the label in your prototype cell to your Custom Cell file.  
-<img src="http://i.imgur.com/DdPMHDZ.gif " width="500"/> 
+<img src="https://i.imgur.com/DdPMHDZ.gif " width="500"/> 
   
 #### Step 3: Embed in Navigation Controller
 In this Use Case, we will Embed in a **Navigation Controller** to our **TableViewViewController**.  
   
-<img src="http://i.imgur.com/ueHh4h7.png" width="250" /> <img src="http://i.imgur.com/1Xw7uRM.png" width="300" />  
+<img src="https://i.imgur.com/ueHh4h7.png" width="250" /> <img src="https://i.imgur.com/1Xw7uRM.png" width="300" />  
   
 #### Step 4: Create the Detail View Controller
 - Add a new UIViewController to the Storyboard to serve as the **Detail ViewController**.  
 - Create a Custom Swift ViewController File called, **DetailViewController** and associate it with the Detail ViewController in Storyboard. [Create the Custom Swift View Controller](https://guides.codepath.com/ios/Creating-Custom-View-Controllers#step-2-create-the-swift-view-controller)  
-<img src="http://i.imgur.com/ySXR8th.png" width="250" />  
+<img src="https://i.imgur.com/ySXR8th.png" width="250" />  
   
 - Add a UILabel to the Detail ViewController.
 - Create an outlet from the Label in Storyboard to the **DetailViewController** File.  
-<img src="http://i.imgur.com/4ecNlf8.gif" width="500"/>  
+<img src="https://i.imgur.com/4ecNlf8.gif" width="500"/>  
 
 #### Step 5: Setup the Detail View Controller Outlets and Variables  
 In this demo, we will simply display the index value in the label of the DetailViewController to prove that we know which cell was tapped. In a real application, the index could be used to pull out corresponding data from arrays or dictionaries.
@@ -144,11 +144,11 @@ Since we have embedded in a navigation controller, we will want to create a **Pu
   
 - ctrl + drag from the **Cell** in the Document Outline to the **DetailViewController** and choose **Push** to create a Push Segue.  
   
-<img src="http://i.imgur.com/RWaTyXT.gif" width="500"/>  
+<img src="https://i.imgur.com/RWaTyXT.gif" width="500"/>  
   
 At this Point, taping a cell in the tableView should take you to the detail ViewController, however you will notice that the detail ViewController's label displays an index of **nil**. This is because we haven't passed any data to the DetailViewController yet. We will handle that in the next steps.  
   
-<img src="http://i.imgur.com/q5bxlrb.gif" width="200"/>  
+<img src="https://i.imgur.com/q5bxlrb.gif" width="200"/>  
  
 #### Step 7: Pass the Data
 We need to add a `prepare` method in our CustomTableViewController file. The `prepare` method is called right before any segue happens from that ViewController. This will give us the opportunity to pass any data we need to the DetailViewController right before the segue happens. 
@@ -173,5 +173,5 @@ override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
   
 Now that the Data is being passed, the Label inside the DetailViewController should reflect the index of the cell that you clicked on in the table view!  
   
-<img src="http://i.imgur.com/LnuC2nk.gif" width="200"/>  
+<img src="https://i.imgur.com/LnuC2nk.gif" width="200"/>  
 

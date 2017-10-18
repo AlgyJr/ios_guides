@@ -4,7 +4,7 @@ You can choose whether to display as an alert or action sheet style.
 
 The alert style presents modally in the center of their presenting view controllers. 
 
-![Alert|250](http://i.imgur.com/cMAZh9H.gif)
+![Alert|250](https://i.imgur.com/cMAZh9H.gif)
 
 ### Step 1: Create the UIAlertController
 
@@ -57,7 +57,7 @@ UIApplication.shared.keyWindow?.rootViewController?.present(alertController, ani
 
 The action sheet style anchors the view to the bottom of the presenting view controller.
 
-![Action|250](http://i.imgur.com/8JfoPh3.gif)
+![Action|250](https://i.imgur.com/8JfoPh3.gif)
 
 ### Step 1: Create the UIAlertController
 

@@ -1,7 +1,7 @@
 UITextFields are views which a user can type into. Anytime you need to enter a username, password, or type a text message, you will utilize a UITextField. There are many properties you can set to customize the look and feel of your TextField. You can also check what a user has typed into the TextField and have your app respond accordingly.
 
 ## Use Case 1: Log In Screen  
-![Logging In Demo gif](http://i.imgur.com/F9HuvZk.gif)
+![Logging In Demo gif](https://i.imgur.com/F9HuvZk.gif)
 
 ### Step 1: Add Elements to Storyboard
 
@@ -11,7 +11,7 @@ UITextFields are views which a user can type into. Anytime you need to enter a u
 - Add the "Log In" Button [Add a Button from Object Library](https://github.com/codepath/ios_guides/wiki/Configure-a-Button#step-1-add-button-from-object-library)
 - Add the UIActivityView. [Add an Activity Indicator](https://github.com/codepath/ios_guides/wiki/Using-UIActivityIndicatorView#step-1-add-activity-indicator-to-storyboard)
  
-![Add Elements to Storyboard gif](http://i.imgur.com/muYoQQ8.gif)  
+![Add Elements to Storyboard gif](https://i.imgur.com/muYoQQ8.gif)  
 
 ### Step 2: Configure Text Field Properties
 
@@ -21,7 +21,7 @@ There are many properties you can set to customize your text field. We will want
 - Select the **Border Style**, transparent.  
 - Select **Secure Text Entry** for password text field  
   
-![Set TextField Properties](http://i.imgur.com/iOIvlMG.gif)  
+![Set TextField Properties](https://i.imgur.com/iOIvlMG.gif)  
 
 ### Step 3: Configure Button Properties
 
@@ -32,7 +32,7 @@ There are many properties you can set to customize your text field. We will want
 
 - Change the style to white. 
 - Select, "Hides When Stopped". [Set Default Properties](https://github.com/codepath/ios_guides/wiki/Using-UIActivityIndicatorView#step-2-set-default-properties)  
-![Activity Indicator Style](http://i.imgur.com/ib87r65.png)
+![Activity Indicator Style](https://i.imgur.com/ib87r65.png)
 
 ### Step 5: Create Outlets for Elements
 
@@ -47,7 +47,7 @@ In order to communicate with your Text Fields, Button and Activity Indicator in 
    - `loginButton`
    - `loginIndicator`
 
-![Create Outlet for each element](http://i.imgur.com/uPNEzla.gif)
+![Create Outlet for each element](https://i.imgur.com/uPNEzla.gif)
 
 ### Step 6: Create an Action for the Log In Button
 

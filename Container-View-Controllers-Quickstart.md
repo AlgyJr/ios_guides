@@ -17,7 +17,7 @@ quick start recipe for doing this by building a simple container view
 controller `TwoTabViewController` that allows the user to switch between
 two view controllers.
 
-<a href="http://imgur.com/CbM1kVR"><img src="http://i.imgur.com/CbM1kVR.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/CbM1kVR"><img src="https://i.imgur.com/CbM1kVR.gif" title="source: imgur.com" /></a>
 
 ## Step 1: Create subclass of UIViewController
 Create a new subclass of `UIViewController` by selecting `File -> New ->
@@ -32,7 +32,7 @@ view controllers.  Add `@IBOutlets` for any components you'll need
 programatically manipulate and  `@IBActions` for any events to which you
 want to respond.
 
-<a href="http://imgur.com/vEx95BQ"><img src="http://i.imgur.com/vEx95BQ.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/vEx95BQ"><img src="https://i.imgur.com/vEx95BQ.gif" title="source: imgur.com" /></a>
 
 ## Step 3: Add code to keep track of child view controllers
 You'll need a way to track of all the view controllers you are

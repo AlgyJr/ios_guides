@@ -1,6 +1,6 @@
 When creating mocks using Xcode, we can add an extra degree of fidelity by simulating a loading event when we transition to a new screen.  
   
-![Simulated Screen Loading](http://i.imgur.com/MtP8jkd.gif)
+![Simulated Screen Loading](https://i.imgur.com/MtP8jkd.gif)
 
 ### viewWillAppear and viewDidAppear methods
 
@@ -22,10 +22,10 @@ Alternatively, you can copy and paste the delay function directly in your Swift 
 It's super easy to take any ViewController you already have setup and incorporate simulated loading.
 
 - In the case that you have a ScrollView with an "Feed" ImageView, nest the Activity Indicator inside the ScrollView alongside the "Feed" ImageView. [UIActivityIndicatorView](https://github.com/codepath/ios_guides/wiki/Using-UIActivityIndicatorView), [Nest the Child View](https://github.com/codepath/ios_guides/wiki/Creating-Nested-Views#step-2-nest-the-child-views)  
-![Activity Doc Outline](http://i.imgur.com/TVB7y4G.png) 
+![Activity Doc Outline](https://i.imgur.com/TVB7y4G.png) 
 
 - Make sure you select, **Hides When Stopped** in The Activity Indicator Attributes Inspector.  
-![Hides When Stopped](http://i.imgur.com/ib87r65.png)  
+![Hides When Stopped](https://i.imgur.com/ib87r65.png)  
 
 ### Step 3: Setup viewWillAppear
 

@@ -7,11 +7,11 @@ Below are screenshots:
 **Movies screen**
 <br/>  
 
-<a href="http://imgur.com/4Hw8FCA"><img src="http://i.imgur.com/4Hw8FCA.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/4Hw8FCA"><img src="https://i.imgur.com/4Hw8FCA.png" title="source: imgur.com" /></a>
 <br/>  
 **Movie Detail screen**
 <br/>
-<a href="http://imgur.com/2gkxCHk"><img src="http://i.imgur.com/2gkxCHk.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/2gkxCHk"><img src="https://i.imgur.com/2gkxCHk.png" title="source: imgur.com" /></a>
 <br/>
 
 ## Steps to build app
@@ -88,7 +88,7 @@ IOS has 4 standard cell types with fixed positions of an image, and two labels. 
 * Make the synopsis  UILabel  at least 6 lines wide by selecting it, going to the Attributes Inspector and setting the Lines box to 6. Also set the Font to a small type size like 12.0. Your canvas with the NavigationController and MoviesTableViewController should look something like this:
 
 <br/>
-<a href="http://imgur.com/ICM83lz"><img src="http://i.imgur.com/ICM83lz.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/ICM83lz"><img src="https://i.imgur.com/ICM83lz.png" title="source: imgur.com" /></a>
 <br/>
 
 ####3.Bind custom cell to source code via a UITableViewCell class
@@ -106,7 +106,7 @@ IOS has 4 standard cell types with fixed positions of an image, and two labels. 
     * Click on the Connector Inspector
     * In the Outlets section, you will see the names of the posterView, movieTItleLabel and synopsisLabel IBOUtlets we declared in the MovieCell.h file. The appear hear, because we set the class of this cell to be equal to the MovieCell class we created. Next to the names of these IBOutlets you will see empty circles. Click on them, one by one and drag your mouse to the corresponding UI control in the custom cell to make the connection. The Outlets section will now show that the UI controls are now connected to the IBOutlets. You should now see something like this in the Connector Inspector:
 <br/>
-<a href="http://imgur.com/WWyIIwr"><img src="http://i.imgur.com/WWyIIwr.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/WWyIIwr"><img src="https://i.imgur.com/WWyIIwr.png" title="source: imgur.com" /></a>
 <br/>
 
 ####4.Use RottenTomatoes API to request movies data
@@ -134,7 +134,7 @@ We need to retrieve the information about the movies from the RottenTomatoes to 
 *If you open a browser and navigate to [http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=ws32mxpd653h5c8zqfvksxw9&limit=20&country=us](http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=ws32mxpd653h5c8zqfvksxw9&limit=20&country=us) , which is the endpoint to retrieve data about movies "in theaters", you will get the response in the browser. It will look like this (you need to first install Chrome JSONView extension to be able to see the nice colored format) 
 
 <br/>
-<a href="http://imgur.com/qK7HvJo"><img src="http://i.imgur.com/qK7HvJo.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/qK7HvJo"><img src="https://i.imgur.com/qK7HvJo.png" title="source: imgur.com" /></a>
 <br/>
 * In JSON:
   * Data is in name/value pairs
@@ -211,7 +211,7 @@ When the user clicks on a cell in the MoviesTableViewController, the "prepareFor
 * Declare and define a custom initialization method, "initWithDictionary:dictionary", which expects to be passed a single movie's information as key/value pairs (basically the JSON object corresponding to a single movie)
 * Inside the "initWithDictionary:dictionary" method extract the title, synopsis, cast, ratings, and imageURL from the dictionary and store their values in the appropriate Movie instance properties. Here is an example of what this method would do in source code (or cut and paste from [initWithDictionary](https://gist.github.com/mmesarina/e3e2260aee4cf3a66806)):
 <br/>
-<a href="http://imgur.com/kNyNvYt"><img src="http://i.imgur.com/kNyNvYt.jpg" title="source: imgur.com" /></a>
+<a href="https://imgur.com/kNyNvYt"><img src="https://i.imgur.com/kNyNvYt.jpg" title="source: imgur.com" /></a>
 <br/>
 
 #### 2.Add Segue method to transition
@@ -236,7 +236,7 @@ When the user clicks on a cell in the MoviesTableViewController, the "prepareFor
 * In ViewDidLoad, call method “reload” 
 * In "reload" method set the IBOutlet properties of the MovieDetailViewController with the corresponding data passed in the "movieDetail" property. The code would look something like this: 
 <br/>
-<a href="http://imgur.com/vxHsXzu"><img src="http://i.imgur.com/vxHsXzu.jpg" title="source: imgur.com" /></a>
+<a href="https://imgur.com/vxHsXzu"><img src="https://i.imgur.com/vxHsXzu.jpg" title="source: imgur.com" /></a>
 <br/>
 
 

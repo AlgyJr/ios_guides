@@ -89,6 +89,6 @@ class ViewController: UIViewController {
 
 [cocoapods]: https://cocoapods.org/
 
-[search-blank]: http://i.imgur.com/7MPsssu.png
-[search-progress]: http://i.imgur.com/QYYJhY3.png
-[progress-HUD]: http://i.imgur.com/8Kl9bQ1l.png
+[search-blank]: https://i.imgur.com/7MPsssu.png
+[search-progress]: https://i.imgur.com/QYYJhY3.png
+[progress-HUD]: https://i.imgur.com/8Kl9bQ1l.png

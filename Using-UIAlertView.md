@@ -1,6 +1,6 @@
 **NOTE** UIAlertView has been deprecated since iOS 8.  Use [[Using UIAlertController]] instead.
 
-![Alert|250](http://i.imgur.com/cMAZh9H.gif)
+![Alert|250](https://i.imgur.com/cMAZh9H.gif)
 
 ### Step 1: Create the UIAlertView
 

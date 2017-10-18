@@ -3,7 +3,7 @@ This guide is an introduction to using MapKit to set up a map view, plot locatio
 
 ## Map View Set Up
 Drag a Map Kit View from the Object Library onto your storyboard:
-![Place Map Kit View](http://i.imgur.com/8CAY8rt.gif)
+![Place Map Kit View](https://i.imgur.com/8CAY8rt.gif)
 
 Add MapKit framework to your view controller:
 ```swift
@@ -13,7 +13,7 @@ import MapKit
 Create an outlet:  
 Control-drag the map view in the storyboard inside your view controller definition.
 Release and name the outlet: mapView
-![Create Map Kit View outlet](http://i.imgur.com/0zspz18.gif)
+![Create Map Kit View outlet](https://i.imgur.com/0zspz18.gif)
 
 You should now see a map when you build and run your project!
 
@@ -50,7 +50,7 @@ MKMapView already supports standard interactions like scrolling to a different p
 You can also center the map at the user's current location.
 First, request permission to use the user's location:  
 
-![Request permission](http://i.imgur.com/Vgq2ecI.png)
+![Request permission](https://i.imgur.com/Vgq2ecI.png)
 
 Import CoreLocation framework
 
@@ -79,11 +79,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 
 Edit the Info.plist to tell users why we're requesting their location:   
 Click on Info.plist and add a new row with key: NSLocationWhenInUseUsageDescription and value: To show your location on the map
-![Info.plist](http://i.imgur.com/2hz5Mok.png)
+![Info.plist](https://i.imgur.com/2hz5Mok.png)
 
 To show the user's location on the map:
 Click on your map view and then check Shows User Location in the Attributes Inspector  
-![Show User Location](http://i.imgur.com/CAChYxf.png)
+![Show User Location](https://i.imgur.com/CAChYxf.png)
 
 Go to the user's location when permission has been given:
 
@@ -106,7 +106,7 @@ func locationManager(_ manager: CLLocationManager, didUpdateLocations locations:
 ### Set current location in iPhone simulator
 In the simulator, select Debug > Location
 
-![Apple](http://i.imgur.com/ktDU1oI.png)  
+![Apple](https://i.imgur.com/ktDU1oI.png)  
 *Location with Apple selected*
 
 ## Add Map Annotations
@@ -115,7 +115,7 @@ We'll go over different ways to display an annotation:
 ### MKPointAnnotation
 MKPointAnnotation is a simple annotation and supports a title.
 
-![MKPointAnnotation](http://i.imgur.com/7tskBjZ.png)
+![MKPointAnnotation](https://i.imgur.com/7tskBjZ.png)
 
 ```swift
 // add an Annotation with a coordinate: CLLocationCoordinate2D
@@ -169,7 +169,7 @@ func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> 
     return annotationView
 }
 ```
-![MKAnnotationView](http://i.imgur.com/J4MJYFm.png)
+![MKAnnotationView](https://i.imgur.com/J4MJYFm.png)
 
 ### MKPinAnnotationView
 MKPinAnnotationView is a subclass of MKAnnotationView. It uses the pin graphic as the annotation image, and you can set the pin color and drop animation.
@@ -189,7 +189,7 @@ func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> 
     return annotationView
 }
 ```
-![MKPinAnnotationView](http://i.imgur.com/CAaXABK.png)
+![MKPinAnnotationView](https://i.imgur.com/CAaXABK.png)
 
 ## Draw Map Overlays
 Here's an example of a circular overlay centered at a coordinate.
@@ -213,7 +213,7 @@ func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOve
     return circleView
 }
 ```
-![Map Overlay](http://i.imgur.com/lZUFlbz.png)
+![Map Overlay](https://i.imgur.com/lZUFlbz.png)
 
 ## Alternative Options
 In addition to MapKit, you can integrate other map SDKs in your app.

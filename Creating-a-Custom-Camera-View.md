@@ -1,11 +1,11 @@
 Accessing the built in [Image Picker Controller]() is a quick and easy way to get image and video capture into your app. However, when you need style and functionality that goes beyond the stock Image Picker Controller you will need to create a Custom Camera View.  
   
-![Custom Camera View Demo](http://i.imgur.com/LkALEvS.gif)
+![Custom Camera View Demo](https://i.imgur.com/LkALEvS.gif)
 
 ## Live Camera Preview
 ### Step 1: Set Up Views In Storyboard 
 
-![Set Up Views In Storyboard gif|200](http://i.imgur.com/KhbVi00.png) ![Outline Document gif|60](http://i.imgur.com/6CSyrY7.png)  
+![Set Up Views In Storyboard gif|200](https://i.imgur.com/KhbVi00.png) ![Outline Document gif|60](https://i.imgur.com/6CSyrY7.png)  
   
 Add the following view elements to the ViewController in Storyboard:
 - **UIView** This will serve as the "view finder" of your camera.
@@ -15,7 +15,7 @@ Add the following view elements to the ViewController in Storyboard:
 ### Step 2: Import AVFoundation
 At the top of your ViewController file, **import AVFoundation**
 
-![Import AVFoundation](http://i.imgur.com/VhEZphd.png) 
+![Import AVFoundation](https://i.imgur.com/VhEZphd.png) 
 
 ### Step 3: Create Outlets and Actions
 Create **Outlets** for the UIView and UIImageView. 

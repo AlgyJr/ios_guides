@@ -1,6 +1,6 @@
 Collection views share similarities with table views, however collection views have the power to do multi-column layouts and much more! Collection views are the center of many iOS applications and have many features to customize their appearance and behavior. The sections below cover basic as well as more custom collection views.
 
-<img src="http://i.imgur.com/9ZTVJFt.gif" width="250" />
+<img src="https://i.imgur.com/9ZTVJFt.gif" width="250" />
 
 Download the sample code [here]().
 
@@ -10,15 +10,15 @@ Download the sample code [here]().
 
 Create a view controller, and drag a UICollectionView into the view.
 
-<img src="http://i.imgur.com/VBgfYwW.gif" width="500" />
+<img src="https://i.imgur.com/VBgfYwW.gif" width="500" />
 
 #### Step 2: Configure Collection View settings
 
 In the **Utilities** Pane.
 - Set the Collection View Cell Size in the Size Inspector. I chose 120 x 120 to in order to fit 3 cells across an iPhone 6 screen.  
-![Set cell size](http://i.imgur.com/DqsWoPu.png)
+![Set cell size](https://i.imgur.com/DqsWoPu.png)
 - Choose the Scroll Direction of Collection View.  
-![Choose Scroll Direction](http://i.imgur.com/Sldr8wr.gif)
+![Choose Scroll Direction](https://i.imgur.com/Sldr8wr.gif)
 
 #### Step 3: Create a Collection View Outlet
 
@@ -49,19 +49,19 @@ override func viewDidLoad() {
 
 - Create a new Swift file for the custom cell. It should be a subclass of UICollectionViewCell.  
   
-<img src="http://i.imgur.com/gP4bBm7.gif" width="500" />
+<img src="https://i.imgur.com/gP4bBm7.gif" width="500" />
 
 #### Step 6: Link the Custom Cell File to the Cell in Interface Builder
 
 - In the Identity Inspector, set the Class to the Custom Cell file you made 
 - In the Attribute Inspector, set the Reuse Identifier. It's common to use the same name for this as you did for the Class.  
   
-<img src="http://i.imgur.com/CtQ93d9.gif" width="250" />
+<img src="https://i.imgur.com/CtQ93d9.gif" width="250" />
 
 #### Step 7: Create Outlets for Cell Views
 Create outlets to the custom cell class for any view you want to configure in code.  
   
-<img src="http://i.imgur.com/EnKIZPe.gif" width="500" />
+<img src="https://i.imgur.com/EnKIZPe.gif" width="500" />
 
 #### Step 8: Implement the Required Collection View Methods
 
@@ -90,7 +90,7 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
 
 If you run your App at this point, you will notice that there is a big gap between in the middle. We will fix this in the next step using FlowLayout methods.  
   
-<img src="http://i.imgur.com/3gUrmEb.gif" width="200" />  
+<img src="https://i.imgur.com/3gUrmEb.gif" width="200" />  
   
 #### Step 9: Implement the Flow Layout Methods
 

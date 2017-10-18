@@ -20,7 +20,7 @@ Time spent: `<Number of hours spent>`
 
 ### Walkthrough
 
-![Video Walkthrough](http://i.imgur.com/0hJ2heN.gif)
+![Video Walkthrough](https://i.imgur.com/0hJ2heN.gif)
 
 Credits
 ---------

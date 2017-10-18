@@ -10,7 +10,7 @@ UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotific
 
 The code above will display an alert like this:
 
-![Permission alert](http://i.imgur.com/cxrvSn1.png)
+![Permission alert](https://i.imgur.com/cxrvSn1.png)
 
 ## Step 2: Schedule a Notification
 

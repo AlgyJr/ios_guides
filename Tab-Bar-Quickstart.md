@@ -2,7 +2,7 @@
 _Updated with iOS 10.3, Xcode 8.3.3 and Swift 3_
 
 
-<a href="http://imgur.com/WhoidE5"><img src="http://i.imgur.com/WhoidE5.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/WhoidE5"><img src="https://i.imgur.com/WhoidE5.gif" title="source: imgur.com" /></a>
 
 Tab bars controllers provide a simple interface for a users to switch
 between a set of view controllers.  This quickstart covers the basic
@@ -19,7 +19,7 @@ tab bar controller to be the initial view controller.  You can set this
 by selecting the tab bar controller and ticking `Is Initial View
 Controller`.
 
-<a href="http://imgur.com/WgiEuBZ"><img src="http://i.imgur.com/WgiEuBZ.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/WgiEuBZ"><img src="https://i.imgur.com/WgiEuBZ.png" title="source: imgur.com" /></a>
 
 ### Step 2: Add a view controller for each tab
 The tab bar controller is configured with two tabs by default.  You can
@@ -29,14 +29,14 @@ object to the storybard.  Next control-drag from the tab bar controller
 to new view controller and select `view controllers` under `Relationship
 Segue`.  Your tab bar controller will update with a new tab.
 
-<a href="http://imgur.com/OOMB573"><img src="http://i.imgur.com/OOMB573.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/OOMB573"><img src="https://i.imgur.com/OOMB573.gif" title="source: imgur.com" /></a>
 
 ### Step 3: Customize the bar item for each tab
 You can customize appearance and title of each button on the tab bar by
 selecting the tab bar item **inside the corresponding view controller**.
 In particular, you'll likely want to add an image for each tab bar item.
 
-<a href="http://imgur.com/nZ2g4fp"><img src="http://i.imgur.com/nZ2g4fp.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/nZ2g4fp"><img src="https://i.imgur.com/nZ2g4fp.png" title="source: imgur.com" /></a>
 
 ### Step 4: Create view controller classes for tabs
 You'll need to create classes to contain the code for the view
@@ -50,7 +50,7 @@ and set its custom class to one of the classes you just created.  You
 can now add other components to this tab and connect outlets to your
 view controller class as you would with any other view controller.
 
-<a href="http://imgur.com/5YWL3Vw"><img src="http://i.imgur.com/5YWL3Vw.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/5YWL3Vw"><img src="https://i.imgur.com/5YWL3Vw.png" title="source: imgur.com" /></a>
 
 ## Programmatic setup
 
@@ -133,7 +133,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 // ...
 ```
 
-<a href="http://imgur.com/GhzQOTw"><img src="http://i.imgur.com/GhzQOTw.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/GhzQOTw"><img src="https://i.imgur.com/GhzQOTw.gif" title="source: imgur.com" /></a>
 
 ## Further reading
 * [Official Tab Bar Guide from Apple][appleguide]

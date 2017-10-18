@@ -67,7 +67,7 @@ also select a view controller and set it to be the root view controller
 by using the `Is Initial View Controller` checkbox in the Attributes
 Inspector.
 
-<a href="http://imgur.com/winIGnh"><img src="http://i.imgur.com/winIGnhl.png" title="Setting Root View Controller" /></a>
+<a href="https://imgur.com/winIGnh"><img src="https://i.imgur.com/winIGnhl.png" title="Setting Root View Controller" /></a>
 
 #### Programatically setting the root view controller
 In applications not using storyboards, you must programatically set the
@@ -108,7 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-<a href="http://imgur.com/fXE9BWw"><img src="http://i.imgur.com/fXE9BWwl.png" title="Setting Root View Controller Programatically" /></a>
+<a href="https://imgur.com/fXE9BWw"><img src="https://i.imgur.com/fXE9BWwl.png" title="Setting Root View Controller Programatically" /></a>
 
 ### Other hooks in the application lifecycle
 The `UIApplicationDelegate` protocol provides many other hooks into the

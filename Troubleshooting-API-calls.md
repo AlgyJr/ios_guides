@@ -11,7 +11,7 @@ While setting up breakpoints in your code is usually the first place to check, i
 
 You should first try to verify whether your API calls are correct by visiting [https://dhc.restlet.com/](https://dhc.restlet.com/).   You can also install a Chrome browser extension [Dev HTTP Client](https://chrome.google.com/webstore/detail/dhc-rest-client/aejoelaoggembcahagimdiliamlcdmfm) or any other available REST-based client tester. 
 
-<img src="http://imgur.com/GfVK80o.png" width="600"/>
+<img src="https://imgur.com/GfVK80o.png" width="600"/>
 
 ## Debugging with AFNetworking
 
@@ -72,23 +72,23 @@ It is also often useful to monitor the network traffic to help diagnose these is
     a. If you are running an iOS simulator, run Charles Proxy and navigate to `Help` -> `SSL Proxying` -> `Install Charles Root Certificate on iOS Simulators`.    You will need to restart your app/simulator for this certificate to take into effect.
     b. If you are not running an iOS simulator, skip this step for now.  You will be asked to install the SSL cert on the phone later.
 
-     <img src="http://imgur.com/Ac5QR0x.png"/>
+     <img src="https://imgur.com/Ac5QR0x.png"/>
 
 3. SSL sites that must be inspected must be explicitly declared by going to `Proxy` -> `SSL Proxying Settings`.  Type the domain name and port 443 assuming the site is connecting to a standard SSL port.  You can also use wildcards (i.e. `*.twitter.com, port 443')
 
-     <img src="http://imgur.com/YXTqq93.png"/>
+     <img src="https://imgur.com/YXTqq93.png"/>
 
 4. **Skip this step if you are using an emulator to test.**  If are using a device to test, disable the proxy from being used on your desktop web browser by simply going to `Proxy` -> `Proxy Settings` and uncheck the `Enable macOS proxy` option:
 
-     <img src="http://imgur.com/zzWkuEX.png"/>
+     <img src="https://imgur.com/zzWkuEX.png"/>
 
 5. Make sure to ascertain your IP address of the machine with the proxy installed.  You can go to the `Help` -> `Local IP Address` to find it:
 
-<img src="http://imgur.com/AwbbEwA.png"/>
+<img src="https://imgur.com/AwbbEwA.png"/>
 
 6. If you see SSL errors while browsing, such as the following error:
 
-<img src="http://imgur.com/n4TdVuG.png" width="600"/>
+<img src="https://imgur.com/n4TdVuG.png" width="600"/>
 
 You can either uncheck the `Enable macOS proxy` as shown in step 4 or follow the steps outlined [here](https://www.charlesproxy.com/documentation/using-charles/ssl-certificates/) to avoid the browser warning. 
 
@@ -96,7 +96,7 @@ You can either uncheck the `Enable macOS proxy` as shown in step 4 or follow the
 
 1. Go to the Settings app, tap Wi-Fi, find the network you are connected to and then tap it to configure the network. 
 
-   <img src="http://imgur.com/8KUEzr1.png"/>
+   <img src="https://imgur.com/8KUEzr1.png"/>
 
    Scroll down to the HTTP Proxy setting, tap Manual. 
 
@@ -106,15 +106,15 @@ You can either uncheck the `Enable macOS proxy` as shown in step 4 or follow the
   
 3. Connect to any web site.  You need to go back to the PC to grant authorization for the device to connect:
 
-   <img src="http://imgur.com/yuRmGRC.png">
+   <img src="https://imgur.com/yuRmGRC.png">
 
 4. Go to Settings and navigate to General > About > Certificate Trust Settings, and find the Charles Proxy certificate, and switch it on to enable full trust for it.  If you forget this step, all SSL connections will likely to fail.
 
-   <img src="http://imgur.com/k62CUwH.png"/>
+   <img src="https://imgur.com/k62CUwH.png"/>
 
 5. You can start recording network traffic:
 
-   <img src="http://imgur.com/c0q6j2j.png"/>
+   <img src="https://imgur.com/c0q6j2j.png"/>
 
 ## References
 

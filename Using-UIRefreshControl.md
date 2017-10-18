@@ -1,4 +1,4 @@
-![Refresh|250](http://i.imgur.com/wRED0TT.gif)
+![Refresh|250](https://i.imgur.com/wRED0TT.gif)
 
 Pull to refresh has been a standard UI convention in iOS since early days of Twitter. It's easy to include the default pull to refresh control into any scroll view, including UIScrollView, UITableView, or UICollectionView.
 

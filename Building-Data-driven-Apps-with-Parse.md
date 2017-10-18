@@ -24,13 +24,13 @@ In covering Parse SDK functionality, we will be using example of building an Ins
 
 The final application should look something like following:
 
-<img src="http://i.imgur.com/EjhojU6.gif" alt="Instangram app demo"/>
+<img src="https://i.imgur.com/EjhojU6.gif" alt="Instangram app demo"/>
 
 ### Architecture Overview:
 
 Below is a quick overview of the app architecture:
 
-<img src="http://i.imgur.com/Xo47jSc.gif" alt="Parse" width="750" />
+<img src="https://i.imgur.com/Xo47jSc.gif" alt="Parse" width="750" />
 
 1. To fetch the data from the cloud (Parse server) you will be using `PFQuery` ([More details](http://guides.codepath.com/ios/Building-Data-driven-Apps-with-Parse#parse-data-objects-pfobject-parse-files-pffile))
 1. To add data to cloud you will be using `PFObject` and it's methods. ([More details](http://guides.codepath.com/ios/Building-Data-driven-Apps-with-Parse#fetching-data-from-parse-via-pfquery))
@@ -56,7 +56,7 @@ For this app, we will be using just 1 additional data class (represented by `PFO
 
 Here is how data model would look like: (`field_name`: `field_type`)
 
-<img src="http://i.imgur.com/ekvdstz.gif" alt="Data Model"/>
+<img src="https://i.imgur.com/ekvdstz.gif" alt="Data Model"/>
 
 
 
@@ -86,7 +86,7 @@ Parse provides a specialized user class called `PFUser` that automatically handl
 
 One of the basic use cases for user management is to have them sign up. Once you have setup a view (in storyboard) and created a corresponding view controller (as shown in below image):
 
-<!--a target="_blank" href="http://i.imgur.com/6kvrKOU.png"><img src="http://i.imgur.com/6kvrKOU.png" alt="Parse User Sign Up" width="750"/></a-->
+<!--a target="_blank" href="https://i.imgur.com/6kvrKOU.png"><img src="https://i.imgur.com/6kvrKOU.png" alt="Parse User Sign Up" width="750"/></a-->
 
 The following code snippet shows how to sign up user:
 
@@ -124,7 +124,7 @@ The following code snippet shows how to sign up user:
 
 Once the user has signed up, next step is to have them log in to your app. The image below shows the Xcode setup to do the same, followed by code snippet for user login (note that the username you enter is case sensitive).
 
-<!--a target="_blank" href="http://i.imgur.com/DEKJjP0.png"><img src="http://i.imgur.com/DEKJjP0.png" alt="Parse User Login" width="750"/></a-->
+<!--a target="_blank" href="https://i.imgur.com/DEKJjP0.png"><img src="https://i.imgur.com/DEKJjP0.png" alt="Parse User Login" width="750"/></a-->
 
 ```swift
 func loginUser() {
@@ -542,7 +542,7 @@ class InstagramPostTableViewCell: UITableViewCell {
 ##### Notes
 1. **Make sure to import `ParseUI`** wherever you want to use it's components
 2. Make sure that you have set the `UIImageView` class to `PFImageView` in Interface Builder
-<img src="http://i.imgur.com/ZV0BMn6.gif" alt="Parse Quickstart" width="750"/>
+<img src="https://i.imgur.com/ZV0BMn6.gif" alt="Parse Quickstart" width="750"/>
 
 ## Push Notifications
 

@@ -13,7 +13,7 @@ This page covers the basics of adding Apple's iOS frameworks to your project. By
 
 ## Adding Frameworks to Project
 
-![Adding Framework gif](http://i.imgur.com/goEWO6l.gif)
+![Adding Framework gif](https://i.imgur.com/goEWO6l.gif)
 
 Click on your project, select your app target, press general, then add the framework you need. For example, MapKit.framework
 

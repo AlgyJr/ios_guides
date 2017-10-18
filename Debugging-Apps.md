@@ -40,15 +40,15 @@ When you attempt to run your code, Xcode may report compiler warnings or errors.
 
 On the toolbar at the top:
 
-<a href="http://imgur.com/4uP4Bkg"><img src="http://i.imgur.com/4uP4Bkg.png" title="Toolbar warnings" /></a>
+<a href="https://imgur.com/4uP4Bkg"><img src="https://i.imgur.com/4uP4Bkg.png" title="Toolbar warnings" /></a>
 
 On the offending line of code in the editor:
 
-<a href="http://imgur.com/CKGmdQp"><img src="http://i.imgur.com/CKGmdQp.png" title="Line of error" /></a>
+<a href="https://imgur.com/CKGmdQp"><img src="https://i.imgur.com/CKGmdQp.png" title="Line of error" /></a>
 
 And in the [Issues Navigator][issuesnavigator], on the left:
 
-<a href="http://imgur.com/0aLHkFT"><img src="http://i.imgur.com/0aLHkFT.png" title="Issues Navigator errors" /></a>
+<a href="https://imgur.com/0aLHkFT"><img src="https://i.imgur.com/0aLHkFT.png" title="Issues Navigator errors" /></a>
 
 As you're coding, Xcode will either give you warnings or error signals in the top toolbar and in your editor. They will also show up when your code fails to build. Clicking on the yellow warning or red error symbols in the top toolbar will bring up the Issues Navigator. Clicking on the items that show up in your Issues Navigator will bring up the offending line. It's generally a good rule of thumb to fix even the warnings, though they will not prevent you from compiling a successful build.
 
@@ -59,11 +59,11 @@ Even after writing an app, it doesn't always operate the way we expect it to. [B
 
 To **add a breakpoint**, you click to the left of the line of code where you want to pause the app.
 
-<a href="http://imgur.com/Bcbgwsf"><img src="http://i.imgur.com/Bcbgwsf.png" title="Adding a breakpoint" /></a>
+<a href="https://imgur.com/Bcbgwsf"><img src="https://i.imgur.com/Bcbgwsf.png" title="Adding a breakpoint" /></a>
 
 You can track where you've added breakpoints across your entire project in the Breakpoints Navigator:
 
-<a href="http://imgur.com/4gpNQ4X"><img src="http://i.imgur.com/4gpNQ4X.png" title="Breakpoints Navigator" /></a>
+<a href="https://imgur.com/4gpNQ4X"><img src="https://i.imgur.com/4gpNQ4X.png" title="Breakpoints Navigator" /></a>
 
 Once you've clicked to the left of the line, the section will be highlighted in blue. In order to disable it, click again. In order to delete it, right click, and select Delete Breakpoint. **Note that if the debug flag is gray instead of blue, breakpoints are deactivated.** In order to reactivate breakpoints, you can go to the Debug tab in the menu and select "Activate Breakpoints" or use the ⌘Y shortcut.
 
@@ -73,11 +73,11 @@ When you run your app with breakpoints activated, your app should pause when the
 
 When you've activated breakpoints, and your app has paused, this bar becomes important:
 
-<a href="http://imgur.com/QU2Azay"><img src="http://i.imgur.com/QU2Azay.png" title="Debugging bar" /></a>
+<a href="https://imgur.com/QU2Azay"><img src="https://i.imgur.com/QU2Azay.png" title="Debugging bar" /></a>
 
 The buttons allow you to control where you are in the app's flow. You can continue, step line by line, or step into and out of a function.
 
-<a href="http://imgur.com/KGeEEmf"><img src="http://i.imgur.com/KGeEEmf.png" title="Stepping through code" /></a>
+<a href="https://imgur.com/KGeEEmf"><img src="https://i.imgur.com/KGeEEmf.png" title="Stepping through code" /></a>
 
 In the above code:
 
@@ -94,15 +94,15 @@ Sometimes your app crashes, but it's not very informative as to where it crashes
 
 However! We can set an [exception breakpoint][exceptionbreakpoint], so that Xcode will break at the exact line of code where the exception is thrown. Click the + on the bottom left of the Breakpoints Navigator, and select Add Exception Breakpoint...
 
-<a href="http://imgur.com/GglwFsq"><img src="http://i.imgur.com/GglwFsq.png" title="Add Exception Breakpoint" /></a>
+<a href="https://imgur.com/GglwFsq"><img src="https://i.imgur.com/GglwFsq.png" title="Add Exception Breakpoint" /></a>
 
-<a href="http://imgur.com/U82FRgW"><img src="http://i.imgur.com/U82FRgW.png" title="Configure Exception Breakpoint" /></a>
+<a href="https://imgur.com/U82FRgW"><img src="https://i.imgur.com/U82FRgW.png" title="Configure Exception Breakpoint" /></a>
 
 Now that you have an exception breakpoint set, Xcode will pause before throwing an exception error. Depending on the kind of error, this will be very informative or not.
 
 Below is an example of where it would become informative. The variable array clearly does not contain any values, so this will throw an error.
 
-<a href="http://imgur.com/SKCruas"><img src="http://i.imgur.com/SKCruas.png" title="Bad code example" /></a>
+<a href="https://imgur.com/SKCruas"><img src="https://i.imgur.com/SKCruas.png" title="Bad code example" /></a>
 
 Without the exception breakpoint, Xcode will show you the AppDelegate file in the editor and simply print in the console:
 

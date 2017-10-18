@@ -8,7 +8,7 @@ When you find yourself using the same pieces of code over and over again, it is 
 - Give your Custom Snippet a Name.
 - Give Your Custom Snippet an easy to remember shortcut. 
   
-![Create a Custom Code Snippet gif](http://i.imgur.com/OFqxmrU.gif)  
+![Create a Custom Code Snippet gif](https://i.imgur.com/OFqxmrU.gif)  
 
 ### Step 2: Access a Custom Code Snippet
 
@@ -16,4 +16,4 @@ There are 2 easy ways to access your custom code snippet.
 - Type in the shortcut and let Xcode Auto-Complete the rest.
 - Drag the snippet into your file directly from the Code Snippet Library.  
   
-![Access a Custom Code Snippet gif](http://i.imgur.com/IKrdiw5.gif)
+![Access a Custom Code Snippet gif](https://i.imgur.com/IKrdiw5.gif)

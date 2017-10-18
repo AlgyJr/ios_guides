@@ -1,7 +1,7 @@
 ## Overview
 [Collection views][uicollectionview] are used to display *cells* in customizable layouts. Here are some examples:
 
-![Imgur](http://i.imgur.com/3A0KT3F.jpg)
+![Imgur](https://i.imgur.com/3A0KT3F.jpg)
 
 [uicollectionview]:https://developer.apple.com/library/ios/documentation/UIKit/Reference/UICollectionView_class/
 *Left to right: Marvin, Flickr, Storehouse*
@@ -12,7 +12,7 @@ This guide is a quick intro to setting up and using a simple collection view wit
 
 We'll be creating a grid of colors with labels showing their RGB values.
 
-![Imgur](http://i.imgur.com/p1fzY7j.jpg)
+![Imgur](https://i.imgur.com/p1fzY7j.jpg)
 
 ### Step 1: Determine what data to display in the collection view
 
@@ -33,7 +33,7 @@ func colorForIndexPath(indexPath: NSIndexPath) -> UIColor {
 ### Step 2: Add collection view to view controller
 In your Storyboard, drag a `Collection View` (not `Collection View Controller`) from the Object Library into your view controller. Use the Assistant Editor to add an outlet for the collection view in your view controller.
 
-![Imgur](http://i.imgur.com/27p0zyU.gif)
+![Imgur](https://i.imgur.com/27p0zyU.gif)
 
 ### Step 3: Create custom class for prototype cell
 
@@ -42,13 +42,13 @@ The `Collection View` comes with a `Collection View Cell` prototype. Create a ne
 Select `File -> New -> File... -> iOS -> Source -> Cocoa Touch Class`
 and create a new subclass of `UICollectionViewCell`. Name it `ColorCell`. Back in your Storyboard, select your prototype cell, and in the Identity Inspector, set its custom class property to the new class you just created.
 
-![Imgur](http://i.imgur.com/4fmsHFi.jpg)
+![Imgur](https://i.imgur.com/4fmsHFi.jpg)
 
 ### Step 4: Configure prototype cell
 
 Change the background color of the Collection View to white. Add a `Label` from the Object Library to the prototype cell, and change its placeholder text to `Color`. Use the Assistant Editor to add an outlet for the label in the `ColorCell` class. Name it `colorLabel`.
 
-![Imgur](http://i.imgur.com/mjYstAJ.gif)
+![Imgur](https://i.imgur.com/mjYstAJ.gif)
 
 Your ColorCell class should have the following code:
 
@@ -62,7 +62,7 @@ class ColorCell: UICollectionViewCell {
 
 Select the cell in the Storyboard and give it a unique identifier in the Attributes Inspector. This allows the Collection View to reuse instances of our prototype cell.
 
-![Imgur](http://i.imgur.com/XdSDDEO.jpg)
+![Imgur](https://i.imgur.com/XdSDDEO.jpg)
 
 ### Step 6: Set the collection view's data source
 
@@ -181,7 +181,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 #### Small Example of configuring the Flow Layout
 Here is a small example of configuring the cell size according to the row. Calculating how large each cell should be, to have three cells per row, and changing the height depending on whether the row is even or odd.
 
-<a href="http://imgur.com/ehSq2LS"><img src="http://i.imgur.com/ehSq2LS.png" title="Different sized cells example" /></a>
+<a href="https://imgur.com/ehSq2LS"><img src="https://i.imgur.com/ehSq2LS.png" title="Different sized cells example" /></a>
 
 ```swift
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -234,7 +234,7 @@ A common event you'll need to respond to is the user selecting a cell in the col
 #### Segue to another view controller
 Often, you'll want a cell selection to push a new view controller with details about that cell. In your Storyboard, control-drag from the prototype cell onto a new view controller, and select the appropriate segue under the `Selection Segue` section.
 
-![Imgur](http://i.imgur.com/xjuYPVd.gif)
+![Imgur](https://i.imgur.com/xjuYPVd.gif)
 
 #### Handling cell selection progammatically
 You can also respond programmatically by implementing the `UICollectionViewDelegate` [`collectionView(_:didSelectItemAtIndexPath:)`][didSelectItemAtIndexPath] method.

@@ -9,7 +9,7 @@ Sometimes the standard iOS tab bar just doesn't have the look or functionality y
    - Configure their default and selected images.
    - Set the **tag** value of each button starting with **0** for the first button, **1** for the second and so on.  
 
-![set button tag](http://i.imgur.com/Ncd69el.gif)
+![set button tag](https://i.imgur.com/Ncd69el.gif)
 - Add a UIView that fills the screen above the tabBar. This will serve as our content view.
 - Add UIViewControllers that correspond to each tab. (5 tabs = 5 ViewControllers)
 - Give each UIViewController a unique Storyboard ID.
@@ -25,7 +25,7 @@ Creating an array of buttons will help us easily keep track of what button is ge
    - ``@IBOutlet var buttons: [UIButton]!``
    - ``ctrl + drag`` outlets from all your buttons to the array.  
 
-![create outlet button array gif](http://i.imgur.com/75MCSIv.gif)
+![create outlet button array gif](https://i.imgur.com/75MCSIv.gif)
 
 ### Step 3: Create Your Instance Variables (global variables)
 
@@ -80,7 +80,7 @@ Since we will be keeping track of which button was tapped, all the buttons can s
    - Change the **Type** from **AnyObject** to **UIButton** (that way we can access special properties only buttons have)
    - ``ctrl + drag`` from every other button to the same ``didPressTab`` so they are all sharing.  
 
-![creating shared action gif](http://i.imgur.com/nwJkxAq.gif)
+![creating shared action gif](https://i.imgur.com/nwJkxAq.gif)
 
 ### Step 7: Get Access to the Previous and Current Tab Button.
 
@@ -173,4 +173,4 @@ didPressTab(buttons[selectedIndex])
 ``` 
 
 ### Step 11: Run Your App!!!  
-![finished example sim gif](http://i.imgur.com/643Ei0D.gif)
+![finished example sim gif](https://i.imgur.com/643Ei0D.gif)

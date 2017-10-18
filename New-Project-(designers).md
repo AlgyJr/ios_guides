@@ -4,7 +4,7 @@
 
 In Xcode, select File->New->Project and choose the Single View Application template, as shown in the figure below. The other templates are just for demo purposes, so you'll always use the Single View Application template.
 
-![New Project|600](http://i.imgur.com/cNAyOcp.gif)
+![New Project|600](https://i.imgur.com/cNAyOcp.gif)
 
 ### Step 2: Disable Auto Layout
 
@@ -12,4 +12,4 @@ Layout in iOS is very simple, it's based on absolute positioning and nesting vie
 
 Until we learn how to use Auto Layout, it can complicate things unnecessarily, so disable it for new projects by selecting the Storyboard and unchecking Auto Layout, as shown below.
 
-![Disable Auto Layout|600](http://i.imgur.com/UPRQRIy.gif)
+![Disable Auto Layout|600](https://i.imgur.com/UPRQRIy.gif)

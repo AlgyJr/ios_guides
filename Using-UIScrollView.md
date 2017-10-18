@@ -10,7 +10,7 @@ Note:
 
 In order to make the UIScrollView scroll, you have to manually tell it how tall and wide the content is. Before you can do that, you must create an outlet, as shown below.
 
-![Creating Scroll View Outlet|600](http://i.imgur.com/9rErlXd.gif)
+![Creating Scroll View Outlet|600](https://i.imgur.com/9rErlXd.gif)
 
 ### Step 2: Set the content size
 
@@ -81,7 +81,7 @@ Scroll views support zooming in and out using the pinch gesture. In order to ena
 
 In Storyboard or programatically, configure the minimum and maximum allowable zoom levels. For example, if you choose a maximum zoom level of 3, that means you're allowing a user to zoom in by a factor of 3.
 
-![Configuring zoom levels in Storyboard|600](http://i.imgur.com/q0pk6b1.png)
+![Configuring zoom levels in Storyboard|600](https://i.imgur.com/q0pk6b1.png)
 
 Optionally, you can choose to allow bouncing zoom when the user reaches the minimum and maximum zoom levels.
 

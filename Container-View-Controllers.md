@@ -51,7 +51,7 @@ To demonstrate how to implement a custom container view controller,
 we'll implement a simple drop down menu that allows the user to switch
 to any view controller in the list.
 
-<a href="http://imgur.com/LbIigQw"><img src="http://i.imgur.com/LbIigQw.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/LbIigQw"><img src="https://i.imgur.com/LbIigQw.gif" title="source: imgur.com" /></a>
 
 ### Creating a nib and custom view controller class
 We start out by creating a new subclass of `UIViewController` called
@@ -66,7 +66,7 @@ view (colored pink below) as a container for the views of our child view
 controllers.  Finally we add the table view that will display our menu.
 Each cell in this table will be an item the user can select in the menu.
 
-<a href="http://imgur.com/MlrDQDm"><img src="http://i.imgur.com/MlrDQDm.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/MlrDQDm"><img src="https://i.imgur.com/MlrDQDm.png" title="source: imgur.com" /></a>
 
 Next we set the custom class of the [file's
 owner](Custom-Views#the-files-owner-object) object to

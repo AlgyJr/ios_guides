@@ -4,7 +4,7 @@
 iOS programming.  They are used to display grouped lists of *cells*.
 Here are some examples of `UITableViews`:
 
-<a href="http://imgur.com/sI6L9Bx"><img src="http://i.imgur.com/sI6L9Bx.jpg" title="Table Views" /></a>
+<a href="https://imgur.com/sI6L9Bx"><img src="https://i.imgur.com/sI6L9Bx.jpg" title="Table Views" /></a>
 
 `UITableViews` can be highly performant, displaying thousands of rows of
 data. They also have built-in facilities for handling common behavior
@@ -28,7 +28,7 @@ Library onto your view controller and then creating an `@IBOutlet` so
 that you have a reference to your `UITableView` in your view
 controller's code.
 
-<a href="http://imgur.com/DSHZu9r"><img src="http://i.imgur.com/DSHZu9r.gif" title="Adding A Table View" /></a>
+<a href="https://imgur.com/DSHZu9r"><img src="https://i.imgur.com/DSHZu9r.gif" title="Adding A Table View" /></a>
 
 Of course, you can also programmatically instantiate a `UITableView` and
 add it as a subview to your view controller's root view.  The remainder of
@@ -111,7 +111,7 @@ Provided that the `@IBOutlet` `tableView` has been connected to a
 `UITableView` in your storyboard, you will see something like this when running
 the above code:
 
-![Cities Table](http://i.imgur.com/ZOakSLDl.png)
+![Cities Table](https://i.imgur.com/ZOakSLDl.png)
 
 __Notice that we set `self.tableView.dataSource = self`__ in the
 `viewDidLoad` method.  A common error that will result in a blank or misbehaving
@@ -311,7 +311,7 @@ cell, you simply drag a `Table View Cell` from the Object Library onto your tabl
 view.  You can now layout and add objects your prototype cell as you would with
 any other view.
 
-<a href="http://imgur.com/nMFup96"><img src="http://i.imgur.com/nMFup96.gif" title="Creating a Prototype Cell" /></a>
+<a href="https://imgur.com/nMFup96"><img src="https://i.imgur.com/nMFup96.gif" title="Creating a Prototype Cell" /></a>
 
 Once you are satisfied with the design of your cell, you must create a custom
 class and associate it with your UI template.  Select `File -> New -> File... ->
@@ -321,7 +321,7 @@ In the storyboard editor, select your prototype cell and then select the
 Identity Inspector.  Set the `Custom Class` property of the prototype cell to
 the name of the class you just created.
 
-<a href="http://imgur.com/2r9tOJo"><img src="http://i.imgur.com/2r9tOJo.png" title="Setting Custom Class"/></a>
+<a href="https://imgur.com/2r9tOJo"><img src="https://i.imgur.com/2r9tOJo.png" title="Setting Custom Class"/></a>
 
 You will now be able to select your custom cell class in the Assistant Editor
 (tuxedo mode) and connect IBOutlets from your prototype cell into your class as
@@ -329,7 +329,7 @@ you would with any other view.  Note that you must select the "content
 view" of your prototype cell in order for your custom cell class to
 show up under the Assistant Editor's automatic matching.
 
-<a href="http://imgur.com/Tkofhwo"><img src="http://i.imgur.com/Tkofhwo.gif" title="Connecting Outlets in a Prototype Cell" /></a>
+<a href="https://imgur.com/Tkofhwo"><img src="https://i.imgur.com/Tkofhwo.gif" title="Connecting Outlets in a Prototype Cell" /></a>
 
 One you are satisfied with the design of your cell and the corresponding code in
 your custom class, you must register your cell for reuse by providing it with a
@@ -337,7 +337,7 @@ reuse identifier.  In the storyboard editor, select your prototype cell and then
 select the Attributes Inspector.  Set the Identifier field (Reuse Identifier) to
 a unique string that can be used to identify this type of cell.
 
-<a href="http://imgur.com/nZdbnm5"><img src="http://i.imgur.com/nZdbnm5.png" title="Setting the Reuse Identifier" /></a>
+<a href="https://imgur.com/nZdbnm5"><img src="https://i.imgur.com/nZdbnm5.png" title="Setting the Reuse Identifier" /></a>
 
 You can now use this identifier when calling `dequeueReusableCell(withIdentifier: for:)`
 in your implementation of `cellForRowAt indexPath:`.  Notice that the compiler
@@ -387,7 +387,7 @@ class ViewController: UIViewController, UITableViewDataSource {
 ```
 Putting everything together we get a table that looks like this:
 
-![Table With Custom Cells](http://i.imgur.com/B2pYrj4l.png)
+![Table With Custom Cells](https://i.imgur.com/B2pYrj4l.png)
 
 ### Creating a separate NIB for your cell
 
@@ -425,7 +425,7 @@ will create a `.xib` and `.swift` file and automatically sets the `Custom
 Class` property of your table view cell to be the class you just
 created.
 
-<a href="http://imgur.com/YAUlmoD"><img src="http://i.imgur.com/YAUlmoD.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/YAUlmoD"><img src="https://i.imgur.com/YAUlmoD.png" title="source: imgur.com" /></a>
 
 You can now open the `.xib` file in Interface Builder, edit your view
 and connect IBOutlets to your custom class using the Assistant Editor
@@ -790,7 +790,7 @@ class ViewController: UIViewController, UITableViewDataSource {
 }
 ```
 
-<a href="http://imgur.com/6MDpnCK"><img src="http://i.imgur.com/6MDpnCKl.png" title="Accessory Types" /></a>
+<a href="https://imgur.com/6MDpnCK"><img src="https://i.imgur.com/6MDpnCKl.png" title="Accessory Types" /></a>
 
 If you use the `.DetailDisclosureButton` or `.DetailButton` accessory
 types you can handle the event of a tap on your button by implementing
@@ -844,7 +844,7 @@ class ViewController: UIViewController, UITableViewDataSource {
 }
 ```
 
-<a href="http://imgur.com/KGNgM9x"><img src="http://i.imgur.com/KGNgM9xl.png" title="Custom Accessory View" /></a>
+<a href="https://imgur.com/KGNgM9x"><img src="https://i.imgur.com/KGNgM9xl.png" title="Custom Accessory View" /></a>
 
 ## Working with sections
 Rows in a `UITableView` can be grouped under section headers.  You can
@@ -951,14 +951,14 @@ our `UITableView` is configured to have the `Plain` style or the
 below.  Notice that the section header sticks at the top of the table
 while we are still scrolling within the section.
 
-<a href="http://imgur.com/8n5vKwU"><img src="http://i.imgur.com/8n5vKwU.gif" title="Plain Section style" /></a>
-<a href="http://imgur.com/vOwvqio"><img src="http://i.imgur.com/vOwvqio.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/8n5vKwU"><img src="https://i.imgur.com/8n5vKwU.gif" title="Plain Section style" /></a>
+<a href="https://imgur.com/vOwvqio"><img src="https://i.imgur.com/vOwvqio.gif" title="source: imgur.com" /></a>
 
 The table view section style can be changed in Interface Builder under
 the Attributes Inspector or can be set when the table view is
 [initialized][initwithstyle] if it is created programmatically.
 
-<a href="http://imgur.com/IZhr8uI"><img src="http://i.imgur.com/IZhr8uI.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/IZhr8uI"><img src="https://i.imgur.com/IZhr8uI.png" title="source: imgur.com" /></a>
 
 [initwithstyle]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instm/UITableView/initWithFrame:style:
 
@@ -1033,7 +1033,7 @@ data](#handling-updates-to-your-data) can be found below.
 
 [selectionuiguidelines]: https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/TableView_iPhone/ManageSelections/ManageSelections.html#//apple_ref/doc/uid/TP40007451-CH9-SW10
 
-<a href="http://imgur.com/tqj32qw"><img src="http://i.imgur.com/tqj32qw.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/tqj32qw"><img src="https://i.imgur.com/tqj32qw.gif" title="source: imgur.com" /></a>
 
 ### Responding to the selection event at the cell level
 There are several ways the `UITableViewCell` itself can respond to a
@@ -1079,7 +1079,7 @@ class DemoProgrammaticTableViewCell: UITableViewCell {
 }
 ```
 
-<a href="http://imgur.com/0RT2qmn"><img src="http://i.imgur.com/0RT2qmn.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/0RT2qmn"><img src="https://i.imgur.com/0RT2qmn.gif" title="source: imgur.com" /></a>
 
 [allowsselection]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instp/UITableView/allowsSelection
 [cellselectionstyle]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/#//apple_ref/occ/instp/UITableViewCell/selectionStyle
@@ -1233,7 +1233,7 @@ class Story {
     }
 }
 ```
-<a href="http://imgur.com/ljCaUch"><img src="http://i.imgur.com/ljCaUchl.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/ljCaUch"><img src="https://i.imgur.com/ljCaUchl.png" title="source: imgur.com" /></a>
 
 ## Handling updates to your data
 _to be completed..._
@@ -1247,7 +1247,7 @@ Pull-to-refresh is a ubiquitous method to update your list with the latest infor
 
 [uirefreshcontrol]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIRefreshControl_class/index.html
 
-<a href="http://imgur.com/nVf3hiL"><img src="http://i.imgur.com/nVf3hiL.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/nVf3hiL"><img src="https://i.imgur.com/nVf3hiL.gif" title="source: imgur.com" /></a>
 
 
 ###Using a Basic UIRefreshControl
@@ -1364,7 +1364,7 @@ Implementing infinite scroll behavior involves the following:
 
 Here is a sample image of what we're going to make:
 
-<a href="http://imgur.com/KBSolR3"><img src="http://i.imgur.com/KBSolR3.gif" title="Infinite Scroll" /></a>
+<a href="https://imgur.com/KBSolR3"><img src="https://i.imgur.com/KBSolR3.gif" title="Infinite Scroll" /></a>
 
 ###Detecting when to request more data
 

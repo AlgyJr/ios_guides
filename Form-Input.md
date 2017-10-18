@@ -24,7 +24,7 @@ other problems below.
 
 Here is a typical example of form inputs in a table view:
 
-<a href="http://imgur.com/e4vUMW4"><img src="http://i.imgur.com/e4vUMW4.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/e4vUMW4"><img src="https://i.imgur.com/e4vUMW4.png" title="source: imgur.com" /></a>
 
 ## Static Forms
 One way to avoid some complexity when working with form input in a table
@@ -41,7 +41,7 @@ To create a table with static cells you'll need to drag a `Table View
 Controller` into the scene from the Object Library and set `Content` to
 `Static Cells` in the Attributes Inspector.
 
-<a href="http://imgur.com/dtxyIoX"><img src="http://i.imgur.com/dtxyIoX.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/dtxyIoX"><img src="https://i.imgur.com/dtxyIoX.png" title="source: imgur.com" /></a>
 
 You can now control the number of sections in your table and the the
 number of cells by selecting either the "Table View" or "Section" in the
@@ -66,7 +66,7 @@ Bundle][settingsbundle] feature when creating a preferences page._
 
 [settingsbundle]: https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/UserDefaults/Preferences/Preferences.html#//apple_ref/doc/uid/10000059i-CH6-SW5
 
-<a href="http://imgur.com/jt3Pmf6"><img src="http://i.imgur.com/jt3Pmf6.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/jt3Pmf6"><img src="https://i.imgur.com/jt3Pmf6.gif" title="source: imgur.com" /></a>
 
 The preferences table has three _static_ cells each containing a single
 [switch][uiswitch] corresponding to an on/off preference.  The swiches
@@ -76,7 +76,7 @@ buttons connected to unwind segues in our main `ViewController`.
 
 [uiswitch]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UISwitch_Class/index.html
 
-<a href="http://imgur.com/rF4Ww3W"><img src="http://i.imgur.com/rF4Ww3W.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/rF4Ww3W"><img src="https://i.imgur.com/rF4Ww3W.png" title="source: imgur.com" /></a>
 
 The `Preferences` class provides us with a model to store the
 preferences.
@@ -245,7 +245,7 @@ to our `PreferencesViewController`.  The `ViewController` class also
 contains `@IBActions` for unwind segues that happen when the user either
 saves or cancels editing preferences.
 
-<a href="http://imgur.com/8nbwUnu"><img src="http://i.imgur.com/8nbwUnu.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/8nbwUnu"><img src="https://i.imgur.com/8nbwUnu.png" title="source: imgur.com" /></a>
 
 We renamed our `PreferencesTableViewController` to
 `PreferencesViewController`.  It no longer has to be a subclass of

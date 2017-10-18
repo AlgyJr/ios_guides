@@ -37,7 +37,7 @@ throughout. We'll build a demo app that lets the user change the
 background color of the main view controller by opening up a secondary
 color picker view controller.
 
-<a href="http://imgur.com/XgIWavY"><img src="http://i.imgur.com/XgIWavY.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/XgIWavY"><img src="https://i.imgur.com/XgIWavY.gif" title="source: imgur.com" /></a>
 
 ## Delegate Pattern
 

@@ -15,7 +15,7 @@ The Terminal is much like the finder, but less pretty. There are just a few basi
   
 **Hint** If you can't find the path to a file or folder through terminal, search for it using Finder, then drag the file or folder right into your terminal window! If you are trying to change to that directory, you will need to type `cd` before dragging in the folder.  
 
-![Drag Folder into Terminal|400](http://i.imgur.com/5V7YtYJ.gif)
+![Drag Folder into Terminal|400](https://i.imgur.com/5V7YtYJ.gif)
 
 ### Creating a Local Git Repository
   
@@ -26,7 +26,7 @@ alt="Loading" width="240" height="180" border="10" /></a>
 Local Git repositories are created and managed locally on your computer. 
 - Xcode will automatically create a local Git repository for your project if you select, "Create Git repository on... My Mac", when you first create your project. You should **Always** select this when creating a new Xcode project.  
   
-    ![Creating a Local Git Repository Xcode gif|700](http://i.imgur.com/aJhndKZ.png)  
+    ![Creating a Local Git Repository Xcode gif|700](https://i.imgur.com/aJhndKZ.png)  
 
 If you already have a project, where a Git repository was not created when you made the project, you can create a local Git repository using terminal. 
 - Navigate to yor Xcode Project folder in Terminal.
@@ -155,13 +155,13 @@ git push origin master
 
 #### Create a new Repository on GitHub  
     
-   <img src="http://i.imgur.com/UmHxuhN.gif" width="600" />
+   <img src="https://i.imgur.com/UmHxuhN.gif" width="600" />
 
 - Navigate to your Xcode Project folder in Terminal.  
 - Link to the remote repository by adding the following code in Terminal, provided from your GitHub repository. We want to "push an existing repository from the command line".
    - NOTE: Make sure you add YOUR GitHub remote address! 
   
-    ![Link to the remote repository gif|800](http://i.imgur.com/48uur3D.gif)  
+    ![Link to the remote repository gif|800](https://i.imgur.com/48uur3D.gif)  
 
    - NOTE: Decide if you want the remote to use [SSH or HTTPS](http://guides.codepath.com/ios/Using-Git-with-Terminal#ssh-setup) before setting your remote in the next step. I like ssh for the convenience of not always having to input my credentials.  
 
@@ -195,7 +195,7 @@ alt="Loading" width="240" height="180" border="10" /></a>
 If you are collaborating on a project, or just want access to your project from a different computer, you will need to **clone** from the remote repository.
 - Get the url of the remote repository. You can access this by going to the remote repository in GitHub and copying the clone link, bottom right.  
   
-![Get the url of the remote repository](http://i.imgur.com/XWEyeAo.png)  
+![Get the url of the remote repository](https://i.imgur.com/XWEyeAo.png)  
   
 - In Terminal, navigate to the directory you want to clone the repository in.
 - Clone the repository...
@@ -213,27 +213,27 @@ alt="Loading" width="240" height="180" border="10" /></a>
 Inevitably, there will come a time when you AND a collaborator will make changes to the same file and both try to **push** to the remote repository. This will result in a **Merge Conflict**.
 - In the instance of a Merge Conflict, you will probably get an error in the terminal when attempting to **push** your local changes.  
 
-   <img src="http://i.imgur.com/yWEhJdu.png" width="600" />
+   <img src="https://i.imgur.com/yWEhJdu.png" width="600" />
   
 - As, the error message suggests in the "Hint", the next step is to perform a `git pull`. The pull will likely result in a message similar to the following. 
    - NOTE: The error message confirms we have a Merge Conflict in the Main.storyboard file and tells us that we need to fix the conflict and commit the changes.   
   
-   <img src="http://i.imgur.com/pqoEIP3.png" width="600" />
+   <img src="https://i.imgur.com/pqoEIP3.png" width="600" />
 
 - Use `git status` to confirm which file(s) are causing the conflict.  
   
-   <img src="http://i.imgur.com/gFBaNZt.png" width="600" />
+   <img src="https://i.imgur.com/gFBaNZt.png" width="600" />
   
 - Use `open /yourfileHere/` to open up the file in conflict; this will open up the file in Xcode. 
    - NOTE: In this particular example, the conflict is in the Main.storyboard file. We are usually looking at the Interface Builder view of this file, so to reveal the underlying code, right-click on the `Main.storyboard` file and choose, **Open As -> Source Code**.  
   
-   ![open conflict file|800](http://i.imgur.com/kVu9aIn.gif)  
+   ![open conflict file|800](https://i.imgur.com/kVu9aIn.gif)  
   
 - Identify the conflicting lines of code; they will be surrounded by, `<<<<<<< HEAD     >>>>>>>bunchOfNumbersAndLetters` and separated by `=======`. 
 
 - Choose one to keep and one to delete. Do your best to figure out what the differences are; in this example, we see that the initialViewController is set to a different ID in each, `"BYZ-38-t0r"` vs. `"NFr-Eg-PaI"`.  
   
-   ![](http://i.imgur.com/ZDIbTtk.gif)  
+   ![](https://i.imgur.com/ZDIbTtk.gif)  
 
 - Clean your Project, cmd + shift + K
    - If your resolved conflict was in the Main.storyboard file, right + click on the storyboard file and choose **Open As -> Interface Builder - Storyboard**.

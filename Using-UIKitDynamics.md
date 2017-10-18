@@ -1,7 +1,7 @@
 
 UIKit Dynamics was introduced in iOS 7 to introduce a new level of realism to the UI. It's the same physics engine that powers SpriteKit except that it's set up to work with UIViews.
 
-<img src="http://i.imgur.com/hmTooMm.gif" width="250" height="443" />
+<img src="https://i.imgur.com/hmTooMm.gif" width="250" height="443" />
 
 ### Step 1: Create the UIDynamicAnimator
 
@@ -24,7 +24,7 @@ You can create nearly any effect by using one or more of the available behaviors
 
 ### Gravity
 
-<img src="http://i.imgur.com/2RAjIi2.gif" width="250" height="443" />
+<img src="https://i.imgur.com/2RAjIi2.gif" width="250" height="443" />
 
 Since you may want to add or remove items from gravity dynamically, you should create the gravity behavior as a property.
 

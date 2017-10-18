@@ -34,12 +34,12 @@ and that Auto Layout can solve for us, consider the following example.
 Using Interface Builder we've added a single view (colored red) inside
 the view controller's root view.
 
-<a href="http://imgur.com/ZAuzNug"><img src="http://i.imgur.com/ZAuzNug.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/ZAuzNug"><img src="https://i.imgur.com/ZAuzNug.png" title="source: imgur.com" /></a>
 
 Without adding any layout constraints here is what this interface looks
 likes in some situations where this app might run.
 
-<a href="http://imgur.com/0WwqszZ"><img src="http://i.imgur.com/0WwqszZ.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/0WwqszZ"><img src="https://i.imgur.com/0WwqszZ.png" title="source: imgur.com" /></a>
 
 Depending on the use case, chances are this is not behavior that we
 want.  For example, if the red view were meant to be a button that is
@@ -67,13 +67,13 @@ add constraints.
 4. Resizing settings - changes the way Interface Builder updates
    constraints when you resize views.  You probably won't use this.
 
-<a href="http://imgur.com/KZsEwNc"><img src="http://i.imgur.com/KZsEwNc.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/KZsEwNc"><img src="https://i.imgur.com/KZsEwNc.png" title="source: imgur.com" /></a>
 
 You can also add constraints by control-dragging from one view to the
 relevant area of another view and selecting the appropriate item in the
 context menu.
 
-<a href="http://imgur.com/Z9t4JEM"><img src="http://i.imgur.com/Z9t4JEM.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/Z9t4JEM"><img src="https://i.imgur.com/Z9t4JEM.gif" title="source: imgur.com" /></a>
 
 Here are some of the most basic situations you'll come across.
 
@@ -89,11 +89,11 @@ had to specify the height and width of the view as well so that Auto
 Layout would have enough information to figure out both the location and
 size of the red view.
 
-<a href="http://imgur.com/TDwD12X"><img src="http://i.imgur.com/TDwD12X.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/TDwD12X"><img src="https://i.imgur.com/TDwD12X.gif" title="source: imgur.com" /></a>
 
 The result when we run our app is as follows.
 
-<a href="http://imgur.com/Ewh64iM"><img src="http://i.imgur.com/Ewh64iM.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/Ewh64iM"><img src="https://i.imgur.com/Ewh64iM.png" title="source: imgur.com" /></a>
 
 ### Resize with parent view
 Another common situation is for a view to resize its dimensions (either
@@ -104,11 +104,11 @@ screen with fixed height, but it should resize to span the width of the
 screen.  This might be useful for example in a situation where the red
 view contains an alert message.
 
-<a href="http://imgur.com/YVs4hFP"><img src="http://i.imgur.com/YVs4hFP.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/YVs4hFP"><img src="https://i.imgur.com/YVs4hFP.gif" title="source: imgur.com" /></a>
 
 Here's what the result is when running our app:
 
-<a href="http://imgur.com/UUcCSJH"><img src="http://i.imgur.com/UUcCSJH.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/UUcCSJH"><img src="https://i.imgur.com/UUcCSJH.png" title="source: imgur.com" /></a>
 
 ### Center a view within a parent view
 Sometimes you'll want to center a view (either vertically, horizontally,
@@ -119,7 +119,7 @@ useful if we need to show our logo in the Launch Screen.  Notice that we
 had select "Update Frames" after setting our constraints.  More on this
 below:
 
-<a href="http://imgur.com/VfQLiGI"><img src="http://i.imgur.com/VfQLiGI.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/VfQLiGI"><img src="https://i.imgur.com/VfQLiGI.gif" title="source: imgur.com" /></a>
 
 ## Working with constraints in Interface Builder
 Here are a few common situations that will come up as you add and modify
@@ -131,7 +131,7 @@ nearest neighbor.  You can change which view a constraint is relative to
 by clicking on the small arrow and selecting the right view in the drop
 down menu.
 
-<a href="http://imgur.com/CufGkhG"><img src="http://i.imgur.com/CufGkhG.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/CufGkhG"><img src="https://i.imgur.com/CufGkhG.png" title="source: imgur.com" /></a>
 
 ### Editing constraints
 
@@ -141,18 +141,18 @@ entirely new ones.  For example, here we try to set a second height
 constraint which results in a case of [conflicting
 constraints](#conflicting-constraints).
 
-<a href="http://imgur.com/APMxBUm"><img src="http://i.imgur.com/APMxBUm.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/APMxBUm"><img src="https://i.imgur.com/APMxBUm.gif" title="source: imgur.com" /></a>
 
 You can edit an constraint by selecting the view associated with that
 constraint and using the Size inspector, or simply selecting the
 constraint directly in the Scene Outline.
 
-<a href="http://imgur.com/cOiWvcd"><img src="http://i.imgur.com/cOiWvcd.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/cOiWvcd"><img src="https://i.imgur.com/cOiWvcd.png" title="source: imgur.com" /></a>
 
 Here we update our red view to have a different height and different
 inset distance from it's parent view.
 
-<a href="http://imgur.com/bd0Uqmg"><img src="http://i.imgur.com/bd0Uqmg.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/bd0Uqmg"><img src="https://i.imgur.com/bd0Uqmg.gif" title="source: imgur.com" /></a>
 
 ### Constraint Errors and Warnings
 
@@ -185,7 +185,7 @@ Here we edit the red view's constraints for height, but this is not
 properly updated on our canvas.  After selecting "Update Frames" the new
 height is properly reflected.
 
-<a href="http://imgur.com/U4mgd09"><img src="http://i.imgur.com/U4mgd09.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/U4mgd09"><img src="https://i.imgur.com/U4mgd09.gif" title="source: imgur.com" /></a>
 
 ##### Update constraints
 
@@ -207,7 +207,7 @@ Here we've decreased the width of the red view.  Selecting "Update
 Constraints" changes the horizontal space constraints between the red
 view and the parent view to match the new layout.
 
-<a href="http://imgur.com/VCus7Pg"><img src="http://i.imgur.com/VCus7Pg.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/VCus7Pg"><img src="https://i.imgur.com/VCus7Pg.gif" title="source: imgur.com" /></a>
 
 #### Conflicting Constraints
 If you create constraints such that Auto Layout cannot simultaneously
@@ -223,7 +223,7 @@ to be a specific distance from the top of the parent view conflict with
 each other.  We resolve the issue by removing the vertical centering
 constraint and updating the frame of the view.
 
-<a href="http://imgur.com/x2ZKSyE"><img src="http://i.imgur.com/x2ZKSyE.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/x2ZKSyE"><img src="https://i.imgur.com/x2ZKSyE.gif" title="source: imgur.com" /></a>
 
 #### Missing Constraints
 If you do not provide enough information for Auto Layout to determine
@@ -240,7 +240,7 @@ can no longer determine the width of the red view.  Note that when we
 use the automatic issue resolver it adds a width constraint instead of
 the horizontal space constraint we originally had.
 
-<a href="http://imgur.com/GjU98SU"><img src="http://i.imgur.com/GjU98SU.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/GjU98SU"><img src="https://i.imgur.com/GjU98SU.gif" title="source: imgur.com" /></a>
 
 ## Dealing with flexible content size
 So far we have been only dealing with views whose content (and hence
@@ -276,7 +276,7 @@ the vertical space between the labels, pin the second label to the left
 margin and also give both labels a width.  Notice that we did not have
 to specify the height for either label.
 
-<a href="http://imgur.com/hhHeK7d"><img src="http://i.imgur.com/hhHeK7d.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/hhHeK7d"><img src="https://i.imgur.com/hhHeK7d.gif" title="source: imgur.com" /></a>
 
 Now we make one the labels a multi-line label by setting it's "Lines"
 property to 0 in the attributes inspector&mdash;this means that the
@@ -288,7 +288,7 @@ maintained.  We had to update the frames manually here, but this would
 be done automatically for us at runtime when we change the content of
 the label.
 
-<a href="http://imgur.com/FAhPo6v"><img src="http://i.imgur.com/FAhPo6v.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/FAhPo6v"><img src="https://i.imgur.com/FAhPo6v.gif" title="source: imgur.com" /></a>
 
 ### Left aligned label next to right aligned label
 Consider another example where we have two single-line labels
@@ -304,7 +304,7 @@ of the labels might change at run time.  One way to accomplish this is
 to define an _inequality constraint_ where we can specify that a certain
 constraint's value be greater than or less than a constant.
 
-<a href="http://imgur.com/by5X5AB"><img src="http://i.imgur.com/by5X5AB.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/by5X5AB"><img src="https://i.imgur.com/by5X5AB.gif" title="source: imgur.com" /></a>
 
 #### Compression resistance
 In this same example, what if the text in our labels becomes long enough
@@ -321,7 +321,7 @@ In this case we specify that the green label is the one whose content
 should be compressed if there is a conflict by lowering its compression
 resistance priority.
 
-<a href="http://imgur.com/PhgyniJ"><img src="http://i.imgur.com/PhgyniJ.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/PhgyniJ"><img src="https://i.imgur.com/PhgyniJ.gif" title="source: imgur.com" /></a>
 
 #### Content hugging
 Sometimes you'll want to views to be a fixed distance from each other
@@ -337,7 +337,7 @@ content size as possible.
 
 Here we specify that the red label should expand to fill the available
 space by lowering its content hugging priority.
-<a href="http://imgur.com/B6txKC3"><img src="http://i.imgur.com/B6txKC3.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/B6txKC3"><img src="https://i.imgur.com/B6txKC3.gif" title="source: imgur.com" /></a>
 
 ## Manipulating constraints programmatically
 ## VFL

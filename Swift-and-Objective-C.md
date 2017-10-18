@@ -10,7 +10,7 @@ In order to use Objective-C in a Swift file, you have to create an Objective-C b
 
 In your Xcode project, create a new file and select "Objective-C" file in the wizard. It doesn't matter what you name the file because you'll delete it later anyway. When Xcode prompts you to create the bridging header, you should accept.
 
-![Bridging header](http://i.imgur.com/0rzQCPM.png)
+![Bridging header](https://i.imgur.com/0rzQCPM.png)
 
 ### Step 2: Import Objective-C Headers
 

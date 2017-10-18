@@ -20,21 +20,21 @@ There are many builtin gesture recognizers in iOS, and you can also create your 
 
 ### Step 1: Choose a Gesture Recognizer
 Choose a Gesture Recognizer from the Object Library based on the functionality your app needs.  
-![Choose a Gesture Recognizer from Object Library gif|200](http://i.imgur.com/evQqzAL.gif)
+![Choose a Gesture Recognizer from Object Library gif|200](https://i.imgur.com/evQqzAL.gif)
 
 ### Step 2: Drag and Drop a Gesture Recognizer into your View
 Drag a Gesture recognizer from the Object Library and drop it onto the View you want the Gesture to be attached to. 
 - NOTE: You can see which view the Gesture Recognizer is attached to by ctrl + Clicking on the Gesture Recognizer in the Document Outline.<br>
 
-   ![Drag and Drop a Gesture Recognizer into your View](http://i.imgur.com/Yv8WOcP.gif)<br>
+   ![Drag and Drop a Gesture Recognizer into your View](https://i.imgur.com/Yv8WOcP.gif)<br>
 
 ### Step 3: Create an Action for your Gesture Recognizer
 Ctrl-drag from your Gesture Recognizer to the ViewController swift file to create an action. It's often easier to drag from the Gesture Recognizer in the Document Outline. 
 - NOTES: 
    1. Be sure to change the type from **AnyObject** to the specific Gesture Recognizer you are using. i.e. UIPanGestureRecognizer, etc.. 
-   1. Make sure the view you attached the gesture to has **User Interaction Enabled**  <img src="http://i.imgur.com/fuZIcIP.png" height="30" /><br>
+   1. Make sure the view you attached the gesture to has **User Interaction Enabled**  <img src="https://i.imgur.com/fuZIcIP.png" height="30" /><br>
 
-   ![Create an Action for your Gesture Recognizer](http://i.imgur.com/ddu28U5.gif)<br>
+   ![Create an Action for your Gesture Recognizer](https://i.imgur.com/ddu28U5.gif)<br>
 
 ## Programmatically Add and Configure a Gesture Recognizer
 
@@ -198,7 +198,7 @@ Now the pinch and scale gesture recognizers should work simultaneously.
 
 
 ## Use Case: Slide Out Tray
-![Slide Out Tray Example gif](http://i.imgur.com/P4v6iHa.gif)  
+![Slide Out Tray Example gif](https://i.imgur.com/P4v6iHa.gif)  
 
 Slide out trays, Hamburger menus, and any other view you want to move by sliding your finger can be configured using a UIPanGesture Recognizer.
 
@@ -219,7 +219,7 @@ var trayOriginalCenter: CGPoint!
 ```
 
 ### Step 4: Make the Tray Draggable
-![Make the Tray Draggable gif](http://i.imgur.com/sI6gV8c.gif)  
+![Make the Tray Draggable gif](https://i.imgur.com/sI6gV8c.gif)  
 
 The code to make the Tray draggable will go inside our `didPanTray` method.
 NOTE: If you created your Gesture Recognizer and added an Action in Storyboard, the method will be proceeded by `@IBAction`.
@@ -265,7 +265,7 @@ trayView.center = CGPoint(x: trayOriginalCenter.x, y: trayOriginalCenter.y + tra
 ```
 
 ### 5: Animate Tray to Open or Closed Positions
-![Slide Out Tray Example gif](http://i.imgur.com/P4v6iHa.gif)  
+![Slide Out Tray Example gif](https://i.imgur.com/P4v6iHa.gif)  
 
 When a user stops panning the Tray, we want the tray to animate to an up or down position. We will infer that if the users last gesture movement was downward, they intend to close the tray to it's down position. Conversely, if they are NOT panning down, they must be panning up, and intend to open the tray to it's up position.  
   
@@ -308,7 +308,7 @@ You can also try animating the ending tray motion with a bounce using the dampin
 
 This Use-Case will explore using multiple gesture recognizers simultaneously to scale and rotate an ImageView.  
   
-![Make the Image View Rotatable|200](http://i.imgur.com/NH2U4m1.gif)
+![Make the Image View Rotatable|200](https://i.imgur.com/NH2U4m1.gif)
 
 ### Step 1: Add an ImageView
 
@@ -325,7 +325,7 @@ Since we will be using multiple gesture recognizers at the same time, we will ne
 
 ### Step 4: Make the Image View Scalable 
 
-![Make the Image View Scalable gif|200](http://i.imgur.com/AkacSCN.gif)  
+![Make the Image View Scalable gif|200](https://i.imgur.com/AkacSCN.gif)  
   
 Within the `didPinch` method... 
 - Access the **scale** parameter of the Pinch Gesture Recognizer and store it in a constant.
@@ -348,7 +348,7 @@ sender.scale = 1
 
 ### Step 5: Make the Image View Rotatable 
   
-![Make the Image View Rotatable gif|200](http://i.imgur.com/aqzTp2A.gif)  
+![Make the Image View Rotatable gif|200](https://i.imgur.com/aqzTp2A.gif)  
   
 Within the `didRotate` method... 
 - Access the **rotation** parameter of the Rotation Gesture Recognizer and store it in a constant.

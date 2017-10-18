@@ -8,7 +8,7 @@ There are two main categories of errors, Compiler Errors and Run-Time Errors.
    - **Symptoms:** You have little red stop signs in your file margins. As a result, Your app fails to build.
    - **Diagnose:** Click on the red stop signs to get hints on what and where the issue is.  
 
-![compiler error gif](http://i.imgur.com/AsNRYvx.gif) 
+![compiler error gif](https://i.imgur.com/AsNRYvx.gif) 
 
 #### Run-Time Errors
    - **Symptoms:** Your app builds fine, but at a certain point it "crashes".
@@ -16,7 +16,7 @@ There are two main categories of errors, Compiler Errors and Run-Time Errors.
       - 1:  The **Console**, (bottom right window), will likely have a long list of confusing "computer talk", fortunately, the useful information is found in the first paragraph all the way at the top, so get scrolling! 
       - 2: The second place to look is in the **Variables View** to the left of the console. 
 
-![Run-Time Error gif](http://i.imgur.com/nciIGwV.gif) 
+![Run-Time Error gif](https://i.imgur.com/nciIGwV.gif) 
 
 ## Common Run-Time Crashes
 
@@ -25,7 +25,7 @@ When your app crashes, it's often due to an initial error. However, the initial 
   
 The console will be our first source for error printouts. Scroll all the way to the top to see the initial error.  
   
-<img src="http://i.imgur.com/CDVPNbY.gif" width="800" /> 
+<img src="https://i.imgur.com/CDVPNbY.gif" width="800" /> 
    
 ### 1. Error: unexpectedly found nil while unwrapping an Optional value
 - **Translation:** This basically means that sometime while your app was running, it was looking for something and instead got nothing, **nil**.
@@ -36,7 +36,7 @@ The console will be our first source for error printouts. Scroll all the way to 
    - **Step 3:** We go to the swift file where that variable is declared. We notice that the little circle to the left where we make connections is empty. AH HA! Our code was trying to do something with the pigImageView, but it was not connected to the actual imageView in the Storyboard.
 - **Solution:** Reconnect by dragging from the empty circle to our pig imageView in Storyboard.  
 
-![found nil gif](http://i.imgur.com/Z8oTiXy.gif)
+![found nil gif](https://i.imgur.com/Z8oTiXy.gif)
 
 ### 2. Error: this class is not key value coding-compliant for the key...
 - **Translation:** Basically, there is a connection somewhere behind the scene that is looking for a specific **outlet** but is not finding it.
@@ -49,7 +49,7 @@ The console will be our first source for error printouts. Scroll all the way to 
    - **Step 2:** Select the offending ViewController by clicking on the *yellow dot*. Open the **Utilities** pane and select the **Connections Inspector**.
 - **Solution:** Delete the bad connection by clicking the little "x" between the connections. The bad connection should have an "!" on the right side instead of a little circle.
 
-![key value coding gif](http://i.imgur.com/aLwKVKa.gif)
+![key value coding gif](https://i.imgur.com/aLwKVKa.gif)
 
 ### 3. Error: Unknown class (Some ViewController) in Interface Builder File.
 - **Translation** A custom ViewController Swift file you made is not configured right.
@@ -58,25 +58,25 @@ The console will be our first source for error printouts. Scroll all the way to 
    - **Step 1:** Check the console to see which ViewController file is having the issue.
 - **Solution:** Click on the offending ViewController's yellow dot in Storyboard. Navigate to the Identity Inspector in the Utilities Pane. In the "Custom Class" section, click in the **Module** field. Press Enter, the Module field should change to "Current (Your App Name)" in a light grey text. Run your app.  
 
-![Unknown Class](http://i.imgur.com/in2kY8A.gif)
+![Unknown Class](https://i.imgur.com/in2kY8A.gif)
 
 ## Unintended Run-Time Behaviors
 
 #### 1. Scroll View has weird gap.
 - **Solution:** Click on View Controller that contains the Scroll View, navigate to the Attributes Inspector (DJ Slider) inside the Utilities Pane. **Uncheck, "Adjust Scroll View Insets"**. This is a feature for iOS 6.0 compatibility and who cares about them!
 
-![Adjust Scroll View Insets gif](http://i.imgur.com/lQH6X5r.gif)
+![Adjust Scroll View Insets gif](https://i.imgur.com/lQH6X5r.gif)
 
 #### 2. Image Views don't respond to your gestures.
 - **Solution:** Click on the Image View where the Gesture Recognizer has been adde and navigate to the Attributes Inspector (DJ Slider) inside the Utilities Pane. **Check, "User Interaction Enabled"**.  
 
-![User Interaction Enabled](http://i.imgur.com/GciPd8b.gif)  
+![User Interaction Enabled](https://i.imgur.com/GciPd8b.gif)  
 
 #### 3. App stops due to accidental breakpoint.  
 Breakpoints are an essential debugging tool, however it's easy to accidentally set a breakpoint and cause what appears to be a crash at run-time.  
 -**Solution:** Navigate to the "gutter" of the ViewController file that has the accidental break point (Far left side of the file). *Right Click* or *ctrl + click* on the blue breakpoint tag and select, "Delete Breakpoint" from the dropdown menu.  
 
-![Accidental breakpoint gif](http://i.imgur.com/IhcZluj.gif)
+![Accidental breakpoint gif](https://i.imgur.com/IhcZluj.gif)
 
 ## Common Compiler Errors
 
@@ -88,7 +88,7 @@ Breakpoints are an essential debugging tool, however it's easy to accidentally s
    - 3. You misspelled the variable or constant. 
 - **Solution:** Define your variable or constant using ``var`` or ``let`` respectively. If you define your variable up top above the ``viewDidLoad`` method, you can access that variable anywhere in your Swift file. If you define your variable within a method, you will only be able to access it within that method.
 
-![unresolved identifier gif](http://i.imgur.com/LtK2MgR.gif)  
+![unresolved identifier gif](https://i.imgur.com/LtK2MgR.gif)  
 
 ## Xcode Editor issues  
 
@@ -96,4 +96,4 @@ Breakpoints are an essential debugging tool, however it's easy to accidentally s
 
 -**Solution** Change from **Manual** to **Automatic** in the Assistant Editor.  
 
-![Manual to Automatic gif](http://i.imgur.com/UpEtGcg.gif)
+![Manual to Automatic gif](https://i.imgur.com/UpEtGcg.gif)

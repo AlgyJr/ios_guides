@@ -9,7 +9,7 @@ File`.  You'll want to name this file something like
 the build process.  You'll need to specify this file as a bridging
 header in your project's `Build Settings`.
 
-<a href="http://imgur.com/aP32OZC"><img src="http://i.imgur.com/aP32OZC.png" title="Objective C Bridging" /></a>
+<a href="https://imgur.com/aP32OZC"><img src="https://i.imgur.com/aP32OZC.png" title="Objective C Bridging" /></a>
 
 You will then `#import` every Objective-C header you want to expose to
 Swift in this file.

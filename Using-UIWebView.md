@@ -1,6 +1,6 @@
 Loading a URL into your app is as easy! Just add and configure a UIWebView.  
   
-![WebView Demo|250](http://i.imgur.com/v4PlBQX.gif)
+![WebView Demo|250](https://i.imgur.com/v4PlBQX.gif)
 
 ### Step 1: Add UIWebView to Storyboard
 

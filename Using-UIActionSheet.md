@@ -1,5 +1,5 @@
 
-![Action|250](http://i.imgur.com/8JfoPh3.gif)
+![Action|250](https://i.imgur.com/8JfoPh3.gif)
 
 ### Step 1: Create the UIActionSheet
 

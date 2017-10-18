@@ -1,6 +1,6 @@
 Asset Catalogs makes asset management easy. To add assets to a project, follow the steps below.
 
-![adding image assets](http://i.imgur.com/N46BHYj.gif)
+![adding image assets](https://i.imgur.com/N46BHYj.gif)
 
 ### Step 1: Select the asset catalog
 
@@ -16,7 +16,7 @@ To add an image to the project, create a new image set. Drag the png asset (jpeg
 
 Any control that has images like UIImageViews or UIButtons can set images in Interface Builder. Any image set in the Asset Catalog will be listed in the image drop down menus.
 
-<img src="http://i.imgur.com/hPVX8b3.gif" width="301" height="226" />
+<img src="https://i.imgur.com/hPVX8b3.gif" width="301" height="226" />
 
 #### Example 1: Using the image set programmatically
 
@@ -37,14 +37,14 @@ var chatImageView = UIImageView(image: chat)
 #### Swift 3
 Swift 3 introduces Image Literals. NOTE: The technique above, initializing a UIImage using it's name, still works too.
 
-![](http://i.imgur.com/5U0SFYf.gif)
+![](https://i.imgur.com/5U0SFYf.gif)
 
 
 ### App Icon
 
 To set the app icon, simply select "App Icon" in the asset catalog and drag a .png file into the appropriate bucket. The App Icon expects various sizes for production, although you can use just one during development. Similarly, in production, the Launch Image expects 3.5" and 4" images, but you can use just one during development.
 
-![App icon gif](http://i.imgur.com/v3KlhOZ.gif)
+![App icon gif](https://i.imgur.com/v3KlhOZ.gif)
 
 ### Launch Screen
 For the launch image, you will need to configure the **LaunchScreen.storyboard** file as you would any other ViewController.
@@ -53,4 +53,4 @@ For the launch image, you will need to configure the **LaunchScreen.storyboard**
 - Drag the Launch Screen image from the media library (Bottom right in utilities pane), on to the LaunchScreen ViewController. 
 - HINT: If Xcode is having trouble recognizing your Launch Screen image file, try renaming it in the finder before dragging it into your assets folder (example below)
 
-![Add assets, icon, and Launch](http://i.imgur.com/9dyZBfN.gif)
+![Add assets, icon, and Launch](https://i.imgur.com/9dyZBfN.gif)

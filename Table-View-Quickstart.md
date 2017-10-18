@@ -4,7 +4,7 @@
 
 [uitableview]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html
 
-<a href="http://imgur.com/sI6L9Bx"><img src="http://i.imgur.com/sI6L9Bx.jpg" title="Table Views" /></a>
+<a href="https://imgur.com/sI6L9Bx"><img src="https://i.imgur.com/sI6L9Bx.jpg" title="Table Views" /></a>
 
 This guide provides a quick recipe for setting up and using a simple
 table view with Interface Builder and prototype cells.
@@ -13,7 +13,7 @@ table view with Interface Builder and prototype cells.
 The example we'll use throughout is a table with cities and state
 abbreviations.
 
-<a href="http://imgur.com/oYv2vmX"><img src="http://i.imgur.com/oYv2vmX.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/oYv2vmX"><img src="https://i.imgur.com/oYv2vmX.png" title="source: imgur.com" /></a>
 
 ### Step 1: Determine what data you need to display in the table
 Figure out what data you need to display in the table and how you're
@@ -34,7 +34,7 @@ In your storyboard drag a `Table View` (not `Table View Controller`)
 from the Object Library into your view controller.    Add an outlet for
 the table view in your view controller.
 
-<a href="http://imgur.com/DSHZu9r"><img src="http://i.imgur.com/DSHZu9r.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/DSHZu9r"><img src="https://i.imgur.com/DSHZu9r.gif" title="source: imgur.com" /></a>
 
 ### Step 3: Add prototype cell to table view
 You'll need a way to describe the appearance of the cells in your table.
@@ -43,7 +43,7 @@ cells_.  Drag a `Table View Cell` from the Object Library into
 your table view.  You can now design the layout of the prototype cell
 by adding more components from the Object Library.
 
-<a href="http://imgur.com/nMFup96"><img src="http://i.imgur.com/nMFup96.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/nMFup96"><img src="https://i.imgur.com/nMFup96.gif" title="source: imgur.com" /></a>
 
 ### Step 4: Create custom class for prototype cell
 Select `File -> New -> File... -> iOS -> Source -> Cocoa Touch Class`
@@ -51,14 +51,14 @@ and create a new subclass of `UITableViewCell`.  Back in Interface
 Builder select your prototype cell, and in the Identity Inspector, set
 its custom class property to the new class you just created.
 
-<a href="http://imgur.com/2r9tOJo"><img src="http://i.imgur.com/2r9tOJo.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/2r9tOJo"><img src="https://i.imgur.com/2r9tOJo.png" title="source: imgur.com" /></a>
 
 ### Step 5: Add code that allows configuration of your prototype cell
 Open the Assistant Editor (tuxedo view) and select your custom
 class.  Add outlets for elements you need to configure.  You might need
 to add code to provide an easy way to configure the cell.
 
-<a href="http://imgur.com/Tkofhwo"><img src="http://i.imgur.com/Tkofhwo.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/Tkofhwo"><img src="https://i.imgur.com/Tkofhwo.gif" title="source: imgur.com" /></a>
 
 The example cell is simple enough that we don't have to do anything
 special.  It just has two labels one for the city and one for the state
@@ -76,7 +76,7 @@ You'll need a way to tell the table view to create and reuse instances
 of this prototype cell.  Select the cell and give it a unique identifier
 in the Attributes Inspector.
 
-<a href="http://imgur.com/nZdbnm5"><img src="http://i.imgur.com/nZdbnm5.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/nZdbnm5"><img src="https://i.imgur.com/nZdbnm5.png" title="source: imgur.com" /></a>
 
 ### Step 7: Set the table view's data source and delegate
 Declare your view controller to implement the `UITableViewDataSource`
@@ -172,7 +172,7 @@ controller with details about that row.  You can do this in a storyboard
 by control-dragging from the cell and selecting the appropriate segue
 under the `Selection Segue` section.
 
-<a href="http://imgur.com/GrT010h"><img src="http://i.imgur.com/GrT010h.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/GrT010h"><img src="https://i.imgur.com/GrT010h.gif" title="source: imgur.com" /></a>
 
 #### Handling row selection programmatically
 

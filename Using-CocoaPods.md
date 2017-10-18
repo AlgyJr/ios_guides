@@ -38,7 +38,7 @@ First you need set your Terminal's Present Working Directory to the folder conta
 * Type the characters "`cd`" + *space*
 * Drag the folder containing your `.xcodeproject` file to your terminal, then hit your return key
 
-![Watch the cd gif here](http://i.imgur.com/SJ6tkPv.gif)
+![Watch the cd gif here](https://i.imgur.com/SJ6tkPv.gif)
 
 ### Step 2 - Add your Podfile 
 
@@ -47,7 +47,7 @@ CocoaPods uses a text file named `Podfile` to define your project's Pods. To add
 * Type `pod init` into your terminal 
 * Type `open -a Xcode Podfile` and edit your `Podfile` in Xcode
 
-![Watch the add your Podfile gif here](http://i.imgur.com/Tlx88ZN.gif)
+![Watch the add your Podfile gif here](https://i.imgur.com/Tlx88ZN.gif)
 
 ### Step 3 - Add your Pods and install
 
@@ -72,7 +72,7 @@ pod install
 
 **Note: If `pod install` is taking more than 60 seconds, see FAQ**
 
-![Watch the add Pods and install gif here](http://i.imgur.com/3nKJkHB.gif)
+![Watch the add Pods and install gif here](https://i.imgur.com/3nKJkHB.gif)
 
 ### Step 4 - Open your new Workspace file
 

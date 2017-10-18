@@ -1,5 +1,5 @@
 Often times, we want to create our own Navigation Bars in order to get the right look for our app.  
-![Nav Bar Sim example](http://i.imgur.com/GlK7TXy.gif)
+![Nav Bar Sim example](https://i.imgur.com/GlK7TXy.gif)
 
 ### Step 1: Add and Setup NavigationController  
 [Using Navigation Controllers](http://guides.codepath.com/ios/Using-Navigation-Controllers)
@@ -9,7 +9,7 @@ Often times, we want to create our own Navigation Bars in order to get the right
 - With the NavigationController selected, go to the *properties* pane and uncheck, "Show navigation bar".
 - Drag an ImageView containing your custom navigation bar image to the top of each ViewController.
 - Add a button on top of the "Back" part of the navigation bar image and delete the button text.
-![Add Nav Bar](http://i.imgur.com/dUYB6yZ.gif)
+![Add Nav Bar](https://i.imgur.com/dUYB6yZ.gif)
 
 ### Step 3: Configure Back Button  
 

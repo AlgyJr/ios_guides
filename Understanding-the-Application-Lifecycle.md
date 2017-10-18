@@ -11,7 +11,7 @@ An iOS application can transition between the following states:
 4. Background
 5. Suspended
 
-![State Changes in an iOS App](http://i.imgur.com/aeOPsHh.png)
+![State Changes in an iOS App](https://i.imgur.com/aeOPsHh.png)
 
 # The application delegate
 

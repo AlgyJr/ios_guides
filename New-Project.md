@@ -4,11 +4,11 @@
 
 1. Launch Xcode and choose "Create a new Xcode project" or from within Xcode, Click on File -> New -> Project</br>
 
-   <img src="http://i.imgur.com/7oDWujw.gif" width="300" /></br>
+   <img src="https://i.imgur.com/7oDWujw.gif" width="300" /></br>
 
 1. Create a "Single View" project, and click *Next*.</br>
 
-   <img src="http://i.imgur.com/Kjr10ht.png" width="400" /></br>
+   <img src="https://i.imgur.com/Kjr10ht.png" width="400" /></br>
 
 1. You'll be presented with a number of options.
    - **Product Name** - The product name is just the name of your app, e.g., "MyProject"
@@ -18,11 +18,11 @@
    - **Language** - Use Swift.
    - **Use Core Data** - It will add the boilerplate Core Data setup code for you. Leave it unchecked.</br>
 
-   <img src="http://i.imgur.com/ssbMW5b.png" width="400" />
+   <img src="https://i.imgur.com/ssbMW5b.png" width="400" />
 
 1. When you click *Next*, you'll be prompted for a location to save it. Enable "Create a Git respository."</br>
 
-   <img src="http://i.imgur.com/HM7FDKK.png" width="500" /></br>
+   <img src="https://i.imgur.com/HM7FDKK.png" width="500" /></br>
 
 ## 2. Add .gitignores
 

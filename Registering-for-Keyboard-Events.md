@@ -1,5 +1,5 @@
 ## Basic Use Case
-![Keyboard GIF | 250](http://i.imgur.com/bQsqmhT.gif)
+![Keyboard GIF | 250](https://i.imgur.com/bQsqmhT.gif)
 
 Often, you will have to rearrange views when the keyboard is shown or hidden to ensure that the appropriate views and controls are visible while the user is typing. To achieve this, we will register for the keyboard events which are fired when the keyboard is shown or hidden.
 
@@ -36,7 +36,7 @@ In this use case, we want to move several views the same offset amount when the 
 ### Step 3: Create Outlets For the Views You Want to Offset.
 
 - Create an outlet for the **fieldSuperview**. Drag from fieldSuperview in the Document Outline to your ViewController swift file.  
-![Create outlet for fieldSuperview](http://i.imgur.com/maYqgkO.gif)
+![Create outlet for fieldSuperview](https://i.imgur.com/maYqgkO.gif)
 
 ### Step 4: Define Variables
 
@@ -47,7 +47,7 @@ var initialY: CGFloat!
 var offset: CGFloat!
 ```  
 
-![Define Variables](http://i.imgur.com/1kLmcGm.gif)
+![Define Variables](https://i.imgur.com/1kLmcGm.gif)
 
 ### Step 5: Assign Values to Variables
 Within the `viewDidLoad( )` method... 
@@ -59,11 +59,11 @@ initialY = fieldSuperview.frame.origin.y
 offset = -50
 ```
 
-![Give Variables Values](http://i.imgur.com/3oWcRjI.gif)
+![Give Variables Values](https://i.imgur.com/3oWcRjI.gif)
 
 ### Step 6: Offset the views When Keyboard is Shown.
 
-![keyboardWillShow demo|150](http://i.imgur.com/MjPaRct.gif)
+![keyboardWillShow demo|150](https://i.imgur.com/MjPaRct.gif)
 
 Within the `keyboardWillShow` method, offset the y position of the fieldSuperview using your `offset` value.
 
@@ -90,7 +90,7 @@ fieldSuperview.frame.origin.y = initialY
 
 ### Step 8: Hide the Keyboard When Tapping Outside the TextField
 
-![kb hide show gif|150](http://i.imgur.com/pyaO52E.gif)  
+![kb hide show gif|150](https://i.imgur.com/pyaO52E.gif)  
 
 If you run the simulator now, you notice that when you click on the text field it will animate up as it should, but when you click away you cannot hide the keyboard. So we need to have the keyboard hide event triggered. A common way to do this is to tap away from the text field trigger a keyboard hide. 
 
@@ -103,4 +103,4 @@ view.endEditing(true)
 ```
 This will trigger the ```keyboardWillHide``` method on our view controller.  
   
-![Add tap to hide keyboard gif](http://i.imgur.com/P3JrdNq.gif)  
+![Add tap to hide keyboard gif](https://i.imgur.com/P3JrdNq.gif)  

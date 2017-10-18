@@ -6,11 +6,11 @@ Typically images are displayed using the built-in [UIImageView](https://develope
 
 With Interface Builder it's pretty easy to add and configure a UIImageView. The first step is to drag the UIImageView onto your view.
 
-![Add UIImageView|700](http://i.imgur.com/R3gk3Iq.gif)
+![Add UIImageView|700](https://i.imgur.com/R3gk3Iq.gif)
 
 Then open the UIImageView properties pane and select the image asset (assuming you have some images in your project). You can also configure how the underlying image is scaled to fit inside the UIImageView.
 
-![Configure UIImageView|700](http://i.imgur.com/GrS8WjX.gif)
+![Configure UIImageView|700](https://i.imgur.com/GrS8WjX.gif)
 
 ### Scale Types
 

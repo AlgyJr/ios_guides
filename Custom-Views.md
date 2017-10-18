@@ -79,7 +79,7 @@ functionality to this class to allow customization of where the caption
 is positioned or to make the caption disappear when the user taps on the
 image.
 
-<a href="http://imgur.com/isne6el"><img src="http://i.imgur.com/isne6ell.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/isne6el"><img src="https://i.imgur.com/isne6ell.png" title="source: imgur.com" /></a>
 
 ## Using custom views defined programatically
 We can define both the appearance and behavior of our custom view
@@ -160,7 +160,7 @@ To use our custom view inside a nib we simply drag in a `View` (colored
 orange below for visibility) from the Object Library and set the view's
 custom class in the attributes inspector.
 
-<a href="http://imgur.com/BnVinUM"><img src="http://i.imgur.com/BnVinUM.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/BnVinUM"><img src="https://i.imgur.com/BnVinUM.png" title="source: imgur.com" /></a>
 
 Here we've added the custom view to our main view controller in the
 storyboard.  We can get a reference to this view as we would any other
@@ -218,7 +218,7 @@ For example in our `CaptionableImageView` [example](#example-an-image-view-with-
 we might define our label and image view inside the nib and add outlets
 for them in the file's owner:
 
-<a href="http://imgur.com/tgBhRiF"><img src="http://i.imgur.com/tgBhRiF.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/tgBhRiF"><img src="https://i.imgur.com/tgBhRiF.gif" title="source: imgur.com" /></a>
 
 Note that **changing the file's owner's custom class only defines this
 relationship temporarily to help you and Interface Builder create the
@@ -324,7 +324,7 @@ class to `CaptionableImageView` and create outlets for the image view
 and label.  We'll create an additional outlet to the top level view
 called `contentView`.  The reason for this will be apparent soon.
 
-<a href="http://imgur.com/JsnxD5D"><img src="http://i.imgur.com/JsnxD5D.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/JsnxD5D"><img src="https://i.imgur.com/JsnxD5D.gif" title="source: imgur.com" /></a>
 
 Finally we add the code for our `CaptionableImageView` class as follows
 
@@ -450,7 +450,7 @@ from file's owner, set the top-level view's custom class to
 `CaptionableImageView` and recreated the outlets for `imageView` and
 `label`:
 
-<a href="http://imgur.com/NAKk6UU"><img src="http://i.imgur.com/NAKk6UU.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/NAKk6UU"><img src="https://i.imgur.com/NAKk6UU.png" title="source: imgur.com" /></a>
 
 The code for `CaptionableImageView` looks like:
 

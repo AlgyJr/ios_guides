@@ -1,4 +1,4 @@
-<a href="http://imgur.com/8YFquIY"><img src="http://i.imgur.com/8YFquIY.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/8YFquIY"><img src="https://i.imgur.com/8YFquIY.gif" title="source: imgur.com" /></a>
 
 ## Overview
 Providing a way for users to search through a collection of items is a
@@ -68,7 +68,7 @@ implements UISearchBarDelegate. Typically you make your view controller
 implement UISearchBarDelegate and set `searchBar.delegate = self`
 in `viewDidLoad` method.
 
-<a href="http://imgur.com/TbVI3Yv"><img src="http://i.imgur.com/TbVI3Yv.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/TbVI3Yv"><img src="https://i.imgur.com/TbVI3Yv.gif" title="source: imgur.com" /></a>
 
 The code to implement the search behavior is as follows.  We maintain an
 additional array `filteredData` to represent rows of data that match our
@@ -128,7 +128,7 @@ Here's what this looks like when running.  Notice that the search
 results are displayed in the same table, and there is no presentation of
 a separate search interface.
 
-<a href="http://imgur.com/xDqRQEJ"><img src="http://i.imgur.com/xDqRQEJ.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/xDqRQEJ"><img src="https://i.imgur.com/xDqRQEJ.gif" title="source: imgur.com" /></a>
 
 ### Example searching a collection view
 
@@ -136,7 +136,7 @@ Since the `UISearchBar` is quite simple, it can be combined with any
 abitrary view to build your own search interface.  Here's what it might
 look like paired with a collection view.
 
-<a href="http://imgur.com/PKY6m7O"><img src="http://i.imgur.com/PKY6m7O.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/PKY6m7O"><img src="https://i.imgur.com/PKY6m7O.gif" title="source: imgur.com" /></a>
 
 The code for this is essentially the same as in the case with table views.
 
@@ -271,7 +271,7 @@ have the built in animation when transitioning to the search interface.
 Also, you get the logic to show Cancel button and hide keyboard when
 user taps on cancel button for free when you use this.
 
-<a href="http://imgur.com/AgUYVoN"><img src="http://i.imgur.com/AgUYVoN.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/AgUYVoN"><img src="https://i.imgur.com/AgUYVoN.gif" title="source: imgur.com" /></a>
 
 ### Example searching a collection view
 
@@ -280,7 +280,7 @@ view in place.   We still have the presentation of a search interface,
 but unlike when working with the search display controller we are not
 restricted to using a table view to display the search results.
 
-<a href="http://imgur.com/ZEyaPyz"><img src="http://i.imgur.com/ZEyaPyz.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/ZEyaPyz"><img src="https://i.imgur.com/ZEyaPyz.gif" title="source: imgur.com" /></a>
 
 The code for this is almost the same as when searching the the table
 view above.  The only notable difference is that we had to introduce a
@@ -309,7 +309,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UISearchResu
 A common requirement is to place the search bar inside the navigation
 bar.
 
-<a href="http://imgur.com/RDnRxNO"><img src="http://i.imgur.com/RDnRxNO.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/RDnRxNO"><img src="https://i.imgur.com/RDnRxNO.gif" title="source: imgur.com" /></a>
 
 This can be configured programatically in your view controller's
 `viewDidLoad` as follows.

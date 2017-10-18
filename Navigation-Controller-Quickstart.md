@@ -1,7 +1,7 @@
 _Updated with iOS 10.3, Xcode 8.3.3 and Swift 3_
 
 ## Overview
-<a href="http://imgur.com/7STmvxL"><img src="http://i.imgur.com/7STmvxL.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/7STmvxL"><img src="https://i.imgur.com/7STmvxL.gif" title="source: imgur.com" /></a>
 
 Navigation controllers help a user browse through a hierarchy of content
 by maintaining a history of view controllers that navigated to the
@@ -38,14 +38,14 @@ button.  This can be done for a wide variety of events.  One typical
 example is handling the row selection event in a table view by
 control-dragging from a prototype cell.
 
-<a href="http://imgur.com/Tq6grSl"><img src="http://i.imgur.com/Tq6grSl.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/Tq6grSl"><img src="https://i.imgur.com/Tq6grSl.gif" title="source: imgur.com" /></a>
 
 ### Step 4: Set an identifier for the segue
 We'll need a way figure out which segue is firing when we write the code
 to configure the new view controller.  You can set a unique identifier for each
 segue in the Attributes Inspector after selecting it.
 
-<a href="http://imgur.com/sKRkV9n"><img src="http://i.imgur.com/sKRkV9n.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/sKRkV9n"><img src="https://i.imgur.com/sKRkV9n.gif" title="source: imgur.com" /></a>
 
 ### Step 5: Prepare view controller before navigating to it
 
@@ -74,7 +74,7 @@ class ViewController: UIViewController {
 
 Running this example gives us:
 
-<a href="http://imgur.com/msRxYYM"><img src="http://i.imgur.com/msRxYYM.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/msRxYYM"><img src="https://i.imgur.com/msRxYYM.gif" title="source: imgur.com" /></a>
 
 ## Programmatic setup
 You can also set up a navigation controller programmatically.  If you

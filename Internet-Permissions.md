@@ -2,7 +2,7 @@ iOS 9 is more secure about downloading from the internet, and you often have to 
 
 In the **info.plist** file, you can use `NSAllowsArbitraryLoads` to completely disable ATS in your app:
 
-![Imgur](http://i.imgur.com/Tmy1wYL.png)
+![Imgur](https://i.imgur.com/Tmy1wYL.png)
 
 ### Step 1
 
@@ -19,7 +19,7 @@ Right-Click **info.plist** and **Open As -> Source Code**. This will open the fi
 
 Note where it is in the context of the rest of the xml file.
 
-![Add NSAllowsArbitraryLoads|600](http://i.imgur.com/qqP7KHp.gif)
+![Add NSAllowsArbitraryLoads|600](https://i.imgur.com/qqP7KHp.gif)
 
 ### Read More
 

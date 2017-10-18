@@ -29,19 +29,19 @@ Open your `.xib` file and select the `File's Owner` object in the
 Document Outline.  Select the custom class of `File's Owner` to the
 class you just created.
 
-<a href="http://imgur.com/HyiX5S7"><img src="http://i.imgur.com/HyiX5S7.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/HyiX5S7"><img src="https://i.imgur.com/HyiX5S7.png" title="source: imgur.com" /></a>
 
 ### Step 4: Connect outlets
 Open the Assistant Editor and pick your custom class.  Create outlets
 for anything you'll need to manipulate or set programatically.
 
-<a href="http://imgur.com/tgBhRiF"><img src="http://i.imgur.com/tgBhRiF.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/tgBhRiF"><img src="https://i.imgur.com/tgBhRiF.gif" title="source: imgur.com" /></a>
 
 ### Step 5: Create outlet for content view
 Create an outlet for the top-level view in your `.xib` and call it
 `contentView`.
 
-<a href="http://imgur.com/JsnxD5D"><img src="http://i.imgur.com/JsnxD5D.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/JsnxD5D"><img src="https://i.imgur.com/JsnxD5D.gif" title="source: imgur.com" /></a>
 
 ### Step 6: Add initialization code
 In the custom view class, you'll need to override the `initWithCoder` and
@@ -110,7 +110,7 @@ Open up your story board and drag a `View` (colored orange below for
 visibility) from the Object Library into your view controller.  Set the
 view's custom class to your custom view's class.
 
-<a href="http://imgur.com/BnVinUM"><img src="http://i.imgur.com/BnVinUM.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/BnVinUM"><img src="https://i.imgur.com/BnVinUM.png" title="source: imgur.com" /></a>
 
 Create an outlet for the custom view in your view controller.  A good
 place to configure the view is in `viewDidLoad`.

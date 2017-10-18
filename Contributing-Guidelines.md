@@ -65,7 +65,7 @@ Check the [issues](https://github.com/codepath/ios_guides/issues) for this repos
 ### Including Images in the Guides
 
  * [LICEcap](http://www.cockos.com/licecap) is a great tool for creating animated gifs.
- * Upload images / gifs to [Imgur](http://imgur.com) and then use the "Markdown Link" to include them in the guides.
+ * Upload images / gifs to [Imgur](https://imgur.com) and then use the "Markdown Link" to include them in the guides.
 
 ### Linking to Other Guides
 

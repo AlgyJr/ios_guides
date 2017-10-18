@@ -1,6 +1,6 @@
 ## Overview
 
-<a href="http://imgur.com/WhoidE5"><img src="http://i.imgur.com/WhoidE5.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/WhoidE5"><img src="https://i.imgur.com/WhoidE5.gif" title="source: imgur.com" /></a>
 
 Tab bar controllers are implemented by the
 [UITabBarController][uitabbarcontroller] class.  They allow a user of to
@@ -42,7 +42,7 @@ controllers.  We also set the the the tab bar controller to be our
 application's root view controller selecting it and by ticking the `Is
 Initial View Controller` checkbox.
 
-<a href="http://imgur.com/WgiEuBZ"><img src="http://i.imgur.com/WgiEuBZ.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/WgiEuBZ"><img src="https://i.imgur.com/WgiEuBZ.png" title="source: imgur.com" /></a>
 
 ### Adding tabs to the tab bar controller
 We can add more tabs by dragging a new view controller frm
@@ -54,7 +54,7 @@ also automatically adds a tab bar item to our new view controller which
 will alow us to configure the appearance of the button that represents
 this view controller in the tab bar.
 
-<a href="http://imgur.com/OOMB573"><img src="http://i.imgur.com/OOMB573.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/OOMB573"><img src="https://i.imgur.com/OOMB573.gif" title="source: imgur.com" /></a>
 
 In our case we only needed two view controllers total, but we removed
 and readded one above to illustrate the technique.
@@ -70,7 +70,7 @@ display the elapsed time and add two buttons for "start" and
 "stop/reset".  We add `@IBOutlets` for our two labels and add
 `@IBActions` to respond to each button being tapped.
 
-<a href="http://imgur.com/Vc2uQK7"><img src="http://i.imgur.com/Vc2uQK7.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/Vc2uQK7"><img src="https://i.imgur.com/Vc2uQK7.png" title="source: imgur.com" /></a>
 
 Finally we can add the code to make our clock tick
 
@@ -159,7 +159,7 @@ class StopwatchViewController: UIViewController {
     }
 }
 ```
-<a href="http://imgur.com/j2tg3ul"><img src="http://i.imgur.com/j2tg3ul.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/j2tg3ul"><img src="https://i.imgur.com/j2tg3ul.gif" title="source: imgur.com" /></a>
 
 ## Programatically setting up a tab bar controller
 If you have 2 view controllers vc1 and vc2 created programmatically, then you can instantiate a `UITabBarController` and initialize it like this:
@@ -178,7 +178,7 @@ altogether from IB.
 
 Your story board should look something like this now:
 
-<a href="http://imgur.com/L4MZl1d"><img src="http://i.imgur.com/L4MZl1d.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/L4MZl1d"><img src="https://i.imgur.com/L4MZl1d.gif" title="source: imgur.com" /></a>
 
 When the app starts up, our AppDelegate's function `didFinishLaunchingWithOptions` 
 gets called. This is where we can do any custom view controller set up.
@@ -215,7 +215,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 Make sure you provide story board id for both clock and stop watch view controllers
 in IB so that they can be initialized in code:
 
-<a href="http://imgur.com/ySOAC6i"><img src="http://i.imgur.com/ySOAC6i.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/ySOAC6i"><img src="https://i.imgur.com/ySOAC6i.gif" title="source: imgur.com" /></a>
 
 It is very common for a tab bar controller to have navigation controllers as root
 view controllers. If this is the case, you will want to assign the storyboard ID
@@ -280,7 +280,7 @@ In More tab, user can tap on Edit button. That will allow user to reorder
 tabs so that they can pick the which 4 view controllers will appear on the tab view
 and which view controllers will be in More tab.
 
-<a href="http://imgur.com/QEmPU1e"><img src="http://i.imgur.com/QEmPU1e.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/QEmPU1e"><img src="https://i.imgur.com/QEmPU1e.gif" title="source: imgur.com" /></a>
 
 ### Configuring what is allowed to be reordered
 By default, the user is allowed to rearrange all items on the tab bar.

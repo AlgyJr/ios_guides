@@ -22,7 +22,7 @@ Click on the Keys and Access token Tab. Copy the the API Key and API secret. We 
 
 Finally, back on the details tab, copy the request token, Authorization token and Access Token API URL's. This is what we will use to perform the authentication in our app. More on this later. 
 
-<img src="http://i.imgur.com/oDhtkGh.png" alt="Twitter Oauth Demo" width="600" height="400" />
+<img src="https://i.imgur.com/oDhtkGh.png" alt="Twitter Oauth Demo" width="600" height="400" />
 
 ### Building your demo app in xcode
 

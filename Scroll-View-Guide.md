@@ -16,7 +16,7 @@ Add a scroll view to your view controller by dragging one from the
 Object Library.  The size of the scroll view is the size of the area
 that is visible to the user.
 
-<a href="http://imgur.com/oJzRkUE"><img src="http://i.imgur.com/oJzRkUE.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/oJzRkUE"><img src="https://i.imgur.com/oJzRkUE.gif" title="source: imgur.com" /></a>
 
 ### Step 2: Set content size
 Tell the scroll view about the size of your content area by setting the
@@ -77,7 +77,7 @@ class ViewController: UIViewController {
 ```
 
 Here's what our example looks like when running:
-<a href="http://imgur.com/nLFfOM4"><img src="http://i.imgur.com/nLFfOM4.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/nLFfOM4"><img src="https://i.imgur.com/nLFfOM4.gif" title="source: imgur.com" /></a>
 
 ## Scrolling programatically
 ### Set content offset
@@ -98,7 +98,7 @@ class ViewController: UIViewController {
 
 ```
 
-<a href="http://imgur.com/qtu6gAP"><img src="http://i.imgur.com/qtu6gAP.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/qtu6gAP"><img src="https://i.imgur.com/qtu6gAP.gif" title="source: imgur.com" /></a>
 
 ### Scrolling to a a subview
 If you want to make sure a given view is visible on screen you can
@@ -123,7 +123,7 @@ class ViewController: UIViewController {
 }
 ```
 
-<a href="http://imgur.com/uLlEhV5"><img src="http://i.imgur.com/uLlEhV5.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/uLlEhV5"><img src="https://i.imgur.com/uLlEhV5.gif" title="source: imgur.com" /></a>
 
 ## Using paging mode
 ### Enabling paging
@@ -191,7 +191,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
 }
 ```
 
-<a href="http://imgur.com/PFnCulU"><img src="http://i.imgur.com/PFnCulU.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/PFnCulU"><img src="https://i.imgur.com/PFnCulU.gif" title="source: imgur.com" /></a>
 
 ## Pinch to zoom
 Basic zooming behavior via pinch gestures is provided by the scroll view
@@ -224,7 +224,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
 }
 ```
 
-<a href="http://imgur.com/xmLhLet"><img src="http://i.imgur.com/xmLhLet.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/xmLhLet"><img src="https://i.imgur.com/xmLhLet.gif" title="source: imgur.com" /></a>
 
 ## Using scroll views with auto layout
 As noted [above](#basic-usage), there are two sizes that are relevant
