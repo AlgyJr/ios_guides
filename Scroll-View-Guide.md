@@ -100,7 +100,7 @@ class ViewController: UIViewController {
 
 <a href="https://imgur.com/qtu6gAP"><img src="https://i.imgur.com/qtu6gAP.gif" title="source: imgur.com" /></a>
 
-### Scrolling to a a subview
+### Scrolling to a subview
 If you want to make sure a given view is visible on screen you can
 you can use the `scrollRectToVisible` method.
 
