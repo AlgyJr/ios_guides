@@ -334,7 +334,7 @@ Within the `didPinch` method...
 - Store the previous transform state of the imageView in a constant.
 - Modify the scale component of the imageView's transform property.
    - NOTE: We use `CGAffineTransformScale` instead of `CGAffineTransformMakeScale`. This is because `CGAffineTransformScale` allows us to add to the previous transform state as an argument, `previousTransfrom` whereas `CGAffineTransformMakeScale` will overwrite it completely. [Combining Transforms](https://guides.codepath.com/ios/Using-View-Transforms#combining-transforms)
-   - NOTE: CGAffineTransformScale' has been replaced by instance method 'CGAffineTransform.scaledBy(x:y:) (noted on: 10/31/17)
+   - NOTE: CGAffineTransformScale' has been replaced by instance method 'CGAffineTransform.scaledBy(x:y:) (updated: 10/31/17)
 - Set the scale of the UIPinchGestureRecognizer back to 1.
    - Resetting the scale is necessary because we are adding the scale to the `previousTransform` each time the method is called. If we didn't reset the scale, each time around the scale that was added to the `previousTransform` would be doubled and our Image View would scale out of control! But don't take my word for it, run the app without resetting the scale back to 1 and see what happens! 
 
