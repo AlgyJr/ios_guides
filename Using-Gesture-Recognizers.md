@@ -171,7 +171,7 @@ By default, it won't work if you add multiple gesture recognizers to the same vi
 For example, if you want to use a pinch and rotate gesture recognizer simultaneously, choose either the pinch or the rotate gesture recognizer (it doesn't matter which one). If you created the gesture recognizer in Interface Builder, create an IBOutlet for it by Ctrl-dragging from the nib.
 
 ```swift
-pinchGestureRecognizer.delegate = self;
+pinchGestureRecognizer.delegate = self
 
 ```
 
