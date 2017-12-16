@@ -3,14 +3,37 @@
 This is a quickstart guide for using the taking a photo or picking an image from the camera roll using the stock camera and camera roll. In both cases, we'll modally present the `UIImagePickerController` class which has a delegate. The delegate has a method which is called after a user takes/picks a picture.
 
 ## Permissions
-As of iOS 10, the following camera and photo library usage descriptions are required in the `info.plist`. The description you enter will be shown to the user when prompted to allow permissions to the camera or photo library.
+As of iOS 10, the following camera and photo library usage descriptions are required in the `Info.plist`. The description you enter will be shown to the user when prompted to allow permissions to the camera or photo library.
 
+### Step 1: Open `Info.plist`
+Select the `Info.plist`file in the documents outline.  There are two ways to view permissions set in your `Info.plist` file, and the names of the permissions vary slightly depending on whether you view the file as source code or as a property list.  You can view it in XML by right-clicking the file name, going to "Open As" and selecting "Source Code."    Alternatively, you can right-click the file name, go to "Open As" and select "Property List".  XCode defaults to opening the `Info.plist` file in the Property List view.   
+
+### Step 2: Add Permissions
+
+If you opened `Info.plist` as source code, add the XML lines below inside the `<dict>`.
 ```xml
 <key>NSPhotoLibraryUsageDescription</key>               <!-- added this for photo library permission -->
-<string>NeedLibrary access for uploading Images</string> <!-- added this for photo library permission -->
+<string>Need library access to upload images</string> <!-- added this for photo library permission -->
 <key>NSCameraUsageDescription</key> <!-- added this for camera permission -->
-<string>Need camera access for uploading Images</string> <!-- added this for camera permission -->
+<string>Need camera access to take pictures</string> <!-- added this for camera permission -->
 ```
+
+If you opened `Info.plist` as a property list, add the following two keys:
+
+1. `Privacy - Photo Library Usage Description` with the value `Need library access to upload images`
+2. `Privacy - Camera Usage Description` with the value `Need camera access to take pictures`.
+
+**Creating a Key**
+1. Hover over the top cell that says `Information Property List`
+2. Click the grey plus button that appears.  A new cell will now appear nested under the `Information Property List`
+3. In thew new cell, start typing the key for your new property. E.g. "Privacy - Photo Library Usage Description" (without the quotes).  XCode will search for properties starting with the text you have entered and you can select yours when you see it.
+4. In the `Value` cell, type the description you want shown to the user when prompted to allow the permission.  E.g. "Need library access to upload images"
+
+Note that for the two permissions we are adding for the camera and library access, the `Type` value should be left as `String`.  You can drag permissions to any place inside their parent.  For example you could drag the camera and photo library permissions to be next to each other.
+
+![Adding_key_to_plist_instructional_gif](https://github.com/hlpostman/Add-new-key-to-plist-instructional-gif/blob/master/Adding_key_to_plist.gif)
+
+
 
 ## Taking a Picture
 
