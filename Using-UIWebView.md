@@ -28,9 +28,9 @@ Within the `viewDidLoad` method...
 
 ```swift
 // Convert the url String to a NSURL object.
-let requestURL = NSURL(string:url)
+let requestURL = URL(string:url)
 // Place the URL in a URL Request.
-let request = NSURLRequest(URL: requestURL!)
+let request = URLRequest(URL: requestURL!)
 // Load Request into WebView.
 webView.loadRequest(request)
 ```
