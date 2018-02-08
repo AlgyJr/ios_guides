@@ -699,7 +699,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.estimatedRowHeight = 50
 
         let cellNib = UINib(nibName: "DemoNibTableViewCell", bundle: Bundle.main)
-        tableView.registerNib(cellNib, forCellReuseIdentifier: "com.codepath.DemoNibTableViewCell")
+        tableView.register(cellNib, forCellReuseIdentifier: "com.codepath.DemoNibTableViewCell")
 
         referenceCell = cellNib.instantiateWithOwner(nil, options: nil).first as DemoNibTableViewCell
         referenceCell.frame = tableView.frame // makes reference cell have the same width as the table
