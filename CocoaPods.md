@@ -61,7 +61,7 @@ You only need a single Podfile per project. The Podfile is a plain text file whe
     pod repo update
     ``` 
 
-### Open the Xcode workspace:
+### Open the Xcode workspace
    - Close the project (`MyApp.xcodeproject`) if you have it open and open the workspace (`MyApp.xcworkspace`).
    - CocoaPods creates an additional project for all the dependencies so you need to **open the `.xcworkspace` from now on (which will contain your original project and the pods project).**:
 
