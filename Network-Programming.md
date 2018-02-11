@@ -250,10 +250,3 @@ class Story {
     }
 }
 ```
-
-### Swift 3 Syntax Test
-
-```swift
-// Test snippet for [[String: Any]]
-var swiftDictionary: [[String: Any]] = []
-```
