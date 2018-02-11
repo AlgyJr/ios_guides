@@ -49,7 +49,7 @@ by adding more components from the Object Library.
 Select `File -> New -> File... -> iOS -> Source -> Cocoa Touch Class`
 and create a new subclass of `UITableViewCell`.  Make sure to select `Swift` as the language as well:
 
-<img src="https://imgur.com/NJ5ROO5.png"/>
+<img src="https://i.imgur.com/NJ5ROO5.png"/>
 
 Back in Interface Builder select your prototype cell, and in the Identity Inspector, set
 its custom class property to the new class you just created.
