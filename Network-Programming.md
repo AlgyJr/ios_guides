@@ -180,7 +180,7 @@ class Movie {
 ```
 
 #### Objective-C
-```
+```objc
 NSString *clientId = @"Put_Your_Client_Id_Here";
 NSString *urlString =
 [@"https://api.instagram.com/v1/media/popular?client_id=" stringByAppendingString:clientId];
