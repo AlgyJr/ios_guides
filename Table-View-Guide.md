@@ -1645,7 +1645,7 @@ _to be completed..._
 
 First, set the separator inset to zero on the tableview.
 
-```
+```swift
 class MyTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -1656,7 +1656,7 @@ class MyTableViewController: UITableViewController {
 
 Then, in your cell, disable the margins, and the margins it may inherit from parent views.
 
-```
+```swift
 class MyTableViewCell: UITableViewCell
     override func awakeFromNib() {
         super.awakeFromNib()
