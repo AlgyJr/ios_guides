@@ -52,6 +52,8 @@ func run(after wait: TimeInterval, closure: @escaping () -> Void) {
 }
 ```
 
+Make sure to call the `run` method in you onRefresh method:
+
 ```swift
 // Call the delay method in your onRefresh() method
 func refresh() {
