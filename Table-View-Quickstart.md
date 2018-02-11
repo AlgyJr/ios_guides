@@ -57,7 +57,7 @@ its custom class property to the new class you just created.
 <a href="https://imgur.com/2r9tOJo"><img src="https://i.imgur.com/2r9tOJo.png" title="source: imgur.com" /></a>
 
 ### Step 5: Add code that allows configuration of your prototype cell
-Open the Assistant Editor (tuxedo view) and select your custom
+Open the Assistant Editor (two overlapping rings view) and select your custom
 class.  Add outlets for elements you need to configure.  You might need
 to add code to provide an easy way to configure the cell.
 
