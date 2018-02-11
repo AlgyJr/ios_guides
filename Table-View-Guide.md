@@ -812,6 +812,8 @@ handling logic (see how to propagate events below).  For more complex
 situations, you might opt to simply include this custom "accessory view"
 as part of your main content view.
 
+Setup your prototype cell as follows:
+
 ```swift
 class DemoPrototypeCell: UITableViewCell {
 
@@ -824,6 +826,9 @@ class DemoPrototypeCell: UITableViewCell {
     }
 }
 ```
+
+Next, modify the accessory view's background color in the view controller:
+
 ```swift
 import UIKit
 
