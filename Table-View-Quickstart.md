@@ -129,8 +129,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "com.codepath.DemoPrototypeCell", for: indexPath) as! DemoPrototypeCell
         let cityState = data[indexPath.row].components(separatedBy: ", ")
-        cell.cityLabel.text = cityState.first
-        cell.stateLabel.text = cityState.last
+        cell.cityLabel.text = cityState.first ?? ""
+        cell.stateLabel.text = cityState.last ?? ""
         return cell
     }
     
