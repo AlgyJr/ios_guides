@@ -31,9 +31,7 @@ If you opened `Info.plist` as a property list, add the following two keys:
 
 Note that for the two permissions we are adding for the camera and library access, the `Type` value should be left as `String`.  You can drag permissions to any place inside their parent.  For example you could drag the camera and photo library permissions to be next to each other.
 
-![Adding_key_to_plist_instructional_gif](https://github.com/hlpostman/Add-new-key-to-plist-instructional-gif/blob/master/Adding_key_to_plist.gif)
-
-
+<img src="https://i.imgur.com/9EoXRMK.gif" width="800"/><br>
 
 ## Taking a Picture
 
