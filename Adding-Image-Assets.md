@@ -49,7 +49,6 @@ To set the app icon, simply select "App Icon" in the asset catalog and drag a .p
 ### Launch Screen
 For the launch image, you will need to configure the **LaunchScreen.storyboard** file as you would any other ViewController.
 - Add your Launch Screen Asset to the **Assets.xcassets** folder.
-- Click on the **LaunchScreen.storyboard** file and disable auto-layout and size classes.
 - Drag the Launch Screen image from the media library (Bottom right in utilities pane), on to the LaunchScreen ViewController. 
 - HINT: If Xcode is having trouble recognizing your Launch Screen image file, try renaming it in the finder before dragging it into your assets folder (example below)
 
