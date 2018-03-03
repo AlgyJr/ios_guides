@@ -188,7 +188,7 @@ view in an iOS application will be a subclass of
 UIKit comes with a selection of [predefined views][viewcatalog] that are
 fairly comprehensive and, used creatively, can implement many UI
 designs.
-[viewcatalog]: https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/UIKitUICatalog/
+[viewcatalog]: https://developer.apple.com/library/content/navigation/#section=Topics&topic=User%20Experience
 
 You can also create custom views by subclassing any `UIView` class.
 Custom views are generally composed of one or more built-in views.  If
