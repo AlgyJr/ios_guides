@@ -542,6 +542,8 @@ all the outlets to file's owner as we did
 `initWithFrame`/`initWithCoder` will not trigger another `initWithCoder`
 on our custom class when the top-level view is instantiated.
 
+**In other words, do not set the Content View's Custom Class as your UIView subclass in your nib. Leave it blank, i.e., as UIView. Only the File's Owner's Custom Class should be set to your UIVew subclass in your nib.**
+
 ## A note about view controllers
 So far we have only discussed using nibs with views.  However, something that is relatively common is to instantiate a nib with the
 file's owner set to a view controller.  This allows you bind outlets to
