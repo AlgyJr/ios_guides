@@ -1,0 +1,1 @@
+This toturial isn't recommended at all, it's not memory efficient or anything alike, use original tabbar controller for better results. 
