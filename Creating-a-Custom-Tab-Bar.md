@@ -1,5 +1,6 @@
 Sometimes the standard iOS tab bar just doesn't have the look or functionality you need for your app. In this case, you need to create a custom tab bar from scratch.
 
+## This tutorial doesn't use views or memory as effective as standard iOS tab bar, mainly not applicable for production on its current state. Use it with cautious, customizing original tab bar isn't that hard, so use it wisely. 
 
 ### Step 1: Setup your Storyboard
 
