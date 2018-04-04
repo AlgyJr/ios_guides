@@ -37,7 +37,7 @@ Use Heroku if you have little or no experience with setting up web sites. Heroku
 
       <img src="https://imgur.com/0JcJrn5.png">
 
-3. Make sure to change the config values.
+3. Make sure to change the config variables.
       <img src="https://imgur.com/Ao1Yjdm.png"/>
       * Leave `PARSE_MOUNT` to be `/parse`.  It does not need to be changed.
       * Set `APP_ID` for the app identifier.  If you do not set one, the default is set as `myAppId`.  You will need this info for the Client SDK setup.
