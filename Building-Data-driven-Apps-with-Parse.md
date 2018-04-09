@@ -118,7 +118,7 @@ The following code snippet shows how to sign up user:
    Parameters:
    `block` - The block to execute. 
 
-[Parse User Sign-Up documentation](https://parse.com/docs/ios/guide#users-signing-up).
+[Parse User Sign-Up documentation](http://docs.parseplatform.org/ios/guide/#signing-up).
 
 ### User Login
 
@@ -152,7 +152,7 @@ Returns an instance of the successfully logged in `PFUser`. This also caches the
     - password: The password of the user.
     - block: The block to execute. 
 
-[Parse User Login documentation](https://parse.com/docs/ios/guide#users-logging-in).
+[Parse User Login documentation](http://docs.parseplatform.org/ios/guide/#logging-in).
 
 ### Persisting user session
 
@@ -329,7 +329,7 @@ subscription = client.subscribe(armorQuery)
 ### `PFFile`
 `PFFile` lets you store application files in the cloud that would otherwise be too large or cumbersome to fit into a regular `PFObject`. The most common use case is storing images but you can also use it for documents, videos, music, and any other binary data (up to 10 megabytes).
 
-[Parse Documentation on handling Images using `PFFile`](https://parse.com/docs/ios/guide#files-images)
+[Parse Documentation on handling Images using `PFFile`](http://docs.parseplatform.org/ios/guide/#images)
 
 ### (Use Case) Post photos to Instagram (Parse)
 
