@@ -112,6 +112,8 @@ class ViewController: UIViewController, UITableViewDataSource {
 @end
 ```
 
+and more:
+
 ```kotlin
 val a: Int = 1
 val b = 1   // `Int` type is inferred
