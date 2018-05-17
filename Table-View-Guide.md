@@ -106,7 +106,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
 }
 ```
-```Objc
+```Objective-C
 @implementation ViewController
 
 @end
