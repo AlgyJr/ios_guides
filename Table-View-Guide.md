@@ -112,7 +112,7 @@ class ViewController: UIViewController, UITableViewDataSource {
 @end
 ```
 
-and more:
+and then more here:
 
 ```kotlin
 val a: Int = 1
