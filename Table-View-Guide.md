@@ -215,6 +215,11 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
 }
 ```
+```objc
+@implementation ViewController
+
+@end
+```
 
 In `viewDidLoad` we call our `UITableView`'s
 [`register(AnyClass?, forCellReuseIdentifier:`][register] to associate the
