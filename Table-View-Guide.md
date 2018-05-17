@@ -106,26 +106,6 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
 }
 ```
-```Objective-C
-@implementation ViewController
-
-@end
-```
-
-and then more here:
-
-```kotlin
-val a: Int = 1
-val b = 1   // `Int` type is inferred
-val c: Int  // Type required when no initializer is provided
-c = 1       // definite assignment
-```
-```java
-int a = 1;
-int b = 1;
-int c;
-c = 1;
-```
 
 Provided that the `@IBOutlet` `tableView` has been connected to a
 `UITableView` in your storyboard, you will see something like this when running
