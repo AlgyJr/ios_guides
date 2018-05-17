@@ -106,6 +106,11 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
 }
 ```
+```objc
+@implementation ViewController
+
+@end
+```
 
 Provided that the `@IBOutlet` `tableView` has been connected to a
 `UITableView` in your storyboard, you will see something like this when running
