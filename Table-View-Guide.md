@@ -107,12 +107,24 @@ class ViewController: UIViewController, UITableViewDataSource {
 }
 ```
 ```objc
+//  ViewController.h
+#import <UIKit/UIKit.h>
+
+@interface ViewController : UIViewController <UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@end
+
+//  ViewController.m
+#import "ViewController.h"
 
 @interface ViewController ()
-    @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @end
 
 @implementation ViewController
+
 NSArray *data;
 
 - (void)viewDidLoad {
@@ -241,8 +253,48 @@ class ViewController: UIViewController, UITableViewDataSource {
 }
 ```
 ```objc
+//  ViewController.h
+#import <UIKit/UIKit.h>
+
+@interface ViewController : UIViewController <UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@end
+
+//  ViewController.m
+#import "ViewController.h"
+
+@interface ViewController ()
+
+@end
+
 @implementation ViewController
 
+NSArray *data;
+NSString *CellIdentifier = @"com.codepath.MyFirstTableViewCell";
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    data = @[@"New York, NY", @"Los Angeles, CA", @"Chicago, IL", @"Houston, TX",
+             @"Philadelphia, PA", @"Phoenix, AZ", @"San Diego, CA", @"San Antonio, TX",
+             @"Dallas, TX", @"Detroit, MI", @"San Jose, CA", @"Indianapolis, IN",
+             @"Jacksonville, FL", @"San Francisco, CA", @"Columbus, OH", @"Austin, TX",
+             @"Memphis, TN", @"Baltimore, MD", @"Charlotte, ND", @"Fort Worth, TX"];
+    self.tableView.dataSource = self;
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+// If there are no cells available for reuse, it will always return a cell so long as the identifier has previously been registered    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    cell.textLabel.text = data[indexPath.row];
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return data.count;
+}
 @end
 ```
 
