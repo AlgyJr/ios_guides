@@ -107,8 +107,33 @@ class ViewController: UIViewController, UITableViewDataSource {
 }
 ```
 ```objc
-@implementation ViewController
 
+@interface ViewController ()
+    @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@end
+
+@implementation ViewController
+NSArray *data;
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    data = @[@"New York, NY", @"Los Angeles, CA", @"Chicago, IL", @"Houston, TX",
+             @"Philadelphia, PA", @"Phoenix, AZ", @"San Diego, CA", @"San Antonio, TX",
+             @"Dallas, TX", @"Detroit, MI", @"San Jose, CA", @"Indianapolis, IN",
+             @"Jacksonville, FL", @"San Francisco, CA", @"Columbus, OH", @"Austin, TX",
+             @"Memphis, TN", @"Baltimore, MD", @"Charlotte, ND", @"Fort Worth, TX"];
+    self.tableView.dataSource = self;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    cell.textLabel.text = data[indexPath.row];
+    return  cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return data.count;
+}
 @end
 ```
 
