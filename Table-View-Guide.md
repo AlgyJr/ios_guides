@@ -439,6 +439,18 @@ class DemoPrototypeCell: UITableViewCell {
     @IBOutlet weak var stateLabel: UILabel!
 }
 ```
+```objc
+//  DemoPrototypeCell.h
+
+#import <UIKit/UIKit.h>
+
+@interface DemoPrototypeCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UILabel *cityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *stateLabel;
+
+@end
+```
 
 ```swift
 import UIKit
@@ -467,10 +479,56 @@ class ViewController: UIViewController, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
-    }
-
-    
+    }    
 }
+```
+
+```objc
+//  ViewController.h
+
+#import <UIKit/UIKit.h>
+
+@interface ViewController : UIViewController <UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@end
+
+//  ViewController.m
+
+#import "ViewController.h"
+#import "DemoPrototypeCell.h"
+
+@interface ViewController ()
+
+@end
+
+@implementation ViewController
+
+NSArray *data;
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    data = @[@"New York, NY", @"Los Angeles, CA", @"Chicago, IL", @"Houston, TX",
+             @"Philadelphia, PA", @"Phoenix, AZ", @"San Diego, CA", @"San Antonio, TX",
+             @"Dallas, TX", @"Detroit, MI", @"San Jose, CA", @"Indianapolis, IN",
+             @"Jacksonville, FL", @"San Francisco, CA", @"Columbus, OH", @"Austin, TX",
+             @"Memphis, TN", @"Baltimore, MD", @"Charlotte, ND", @"Fort Worth, TX"];
+    self.tableView.dataSource = self;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    DemoPrototypeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"com.codepath.DemoPrototypeCell" forIndexPath:indexPath];
+    NSArray *cityState = [data[indexPath.row] componentsSeparatedByString:@", "];
+    cell.cityLabel.text = cityState.firstObject;
+    cell.stateLabel.text = cityState.lastObject;
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return data.count;
+}
+@end
 ```
 Putting everything together we get a table that looks like this:
 
@@ -556,6 +614,44 @@ class ViewController: UIViewController, UITableViewDataSource {
 }
 ```
 
+```objc
+//  ViewController.m
+
+#import "ViewController.h"
+#import "DemoNibTableViewCell.h"
+
+@implementation ViewController
+
+NSArray *data;
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    data = @[@"New York, NY", @"Los Angeles, CA", @"Chicago, IL", @"Houston, TX",
+             @"Philadelphia, PA", @"Phoenix, AZ", @"San Diego, CA", @"San Antonio, TX",
+             @"Dallas, TX", @"Detroit, MI", @"San Jose, CA", @"Indianapolis, IN",
+             @"Jacksonville, FL", @"San Francisco, CA", @"Columbus, OH", @"Austin, TX",
+             @"Memphis, TN", @"Baltimore, MD", @"Charlotte, ND", @"Fort Worth, TX"];
+    self.tableView.dataSource = self;
+    UINib *cellNib = [UINib nibWithNibName:@"DemoNibTableViewCell" bundle: NSBundle.mainBundle];
+    [self.tableView registerNib:cellNib forCellReuseIdentifier:@"com.codepath.DemoNibTableViewCell"];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    DemoNibTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"com.codepath.DemoNibTableViewCell" forIndexPath:indexPath];
+    NSArray *cityState = [data[indexPath.row] componentsSeparatedByString:@", "];
+    cell.cityLabel.text = cityState.firstObject;
+    cell.stateLabel.text = cityState.lastObject;
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return data.count;
+}
+
+@end
+
+```
+
 By default, your NIB will be in the main resource bundle, although you
 may change this in larger projects by editing your build steps.  The
 code in `viewDidLoad` loads your NIB by creating an instance of
@@ -610,6 +706,53 @@ class DemoProgrammaticTableViewCell: UITableViewCell {
 }
 ```
 
+```objc
+//  DemoProgrammaticTableViewCell.h
+
+#import <UIKit/UIKit.h>
+
+@interface DemoProgrammaticTableViewCell : UITableViewCell
+
+@property (nonatomic, strong) UILabel *cityLabel;
+@property (nonatomic, strong) UILabel *stateLabel;
+
+@end
+
+//  DemoProgrammaticTableViewCell.m
+
+#import "DemoProgrammaticTableViewCell.h"
+
+@implementation DemoProgrammaticTableViewCell
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if(self){
+        [self initViews];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    if(self){
+        [self initViews];
+    }
+    return self;
+}
+
+- (void)initViews {
+    CGRect sourceRect = CGRectInset(self.frame, 10, 10);
+    CGRect cityRect;
+    CGRect stateRect;
+    CGRectDivide(sourceRect, &stateRect, &cityRect, 40, CGRectMaxXEdge);
+    self.cityLabel = [[UILabel alloc] initWithFrame:cityRect];
+    self.stateLabel = [[UILabel alloc] initWithFrame:stateRect];
+    [self addSubview:self.cityLabel];
+    [self addSubview:self.stateLabel];
+}
+@end
+```
+
 Then you would use this custom table view cell in your view controller:
 
 ```swift
@@ -642,6 +785,42 @@ class ViewController: UIViewController, UITableViewDataSource {
         return data.count
     }
 }
+```
+
+```objc
+//  ViewController.m
+
+#import "ViewController.h"
+#import "DemoProgrammaticTableViewCell.h"
+
+@implementation ViewController
+
+NSArray *data;
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    data = @[@"New York, NY", @"Los Angeles, CA", @"Chicago, IL", @"Houston, TX",
+             @"Philadelphia, PA", @"Phoenix, AZ", @"San Diego, CA", @"San Antonio, TX",
+             @"Dallas, TX", @"Detroit, MI", @"San Jose, CA", @"Indianapolis, IN",
+             @"Jacksonville, FL", @"San Francisco, CA", @"Columbus, OH", @"Austin, TX",
+             @"Memphis, TN", @"Baltimore, MD", @"Charlotte, ND", @"Fort Worth, TX"];
+    self.tableView.dataSource = self;
+    [self.tableView registerClass:[DemoProgrammaticTableViewCell class] forCellReuseIdentifier:@"com.codepath.DemoProgrammaticCell"];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    DemoProgrammaticTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"com.codepath.DemoProgrammaticCell" forIndexPath:indexPath];
+    NSArray *cityState = [data[indexPath.row] componentsSeparatedByString:@", "];
+    cell.cityLabel.text = cityState.firstObject;
+    cell.stateLabel.text = cityState.lastObject;
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return data.count;
+}
+
+@end
 ```
 
 [initwithstyle]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/#//apple_ref/occ/instm/UITableViewCell/initWithStyle:reuseIdentifier:
