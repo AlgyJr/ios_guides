@@ -865,6 +865,24 @@ class ViewController: UIViewController, UITableViewDataSource {
 
 ```
 
+```objc
+//  ViewController.m
+
+#import "ViewController.h"
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.tableView.dataSource = self;
+    self.tableView.rowHeight = 100;
+}
+   
+ ...
+
+@end
+```
+
 [rowheight]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instp/UITableView/rowHeight
 [heightforrow]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewDelegate_Protocol/index.html#//apple_ref/occ/intfm/UITableViewDelegate/tableView:heightForRowAtIndexPath:
 
@@ -899,6 +917,23 @@ class ViewController: UIViewController, UITableViewDataSource {
 
 ```
 
+```objc
+//  ViewController.m
+
+#import "ViewController.h"
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.tableView.dataSource = self;
+    self.tableView.estimatedRowHeight = 100;
+}
+   
+ ...
+
+@end
+```
 If your estimate is wildly incorrect or if you have extremely variable
 row heights, you may find the behavior and sizing of the scroll bar
 to be less than satisfactory.  In this case, you may want to implement
@@ -935,6 +970,26 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     ...
 }
+```
+
+```objc
+//  ViewController.m
+
+#import "ViewController.h"
+
+@implementation ViewController
+...
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.tableView.dataSource = self;
+    self.tableView.estimatedRowHeight = 100;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+}
+   
+ ...
+
+@end
 ```
 
 #### Manually computing row heights
@@ -984,6 +1039,40 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 }
 ```
 
+```objc
+//  ViewController.m
+
+#import "ViewController.h"
+
+@implementation ViewController
+...
+
+DemoNibTableViewCell *referenceCell;
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.tableView.dataSource = self;
+    self.tableView.estimatedRowHeight = 50;
+
+    UINib *cellNib = [UINib nibWithNibName:@"DemoNibTableViewCell" bundle: NSBundle.mainBundle];
+    [self.tableView registerNib:cellNib forCellReuseIdentifier:@"com.codepath.DemoNibTableViewCell"];
+    
+    referenceCell = [cellNib instantiateWithOwner:nil options:nil].firstObject;
+    referenceCell.frame = self.tableView.frame;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSArray *cityState = [data[indexPath.row] componentsSeparatedByString:@", "];
+    referenceCell.cityLabel.text = cityState.firstObject;
+    referenceCell.stateLabel.text = cityState.lastObject;
+    [referenceCell layoutSubviews];
+    return [referenceCell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+}
+   
+ ...
+
+@end
+```
 [layoutsubviews]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/#//apple_ref/occ/instm/UIView/layoutSubviews
 [systemlayoutsize]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/#//apple_ref/occ/instm/UIView/systemLayoutSizeFittingSize:
 [stackoverflowcellheight]: http://stackoverflow.com/a/18746930
@@ -1036,14 +1125,6 @@ class ViewController: UIViewController, UITableViewDataSource {
 
     let accessoryTypes: [UITableViewCellAccessoryType] = [.none, .DisclosureIndicator, .DetailDisclosureButton, .Checkmark, .DetailButton]
 
-   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "com.codepath.DemoPrototypeCell", for: indexPath) as! DemoPrototypeCell
-        let cityState = data[indexPath.row].components(separatedBy: ", ")
-        cell.cityLabel.text = cityState.first
-        cell.stateLabel.text = cityState.last
-        return cell
-    }
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("com.codepath.DemoPrototypeCell", forIndexPath: indexPath) as DemoPrototypeCell
         let cityState = data[indexPath.row].componentsSeparatedByString(", ")
@@ -1055,6 +1136,43 @@ class ViewController: UIViewController, UITableViewDataSource {
 
     ...
 }
+```
+
+```objc
+//  ViewController.m
+
+#import "ViewController.h"
+
+@implementation ViewController
+...
+
+NSArray *accessoryTypes;
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.tableView.dataSource = self;
+    
+    ...
+
+    accessoryTypes = @[@(UITableViewCellAccessoryNone), @(UITableViewCellAccessoryDisclosureIndicator),
+                       @(UITableViewCellAccessoryDetailDisclosureButton), @(UITableViewCellAccessoryCheckmark),
+                       @(UITableViewCellAccessoryDetailButton)];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    DemoPrototypeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"com.codepath.DemoPrototypeCell" forIndexPath:indexPath];
+  
+    NSArray *cityState = [data[indexPath.row] componentsSeparatedByString:@", "];
+    cell.cityLabel.text = cityState.firstObject;
+    cell.stateLabel.text = cityState.lastObject;
+    UITableViewCellAccessoryType accessoryType = [accessoryTypes[indexPath.row % accessoryTypes.count] intValue];
+    cell.accessoryType = accessoryType;
+    return cell;
+}
+   
+ ...
+
+@end
 ```
 
 <a href="https://imgur.com/6MDpnCK"><img src="https://i.imgur.com/6MDpnCKl.png" title="Accessory Types" /></a>
@@ -1094,6 +1212,21 @@ class DemoPrototypeCell: UITableViewCell {
 }
 ```
 
+```objc
+//  DemoPrototypeCell.m
+
+#import "DemoPrototypeCell.h"
+
+@implementation DemoPrototypeCell
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.accessoryView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+}
+
+@end
+```
+
 Next, modify the accessory view's background color in the view controller:
 
 ```swift
@@ -1114,6 +1247,33 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     ...
 }
+```
+
+```objc
+//  ViewController.m
+
+#import "ViewController.h"
+
+@implementation ViewController
+
+...
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    DemoPrototypeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"com.codepath.DemoPrototypeCell" forIndexPath:indexPath];
+  
+    NSArray *cityState = [data[indexPath.row] componentsSeparatedByString:@", "];
+    cell.cityLabel.text = cityState.firstObject;
+    cell.stateLabel.text = cityState.lastObject;
+    
+    CGFloat greyLevel = (indexPath.row % 5)/5.0;
+    cell.accessoryView.backgroundColor = [UIColor colorWithWhite:greyLevel alpha:1];
+
+    return cell;
+}
+   
+ ...
+
+@end
 ```
 
 <a href="https://imgur.com/KGNgM9x"><img src="https://i.imgur.com/KGNgM9xl.png" title="Custom Accessory View" /></a>
