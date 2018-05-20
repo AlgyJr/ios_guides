@@ -427,9 +427,7 @@ a unique string that can be used to identify this type of cell.
 <a href="https://imgur.com/nZdbnm5"><img src="https://i.imgur.com/nZdbnm5.png" title="Setting the Reuse Identifier" /></a>
 
 You can now use this identifier when calling `dequeueReusableCell(withIdentifier: for:)`
-in your implementation of `cellForRowAt indexPath:`.  Notice that the compiler
-cannot infer the type of your custom cell class from the reuse identifier and
-you must explicitly cast the resulting object to the correct class.
+in your implementation of `cellForRowAt indexPath:`.
 
 ```swift
 import UIKit
@@ -451,6 +449,9 @@ class DemoPrototypeCell: UITableViewCell {
 
 @end
 ```
+
+Notice that the compiler cannot infer the type of your custom cell class from the reuse identifier and
+you must explicitly cast the resulting object to the correct class.
 
 ```swift
 import UIKit
@@ -482,7 +483,6 @@ class ViewController: UIViewController, UITableViewDataSource {
     }    
 }
 ```
-
 ```objc
 //  ViewController.h
 
@@ -530,6 +530,7 @@ NSArray *data;
 }
 @end
 ```
+
 Putting everything together we get a table that looks like this:
 
 ![Table With Custom Cells](https://i.imgur.com/B2pYrj4l.png)
