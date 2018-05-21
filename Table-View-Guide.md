@@ -1376,6 +1376,67 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 }
 ```
 
+```objc
+//  ViewController.h
+
+#import <UIKit/UIKit.h>
+
+@interface ViewController : UIViewController <UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@end
+
+
+//  ViewController.m
+
+#import "ViewController.h"
+
+@implementation ViewController
+
+NSArray *data;
+NSString *CellIdentifier = @"TableViewCell";
+NSString *HeaderViewIdentifier = @"TableViewHeaderView";
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+
+    data = @[@[@"Arizona", @[@"Phoenix"]], @[@"California", @[@"Los Angeles", @"San Francisco", @"San Jose", @"San Diego"]], @[@"Florida", @[@"Miami", @"Jacksonville"]], @[@"Illinois", @[@"Chicago"]], @[@"New York", @[@"Buffalo", @"New York"]], @[@"Pennsylvania", @[@"Pittsburg", @"Philadelphia"]], @[@"Texas", @[@"Houston", @"San Antonio", @"Dallas", @"Austin", @"Fort Worth"]]];
+    
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
+    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:HeaderViewIdentifier];
+}
+   
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return data.count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [[data[section] lastObject] count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    NSArray *citiesInSection = [data[indexPath.section] lastObject];
+    cell.textLabel.text = citiesInSection[indexPath.row];
+    return cell;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeaderViewIdentifier];
+    header.textLabel.text = [data[section] firstObject];
+    return header;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 30;
+}
+
+@end
+```
+
 ### Plain vs Grouped style
 The above code can produce two different behaviors depending on whether
 our `UITableView` is configured to have the `Plain` style or the
