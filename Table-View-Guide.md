@@ -1516,6 +1516,66 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 }
 ```
 
+```objc
+//  ViewController.h
+
+#import <UIKit/UIKit.h>
+
+@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@end
+
+//  ViewController.m
+
+#import "ViewController.h"
+
+@implementation ViewController
+
+NSArray *data;
+NSString *CellIdentifier = @"TableCellView";
+bool checked[];
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    data = @[@"New York, NY", @"Los Angeles, CA", @"Chicago, IL", @"Houston, TX",
+             @"Philadelphia, PA", @"Phoenix, AZ", @"San Diego, CA", @"San Antonio, TX",
+             @"Dallas, TX", @"Detroit, MI", @"San Jose, CA", @"Indianapolis, IN",
+             @"Jacksonville, FL", @"San Francisco, CA", @"Columbus, OH", @"Austin, TX",
+             @"Memphis, TN", @"Baltimore, MD", @"Charlotte, ND", @"Fort Worth, TX"];
+
+    checked[data.count] = false;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:true];
+    checked[indexPath.row] = !checked[indexPath.row];
+    [tableView reloadRowsAtIndexPaths:[[NSArray alloc] initWithObjects: indexPath, nil] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    cell.textLabel.text = data[indexPath.row];
+    if (checked[indexPath.row]){
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    else{
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return data.count;
+}
+
+@end
+```
+
 Notice that we deselect the cell immediately after selection event.
 [Selection is not a good way to store or indicate
 state][selectionuiguidelines].  Also, notice that we reload the row once
