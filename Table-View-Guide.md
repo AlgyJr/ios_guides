@@ -1826,8 +1826,6 @@ override func viewDidLoad() {
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView insertSubview:refreshControl atIndex:0];
 }
 ```
 
@@ -1858,7 +1856,43 @@ We need to implement an action to update our list. It's common to fire a network
         task.resume()
     }
 ```
-
+```objc
+- (void)beginRefresh:(UIRefreshControl *)refreshControl {
+        NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url
+                                                 cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                             timeoutInterval:10.0];
+        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
+                                                              delegate:nil
+                                                         delegateQueue:[NSOperationQueue mainQueue]];
+        session.configuration.requestCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+    
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+    
+            if (error != nil) {
+                NSLog(@"%@", [error localizedDescription]);
+            }
+            else if (httpResponse.statusCode == 200 && data != nil){
+    
+                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data
+                                                                               options:NSJSONReadingMutableContainers
+                                                                                 error:&error];
+    
+                if (error != nil) {
+                    NSLog(@"%@", dataDictionary);
+                    self.dataBackArray = dataDictionary[@"results"];
+                    [self.tableView reloadData];
+                }
+            }
+    
+        }];
+    
+        [task resume];
+}
+```
 #### Bind the action to the refresh control
 
 With the action implemented, it now needs to be bound to the `UIRefreshControl` so that something will happen when you pull-to-refresh.
@@ -1873,9 +1907,14 @@ override func viewDidLoad() {
 }
 ```
 ```objc
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    // Initialize a UIRefreshControl
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:refreshControl atIndex:0];
+}
 ```
 ####Insert the refresh control into the list
 The `UIRefreshControl` now needs to be added to the table view.
