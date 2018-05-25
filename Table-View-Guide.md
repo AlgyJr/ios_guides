@@ -1823,9 +1823,12 @@ override func viewDidLoad() {
 }
 ```
 ```objc
+- (void)viewDidLoad {
+    [super viewDidLoad];
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:refreshControl atIndex:0];
+}
 ```
 
 #### Implement an action to update the list
