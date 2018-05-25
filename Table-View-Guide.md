@@ -1822,6 +1822,11 @@ override func viewDidLoad() {
     let refreshControl = UIRefreshControl()
 }
 ```
+```objc
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:refreshControl atIndex:0];
+```
 
 #### Implement an action to update the list
 
@@ -1864,7 +1869,11 @@ override func viewDidLoad() {
     refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
 }
 ```
-
+```objc
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:refreshControl atIndex:0];
+```
 ####Insert the refresh control into the list
 The `UIRefreshControl` now needs to be added to the table view.
 
