@@ -252,7 +252,15 @@ class Story {
 ```
 #### Objective-C
 ```objc
-NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request
+- (void)getNowPlaying:(void(^)(NSDictionary *))completion {
+
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSURL *URL = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request
                                                    uploadProgress:nil
                                                  downloadProgress:nil
                                                 completionHandler:^(NSURLResponse *response, id  responseObject, NSError *error) {
@@ -261,8 +269,9 @@ NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request
                                                         } else {
                                                             NSLog(@"%@ %@", response, responseObject);
                                                             NSDictionary *dataDictionary = responseObject;
-                                                            NSLog(@"%@", dataDictionary);
                                                             completion(dataDictionary);
                                                         }
                                                 }];
+    [dataTask resume];
+}
 ```
