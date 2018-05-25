@@ -250,3 +250,24 @@ class Story {
     }
 }
 ```
+#### Objective-C
+```objc
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSURL *URL = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@", error);
+        } else {
+            NSLog(@"%@ %@", response, responseObject);
+            NSDictionary *dataDictionary = responseObject;
+            NSLog(@"%@", dataDictionary);
+            self.dataBackArray = dataDictionary[@"results"];
+            [self.tableView reloadData];
+        }
+    }];
+    [dataTask resume];
+```
