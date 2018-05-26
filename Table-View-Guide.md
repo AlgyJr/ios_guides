@@ -1549,6 +1549,7 @@ bool checked[];
     checked[data.count] = false;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -1632,6 +1633,52 @@ class DemoProgrammaticTableViewCell: UITableViewCell {
 }
 ```
 
+```objc
+//  DemoProgrammaticTableViewCell.h
+
+#import <UIKit/UIKit.h>
+
+@interface DemoProgrammaticTableViewCell : UITableViewCell
+
+@property (nonatomic, strong) UILabel *cityLabel;
+@property (nonatomic, strong) UILabel *stateLabel;
+
+@end
+
+//  DemoProgrammaticTableViewCell.m
+
+#import "DemoProgrammaticTableViewCell.h"
+
+@implementation DemoProgrammaticTableViewCell
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if(self){
+        [self initViews];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    if(self){
+        [self initViews];
+    }
+    return self;
+}
+
+- (void)initViews {
+    self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.frame];
+    self.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:0.5 green:0.7 blue:0.9 alpha:0.8];
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated{
+    [super setSelected:selected animated:animated];
+    CGFloat fontSize = selected ? 34.0 : 17.0;
+    self.textLabel.font = [self.textLabel.font fontWithSize:fontSize];
+}
+@end
+```
 <a href="https://imgur.com/0RT2qmn"><img src="https://i.imgur.com/0RT2qmn.gif" title="source: imgur.com" /></a>
 
 [allowsselection]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/index.html#//apple_ref/occ/instp/UITableView/allowsSelection
@@ -1654,6 +1701,10 @@ To customize what happens for the **Selected** event, you can use one of the fol
     // No color when the user selects cell
     cell.selectionStyle = .none
     ```
+
+   ```objc
+   cell.selectionStyle = UITableViewCellSelectionStyleNone;
+   ```
 2. Set a custom [selectedBackgroundView](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/#//apple_ref/occ/instp/UITableViewCell/selectedBackgroundView). This gives you full control to create a view and set it as the cell's `selectedBackgroundView`.
 
     ```swift
@@ -1661,6 +1712,12 @@ To customize what happens for the **Selected** event, you can use one of the fol
     let backgroundView = UIView()
     backgroundView.backgroundColor = UIColor.red
     cell.selectedBackgroundView = backgroundView
+    ```
+
+    ```objc
+    UIView *backgroundView = [[UIView alloc] init];
+    backgroundView.backgroundColor = UIColor.redColor;
+    cell.selectedBackgroundView = backgroundView;
     ```
 
 ## Example: load data from a REST API and display it in your table
