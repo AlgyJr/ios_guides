@@ -2371,7 +2371,7 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
             // ... Use the new data to update the data source ...
             
             // Reload the tableView now that there is new data
-            self.tableView reloadData];
+            [self.tableView reloadData];
         }
     }];
     [task resume];
@@ -2448,6 +2448,73 @@ class InfiniteScrollActivityView: UIView {
 }
 ```
 
+```objc
+//  InfiniteScrollActivityView.h
+#import <UIKit/UIKit.h>
+
+@interface InfiniteScrollActivityView : UIView
+
+@property (class, nonatomic, readonly) CGFloat defaultHeight;
+
+- (void)startAnimating;
+- (void)stopAnimating;
+
+@end
+
+//  InfiniteScrollActivityView.m
+#import "InfiniteScrollActivityView.h"
+
+@implementation InfiniteScrollActivityView
+
+UIActivityIndicatorView* activityIndicatorView;
+static CGFloat _defaultHeight = 60.0;
+
++ (CGFloat)defaultHeight{
+    return _defaultHeight;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    if(self){
+        [self setupActivityIndicator];
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame{
+    self = [super initWithFrame:frame];
+    if(self){
+        [self setupActivityIndicator];
+    }
+    return self;
+}
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    activityIndicatorView.center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
+}
+
+- (void)setupActivityIndicator{
+    activityIndicatorView = [[UIActivityIndicatorView alloc] init];
+    activityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    activityIndicatorView.hidesWhenStopped = true;
+    [self addSubview:activityIndicatorView];
+}
+
+-(void)stopAnimating{
+    [activityIndicatorView stopAnimating];
+    self.hidden = true;
+}
+
+-(void)startAnimating{
+    self.hidden = false;
+    [activityIndicatorView startAnimating];
+}
+
+@end
+
+```
+
 ### Update progress to indicate with UI when data is being requested
 
 Now that we have a progress indicator, we need to load it when more data is being requested from the server.
@@ -2465,6 +2532,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // ...
 }
 ```
+
+```objc
+//  ViewController.m
+
+#import "ViewController.h"
+
+@implementation ViewController
+
+bool isMoreDataLoading = false;
+InfiniteScrollActivityView* loadingMoreView;
+
+// ...
+
+@end
+```
+
 In `viewDidLoad`, initialize and add the loading indicator to the tableView's view hierarchy. Then add new insets to allow room for seeing the loading indicator at the bottom of the tableView.
 
 ```swift
@@ -2483,6 +2566,24 @@ override func viewDidLoad() {
 }
 
 ```
+
+```objc
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    // Set up Infinite Scroll loading indicator
+    CGRect frame = CGRectMake(0, self.tableView.contentSize.height, self.tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight);
+    loadingMoreView = [[InfiniteScrollActivityView alloc] initWithFrame:frame];
+    loadingMoreView.hidden = true;
+    [self.tableView addSubview:loadingMoreView];
+    
+    UIEdgeInsets insets = self.tableView.contentInset;
+    insets.bottom += InfiniteScrollActivityView.defaultHeight;
+    self.tableView.contentInset = insets;
+    
+}
+```
+
 Update the `scrollViewDidScroll` function to load the indicator:
 
 ```swift
@@ -2503,6 +2604,29 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
             // Code to load more results
             loadMoreData()		
+        }
+    }
+}
+```
+
+```objc
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if(!isMoreDataLoading){
+        // Calculate the position of one screen length before the bottom of the results
+        int scrollViewContentHeight = self.tableView.contentSize.height;
+        int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
+        
+        // When the user has scrolled past the threshold, start requesting
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
+            isMoreDataLoading = true;
+            
+            // Update position of loadingMoreView, and start loading indicator
+            CGRect frame = CGRectMake(0, self.tableView.contentSize.height, self.tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight);
+            loadingMoreView.frame = frame;
+            [loadingMoreView startAnimating];
+            
+            // Code to load more results
+            [self loadMoreData];
         }
     }
 }
@@ -2535,6 +2659,37 @@ func loadMoreData() {
     })
     task.resume()
 
+}
+```
+
+```objc
+-(void)loadMoreData{
+    
+      // ... Create the NSURLRequest (myRequest) ...
+    
+    // Configure session so that completion handler is executed on main UI thread
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session  = [NSURLSession sessionWithConfiguration:configuration delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+   
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *requestError) {
+        if (requestError != nil) {
+            
+        }
+        else
+        {
+            // Update flag
+            self.isMoreDataLoading = false;
+
+            // Stop the loading indicator
+            [loadingMoreView stopAnimating];
+            
+            // ... Use the new data to update the data source ...
+            
+            // Reload the tableView now that there is new data
+            [self.tableView reloadData];
+        }
+    }];
+    [task resume];
 }
 ```
 
