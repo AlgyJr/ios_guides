@@ -81,6 +81,13 @@ UIApplication.shared.keyWindow?.rootViewController?.present(alertController, ani
     // optional code for what happens after the alert controller has finished presenting
 }
 ```
+```objc
+[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert
+                                                                             animated:YES
+                                                                           completion:^{
+                                                                                   // optional code for what happens after the alert controller has finished presenting
+                                                                           }];
+```
 
 ## Using Action Sheets style
 
