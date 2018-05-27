@@ -2726,6 +2726,16 @@ class MyTableViewController: UITableViewController {
 }
 ```
 
+```objc
+@implementation MyTableViewController
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.tableView.separatorInset = UIEdgeInsetsZero;
+}
+@end
+
+```
+
 Then, in your cell, disable the margins, and the margins it may inherit from parent views.
 
 ```swift
@@ -2736,4 +2746,14 @@ class MyTableViewCell: UITableViewCell
         self.preservesSuperviewLayoutMargins = false
     }
 }
+```
+
+```objc
+@implementation MyTableViewCell
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.layoutMargins = UIEdgeInsetsZero;
+    self.preservesSuperviewLayoutMargins = false;
+}
+@end
 ```
