@@ -1914,6 +1914,9 @@ We need to implement an action to update our list. It's common to fire a network
     }
 ```
 ```objc
+  // Makes a network request to get updated data
+  // Updates the tableView with the new data
+  // Hides the RefreshControl
 - (void)beginRefresh:(UIRefreshControl *)refreshControl {
 
         // Create NSURL and NSURLRequest
