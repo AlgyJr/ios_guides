@@ -46,7 +46,6 @@ UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
                                                   handler:^(UIAlertAction * _Nonnull action) {
                                                          // handle cancel response here. Doing nothing will dismiss the view.
                                                   }];
-
 // add the cancel action to the alertController
 [alert addAction:cancelAction];
 
