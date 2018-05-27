@@ -2180,6 +2180,31 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 ```
 
+```objc
+//  ViewController.h
+#import <UIKit/UIKit.h>
+
+@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@end
+
+//  ViewController.m
+
+#import "ViewController.h"
+
+@implementation ViewController
+
+ // ...
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+     // Handle scroll behavior here
+}
+
+@end
+```
+
 #### Understanding [`scrollViewDidScroll`][scrollviewdidscrolllink]
 
 When a user scrolls down, the `UIScrollView` continuously fires `scrollViewDidScroll` after the `UIScrollView` has changed. This means that whatever code is inside `scrollViewDidScroll` will repeatedly fire. In order to avoid 10s or 100s of requests to the server, we need to indicate when the app has already made a request to the server.
@@ -2200,6 +2225,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
 }
+```
+
+```objc
+//  ViewController.m
+
+#import "ViewController.h"
+
+@implementation ViewController
+
+bool isMoreDataLoading = false;
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if(!isMoreDataLoading){
+       isMoreDataLoading = true;
+
+       // ... Code to load more results ...
+
+    }
+}
+
+@end
 ```
 
 #### Define the conditions for requesting more data
@@ -2223,6 +2269,32 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
         }
     }
 }
+```
+
+```objc
+//  ViewController.m
+
+#import "ViewController.h"
+
+@implementation ViewController
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if(!isMoreDataLoading){
+        // Calculate the position of one screen length before the bottom of the results
+        int scrollViewContentHeight = self.tableView.contentSize.height;
+        int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
+        
+        // When the user has scrolled past the threshold, start requesting
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
+            isMoreDataLoading = true;
+            
+            // ... Code to load more results ...
+        }
+    }
+}
+
+@end
+
 ```
 
 ### Request more data
@@ -2268,6 +2340,57 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
         }
     }
 }
+```
+
+```objc
+//  ViewController.m
+
+#import "ViewController.h"
+
+@implementation ViewController
+
+-(void)loadMoreData{
+    
+      // ... Create the NSURLRequest (myRequest) ...
+    
+    // Configure session so that completion handler is executed on main UI thread
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSURLSessionDataTask *task = [manager dataTaskWithRequest: myRequest uploadProgress:nil downloadProgress:nil
+                                    completionHandler:^(NSURLResponse *response, id  responseObject, NSError *requestError) {
+                                        if (requestError) {
+                                            
+                                        } else {
+                                            // Update flag
+                                            self.isMoreDataLoading = false;
+
+                                            // ... Use the new data to update the data source ...
+                                            
+                                            // Reload the tableView now that there is new data
+                                            self.tableView reloadData];
+                                        }
+                                    }];
+    [task resume];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if(!isMoreDataLoading){
+        // Calculate the position of one screen length before the bottom of the results
+        int scrollViewContentHeight = self.tableView.contentSize.height;
+        int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
+        
+        // When the user has scrolled past the threshold, start requesting
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
+            isMoreDataLoading = true;
+            [self loadMoreData];
+        }
+    }
+}
+
+@end
+
 ```
 
 When you run the app, you should see new data load into the table view, each time you reach the bottom. But there's a problem: there's no indicator to the user that anything is happening.
