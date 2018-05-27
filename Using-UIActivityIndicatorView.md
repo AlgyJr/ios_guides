@@ -22,3 +22,7 @@ activityIndicator.startAnimating()
 // Hides automatically if "Hides When Stopped" is enabled
 activityIndicator.stopAnimating()
 ```
+```objc
+    [self.activityIndicator startAnimating];
+    [self.activityIndicator stopAnimating];
+```
