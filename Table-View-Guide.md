@@ -1925,7 +1925,6 @@ class Story {
 
 //  Story.m
 #import "Story.h"
-#import "AFNetworking.h"
 
 @implementation Story
 
@@ -1936,7 +1935,7 @@ NSString *apiKey = @"53eb9541b4374660d6f3c0001d6249ca:19:70900879";
     self.headline = dictionary[@"title"];
     NSArray *multimedia = dictionary[@"multimedia"];
     
-    if(multimedia.count >= 4)
+    if([multimedia isEqual:@""] != YES && multimedia.count >= 4)
     {
         NSDictionary *mediaItem = multimedia[3];
         NSString *type = mediaItem[@"type"];
@@ -1951,30 +1950,32 @@ NSString *apiKey = @"53eb9541b4374660d6f3c0001d6249ca:19:70900879";
 + (void)fetchStories:(void(^)(NSArray *))successCallback error:(void(^)(NSError *))error{
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-    
     NSString *resourceUrl = [NSString stringWithFormat: @"http://api.nytimes.com/svc/topstories/v1/home.json?api-key=%@",apiKey];
     
     NSURL *URL = [NSURL URLWithString:resourceUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     
-    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil
-                                                completionHandler:^(NSURLResponse *response, id  responseObject, NSError *requestError) {
-                                                    if (requestError) {
-                                                        error(requestError);
-                                                    } else {
-                                                        NSArray *results = responseObject[@"results"];
-                                                        if (results) {
-                                                            NSMutableArray *stories = [[NSMutableArray alloc] init];
-                                                            for (NSDictionary *result in results) {
-                                                                Story *story = [[Story alloc] init];
-                                                                [story initWithDictionary:result];
-                                                                [stories addObject:story];
-                                                            }
-                                                            successCallback(stories);
-                                                        }
-                                                    }
-                                                }];
+    NSURLSession *session  = [NSURLSession sessionWithConfiguration:configuration delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *requestError) {
+        if (requestError != nil) {
+            error(requestError);
+        }
+        else
+        {
+            NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            NSArray *results = responseObject[@"results"];
+            if (results) {
+                NSMutableArray *stories = [[NSMutableArray alloc] init];
+                for (NSDictionary *result in results) {
+                    Story *story = [[Story alloc] init];
+                    [story initWithDictionary:result];
+                    [stories addObject:story];
+                }
+                successCallback(stories);
+            }
+        }
+    }];
     [dataTask resume];
 }
 
