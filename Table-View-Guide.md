@@ -2357,22 +2357,23 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
     // Configure session so that completion handler is executed on main UI thread
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-    
-    NSURLSessionDataTask *task = [manager dataTaskWithRequest: myRequest uploadProgress:nil downloadProgress:nil
-                                    completionHandler:^(NSURLResponse *response, id  responseObject, NSError *requestError) {
-                                        if (requestError) {
-                                            
-                                        } else {
-                                            // Update flag
-                                            self.isMoreDataLoading = false;
-
-                                            // ... Use the new data to update the data source ...
-                                            
-                                            // Reload the tableView now that there is new data
-                                            self.tableView reloadData];
-                                        }
-                                    }];
+    NSURLSession *session  = [NSURLSession sessionWithConfiguration:configuration delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+   
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *requestError) {
+        if (requestError != nil) {
+            
+        }
+        else
+        {
+            // Update flag
+            self.isMoreDataLoading = false;
+            
+            // ... Use the new data to update the data source ...
+            
+            // Reload the tableView now that there is new data
+            self.tableView reloadData];
+        }
+    }];
     [task resume];
 }
 
