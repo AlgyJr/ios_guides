@@ -14,6 +14,12 @@ Create the alert controller as below, setting preferredStyle to Alert
 let alertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .alert)
 ```
 
+```objc
+UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Title"
+                                                                           message:@"Message"
+                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
+```
+
 ### Step 2: Add buttons
 
 Create a UIAlertAction for each button to display and respond to.
@@ -33,6 +39,26 @@ let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
 // add the OK action to the alert controller
 alertController.addAction(OKAction)
 ```
+```objc
+// create a cancel action
+UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                    style:UIAlertActionStyleCancel
+                                                  handler:^(UIAlertAction * _Nonnull action) {
+                                                         // handle cancel response here. Doing nothing will dismiss the view.
+                                                  }];
+
+// add the cancel action to the alertController
+[alert addAction:cancelAction];
+
+// create an OK action
+UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                   style:UIAlertActionStyleDefault
+                                                 handler:^(UIAlertAction * _Nonnull action) {
+                                                         // handle response here.
+                                                 }];
+// add the OK action to the alert controller
+[alert addAction:okAction];
+```
 
 Adding two buttons will place them side by side in the alert. Adding more than two buttons stacks them in the view similar to the ActionSheet style.
 
@@ -44,7 +70,11 @@ present(alertController, animated: true) {
     // optional code for what happens after the alert controller has finished presenting
 }
 ```
-
+```objc
+[self presentViewController:alert animated:YES completion:^{
+    // optional code for what happens after the alert controller has finished presenting
+}];
+```
 If you wish to call `present()` outside a view controller, you would do:
 
 ```swift
