@@ -1702,9 +1702,10 @@ To customize what happens for the **Selected** event, you can use one of the fol
     cell.selectionStyle = .none
     ```
 
-   ```objc
-   cell.selectionStyle = UITableViewCellSelectionStyleNone;
-   ```
+    ```objc
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    ```
+
 2. Set a custom [selectedBackgroundView](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/#//apple_ref/occ/instp/UITableViewCell/selectedBackgroundView). This gives you full control to create a view and set it as the cell's `selectedBackgroundView`.
 
     ```swift
@@ -1768,6 +1769,41 @@ class ViewController: UIViewController, UITableViewDataSource {
 }
 ```
 
+```objc
+//  ViewController.m
+#import "ViewController.h"
+#import "Story.h"
+#import "StoryCell.h"
+
+@implementation ViewController
+
+NSArray *stories;
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.tableView.dataSource = self;
+    [Story fetchStories:^(NSArray *storiesArray) {
+        stories = storiesArray;
+        [self.tableView reloadData];
+    } error:^(NSError *error) {
+        
+    }];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    StoryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StoryCell" forIndexPath:indexPath];
+    cell.story = stories[indexPath.row];
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return stories.count;
+}
+
+@end
+```
+
 Here is the table view cell defined:
 
 ```swift
@@ -1785,6 +1821,36 @@ class StoryCell: UITableViewCell {
         }
     }
 }
+```
+
+```objc
+//  StoryCell.h
+#import <UIKit/UIKit.h>
+#import "Story.h"
+
+@interface StoryCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UIImageView *thumbnailView;
+@property (weak, nonatomic) IBOutlet UILabel *headlineLabel;
+
+@property (strong, nonatomic) Story *story;
+
+@end
+
+//  StoryCell.m
+#import "StoryCell.h"
+
+@implementation StoryCell
+
+@synthesize story = _story;
+
+-(void)setStory:(Story *)story{
+    _story = story;
+    
+    self.headlineLabel.text = story.headline;
+    [self.headlineLabel sizeToFit];
+}
+
 ```
 
 Here is the model for parsing from the network:
@@ -1843,6 +1909,79 @@ class Story {
     }
 }
 ```
+
+```objc
+//  Story.h
+#import <Foundation/Foundation.h>
+
+@interface Story : NSObject
+
+@property (nonatomic, strong) NSString *headline;
+@property (nonatomic, strong) NSString *thumbnailUrl;
+
++ (void)fetchStories:(void(^)(NSArray *))successCallback error:(void(^)(NSError *))error;
+
+@end
+
+//  Story.m
+#import "Story.h"
+#import "AFNetworking.h"
+
+@implementation Story
+
+NSString *apiKey = @"53eb9541b4374660d6f3c0001d6249ca:19:70900879";
+
+- (void)initWithDictionary:(NSDictionary *)dictionary {
+    
+    self.headline = dictionary[@"title"];
+    NSArray *multimedia = dictionary[@"multimedia"];
+    
+    if(multimedia.count >= 4)
+    {
+        NSDictionary *mediaItem = multimedia[3];
+        NSString *type = mediaItem[@"type"];
+        if([type isEqualToString:@"image"])
+        {
+            NSString *url = mediaItem[@"url"];
+            self.thumbnailUrl = url;
+        }
+    }
+}
+
++ (void)fetchStories:(void(^)(NSArray *))successCallback error:(void(^)(NSError *))error{
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSString *resourceUrl = [NSString stringWithFormat: @"http://api.nytimes.com/svc/topstories/v1/home.json?api-key=%@",apiKey];
+    
+    NSURL *URL = [NSURL URLWithString:resourceUrl];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil
+                                                completionHandler:^(NSURLResponse *response, id  responseObject, NSError *requestError) {
+                                                    if (requestError) {
+                                                        error(requestError);
+                                                    } else {
+                                                        NSArray *results = responseObject[@"results"];
+                                                        if (results) {
+                                                            NSMutableArray *stories = [[NSMutableArray alloc] init];
+                                                            for (NSDictionary *result in results) {
+                                                                Story *story = [[Story alloc] init];
+                                                                [story initWithDictionary:result];
+                                                                [stories addObject:story];
+                                                            }
+                                                            successCallback(stories);
+                                                        }
+                                                    }
+                                                }];
+    [dataTask resume];
+}
+
+@end
+
+```
+
 <a href="https://imgur.com/ljCaUch"><img src="https://i.imgur.com/ljCaUchl.png" title="source: imgur.com" /></a>
 
 ## Handling updates to your data
