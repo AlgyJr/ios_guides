@@ -23,6 +23,10 @@ activityIndicator.startAnimating()
 activityIndicator.stopAnimating()
 ```
 ```objc
-    [self.activityIndicator startAnimating];
-    [self.activityIndicator stopAnimating];
+// Start the activity indicator
+[self.activityIndicator startAnimating];
+
+// Stop the activity indicator
+// Hides automatically if "Hides When Stopped" is enabled
+[self.activityIndicator stopAnimating];
 ```
