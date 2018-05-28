@@ -274,6 +274,11 @@ let tabBarController = UITabBarController()
 tabBarController.viewControllers = [vc1, vc2]
 ```
 
+```objc
+UITabBarController *tabBarController = [[UITabBarController alloc]init];
+tabBarController.viewControllers = @[vc1, vc2];
+```
+
 Before we set up tab view controller programmatically, we need to remove the tab view
 controller that we added in the Interface Builder (IB).
 
@@ -317,6 +322,31 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 
 ```
 
+```objc
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // create UIWindow with the same size as main screen
+    self.window = [[UIWindow alloc]initWithFrame:UIScreen.mainScreen.bounds];
+    
+    // create story board. Default story board will be named as Main.storyboard in your project.
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    // create view controllers from storyboard
+    // Make sure you set Storyboard ID for both the viewcontrollers in
+    // Interface Builder -> Identitiy Inspector -> Storyboard ID
+    ClockViewController *clockViewController = [storyboard instantiateViewControllerWithIdentifier:@"ClockViewController"];
+    StopWatchViewController *stopWatchViewController = [storyboard instantiateViewControllerWithIdentifier:@"StopWatchViewController"];
+    
+    // Set up the Tab Bar Controller to have two tabs
+    UITabBarController *tabBarController = [[UITabBarController alloc]init];
+    tabBarController.viewControllers = @[clockViewController, stopWatchViewController];
+    
+    // Make the Tab Bar Controller the root view controller
+    self.window.rootViewController = tabBarController;
+    [self.window makeKeyAndVisible];
+    return YES;
+}
+```
+
 Make sure you provide story board id for both clock and stop watch view controllers
 in IB so that they can be initialized in code:
 
@@ -330,6 +360,12 @@ the top view controller in the navigation stack to do any additional configurati
 ```swift
 let nav = storyboard.instantiateViewController(withIdentifier: "ExampleNavigationController") as! UINavigationController
 let vc = nav.topViewController as! ClockViewController
+// perform any initial configuration of vc here...
+```
+
+```objc
+UINavigationController *nav = [storyboard instantiateViewControllerWithIdentifier:@"ExampleNavigationController"];
+ClockViewController *vc = (ClockViewController *)nav.topViewController;
 // perform any initial configuration of vc here...
 ```
 
@@ -381,6 +417,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
+```objc
+//  AppDelegate.h
+#import <UIKit/UIKit.h>
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@property (strong, nonatomic) UIWindow *window;
+@end
+
+//  AppDelegate.m
+#import "AppDelegate.h"
+@implementation AppDelegate
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.window = [[UIWindow alloc]initWithFrame:UIScreen.mainScreen.bounds];
+    
+    UIViewController *vc1 = [self setUpViewController:@"First" withBackgroundColor:UIColor.orangeColor];
+    UIViewController *vc2 = [self setUpViewController:@"Second" withBackgroundColor:UIColor.purpleColor];
+    UIViewController *vc3 = [self setUpViewController:@"Third" withBackgroundColor:UIColor.redColor];
+    UIViewController *vc4 = [self setUpViewController:@"Fourth" withBackgroundColor:UIColor.greenColor];
+    UIViewController *vc5 = [self setUpViewController:@"Fifth" withBackgroundColor:UIColor.blueColor];
+    UIViewController *vc6 = [self setUpViewController:@"Sixth" withBackgroundColor:UIColor.yellowColor];
+    
+    // Set up the Tab Bar Controller 
+    UITabBarController *tabBarController = [[UITabBarController alloc]init];
+    tabBarController.viewControllers = @[vc1, vc2, vc3, vc4, vc5, vc6];
+    
+    // Make the Tab Bar Controller the root view controller
+    self.window.rootViewController = tabBarController;
+    
+    [self.window makeKeyAndVisible];
+    
+    return YES;
+}
+
+- (UIViewController*) setUpViewController:(NSString*)title withBackgroundColor:(UIColor*)backgroundColor{
+    UIViewController *vc = [[UIViewController alloc]init];
+    vc.view.backgroundColor = backgroundColor;
+    vc.tabBarItem.title = title;
+    vc.tabBarItem.image = [UIImage imageNamed:@"star"];
+    return vc;
+}
+```
+
 In More tab, user can tap on Edit button. That will allow user to reorder
 tabs so that they can pick the which 4 view controllers will appear on the tab view
 and which view controllers will be in More tab.
@@ -401,6 +480,12 @@ first 2 tabs, then we can set customizableViewControllers to the other
 let tabBarController = UITabBarController()
 tabBarController.viewControllers = [vc1, vc2, vc3, vc4, vc5, vc6]
 tabBarController.customizableViewControllers = [vc3, vc4, vc5, vc6]
+```
+
+```objc
+UITabBarController *tabBarController = [[UITabBarController alloc]init];
+tabBarController.viewControllers = @[vc1, vc2, vc3, vc4, vc5, vc6];
+tabBarController.customizableViewControllers = @[vc3, vc4, vc5, vc6];
 ```
 
 In More tab -> Edit, user can now only see and reorder 3rd, 4th, 5th, 6th tabs.
