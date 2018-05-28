@@ -28,6 +28,17 @@ let data = ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX",
         "Memphis, TN", "Baltimore, MD", "Charlotte, ND", "Fort Worth, TX"]
 ```
 
+```objc
+NSArray *data;
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    data = @[@"New York, NY", @"Los Angeles, CA", @"Chicago, IL", @"Houston, TX",
+             @"Philadelphia, PA", @"Phoenix, AZ", @"San Diego, CA", @"San Antonio, TX",
+             @"Dallas, TX", @"Detroit, MI", @"San Jose, CA", @"Indianapolis, IN",
+             @"Jacksonville, FL", @"San Francisco, CA", @"Columbus, OH", @"Austin, TX",
+             @"Memphis, TN", @"Baltimore, MD", @"Charlotte, ND", @"Fort Worth, TX"];
+}
+```
 
 ### Step 2: Add table view to view controller
 In your storyboard drag a `Table View` (not `Table View Controller`)
@@ -74,6 +85,19 @@ class DemoPrototypeCell: UITableViewCell {
 }
 ```
 
+```objc
+//  DemoPrototypeCell.h
+
+#import <UIKit/UIKit.h>
+
+@interface DemoPrototypeCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UILabel *cityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *stateLabel;
+
+@end
+```
+
 ### Step 6: Set prototype cell's reuse identifier
 You'll need a way to tell the table view to create and reuse instances
 of this prototype cell.  Select the cell and give it a unique identifier
@@ -98,6 +122,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 }
 
+```
+
+```objc
+//  ViewController.h
+
+#import <UIKit/UIKit.h>
+
+@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@end
+
+//  ViewController.m
+
+#import "ViewController.h"
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+}
+@end
 ```
 
 ### Step 8: Implement data source methods
@@ -140,6 +187,41 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 }
 ```
 
+```objc
+//  ViewController.m
+
+#import "ViewController.h"
+#import "DemoPrototypeCell.h"
+
+@implementation ViewController
+
+NSArray *data;
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    data = @[@"New York, NY", @"Los Angeles, CA", @"Chicago, IL", @"Houston, TX",
+             @"Philadelphia, PA", @"Phoenix, AZ", @"San Diego, CA", @"San Antonio, TX",
+             @"Dallas, TX", @"Detroit, MI", @"San Jose, CA", @"Indianapolis, IN",
+             @"Jacksonville, FL", @"San Francisco, CA", @"Columbus, OH", @"Austin, TX",
+             @"Memphis, TN", @"Baltimore, MD", @"Charlotte, ND", @"Fort Worth, TX"];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    DemoPrototypeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"com.codepath.DemoPrototypeCell" forIndexPath:indexPath];
+    NSArray *cityState = [data[indexPath.row] componentsSeparatedByString:@", "];
+    cell.cityLabel.text = cityState.firstObject;
+    cell.stateLabel.text = cityState.lastObject;
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return data.count;
+}
+
+```
+
 ## Table view usage
 This section covers some common issues that arise when using table view
 cells.
@@ -163,6 +245,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     ...
 }
+```
+
+```objc
+//  ViewController.m
+
+#import "ViewController.h"
+
+@implementation ViewController
+  
+  ...
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.tableView.dataSource = self;
+    self.tableView.estimatedRowHeight = 100;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+}
+   
+ ...
+
+@end
 ```
 
 ### Respond to row selection
@@ -189,6 +292,13 @@ You can also respond programmatically by implementing the
         tableView.deselectRow(at: indexPath, animated: true)
         // do something here
     }
+```
+
+```objc
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:true];
+    // do something here
+}
 ```
 
 ## Further reading
