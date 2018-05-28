@@ -229,6 +229,35 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 }
 ```
 
+```objc
+//  ViewController.h
+#import <UIKit/UIKit.h>
+
+@interface ViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayout;
+
+@end
+
+//  ViewController.m
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.collectionView.dataSource = self;
+    self.collectionView.delegate = self;
+    
+    self.flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    self.flowLayout.minimumLineSpacing = 0;
+    self.flowLayout.minimumInteritemSpacing = 0;
+    self.flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 10);
+}
+
+@end
+```
+
 #### Customizing the cells and spacing (UICollectionViewDelegateFlowLayout)
 
 If you need to customize cells and spacing, changing the direct properties of the Flow Layout will not suffice. You will need to implement the `UICollectionViewDelegateFlowLayout` protocol. With the `UICollectionViewDelegateFlowLayout` protocol, item sizes, section insets, line spacing and interitem spacing can all be made to change dynamically according to their position in the collection view.
@@ -243,6 +272,19 @@ To define dynamic rules to layout a UICollectionView, we add the [`UICollectionV
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 	...
 }
+```
+
+```objc
+//  ViewController.h
+
+#import <UIKit/UIKit.h>
+
+@interface ViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+
+   ...
+
+@end
+
 ```
 
 #### Small Example of configuring the Flow Layout
@@ -282,6 +324,49 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
     }
 ```
+
+```objc
+//  ViewController.h
+#import <UIKit/UIKit.h>
+
+@interface ViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayout;
+
+@end
+
+//  ViewController.m
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    ...
+    
+    self.flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    self.flowLayout.minimumLineSpacing = 0;
+    self.flowLayout.minimumInteritemSpacing = 0;
+    self.flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 10);
+}
+
+// MARK: UICollectionViewDelegateFlowLayout methods
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    int totalwidth = self.collectionView.bounds.size.width;
+    int numberOfCellsPerRow = 3;
+    int oddEven = indexPath.row / numberOfCellsPerRow % 2;
+    int dimensions = (CGFloat)(totalwidth / numberOfCellsPerRow);
+    if (oddEven == 0) {
+        return CGSizeMake(dimensions, dimensions);
+    } else {
+        return CGSizeMake(dimensions, dimensions / 2);
+    }
+}
+
+@end
+```
+
 #### Do you need a more custom layout?
 
 You don't always want to use a `UICollectionViewFlowLayout` and sometimes, you may want something more customized.
@@ -312,6 +397,10 @@ In your view controller's `viewDidLoad` method, add a line to set the collection
 collectionView.delegate = self
 ```
 
+```objc
+self.collectionView.delegate = self;
+```
+
 Then, add an extension to your view controller that adopts the UICollectionViewDelegate protocol, and implement the above method. The following code prints a cell's row index when it is selected.
 
 ```swift
@@ -319,6 +408,12 @@ extension ViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         println("Selected cell number: \(indexPath.row)")
     }
+}
+```
+
+```objc
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"Selected cell number: %ld", (long)indexPath.row);
 }
 ```
 
