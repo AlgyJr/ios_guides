@@ -30,6 +30,21 @@ func colorForIndexPath(indexPath: NSIndexPath) -> UIColor {
 }
 ```
 
+```objc
+@implementation ViewController
+
+int totalColors = 100;
+- (UIColor*)colorForIndexPath:(NSIndexPath *) indexPath{
+    if(indexPath.row >= totalColors){
+        return UIColor.blackColor;    // return black if we get an unexpected row index
+    }
+    
+    CGFloat hueValue = (CGFloat)(indexPath.row)/(CGFloat)(totalColors);
+    return [UIColor colorWithHue:hueValue saturation:1.0 brightness:1.0 alpha:1.0];
+}
+@end
+```
+
 ### Step 2: Add collection view to view controller
 In your Storyboard, drag a `Collection View` (not `Collection View Controller`) from the Object Library into your view controller. Use the Assistant Editor to add an outlet for the collection view in your view controller.
 
@@ -58,6 +73,18 @@ class ColorCell: UICollectionViewCell {
 }
 ```
 
+```objc
+//  ColorCell.h
+#import <UIKit/UIKit.h>
+
+@interface ColorCell : UICollectionViewCell
+
+@property (weak, nonatomic) IBOutlet UILabel *colorLabel;
+
+@end
+
+```
+
 ### Step 5: Set prototype cell's reuse identifier
 
 Select the cell in the Storyboard and give it a unique identifier in the Attributes Inspector. This allows the Collection View to reuse instances of our prototype cell.
@@ -76,6 +103,19 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         collectionView.dataSource = self
     }
+```
+
+```objc
+//  ViewController.m
+#import "ViewController.h"
+#import "ColorCell.h"
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.collectionView.dataSource = self;
+}
 ```
 
 Add an extension that implements the `UICollectionViewDataSource` protocol. Implement the `collectionView(_:numberOfItemsInSection:)` and `collectionView(_:cellForItemAtIndexPath:)` methods.
@@ -101,6 +141,33 @@ extension ViewController: UICollectionViewDataSource {
         return cell
     }
 }
+```
+
+```objc
+@implementation ViewController
+
+   //...
+
+- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return totalColors;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    ColorCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"com.codepath.ColorCell" forIndexPath:indexPath];
+    UIColor *cellColor = [self colorForIndexPath:indexPath];
+    cell.backgroundColor = cellColor;
+    
+    if(CGColorGetNumberOfComponents(cellColor.CGColor) == 4){
+        float redComponent = CGColorGetComponents(cellColor.CGColor)[0] * 255;
+        float greenComponent = CGColorGetComponents(cellColor.CGColor)[1] * 255;
+        float blueComponent = CGColorGetComponents(cellColor.CGColor)[2] * 255;
+        cell.colorLabel.text = [NSString stringWithFormat:@"%.0f, %.0f, %.0f", redComponent, greenComponent, blueComponent];
+    }
+    
+    return cell;
+}
+
+@end
 ```
 
 Build and run the demo app. Your collection view should show 100 colored cells, each with a different hue and a label of its RGB value.
