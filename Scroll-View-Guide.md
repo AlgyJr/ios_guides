@@ -148,6 +148,19 @@ class ViewController: UIViewController {
 
 ```
 
+```objc
+//  ViewController.m
+@implementation ViewController
+
+...
+
+- (IBAction)didTapDownButton:(id)sender {
+    CGPoint newOffset = CGPointMake(self.scrollView.contentOffset.x, self.scrollView.contentOffset.y + 300);
+    [self.scrollView setContentOffset:newOffset animated:YES];
+}
+@end
+```
+
 <a href="https://imgur.com/qtu6gAP"><img src="https://i.imgur.com/qtu6gAP.gif" title="source: imgur.com" /></a>
 
 ### Scrolling to a subview
@@ -171,6 +184,27 @@ class ViewController: UIViewController {
     }
 
 }
+```
+
+```objc
+//  ViewController.m
+@implementation ViewController
+
+UIView *grayView;
+
+- (void)viewDidLoad {
+   
+   ...
+
+   grayView = [[UIView alloc]initWithFrame:CGRectMake(50, 620, self.scrollView.contentSize.width - 100, 150)];
+   grayView.backgroundColor = UIColor.grayColor;
+   [self.scrollView addSubview:grayView];
+}
+
+- (IBAction)didTapScrollButton:(id)sender {
+    [self.scrollView scrollRectToVisible:grayView.frame animated:YES];
+}
+@end
 ```
 
 <a href="https://imgur.com/uLlEhV5"><img src="https://i.imgur.com/uLlEhV5.gif" title="source: imgur.com" /></a>
