@@ -246,6 +246,36 @@ class ViewController: UIViewController, UIScrollViewDelegate {
 }
 ```
 
+```objc
+//  ViewController.m
+@implementation ViewController
+
+...
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    CGFloat pageWidth = self.scrollView.bounds.size.width;
+    CGFloat pageHeight = self.scrollView.bounds.size.height;
+    
+    self.scrollView.contentSize = CGSizeMake(3*pageWidth, pageHeight);
+    self.scrollView.pagingEnabled = YES;
+    self.scrollView.showsHorizontalScrollIndicator = NO;
+    
+    UIView *view1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, pageWidth, pageHeight)];
+    view1.backgroundColor = UIColor.blueColor;
+    UIView *view2 = [[UIView alloc] initWithFrame:CGRectMake(pageWidth, 0, pageWidth, pageHeight)];
+    view2.backgroundColor = UIColor.orangeColor;
+    UIView *view3 = [[UIView alloc] initWithFrame:CGRectMake(2*pageWidth, 0, pageWidth, pageHeight)];
+    view3.backgroundColor = UIColor.purpleColor;
+    
+    [self.scrollView addSubview:view1];
+    [self.scrollView addSubview:view2];
+    [self.scrollView addSubview:view3];
+}
+@end
+```
+
 ### Adding a page control
 The paging behavior is often combined with a `UIPageControl` that
 displays a dot for each page and allows the user to switch pages by
@@ -273,6 +303,42 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.bounds.width)
     }
 }
+```
+
+```objc
+//  ViewController.h
+#import <UIKit/UIKit.h>
+
+@interface ViewController : UIViewController <UIScrollViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+- (IBAction)pageControlDidPage:(id)sender
+
+@end
+
+//  ViewController.m
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    ...
+    
+    self.scrollView.delegate = self;
+    self.pageControl.numberOfPages = 3;
+}
+
+- (IBAction)pageControlDidPage:(id)sender {
+    CGFloat xOffset = self.scrollView.bounds.size.width * (CGFloat)self.pageControl.currentPage;
+    [self.scrollView setContentOffset:CGPointMake(xOffset, 0) animated:YES];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    self.pageControl.currentPage = (NSInteger)self.scrollView.contentOffset.x/self.scrollView.bounds.size.width;
+}
+
+@end
 ```
 
 <a href="https://imgur.com/PFnCulU"><img src="https://i.imgur.com/PFnCulU.gif" title="source: imgur.com" /></a>
