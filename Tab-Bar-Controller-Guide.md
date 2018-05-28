@@ -104,6 +104,46 @@ class ClockViewController: UIViewController {
 
 ```
 
+```objc
+//  ClockViewController.m
+#import "ClockViewController.h"
+
+@interface ClockViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+
+@end
+
+@implementation ClockViewController
+
+NSTimer *clockTimer;
+NSDateFormatter *clockDateFormatter;
+
+- (void)updateTime{
+    self.timeLabel.text = [clockDateFormatter stringFromDate:[NSDate date]];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    clockDateFormatter = [[NSDateFormatter alloc] init];
+    clockDateFormatter.dateFormat = @"hh:mm:ss";
+    [self updateTime];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    clockTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateTime) userInfo:nil repeats:true];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [clockTimer invalidate];
+}
+
+@end
+
+```
+
 We also need to add a stop watch controller:
 
 ```swift
@@ -159,6 +199,71 @@ class StopwatchViewController: UIViewController {
     }
 }
 ```
+
+```objc
+//  StopwatchViewController.m
+#import "StopwatchViewController.h"
+
+@interface StopwatchViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *elapsedTimeLabel;
+- (IBAction)startButtonTapped:(UIButton *)sender;
+- (IBAction)stopButtonTapped:(UIButton *)sender;
+
+@end
+
+@implementation StopwatchViewController
+
+NSDateFormatter *dateFormatter;
+NSTimeInterval elapsedTimeAtStop = 0;
+NSDate *dateAtStart = NULL;
+NSTimer *timer;
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"mm:ss.S";
+    dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+    [self updateElapsedTime];
+}
+
+-(void)updateElapsedTime{
+    self.elapsedTimeLabel.text = [dateFormatter stringFromDate: [self dateForFormatter]];
+}
+
+-(NSDate*)dateForFormatter{
+    if(dateAtStart != NULL){
+        NSTimeInterval intervalSinceStart = [[NSDate date] timeIntervalSinceDate:dateAtStart];
+        NSTimeInterval totalElapsedTime = elapsedTimeAtStop + intervalSinceStart;
+        return [NSDate dateWithTimeIntervalSince1970:totalElapsedTime];
+    }
+    return [NSDate dateWithTimeIntervalSince1970:elapsedTimeAtStop];
+}
+
+- (IBAction)startButtonTapped:(UIButton *)sender {
+    if(dateAtStart == NULL){
+        dateAtStart = [NSDate date];
+        timer = [NSTimer scheduledTimerWithTimeInterval:1.0/10.0 target:self selector:@selector(updateElapsedTime) userInfo:nil repeats:true];
+    }
+}
+
+- (IBAction)stopButtonTapped:(UIButton *)sender {
+    if(dateAtStart != NULL){  //stop
+        elapsedTimeAtStop += [[NSDate date] timeIntervalSinceDate:dateAtStart];
+    }
+    else{  //reset
+        elapsedTimeAtStop = 0;
+    }
+    
+    [timer invalidate];
+    timer = NULL;
+    dateAtStart = NULL;
+    [self updateElapsedTime];
+}
+
+@end
+```
+
 <a href="https://imgur.com/j2tg3ul"><img src="https://i.imgur.com/j2tg3ul.gif" title="source: imgur.com" /></a>
 
 ## Programatically setting up a tab bar controller
