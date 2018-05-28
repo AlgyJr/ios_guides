@@ -39,6 +39,28 @@ class ViewController: UIViewController {
 }
 ```
 
+```objc
+//  ViewController.h
+#import <UIKit/UIKit.h>
+
+@interface ViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@end
+
+//  ViewController.m
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    CGFloat contentWidth = self.scrollView.bounds.size.width;
+    CGFloat contentHeight = self.scrollView.bounds.size.height * 3;
+    self.scrollView.contentSize = CGSizeMake(contentWidth, contentHeight);
+    // ...
+}
+
+@end
+```
 
 ### Step 3. Add content subviews
 What is shown in the scrollable content area of a scroll view is
@@ -74,6 +96,34 @@ class ViewController: UIViewController {
     }
 }
 
+```
+
+```objc
+//  ViewController.m
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    CGFloat contentWidth = self.scrollView.bounds.size.width;
+    CGFloat contentHeight = self.scrollView.bounds.size.height * 3;
+    self.scrollView.contentSize = CGSizeMake(contentWidth, contentHeight);
+    
+    CGFloat subviewHeight = (CGFloat)120;
+    CGFloat currentViewOffset = (CGFloat)0;
+    
+    while (currentViewOffset < contentHeight) {
+        CGRect frame = CGRectInset(CGRectMake(0, currentViewOffset, contentWidth, subviewHeight), 5, 5);
+        CGFloat hue = currentViewOffset/contentHeight;
+        UIView *subview = [[UIView alloc]initWithFrame:frame];
+        subview.backgroundColor = [UIColor colorWithHue:hue saturation:1 brightness:1 alpha:1];
+        [self.scrollView addSubview:subview];
+        
+        currentViewOffset += subviewHeight;
+    }
+}
+
+@end
 ```
 
 Here's what our example looks like when running:
