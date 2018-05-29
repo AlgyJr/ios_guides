@@ -374,6 +374,31 @@ class ViewController: UIViewController, UIScrollViewDelegate {
 }
 ```
 
+```objc
+//  ViewController.m
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.scrollView.delegate = self;
+    self.scrollView.minimumZoomScale = 0.25;
+    self.scrollView.maximumZoomScale =  2;
+    
+    UIImage *image = [UIImage imageNamed:@"romanesco-broccoli"];
+    imageView = [[UIImageView alloc]initWithImage:image];
+    self.scrollView.contentSize = image.size;
+    [self.scrollView addSubview:imageView];
+    self.scrollView.zoomScale = 0.5;
+}
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView{
+    return imageView;
+}
+
+@end
+```
+
 <a href="https://imgur.com/xmLhLet"><img src="https://i.imgur.com/xmLhLet.gif" title="source: imgur.com" /></a>
 
 ## Using scroll views with auto layout
