@@ -123,6 +123,80 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
     }
 }
 ```
+```objc
+//SearchBarTableViewViewController.h
+@interface SearchBarTableViewViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
+@end
+
+//SearchBarTableViewViewController.m
+@interface SearchBarTableViewViewController ()
+
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *data;
+@property (strong, nonatomic) NSArray *filteredData;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+
+@end
+
+@implementation SearchBarTableViewViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.searchBar.delegate = self;
+    
+    self.data = @[@"New York, NY", @"Los Angeles, CA", @"Chicago, IL", @"Houston, TX",
+                  @"Philadelphia, PA", @"Phoenix, AZ", @"San Diego, CA", @"San Antonio, TX",
+                  @"Dallas, TX", @"Detroit, MI", @"San Jose, CA", @"Indianapolis, IN",
+                  @"Jacksonville, FL", @"San Francisco, CA", @"Columbus, OH", @"Austin, TX",
+                  @"Memphis, TN", @"Baltimore, MD", @"Charlotte, ND", @"Fort Worth, TX"];
+
+    self.filteredData = self.data;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.filteredData.count;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TableCell"
+                                                                 forIndexPath:indexPath];
+    cell.textLabel.text = self.filteredData[indexPath.row];
+    
+    return cell;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
+    if (searchText.length != 0) {
+        
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSString *evaluatedObject, NSDictionary *bindings) {
+            return [evaluatedObject hasPrefix:searchText];
+        }];
+        self.filteredData = [self.data filteredArrayUsingPredicate:predicate];
+        
+        NSLog(@"%@", self.filteredData);
+        
+    }
+    else {
+        self.filteredData = self.data;
+    }
+    
+    [self.tableView reloadData];
+    
+}
+
+@end
+```
 
 Here's what this looks like when running.  Notice that the search
 results are displayed in the same table, and there is no presentation of
