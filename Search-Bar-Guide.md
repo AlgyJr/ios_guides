@@ -156,15 +156,9 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
     self.filteredData = self.data;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.filteredData.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -192,7 +186,7 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
     }
     
     [self.tableView reloadData];
-    
+ 
 }
 
 @end
