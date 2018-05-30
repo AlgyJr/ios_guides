@@ -174,7 +174,7 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
     if (searchText.length != 0) {
         
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSString *evaluatedObject, NSDictionary *bindings) {
-            return [evaluatedObject hasPrefix:searchText];
+            return [evaluatedObject containsString:searchText];
         }];
         self.filteredData = [self.data filteredArrayUsingPredicate:predicate];
         
