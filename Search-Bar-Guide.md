@@ -488,6 +488,18 @@ This can be configured programatically in your view controller's
         // you just need to set the titleView to be the search bar
         navigationItem.titleView = searchBar
 ```
+```objc
+    // create the search bar programatically since you won't be
+    // able to drag one onto the navigation bar
+    self.searchBar = [[UISearchBar alloc] init];
+    [self.searchBar sizeToFit];
+    
+    // the UIViewController comes with a navigationItem property
+    // this will automatically be initialized for you if when the
+    // view controller is added to a navigation controller's stack
+    // you just need to set the titleView to be the search bar
+    self.navigationItem.titleView = self.searchBar;
+```
 
 **Using a search display controller:**
 
@@ -506,7 +518,15 @@ This can be configured programatically in your view controller's
         // our search bar is inside the navigation bar.
         searchController.hidesNavigationBarDuringPresentation = false
 ```
-
+```objc
+    [self.searchControllerNavi.searchBar sizeToFit];
+    self.navigationItem.titleView = self.searchControllerNavi.searchBar;
+    
+    // By default the navigation bar hides when presenting the
+    // search interface.  Obviously we don't want this to happen if
+    // our search bar is inside the navigation bar.
+    self.searchControllerNavi.hidesNavigationBarDuringPresentation = NO;
+```
 <!--
 Search Bar Scopes
 -->
