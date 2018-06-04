@@ -36,9 +36,8 @@ Within the `viewDidLoad` method...
 // Convert the url String to a NSURL object.
 let requestURL = URL(string:url)
 // Place the URL in a URL Request.
-let request = URLRequest(URL: requestURL!)
-// Load Request into WebView.
-webView.loadRequest(request)
+let request = URLRequest(url: requestURL!)
+webkitView.load(request)
 ```
 ```objc
 // Convert the url String to a NSURL object.
