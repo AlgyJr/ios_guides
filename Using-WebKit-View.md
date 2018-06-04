@@ -26,7 +26,7 @@ let url = "https://www.dropbox.com/terms?mobile=1"
 ``` 
 ```objc
 // As a property or local variable
-NSURL *url = [NSURL URLWithString:@"https://www.dropbox.com/terms?mobile=1"];
+NSString *urlString = @"https://www.dropbox.com/terms?mobile=1";
 ```
 ### Step 5: Convert String and Load Request
 
@@ -41,10 +41,14 @@ let request = URLRequest(URL: requestURL!)
 webView.loadRequest(request)
 ```
 ```objc
+// Convert the url String to a NSURL object.
+NSURL *url = [NSURL URLWithString:urlString];
+
+// Place the URL in a URL Request.
 NSURLRequest *request = [NSURLRequest requestWithURL:url
                                          cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
                                      timeoutInterval:10.0];
-    
+// Load Request into WebView.
 [self.webkitView loadRequest:request];
 ```
 
