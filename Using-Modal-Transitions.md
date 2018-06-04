@@ -72,8 +72,8 @@ let userVC = mainStoryboard.instantiateViewControllerWithIdentifier("userVC") as
 
 ```
 ```objc
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    WebViewController *webVC = [storyboard instantiateViewControllerWithIdentifier:@"WebVC"];
+UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+WebViewController *webVC = [storyboard instantiateViewControllerWithIdentifier:@"WebVC"];
 ```
 
 Then, present the View Controller using the following API
@@ -98,7 +98,16 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 	destinationViewController.image = self.imageView.image
 }
 ```
-
+```objc
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    MovieCell *cell = (MovieCell *)sender;    
+    NSDictionary *movie = cell.movie;
+    
+    DetailViewController *detailVC = segue.destinationViewController;    
+    detailVC.movie = movie;
+}
+```
 This assumes that the destination view controller has a property called `image`.
 
 ```swift
@@ -108,7 +117,10 @@ class PhotoViewController : UIViewController {
 }
 
 ```
-
+```objc
+@interface DetailViewController : UIViewController
+@property(strong, nonatomic) NSDictionary *movie;
+```
 Then, in the destination view controller, after the view loads, set the image property of the image view.
 
 ```swift
@@ -118,4 +130,12 @@ override func viewDidLoad() {
 	imageView.image = image
 }
 
+```
+```objc
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.movieTitle.text = self.movie[@"title"];
+    self.movieDescription.text = self.movie[@"overview"];
+}
 ```
