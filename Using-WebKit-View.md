@@ -1,10 +1,12 @@
-Loading a URL into your app is as easy! Just add and configure a UIWebView.  
+Loading a URL into your app is as easy! Just add and configure a WebKit View, which replaces UIWebView starting iOS 8.  
   
 ![WebView Demo|250](https://i.imgur.com/v4PlBQX.gif)
 
-### Step 1: Add UIWebView to Storyboard
+## Step 0: Add WebKit to your project
 
-Drag and drop a UIWebView from the Object Library to the main view of your ViewController. Drag the edges of the view to adjust it's size. 
+### Step 1: Add WebKit View (not UIWebView) to Storyboard
+
+Drag and drop a WebKit View from the Object Library to the main view of your ViewController. Drag the edges of the view to adjust it's size. 
 
 ### Step 2: Create a custom ViewController file
 
