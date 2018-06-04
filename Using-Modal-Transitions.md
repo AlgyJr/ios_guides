@@ -40,7 +40,9 @@ Once, you've given the segue a unique name, you can call invoke it in code, whic
 ```swift
 performSegue(withIdentifier: "firstSegue", sender: nil)
 ```
-
+```objc
+[self performSegueWithIdentifier:@"showWebVC" sender:nil];
+```
 
 Below is an example of presenting a View Controller programmatically
 ![Present VC|700](https://i.imgur.com/5Bl9ze2.gif)
@@ -55,7 +57,9 @@ In the button action, call the method below to dismiss the current view controll
 ```swift
 dismiss(animated: true, completion: nil)
 ```
-
+```objc
+[self dismissViewControllerAnimated:YES completion:nil];
+```
 #### Presenting View Controllers Programmatically
 
 Sometimes, you may want to present different View Controllers dynamically based on certain conditions in code or you may want to show a View Controller directly, without using the storyboard Segue.
@@ -67,6 +71,10 @@ let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
 let userVC = mainStoryboard.instantiateViewControllerWithIdentifier("userVC") as! UserViewController
 
 ```
+```objc
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    WebViewController *webVC = [storyboard instantiateViewControllerWithIdentifier:@"WebVC"];
+```
 
 Then, present the View Controller using the following API
 
@@ -74,7 +82,9 @@ Then, present the View Controller using the following API
 presentViewController(userVC, animated: true, completion: nil)
 
 ```
-
+```objc
+[self presentViewController:webVC animated:YES completion:nil];
+```
 ### Passing Data
 
 Often, you will need to pass data from a view controller to the view controller that is being presented. There is a special method that is called right before the segue happens. In that method, you can access the view controller that is being transitioned to and set the appropriate property.
