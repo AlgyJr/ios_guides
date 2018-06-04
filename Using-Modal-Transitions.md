@@ -100,10 +100,6 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 ```
 ```objc
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    MovieCell *cell = (MovieCell *)sender;    
-    NSDictionary *movie = cell.movie;
-    
     DetailViewController *detailVC = segue.destinationViewController;    
     detailVC.movie = movie;
 }
@@ -118,6 +114,7 @@ class PhotoViewController : UIViewController {
 
 ```
 ```objc
+//DetailViewController.h
 @interface DetailViewController : UIViewController
 @property(strong, nonatomic) NSDictionary *movie;
 ```
@@ -136,6 +133,5 @@ override func viewDidLoad() {
     [super viewDidLoad];
     
     self.movieTitle.text = self.movie[@"title"];
-    self.movieDescription.text = self.movie[@"overview"];
 }
 ```
