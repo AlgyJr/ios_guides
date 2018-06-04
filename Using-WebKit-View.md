@@ -2,7 +2,7 @@ Loading a URL into your app is as easy! Just add and configure a WebKit View, wh
   
 ![WebView Demo|250](https://i.imgur.com/v4PlBQX.gif)
 
-## Step 0: Add WebKit to your project
+### Step 0: Add WebKit to your project
 Add WebKit to your project's "Linked Frameworks and Libraries"
 
 ### Step 1: Add WebKit View (not UIWebView) to Storyboard
