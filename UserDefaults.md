@@ -26,7 +26,6 @@ defaults.set(data, forKey: "currentUserData")
 defaults.synchronize()
 
 ```
-
 ```objc
 //Access UserDefaults
 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
