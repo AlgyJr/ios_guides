@@ -20,13 +20,14 @@ Choose: File -> New -> File...-> iOS -> Cocoa Touch Class
 Create an outlet for the WebView by ctrl + dragging from the WebView in the Storyboard to your custom ViewController swift file.
 
 ### Step 4: Create Constant for URL
-
-**Above** the `viewDidLoad` method, create a constant to hold your URL string. We will link to the DropBox mobile terms url.
-
 ```swift
+//**Above** the `viewDidLoad` method, create a constant to hold your URL string. We will link to the DropBox mobile terms url.
 let url = "https://www.dropbox.com/terms?mobile=1"
 ``` 
-
+```objc
+// As a property or local variable
+NSURL *url = [NSURL URLWithString:@"https://www.dropbox.com/terms?mobile=1"];
+```
 ### Step 5: Convert String and Load Request
 
 Within the `viewDidLoad` method... 
@@ -38,6 +39,13 @@ let requestURL = URL(string:url)
 let request = URLRequest(URL: requestURL!)
 // Load Request into WebView.
 webView.loadRequest(request)
+```
+```objc
+NSURLRequest *request = [NSURLRequest requestWithURL:url
+                                         cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                     timeoutInterval:10.0];
+    
+[self.webkitView loadRequest:request];
 ```
 
 ### Step 6: Add Networking Permissions
