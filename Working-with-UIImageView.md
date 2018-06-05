@@ -176,6 +176,48 @@ self.myImageView.setImageWithURLRequest(
         // possibly try to get the large image
 })
 ```
+```objc
+NSURL *urlSmall = [NSURL URLWithString:@"https://image.tmdb.org/t/p/w200/j0BtDE8M4Q2sJANrQjCosU8N7ji.jpg"];
+NSURL *urlLarge = [NSURL URLWithString:@"https://image.tmdb.org/t/p/w500/j0BtDE8M4Q2sJANrQjCosU8N7ji.jpg"];
+
+NSURLRequest *requestSmall = [NSURLRequest requestWithURL:urlSmall];
+NSURLRequest *requestLarge = [NSURLRequest requestWithURL:urlLarge];
+
+__weak DetailViewController *weakSelf = self;
+
+[self.imageView setImageWithURLRequest:requestSmall
+                      placeholderImage:nil
+                               success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *smallImage) {
+                                   
+                                   // smallImageResponse will be nil if the smallImage is already available
+                                   // in cache (might want to do something smarter in that case).
+                                   weakSelf.imageView.alpha = 0.0;
+                                   weakSelf.imageView.image = smallImage;
+                                   
+                                   [UIView animateWithDuration:0.3
+                                                    animations:^{
+                                                        
+                                                        weakSelf.imageView.alpha = 1.0;
+                                                        
+                                                    } completion:^(BOOL finished) {
+                                                        // The AFNetworking ImageView Category only allows one request to be sent at a time
+                                                        // per ImageView. This code must be in the completion block.
+                                                        [weakSelf.imageView setImageWithURLRequest:requestLarge
+                                                                              placeholderImage:smallImage
+                                                                                       success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage * largeImage) {
+                                                                                            weakSelf.imageView.image = largeImage;
+                                                                              }
+                                                                                       failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+                                                                                           // do something for the failure condition of the large image request
+                                                                                           // possibly setting the ImageView's image to a default image
+                                                                                       }];
+                                                    }];
+                               }
+                               failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+                                   // do something for the failure condition
+                                   // possibly try to get the large image
+                               }];
+```
 
 ## References
 * https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIImageView_Class
