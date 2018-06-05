@@ -110,7 +110,17 @@ It is common to create the gesture recognizers in the `viewDidLoad()` method, as
    yourView.isUserInteractionEnabled = true
    yourView.addGestureRecognizer(tapGestureRecognizer)
 ```
-
+```objc
+    // Here we use the method didPan(sender:), which we defined in the previous step, as the action.
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
+    
+    // Optionally set the number of required taps, e.g., 2 for a double click
+    tapGestureRecognizer.numberOfTapsRequired = 2;
+    
+    // Attach it to a view of your choice. If it's a UIImageView, remember to enable user interaction
+    [self.view setUserInteractionEnabled:YES];
+    [self.view addGestureRecognizer:tapGestureRecognizer];
+```
 #### Example: Pan gesture recognizer
 
 ```swift
