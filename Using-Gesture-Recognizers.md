@@ -52,6 +52,12 @@ func didTap(sender: UITapGestureRecognizer) {
    // User tapped at the point above. Do something with that if you want.
 }
 ```
+```objc
+- (IBAction)didTap:(UITapGestureRecognizer *)sender {    
+    CGPoint location = [sender locationInView:self.view];  
+   // User tapped at the point above. Do something with that if you want.  
+}
+```
 
 #### Example: Pan gesture recognizer
 
