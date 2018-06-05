@@ -48,7 +48,24 @@ class myViewController {
     }
 }
 ```
+```objc
+#import "UIKit+AFNetworking.h"
 
+@interface DetailViewController ()
+@end
+
+@implementation DetailViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    NSURL *url = [NSURL URLWithString:@"https://image.tmdb.org/t/p/w500/j0BtDE8M4Q2sJANrQjCosU8N7ji.jpg"];
+    
+    // AFNetworking extension to UIImageView that allows
+    // specifying a URL for the image
+    [self.imageView setImageWithURL:url];
+}
+```
 ### Improving the User Experience
 
 There are a couple of enhancements that can be done when working with images being pulled from the network to improve the user experience.
