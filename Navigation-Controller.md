@@ -1015,6 +1015,25 @@ class NameController: UIViewController {
    ...
 }
 ```
+```objc
+@implementation DetailViewController
+
+- (void)viewDidLoad {
+    ...
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save"
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self action:@selector(saveButtonTapped:)];
+    
+    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"Foo", @"Bar"]];
+    [segmentedControl sizeToFit];
+    UIBarButtonItem *segmentedButton = [[UIBarButtonItem alloc] initWithCustomView:segmentedControl];
+    
+    UIBarButtonItem *dummyButton = [[UIBarButtonItem alloc] initWithTitle:@"Dummy" style:UIBarButtonItemStylePlain target:nil action:nil];
+    
+    self.navigationItem.rightBarButtonItems = @[saveButton, segmentedButton];
+    self.navigationItem.leftBarButtonItem = dummyButton;
+}
+```
 <a href="https://imgur.com/FptSf6y"><img src="https://i.imgur.com/FptSf6yl.png" title="source: imgur.com" /></a>
 
 #### The Back button
