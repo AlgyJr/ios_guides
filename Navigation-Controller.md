@@ -887,6 +887,27 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 ```
 
+```objc
+@implementation DetailViewController
+
+- (void)viewDidLoad {
+
+    self.navigationItem.title = @"Names";
+    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    [navigationBar setBackgroundImage:[UIImage imageNamed:@"codepath-logo"] forBarMetrics:UIBarMetricsDefault];
+    navigationBar.tintColor = [UIColor colorWithRed:1.0 green:0.25 blue:0.25 alpha:0.8];
+    
+    NSShadow *shadow = [NSShadow new];
+    shadow.shadowColor = [[UIColor grayColor] colorWithAlphaComponent:0.5];
+    shadow.shadowOffset = CGSizeMake(2, 2);
+    shadow.shadowBlurRadius = 4;
+    navigationBar.titleTextAttributes = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:22],
+                                          NSForegroundColorAttributeName : [UIColor colorWithRed:0.5 green:0.15 blue:0.15 alpha:0.8],
+                                          NSShadowAttributeName : shadow};
+
+}
+```
+
 <a href="https://imgur.com/AJjy8Nq"><img src="https://i.imgur.com/AJjy8Nq.gif" title="source: imgur.com" /></a>
 
 ### Title text and view of a navigation item
