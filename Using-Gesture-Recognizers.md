@@ -152,6 +152,9 @@ yourView.addGestureRecognizer(screenEdgePanGestureRecognizer)
 ```swift
 let location = sender.location(in: view)
 ``` 
+```objc
+CGPoint location = [sender locationInView:self.view];  
+```
 
 #### Pan Gesture Recognizer
 
