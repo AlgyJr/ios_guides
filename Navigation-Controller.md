@@ -952,7 +952,33 @@ class NameController: UIViewController {
 
 }
 ```
+```objc
+@implementation DetailViewController
 
+- (void)viewDidLoad {
+    ...
+
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save"
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self action:@selector(saveButtonTapped:)];
+    UILabel *titleLabel = [UILabel new];
+    
+    NSShadow *shadow = [NSShadow new];
+    shadow.shadowColor = [[UIColor grayColor] colorWithAlphaComponent:0.5];
+    shadow.shadowOffset = CGSizeMake(2, 2);
+    shadow.shadowBlurRadius = 4;
+    
+    NSAttributedString *titleText = [[NSAttributedString alloc] initWithString:@"Edit Name"
+                                                                    attributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:28],
+                                                                                 NSForegroundColorAttributeName : [UIColor colorWithRed:0.5 green:0.25 blue:0.15 alpha:0.8],
+                                                                                 NSShadowAttributeName : shadow}];
+    
+    titleLabel.attributedText = titleText;
+    [titleLabel sizeToFit];
+    self.navigationItem.titleView = titleLabel;
+
+}
+```
 <a href="https://imgur.com/BYV6p9s"><img src="https://i.imgur.com/BYV6p9s.gif" title="source: imgur.com" /></a>
 
 [titleview]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UINavigationItem_Class/index.html#//apple_ref/occ/instp/UINavigationItem/titleView
