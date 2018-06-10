@@ -891,6 +891,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 @implementation DetailViewController
 
 - (void)viewDidLoad {
+    ...
 
     self.navigationItem.title = @"Names";
     UINavigationBar *navigationBar = self.navigationController.navigationBar;
