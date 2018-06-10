@@ -888,7 +888,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 ```
 
 ```objc
-@implementation DetailViewController
+@implementation ViewController
 
 - (void)viewDidLoad {
     ...
@@ -953,7 +953,7 @@ class NameController: UIViewController {
 }
 ```
 ```objc
-@implementation DetailViewController
+@implementation NameController
 
 - (void)viewDidLoad {
     ...
@@ -1016,7 +1016,7 @@ class NameController: UIViewController {
 }
 ```
 ```objc
-@implementation DetailViewController
+@implementation NameController
 
 - (void)viewDidLoad {
     ...
@@ -1075,7 +1075,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     ...
 }
 ```
+```objc
+@implementation ViewController
 
+- (void)viewDidLoad {
+    ...
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:nil action:nil];
+}
+```
 <a href="https://imgur.com/W4XwDwF"><img src="https://i.imgur.com/W4XwDwF.gif" title="source: imgur.com" /></a>
 
 <!-- TODO: ## Example: implementing a search bar in the navigation bar -->
