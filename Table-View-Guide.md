@@ -2102,7 +2102,6 @@ override func viewDidLoad() {
     // Initialize a UIRefreshControl
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView insertSubview:refreshControl atIndex:0];
 }
 ```
 ####Insert the refresh control into the list
@@ -2117,6 +2116,16 @@ override func viewDidLoad() {
     refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
     // add refresh control to table view
     tableView.insertSubview(refreshControl, at: 0)
+}
+```
+```objc
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    // Initialize a UIRefreshControl
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:refreshControl atIndex:0];
 }
 ```
 
