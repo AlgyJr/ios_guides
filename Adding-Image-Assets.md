@@ -22,11 +22,11 @@ Any control that has images like UIImageViews or UIButtons can set images in Int
 
 To access images in the Asset Catalog programmatically, create UIImages using the `imageNamed:` method as shown in the snippet below.
 
-```Swift
+```swift
 var chat = UIImage(named: "Chat")
 var chatImageView = UIImageView(image: chat)
 ```
-```ObjectiveC
+```objc
 UIImage *chat = [UIImage imageNamed:@"Chat"];
 UIImageView *chatImageView = [[UIImageView alloc] initWithImage:chat];
 ```
