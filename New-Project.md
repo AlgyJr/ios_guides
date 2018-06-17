@@ -24,21 +24,9 @@
 
    <img src="https://i.imgur.com/HM7FDKK.png" width="500" /></br>
 
-## 2. Add .gitignores
+## 2. Add .gitignore
 
-```
-.DS_Store
-xcuserdata
-```
+The .gitignore file will tell git which files to ignore. Here are a few useful .gitignore templates to start with, depending on if you're using Objective-C or Swift.
 
-`.DS_Store` files are used by OS X to remember information about the current folder's window location.
-
-The `xcuserdata` folder stores you local Xcode data, such as the breakpoints you've set.
-
-## 3. Use a shared scheme
-
-As you change build configurations, you want those changes shared with your team. Click the Application icon drop-down, and choose *Manage Schemes*.
-
-In the new window, there is one scheme bundled with your app. Check the *Shared* box.
-
-You will now have an `MyProjectName.xcodeproj/xcshareddata` folder in your app. Add this file to git.
+- [Objective-C .gitignore](https://raw.githubusercontent.com/github/gitignore/master/Objective-C.gitignore)
+- [Swift .gitignore](https://raw.githubusercontent.com/github/gitignore/master/Swift.gitignore)
