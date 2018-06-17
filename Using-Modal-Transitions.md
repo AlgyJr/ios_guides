@@ -93,15 +93,15 @@ In the source view controller, implement the following method. Often, you'll wan
 
 ```swift
 override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-	var destinationViewController = segue.destination as! PhotoViewController
+    var photoViewController = segue.destination as! PhotoViewController
         
-	destinationViewController.image = self.imageView.image
+    photoViewController.image = self.imageView.image
 }
 ```
 ```objc
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    DetailViewController *detailVC = segue.destinationViewController;    
-    detailVC.movie = movie;
+    PhotoViewController *photoViewController = segue.destinationViewController;    
+    photoViewController.image = self.imageView.image;
 }
 ```
 This assumes that the destination view controller has a property called `image`.
@@ -114,17 +114,17 @@ class PhotoViewController : UIViewController {
 
 ```
 ```objc
-//DetailViewController.h
-@interface DetailViewController : UIViewController
-@property(strong, nonatomic) NSDictionary *movie;
+// PhotoViewController.h
+@interface PhotoViewController : UIViewController
+@property (strong, nonatomic) UIImage *image;
 ```
 Then, in the destination view controller, after the view loads, set the image property of the image view.
 
 ```swift
 override func viewDidLoad() {
-	super.viewDidLoad()
+    super.viewDidLoad()
 
-	imageView.image = image
+    imageView.image = image
 }
 
 ```
@@ -132,6 +132,6 @@ override func viewDidLoad() {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.movieTitle.text = self.movie[@"title"];
+    self.imageView.image = image;
 }
 ```
