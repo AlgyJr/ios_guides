@@ -5,7 +5,7 @@ Table views are the center of many iOS applications and have many features to cu
 
 Download the sample code [here](https://github.com/codepath/ios_guides/tree/master/demos/SimpleTableView).
 
-### Basic Table View
+### 1. Basic Table View
 
 #### Step 1: Create a view controller
 
@@ -19,13 +19,20 @@ Control-drag from the view to the implementation file to create an outlet to the
 
 #### Step 3: Set the datasource and delegate
 
-Declare that the class implements the table view datasource and delegate protocols. Look for the class declaration at the top of your Swift file. Add `UITableViewDataSource` and `UITableViewDelegate` after `UIViewController`. Note that there will be an error that your class doesn't implement the required UITableViewDataSource functions. The error won't go away until you complete Step 4 below.
+Declare that the class implements the table view datasource and delegate protocols. Look for the class declaration at the top of your Swift or Objective-C file. Add `UITableViewDataSource` and `UITableViewDelegate` after `UIViewController`. Note that there will be an error that your class doesn't implement the required UITableViewDataSource functions. The error won't go away until you complete Step 4 below.
 
 ```swift
 class YourViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
   ...
 }
 
+```
+```objc
+@interface YourViewController <UITableViewDataSource, UITableViewDelegate>
+
+...
+
+@end
 ```
 
 In viewDidLoad, configure the datasource and delegate of the table view.
@@ -58,7 +65,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
 
 ```
 
-### Table View with Custom Cells
+### 2. Table View with Custom Cells
 
 In practice, a UITableViewCell is rarely appropriate for your table views. Instead, you'll often need to create a custom cell with different subviews and custom highlight and selection effects. To create and use a custom cell, follow the steps below.
 
@@ -87,7 +94,7 @@ func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexP
 
 ```
 
-### Passing Data from Table View Cells
+### 3. Passing Data from Table View Cells
   
 <img src="https://i.imgur.com/LnuC2nk.gif" width="250"/>  
   
