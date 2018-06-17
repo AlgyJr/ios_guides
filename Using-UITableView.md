@@ -91,7 +91,7 @@ In practice, a UITableViewCell is rarely appropriate for your table views. Inste
 
 #### Step 1: Create the custom cell
 
-In Storyboard, drag a UITableViewCell onto the table view. Create a new Swift file for the custom cell. It should be a subclass of UITableViewCell. Select the UITableViewCell in Storyboard and type in the name of the custom cell in the Identity Inspector.
+Create a new CocoaTouch Class for the custom cell (In Xcode, select File->New->File and select CocoaTouch Class in the wizard). It should be a subclass of UITableViewCell. In Storyboard, drag a UITableViewCell onto the table view. Select the UITableViewCell in Storyboard and type in the name of the custom cell in the Identity Inspector.
 
 ![Identity](https://i.imgur.com/TMmgLJh.png)
 
@@ -112,6 +112,16 @@ func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexP
     return cell
 }
 
+```
+```objc
+// Add the import to the top of your .m file
+#import "YourCustomCell.h"
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    YourCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:@"YourCustomCell" forIndexPath:indexPath];
+    
+    return cell;
+}
 ```
 
 ### 3. Passing Data from Table View Cells
