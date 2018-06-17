@@ -2242,13 +2242,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 #import "ViewController.h"
 
+@interface ViewController()
+
+@property (assign, nonatomic) BOOL isMoreDataLoading;
+
+@end
+
 @implementation ViewController
 
-bool isMoreDataLoading = false;
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if(!isMoreDataLoading){
-       isMoreDataLoading = true;
+    if(!self.isMoreDataLoading){
+       self.isMoreDataLoading = true;
 
        // ... Code to load more results ...
 
@@ -2289,14 +2293,14 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
 @implementation ViewController
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if(!isMoreDataLoading){
+    if(!self.isMoreDataLoading){
         // Calculate the position of one screen length before the bottom of the results
         int scrollViewContentHeight = self.tableView.contentSize.height;
         int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
         
         // When the user has scrolled past the threshold, start requesting
         if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
-            isMoreDataLoading = true;
+            self.isMoreDataLoading = true;
             
             // ... Code to load more results ...
         }
@@ -2387,7 +2391,7 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if(!isMoreDataLoading){
+    if(!self.isMoreDataLoading){
         // Calculate the position of one screen length before the bottom of the results
         int scrollViewContentHeight = self.tableView.contentSize.height;
         int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
