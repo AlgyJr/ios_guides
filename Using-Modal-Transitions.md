@@ -108,7 +108,7 @@ This assumes that the destination view controller has a property called `image`.
 
 ```swift
 class PhotoViewController : UIViewController {
-	var image: UIImage!
+    var image: UIImage!
 
 }
 
