@@ -28,7 +28,7 @@ class YourViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
 ```
 ```objc
-@interface YourViewController <UITableViewDataSource, UITableViewDelegate>
+@interface YourViewController() <UITableViewDataSource, UITableViewDelegate>
 
 ...
 
@@ -45,6 +45,14 @@ override func viewDidLoad() {
     tableView.dataSource = self
 }
 
+```
+```objc
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+}
 ```
 
 #### Step 4: Implement the table view methods
@@ -63,6 +71,18 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     return cell
 }
 
+```
+```objc
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 5;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    cell.textLabel.text = [NSString stringWithFormat:@"This is row %ld", (long)indexPath.row];
+    
+    return cell;
+}
 ```
 
 ### 2. Table View with Custom Cells
