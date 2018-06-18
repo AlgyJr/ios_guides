@@ -10,7 +10,7 @@ func onTimer() {
 }
 ```
 ```objc
-- (void)onTimer P
+- (void)onTimer {
    // Add code to be run periodically
 }
 ```
