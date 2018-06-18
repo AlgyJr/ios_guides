@@ -9,6 +9,10 @@ func onTimer() {
    // Add code to be run periodically	
 }
 ```
+```objc
+- (void)onTimer P
+   // Add code to be run periodically
+}
 
 ### Step 2: Scheduling the Timer
 
@@ -16,4 +20,7 @@ For example, to schedule the `onTimer` method to be called every 5 seconds, use 
 
 ```swift
 Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
+```
+```objc
+[NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
 ```
