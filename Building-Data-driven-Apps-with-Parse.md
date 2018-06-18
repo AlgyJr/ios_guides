@@ -91,25 +91,42 @@ One of the basic use cases for user management is to have them sign up. Once you
 The following code snippet shows how to sign up user:
 
 ```swift
-   func registerUser() {
-        // initialize a user object
-        let newUser = PFUser()
-
-        // set user properties
-        newUser.username = usernameLabel.text
-        newUser.email = emailLabel.text
-        newUser.password = passwordLabel.text
-
-        // call sign up function on the object
-        newUser.signUpInBackground { (success: Bool, error: Error?) in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                print("User Registered successfully")
-                // manually segue to logged in view
-            }
-        }   
+func registerUser() {
+    // initialize a user object
+    let newUser = PFUser()
+    
+    // set user properties
+    newUser.username = usernameField.text
+    newUser.email = emailField.text
+    newUser.password = passwordField.text
+    
+    // call sign up function on the object
+    newUser.signUpInBackground { (success: Bool, error: Error?) in
+        if let error = error {
+            print(error.localizedDescription)
+        } else {
+            print("User Registered successfully")
+            // manually segue to logged in view
+        }
     }
+}
+```
+```objc
+- (void)registerUser {
+    PFUser *newUser = [PFUser user];
+    
+    newUser.username = self.usernameField.text;
+    newUser.email = self.emailField.text;
+    newUser.password = self.passwordField.text;
+    
+    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        } else {
+            NSLog(@"User registered successfully");
+        }
+    }];
+}
 ```
 
 ###### Notes:
