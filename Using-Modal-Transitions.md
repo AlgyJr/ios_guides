@@ -44,10 +44,6 @@ performSegue(withIdentifier: "firstSegue", sender: nil)
 [self performSegueWithIdentifier:@"firstSegue" sender:nil];
 ```
 
-Below is an example of presenting a View Controller programmatically
-![Present VC|700](https://i.imgur.com/5Bl9ze2.gif)
-
-
 #### Dismissing Modal Transitions
 
 The easiest way to dismiss a modal transition and return to the original view controller is to do it in code. Create a button that will dismiss the view controller and add a button action.
