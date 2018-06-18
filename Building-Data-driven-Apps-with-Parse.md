@@ -164,6 +164,23 @@ func loginUser() {
      }   
 }
 ```
+```objc
+- (void)loginUser {
+    NSString *username = self.usernameField.text;
+    NSString *password = self.passwordField.text;
+    
+    [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
+        if (error != nil) {
+            NSLog(@"User log in failed: %@", error.localizedDescription);
+        } else {
+            NSLog(@"User logged in successfully");
+            
+            // display view controller that needs to shown after successful login
+        }
+    }];
+}
+```
+
 ###### Notes:
 1. `??` used in above code snippet is a <a href="http://guides.codepath.com/ios/Understanding-Swift#understanding-the-question-mark" target="_blank">*nil coalescing operator*</a>
 2. `logInWithUsernameInBackground` - Makes an *asynchronous* request to log in a user with specified credentials.
