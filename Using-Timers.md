@@ -13,6 +13,7 @@ func onTimer() {
 - (void)onTimer P
    // Add code to be run periodically
 }
+```
 
 ### Step 2: Scheduling the Timer
 
