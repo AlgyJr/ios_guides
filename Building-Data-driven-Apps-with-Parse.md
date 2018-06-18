@@ -534,9 +534,25 @@ query.findObjectsInBackground { (posts: [Post]?, error: Error?) in
         print(error?.localizedDescription)
     }
 }
+
+```
+```objc
+// construct query
+NSPredicate *predicate = [NSPredicate predicateWithFormat:@"likesCount > 100"];
+PFQuery *query = [PFQuery queryWithClassName:@"Post" predicate:predicate];
+
+// fetch data asynchronously
+[query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+    if (posts != nil) {
+        // do something with the array of object returned by the call
+    } else {
+        NSLog(@"%@", error.localizedDescription);
+    }
+}];
+
 ```
 
-A complete list of features supported by Parse for `NSPredicate` can be found [here](https://parse.com/docs/ios/guide#queries-specifying-constraints-with-nspredicate).
+A complete list of features supported by Parse for `NSPredicate` can be found [here](http://docs.parseplatform.org/ios/guide#queries-specifying-constraints-with-nspredicate).
 
 #### `Pointer` type fields and fetching their value (getting value of the object)
 
