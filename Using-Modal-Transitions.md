@@ -31,9 +31,9 @@ The standard transition styles for presenting the view controller can be supplem
 
 #### Triggering the Transition Manually
 
-Sometimes, you want the transition to happen, but it's not the result of a button tap. In that case, you have to name the segue and then call the `performSegue` method in code. The name of the segue doesn't matter, but it should be unique for that view controller.
+Sometimes, you want the transition to happen, but it's not the result of a button tap. In that case, create the segue from the yellow view controller icon, so that it's not associated with a particular even. Then, select the segue and give it an identifier. Later, in code, you can trigger the segue by calling the `performSegue` method. The name of the segue doesn't matter, but it should be unique for that view controller.
 
-![Name Segue|700](https://i.imgur.com/m1SnyFw.gif)
+![Name Segue|700](https://i.imgur.com/FcR9kUH.gif)
 
 Once, you've given the segue a unique name, you can call invoke it in code, which will trigger the modal transition.
 
@@ -41,7 +41,7 @@ Once, you've given the segue a unique name, you can call invoke it in code, whic
 performSegue(withIdentifier: "firstSegue", sender: nil)
 ```
 ```objc
-[self performSegueWithIdentifier:@"showWebVC" sender:nil];
+[self performSegueWithIdentifier:@"firstSegue" sender:nil];
 ```
 
 Below is an example of presenting a View Controller programmatically
