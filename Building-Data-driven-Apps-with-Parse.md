@@ -438,19 +438,33 @@ In this example, we will create and save an object to Parse for an image that th
 
 ## Fetching data from Parse (via `PFQuery`)
 
-`PFQuery` is used to retrieve data that is stored in Parse. The simplest way to do this is when you have the `objectId`. This is an asynchronous method, with variations for using either blocks or callback methods:
+`PFQuery` is used to retrieve data that is stored in Parse. For example, if you want to fetch an object where you know the  `objectId`, use the method below. This is an asynchronous method, with variations for using either blocks or callback methods:
 
 ```swift
 var query = Post.query()
 
 query.getObjectInBackgroundWithId("imkmJsHVIH") {
   (post: PFObject?, error: NSError?) -> Void in
-  if error == nil && gameScore != nil {
+  if error == nil && post != nil {
     print(post)
   } else {
     print(error)
   }
 }
+// The getObjectInBackgroundWithId methods are asynchronous, so any code after this will run
+// immediately.  Any code that depends on the query result should be moved
+// inside the completion block above.
+```
+```objc
+PFQuery * query = [PFQuery queryWithClassName:@"Post"];
+
+[query getObjectInBackgroundWithId:@"imkmJsHVIH" block:^(PFObject * post, NSError * error) {
+    if (error == nil && post != nil) {
+        NSLog(@"%@", post);
+    } else {
+        NSLog(@"%@", error.localizedDescription);
+    }
+}];
 // The getObjectInBackgroundWithId methods are asynchronous, so any code after this will run
 // immediately.  Any code that depends on the query result should be moved
 // inside the completion block above.
