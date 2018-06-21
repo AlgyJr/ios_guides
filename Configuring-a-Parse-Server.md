@@ -172,6 +172,33 @@ Using that cross-platform app to easily access and modify the data for your Pars
             )
     ```
 
+```objc
+
+#import "AppDelegate.h"
+#import "Parse/Parse.h"
+
+@interface AppDelegate ()
+
+@end
+
+@implementation AppDelegate
+
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    ParseClientConfiguration *config = [ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
+        
+        configuration.applicationId = @"codepathInstagram";
+        configuration.clientKey = @"codepathInstagramMaster";
+        configuration.server = @"http://codepathfbinstagram.herokuapp.com/parse";
+    }];
+    
+    [Parse initializeWithConfiguration:config];
+    
+    return YES;
+}
+```
+
 The `/parse` path needs to match the `PARSE_MOUNT` environment variable, which is set to this value by default.
 
 ### Adding Support for Live Queries
