@@ -213,6 +213,13 @@ Once a user successfully logs into your application, Parse caches the logged in 
         return true
     }
 ```
+```objc
+    if (PFUser.currentUser) {        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"AuthenticatedViewController"];
+    }
+```
 ### User Logout
 
 You can clear the current user by calling following class function on `PFUser`:
