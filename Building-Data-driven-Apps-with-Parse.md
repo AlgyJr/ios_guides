@@ -287,6 +287,35 @@ class Armor: PFObject, PFSubclassing {
     }
 }
 ```
+```objc
+//Post.h
+#import "Parse/Parse.h"
+@interface Post : PFObject<PFSubclassing>
+
+    @property (retain) NSString *postID;
+    @property (retain) NSString *userID;
+    
+    @property (retain) NSString *description;
+    
+    @property (retain) UIImage *image;
+    
+@end
+
+//Post.m
+#import "Post.h"
+@implementation Post
+    
+    @dynamic postID;
+    @dynamic userID;
+    @dynamic description;
+    @dynamic image;
+
+    + (nonnull NSString *)parseClassName {
+        return @"Post";
+    }
+    
+@end
+```
 
 Instantiating an Armor class then looks like:
 
