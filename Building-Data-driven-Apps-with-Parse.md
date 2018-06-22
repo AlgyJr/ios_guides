@@ -348,7 +348,16 @@ shield.saveInBackground(block: { (success, error) in
   }
 })
 ```
-
+```objc
+[post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    if (succeeded) {
+        // The object has been saved.
+    }
+    else {
+        NSLog(@"%@", error.localizedDescription);
+    }
+}];
+```
 ### Live Queries
 
 Live queries allows your client to be informed about events when changes to a given Parse query changes.  There are currently 5 type of events supported: creation, update, delete, enter (an existing object now fulfills the conditions of the Parse query), leave (when an existing object no longer fulfills the condition).  See [this documentation](https://github.com/parse-community/parse-server/wiki/Parse-LiveQuery-Protocol-Specification) for more context of the Parse LiveQuery spec.
