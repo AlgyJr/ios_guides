@@ -294,7 +294,6 @@ class Armor: PFObject, PFSubclassing {
 
     @property (retain) NSString *postID;
     @property (retain) NSString *userID;
-    
     @property (retain) NSString *description;
     
     @property (retain) UIImage *image;
