@@ -324,14 +324,20 @@ shield.displayName = "Wooden Shield"
 shield.fireProof = false
 shield.rupees = 50
 ```
-
+```objc
+    Post *post = [Post new];
+    post.postID = @"PostID";
+    post.userID = @"userID";
+```
 #### Saving
 
 We can save simply by calling `saveInBackground()`:
 ```swift
 shield.saveInBackground()
 ```
-
+```objc
+[post saveInBackground];
+```
 We can also pass a completion block handler to check the success/failure of the save operation:
 ```swift
 shield.saveInBackground(block: { (success, error) in
