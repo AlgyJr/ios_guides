@@ -237,6 +237,11 @@ PFUser.logOutInBackgroundWithBlock { (error: NSError?) in
 // PFUser.current() will now be nil     
 }
 ```
+```objc
+[PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+    // PFUser.current() will now be nil
+}];
+```
 The above code should be added to the action associated with the logout button (or any other event needs to log out current user)
 
 ## Parse Data Objects (`PFObject`) & Parse Files (`PFFile`)
