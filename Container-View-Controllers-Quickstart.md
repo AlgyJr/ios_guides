@@ -66,9 +66,10 @@ add the new one's view as a subview of our content view.
 class TwoTabViewController: UIViewController {
     ...
 
+    
     private var activeViewController: UIViewController? {
         didSet {
-            removeInactiveViewController(oldValue)
+            removeInactiveViewController(inactiveViewController: oldValue)
             updateActiveViewController()
         }
     }
@@ -76,7 +77,7 @@ class TwoTabViewController: UIViewController {
     private func removeInactiveViewController(inactiveViewController: UIViewController?) {
         if let inActiveVC = inactiveViewController {
             // call before removing child view controller's view from hierarchy
-            inActiveVC.willMoveToParentViewController(nil)
+            inActiveVC.willMove(toParentViewController: nil)
 
             inActiveVC.view.removeFromSuperview()
 
@@ -94,7 +95,7 @@ class TwoTabViewController: UIViewController {
             contentView.addSubview(activeVC.view)
 
             // call before adding child view controller's view as subview
-            activeVC.didMoveToParentViewController(self)
+            activeVC.didMove(toParentViewController: self)
         }
     }
     ...
