@@ -22,13 +22,15 @@ The final step requires hosting an `apple-app-site-association` file where the a
             "9JA89QQLNQ.com.apple.wwdc": {
                 "paths": [
                     "/wwdc/news/",
-                    "/videos/wwdc/2015/*"
+                    "/videos/wwdc/2015/*/abcd"
                 ]
             }
         }
     }
 }
 ```
+
+The `apple-app-site-association` paths don't support regular expressions, but can support wildcards in place of URL paths.
 
 ### Wildcard Links
 
