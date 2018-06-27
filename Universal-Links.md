@@ -60,7 +60,7 @@ _When a user is browsing your website in Safari and they tap a universal link to
 
 _For users who are running versions of iOS earlier than 9.0, tapping a universal link to your website opens the link in Safari._
 
-You will need to either expose a url with a different domain (i.e. deeplink.example.com) or use a third-party service like branch.io, which supports custom domains.
+You will need to either expose a url with a different domain (i.e. deeplink.example.com) or use a third-party service like [branch.io](http://branch.io), which supports custom domains.
 
 ### References
 
