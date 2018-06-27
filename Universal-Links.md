@@ -34,9 +34,9 @@ The final step requires hosting an `apple-app-site-association` file where the a
 
 To use wildcard app links, you must make sure that the subdomain and sub subdomains can serve the `apple-app-site-association` file.    For instance:
 
-app.domain.com (must serve the apple-app-site-association file)
-server1.app.domain.com (must serve the apple-app-site-association)
-server2.app.domain.com (must serve the apple-app-site-association)
+* app.domain.com (must serve the apple-app-site-association file)
+* server1.app.domain.com (must serve the apple-app-site-association)
+* server2.app.domain.com (must serve the apple-app-site-association)
 
 ### Troubleshooting
 
