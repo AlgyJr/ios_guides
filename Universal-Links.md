@@ -1,6 +1,6 @@
 ### Overview
 
-In the past, most iOS apps used custom URL scheme (i.e `fb://auth`).  The problem is that two apps can claim the same URL scheme and there is no way to protect against which app should launch.  Second, if the app was not installed, the URL doesn't open and there needs to be custom code to handle it.  Universal links try to solve both of these problems, first by requiring verifiable ownership and also provide graceful fallback.
+In the past, most iOS apps used custom URL scheme (i.e `fb://auth`).  The problem is that two apps can claim the same URL scheme and there is no way to protect against which app should launch.  Second, if the app was not installed, the URL doesn't open and there needs to be custom code to handle it.  Universal links try to solve both of these problems, first by requiring verifiable ownership and also providing graceful fallback mechanism.
 
 ### Setup
 
