@@ -32,18 +32,19 @@ The final step requires hosting an `apple-app-site-association` file where the a
 
 The `apple-app-site-association` paths don't support regular expressions, but can support wildcards in place of URL paths.
 
-If your AppDelegate.swift,
+If your AppDelegate.swift, the `application` method that has the `restorationHandler` parameter will get called when the link is triggered;
 
 ```swift
 func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
 
  // /videos/wwdc/2015/*/highlights/
- if let regex = try? NSRegularExpression(pattern: "/videos/wwdc/(?<yearId>\\d+)/(.*?)/highlights/?", options: .caseInsensitive) {
-  if let matches = regex.matches(in: url.absoluteString, options: [], range: NSMakeRange(0, url.absoluteString.count)) {
+ if let url = userActivity.webpageURL {
+   if let regex = try? NSRegularExpression(pattern: "/videos/wwdc/(?<yearId>\\d+)/(.*?)/highlights/?", options: .caseInsensitive) {
+    if let matches = regex.matches(in: url.absoluteString, options: [], range: NSMakeRange(0, url.absoluteString.count)) {
      return true
-   }
-}
-
+    }
+  }
+ }
 ```
 
 ### Wildcard Links
