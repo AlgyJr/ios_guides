@@ -52,6 +52,18 @@ Click on the Home button and make sure the app is currently not in the foregroun
 xcrun simctl openurl booted “https://www.example.com/content?id=2”
 ```
 
+### Limitations
+
+Keep in mind that Safari will not attempt to launch the app if it is already on the same domain according to [Apple's documentation](https://developer.apple.com/library/archive/documentation/General/Conceptual/AppSearch/UniversalLinks.html):
+
+```
+When a user is browsing your website in Safari and they tap a universal link to a URL in the same domain as the current webpage, iOS respects the user’s most likely intent and opens the link in Safari. If the user taps a universal link to a URL in a different domain, iOS opens the link in your app.
+
+For users who are running versions of iOS earlier than 9.0, tapping a universal link to your website opens the link in Safari.
+```
+
+You will need to either expose a url with a different domain (i.e. deeplink.example.com) or use a third-party service like branch.io, which supports custom domains.
+
 ### References
 
 * <https://objectivetidbits.com/working-with-universal-links-on-ios-simulator-adffb7767801>
