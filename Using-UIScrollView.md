@@ -94,3 +94,9 @@ func viewForZooming(in scrollView: UIScrollView) -> UIView? {
     return imageView
 }
 ```
+
+```objc
+(UIView *)viewForZoomingInScrollView:(UIScrollView* )scrollView {
+  return self.imageView;
+}
+```
