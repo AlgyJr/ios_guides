@@ -43,6 +43,10 @@ Note that for the two permissions we are adding for the camera and library acces
     ...
     }
     ```
+```objc
+#import <UIKit/UIKit.h>
+@interface FeedViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+```
 
 ### Step 2: Instantiate a UIImagePickerController
 
@@ -54,6 +58,14 @@ vc.sourceType = UIImagePickerControllerSourceType.camera
 
 self.present(vc, animated: true, completion: nil)
 ```
+```objc
+UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+imagePickerVC.delegate = self;
+imagePickerVC.allowsEditing = YES;
+imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+
+[self presentViewController:imagePickerVC animated:YES completion:nil];
+```
 
 **NOTE:** The Xcode simulator does not support taking pictures, so you may want to check that the camera is indeed supported on the device before trying to present it.
 
@@ -64,6 +76,15 @@ if UIImagePickerController.isSourceTypeAvailable(.camera) {
 } else {
    print("Camera 🚫 available so we will use photo library instead")
    vc.sourceType = .photoLibrary
+}
+```
+```objc
+if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+    imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+}
+else {
+    NSLog(@"Camera 🚫 available so we will use photo library instead");
+    imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
 }
 ```
 
