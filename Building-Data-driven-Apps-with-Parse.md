@@ -261,6 +261,13 @@ shield["displayName"] = "Wooden Shield"
 shield["fireProof"] = false
 shield["rupees"] = 50
 ```
+```objc
+PFObject *post = [[PFObject alloc] initWithClassName:@"Post"];
+post[@"postID"] = @"PostID";
+post[@"userID"] = @"userID";
+PFFile *imageFile = [PFFile fileWithName:@"photo.png" data:UIImagePNGRepresentation(editedImage)]; //editedImage is UIImage *
+post[@"image"] = imageFile;
+```
 
 #### Subclassing PFObject
 
