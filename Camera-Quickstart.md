@@ -38,11 +38,11 @@ Note that for the two permissions we are adding for the camera and library acces
 ### Step 1: Declare that your class implements the required protocols
 - Add `UIImagePickerControllerDelegate` and `UINavigationControllerDelegate` when defining your class or as an [extension](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html) of your view controller class.
 
-    ```swift
-    class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    ...
-    }
-    ```
+```swift
+class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+...
+}
+```
 ```objc
 #import <UIKit/UIKit.h>
 @interface FeedViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -124,12 +124,15 @@ When the user finishes taking the picture, `UIImagePickerController` returns a d
 ### Step 1: Declare that your class implements the required protocols
 - Add `UIImagePickerControllerDelegate` and `UINavigationControllerDelegate` when defining your class or as an [extension](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html) of your view controller class.
 
-    ```swift
-    class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    ...
-    }
-    ```
-
+```swift
+class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+   ...
+}
+```
+```objc
+#import <UIKit/UIKit.h>
+@interface FeedViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+```
 ### Step 2: Instantiate a UIImagePickerController
 
 ```swift
