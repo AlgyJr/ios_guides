@@ -788,7 +788,6 @@ class InstagramPostTableViewCell: UITableViewCell {
 ```
 ```objc
 //  InstagramPostTableViewCell.h
-
 #import <UIKit/UIKit.h>
 #import "Post.h"
 @import ParseUI;
