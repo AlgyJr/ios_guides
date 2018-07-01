@@ -800,7 +800,6 @@ class InstagramPostTableViewCell: UITableViewCell {
 
 //  InstagramPostTableViewCell.m
 #import "InstagramPostTableViewCell.h"
-
 @implementation InstagramPostTableViewCell
 
 - (void)setPost:(Post *)post {
