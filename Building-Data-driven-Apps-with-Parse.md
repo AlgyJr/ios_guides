@@ -786,6 +786,32 @@ class InstagramPostTableViewCell: UITableViewCell {
     }
 }
 ```
+```objc
+//  InstagramPostTableViewCell.h
+
+#import <UIKit/UIKit.h>
+#import "Post.h"
+@import ParseUI;
+
+@interface InstagramPostTableViewCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet PFImageView *photoImageView;
+@property (strong, nonatomic) Post *post;
+
+@end
+
+//  InstagramPostTableViewCell.m
+#import "InstagramPostTableViewCell.h"
+
+@implementation InstagramPostTableViewCell
+
+- (void)setPost:(Post *)post {
+    _post = post;
+    self.photoImageView.file = post[@"image"];
+    [self.photoImageView loadInBackground];
+}
+
+@end
+```
 
 ##### Notes
 1. **Make sure to import `ParseUI`** wherever you want to use it's components
