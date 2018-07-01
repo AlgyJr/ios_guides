@@ -746,10 +746,8 @@ postQuery.limit = 20;
 
 // fetch data asynchronously
 [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
-    
     if (posts) {
         // do something with the data fetched
-        NSLog(@"~~~~~~DOWNLOADED~~~~~~~~~~~~ %@", ((Post *)posts[0]).author.email);
     }
     else {
         // handle error
