@@ -699,11 +699,20 @@ let post = Post()
 // get the current user and assign it to "author" field. "author" field is now of Pointer type
 post.author = PFUser.current() 
 ```
+```objc
+Post *newPost = [Post new];
+
+// get the current user and assign it to "author" field. "author" field is now of Pointer type
+newPost.author = [PFUser currentUser];
+```
 
 By default, when you fetch a `Post` object it won't have the author information. In order to get the information for the "author" you will have to use `PFQuery` method `includeKey`.
 
 ```swift
 query.includeKey("author")
+```
+```objc
+[postQuery includeKey:@"author"];
 ```
 
 Please see below example for more context.
@@ -727,6 +736,25 @@ query.findObjectsInBackgroundWithBlock { (posts: [Post]?, error: NSError?) -> Vo
         // handle error
     }
 }
+```
+```objc
+// construct PFQuery
+PFQuery *postQuery = [Post query];
+[postQuery orderByDescending:@"createdAt"];
+[postQuery includeKey:@"author"];
+postQuery.limit = 20;
+
+// fetch data asynchronously
+[postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
+    
+    if (posts) {
+        // do something with the data fetched
+        NSLog(@"~~~~~~DOWNLOADED~~~~~~~~~~~~ %@", ((Post *)posts[0]).author.email);
+    }
+    else {
+        // handle error
+    }
+}];
 ```
 
 ## `ParseUI`
