@@ -897,7 +897,7 @@ Add these functions to listen to notifications:
     
     if ([request isKindOfClass:[NSMutableURLRequest class]]) {
         NSMutableURLRequest *urlRequest = (NSMutableURLRequest *)request;
-        NSLog(@"------------ URL: %@", urlRequest.URL.absoluteString);
+        NSLog(@"URL: %@", urlRequest.URL.absoluteString);
     }
 }
 
@@ -908,10 +908,10 @@ Add these functions to listen to notifications:
     
     if ( [response isKindOfClass:[NSHTTPURLResponse class]] ) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-        NSLog(@"---------- Status Code: %ld", (long)httpResponse.statusCode);
+        NSLog(@"Status Code: %ld", (long)httpResponse.statusCode);
         
         if ( [responseBody isKindOfClass:[NSString class]] ) {
-            NSLog(@"--------- Response Body: %@", (NSString *)responseBody);
+            NSLog(@"Response Body: %@", (NSString *)responseBody);
         }
     }
 }
