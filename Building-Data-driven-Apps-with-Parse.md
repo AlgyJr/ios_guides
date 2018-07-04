@@ -838,6 +838,11 @@ extension Notification.Name {
     static let ParseDidReceiveURLResponseNotification = Notification.Name(rawValue: "PFNetworkDidReceiveURLResponseNotification")
 }
 ```
+```objc
+//  Constant.h
+#import <UIKit/UIKit.h>
+extern NSNotificationName const PFNetworkWillSendURLRequestNotification;
+```
 
 Enable Parse debugging logs and add notification observers in your application delegate:
 
@@ -850,7 +855,15 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
   NotificationCenter.default.addObserver(self, selector: #selector(receiveWillSendURLRequestNotification), name: Notification.Name.ParseWillSendURLRequestNotification, object: nil)
   NotificationCenter.default.addObserver(self, selector: #selector(receiveDidReceiveURLResponseNotification), name: Notification.Name.ParseDidReceiveURLResponseNotification, object: nil)
 ```
-
+```objc
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    // set init log level
+    [Parse setLogLevel:PFLogLevelDebug];
+    
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveWillSendURLRequestNotification:) name:PFNetworkWillSendURLRequestNotification object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveDidReceiveURLResponseNotification:) name:PFNetworkDidReceiveURLResponseNotification object:nil];
+```
 Add these functions to listen to notifications:
 
 ```swift
@@ -877,7 +890,32 @@ Add these functions to listen to notifications:
   }
 }
 ```
+```objc
+- (void)receiveWillSendURLRequestNotification:(NSNotification *) notification {
+    
+    id request = notification.userInfo[PFNetworkNotificationURLRequestUserInfoKey];
+    
+    if ([request isKindOfClass:[NSMutableURLRequest class]]) {
+        NSMutableURLRequest *urlRequest = (NSMutableURLRequest *)request;
+        NSLog(@"------------ URL: %@", urlRequest.URL.absoluteString);
+    }
+}
 
+- (void)receiveDidReceiveURLResponseNotification:(NSNotification *) notification {
+    
+    id response = notification.userInfo[PFNetworkNotificationURLResponseUserInfoKey];
+    id responseBody = notification.userInfo[PFNetworkNotificationURLResponseBodyUserInfoKey];
+    
+    if ( [response isKindOfClass:[NSHTTPURLResponse class]] ) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        NSLog(@"---------- Status Code: %ld", (long)httpResponse.statusCode);
+        
+        if ( [responseBody isKindOfClass:[NSString class]] ) {
+            NSLog(@"--------- Response Body: %@", (NSString *)responseBody);
+        }
+    }
+}
+```
 ## FAQ
 
 1)  Is there a way to put some key into an app (binary which is delivered from AppStore) and be completely secure?
