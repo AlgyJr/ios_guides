@@ -508,14 +508,14 @@ In this example, we will create and save an object to Parse for an image that th
 #import "Parse/Parse.h"
 @interface Post : PFObject<PFSubclassing>
 
-@property (retain) NSString *postID;
-@property (retain) NSString *userID;
-@property (retain) PFUser *author;
+@property (nonatomic, strong) NSString *postID;
+@property (nonatomic, strong) NSString *userID;
+@property (nonatomic, strong) PFUser *author;
 
-@property (retain) NSString *caption;
-@property (retain) PFFile *image;
-@property (retain) NSNumber *likeCount;
-@property (retain) NSNumber *commentCount;
+@property (nonatomic, strong) NSString *caption;
+@property (nonatomic, strong) PFFile *image;
+@property (nonatomic, strong) NSNumber *likeCount;
+@property (nonatomic, strong) NSNumber *commentCount;
 
 + (void) postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
