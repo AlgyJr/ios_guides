@@ -71,11 +71,11 @@ https://yourappname.herokuapp.com/parse/classes/GameScore
 
 Be sure to **replace the values** for `myAppId` and the server URL. If these commands work as expected, then your Parse instance is now setup and ready to be used!
 
-### Browsing Parse Data
+## 3. Browsing Parse Data
 
 There are several options that allow you to view the data.  First, you can use the `mLab` viewer to examine the store data.  Second, you can setup the open source verson of the Parse Dashboard, which gives you a similar UI used in hosted Parse.  Finally, you can use Robomongo.
 
-#### mLab
+### 3.1 mLab
 
 The hosted Parse instance deployed uses [mLab](https://mlab.com/) (previously called MongoLab) to store all of your data. mLab is a hosted version of [MongoDB](https://www.mongodb.org/) which is a document-store which uses JSON to store your data.
 
@@ -85,7 +85,7 @@ If you are using Heroku, you can verify whether the objects were created by clic
 
 <img src="https://imgur.com/snPqYkz.png"/>
 
-#### Parse Dashboard
+### 3.2 Parse Dashboard
 
 You can also install Parse's open source dashboard locally. Download [NodeJS v4.3](https://nodejs.org/en/download/) or higher.  Make sure you have at least Parse server v2.1.3 or higher (later versions include a `/parse/serverInfo` that is needed).
 
@@ -98,7 +98,7 @@ Connect to your dashboard at `http://localhost:4040/apps`. Assuming you have spe
 
 <img src="https://imgur.com/Z0Rz5Xs.png"/>
 
-#### Robomongo
+### 3.3 Robomongo
 
 You can also setup [Robomongo](https://robomongo.org/download) to connect to your remote mongo database hosted on Heroku to get a better data browser and dashboard for your app.
 
@@ -116,7 +116,7 @@ password: dbpassword
 
 Using that cross-platform app to easily access and modify the data for your Parse MongoDB data. 
 
-### Enabling Client SDK integration
+## 4. Add Parse client to an Xcode project
 
 1. Create a Podfile file:
 
@@ -171,33 +171,31 @@ Using that cross-platform app to easily access and modify the data for your Pars
                 })
             )
     ```
-
-```objc
-
-#import "AppDelegate.h"
-#import "Parse/Parse.h"
-
-@interface AppDelegate ()
-
-@end
-
-@implementation AppDelegate
-
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    ParseClientConfiguration *config = [ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
+    ```objc
+    #import "AppDelegate.h"
+    #import "Parse/Parse.h"
+  
+    @interface AppDelegate ()
+  
+    @end
+  
+    @implementation AppDelegate
+  
+  
+    - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(  NSDictionary *)launchOptions {
         
-        configuration.applicationId = @"codepathInstagram";
-        configuration.clientKey = @"codepathInstagramMaster";
-        configuration.server = @"http://codepathfbinstagram.herokuapp.com/parse";
-    }];
-    
-    [Parse initializeWithConfiguration:config];
-    
-    return YES;
-}
-```
+        ParseClientConfiguration *config = [ParseClientConfiguration   configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
+            
+            configuration.applicationId = @"codepathInstagram";
+            configuration.clientKey = @"codepathInstagramMaster";
+            configuration.server = @"http://codepathfbinstagram.herokuapp.com/parse";
+        }];
+        
+        [Parse initializeWithConfiguration:config];
+        
+        return YES;
+    }
+    ```
 
 The `/parse` path needs to match the `PARSE_MOUNT` environment variable, which is set to this value by default.
 
