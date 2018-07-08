@@ -38,11 +38,11 @@ Use Heroku if you have little or no experience with setting up web sites. Heroku
       <img src="https://imgur.com/0JcJrn5.png">
 
 3. Make sure to change the config variables.
-      <img src="https://imgur.com/Ao1Yjdm.png"/>
+      <img src="https://i.imgur.com/dArCPmZ.png"/>
       * Leave `PARSE_MOUNT` to be `/parse`.  It does not need to be changed.
       * Set `APP_ID` for the app identifier.  If you do not set one, the default is set as `myAppId`.  You will need this info for the Client SDK setup.
       * Set `MASTER_KEY` to be the master key used to read/write all data.  You will only use this key if you intend to setup the Parse Dashboard. 
-      * Set `SERVER_URL` to correspond to match the App Name you defined in step #2 along with the PARSE_MOUNT  (i.e. http://yourappname.herokuapp.com/parse)
+      * Set `SERVER_URL` to correspond to match the App Name you defined in step #2 along with the PARSE_MOUNT  (e.g. https://yourappname.herokuapp.com/parse)
       * If you intend to use Parse's Facebook authentication, set `FACEBOOK_APP_ID` to be the [FB application ID](https://developers.facebook.com/apps).
 
 4. Deploy the Heroku app.  The app should be hosted at `https://<app name>.herokuapp.com`.
