@@ -299,11 +299,11 @@ class Armor: PFObject, PFSubclassing {
 #import "Parse/Parse.h"
 @interface Post : PFObject<PFSubclassing>
 
-    @property (retain) NSString *postID;
-    @property (retain) NSString *userID;
-    @property (retain) NSString *description;
+    @property (nonatomic, strong) NSString *postID;
+    @property (nonatomic, strong) NSString *userID;
+    @property (nonatomic, strong) NSString *description;
     
-    @property (retain) UIImage *image;
+    @property (nonatomic, strong) UIImage *image;
     
 @end
 
