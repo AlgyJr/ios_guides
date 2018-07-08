@@ -573,44 +573,9 @@ In this example, we will create and save an object to Parse for an image that th
 
 ## Fetching data from Parse (via `PFQuery`)
 
-`PFQuery` is used to retrieve data that is stored in Parse. For example, if you want to fetch an object where you know the  `objectId`, use the method below. This is an asynchronous method, with variations for using either blocks or callback methods:
+`PFQuery` is used to retrieve data that is stored in Parse. Adding conditions to `PFQuery` can be done by using methods provided by `PFQuery` or by specifying an `NSPredicate`. 
 
-```swift
-var query = Post.query()
-
-query.getObjectInBackgroundWithId("imkmJsHVIH") {
-  (post: PFObject?, error: NSError?) -> Void in
-  if error == nil && post != nil {
-    print(post)
-  } else {
-    print(error)
-  }
-}
-// The getObjectInBackgroundWithId methods are asynchronous, so any code after this will run
-// immediately.  Any code that depends on the query result should be moved
-// inside the completion block above.
-```
-```objc
-PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-
-[query getObjectInBackgroundWithId:@"imkmJsHVIH" block:^(PFObject * post, NSError * error) {
-    if (error == nil && post != nil) {
-        NSLog(@"%@", post);
-    } else {
-        NSLog(@"%@", error.localizedDescription);
-    }
-}];
-// The getObjectInBackgroundWithId methods are asynchronous, so any code after this will run
-// immediately.  Any code that depends on the query result should be moved
-// inside the completion block above.
-
-```
-
-#### Query constraints (filter, order, group the data)
-
-Adding constraints to `PFQuery` can be done by using methods provided by `PFQuery` or by specifying an `NSPredicate`. 
-
-##### Using `PFQuery Methods`
+### Using `PFQuery Methods`
 There are several other methods that `PFQuery` provides to support SQL-like querying of objects. For example, you can get 20 instagram posts that have more than 100 likes on the post with following code:
 
 ```swift
@@ -648,7 +613,7 @@ query.limit = 20;
 
 For more examples and list of other methods supported by `PFQuery` for specifying constraints can be found [here](http://docs.parseplatform.org/ios/guide/#query-constraints).
 
-##### Using `NSPredicate`
+### Using `NSPredicate`
 
 A `NSPredicate` can be passed to `PFQuery` constructor to specify query constraints. Below example shows how to construct a query to fetch all instagram posts with more than 100 likes on them.
 
