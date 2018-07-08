@@ -199,7 +199,7 @@ Using that cross-platform app to easily access and modify the data for your Pars
 
 The `/parse` path needs to match the `PARSE_MOUNT` environment variable, which is set to this value by default.
 
-### Adding Support for Live Queries
+## 5. Adding Support for Live Queries
 
 One of the newer features of Parse is that you can monitor for live changes made to objects in your database (i.e. creation, updates, and deletes)  To get started, make sure you have defined the ParseObjects that you want in your NodeJS server.  Make sure to define a list of all the objects by declaring it in the `liveQuery` and `classNames listing`:
 
@@ -218,7 +218,7 @@ See [this guide](http://parseplatform.org/docs/parse-server/guide/#live-queries)
 
 Websocket URLs are usually prefixed with ws:// or wss:// (secure) URLs.  Heroku instances already provide websocket support, but if you are deploying to a different server (Amazon), you may need to make sure that TCP port 80 or TCP port 443 are available.
 
-### Troubleshooting
+## 6. Troubleshooting
 
 * If you see `Application Error` or `An error occurred in the application and your page could not be served. Please try again in a few moments.`, double-check that you set a `MASTER_KEY` in the environment settings for that app.
 
@@ -244,7 +244,7 @@ Websocket URLs are usually prefixed with ws:// or wss:// (secure) URLs.  Heroku 
    2016-02-07T08:28:14.292475+00:00 heroku[router]: at=info method=POST path="/parse/classes/Message" host=parse-testing-port.herokuapp.com request_id=804c2533-ac56-4107-ad05-962d287537e9 fwd="101.12.34.12" dyno=web.1 connect=1ms service=2ms status=404 bytes=179
    ```
 
-### Enabling Push Notifications
+## 7. Enabling Push Notifications
 
 1. Create an auth token through [developer.apple.com](http://developer.apple.com) by clicking on the `Keys` -> `All` section.  Fill out a name and make sure the APNS service is **checked**:
       <img src="https://imgur.com/MfQWtqy.png" width="700">
