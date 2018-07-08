@@ -271,7 +271,7 @@ post[@"image"] = imageFile;
 
 #### 8.1.2. Subclassing PFObject
 
-You can also declare models that can be later used by using [native subclasses](http://blog.parse.com/announcements/stay-classy-objective-c-introducing-native-subclasses-for-parse-objects/), which help for autocomplete checks. In this case, we need to set the fields/properties ahead of time and annotating with the `@NSManaged` property:
+You can also declare models that subclass PFObject to make it more convenient to set and get properties. In order to subclass PFObject, create a new CocoaTouch class with a subclass of PFObject in the wizard, and manually declare that the class implements the PFSubclassing protocol. More details in the official documentation on subclassing [here](http://docs.parseplatform.org/ios/guide/#subclasses). See the snippet below for an example:
 
 ```swift
 // needs to be imported 
