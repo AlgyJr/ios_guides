@@ -1,4 +1,4 @@
-## Overview
+## 1. Overview
 
 This page covers a range of topics to serve as a primer for building data-driven iOS applications with **Parse**. Some of the topics covered here are:
 
@@ -8,13 +8,13 @@ This page covers a range of topics to serve as a primer for building data-driven
 - Parse Relationships
 - File Upload to Parse
 
-#### What is Parse?
+### 1.1 What is Parse?
 
 [Parse](https://parse.com/) is a service that allows app developers to effortlessly add a backend to their apps without worrying about server setup and maintenance. With some basic setup, one is able to get a database and RESTful API up and running. Additionally, it is easy to further add push notification and social integration capabilities in your app. 
 
 [More about Parse on Quora](https://www.quora.com/What-is-Parse)
 
-## Instagram App
+## 2. Instagram App
 
 In covering Parse SDK functionality, we will be using example of building an Instagram like application from ground up (i.e. with your own backend). In each of the following section we will following use cases to build a basic version of the application:
 
@@ -26,7 +26,7 @@ The final application should look something like following:
 
 <img src="https://i.imgur.com/EjhojU6.gif" alt="Instangram app demo"/>
 
-### Architecture Overview:
+### 2.1 Architecture Overview:
 
 Below is a quick overview of the app architecture:
 
@@ -35,7 +35,7 @@ Below is a quick overview of the app architecture:
 1. To fetch the data from the cloud (Parse server) you will be using `PFQuery` ([More details](http://guides.codepath.com/ios/Building-Data-driven-Apps-with-Parse#parse-data-objects-pfobject-parse-files-pffile))
 1. To add data to cloud you will be using `PFObject` and it's methods. ([More details](http://guides.codepath.com/ios/Building-Data-driven-Apps-with-Parse#fetching-data-from-parse-via-pfquery))
 
-### Data Schema Design
+### 2.2 Data Schema Design
 
 An important aspect of the any data driven application is to be able to design the data schema. This helps in data organization so that related data is stored in to a single table or class (in `Parse` terminology) and non-related data is stored into different tables or classes.
 
@@ -62,7 +62,7 @@ Here is how data model would look like: (`field_name`: `field_type`)
 
 `Post` and `_User` data classes should be enough to store data based on use cases mentioned above.
 
-## Getting started with Parse
+## 3. Getting started with Parse
 
 Parse used to provide a hosted version of their backend service with free registration. But as of February 2016, Parse has stopped new account registration as they have announced that the service will be shutdown on January 28th, 2017. They have open sourced their server code which you can host by yourself and use it as the backend to your application.
 
@@ -70,11 +70,11 @@ Please refer to this guide for instructions on how to [host and configure your o
 
 See this section on the [client SDK integration](https://guides.codepath.com/ios/Configuring-a-Parse-Server#enabling-client-sdk-integration).
 
-## Parse User (`PFUser`)
+### 3.1 Parse User (`PFUser`)
 
 Parse provides a specialized user class called `PFUser` that automatically handles much of the functionality required for user account management. With this class, you'll be able to add user account functionality in your app.
 
-##### Properties
+##### 3.1.1 Properties
 
 `PFUser` has several properties but following are the most important ones:
 
@@ -82,7 +82,7 @@ Parse provides a specialized user class called `PFUser` that automatically handl
 * **password**: The password for the user (required on signup).
 * **email**: The email address for the user (optional).
 
-### User Registration
+## 4. User Registration
 
 One of the basic use cases for user management is to have them sign up. Once you have setup a view (in storyboard) and created a corresponding view controller (as shown in below image):
 
@@ -142,7 +142,7 @@ func registerUser() {
 
 [Parse User Sign-Up documentation](http://docs.parseplatform.org/ios/guide/#signing-up).
 
-### User Login
+## 5. User Login
 
 Once the user has signed up, next step is to have them log in to your app. The image below shows the Xcode setup to do the same, followed by code snippet for user login (note that the username you enter is case sensitive).
 
@@ -193,7 +193,7 @@ Returns an instance of the successfully logged in `PFUser`. This also caches the
 
 [Parse User Login documentation](http://docs.parseplatform.org/ios/guide/#logging-in).
 
-### Persisting user session
+## 6. Persisting user session
 
 Once a user successfully logs into your application, Parse caches the logged in user object for convenient access throughout your application. `PFUser.current()` can be used to get the current user. You can use this functionality in `AppDelegate` to check if there is a current user in Parse cache or not. If there is a cached user already present then you can directly load the Home view controller (without asking the user to login again).
 
@@ -228,7 +228,7 @@ Once a user successfully logs into your application, Parse caches the logged in 
     return YES;
 }
 ```
-### User Logout
+## 7. User Logout
 
 You can clear the current user by calling following class function on `PFUser`:
 
@@ -244,12 +244,12 @@ PFUser.logOutInBackgroundWithBlock { (error: NSError?) in
 ```
 The above code should be added to the action associated with the logout button (or any other event needs to log out current user)
 
-## Parse Data Objects (`PFObject`) & Parse Files (`PFFile`)
+## 8. Parse Data Objects (`PFObject`) & Parse Files (`PFFile`)
 
-### `PFObject`
+### 8.1 `PFObject`
 Storing data on Parse is built around the `ParseObject`. Each `ParseObject` contains key-value pairs of JSON-compatible data. This data is schemaless, which means that you don't need to specify ahead of time what keys exist on each `ParseObject`. You simply set whatever key-value pairs you want, and Parse backend will store it.
 
-#### Creating Parse Objects
+#### 8.1.1 Creating Parse Objects
 
 Each `ParseObject` has a class name that you can use to distinguish different sorts of data. For example, in case of our application, we might call `ParseObject` to store uploaded images with name `Post`:
 
@@ -269,7 +269,7 @@ PFFile *imageFile = [PFFile fileWithName:@"photo.png" data:UIImagePNGRepresentat
 post[@"image"] = imageFile;
 ```
 
-#### Subclassing PFObject
+#### 8.1.2. Subclassing PFObject
 
 You can also declare models that can be later used by using [native subclasses](http://blog.parse.com/announcements/stay-classy-objective-c-introducing-native-subclasses-for-parse-objects/), which help for autocomplete checks. In this case, we need to set the fields/properties ahead of time and annotating with the `@NSManaged` property:
 
