@@ -1,11 +1,11 @@
-### Overview
+## 1. Overview
 
 Parse provides a cloud-based backend service to build data-driven mobile apps quickly.  Facebook, which [acquired the company](https://en.wikipedia.org/wiki/Parse_(company)) in 2013, shut down service on January 28, 2017. An [open source version](https://github.com/ParsePlatform/parse-server) enables developers to continue using their apps was published, along with a [migration guide](https://github.com/ParsePlatform/parse-server#migrating-an-existing-parse-app).
 
 While there are many
 [alternate options to Parse](https://github.com/relatedcode/ParseAlternatives), most of them lack either the functionality, documentation, or sample code to enable quick prototyping.  For this reason, the open source Parse version is a good option to use with minimal deployment/configuration needed.
 
-#### Differences with Open Source Parse
+### 1.1 Differences with Open Source Parse
 
 You can review this [Wiki](https://github.com/ParsePlatform/parse-server/wiki) to understand the current development progress of this app.  There are a few notable differences in the open source version:
 
@@ -19,11 +19,11 @@ You can review this [Wiki](https://github.com/ParsePlatform/parse-server/wiki) t
 
 Many of the options need to be configured by tweaking your own configuration.  You may wish to fork the [code](https://github.com/ParsePlatform/parse-server-example/) that helps instantiate a Parse server and change them based on your own needs.   
 
-### Setting a new Parse Server
+## 2. Setting a new Parse Server
 
 The steps described in [this guide](https://devcenter.heroku.com/articles/deploying-a-parse-server-to-heroku) walk through most of the process of setting an open source version with Parse. There are obviously many other hosting options, but the one-click deploy made available with Heroku as discussed in [this guide](https://github.com/ParsePlatform/parse-server-example) is the simplest. **Note:** You are likely to need a credit card attached to your account to activate.
 
-#### Signing up with Heroku
+### 2.1 Signing up with Heroku
 
 Use Heroku if you have little or no experience with setting up web sites. Heroku allows you to manage changes to deploy easily by specifying a GitHub repository to use.  In addition, it comes with a UI data viewer from MongoLabs.  
 
@@ -49,9 +49,9 @@ Use Heroku if you have little or no experience with setting up web sites. Heroku
 
 If you ever need to change these values later, you can go to (`https://dashboard.heroku.com/apps/<app name>/settings`).
 
-### Testing Deployment
+### 2.2 Testing Deployment
 
-After deployment, try to connect to the site.  You should see `I dream of being a web site.` if the site loaded correctly.   If you try to connect to the `/parse` endpoint, you should see `{error: "unauthorized"}`.  If both tests pass, the basic configuration is successful.
+After deployment, open the url (`https://<app name>.herokuapp.com`) in a browser.  You should see `I dream of being a web site.` if the site loaded correctly.   If you try to open `https://<app name>.herokuapp.com/parse`, you should see `{error: "unauthorized"}`.  If both tests pass, the basic configuration is successful.
 
 Next, make sure you can create Parse objects.  You do not need a client Key to write new data:
 
