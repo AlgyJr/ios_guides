@@ -211,6 +211,7 @@ NOTE: The simulator does NOT have a camera so you need to run your app on an **A
 ## Snap a Photo
 ### Step 1: Get the Connection
 - Setup capture setting for this particular capture.
+
 ```objc
 - (IBAction)didTakePhoto:(id)sender {
     AVCapturePhotoSettings *settings = [AVCapturePhotoSettings photoSettingsWithFormat:@{AVVideoCodecKey: AVVideoCodecTypeJPEG}];
@@ -220,12 +221,14 @@ NOTE: The simulator does NOT have a camera so you need to run your app on an **A
 
 ### Step 2: Capture the Photo
 - Call the `-capturePhotoWithSettings:delegate:` function on the `stillImageOutput`.
+
 ```objc
 [self.stillImageOutput capturePhotoWithSettings:settings delegate:self]; 
 //Don't for get to conform to AVCapturePhotoCaptureDelegate
 ```
 ### Step 3: Capture the Image Data
 - The AVCapturePhotoCaptureDelegate methods provide us with an instance of AVCapturePhoto object which has all we need to get a **UIImage** that we can insert into our `captureImageView` and easily use elsewhere in our app.
+
 ```objc
 - (void)captureOutput:(AVCapturePhotoOutput *)output didFinishProcessingPhoto:(AVCapturePhoto *)photo error:(nullable NSError *)error {
     
