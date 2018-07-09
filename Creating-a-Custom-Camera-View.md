@@ -155,6 +155,11 @@ if ([self.session canAddOutput:self.stillImageOutput]) {
     //Configure the Live Preiview here
     
 }
+
+//Also let the ViewController conform to `AVCapturePhotoCaptureDelegate`
+#import <UIKit/UIKit.h>
+@import AVKit;
+@interface CameraViewController : UIViewController <AVCapturePhotoCaptureDelegate>
 ```
 
 ### Step 12: Configure the Live Preview
@@ -204,6 +209,32 @@ NOTE: The simulator does NOT have a camera so you need to run your app on an **A
 - At this point, you should see a live "video" stream of your phone camera's input within your `previewView`.
 
 ## Snap a Photo
+### Step 1: Get the Connection
+- Setup capture setting for this particular capture.
+```objc
+- (IBAction)didTakePhoto:(id)sender {
+    AVCapturePhotoSettings *settings = [AVCapturePhotoSettings photoSettingsWithFormat:@{AVVideoCodecKey: AVVideoCodecTypeJPEG}];
+//Capture Photo
+}
+```
+
+### Step 2: Capture the Photo
+- Call the `-capturePhotoWithSettings:delegate:` function on the `stillImageOutput`.
+```objc
+[self.stillImageOutput capturePhotoWithSettings:settings delegate:self]; 
+//Don't for get to conform to AVCapturePhotoCaptureDelegate
+```
+### Step 3: Capture the Image Data
+- The AVCapturePhotoCaptureDelegate methods provide us with an instance of AVCapturePhoto object which has all we need to get a **UIImage** that we can insert into our `captureImageView` and easily use elsewhere in our app.
+```objc
+- (void)captureOutput:(AVCapturePhotoOutput *)output didFinishProcessingPhoto:(AVCapturePhoto *)photo error:(nullable NSError *)error {
+    
+    NSData *imageData = photo.fileDataRepresentation;
+    UIImage *image = [UIImage imageWithData:imageData];
+    // Add the image to captureImageView here...
+}
+```
+
 
 ### Step 1: Get the Connection
 - Get the connection from the `stillImageOutput`.
@@ -248,7 +279,9 @@ if sampleBuffer != nil {
 ```swift
 self.captureImageView.image = image
 ```
-
+```objc
+self.captureImageView.image = image;
+```
 ### Step 5: Run Your App ON A REAL DEVICE!!!
 NOTE: The simulator does NOT have a camera so you need to run your app on an **Actual Device** to see the magic!
 - At this point, you should see a live "video" stream of your phone camera's input within your `previewView` and the ability to "Snap" a photo and see the still image within your `captureImageView`.
