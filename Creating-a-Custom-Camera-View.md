@@ -33,6 +33,13 @@ var session: AVCaptureSession?
 var stillImageOutput: AVCaptureStillImageOutput?
 var videoPreviewLayer: AVCaptureVideoPreviewLayer?
 ``` 
+```objc
+@interface CameraViewController ()
+@property (nonatomic) AVCaptureSession *session;
+@property (nonatomic) AVCapturePhotoOutput *stillImageOutput;
+@property (nonatomic) AVCaptureVideoPreviewLayer *videoPreviewLayer;
+@end
+```
 
 ### Step 5: Create a viewWillAppear Method
 The bulk of the camera setup will happen in the `viewDidLoad`.
@@ -42,6 +49,12 @@ The bulk of the camera setup will happen in the `viewDidLoad`.
 override func viewWillAppear(animated: Bool) {
    super.viewWillAppear(animated)
    // Setup your camera here...
+}
+```
+```objc
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Setup your camera here...
 }
 ```
 
@@ -54,6 +67,10 @@ The session will coordinate the input and output data from the devices camera.
 session = AVCaptureSession()
 session!.sessionPreset = AVCaptureSessionPresetPhoto
 ```
+```objc
+self.session = [AVCaptureSession new];
+self.session.sessionPreset = AVCaptureSessionPresetPhoto;
+```
 - NOTE: If you plan to upload your photo to Parse, you will likely need to change your preset to `AVCaptureSessionPresetHigh` or `AVCaptureSessionPresetMedium` to keep the size under the 10mb Parse max.
 
 ### Step 7: Select Input Device
@@ -62,7 +79,9 @@ In this example, we will be using the **rear camera**. The front camera and micr
 ```swift
 let backCamera = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
 ```
-
+```objc
+AVCaptureDevice *backCamera = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+```
 ### Step 8: Prepare the Input
 We now need to make an **AVCaptureDeviceInput**. The AVCaptureDeviceInput will serve as the "middle man" to attach the input device, `backCamera` to the session.
 - We will make a new **AVCaptureDeviceInput** and attempt to associate it with our `backCamera` input device. 
@@ -79,7 +98,11 @@ do {
   print(error!.localizedDescription)
 }
 ```
-
+```objc
+NSError *error;
+AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:backCamera
+                                                                    error:&error];
+```
 ### Step 9: Attach the Input
 If there are no errors from our last step and the session is able to accept input, the go ahead and **add input** to the **Session**.
 
@@ -87,6 +110,15 @@ If there are no errors from our last step and the session is able to accept inpu
 if error == nil && session!.canAddInput(input) {
   session!.addInput(input)
   // ...
+  // The remainder of the session setup will go here...
+}
+```
+```objc
+if (error) {
+    NSLog(@"~~~~~ERROR%@", error.localizedDescription);
+}
+else if (self.session && [self.session canAddInput:input]) {
+    [self.session addInput:input];
   // The remainder of the session setup will go here...
 }
 ``` 
@@ -97,8 +129,12 @@ Just like we created an AVCaptureDeviceInput to be the "middle man" to attach th
 - Set the output data setting to use JPEG format.
 
 ```swift
-stillImageOutput = AVCaptureStillImageOutput()
-stillImageOutput?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
+//Need to update to AVCapturePhotoOutput
+//stillImageOutput = AVCaptureStillImageOutput()
+//stillImageOutput?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
+```
+```objc
+self.stillImageOutput = [AVCapturePhotoOutput new];
 ```
 
 ### Step 11: Attach the Output
@@ -109,6 +145,14 @@ if session!.canAddOutput(stillImageOutput) {
   session!.addOutput(stillImageOutput)
   // ...
   // Configure the Live Preview here... 
+}
+```
+```objc
+if ([self.session canAddOutput:self.stillImageOutput]) {
+    [self.session addOutput:self.stillImageOutput];
+    
+    //Configure the Live Preiview here
+    
 }
 ```
 
@@ -127,6 +171,15 @@ videoPreviewLayer!.connection?.videoOrientation = AVCaptureVideoOrientation.Port
 previewView.layer.addSublayer(videoPreviewLayer!)
 session!.startRunning()
 ```
+```objc
+self.videoPreviewLayer = [AVCaptureVideoPreviewLayer layerWithSession:self.session];
+if (self.videoPreviewLayer) {
+    self.videoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspect;
+    self.videoPreviewLayer.connection.videoOrientation = AVCaptureVideoOrientationPortrait;
+    [self.previewView.layer addSublayer:self.videoPreviewLayer];
+    [self.session startRunning];
+}
+```
 
 ### Step 13: Size the Preview Layer to fit the Preview View
 - Create a `viewDidAppear` method. just like with the `viewWillAppear` method, we will want to call the `super.` of the `viewDidAppear` method.
@@ -137,7 +190,13 @@ override func viewDidAppear(animated: Bool) {
    super.viewDidAppear(animated)
    videoPreviewLayer!.frame = previewView.bounds
 }
-``` 
+```
+```objc
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.videoPreviewLayer.frame = self.previewView.bounds;
+}
+```
 
 ### Step 14: Run Your App ON A REAL DEVICE!!!
 NOTE: The simulator does NOT have a camera so you need to run your app on an **Actual Device** to see the magic!
