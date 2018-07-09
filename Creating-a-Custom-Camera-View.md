@@ -102,6 +102,9 @@ do {
 NSError *error;
 AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:backCamera
                                                                     error:&error];
+if (error) {
+    NSLog(@"%@", error.localizedDescription);
+}
 ```
 ### Step 9: Attach the Input
 If there are no errors from our last step and the session is able to accept input, the go ahead and **add input** to the **Session**.
@@ -114,9 +117,7 @@ if error == nil && session!.canAddInput(input) {
 }
 ```
 ```objc
-if (error) {
-    NSLog(@"~~~~~ERROR%@", error.localizedDescription);
-}
+// Continue from above
 else if (self.session && [self.session canAddInput:input]) {
     [self.session addInput:input];
   // The remainder of the session setup will go here...
