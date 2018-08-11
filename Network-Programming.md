@@ -96,10 +96,16 @@ that after a long stack of calls eventually updates a UI element.
 One simple way to ensure a block of code is run on the main thread using
 Grand Central Dispatch is as follows
 
-```swift
+```objc
 dispatch_async(dispatch_get_main_queue(), {
   // this code will be executed on the main thread
 })
+```
+
+```swift
+DispatchQueue.main.async {  
+  // This code will be executed on the main thread
+}  
 ```
 
 ## Making a GET and parsing a JSON response
@@ -209,7 +215,86 @@ NSURLSessionDataTask *task = [session dataTaskWithRequest:request
                                             }
                                         }];
 [task resume];
-```
+```  
+
+### Codable  
+[Codable](https://developer.apple.com/documentation/swift/codable) is Apple's latest powerful contribution to efforts to better improve the built-in networking libraries available to iOS and Mac OS engineers. Codable is actually a typealias for [Encodable and Decodable](https://developer.apple.com/documentation/foundation/archives_and_serialization/encoding_and_decoding_custom_types) protocols that allows you to quickly decode and encode external representations (such as JSON strings) as native Structs in Swift.  
+Before Codable was introduced to the Swift language in Swift 4, many developers had to rely on third party frameworks or building their own JSON decoding code which required a lot of boilerplate code. However, with the introduction of Codable, it's actually really easy to write 100% Swift networking code! Let's give it a try!  
+  
+Let's assume you are implementing a movie list viewing application that retrieves a list of movies from a server to show the user, with the following JSON response.  
+```javascript  
+{
+    "totalFilms": 100,
+    "films": [{
+            "id": 11219,
+            "image_url": "https://movieguru.org/sample1.png",
+            "title": "The Hunt for Red October",
+            "score": 4.5
+        },
+        {
+            "id": 11169,
+            "image_url": "https://movieguru.org/sample1.png",
+            "title": "Wolf of Wall Street",
+            "score": 5.0
+        },
+        {
+            "id": 13671,
+            "image_url": "https://movieguru.org/sample1.png",
+            "title": "Superbad",
+            "score": 4.2
+        }
+    ]
+}
+```  
+With the power of Codable, you can implement a native Struct object with the following code.  
+```swift  
+struct MovieResponse: Codable {
+    let totalFilms: Int
+    let films: [Film]
+}
+
+struct Film: Codable {
+    let id: Int
+    let imageURL, title: String
+    let score: Double
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case imageURL = "image_url"
+        case title, score
+    }
+}
+```  
+As you can see, the Struct looks almost exactly like you would want it to look if you were using it to drive a UITableViewDataSource or a custom film details View Controller.  
+The CodingKey is simply an enum that allows the JSONDecoder perform an internal switch on each key of the JSON dictionary in order to match it to the property name of the Struct. Can you guess why imageURL is the only case in the enum that has a declared value? If you're thinking it's related to Snake Case, you're right! While Snake Case works in Swift, it's not best practice, and Apple cleverly considered that an application might need properties to have a different name so an engineer can overwrite the property name by mapping the variable name to a different JSON parameter. If you wanted, you could image imageURL read "thumbnailURL" if you wanted to, as long as the encoding key is equal to "image_url", the JSONDecoder will know that the JSON value for key "image_url" is set to thumbnailURL.  
+So how do we use it? Easy!  
+Let's go back to the example from URLSession, and instead of a general NSDictionary (which would require a lot more code on the consumption side like a MovieObject class with init(fromDict dict: NSDictionary) in order to be usable in your code base), let's substitute it with our Codable compatible struct.  
+```swift
+class Movie {
+
+    // ... 
+
+    class func fetchMovies(successCallBack: @escaping ([Film]?) -> (), errorCallBack: ((Error?) -> ())?) {
+        let apiKey = "Put_Your_Client_Id_Here"
+        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")!
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let task: URLSessionDataTask = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+            if let error = error {
+                errorCallBack?(error)
+            } else if let data = data,
+                let filmResponse = try! JSONDecoder().decode(MovieResponse.self, from: data) {
+                //print(filmResponse.films)
+                successCallBack(filmResponse.films)
+            }
+        }
+        task.resume()
+    }
+    // ...
+}
+```  
+It might not look like much, but a significant amount of code is saved from the Movie class object, and when you consume this API call, on the other side you'll get the Film objects you need to drive your UI, rather than a Dictionary you'd have to iterate over, verifying each value.  
+  
 ### AFNetworking
 This code starts to look a little cleaner with AFNetworking.
 AFNetworking does some error handling for us and gives us a way to
