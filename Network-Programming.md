@@ -95,13 +95,13 @@ that after a long stack of calls eventually updates a UI element.
 
 One simple way to ensure a block of code is run on the main thread using
 Grand Central Dispatch is as follows
-
+**Objective-C**
 ```objc
 dispatch_async(dispatch_get_main_queue(), {
   // this code will be executed on the main thread
 })
 ```
-
+**Swift**
 ```swift
 DispatchQueue.main.async {  
   // This code will be executed on the main thread
@@ -266,9 +266,10 @@ struct Film: Codable {
 }
 ```  
 As you can see, the Struct looks almost exactly like you would want it to look if you were using it to drive a UITableViewDataSource or a custom film details View Controller.  
-The CodingKey is simply an enum that allows the JSONDecoder perform an internal switch on each key of the JSON dictionary in order to match it to the property name of the Struct. Can you guess why imageURL is the only case in the enum that has a declared value? If you're thinking it's related to Snake Case, you're right! While Snake Case works in Swift, it's not best practice, and Apple cleverly considered that an application might need properties to have a different name so an engineer can overwrite the property name by mapping the variable name to a different JSON parameter. If you wanted, you could image imageURL read "thumbnailURL" if you wanted to, as long as the encoding key is equal to "image_url", the JSONDecoder will know that the JSON value for key "image_url" is set to thumbnailURL.  
+The [**CodingKey**](https://developer.apple.com/documentation/swift/codingkey) is simply an enum that allows the JSONDecoder to perform an internal switch on each key of the JSON response in order to match each key to the property name of the Struct. Can you guess why imageURL is the only case in the enum that has a declared raw value? If you're thinking it's related to **Snake Case**, you're right! While **Snake Case** works in Swift, it's not best practice, and Apple cleverly considered that an application might need properties to have different names compared to their network properties so an engineer can overwrite the property name by mapping a different variable name to each JSON parameter. If you wanted, you could make imageURL read "thumbnailURL" instead, as long as the encoding key is equal to "image_url", the JSONDecoder will know that the JSON value for key "image_url" is set to thumbnailURL.  
 So how do we use it? Easy!  
-Let's go back to the example from URLSession, and instead of a general NSDictionary (which would require a lot more code on the consumption side like a MovieObject class with init(fromDict dict: NSDictionary) in order to be usable in your code base), let's substitute it with our Codable compatible struct.  
+Let's go back to the example from **URLSession**, and instead of a general NSDictionary (which would require a lot more code on the consumption side like a MovieObject class with init(fromDict dict: NSDictionary) in order to be usable in your code base), let's substitute it with our **Codable** compatible struct.  
+  
 ```swift
 class Movie {
 
@@ -293,7 +294,10 @@ class Movie {
     // ...
 }
 ```  
+  
 It might not look like much, but a significant amount of code is saved from the Movie class object, and when you consume this API call, on the other side you'll get the Film objects you need to drive your UI, rather than a Dictionary you'd have to iterate over, verifying each value.  
+  
+Codable can save you a significant amount of time in writing networking code, and it's growing in popularity, so I highly recommend picking it up!
   
 ### AFNetworking
 This code starts to look a little cleaner with AFNetworking.
