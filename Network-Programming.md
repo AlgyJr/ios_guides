@@ -94,7 +94,8 @@ tricky because we may call into a method that calls into another method
 that after a long stack of calls eventually updates a UI element.
 
 One simple way to ensure a block of code is run on the main thread using
-Grand Central Dispatch is as follows
+Grand Central Dispatch is as follows  
+  
 **Objective-C**
 ```objc
 dispatch_async(dispatch_get_main_queue(), {
