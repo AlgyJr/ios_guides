@@ -576,8 +576,91 @@ let assumedString: String! = "An implicitly unwrapped optional string."
 
 // no need for an exclamation mark since assumedString is an implicitly unwrapped optional
 let implicitString: String = assumedString
-```
-
+```  
+  
+## Property Observers  
+A very useful inclusion of the Swift language is **Property Observers**. While the language might sound complex, it's actually a literal explanation of what it does. It allows you to observe properties and respond to impending or finished property changes. It's part of Apple's goal to make Swift a cleaner language because a developer merely has to keep any logic related to updating properties in one convenient place.  
+Let's look at an example.  
+Assume you have a Fitness tracking application and whenever a user enters their weight, you calculate and display their **BMI** to them.  
+Without property observers, and keeping in good practice (since BMI is calculated and not set in initialization), you might have a class like this -  
+  
+**Swift**  
+  
+```swift  
+class Profile {
+    let height: Double
+    var weight: Double
+    private var BMI: Double
+    
+    init(weight: Double, height: Double) {
+        self.height = height
+        self.weight = weight
+        self.BMI = weight / (height*height)
+    }
+    
+    func getBMI() -> Double {
+        return self.BMI
+    }
+    
+    func updateBMI() {
+        self.BMI = weight / (height*height)
+    }
+}  
+```  
+In a view where you ask the user to enter their new weight, you would call `profile.updateBMI()` after the new weight is set.  
+Isn't this a little tedious? It's almost a trap for developers. You have to actively remember that you should update the BMI every time you update the weight.  
+Thankfully, with property observers, you don't have to actively watch every property change as a developer. Your class becomes -  
+  
+```swift
+class Profile {
+    let height: Double
+    var weight: Double {
+        didSet {
+            updateBMI()
+        }
+    }
+    private var BMI: Double
+    
+    init(weight: Double, height: Double) {
+        self.height = height
+        self.weight = weight
+        self.BMI = weight / (height*height)
+    }
+    
+    func getBMI() -> Double {
+        return self.BMI
+    }
+    
+    func updateBMI() {
+        self.BMI = weight / (height*height)
+    }
+}  
+```  
+It might not look like much, but now whenever you update BMI, you don't have to worry about calling `updateBMI()` and to be honest, we can clean this up even more by making BMI `private(set)`, changing Profile to a `struct` and adding a `mutating func`.  
+  
+```swift  
+struct Profile {
+    let height: Double
+    var weight: Double {
+        didSet {
+            updateBMI()
+        }
+    }
+    private(set) var BMI: Double
+    
+    mutating private func updateBMI() {
+        BMI = weight / (height * height)
+    }
+}  
+```  
+What is `mutating` you ask? Well, normally Struct's are read only. This is because in order for them to be fast, they need to take up space on `Stack` instead of `Heap`. A simple way to explain this is to imagine that Stack is writing with a Pen and Heap is writing with a Pencil. Some of you might think "well what's the big deal? they both write." But think about all the extra work that comes with a Pencil - You need an eraser, you have to clean the eraser off the paper and can end up using more material if you edit a lot. A pen, on the other hand, you just write (we're assuming you're not using an erasable pen or white-out) and it's set.  
+Mutating gives you an ability to say, "Hey, this Struct will be read only, but if I make it a variable, I might want to update its properties, so please give me the ability to edit that Struct".  
+There's a little more to this under the hood, but Structs tend to be pretty thread safe, so you can assume every Struct exists by itself and it's pretty safe to edit like this.  
+  
+**Other Property Observers**  
+There are other property observers for every stage of a state change - willSet, set/get are included. `willSet` has the added ability of being able to compare `newValue` to the original value (called the property name).  
+A few hints about where `didSet` can be quite powerful is when dealing with network data and data sources. When a user has the ability to get objects from a server with a regular network call, a search and tapping a keyword, it can be useful if the `var dataSource: [Models]` has `didSet` to reload the data of the view. That way you won't have to do it manually.  
+  
 ## Working with JSON
 
 A lot of the time when working with REST API's (like Instagram, Twitter, etc), the data that comes back will be JSON. JSON is a human readable data format (very similar to XML).
