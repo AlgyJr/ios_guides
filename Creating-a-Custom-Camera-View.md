@@ -59,7 +59,8 @@ override func viewDidAppear(_ animated: Bool) {
 ```
 
 ### Step 6: Setup Session
-The session will coordinate the input and output data from the devices camera. 
+The session will coordinate the input and output data from the devices camera.  
+Still in `viewDidAppear`
 - Create a new session
 - Configure the session for high resolution still photo capture. We'll use a convenient preset to that. 
 
@@ -75,7 +76,7 @@ self.session.sessionPreset = AVCaptureSessionPresetPhoto;
 
 ### Step 7: Select Input Device
 In this example, we will be using the **rear camera**. The front camera and microphone are additional input devices at your disposal.  Printing debug comment incase the fetching the rear camera fails.
-
+Still in `viewDidAppear`
 ```swift
 guard let backCamera = AVCaptureDevice.default(for: AVMediaType.video)
     else {
@@ -93,25 +94,27 @@ if (!backCamera) {
 ### Step 8: Prepare the Input
 We now need to make an **AVCaptureDeviceInput**. The AVCaptureDeviceInput will serve as the "middle man" to attach the input device, `backCamera` to the session.
 - We will make a new **AVCaptureDeviceInput** and attempt to associate it with our `backCamera` input device. 
-- There is a chance that the input device might not be available, so we will set up a `try` `catch` to handle any potential **errors** we might encounter.
+- There is a chance that the input device might not be available, so we will set up a `try` `catch` to handle any potential **errors** we might encounter.  In Objective C, errors will be using the traditional NSError pattern.
+Still in `viewDidAppear`
 
 ```swift
-var error: NSError?
-var input: AVCaptureDeviceInput!
 do {
-  input = try AVCaptureDeviceInput(device: backCamera)
-} catch let error1 as NSError {
-  error = error1
-  input = nil
-  print(error!.localizedDescription)
+    let input = try AVCaptureDeviceInput(device: backCamera)
+    //Step 9
+}
+catch let error  {
+    print("Error Unable to initialize back camera:  \(error.localizedDescription)")
 }
 ```
 ```objc
 NSError *error;
 AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:backCamera
                                                                     error:&error];
-if (error) {
-    NSLog(@"%@", error.localizedDescription);
+if (!error) {
+    //Step 9
+}
+else {
+    NSLog(@"Error Unable to initialize back camera: %@", error.localizedDescription);
 }
 ```
 ### Step 9: Attach the Input
