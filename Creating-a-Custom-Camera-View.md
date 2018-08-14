@@ -161,19 +161,41 @@ Now that the input and output are all hooked up with our session, we just need t
 - Finally, **start the session!**
 
 ```swift
-videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
-videoPreviewLayer!.videoGravity = AVLayerVideoGravityResizeAspect
-videoPreviewLayer!.connection?.videoOrientation = AVCaptureVideoOrientation.Portrait
-previewView.layer.addSublayer(videoPreviewLayer!)
-session!.startRunning()
+func setupLivePreview() {
+    
+    videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+    
+    videoPreviewLayer.videoGravity = .resizeAspect
+    videoPreviewLayer.connection?.videoOrientation = .portrait
+    previewView.layer.addSublayer(videoPreviewLayer)
+    
+    DispatchQueue.global(qos: .userInitiated).async { //[weak self] in
+        self.captureSession.startRunning()
+        DispatchQueue.main.async {
+            self.videoPreviewLayer.frame = self.previewView.bounds
+        }
+    }
+}
 ```
 ```objc
-self.videoPreviewLayer = [AVCaptureVideoPreviewLayer layerWithSession:self.session];
-if (self.videoPreviewLayer) {
-    self.videoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspect;
-    self.videoPreviewLayer.connection.videoOrientation = AVCaptureVideoOrientationPortrait;
-    [self.previewView.layer addSublayer:self.videoPreviewLayer];
-    [self.session startRunning];
+- (void)setupLivePreview {
+    
+    self.videoPreviewLayer = [AVCaptureVideoPreviewLayer layerWithSession:self.capturesSession];
+    if (self.videoPreviewLayer) {
+        
+        self.videoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspect;
+        self.videoPreviewLayer.connection.videoOrientation = AVCaptureVideoOrientationPortrait;
+        [self.previewView.layer addSublayer:self.videoPreviewLayer];
+        
+        dispatch_queue_t globalQueue =  dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+        dispatch_async(globalQueue, ^{
+            [self.capturesSession startRunning];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.videoPreviewLayer.frame = self.previewView.bounds;
+            });
+        });
+    }
 }
 ```
 
