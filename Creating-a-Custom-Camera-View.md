@@ -254,9 +254,11 @@ func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo:
 - (void)captureOutput:(AVCapturePhotoOutput *)output didFinishProcessingPhoto:(AVCapturePhoto *)photo error:(nullable NSError *)error {
     
     NSData *imageData = photo.fileDataRepresentation;
-    UIImage *image = [UIImage imageWithData:imageData];
-      // Add the image to captureImageView here...
-    self.captureImageView.image = image;
+    if (imageData) {
+        UIImage *image = [UIImage imageWithData:imageData];
+        // Add the image to captureImageView here...
+        self.captureImageView.image = image;
+    }
 }
 ```
 
