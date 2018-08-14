@@ -64,14 +64,14 @@ The session will coordinate the input and output data from the devices camera.
 - Configure the session for high resolution still photo capture. We'll use a convenient preset to that. 
 
 ```swift
-session = AVCaptureSession()
-session!.sessionPreset = AVCaptureSessionPresetPhoto
+captureSession = AVCaptureSession()
+captureSession.sessionPreset = .medium
 ```
 ```objc
 self.session = [AVCaptureSession new];
 self.session.sessionPreset = AVCaptureSessionPresetPhoto;
 ```
-- NOTE: If you plan to upload your photo to Parse, you will likely need to change your preset to `AVCaptureSessionPresetHigh` or `AVCaptureSessionPresetMedium` to keep the size under the 10mb Parse max.
+- NOTE: If you plan to upload your photo to Parse, you will likely need to change your preset to `AVCaptureSession.Preset.High` or `AVCaptureSession.Preset.medium` to keep the size under the 10mb Parse max.
 
 ### Step 7: Select Input Device
 In this example, we will be using the **rear camera**. The front camera and microphone are additional input devices at your disposal.
