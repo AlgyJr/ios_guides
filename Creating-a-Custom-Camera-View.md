@@ -191,37 +191,29 @@ We need to call `-startRunning` on the session to start the live view.  However 
 ```swift
 DispatchQueue.global(qos: .userInitiated).async { //[weak self] in
     self.captureSession.startRunning()
-    DispatchQueue.main.async {
-        self.videoPreviewLayer.frame = self.previewView.bounds
-    }
+    //Step 13
 }
 ```
 ```objc
 dispatch_queue_t globalQueue =  dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
 dispatch_async(globalQueue, ^{
     [self.capturesSession startRunning];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.videoPreviewLayer.frame = self.previewView.bounds;
-    });
+    //Step 13
 });
 ```
 
 ### Step 13: Size the Preview Layer to fit the Preview View
-- Create a `viewDidAppear` method. just like with the `viewWillAppear` method, we will want to call the `super.` of the `viewDidAppear` method.
-- Within the `viewDidAppear` method, set the size and origin of the Preview Layer to fit inside the Preview View. We will do this using the **bounds** property.
+Once the live view starts let's set the Preview layer to fit, but we must return to the main thread to do so!
 
 ```swift
-override func viewDidAppear(animated: Bool) {
-   super.viewDidAppear(animated)
-   videoPreviewLayer!.frame = previewView.bounds
+DispatchQueue.main.async {
+    self.videoPreviewLayer.frame = self.previewView.bounds
 }
 ```
 ```objc
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+dispatch_async(dispatch_get_main_queue(), ^{
     self.videoPreviewLayer.frame = self.previewView.bounds;
-}
+});
 ```
 
 ### Step 13: Run Your App ON A REAL DEVICE!!!
