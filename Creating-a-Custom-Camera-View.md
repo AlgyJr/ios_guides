@@ -218,7 +218,7 @@ dispatch_async(dispatch_get_main_queue(), ^{
 Let's create an IBAction of the `Take photo Button` and capture a JPEG by calling our instance of `AVCapturePhotoOutput` or `stillImageOut` the method `func capturePhoto(with:, delegate:)` or `-capturePhotoWithSettings:delegate:`.  This method requires us to provide it with a setting and a deleget to deliver the capturedPhoto to.  This delegate will be this ViewController so we also need to conform to the protocol `AVCapturePhotoCaptureDelegate`
 ```swift
 class CameraViewControllerSwift: UIViewController, AVCapturePhotoCaptureDelegate {
-....
+    ....
     @IBAction func didTakePhoto(_ sender: Any) {
         
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
@@ -238,6 +238,28 @@ class CameraViewControllerSwift: UIViewController, AVCapturePhotoCaptureDelegate
     [self.stillImageOutput capturePhotoWithSettings:settings delegate:self];
 }
 ```
+### Step 15: Process the captured photo!
+The `AVCapturePhotoOutput` will deliver the captured photo to the assigned delegate which is our current ViewController by a delegate method called `photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?)`.  The photo is delivered to us as an `AVCapturePhoto` which is easy to transform into `Data/NSData` and than into UIImage.
+```swift
+func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+    
+    guard let imageData = photo.fileDataRepresentation()
+        else { return }
+    
+    let image = UIImage(data: imageData)
+    captureImageView.image = image
+}
+```
+```objc
+- (void)captureOutput:(AVCapturePhotoOutput *)output didFinishProcessingPhoto:(AVCapturePhoto *)photo error:(nullable NSError *)error {
+    
+    NSData *imageData = photo.fileDataRepresentation;
+    UIImage *image = [UIImage imageWithData:imageData];
+      // Add the image to captureImageView here...
+    self.captureImageView.image = image;
+}
+```
+
 
 
 ### Step 15: Clean up when the user leaves!
