@@ -29,9 +29,9 @@ Create an **Action** for the UIButton.
 Above the `viewDidLoad` method, where you create variables you want to be accessible anywhere in the ViewController file, create the following **Instance Variables**.
 
 ```swift
-var session: AVCaptureSession?
-var stillImageOutput: AVCaptureStillImageOutput?
-var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+var captureSession: AVCaptureSession!
+var stillImageOutput: AVCapturePhotoOutput!
+var videoPreviewLayer: AVCaptureVideoPreviewLayer!
 ``` 
 ```objc
 @interface CameraViewController ()
