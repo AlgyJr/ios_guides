@@ -201,7 +201,6 @@ dispatch_async(globalQueue, ^{
     //Step 13
 });
 ```
-
 ### Step 13: Size the Preview Layer to fit the Preview View
 Once the live view starts let's set the Preview layer to fit, but we must return to the main thread to do so!
 
@@ -215,8 +214,43 @@ dispatch_async(dispatch_get_main_queue(), ^{
     self.videoPreviewLayer.frame = self.previewView.bounds;
 });
 ```
+### Step 14: Taking the picture
+Let's create an IBAction of the `Take photo Button` and capture a JPEG by calling our instance of `AVCapturePhotoOutput` or `stillImageOut` the method `func capturePhoto(with:, delegate:)` or `-capturePhotoWithSettings:delegate:`.  This method requires us to provide it with a setting and a deleget to deliver the capturedPhoto to.  This delegate will be this ViewController so we also need to conform to the protocol `AVCapturePhotoCaptureDelegate`
+```swift
+class CameraViewControllerSwift: UIViewController, AVCapturePhotoCaptureDelegate {
+....
+    @IBAction func didTakePhoto(_ sender: Any) {
+        
+        let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
+        stillImageOutput.capturePhoto(with: settings, delegate: self)
+    }
+}
+```
+```objc
+//CameraViewController.h
+@interface CameraViewController : UIViewController <AVCapturePhotoCaptureDelegate>
 
-### Step 13: Run Your App ON A REAL DEVICE!!!
+//CameraViewController.m
+- (IBAction)didTakePhoto:(id)sender {
+    
+    AVCapturePhotoSettings *settings = [AVCapturePhotoSettings photoSettingsWithFormat:@{AVVideoCodecKey: AVVideoCodecTypeJPEG}];
+
+    [self.stillImageOutput capturePhotoWithSettings:settings delegate:self];
+}
+```
+
+
+### Step 15: Clean up when the user leaves!
+Let's not forget to stop the session when we leave the camera view!
+
+```swift
+```
+```objc
+```
+
+
+
+### Step 16: Run Your App ON A REAL DEVICE!!!
 NOTE: The simulator does NOT have a camera so you need to run your app on an **Actual Device** to see the magic!
 - At this point, you should see a live "video" stream of your phone camera's input within your `previewView`.
 
