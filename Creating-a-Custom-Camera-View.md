@@ -119,14 +119,11 @@ else {
 ```
 
 ### Step 9: Configure the Output
-Just like we created an AVCaptureDeviceInput to be the "middle man" to attach the input device, we will use **AVCaptureStillImageOutput** to help us attach the **output** to the session.
-- Create a new **AVCaptureStillImageOutput** object.
-- Set the output data setting to use JPEG format.
+Just like we created an AVCaptureDeviceInput to be the "middle man" to attach the input device, we will use **AVCapturePhotoOutput** to help us attach the **output** to the session.
+- Create a new **AVCapturePhotoOutput** object.
 
 ```swift
-//Need to update to AVCapturePhotoOutput
-//stillImageOutput = AVCaptureStillImageOutput()
-//stillImageOutput?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
+stillImageOutput = AVCapturePhotoOutput()
 ```
 ```objc
 self.stillImageOutput = [AVCapturePhotoOutput new];
