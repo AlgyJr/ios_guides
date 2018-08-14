@@ -121,17 +121,22 @@ else {
 If there are no errors from our last step and the session is able to accept input, the go ahead and **add input** to the **Session**.
 
 ```swift
-if error == nil && session!.canAddInput(input) {
-  session!.addInput(input)
-  // ...
-  // The remainder of the session setup will go here...
+stillImageOutput = AVCapturePhotoOutput()
+
+if captureSession.canAddInput(input) && captureSession.canAddOutput(stillImageOutput) {
+    captureSession.addInput(input)
+    captureSession.addOutput(stillImageOutput)
+    setupLivePreview()
 }
 ```
 ```objc
-// Continue from above
-else if (self.session && [self.session canAddInput:input]) {
-    [self.session addInput:input];
-  // The remainder of the session setup will go here...
+self.stillImageOutput = [AVCapturePhotoOutput new];
+
+if ([self.capturesSession canAddInput:input] && [self.capturesSession canAddOutput:self.stillImageOutput]) {
+    
+    [self.capturesSession addInput:input];
+    [self.capturesSession addOutput:self.stillImageOutput];
+    [self setupLivePreview];
 }
 ``` 
 
