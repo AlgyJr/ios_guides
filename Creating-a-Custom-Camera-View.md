@@ -152,33 +152,7 @@ if ([self.capturesSession canAddInput:input] && [self.capturesSession canAddOutp
 }
 ``` 
 
-
-
-### Step 11: Attach the Output
-If the session is able to accept our output, then we will **attach the output to the session**.
-
-```swift
-if session!.canAddOutput(stillImageOutput) {
-  session!.addOutput(stillImageOutput)
-  // ...
-  // Configure the Live Preview here... 
-}
-```
-```objc
-if ([self.session canAddOutput:self.stillImageOutput]) {
-    [self.session addOutput:self.stillImageOutput];
-    
-    //Configure the Live Preiview here
-    
-}
-
-//Also let the ViewController conform to `AVCapturePhotoCaptureDelegate`
-#import <UIKit/UIKit.h>
-@import AVKit;
-@interface CameraViewController : UIViewController <AVCapturePhotoCaptureDelegate>
-```
-
-### Step 12: Configure the Live Preview
+### Step 11: Configure the Live Preview
 Now that the input and output are all hooked up with our session, we just need to get our Live Preview going so we can actually display what the camera sees on the screen in our UIView, `previewView`.
 - Create an **AVCaptureVideoPreviewLayer** and associate it with our session.
 - Configure the Layer to resize while maintaining it's original aspect.
@@ -203,7 +177,7 @@ if (self.videoPreviewLayer) {
 }
 ```
 
-### Step 13: Size the Preview Layer to fit the Preview View
+### Step 12: Size the Preview Layer to fit the Preview View
 - Create a `viewDidAppear` method. just like with the `viewWillAppear` method, we will want to call the `super.` of the `viewDidAppear` method.
 - Within the `viewDidAppear` method, set the size and origin of the Preview Layer to fit inside the Preview View. We will do this using the **bounds** property.
 
@@ -220,7 +194,7 @@ override func viewDidAppear(animated: Bool) {
 }
 ```
 
-### Step 14: Run Your App ON A REAL DEVICE!!!
+### Step 13: Run Your App ON A REAL DEVICE!!!
 NOTE: The simulator does NOT have a camera so you need to run your app on an **Actual Device** to see the magic!
 - At this point, you should see a live "video" stream of your phone camera's input within your `previewView`.
 
