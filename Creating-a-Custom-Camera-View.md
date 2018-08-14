@@ -169,12 +169,7 @@ func setupLivePreview() {
     videoPreviewLayer.connection?.videoOrientation = .portrait
     previewView.layer.addSublayer(videoPreviewLayer)
     
-    DispatchQueue.global(qos: .userInitiated).async { //[weak self] in
-        self.captureSession.startRunning()
-        DispatchQueue.main.async {
-            self.videoPreviewLayer.frame = self.previewView.bounds
-        }
-    }
+    //Step12
 }
 ```
 ```objc
@@ -187,19 +182,32 @@ func setupLivePreview() {
         self.videoPreviewLayer.connection.videoOrientation = AVCaptureVideoOrientationPortrait;
         [self.previewView.layer addSublayer:self.videoPreviewLayer];
         
-        dispatch_queue_t globalQueue =  dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
-        dispatch_async(globalQueue, ^{
-            [self.capturesSession startRunning];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.videoPreviewLayer.frame = self.previewView.bounds;
-            });
-        });
+        //Step12
     }
 }
 ```
+### Step 12: Start the **Session** on the background thread
+We need to call `-startRunning` on the session to start the live view.  However `-startRunning` is a blocking method which means it will block the UI if it's running on the main thread.  If the session takes a while to start, users would want the UI to be responsive and cancel out of the camera view.
+```swift
+DispatchQueue.global(qos: .userInitiated).async { //[weak self] in
+    self.captureSession.startRunning()
+    DispatchQueue.main.async {
+        self.videoPreviewLayer.frame = self.previewView.bounds
+    }
+}
+```
+```objc
+dispatch_queue_t globalQueue =  dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+dispatch_async(globalQueue, ^{
+    [self.capturesSession startRunning];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.videoPreviewLayer.frame = self.previewView.bounds;
+    });
+});
+```
 
-### Step 12: Size the Preview Layer to fit the Preview View
+### Step 13: Size the Preview Layer to fit the Preview View
 - Create a `viewDidAppear` method. just like with the `viewWillAppear` method, we will want to call the `super.` of the `viewDidAppear` method.
 - Within the `viewDidAppear` method, set the size and origin of the Preview Layer to fit inside the Preview View. We will do this using the **bounds** property.
 
