@@ -264,12 +264,20 @@ func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo:
 
 
 
-### Step 15: Clean up when the user leaves!
+### Step 16: Clean up when the user leaves!
 Let's not forget to stop the session when we leave the camera view!
 
 ```swift
+override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    self.captureSession.stopRunning()
+}
 ```
 ```objc
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.capturesSession stopRunning];
+}
 ```
 
 
