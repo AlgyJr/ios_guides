@@ -74,13 +74,21 @@ self.session.sessionPreset = AVCaptureSessionPresetPhoto;
 - NOTE: If you plan to upload your photo to Parse, you will likely need to change your preset to `AVCaptureSession.Preset.High` or `AVCaptureSession.Preset.medium` to keep the size under the 10mb Parse max.
 
 ### Step 7: Select Input Device
-In this example, we will be using the **rear camera**. The front camera and microphone are additional input devices at your disposal.
+In this example, we will be using the **rear camera**. The front camera and microphone are additional input devices at your disposal.  Printing debug comment incase the fetching the rear camera fails.
 
 ```swift
-let backCamera = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+guard let backCamera = AVCaptureDevice.default(for: AVMediaType.video)
+    else {
+        print("Unable to access back camera!")
+        return
+}
 ```
 ```objc
 AVCaptureDevice *backCamera = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+if (!backCamera) {
+    NSLog(@"Unable to access back camera!");
+    return;
+}
 ```
 ### Step 8: Prepare the Input
 We now need to make an **AVCaptureDeviceInput**. The AVCaptureDeviceInput will serve as the "middle man" to attach the input device, `backCamera` to the session.
