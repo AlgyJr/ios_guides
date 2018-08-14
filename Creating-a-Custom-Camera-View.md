@@ -117,8 +117,23 @@ else {
     NSLog(@"Error Unable to initialize back camera: %@", error.localizedDescription);
 }
 ```
-### Step 9: Attach the Input
-If there are no errors from our last step and the session is able to accept input, the go ahead and **add input** to the **Session**.
+
+### Step 9: Configure the Output
+Just like we created an AVCaptureDeviceInput to be the "middle man" to attach the input device, we will use **AVCaptureStillImageOutput** to help us attach the **output** to the session.
+- Create a new **AVCaptureStillImageOutput** object.
+- Set the output data setting to use JPEG format.
+
+```swift
+//Need to update to AVCapturePhotoOutput
+//stillImageOutput = AVCaptureStillImageOutput()
+//stillImageOutput?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
+```
+```objc
+self.stillImageOutput = [AVCapturePhotoOutput new];
+```
+
+### Step 10: Attach the Input and Output
+If there are no errors from our last step and the session is able to accept input and output, the go ahead and **add input** **add output** to the **Session**.
 
 ```swift
 stillImageOutput = AVCapturePhotoOutput()
@@ -140,19 +155,7 @@ if ([self.capturesSession canAddInput:input] && [self.capturesSession canAddOutp
 }
 ``` 
 
-### Step 10: Configure the Output
-Just like we created an AVCaptureDeviceInput to be the "middle man" to attach the input device, we will use **AVCaptureStillImageOutput** to help us attach the **output** to the session.
-- Create a new **AVCaptureStillImageOutput** object.
-- Set the output data setting to use JPEG format.
 
-```swift
-//Need to update to AVCapturePhotoOutput
-//stillImageOutput = AVCaptureStillImageOutput()
-//stillImageOutput?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
-```
-```objc
-self.stillImageOutput = [AVCapturePhotoOutput new];
-```
 
 ### Step 11: Attach the Output
 If the session is able to accept our output, then we will **attach the output to the session**.
