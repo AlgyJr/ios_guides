@@ -9,7 +9,7 @@ CocoaPods is packaged as a Ruby gem. Since Ruby comes with new OS X installation
 
 ```bash
 sudo gem install -n /usr/local/bin cocoapods     # Install CocoaPods gem
-pod setup                      # Clones the CocoaPods specs repo to ~/.cocoapods
+pod setup                                        # Clones the CocoaPods specs repo to ~/.cocoapods
 ```
 
 Note: There are alternate instructions if you need to perform a [sudo-less install](http://guides.cocoapods.org/using/getting-started.html#sudo-less-installation) or [install a beta version](http://guides.cocoapods.org/using/getting-started.html#updating-cocoapods) of CocoaPods. 
@@ -25,8 +25,8 @@ You only need a single Podfile per project. The Podfile is a plain text file whe
     pod init
     ```
 
-### Add required dependencies to the Podfile
-- In the case below, we'll add Alamofire and a few others:
+### Add dependencies to the Podfile
+- In the example below, we'll add Alamofire and a few others:
     
     ```ruby
     # Uncomment the next line to define a global platform for your project
