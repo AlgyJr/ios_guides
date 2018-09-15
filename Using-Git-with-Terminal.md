@@ -29,7 +29,7 @@ Local Git repositories are created and managed locally on your computer.
     ![Creating a Local Git Repository Xcode gif|700](https://i.imgur.com/aJhndKZ.png)  
 
 If you already have a project, where a Git repository was not created when you made the project, you can create a local Git repository using terminal. 
-- Navigate to yor Xcode Project folder in Terminal.
+- Navigate to your Xcode Project folder in Terminal.
 
     ```bash
     git init
