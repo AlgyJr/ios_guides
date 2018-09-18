@@ -3,7 +3,6 @@ Table views are the center of many iOS applications and have many features to cu
 
 <img src="https://i.imgur.com/rYbUIR1.png" />
 
-Download the sample code [here](https://github.com/codepath/ios_guides/tree/master/demos/SimpleTableView).
 
 ### 1. Basic Table View
 
