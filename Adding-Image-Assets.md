@@ -1,4 +1,4 @@
-Asset Catalogs makes asset management easy. To add assets to a project, follow the steps below.
+Asset Catalogs makes asset management easy. To add assets to a project, follow the steps below.  Note that in **Xcode 10**, the Media Library has moved from the lower right-hand corner - to access the assets from a storyboard with Xcode 10, hit command + shift + m.
 
 ![adding image assets](https://i.imgur.com/N46BHYj.gif)
 
@@ -46,7 +46,12 @@ To set the app icon, simply select "App Icon" in the asset catalog and drag a .p
 ### Launch Screen
 For the launch image, you will need to configure the **LaunchScreen.storyboard** file as you would any other ViewController.
 - Add your Launch Screen Asset to the **Assets.xcassets** folder.
-- Drag the Launch Screen image from the media library (Bottom right in utilities pane), on to the LaunchScreen ViewController. 
-- HINT: If Xcode is having trouble recognizing your Launch Screen image file, try renaming it in the finder before dragging it into your assets folder (example below)
+- Drag the Launch Screen image from the media library (Bottom right in utilities pane for Xcode versions less than 10, or pop up window with command + shift + m for Xcode 10), on to the LaunchScreen ViewController. 
+- HINT: If Xcode is having trouble recognizing your Launch Screen image file, try renaming it in the finder before dragging it into your assets folder (see the first example below)
 
+#### Example for Xcode versions less than 10
 ![Add assets, icon, and Launch](https://i.imgur.com/9dyZBfN.gif)
+
+#### Example for Xcode version 10
+Media Library pop up opened by hitting the keys "command", "shift", and "m" at the same time
+![Add image asset to launch screen Xcode 10](https://i.imgur.com/Adg0niI.gif)
