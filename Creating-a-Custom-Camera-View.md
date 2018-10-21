@@ -1,4 +1,4 @@
-Accessing the built in [Image Picker Controller]() is a quick and easy way to get image and video capture into your app. However, when you need style and functionality that goes beyond the stock Image Picker Controller you will need to create a Custom Camera View.  
+Accessing the built in [Image Picker Controller](https://developer.apple.com/documentation/uikit/uiimagepickercontroller) is a quick and easy way to get image and video capture into your app. However, when you need style and functionality that goes beyond the stock Image Picker Controller you will need to create a Custom Camera View.  
   
 ![Custom Camera View Demo](https://i.imgur.com/LkALEvS.gif)
 
