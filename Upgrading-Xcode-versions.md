@@ -28,11 +28,9 @@ Disk Image folder using this command:
 If you accidentally upgraded to Xcode 8 and wish to get to Xcode 7 that can run in parallel, you can follow similar steps:
 
 1. Rename your Xcode 8 version:
-
    ```bash
    sudo mv /Applications/Xcode.app /Applications/Xcode8.app
    ```
-
 2. Download Xcode 7.3.1 by first signing into [https://developer.apple.com/download/more/](https://developer.apple.com/download/more/) first.  You can then download [Xcode 7.3.1](http://adcdownload.apple.com/Developer_Tools/Xcode_7.3.1/Xcode_7.3.1.dmg) from the Apple Developer store. 
 
 3. Reinstall the Xcode 7.3.1 image.
