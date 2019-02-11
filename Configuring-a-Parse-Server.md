@@ -162,11 +162,9 @@ Using that cross-platform app to easily access and modify the data for your Pars
 
             // Initialize Parse
             // Set applicationId and server based on the values in the Heroku settings.
-            // clientKey is not used on Parse open source unless explicitly configured
             Parse.initialize(
                 with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
                     configuration.applicationId = "myAppId"
-                    configuration.clientKey = nil  // set to nil assuming you have not set clientKey
                     configuration.server = "https://myAppName.herokuapp.com/parse"
                 })
             )
@@ -187,7 +185,6 @@ Using that cross-platform app to easily access and modify the data for your Pars
         ParseClientConfiguration *config = [ParseClientConfiguration   configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
             
             configuration.applicationId = @"codepathInstagram";
-            configuration.clientKey = @"codepathInstagramMaster";
             configuration.server = @"http://codepathfbinstagram.herokuapp.com/parse";
         }];
         
