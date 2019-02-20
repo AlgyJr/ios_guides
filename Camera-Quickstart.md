@@ -91,14 +91,12 @@ else {
 ### Step 3: Implement the delegate method
 
 ```swift
-func imagePickerController(_ picker: UIImagePickerController, 
-didFinishPickingMediaWithInfo info: [String : Any]) {
-    // Get the image captured by the UIImagePickerController
-    let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-    let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
-
+func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    let originalImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+    let editedImage = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
+    
     // Do something with the images (based on your use case)
-
+    
     // Dismiss UIImagePickerController to go back to your original view controller
     dismiss(animated: true, completion: nil)
 }
