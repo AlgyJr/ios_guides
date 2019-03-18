@@ -127,7 +127,7 @@ It can be really useful to create your own delegate. To do so, requires the foll
 [Closures in Swift][swiftclosures] and [blocks in
 Objective-C][objectivecblocks] are first class concepts.  This means
 that you can pass closures as parameters and assign them to variables to
-be exectuted later.  These concepts allow you to implement a basic
+be executed later.  These concepts allow you to implement a basic
 callback mechanism that can be used to propagate and pass on the
 responsibility of handling an event.
 
