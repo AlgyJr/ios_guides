@@ -69,8 +69,8 @@ Inspector.
 
 <a href="https://imgur.com/winIGnh"><img src="https://i.imgur.com/winIGnhl.png" title="Setting Root View Controller" /></a>
 
-#### Programatically setting the root view controller
-In applications not using storyboards, you must programatically set the
+#### Programmatically setting the root view controller
+In applications not using storyboards, you must programmatically set the
 root view controller.  This is done in your `UIApplicationDelegate`
 implementation's `didFinishLaunchingWithOptions` method.
 
@@ -124,7 +124,7 @@ the application lifecycle can be found [here][applifecycle].
 Most applications you write for iOS will use a model-view-controller
 (MVC) architecture similar to the one described by Apple
 [here][applemvc].  This is a proven design that helps to break up your
-application into managable parts with clean separation of concerns.
+application into manageable parts with clean separation of concerns.
 What follows is a description of how each part of MVC typically
 applies in iOS programming.
 
@@ -146,7 +146,7 @@ Model objects encapsulate a logical unit of domain specific data in your
 application.  In a photo-sharing social network, they might include
 entities like "Users" and "Photos".  Models may have relationships with
 other models.  For example, a "Photo" might have been "posted by" a
-"User".  The model layer will gerenally contain any domain specific
+"User".  The model layer will generally contain any domain specific
 logic for manipulating your data and relationships.  For example if a
 User has a field keeping track of the number of Photos she has posted,
 this field will have to updated once she posts a new Photo.
@@ -163,7 +163,7 @@ bindings to right API endpoints and implementing logic to
 serialize/deserialize models from/into the different data formats.
 [Mantle](https://github.com/Mantle/Mantle) and
 [RestKit](https://github.com/RestKit/RestKit) are two popular libraries
-that help to define the model layer&mdash;especially the
+that help to define the model layer&mdash;specially the
 serialization/deserialization logic when working with REST APIs.
 
 [crud]: http://en.wikipedia.org/wiki/Create,_read,_update_and_delete
@@ -212,7 +212,7 @@ to present a visual representation of the model.
 A view may be responsible for managing the instantiation and layout of
 its subviews. However as you traverse up the [view
 hieararchy][viewhierarchy] ultimately you'll find some parent view that
-was instatiated by and inserted into the view hieararchy by a view
+was instantiated by and inserted into the view hierarchy by a view
 controller.  View controllers are responsible for creating views and
 notifying views when they need to refresh themselves with the latest
 data from the model.
