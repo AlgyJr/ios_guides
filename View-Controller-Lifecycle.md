@@ -44,7 +44,7 @@
 
 **viewWillAppear(_:)**
 
-- You override this method for tasks that need you need to repeat every time a view controller comes on screen. This method can be called multiple times for the same instance of a view controller.
+- You override this method for tasks that you need to repeat every time a view controller comes on screen. This method can be called multiple times for the same instance of a view controller.
 - Notifies the view controller that its view is about to be added to a view hierarchy
 - Application : 
     - Usually you use this method to update the user interface with data that might have changed while the view controller was not on the screen.
