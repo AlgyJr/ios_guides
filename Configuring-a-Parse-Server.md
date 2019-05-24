@@ -90,10 +90,14 @@ If you are using Heroku, you can verify whether the objects were created by clic
 You can also install Parse's open source dashboard locally. Download [NodeJS v4.3](https://nodejs.org/en/download/) or higher.  Make sure you have at least Parse server v2.1.3 or higher (later versions include a `/parse/serverInfo` that is needed).
 
 ```bash
-npm install -g parse-dashboard
+npm install -g parse-dashboard 
 parse-dashboard --appId myAppId --masterKey myMasterKey --serverURL "https://yourapp.herokuapp.com/parse"
 ```
+If you get an error regarding access permissions, add sudo in front of your command to execute with root privileges:
 
+```bash
+sudo npm install -g parse-dashboard
+```
 Connect to your dashboard at `http://localhost:4040/apps`. Assuming you have specified the correct application ID, master Key, and server URL, as well as installed a Parse open source version v2.1.3 or higher, you should see the app appear correctly:
 
 <img src="https://imgur.com/Z0Rz5Xs.png"/>
