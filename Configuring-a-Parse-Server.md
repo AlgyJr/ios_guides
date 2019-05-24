@@ -93,7 +93,7 @@ You can also install Parse's open source dashboard locally. Download [NodeJS v4.
 npm install -g parse-dashboard 
 parse-dashboard --appId myAppId --masterKey myMasterKey --serverURL "https://yourapp.herokuapp.com/parse"
 ```
-Note: If you get an error regarding access permissions, add sudo in front of your command to execute with root privileges:
+Note: If you get an error regarding **access permissions**, add `sudo` in front of your command to execute with root privileges:
 
 ```bash
 sudo npm install -g parse-dashboard
