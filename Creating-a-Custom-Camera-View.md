@@ -41,7 +41,7 @@ var videoPreviewLayer: AVCaptureVideoPreviewLayer!
 @end
 ```
 
-### Step 5: Create a viewWillAppear Method
+### Step 5: Create a viewDidAppear Method
 The bulk of the camera setup will happen in the `viewDidAppear`.
 - NOTE: Make sure to call `super.viewDidAppear(animated)` also.
 
