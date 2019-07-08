@@ -244,7 +244,7 @@ PFUser.logOutInBackgroundWithBlock { (error: NSError?) in
 ```
 The above code should be added to the action associated with the logout button (or any other event needs to log out current user)
 
-## 8. Parse Data Objects (`PFObject`) & Parse Files (`PFFile`)
+## 8. Parse Data Objects (`PFObject`) & Parse Files (`PFFileObject`)
 
 ### 8.1 `PFObject`
 Storing data on Parse is built around the `ParseObject`. Each `ParseObject` contains key-value pairs of JSON-compatible data. This data is schemaless, which means that you don't need to specify ahead of time what keys exist on each `ParseObject`. You simply set whatever key-value pairs you want, and Parse backend will store it.
@@ -435,8 +435,8 @@ subscription = client.subscribe(armorQuery)
 ```
 
 
-### `PFFile`
-`PFFile` lets you store application files in the cloud that would otherwise be too large or cumbersome to fit into a regular `PFObject`. The most common use case is storing images but you can also use it for documents, videos, music, and any other binary data (up to 10 megabytes).
+### `PFFileObject`
+`PFFileObject` lets you store application files in the cloud that would otherwise be too large or cumbersome to fit into a regular `PFObject`. The most common use case is storing images but you can also use it for documents, videos, music, and any other binary data (up to 10 megabytes).
 
 [Parse Documentation on handling Images using `PFFile`](http://docs.parseplatform.org/ios/guide/#images)
 
@@ -446,7 +446,7 @@ In this example, we will create and save an object to Parse for an image that th
 
 ```swift
     class Post: PFObject, PFSubclassing {
-        @NSManaged var media : PFFile
+        @NSManaged var media : PFFileObject
         @NSManaged var author: PFUser
         @NSManaged var caption: String
         @NSManaged var likesCount: Int
@@ -513,7 +513,7 @@ In this example, we will create and save an object to Parse for an image that th
 @property (nonatomic, strong) PFUser *author;
 
 @property (nonatomic, strong) NSString *caption;
-@property (nonatomic, strong) PFFile *image;
+@property (nonatomic, strong) PFFileObject *image;
 @property (nonatomic, strong) NSNumber *likeCount;
 @property (nonatomic, strong) NSNumber *commentCount;
 
@@ -549,7 +549,7 @@ In this example, we will create and save an object to Parse for an image that th
     [newPost saveInBackgroundWithBlock: completion];
 }
 
-+ (PFFile *)getPFFileFromImage: (UIImage * _Nullable)image {
++ (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
  
     // check if image is not nil
     if (!image) {
