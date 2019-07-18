@@ -43,7 +43,7 @@ var videoPreviewLayer: AVCaptureVideoPreviewLayer!
 
 ### Step 5: Create a viewDidAppear Method
 The bulk of the camera setup will happen in the `viewDidAppear`.
-- NOTE: Make sure to call `super.viewDidAppear(animated)` also.
+- NOTE: Make sure to call `super.viewDidAppear(animated)` dddddddalso.
 
 ```swift
 override func viewDidAppear(_ animated: Bool) {
