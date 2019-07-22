@@ -35,7 +35,7 @@ var videoPreviewLayer: AVCaptureVideoPreviewLayer!
 ``` 
 ```objc
 @interface CameraViewController ()
-@property (nonatomic) AVCaptureSession *session;
+@property (nonatomic) AVCaptureSession *captureSession;
 @property (nonatomic) AVCapturePhotoOutput *stillImageOutput;
 @property (nonatomic) AVCaptureVideoPreviewLayer *videoPreviewLayer;
 @end
@@ -69,8 +69,8 @@ captureSession = AVCaptureSession()
 captureSession.sessionPreset = .medium
 ```
 ```objc
-self.session = [AVCaptureSession new];
-self.session.sessionPreset = AVCaptureSessionPresetPhoto;
+self.captureSession = [AVCaptureSession new];
+self.captureSession.sessionPreset = AVCaptureSessionPresetPhoto;
 ```
 - NOTE: If you plan to upload your photo to Parse, you will likely need to change your preset to `AVCaptureSession.Preset.High` or `AVCaptureSession.Preset.medium` to keep the size under the 10mb Parse max.
 
